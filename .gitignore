@@ -1,6 +1,6 @@
-
-
-/var/cache/
+/var/cache/*
+/var/log/*
+/var/log/*
 *.data
 *.data
 

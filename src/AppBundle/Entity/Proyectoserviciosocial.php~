@@ -1,0 +1,61 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Proyectoserviciosocial
+ *
+ * @ORM\Table(name="proyectoserviciosocial")
+ * @ORM\Entity
+ */
+class Proyectoserviciosocial
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="IDPROYECTSERVISOCIAL", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idproyectservisocial;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NOMBREPROYECTO", type="string", length=250, nullable=true)
+     */
+    private $nombreproyecto;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DESCRIPCIONPROYECTO", type="string", length=250, nullable=true)
+     */
+    private $descripcionproyecto;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ENCARGADOPROYECTO", type="string", length=50, nullable=true)
+     */
+    private $encargadoproyecto;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="LUGARPROYECTO", type="string", length=100, nullable=true)
+     */
+    private $lugarproyecto;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="ESTADOPROYECTO", type="boolean", nullable=true)
+     */
+    private $estadoproyecto;
+
+
+}
+

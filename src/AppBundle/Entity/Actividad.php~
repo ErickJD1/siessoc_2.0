@@ -1,0 +1,61 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Actividad
+ *
+ * @ORM\Table(name="actividad")
+ * @ORM\Entity
+ */
+class Actividad
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="IDACTIVIDAD", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idactividad;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NOMACTIVIDAD", type="string", length=100, nullable=true)
+     */
+    private $nomactividad;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHAACTIVIDAD", type="date", nullable=true)
+     */
+    private $fechaactividad;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DESCRIPCIONACTIVIDAD", type="string", length=250, nullable=true)
+     */
+    private $descripcionactividad;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="ESTADOACTIVIDAD", type="boolean", nullable=true)
+     */
+    private $estadoactividad;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="REQUISITO", type="boolean", nullable=true)
+     */
+    private $requisito;
+
+
+}
+

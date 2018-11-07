@@ -1,0 +1,67 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Inventario
+ *
+ * @ORM\Table(name="inventario", indexes={@ORM\Index(name="FK_RELATIONSHIP_42", columns={"IDMOVINV"}), @ORM\Index(name="FK_RELATIONSHIP_44", columns={"IDINSUMO"})})
+ * @ORM\Entity
+ */
+class Inventario
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="IDINVENTARIO", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idinventario;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="IDEXPBECARIO", type="integer", nullable=true)
+     */
+    private $idexpbecario;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="CANTIDADINVENTARIO", type="integer", nullable=true)
+     */
+    private $cantidadinventario;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHAINVENTARIO", type="datetime", nullable=true)
+     */
+    private $fechainventario;
+
+    /**
+     * @var \Movimientoinventario
+     *
+     * @ORM\ManyToOne(targetEntity="Movimientoinventario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="IDMOVINV", referencedColumnName="IDMOVINV")
+     * })
+     */
+    private $idmovinv;
+
+    /**
+     * @var \Insumo
+     *
+     * @ORM\ManyToOne(targetEntity="Insumo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="IDINSUMO", referencedColumnName="IDINSUMO")
+     * })
+     */
+    private $idinsumo;
+
+
+}
+

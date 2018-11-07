@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Proyectoserviciosocial" table="proyectoserviciosocial">
+    <id name="idproyectservisocial" type="integer" column="IDPROYECTSERVISOCIAL">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nombreproyecto" type="string" column="NOMBREPROYECTO" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="descripcionproyecto" type="string" column="DESCRIPCIONPROYECTO" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="encargadoproyecto" type="string" column="ENCARGADOPROYECTO" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="lugarproyecto" type="string" column="LUGARPROYECTO" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="estadoproyecto" type="boolean" column="ESTADOPROYECTO" nullable="true"/>
+  </entity>
+</doctrine-mapping>

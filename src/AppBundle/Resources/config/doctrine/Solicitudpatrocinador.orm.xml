@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Solicitudpatrocinador" table="solicitudpatrocinador">
+    <id name="idsolipatrocinador" type="integer" column="IDSOLIPATROCINADOR">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="docidentidadsolipatrocinador" type="string" column="DOCIDENTIDADSOLIPATROCINADOR" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="montoaportarsolipatrocinador" type="decimal" column="MONTOAPORTARSOLIPATROCINADOR" precision="8" scale="0" nullable="true"/>
+    <field name="telefonosolipatrocinador" type="string" column="TELEFONOSOLIPATROCINADOR" length="256" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="direccionsolipatrocinador" type="string" column="DIRECCIONSOLIPATROCINADOR" length="256" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="estadosolipatrocinador" type="string" column="ESTADOSOLIPATROCINADOR" length="1" nullable="true">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

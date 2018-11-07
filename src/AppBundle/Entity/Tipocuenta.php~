@@ -1,0 +1,47 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Tipocuenta
+ *
+ * @ORM\Table(name="tipocuenta")
+ * @ORM\Entity
+ */
+class Tipocuenta
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="IDTIPOCUENTA", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idtipocuenta;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NOMBRECUENTA", type="string", length=50, nullable=true)
+     */
+    private $nombrecuenta;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DESCRIPCION", type="string", length=250, nullable=true)
+     */
+    private $descripcion;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="ESTADOTIPOCUENTA", type="boolean", nullable=true)
+     */
+    private $estadotipocuenta;
+
+
+}
+

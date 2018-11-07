@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Universidad" table="universidad">
+    <indexes>
+      <index name="FK_RELATIONSHIP_37" columns="IDCARRERA"/>
+      <index name="FK_RELATIONSHIP_47" columns="CAR_IDCARRERA"/>
+    </indexes>
+    <id name="iduniversidad" type="integer" column="IDUNIVERSIDAD">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nombreuniversidad" type="string" column="NOMBREUNIVERSIDAD" length="256" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="estadouniversidad" type="boolean" column="ESTADOUNIVERSIDAD" nullable="true"/>
+    <many-to-one field="carcarrera" target-entity="Carrera" fetch="LAZY">
+      <join-columns>
+        <join-column name="CAR_IDCARRERA" referenced-column-name="IDCARRERA"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idcarrera" target-entity="Carrera" fetch="LAZY">
+      <join-columns>
+        <join-column name="IDCARRERA" referenced-column-name="IDCARRERA"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

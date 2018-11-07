@@ -1,0 +1,88 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Transaccioncolaboracion
+ *
+ * @ORM\Table(name="transaccioncolaboracion", indexes={@ORM\Index(name="FK_RELATIONSHIP_18", columns={"IDTIPOTRANSACCION"}), @ORM\Index(name="FK_RELATIONSHIP_19", columns={"IDCOLABORACION"})})
+ * @ORM\Entity
+ */
+class Transaccioncolaboracion
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="IDTRANSACCOLABORACION", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idtransaccolaboracion;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHATRANSACCOLABORA", type="datetime", nullable=true)
+     */
+    private $fechatransaccolabora;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DESCRIPCIONTRANSACCOLABORA", type="string", length=200, nullable=true)
+     */
+    private $descripciontransaccolabora;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TIPOTRANSACCOLABORA", type="string", length=200, nullable=true)
+     */
+    private $tipotransaccolabora;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="MONTOTRASACCOLABORA", type="decimal", precision=10, scale=0, nullable=true)
+     */
+    private $montotrasaccolabora;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ESTADOTRANSACCOLABORA", type="integer", nullable=true)
+     */
+    private $estadotransaccolabora;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="MESPAGOTRANSACCOLABORA", type="string", length=25, nullable=true)
+     */
+    private $mespagotransaccolabora;
+
+    /**
+     * @var \Tipotransaccion
+     *
+     * @ORM\ManyToOne(targetEntity="Tipotransaccion")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="IDTIPOTRANSACCION", referencedColumnName="IDTIPOTRANSACCION")
+     * })
+     */
+    private $idtipotransaccion;
+
+    /**
+     * @var \Colaboracionmonetaria
+     *
+     * @ORM\ManyToOne(targetEntity="Colaboracionmonetaria")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="IDCOLABORACION", referencedColumnName="IDCOLABORACION")
+     * })
+     */
+    private $idcolaboracion;
+
+
+}
+

@@ -1,0 +1,67 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Carrera
+ *
+ * @ORM\Table(name="carrera", indexes={@ORM\Index(name="FK_RELATIONSHIP_29", columns={"IDMATERIA"}), @ORM\Index(name="FK_RELATIONSHIP_38", columns={"IDUNIVERSIDAD"})})
+ * @ORM\Entity
+ */
+class Carrera
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="IDCARRERA", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idcarrera;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NOMCARRERA", type="string", length=100, nullable=true)
+     */
+    private $nomcarrera;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DESCRIPCIONCARRERA", type="string", length=250, nullable=true)
+     */
+    private $descripcioncarrera;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="ESTADOCARRERA", type="boolean", nullable=true)
+     */
+    private $estadocarrera;
+
+    /**
+     * @var \Materia
+     *
+     * @ORM\ManyToOne(targetEntity="Materia")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="IDMATERIA", referencedColumnName="IDMATERIA")
+     * })
+     */
+    private $idmateria;
+
+    /**
+     * @var \Universidad
+     *
+     * @ORM\ManyToOne(targetEntity="Universidad")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="IDUNIVERSIDAD", referencedColumnName="IDUNIVERSIDAD")
+     * })
+     */
+    private $iduniversidad;
+
+
+}
+

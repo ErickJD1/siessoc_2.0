@@ -1,0 +1,52 @@
+{% extends "layout/base-layout.html.twig" %}
+
+{% import "AvanzuAdminThemeBundle:layout:macros.html.twig" as macro %}
+{% block stylesheets %}
+    {{ parent() }}
+ {%endblock%}
+{% block page_title %} Bitacora | {% endblock %}
+{% block page_subtitle %}Bitacora Servicio Social {% endblock %}
+
+{% block page_content %}
+
+    <div class="box box-primary">
+   <div style="width:90%; margin-left:5%; margin-top: 2% ">
+
+        <div align="left">
+            <button class="btn btn-info" data-toggle="modal" data-target="#create1"> + Bitacora</button>
+         {{ render(controller('AppBundle:Bitacora:new' )) }}
+
+        </div>
+        <br> </br>
+        <table id="tabelMahasiswa" class="table table-bordered table-hover table-striped" id="tabelMahasiswa">
+        <thead>
+            <tr>
+                <th>Hora Inicio</th>
+                <th>Hora Fin</th>
+                <th>Observacion</th>
+                <th>ID</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for bitacora in bitacoras %}
+            <tr>
+                <td><a href="{{ path('bitacora_show', { 'id': bitacora.idbitacora }) }}">{{ bitacora.horainicio |date('H:i:s')}}</a></td>
+                <td>{% if bitacora.horafin %}{{ bitacora.horafin|date('H:i:s') }}{% endif %}</td>
+                <td>{{ bitacora.observacion }}</td>
+                <td>{{ bitacora.idbitacora }}</td>
+                <td>
+                    <ul>
+                            <a href="{{ path('bitacora_show', { 'id': bitacora.idbitacora }) }}" class="btn btn-primary btn-xs">Mostrar</a>
+                            <a href="{{ path('bitacora_edit', { 'id': bitacora.idbitacora }) }}" class="btn btn-success btn-xs">Editar</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+
+      </div>
+
+  </div>
+
+{% endblock %}

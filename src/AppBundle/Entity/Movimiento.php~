@@ -1,0 +1,67 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Movimiento
+ *
+ * @ORM\Table(name="movimiento", indexes={@ORM\Index(name="FK_RELATIONSHIP_13", columns={"IDTIPOMOV"}), @ORM\Index(name="FK_RELATIONSHIP_15", columns={"IDCUENTA"})})
+ * @ORM\Entity
+ */
+class Movimiento
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="IDMOV", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idmov;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DESCRIPCIONMOV", type="string", length=250, nullable=true)
+     */
+    private $descripcionmov;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="MONTO", type="float", precision=20, scale=0, nullable=true)
+     */
+    private $monto;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="ESTADOMOV", type="boolean", nullable=true)
+     */
+    private $estadomov;
+
+    /**
+     * @var \Tipomovimiento
+     *
+     * @ORM\ManyToOne(targetEntity="Tipomovimiento")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="IDTIPOMOV", referencedColumnName="IDTIPOMOV")
+     * })
+     */
+    private $idtipomov;
+
+    /**
+     * @var \Cuenta
+     *
+     * @ORM\ManyToOne(targetEntity="Cuenta")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="IDCUENTA", referencedColumnName="IDCUENTA")
+     * })
+     */
+    private $idcuenta;
+
+
+}
+

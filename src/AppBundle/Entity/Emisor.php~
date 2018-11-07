@@ -1,0 +1,40 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Emisor
+ *
+ * @ORM\Table(name="emisor")
+ * @ORM\Entity
+ */
+class Emisor
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="IDEMISOR", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idemisor;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NOMBREEMISOR", type="string", length=25, nullable=true)
+     */
+    private $nombreemisor;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="ESTADOEMISOR", type="boolean", nullable=true)
+     */
+    private $estadoemisor;
+
+
+}
+

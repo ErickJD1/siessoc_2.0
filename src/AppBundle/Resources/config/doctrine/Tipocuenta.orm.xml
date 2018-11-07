@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Tipocuenta" table="tipocuenta">
+    <id name="idtipocuenta" type="integer" column="IDTIPOCUENTA">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nombrecuenta" type="string" column="NOMBRECUENTA" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="descripcion" type="string" column="DESCRIPCION" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="estadotipocuenta" type="boolean" column="ESTADOTIPOCUENTA" nullable="true"/>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,40 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Movimientoinventario
+ *
+ * @ORM\Table(name="movimientoinventario")
+ * @ORM\Entity
+ */
+class Movimientoinventario
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="IDMOVINV", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idmovinv;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NOMBREMOVINV", type="string", length=250, nullable=true)
+     */
+    private $nombremovinv;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="ESTADOMOVINV", type="boolean", nullable=true)
+     */
+    private $estadomovinv;
+
+
+}
+

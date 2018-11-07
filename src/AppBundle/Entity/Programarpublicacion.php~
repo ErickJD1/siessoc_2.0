@@ -1,0 +1,57 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Programarpublicacion
+ *
+ * @ORM\Table(name="programarpublicacion", indexes={@ORM\Index(name="FK_RELATIONSHIP_12", columns={"IDCONTENIDO"})})
+ * @ORM\Entity
+ */
+class Programarpublicacion
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="IDPUBLICACION", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idpublicacion;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHAPUBLICACION", type="date", nullable=true)
+     */
+    private $fechapublicacion;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="HORAPUBLICACION", type="time", nullable=true)
+     */
+    private $horapublicacion;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ESTADOPULICACION", type="integer", nullable=true)
+     */
+    private $estadopulicacion;
+
+    /**
+     * @var \Publicacioncontenido
+     *
+     * @ORM\ManyToOne(targetEntity="Publicacioncontenido")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="IDCONTENIDO", referencedColumnName="IDCONTENIDO")
+     * })
+     */
+    private $idcontenido;
+
+
+}
+

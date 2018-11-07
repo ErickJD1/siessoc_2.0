@@ -1,0 +1,35 @@
+{% extends "layout/base-layout.html.twig" %}
+{% block page_content %}
+{% block body %}
+    <h1>Bitacora</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Horainicio</th>
+                <td>{% if bitacora.horainicio %}{{ bitacora.horainicio|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Horafin</th>
+                <td>{% if bitacora.horafin %}{{ bitacora.horafin|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Observacion</th>
+                <td>{{ bitacora.observacion }}</td>
+            </tr>
+            <tr>
+                <th>Idbitacora</th>
+                <td>{{ bitacora.idbitacora }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+            {{ form_start(delete_form) }}
+                <a href="{{ path('bitacora_edit', { 'id': bitacora.idbitacora }) }}"class="btn btn-primary btn-xs">Actualizar</a>
+                <input type="submit" value="Delete" class="btn btn-danger btn-xs">
+                <a href="{{ path('bitacora_index') }}" class="btn btn-info btn-xs">Atrás</a>
+            {{ form_end(delete_form) }}
+    </ul>
+  {% endblock %}
+  {% endblock %}

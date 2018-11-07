@@ -1,0 +1,173 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Solicitudbecario
+ *
+ * @ORM\Table(name="solicitudbecario")
+ * @ORM\Entity
+ */
+class Solicitudbecario
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="IDSOLIBECARIO", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idsolibecario;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TELEFONOSOLIBECARIO", type="string", length=10, nullable=true)
+     */
+    private $telefonosolibecario;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="INGRESOSSOLIFAMILIABECARIO", type="decimal", precision=8, scale=0, nullable=true)
+     */
+    private $ingresossolifamiliabecario;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="MIEMBROSSOLIFAMILIABECARIO", type="integer", nullable=true)
+     */
+    private $miembrossolifamiliabecario;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TIPOSOLICASABECARIO", type="string", length=500, nullable=true)
+     */
+    private $tiposolicasabecario;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CARRERASOLIESTUDIARBECARIO", type="string", length=256, nullable=true)
+     */
+    private $carrerasoliestudiarbecario;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="UNIVERSIDADSOLIBECARIO", type="string", length=100, nullable=true)
+     */
+    private $universidadsolibecario;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="MONTOSOLIMATRICULABECARIO", type="decimal", precision=10, scale=0, nullable=true)
+     */
+    private $montosolimatriculabecario;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CUOTASOLIMENSUALBECARIO", type="decimal", precision=10, scale=0, nullable=true)
+     */
+    private $cuotasolimensualbecario;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="DURACIONSOLICARRERABECARIO", type="integer", nullable=true)
+     */
+    private $duracionsolicarrerabecario;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="TRABAJOSOLIBECARIO", type="boolean", nullable=true)
+     */
+    private $trabajosolibecario;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DOCSOLIIDENTIDADBECARIO", type="string", length=20, nullable=true)
+     */
+    private $docsoliidentidadbecario;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="ANIOSOLIINGRESOBECARIO", type="date", nullable=true)
+     */
+    private $aniosoliingresobecario;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="ANIOSOLIFINALIZACIONBECARIO", type="date", nullable=true)
+     */
+    private $aniosolifinalizacionbecario;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="CANTSOLIHERMANOSBECARIO", type="integer", nullable=true)
+     */
+    private $cantsolihermanosbecario;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NOMSOLIPADREBECARIO", type="string", length=300, nullable=true)
+     */
+    private $nomsolipadrebecario;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NOMSOLIMADREBECARIO", type="string", length=300, nullable=true)
+     */
+    private $nomsolimadrebecario;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TELSOLIEMERGENCIABECARIO", type="string", length=11, nullable=true)
+     */
+    private $telsoliemergenciabecario;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TELSOLIPERSONALBECARIO", type="string", length=11, nullable=true)
+     */
+    private $telsolipersonalbecario;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="MIEMBROSSOLIFAMILIBECARIO", type="integer", nullable=true)
+     */
+    private $miembrossolifamilibecario;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DIRECCIONSOLIBECARIO", type="string", length=500, nullable=true)
+     */
+    private $direccionsolibecario;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="ESTADOSOLIBECARIO", type="boolean", nullable=true)
+     */
+    private $estadosolibecario;
+
+
+}
+

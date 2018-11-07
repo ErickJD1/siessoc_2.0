@@ -1,0 +1,85 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Cheque
+ *
+ * @ORM\Table(name="cheque", indexes={@ORM\Index(name="FK_RELATIONSHIP_17", columns={"IDEMISOR"})})
+ * @ORM\Entity
+ */
+class Cheque
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="IDCHEQUE", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idcheque;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="IDEXPBECARIO", type="integer", nullable=true)
+     */
+    private $idexpbecario;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CODIGOCHEQUE", type="string", length=25, nullable=true)
+     */
+    private $codigocheque;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="MONTOCHEQUE", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $montocheque;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DESTINATARIOCHEQUE", type="string", length=50, nullable=true)
+     */
+    private $destinatariocheque;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="BANCOCHEQUE", type="string", length=250, nullable=true)
+     */
+    private $bancocheque;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHAEMISIONCHEQUE", type="date", nullable=true)
+     */
+    private $fechaemisioncheque;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ESTADOCHEQUE", type="string", length=25, nullable=true)
+     */
+    private $estadocheque;
+
+    /**
+     * @var \Emisor
+     *
+     * @ORM\ManyToOne(targetEntity="Emisor")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="IDEMISOR", referencedColumnName="IDEMISOR")
+     * })
+     */
+    private $idemisor;
+
+
+}
+

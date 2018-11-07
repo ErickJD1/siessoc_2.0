@@ -1,0 +1,68 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Expedientepatrocinador
+ *
+ * @ORM\Table(name="expedientepatrocinador")
+ * @ORM\Entity
+ */
+class Expedientepatrocinador
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="IDEXPPATROCINADOR", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idexppatrocinador;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DOCIDENTIDADPATROCINADOR", type="string", length=20, nullable=true)
+     */
+    private $docidentidadpatrocinador;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHAREGISTROPATROCINADOR", type="datetime", nullable=true)
+     */
+    private $fecharegistropatrocinador;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="MONTOAPORTARPRATOCINADOR", type="decimal", precision=8, scale=0, nullable=true)
+     */
+    private $montoaportarpratocinador;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TELEFONOPATROCINADOR", type="string", length=11, nullable=true)
+     */
+    private $telefonopatrocinador;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DIRECCIONPATROCINADOR", type="string", length=500, nullable=true)
+     */
+    private $direccionpatrocinador;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="ESTADOPATROCINADOR", type="boolean", nullable=true)
+     */
+    private $estadopatrocinador;
+
+
+}
+

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Inventario" table="inventario">
+    <indexes>
+      <index name="FK_RELATIONSHIP_42" columns="IDMOVINV"/>
+      <index name="FK_RELATIONSHIP_44" columns="IDINSUMO"/>
+    </indexes>
+    <id name="idinventario" type="integer" column="IDINVENTARIO">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idexpbecario" type="integer" column="IDEXPBECARIO" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="cantidadinventario" type="integer" column="CANTIDADINVENTARIO" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="fechainventario" type="datetime" column="FECHAINVENTARIO" nullable="true"/>
+    <many-to-one field="idinsumo" target-entity="Insumo" fetch="LAZY">
+      <join-columns>
+        <join-column name="IDINSUMO" referenced-column-name="IDINSUMO"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idmovinv" target-entity="Movimientoinventario" fetch="LAZY">
+      <join-columns>
+        <join-column name="IDMOVINV" referenced-column-name="IDMOVINV"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

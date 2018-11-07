@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Solicitudbecario" table="solicitudbecario">
+    <id name="idsolibecario" type="integer" column="IDSOLIBECARIO">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="telefonosolibecario" type="string" column="TELEFONOSOLIBECARIO" length="10" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="ingresossolifamiliabecario" type="decimal" column="INGRESOSSOLIFAMILIABECARIO" precision="8" scale="0" nullable="true"/>
+    <field name="miembrossolifamiliabecario" type="integer" column="MIEMBROSSOLIFAMILIABECARIO" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="tiposolicasabecario" type="string" column="TIPOSOLICASABECARIO" length="500" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="carrerasoliestudiarbecario" type="string" column="CARRERASOLIESTUDIARBECARIO" length="256" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="universidadsolibecario" type="string" column="UNIVERSIDADSOLIBECARIO" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="montosolimatriculabecario" type="decimal" column="MONTOSOLIMATRICULABECARIO" precision="10" scale="0" nullable="true"/>
+    <field name="cuotasolimensualbecario" type="decimal" column="CUOTASOLIMENSUALBECARIO" precision="10" scale="0" nullable="true"/>
+    <field name="duracionsolicarrerabecario" type="integer" column="DURACIONSOLICARRERABECARIO" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="trabajosolibecario" type="boolean" column="TRABAJOSOLIBECARIO" nullable="true"/>
+    <field name="docsoliidentidadbecario" type="string" column="DOCSOLIIDENTIDADBECARIO" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="aniosoliingresobecario" type="date" column="ANIOSOLIINGRESOBECARIO" nullable="true"/>
+    <field name="aniosolifinalizacionbecario" type="date" column="ANIOSOLIFINALIZACIONBECARIO" nullable="true"/>
+    <field name="cantsolihermanosbecario" type="integer" column="CANTSOLIHERMANOSBECARIO" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="nomsolipadrebecario" type="string" column="NOMSOLIPADREBECARIO" length="300" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nomsolimadrebecario" type="string" column="NOMSOLIMADREBECARIO" length="300" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="telsoliemergenciabecario" type="string" column="TELSOLIEMERGENCIABECARIO" length="11" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="telsolipersonalbecario" type="string" column="TELSOLIPERSONALBECARIO" length="11" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="miembrossolifamilibecario" type="integer" column="MIEMBROSSOLIFAMILIBECARIO" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="direccionsolibecario" type="string" column="DIRECCIONSOLIBECARIO" length="500" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="estadosolibecario" type="boolean" column="ESTADOSOLIBECARIO" nullable="true"/>
+  </entity>
+</doctrine-mapping>

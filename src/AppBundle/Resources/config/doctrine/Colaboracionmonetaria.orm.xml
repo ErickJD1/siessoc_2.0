@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Colaboracionmonetaria" table="colaboracionmonetaria">
+    <id name="idcolaboracion" type="integer" column="IDCOLABORACION">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="montomescolaboracion" type="decimal" column="MONTOMESCOLABORACION" precision="10" scale="0" nullable="true"/>
+    <field name="descripcioncolaboracion" type="string" column="DESCRIPCIONCOLABORACION" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="saldocolaboracion" type="decimal" column="SALDOCOLABORACION" precision="10" scale="0" nullable="true"/>
+    <field name="estadocolaboracion" type="boolean" column="ESTADOCOLABORACION" nullable="true"/>
+  </entity>
+</doctrine-mapping>

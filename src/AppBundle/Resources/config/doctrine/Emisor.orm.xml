@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Emisor" table="emisor">
+    <id name="idemisor" type="integer" column="IDEMISOR">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nombreemisor" type="string" column="NOMBREEMISOR" length="25" nullable="true">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
+    <field name="estadoemisor" type="boolean" column="ESTADOEMISOR" nullable="true"/>
+  </entity>
+</doctrine-mapping>

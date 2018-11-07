@@ -1,0 +1,96 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Persona
+ *
+ * @ORM\Table(name="persona")
+ * @ORM\Entity
+ */
+class Persona
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="IDPERSONA", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idpersona;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NOMBRE", type="string", length=25, nullable=true)
+     */
+    private $nombre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="APELLIDOS", type="string", length=25, nullable=true)
+     */
+    private $apellidos;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHANACIMIENTO", type="date", nullable=true)
+     */
+    private $fechanacimiento;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DUI", type="string", length=10, nullable=true)
+     */
+    private $dui;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NIT", type="string", length=20, nullable=true)
+     */
+    private $nit;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="PASAPORTE", type="string", length=10, nullable=true)
+     */
+    private $pasaporte;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TELEFONO", type="string", length=25, nullable=true)
+     */
+    private $telefono;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CORREO", type="string", length=100, nullable=true)
+     */
+    private $correo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="SEXO", type="string", length=10, nullable=true)
+     */
+    private $sexo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DIRECCION", type="string", length=250, nullable=true)
+     */
+    private $direccion;
+
+
+}
+

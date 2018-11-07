@@ -1,0 +1,68 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Inscripcion
+ *
+ * @ORM\Table(name="inscripcion")
+ * @ORM\Entity
+ */
+class Inscripcion
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="IDINSCRIPCION", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idinscripcion;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="IDEXPBECARIO", type="integer", nullable=true)
+     */
+    private $idexpbecario;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="ANIOINSCRIPCION", type="date", nullable=true)
+     */
+    private $anioinscripcion;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="NUMCICLOINSCRIPCION", type="integer", nullable=true)
+     */
+    private $numcicloinscripcion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="MONTOMATRICULAINSCRIPCION", type="decimal", precision=5, scale=0, nullable=true)
+     */
+    private $montomatriculainscripcion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="MONTOMENSUALIDAD", type="decimal", precision=5, scale=0, nullable=true)
+     */
+    private $montomensualidad;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="ESTADOINSCRIPCION", type="boolean", nullable=true)
+     */
+    private $estadoinscripcion;
+
+
+}
+

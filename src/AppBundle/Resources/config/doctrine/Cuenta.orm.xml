@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Cuenta" table="cuenta">
+    <indexes>
+      <index name="FK_RELATIONSHIP_14" columns="IDTIPOCUENTA"/>
+      <index name="FK_RELATIONSHIP_33" columns="IDBANCO"/>
+    </indexes>
+    <id name="idcuenta" type="integer" column="IDCUENTA">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="numcuenta" type="string" column="NUMCUENTA" length="10" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nomcuenta" type="string" column="NOMCUENTA" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="descripcioncuenta" type="string" column="DESCRIPCIONCUENTA" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="fechaapertura" type="datetime" column="FECHAAPERTURA" nullable="true"/>
+    <field name="saldocuenta" type="float" column="SALDOCUENTA" precision="10" scale="0" nullable="true"/>
+    <field name="estadocuenta" type="boolean" column="ESTADOCUENTA" nullable="true"/>
+    <many-to-one field="idbanco" target-entity="Banco" fetch="LAZY">
+      <join-columns>
+        <join-column name="IDBANCO" referenced-column-name="IDBANCO"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idtipocuenta" target-entity="Tipocuenta" fetch="LAZY">
+      <join-columns>
+        <join-column name="IDTIPOCUENTA" referenced-column-name="IDTIPOCUENTA"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

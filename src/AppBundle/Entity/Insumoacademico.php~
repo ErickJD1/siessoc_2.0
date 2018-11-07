@@ -1,0 +1,78 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Insumoacademico
+ *
+ * @ORM\Table(name="insumoacademico", indexes={@ORM\Index(name="FK_RELATIONSHIP_21", columns={"IDINV"})})
+ * @ORM\Entity
+ */
+class Insumoacademico
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="IDINSUMO", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idinsumo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NOMINSUMO", type="string", length=150, nullable=true)
+     */
+    private $nominsumo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DISCRIPCIONINSUMO", type="string", length=250, nullable=true)
+     */
+    private $discripcioninsumo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TIPOINSUMO", type="string", length=25, nullable=true)
+     */
+    private $tipoinsumo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NOMTIPOINSUMO", type="string", length=150, nullable=true)
+     */
+    private $nomtipoinsumo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DESCRIPCIONTIPO", type="string", length=250, nullable=true)
+     */
+    private $descripciontipo;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ESTADO", type="smallint", nullable=true)
+     */
+    private $estado;
+
+    /**
+     * @var \Inventario
+     *
+     * @ORM\ManyToOne(targetEntity="Inventario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="IDINV", referencedColumnName="IDINV")
+     * })
+     */
+    private $idinv;
+
+
+}
+

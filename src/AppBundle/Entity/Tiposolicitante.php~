@@ -1,0 +1,47 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Tiposolicitante
+ *
+ * @ORM\Table(name="tiposolicitante")
+ * @ORM\Entity
+ */
+class Tiposolicitante
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="IDTIPOSOLICITANTE", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idtiposolicitante;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NOMBRE", type="string", length=25, nullable=true)
+     */
+    private $nombre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DESCRIPCION", type="string", length=250, nullable=true)
+     */
+    private $descripcion;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ESTADO", type="smallint", nullable=true)
+     */
+    private $estado;
+
+
+}
+

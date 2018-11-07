@@ -1,0 +1,47 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Role
+ *
+ * @ORM\Table(name="role")
+ * @ORM\Entity
+ */
+class Role
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="IDROLE", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idrole;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NOMROLE", type="string", length=25, nullable=true)
+     */
+    private $nomrole;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DESCRIPCIONROLE", type="string", length=100, nullable=true)
+     */
+    private $descripcionrole;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="ESTADOROLE", type="boolean", nullable=true)
+     */
+    private $estadorole;
+
+
+}
+

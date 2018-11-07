@@ -1,0 +1,76 @@
+{% extends "layout/base-layout.html.twig" %}
+
+{% import "AvanzuAdminThemeBundle:layout:macros.html.twig" as macro %}
+{% block stylesheets %}
+    {{ parent() }}
+ {%endblock%}
+{% block page_title %} Actividades | {% endblock %}
+{% block page_subtitle %}Gestion de Actividades {% endblock %}
+
+{% block page_content %}
+
+    <div class="box box-primary">
+   <div style="width:90%; margin-left:5%; margin-top: 2% ">
+    
+        <div align="left">
+            <button class="btn btn-info" data-toggle="modal" data-target="#create1"> + Actividad</button>
+         {{ render(controller('AppBundle:Actividad:new' )) }}
+        </div>
+        <br> </br>
+
+    <h1>Actividads list</h1>
+
+ <table id="tabelMahasiswa" class="table table-bordered table-hover table-striped">
+
+        <thead>
+            <tr>
+                <th>Nomactividad</th>
+                <th>Fechaactividad</th>
+                <th>Descripcionactividad</th>
+                <th>Validacion</th>
+                <th>Becario</th>
+                <th>Estado</th>
+                <th>Idactividad</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for actividad in actividads %}
+            <tr>
+                <td><a href="{{ path('actividad_show', { 'id': actividad.idactividad }) }}">{{ actividad.nomactividad }}</a></td>
+                <td>{% if actividad.fechaactividad %}{{ actividad.fechaactividad|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ actividad.descripcionactividad }}</td>
+                <td>{{ actividad.validacion }}</td>
+                <td>{{ actividad.becario }}</td>
+                <td>{{ actividad.estado }}</td>
+                <td>{{ actividad.idactividad }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('actividad_show', { 'id': actividad.idactividad }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('actividad_edit', { 'id': actividad.idactividad }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+  </tbody>
+
+        </table>
+
+        </div>
+
+    </div>                    
+    
+
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('actividad_new') }}">Create a new actividad</a>
+        </li>
+    </ul>
+{% endblock %}

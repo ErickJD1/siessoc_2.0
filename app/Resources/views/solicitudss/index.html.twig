@@ -1,0 +1,55 @@
+{% extends "layout/base-layout.html.twig" %}
+
+{% import "AvanzuAdminThemeBundle:layout:macros.html.twig" as macro %}
+{% block stylesheets %}
+    {{ parent() }}
+ {%endblock%}
+{% block page_title %} Servicio Social | {% endblock %}
+{% block page_subtitle %}Detalle Servicio Social {% endblock %}
+
+{% block page_content %}
+
+    <div class="box box-primary">
+   <div style="width:90%; margin-left:5%; margin-top: 2% ">
+
+        <div align="left">
+            <button class="btn btn-info" data-toggle="modal" data-target="#create1"> + Servicio Social</button>
+         {{ render(controller('AppBundle:Solicitudss:new' )) }}
+
+        </div>
+        <br> </br>
+        <table id="tabelMahasiswa" class="table table-bordered table-hover table-striped" id="tabelMahasiswa">
+        <thead>
+            <tr>
+                <th>Proyecto</th>
+                <th>Descripción</th>
+                <th>Encargado</th>
+                <th>Lugar</th>
+                <th>Estado</th>
+                <th>ID</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for solicitudss in solicitudsses %}
+            <tr>
+                <td><a href="{{ path('servicio_social_show', { 'id': solicitudss.idsss }) }}">{{ solicitudss.nombreproyecto }}</a></td>
+                <td>{{ solicitudss.descripcion }}</td>
+                <td>{{ solicitudss.encargado }}</td>
+                <td>{{ solicitudss.lugar }}</td>
+                <td>{{ solicitudss.estado }}</td>
+                <td>{{ solicitudss.idsss }}</td>
+                <td>
+                   <a href="{{ path('servicio_social_show', { 'id': solicitudss.idsss }) }}" class="btn btn-primary btn-xs">Mostrar</a>
+                   <a href="{{ path('servicio_social_edit', { 'id': solicitudss.idsss }) }}" class="btn btn-success btn-xs">Editar</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+
+      </div>
+
+  </div>
+
+{% endblock %}

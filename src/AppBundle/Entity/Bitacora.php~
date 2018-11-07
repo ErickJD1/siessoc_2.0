@@ -1,0 +1,78 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Bitacora
+ *
+ * @ORM\Table(name="bitacora", indexes={@ORM\Index(name="FK_RELATIONSHIP_25", columns={"IDSSS"})})
+ * @ORM\Entity
+ */
+class Bitacora
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="IDBITACORA", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idbitacora;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DETALLESSS", type="string", length=250, nullable=true)
+     */
+    private $detallesss;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHAINICIO", type="datetime", nullable=false)
+     */
+    private $fechainicio = 'CURRENT_TIMESTAMP';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="HORAINICIO", type="time", nullable=true)
+     */
+    private $horainicio;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="HORAFIN", type="time", nullable=true)
+     */
+    private $horafin;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DESCRIPCIONACTIVIDAD", type="string", length=250, nullable=true)
+     */
+    private $descripcionactividad;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ESTADO", type="smallint", nullable=true)
+     */
+    private $estado;
+
+    /**
+     * @var \Solicitudss
+     *
+     * @ORM\ManyToOne(targetEntity="Solicitudss")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="IDSSS", referencedColumnName="IDSSS")
+     * })
+     */
+    private $idsss;
+
+
+}
+

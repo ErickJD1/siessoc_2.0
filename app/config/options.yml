@@ -1,0 +1,4 @@
+# This is the admin site specific parameters
+parameters:
+    site_name: 'SIESSOC'
+    footer_url: 'SIESSOC @ Software 2018'

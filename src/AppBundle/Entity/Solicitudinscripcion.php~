@@ -1,0 +1,148 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Solicitudinscripcion
+ *
+ * @ORM\Table(name="solicitudinscripcion", indexes={@ORM\Index(name="FK_RELATIONSHIP_9", columns={"IDTIPOSOLICITANTE"})})
+ * @ORM\Entity
+ */
+class Solicitudinscripcion
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="IDSOLICITUD", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idsolicitud;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NOMBRES", type="string", length=25, nullable=true)
+     */
+    private $nombres;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="APELLIDOS", type="string", length=25, nullable=true)
+     */
+    private $apellidos;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CORREO", type="string", length=100, nullable=true)
+     */
+    private $correo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TELEFONO", type="string", length=10, nullable=true)
+     */
+    private $telefono;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="INGRESOSFAMILIARES", type="decimal", precision=25, scale=0, nullable=true)
+     */
+    private $ingresosfamiliares;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="MIEMBROSFAMILIARES", type="integer", nullable=true)
+     */
+    private $miembrosfamiliares;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TIPOCASA", type="string", length=100, nullable=true)
+     */
+    private $tipocasa;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CARRERAESTUDIAR", type="string", length=100, nullable=true)
+     */
+    private $carreraestudiar;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="UNIVERSIDAD", type="string", length=100, nullable=true)
+     */
+    private $universidad;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="MONTOMATRICULA", type="decimal", precision=20, scale=0, nullable=true)
+     */
+    private $montomatricula;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CUOTAMENSUAL", type="string", length=20, nullable=true)
+     */
+    private $cuotamensual;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DURACIONCARRERA", type="string", length=10, nullable=true)
+     */
+    private $duracioncarrera;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TRABAJOADICIONAL", type="string", length=2, nullable=true)
+     */
+    private $trabajoadicional;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CUOTAMESAPORTAR", type="decimal", precision=20, scale=0, nullable=true)
+     */
+    private $cuotamesaportar;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="MESESCOMPROMISO", type="integer", nullable=true)
+     */
+    private $mesescompromiso;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ESTADO", type="smallint", nullable=true)
+     */
+    private $estado;
+
+    /**
+     * @var \Tiposolicitante
+     *
+     * @ORM\ManyToOne(targetEntity="Tiposolicitante")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="IDTIPOSOLICITANTE", referencedColumnName="IDTIPOSOLICITANTE")
+     * })
+     */
+    private $idtiposolicitante;
+
+
+}
+

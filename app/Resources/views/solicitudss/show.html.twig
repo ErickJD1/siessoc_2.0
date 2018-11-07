@@ -1,0 +1,43 @@
+{% extends "layout/base-layout.html.twig" %}
+{% block page_content %}
+{% block body %}
+    <h1>Detalle Servicio Social</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Nombreproyecto</th>
+                <td>{{ solicitudss.nombreproyecto }}</td>
+            </tr>
+            <tr>
+                <th>Descripcion</th>
+                <td>{{ solicitudss.descripcion }}</td>
+            </tr>
+            <tr>
+                <th>Encargado</th>
+                <td>{{ solicitudss.encargado }}</td>
+            </tr>
+            <tr>
+                <th>Lugar</th>
+                <td>{{ solicitudss.lugar }}</td>
+            </tr>
+            <tr>
+                <th>Estado</th>
+                <td>{{ solicitudss.estado }}</td>
+            </tr>
+            <tr>
+                <th>Idsss</th>
+                <td>{{ solicitudss.idsss }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+            {{ form_start(delete_form) }}
+                <a href="{{ path('servicio_social_edit', { 'id': solicitudss.idsss }) }}" class="btn btn-primary btn-xs">Actualizar</a>
+                <input type="submit" value="Delete" class="btn btn-danger btn-xs">
+                <a href="{{ path('servicio_social_index') }}" class="btn btn-info btn-xs">Atrás</a>
+            {{ form_end(delete_form) }}
+    </ul>
+{% endblock %}
+{% endblock %}

@@ -1,0 +1,78 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Materia
+ *
+ * @ORM\Table(name="materia", indexes={@ORM\Index(name="FK_RELATIONSHIP_39", columns={"IDINSCRIPCION"})})
+ * @ORM\Entity
+ */
+class Materia
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="IDMATERIA", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idmateria;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NOMBREMATERIA", type="string", length=50, nullable=true)
+     */
+    private $nombremateria;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="UNIDADESVALORATIVASMATERIA", type="integer", nullable=true)
+     */
+    private $unidadesvalorativasmateria;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="NOTAMATERIA", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $notamateria;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="ANIOMATERIA", type="date", nullable=true)
+     */
+    private $aniomateria;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="NUMCICLOMATERIA", type="integer", nullable=true)
+     */
+    private $numciclomateria;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ESTADOMATERIA", type="string", length=1, nullable=true)
+     */
+    private $estadomateria;
+
+    /**
+     * @var \Inscripcion
+     *
+     * @ORM\ManyToOne(targetEntity="Inscripcion")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="IDINSCRIPCION", referencedColumnName="IDINSCRIPCION")
+     * })
+     */
+    private $idinscripcion;
+
+
+}
+

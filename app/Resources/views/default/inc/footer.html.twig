@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Inicio</title>
+        <!--CSS-->
+        <link rel="stylesheet" href="{{absolute_url(asset('css/dataTables.bootstrap.min.css'))}}">
+        <link rel="stylesheet" href="{{absolute_url(asset('css/fonts/font-awesome.css'))}}">
+
+        <!--javascripts-->
+        <script src="{{absolute_url(asset('js/jquery-1.10.2.js'))}}"></script>
+        <script src="{{absolute_url(asset('js/jquery.dataTables.min.js'))}}"></script>
+        <script src="{{absolute_url(asset('js/dataTables.bootstrap.min.js'))}}"></script>
+        <script src="{{absolute_url(asset('js/bootstrap.js'))}}"></script>
+        <script>
+        $(document).ready(function(){
+           $('[data-toggle="tooptip"]').tooltip();
+        });
+        </script>
+
+        <link rel="stylesheet"  href="{{ absolute_url(asset('css/bootstrap.css'))}}" />
+    </head>
+    <body>
+        <div class="container">
+            <nav class="navbar navbar-inverse">
+              <div class="container-fluid">
+                <div class="navbar-header">
+
+                  <a class="navbar-brand" href="#">Symfony CRUD</a>
+              </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+
+        </div>
+      </div>
+    </nav>
+  </div class="container">
+  {% for success_message in app.session.flashbag.get('message') %}
+  <div class="alert alert-success">{{ success_message }}</div>
+  {% endfor %}
+  </body>
+</html>

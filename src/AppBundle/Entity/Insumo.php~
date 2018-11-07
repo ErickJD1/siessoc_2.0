@@ -1,0 +1,57 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Insumo
+ *
+ * @ORM\Table(name="insumo", indexes={@ORM\Index(name="FK_RELATIONSHIP_45", columns={"IDTIPOINSUMO"})})
+ * @ORM\Entity
+ */
+class Insumo
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="IDINSUMO", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idinsumo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NOMBREINSUMO", type="string", length=250, nullable=true)
+     */
+    private $nombreinsumo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DESCRIPCIONINSUMO", type="string", length=250, nullable=true)
+     */
+    private $descripcioninsumo;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="ESTADOINSUMO", type="boolean", nullable=true)
+     */
+    private $estadoinsumo;
+
+    /**
+     * @var \Tipoinsumo
+     *
+     * @ORM\ManyToOne(targetEntity="Tipoinsumo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="IDTIPOINSUMO", referencedColumnName="IDTIPOINSUMO")
+     * })
+     */
+    private $idtipoinsumo;
+
+
+}
+

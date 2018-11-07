@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Bitacoraserviciosocial" table="bitacoraserviciosocial">
+    <indexes>
+      <index name="FK_RELATIONSHIP_34" columns="IDSERVICIOSOCIAL"/>
+    </indexes>
+    <id name="idbitacora" type="integer" column="IDBITACORA">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="detallebitacora" type="string" column="DETALLEBITACORA" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="fechabitacora" type="datetime" column="FECHABITACORA" nullable="true"/>
+    <field name="horainiciobitacora" type="time" column="HORAINICIOBITACORA" nullable="true"/>
+    <field name="horafinbitacora" type="time" column="HORAFINBITACORA" nullable="true"/>
+    <field name="descripcionactividadbitacora" type="string" column="DESCRIPCIONACTIVIDADBITACORA" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="estadobitacora" type="boolean" column="ESTADOBITACORA" nullable="true"/>
+    <many-to-one field="idserviciosocial" target-entity="Serviciosocial" fetch="LAZY">
+      <join-columns>
+        <join-column name="IDSERVICIOSOCIAL" referenced-column-name="IDSERVICIOSOCIAL"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

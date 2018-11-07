@@ -1,0 +1,78 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Bitacoraserviciosocial
+ *
+ * @ORM\Table(name="bitacoraserviciosocial", indexes={@ORM\Index(name="FK_RELATIONSHIP_34", columns={"IDSERVICIOSOCIAL"})})
+ * @ORM\Entity
+ */
+class Bitacoraserviciosocial
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="IDBITACORA", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idbitacora;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DETALLEBITACORA", type="string", length=250, nullable=true)
+     */
+    private $detallebitacora;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHABITACORA", type="datetime", nullable=true)
+     */
+    private $fechabitacora;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="HORAINICIOBITACORA", type="time", nullable=true)
+     */
+    private $horainiciobitacora;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="HORAFINBITACORA", type="time", nullable=true)
+     */
+    private $horafinbitacora;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DESCRIPCIONACTIVIDADBITACORA", type="string", length=250, nullable=true)
+     */
+    private $descripcionactividadbitacora;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="ESTADOBITACORA", type="boolean", nullable=true)
+     */
+    private $estadobitacora;
+
+    /**
+     * @var \Serviciosocial
+     *
+     * @ORM\ManyToOne(targetEntity="Serviciosocial")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="IDSERVICIOSOCIAL", referencedColumnName="IDSERVICIOSOCIAL")
+     * })
+     */
+    private $idserviciosocial;
+
+
+}
+

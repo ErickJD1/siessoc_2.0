@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Transaccioncolaboracion" table="transaccioncolaboracion">
+    <indexes>
+      <index name="FK_RELATIONSHIP_18" columns="IDTIPOTRANSACCION"/>
+      <index name="FK_RELATIONSHIP_19" columns="IDCOLABORACION"/>
+    </indexes>
+    <id name="idtransaccolaboracion" type="integer" column="IDTRANSACCOLABORACION">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="fechatransaccolabora" type="datetime" column="FECHATRANSACCOLABORA" nullable="true"/>
+    <field name="descripciontransaccolabora" type="string" column="DESCRIPCIONTRANSACCOLABORA" length="200" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tipotransaccolabora" type="string" column="TIPOTRANSACCOLABORA" length="200" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="montotrasaccolabora" type="decimal" column="MONTOTRASACCOLABORA" precision="10" scale="0" nullable="true"/>
+    <field name="estadotransaccolabora" type="integer" column="ESTADOTRANSACCOLABORA" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="mespagotransaccolabora" type="string" column="MESPAGOTRANSACCOLABORA" length="25" nullable="true">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
+    <many-to-one field="idcolaboracion" target-entity="Colaboracionmonetaria" fetch="LAZY">
+      <join-columns>
+        <join-column name="IDCOLABORACION" referenced-column-name="IDCOLABORACION"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idtipotransaccion" target-entity="Tipotransaccion" fetch="LAZY">
+      <join-columns>
+        <join-column name="IDTIPOTRANSACCION" referenced-column-name="IDTIPOTRANSACCION"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

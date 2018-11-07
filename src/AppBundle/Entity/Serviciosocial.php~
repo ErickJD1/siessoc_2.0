@@ -1,0 +1,71 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Serviciosocial
+ *
+ * @ORM\Table(name="serviciosocial", indexes={@ORM\Index(name="FK_RELATIONSHIP_35", columns={"IDPROYECTSERVISOCIAL"})})
+ * @ORM\Entity
+ */
+class Serviciosocial
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="IDSERVICIOSOCIAL", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idserviciosocial;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="IDEXPBECARIO", type="integer", nullable=true)
+     */
+    private $idexpbecario;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHAAPROVACIONSERVICIO", type="date", nullable=true)
+     */
+    private $fechaaprovacionservicio;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHAINICIOSERVICIO", type="date", nullable=true)
+     */
+    private $fechainicioservicio;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHAFINSERVICIO", type="date", nullable=true)
+     */
+    private $fechafinservicio;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ESTADOSERVICIO", type="integer", nullable=true)
+     */
+    private $estadoservicio;
+
+    /**
+     * @var \Proyectoserviciosocial
+     *
+     * @ORM\ManyToOne(targetEntity="Proyectoserviciosocial")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="IDPROYECTSERVISOCIAL", referencedColumnName="IDPROYECTSERVISOCIAL")
+     * })
+     */
+    private $idproyectservisocial;
+
+
+}
+

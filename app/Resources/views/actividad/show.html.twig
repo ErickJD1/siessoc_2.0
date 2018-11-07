@@ -1,0 +1,59 @@
+
+{% extends "layout/base-layout.html.twig" %}
+
+{% block page_content %}
+    <h1>Actividad</h1>
+
+    <table id="tabelMahasiswa" class="table table-bordered table-hover table-striped" id="tabelMahasiswa">
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Actividad</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Nomactividad</th>
+                <td>{{ actividad.nomactividad }}</td>
+            </tr>
+            <tr>
+                <th>Fechaactividad</th>
+                <td>{% if actividad.fechaactividad %}{{ actividad.fechaactividad|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Descripcionactividad</th>
+                <td>{{ actividad.descripcionactividad }}</td>
+            </tr>
+            <tr>
+                <th>Validacion</th>
+                <td>{{ actividad.validacion }}</td>
+            </tr>
+            <tr>
+                <th>Becario</th>
+                <td>{{ actividad.becario }}</td>
+            </tr>
+            <tr>
+                <th>Estado</th>
+                <td>{{ actividad.estado }}</td>
+            </tr>
+            <tr>
+                <th>Idactividad</th>
+                <td>{{ actividad.idactividad }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('actividad_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('actividad_edit', { 'id': actividad.idactividad }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

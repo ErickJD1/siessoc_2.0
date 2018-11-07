@@ -1,0 +1,47 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Permiso
+ *
+ * @ORM\Table(name="permiso")
+ * @ORM\Entity
+ */
+class Permiso
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="IDPERMISO", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idpermiso;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NOMPERMISO", type="string", length=15, nullable=true)
+     */
+    private $nompermiso;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DESCRIPCION", type="string", length=100, nullable=true)
+     */
+    private $descripcion;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ESTADO", type="smallint", nullable=true)
+     */
+    private $estado;
+
+
+}
+

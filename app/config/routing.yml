@@ -1,17 +1,3 @@
-
-app_actividad:
-    resource: "@AppBundle/Controller/ActividadController.php"
-    type:     annotation
-
-app_bitacora:
-    resource: "@AppBundle/Controller/BitacoraController.php"
-    type:     annotation
-
-app_solicitudss:
-    resource: "@AppBundle/Controller/SolicitudssController.php"
-    type:     annotation
-
-
 website:
     resource: "@AppBundle/Controller/"
     type:     annotation

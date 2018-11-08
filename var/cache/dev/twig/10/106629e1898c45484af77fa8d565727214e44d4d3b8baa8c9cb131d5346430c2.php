@@ -21,20 +21,20 @@ class __TwigTemplate_c644853f57d45a098865557e5abaeda7f60f9284f11046680492f89cf26
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_8f40adddf3f2cca4715950b62b7d63ad9b9cb261f83e14c3602de16d5669ca4c = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_8f40adddf3f2cca4715950b62b7d63ad9b9cb261f83e14c3602de16d5669ca4c->enter($__internal_8f40adddf3f2cca4715950b62b7d63ad9b9cb261f83e14c3602de16d5669ca4c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "webSite/index.html.twig"));
+        $__internal_a4034e97b9eb087fdaaa53f5dac12865619b55ca2f32fac6ee11650f50571a64 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_a4034e97b9eb087fdaaa53f5dac12865619b55ca2f32fac6ee11650f50571a64->enter($__internal_a4034e97b9eb087fdaaa53f5dac12865619b55ca2f32fac6ee11650f50571a64_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "webSite/index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_8f40adddf3f2cca4715950b62b7d63ad9b9cb261f83e14c3602de16d5669ca4c->leave($__internal_8f40adddf3f2cca4715950b62b7d63ad9b9cb261f83e14c3602de16d5669ca4c_prof);
+        $__internal_a4034e97b9eb087fdaaa53f5dac12865619b55ca2f32fac6ee11650f50571a64->leave($__internal_a4034e97b9eb087fdaaa53f5dac12865619b55ca2f32fac6ee11650f50571a64_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_fdc44331c0e592b1b6741a301c3d92b666e246f789a39d427d78cacbcf89385a = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_fdc44331c0e592b1b6741a301c3d92b666e246f789a39d427d78cacbcf89385a->enter($__internal_fdc44331c0e592b1b6741a301c3d92b666e246f789a39d427d78cacbcf89385a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_6cd0696aa0bbd0064be895b29a2c4c23ca3bb7fffea9e5471089359229358369 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_6cd0696aa0bbd0064be895b29a2c4c23ca3bb7fffea9e5471089359229358369->enter($__internal_6cd0696aa0bbd0064be895b29a2c4c23ca3bb7fffea9e5471089359229358369_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
         echo "<header>
@@ -51,7 +51,7 @@ class __TwigTemplate_c644853f57d45a098865557e5abaeda7f60f9284f11046680492f89cf26
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("img/slide01.jpg"), "html", null, true);
         echo ")\">
         <div class=\"carousel-caption d-none d-md-block\">
-          <h2>SIESSOC</h2>
+          <h2>ESSOC</h2>
           <p>Educational Scholarships For Students Of Chiltiupan</p>
         </div>
       </div>
@@ -61,7 +61,7 @@ class __TwigTemplate_c644853f57d45a098865557e5abaeda7f60f9284f11046680492f89cf26
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("img/slide02.jpg"), "html", null, true);
         echo ")\">
         <div class=\"carousel-caption d-none d-md-block\">
-          <h3>SIESSOC</h3>
+          <h3>ESSOC</h3>
           <p>Educational Scholarships For Students Of Chiltiupan</p>
         </div>
       </div>
@@ -71,7 +71,7 @@ class __TwigTemplate_c644853f57d45a098865557e5abaeda7f60f9284f11046680492f89cf26
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("img/slide03.jpg"), "html", null, true);
         echo ")\">
         <div class=\"carousel-caption d-none d-md-block\">
-          <h3>SIESSOC</h3>
+          <h3>ESSOC</h3>
           <p>Educational Scholarships For Students Of Chiltiupan</p>
         </div>
       </div>
@@ -86,17 +86,17 @@ class __TwigTemplate_c644853f57d45a098865557e5abaeda7f60f9284f11046680492f89cf26
     </a>
   </div>
 </header>
+        <p></p>
 <!-- Page Content -->
 <div class=\"container\">
-  <h1 class=\"my-4\">Nuestras Ultimas Actividades</h1>
-
   <div class=\"row\">
-  
+  <div class=\"column-bucket w-col w-col-9\"><h3 class=\"h3-left\">Educational Scholarships for Students of Chiltiupan (ESSOC)</h3><p class=\"para-left\">A college education is one of the most effective ways people in El Salvador can lift themselves out of poverty. Educational Scholarships for Students of Chiltiupan (ESSOC) provides an avenue for St. Dominic parishioners to directly impact the lives of young, bright, and aspiring students in Chiltiupan who do not have the financial resources to attend one of the universities in San Salvador.&nbsp;<br><br>For \$1,200 annually (just \$100 per month), you can sponsor a young man or woman and change a life. Your donation will provide for tuition and some supplies for your Salvadoran student. Students write their sponsors monthly updating them on their progress, goals, hopes, and dreams. St. Dominic parishioners sponsor 47 college students. Several will graduate this year. Since our program started in 2011, several students have graduated and are currently working and leading productive lives in El Salvador.<br><br>We are looking for additional individuals or families who would like to assist the youth of Chiltiupan to achieve their dreams. For more information, please contact our ESSOC Co-Directors,&nbsp;<a href=\"mailto:Brad.Champagne@uhhospitals.org?subject=ESSOC%20Inquiry\" class=\"link-text serve-purple\">Dr. Brad Champagne</a>&nbsp;and&nbsp;<a href=\"mailto:jbowers@stdominicchurch.net?subject=essoc\">Mr. Jodie Bowers</a>.<br><br>Last summer, three graduates of the ESSOC program (Herbert, Roberto, and Oscar) visited our parish and spoke at Mass:</p><a href=\"https://boxcast.tv/view/fourteenth-sunday-in-ordinary-time-1115-am-mass-july-3-2016-812384\" target=\"_blank\" class=\"w-button\">WATCH VIDEO</a></div>
   </div>
+    <p></p>
 </div>
 ";
         
-        $__internal_fdc44331c0e592b1b6741a301c3d92b666e246f789a39d427d78cacbcf89385a->leave($__internal_fdc44331c0e592b1b6741a301c3d92b666e246f789a39d427d78cacbcf89385a_prof);
+        $__internal_6cd0696aa0bbd0064be895b29a2c4c23ca3bb7fffea9e5471089359229358369->leave($__internal_6cd0696aa0bbd0064be895b29a2c4c23ca3bb7fffea9e5471089359229358369_prof);
 
     }
 
@@ -139,21 +139,21 @@ class __TwigTemplate_c644853f57d45a098865557e5abaeda7f60f9284f11046680492f89cf26
       <!-- Slide One - Set the background image for this slide in the line below -->
       <div class=\"carousel-item active\" style=\"background-image: url({{ asset('img/slide01.jpg') }})\">
         <div class=\"carousel-caption d-none d-md-block\">
-          <h2>SIESSOC</h2>
+          <h2>ESSOC</h2>
           <p>Educational Scholarships For Students Of Chiltiupan</p>
         </div>
       </div>
       <!-- Slide Two - Set the background image for this slide in the line below -->
       <div class=\"carousel-item\" style=\"background-image: url({{ asset('img/slide02.jpg') }})\">
         <div class=\"carousel-caption d-none d-md-block\">
-          <h3>SIESSOC</h3>
+          <h3>ESSOC</h3>
           <p>Educational Scholarships For Students Of Chiltiupan</p>
         </div>
       </div>
       <!-- Slide Three - Set the background image for this slide in the line below -->
       <div class=\"carousel-item\" style=\"background-image: url({{ asset('img/slide03.jpg') }})\">
         <div class=\"carousel-caption d-none d-md-block\">
-          <h3>SIESSOC</h3>
+          <h3>ESSOC</h3>
           <p>Educational Scholarships For Students Of Chiltiupan</p>
         </div>
       </div>
@@ -168,13 +168,13 @@ class __TwigTemplate_c644853f57d45a098865557e5abaeda7f60f9284f11046680492f89cf26
     </a>
   </div>
 </header>
+        <p></p>
 <!-- Page Content -->
 <div class=\"container\">
-  <h1 class=\"my-4\">Nuestras Ultimas Actividades</h1>
-
   <div class=\"row\">
-  
+  <div class=\"column-bucket w-col w-col-9\"><h3 class=\"h3-left\">Educational Scholarships for Students of Chiltiupan (ESSOC)</h3><p class=\"para-left\">A college education is one of the most effective ways people in El Salvador can lift themselves out of poverty. Educational Scholarships for Students of Chiltiupan (ESSOC) provides an avenue for St. Dominic parishioners to directly impact the lives of young, bright, and aspiring students in Chiltiupan who do not have the financial resources to attend one of the universities in San Salvador.&nbsp;<br><br>For \$1,200 annually (just \$100 per month), you can sponsor a young man or woman and change a life. Your donation will provide for tuition and some supplies for your Salvadoran student. Students write their sponsors monthly updating them on their progress, goals, hopes, and dreams. St. Dominic parishioners sponsor 47 college students. Several will graduate this year. Since our program started in 2011, several students have graduated and are currently working and leading productive lives in El Salvador.<br><br>We are looking for additional individuals or families who would like to assist the youth of Chiltiupan to achieve their dreams. For more information, please contact our ESSOC Co-Directors,&nbsp;<a href=\"mailto:Brad.Champagne@uhhospitals.org?subject=ESSOC%20Inquiry\" class=\"link-text serve-purple\">Dr. Brad Champagne</a>&nbsp;and&nbsp;<a href=\"mailto:jbowers@stdominicchurch.net?subject=essoc\">Mr. Jodie Bowers</a>.<br><br>Last summer, three graduates of the ESSOC program (Herbert, Roberto, and Oscar) visited our parish and spoke at Mass:</p><a href=\"https://boxcast.tv/view/fourteenth-sunday-in-ordinary-time-1115-am-mass-july-3-2016-812384\" target=\"_blank\" class=\"w-button\">WATCH VIDEO</a></div>
   </div>
+    <p></p>
 </div>
 {% endblock %}
 ", "webSite/index.html.twig", "C:\\xampp\\htdocs\\siessoc\\app\\Resources\\views\\webSite\\index.html.twig");

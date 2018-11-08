@@ -8,7 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * User controller.
  *
- * @Route("webSite")
+ *
  */
 class WebSiteController extends Controller
 {

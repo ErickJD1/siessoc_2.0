@@ -868,7 +868,7 @@
                   <tag name="cache.pool"/>
                   <argument>iA0Q65w9KU</argument>
                   <argument>0</argument>
-                  <argument>6NlPBzZmOp2MPlvBosajes</argument>
+                  <argument>NsKqlwwbAOrk3hM0n0jMVy</argument>
                   <argument>C:\xampp\htdocs\siessoc\var\cache\dev/pools</argument>
                   <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                   <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -881,7 +881,7 @@
                   <tag name="cache.pool"/>
                   <argument>NZ1uYKNil3</argument>
                   <argument>0</argument>
-                  <argument>6NlPBzZmOp2MPlvBosajes</argument>
+                  <argument>NsKqlwwbAOrk3hM0n0jMVy</argument>
                   <argument>C:\xampp\htdocs\siessoc\var\cache\dev/pools</argument>
                   <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                   <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -1567,7 +1567,7 @@
       <tag name="cache.pool"/>
       <argument>lS+TLeNJgl</argument>
       <argument>0</argument>
-      <argument>6NlPBzZmOp2MPlvBosajes</argument>
+      <argument>NsKqlwwbAOrk3hM0n0jMVy</argument>
       <argument>C:\xampp\htdocs\siessoc\var\cache\dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -2453,7 +2453,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>5be28e36a109c6.89808539</argument>
+            <argument>5be3d16900fe84.70923160</argument>
           </service>
         </argument>
       </argument>
@@ -2607,6 +2607,17 @@
                 <call method="add">
                   <argument type="service">
                     <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                      <argument>^/dashboard</argument>
+                    </service>
+                  </argument>
+                  <argument type="collection">
+                    <argument>ROLE_ADMIN</argument>
+                  </argument>
+                  <argument>null</argument>
+                </call>
+                <call method="add">
+                  <argument type="service">
+                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
                       <argument>^/resetting</argument>
                     </service>
                   </argument>
@@ -2622,7 +2633,7 @@
                     </service>
                   </argument>
                   <argument type="collection">
-                    <argument>ROLE_ADMIN</argument>
+                    <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
                   </argument>
                   <argument>null</argument>
                 </call>
@@ -2759,7 +2770,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>5be28e36a109c6.89808539</argument>
+            <argument>5be3d16900fe84.70923160</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -2796,6 +2807,17 @@
                 <call method="add">
                   <argument type="service">
                     <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                      <argument>^/dashboard</argument>
+                    </service>
+                  </argument>
+                  <argument type="collection">
+                    <argument>ROLE_ADMIN</argument>
+                  </argument>
+                  <argument>null</argument>
+                </call>
+                <call method="add">
+                  <argument type="service">
+                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
                       <argument>^/resetting</argument>
                     </service>
                   </argument>
@@ -2811,7 +2833,7 @@
                     </service>
                   </argument>
                   <argument type="collection">
-                    <argument>ROLE_ADMIN</argument>
+                    <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
                   </argument>
                   <argument>null</argument>
                 </call>

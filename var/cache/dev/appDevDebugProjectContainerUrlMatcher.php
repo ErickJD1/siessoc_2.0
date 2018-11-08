@@ -283,16 +283,12 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         }
 
         // homepage
-        if (rtrim($pathinfo, '/') === '') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'homepage');
-            }
-
+        if ($pathinfo === '/dashboard') {
             return array (  '_controller' => 'AppBundle\\Controller\\DashboardController::indexAction',  '_route' => 'homepage',);
         }
 
         // admin_dashboard
-        if ($pathinfo === '/dashboard') {
+        if ($pathinfo === '/home') {
             return array (  '_controller' => 'AppBundle\\Controller\\DashboardController::dashboardAction',  '_route' => 'admin_dashboard',);
         }
 
@@ -359,7 +355,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         }
 
         // web_index
-        if (rtrim($pathinfo, '/') === '/webSite') {
+        if (rtrim($pathinfo, '/') === '') {
             if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
                 $allow = array_merge($allow, array('GET', 'HEAD'));
                 goto not_web_index;

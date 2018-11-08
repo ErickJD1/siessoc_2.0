@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 class DashboardController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/dashboard", name="homepage")
      * @return RedirectResponse
      */
     public function indexAction()
@@ -18,7 +18,7 @@ class DashboardController extends Controller
     }
 
     /**
-     * @Route("/dashboard", name="admin_dashboard")
+     * @Route("/home", name="admin_dashboard")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function dashboardAction()

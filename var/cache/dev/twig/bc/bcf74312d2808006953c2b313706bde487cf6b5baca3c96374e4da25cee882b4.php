@@ -1,0 +1,62 @@
+<?php
+
+/* @Framework/Form/form_start.html.php */
+class __TwigTemplate_682242c13e3f61cf2f1064fb3e6a497e14158e3fa534e7abce95b155a28c3aa1 extends Twig_Template
+{
+    public function __construct(Twig_Environment $env)
+    {
+        parent::__construct($env);
+
+        $this->parent = false;
+
+        $this->blocks = array(
+        );
+    }
+
+    protected function doDisplay(array $context, array $blocks = array())
+    {
+        $__internal_185bf8897955c24eba775690c52954b266b7be366ab66e8184c54b4a448cac1b = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_185bf8897955c24eba775690c52954b266b7be366ab66e8184c54b4a448cac1b->enter($__internal_185bf8897955c24eba775690c52954b266b7be366ab66e8184c54b4a448cac1b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@Framework/Form/form_start.html.php"));
+
+        // line 1
+        echo "<?php \$method = strtoupper(\$method) ?>
+<?php \$form_method = \$method === 'GET' || \$method === 'POST' ? \$method : 'POST' ?>
+<form name=\"<?php echo \$name ?>\" method=\"<?php echo strtolower(\$form_method) ?>\"<?php if (\$action !== ''): ?> action=\"<?php echo \$action ?>\"<?php endif ?><?php foreach (\$attr as \$k => \$v) { printf(' %s=\"%s\"', \$view->escape(\$k), \$view->escape(\$v)); } ?><?php if (\$multipart): ?> enctype=\"multipart/form-data\"<?php endif ?>>
+<?php if (\$form_method !== \$method): ?>
+    <input type=\"hidden\" name=\"_method\" value=\"<?php echo \$method ?>\" />
+<?php endif ?>
+";
+        
+        $__internal_185bf8897955c24eba775690c52954b266b7be366ab66e8184c54b4a448cac1b->leave($__internal_185bf8897955c24eba775690c52954b266b7be366ab66e8184c54b4a448cac1b_prof);
+
+    }
+
+    public function getTemplateName()
+    {
+        return "@Framework/Form/form_start.html.php";
+    }
+
+    public function getDebugInfo()
+    {
+        return array (  22 => 1,);
+    }
+
+    /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
+    public function getSource()
+    {
+        @trigger_error('The '.__METHOD__.' method is deprecated since version 1.27 and will be removed in 2.0. Use getSourceContext() instead.', E_USER_DEPRECATED);
+
+        return $this->getSourceContext()->getCode();
+    }
+
+    public function getSourceContext()
+    {
+        return new Twig_Source("<?php \$method = strtoupper(\$method) ?>
+<?php \$form_method = \$method === 'GET' || \$method === 'POST' ? \$method : 'POST' ?>
+<form name=\"<?php echo \$name ?>\" method=\"<?php echo strtolower(\$form_method) ?>\"<?php if (\$action !== ''): ?> action=\"<?php echo \$action ?>\"<?php endif ?><?php foreach (\$attr as \$k => \$v) { printf(' %s=\"%s\"', \$view->escape(\$k), \$view->escape(\$v)); } ?><?php if (\$multipart): ?> enctype=\"multipart/form-data\"<?php endif ?>>
+<?php if (\$form_method !== \$method): ?>
+    <input type=\"hidden\" name=\"_method\" value=\"<?php echo \$method ?>\" />
+<?php endif ?>
+", "@Framework/Form/form_start.html.php", "C:\\xampp\\htdocs\\siessoc\\vendor\\symfony\\symfony\\src\\Symfony\\Bundle\\FrameworkBundle\\Resources\\views\\Form\\form_start.html.php");
+    }
+}

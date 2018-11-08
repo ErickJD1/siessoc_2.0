@@ -1,6 +1,4 @@
-var\cache\
-var\logs\
-var\sessions\
-*.data
-*.data
-
+var\cache\*
+var\logs\*
+var\sessions\*
+.idea

@@ -1,0 +1,36 @@
+<div class="modal fade" id="miventana{{ tipocuenta.idtipocuenta }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+			<div class="modal-content">
+
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4>Información Tipo Cuenta</h4>
+				</div>
+				<div class="modal-body">
+
+  <div class="list-group">
+    <!--modal-->
+<h4>ID</h4>
+<p class="list-group-item">{{  tipocuenta.idtipocuenta }}</p>
+<h4>Nombre Cuenta</h4>
+<p class="list-group-item">{{  tipocuenta.Nombrecuenta }}</p>
+<h4>Descripcion</h4>
+<p class="list-group-item">{{  tipocuenta.descripcion }}</p>
+<h4>Estado</h4>
+<p class="list-group-item">{% if tipocuenta.estadotipocuenta==1  %} Activa {% else %} Inactiva {% endif %}</p>
+</div>
+
+
+
+<div class="modal-footer">
+<div style="float:left">
+		{{ form_start(delete_form) }}
+		<input type="submit" class="btn btn-danger" value="Delete">
+		{{ form_end(delete_form) }}
+</div>
+<button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+</div>
+</div>
+</div>
+</div>
+</div>

@@ -1,0 +1,56 @@
+{% extends "layout/base-layout.html.twig" %}
+
+{% block page_title %} Tipo Cuenta | {% endblock %}
+{% block page_subtitle %}Catalogo Tipo Cuenta {% endblock %}
+
+{% block page_content %}
+
+<div class="box box-primary">
+<div style="width:90%; margin-left:5%; margin-top: 2% ">
+
+<div align="left">
+    <button class="btn btn-primary" data-toggle="modal" data-target="#crearCuenta"> + Tipo Cuenta</button>
+     {{ render(controller('AppBundle:Tipocuenta:new' )) }}
+</div>
+<br> </br>
+
+    <table class="table table-bordered table-hover table-striped table-responsive" style="width:90%" id="tabelMahasiswa">
+        <thead class="thead-light">
+            <tr>
+                <th>ID</th>
+                <th>Tipo Cuenta</th>
+                <th>Descripcion</th>
+                <th>Estado Cuenta</th>
+                <th>Accion</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for tipocuentum in tipocuentas %}
+            <tr>
+                <td>{{ tipocuentum.idtipocuenta }}</td>
+                <td>{{ tipocuentum.Nombrecuenta }}</td>
+                <td>{{ tipocuentum.descripcion }}</td>
+                <td>{% if tipocuentum.estadotipocuenta %}Yes{% else %}No{% endif %}</td>
+                <td>
+                  <div style="float:left;"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#miventana{{ tipocuentum.idtipocuenta }}"><i class="fa fa-eye" style="font-size: 20px"></i></button>
+                          {{ render(controller('AppBundle:Tipocuenta:show', { 'id' : tipocuentum.idtipocuenta } )) }}
+                  </div>
+
+                  <div style="float:left;"><button class="" style="background-color: transparent;  border: none;" data-toggle="modal" data-target="#editcuenta{{ tipocuentum.idtipocuenta }}"><i class="fa fa-edit" style="font-size: 20px"></i></button>
+                          {{ render(controller('AppBundle:Tipocuenta:edit', { 'id' : tipocuentum.idtipocuenta } )) }}
+                  </div>
+
+
+
+
+                </td>
+            </tr>
+
+          </div>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    </div>
+{% endblock %}

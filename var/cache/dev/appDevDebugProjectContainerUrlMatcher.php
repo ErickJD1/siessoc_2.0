@@ -220,65 +220,130 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        if (0 === strpos($pathinfo, '/bitacora')) {
-            // bitacora_index
-            if (rtrim($pathinfo, '/') === '/bitacora') {
-                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'HEAD'));
-                    goto not_bitacora_index;
-                }
+        if (0 === strpos($pathinfo, '/b')) {
+            if (0 === strpos($pathinfo, '/banco')) {
+                // banco_index
+                if (rtrim($pathinfo, '/') === '/banco') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_banco_index;
+                    }
 
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'bitacora_index');
-                }
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'banco_index');
+                    }
 
-                return array (  '_controller' => 'AppBundle\\Controller\\BitacoraController::indexAction',  '_route' => 'bitacora_index',);
+                    return array (  '_controller' => 'AppBundle\\Controller\\BancoController::indexAction',  '_route' => 'banco_index',);
+                }
+                not_banco_index:
+
+                // banco_new
+                if ($pathinfo === '/banco/new') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_banco_new;
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\BancoController::newAction',  '_route' => 'banco_new',);
+                }
+                not_banco_new:
+
+                // banco_show
+                if (preg_match('#^/banco/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_banco_show;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'banco_show')), array (  '_controller' => 'AppBundle\\Controller\\BancoController::showAction',));
+                }
+                not_banco_show:
+
+                // banco_edit
+                if (preg_match('#^/banco/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_banco_edit;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'banco_edit')), array (  '_controller' => 'AppBundle\\Controller\\BancoController::editAction',));
+                }
+                not_banco_edit:
+
+                // banco_delete
+                if (preg_match('#^/banco/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'DELETE') {
+                        $allow[] = 'DELETE';
+                        goto not_banco_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'banco_delete')), array (  '_controller' => 'AppBundle\\Controller\\BancoController::deleteAction',));
+                }
+                not_banco_delete:
+
             }
-            not_bitacora_index:
 
-            // bitacora_new
-            if ($pathinfo === '/bitacora/new') {
-                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                    goto not_bitacora_new;
+            if (0 === strpos($pathinfo, '/bitacora')) {
+                // bitacora_index
+                if (rtrim($pathinfo, '/') === '/bitacora') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_bitacora_index;
+                    }
+
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'bitacora_index');
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\BitacoraController::indexAction',  '_route' => 'bitacora_index',);
                 }
+                not_bitacora_index:
 
-                return array (  '_controller' => 'AppBundle\\Controller\\BitacoraController::newAction',  '_route' => 'bitacora_new',);
-            }
-            not_bitacora_new:
+                // bitacora_new
+                if ($pathinfo === '/bitacora/new') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_bitacora_new;
+                    }
 
-            // bitacora_show
-            if (preg_match('#^/bitacora/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'HEAD'));
-                    goto not_bitacora_show;
+                    return array (  '_controller' => 'AppBundle\\Controller\\BitacoraController::newAction',  '_route' => 'bitacora_new',);
                 }
+                not_bitacora_new:
 
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'bitacora_show')), array (  '_controller' => 'AppBundle\\Controller\\BitacoraController::showAction',));
-            }
-            not_bitacora_show:
+                // bitacora_show
+                if (preg_match('#^/bitacora/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_bitacora_show;
+                    }
 
-            // bitacora_edit
-            if (preg_match('#^/bitacora/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                    goto not_bitacora_edit;
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'bitacora_show')), array (  '_controller' => 'AppBundle\\Controller\\BitacoraController::showAction',));
                 }
+                not_bitacora_show:
 
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'bitacora_edit')), array (  '_controller' => 'AppBundle\\Controller\\BitacoraController::editAction',));
-            }
-            not_bitacora_edit:
+                // bitacora_edit
+                if (preg_match('#^/bitacora/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_bitacora_edit;
+                    }
 
-            // bitacora_delete
-            if (preg_match('#^/bitacora/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                if ($this->context->getMethod() != 'DELETE') {
-                    $allow[] = 'DELETE';
-                    goto not_bitacora_delete;
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'bitacora_edit')), array (  '_controller' => 'AppBundle\\Controller\\BitacoraController::editAction',));
                 }
+                not_bitacora_edit:
 
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'bitacora_delete')), array (  '_controller' => 'AppBundle\\Controller\\BitacoraController::deleteAction',));
+                // bitacora_delete
+                if (preg_match('#^/bitacora/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'DELETE') {
+                        $allow[] = 'DELETE';
+                        goto not_bitacora_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'bitacora_delete')), array (  '_controller' => 'AppBundle\\Controller\\BitacoraController::deleteAction',));
+                }
+                not_bitacora_delete:
+
             }
-            not_bitacora_delete:
 
         }
 
@@ -355,6 +420,68 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'servicio_social_delete')), array (  '_controller' => 'AppBundle\\Controller\\SolicitudssController::deleteAction',));
             }
             not_servicio_social_delete:
+
+        }
+
+        if (0 === strpos($pathinfo, '/tipocuenta')) {
+            // tipocuenta_index
+            if (rtrim($pathinfo, '/') === '/tipocuenta') {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_tipocuenta_index;
+                }
+
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'tipocuenta_index');
+                }
+
+                return array (  '_controller' => 'AppBundle\\Controller\\TipocuentaController::indexAction',  '_route' => 'tipocuenta_index',);
+            }
+            not_tipocuenta_index:
+
+            // tipocuenta_new
+            if ($pathinfo === '/tipocuenta/new') {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_tipocuenta_new;
+                }
+
+                return array (  '_controller' => 'AppBundle\\Controller\\TipocuentaController::newAction',  '_route' => 'tipocuenta_new',);
+            }
+            not_tipocuenta_new:
+
+            // tipocuenta_show
+            if (preg_match('#^/tipocuenta/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_tipocuenta_show;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'tipocuenta_show')), array (  '_controller' => 'AppBundle\\Controller\\TipocuentaController::showAction',));
+            }
+            not_tipocuenta_show:
+
+            // tipocuenta_edit
+            if (preg_match('#^/tipocuenta/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_tipocuenta_edit;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'tipocuenta_edit')), array (  '_controller' => 'AppBundle\\Controller\\TipocuentaController::editAction',));
+            }
+            not_tipocuenta_edit:
+
+            // tipocuenta_delete
+            if (preg_match('#^/tipocuenta/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if ($this->context->getMethod() != 'DELETE') {
+                    $allow[] = 'DELETE';
+                    goto not_tipocuenta_delete;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'tipocuenta_delete')), array (  '_controller' => 'AppBundle\\Controller\\TipocuentaController::deleteAction',));
+            }
+            not_tipocuenta_delete:
 
         }
 

@@ -1,0 +1,61 @@
+<div class="modal fade" id="editcuenta{{ tipocuenta.idtipocuenta }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+			<div class="modal-content">
+
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4>Datos Tipo Cuenta</h4>
+				</div>
+				<div class="modal-body">
+
+				<div class="list-group">
+				<a herf="#" class=""list-group-item active">
+			    <!--modal-->
+				</a>
+
+     {{ form_start(edit_form, {'action': path('tipocuenta_edit', {'id': tipocuenta.idtipocuenta}), 'Method': 'POST' }) }}
+
+		 {{ form_errors(edit_form) }}
+
+    <div class="list-group">
+		 <div class="list-group-item">
+		 <div class="form-group">
+		   <label class="col-md-4 control-label" for="textinput">Cuenta</label>
+		        {{ form_errors(edit_form.nombrecuenta) }}
+						<div class="col-md-4">
+		        {{ form_widget(edit_form.nombrecuenta) }}
+						</div>
+						 </div>
+		 </div>
+
+
+     <div class="list-group-item">
+		 <div class="form-group">
+			 <label class="col-md-4 control-label" for="textinput">Descripcion</label>
+						{{ form_errors(edit_form.descripcion) }}
+						<div class="col-md-4">
+						{{ form_widget(edit_form.descripcion) }}
+						</div>
+						</div>
+    </div>
+
+		 <div class="list-group-item">
+		 <div class="form-group">
+ 			 <label class="col-md-4 control-label" for="textinput">Estado</label>
+ 						{{ form_errors(edit_form.estadotipocuenta) }}
+ 						<div class="col-md-4">
+ 						{{ form_widget(edit_form.estadotipocuenta) }}
+ 						</div>
+ 						</div>
+						</div>
+
+
+<div class="modal-footer">
+<input type="submit" value="Guardar" class="btn btn-primary btn-sm" />
+<button type="button" class="btn btn-success btn-sm" data-dismiss="modal">Cerrar</button>
+{{ form_end(edit_form) }}
+</div>
+</div>
+</div>
+</div>
+</div>

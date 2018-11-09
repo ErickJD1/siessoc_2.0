@@ -347,8 +347,6 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-<<<<<<< HEAD
-=======
         if (0 === strpos($pathinfo, '/cuenta')) {
             // cuenta_index
             if (rtrim($pathinfo, '/') === '/cuenta') {
@@ -411,7 +409,6 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
->>>>>>> HenryFG
         // homepage
         if ($pathinfo === '/dashboard') {
             return array (  '_controller' => 'AppBundle\\Controller\\DashboardController::indexAction',  '_route' => 'homepage',);

@@ -3,7 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Cuenta
  *
@@ -46,6 +46,7 @@ class Cuenta
      * @var \DateTime
      *
      * @ORM\Column(name="FECHAAPERTURA", type="datetime", nullable=true)
+     * @Assert\Type("\DateTime")
      */
     private $fechaapertura;
 
@@ -83,7 +84,9 @@ class Cuenta
      */
     private $idbanco;
 
-
+    public function __construct(){
+    $this->fechaapertura= new \DateTime();
+    }
 
     /**
      * Set numcuenta
@@ -286,4 +289,6 @@ class Cuenta
     {
         return $this->idtipocuenta;
     }
+
+
 }

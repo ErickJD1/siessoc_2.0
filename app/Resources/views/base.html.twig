@@ -8,77 +8,99 @@
         <title>{% block title %}{{ site_name }}{% endblock %}</title>
         <!-- Bootstrap core CSS -->
         <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('bootstrap/css/bootstrap.css') }}" rel="stylesheet">
+        <link href="{{ asset('bootstrap/css/bootstrap-theme.min.css') }}" rel="stylesheet">
         <!-- Custom styles for this template -->
         <link href="{{ asset('bootstrap/css/modern-business.css') }}" rel="stylesheet">
 
+        <style>
+            html {
+                min-height: 100%;
+                position: relative;
+            }
+            body {
+                margin: 0;
+                margin-bottom: 40px;
+            }
+            footer {
+                background-color: black;
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                height: 40px;
+                color: white;
+            }
 
+        </style>
     {% block stylesheets %}{% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
 <body>
-{% block body %}{% endblock %}
+    {% block body %}
 
-<!-- Navigation -->
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-        <a class="navbar-brand" href="#">ESSOC</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Inicio</a>
-                </li>
+    {% endblock %}
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Actividades</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contactanos</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Registrarse
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                        <a class="dropdown-item" href="#">Becario</a>
-                        <a class="dropdown-item" href="#">Patrocinador</a>
-                    </div>
-                </li>
-                {% if is_granted('ROLE_ADMIN') %}
+    <!-- Navigation -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">ESSOC</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-warning" href="#">Nueva Publicacion</a>
+                        <a class="nav-link" href="{{path('web_index')}}">Inicio</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Actividades</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-warning" href="{{path('admin_dashboard')}}">SIESSOC</a>
+                        <a class="nav-link" href="#">Contactanos</a>
                     </li>
-                {% endif %}
-                {% if app.user is not null and is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <li class="nav-item">
-                        <a class="nav-link text-warning" href="{{path('fos_user_security_logout')}}">Logout</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Registrarse
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+                            <a class="dropdown-item" href="{{path('fos_user_registration_register')}}">Becario</a>
+                            <a class="dropdown-item" href="#">Patrocinador</a>
+                        </div>
                     </li>
-                {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link text-warning" href="{{path('fos_user_security_login')}}">Login</a>
-                    </li> 
-                {% endif %}
-            </ul>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="nav-item">
+                            <a class="nav-link text-warning" href="#">Nueva Publicacion</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-warning" href="{{path('admin_dashboard')}}">SIESSOC</a>
+                        </li>
+                    {% endif %}
+                    {% if app.user is not null and is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <li class="nav-item">
+                            <a class="nav-link text-warning" href="{{path('fos_user_security_logout')}}">Logout</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link text-warning" href="{{path('fos_user_security_login')}}">Login</a>
+                        </li> 
+                    {% endif %}
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
-<!-- Footer -->
-<footer class="py-5 bg-dark">
-    <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Cooking Software</p>
-    </div>
-    <!-- /.container -->
-</footer>
-<!-- Bootstrap core JavaScript -->
-<script src="{{ asset('bootstrap/js/jquery.min.js') }}"></script>
-<script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<!-- Custom Fonts -->
-<script src="https://use.fontawesome.com/67a564e5bf.js"></script>
+    </nav>
+    <!-- Footer -->
+    <footer class="py-5 bg-dark footer">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; Cooking Software</p>
+        </div>
+        <!-- /.container -->
+    </footer>
+    <!-- Bootstrap core JavaScript -->
+    <script src="{{ asset('bootstrap/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- Custom Fonts -->
+    <script src="https://use.fontawesome.com/67a564e5bf.js"></script>
 {% block javascripts %}{% endblock %}
 </body>
 </html>

@@ -128,4 +128,10 @@ class Banco
     {
         return $this->idcuenta;
     }
+
+
+    public function __toString(){
+          return $this->getNombanco();
+    }
+
 }

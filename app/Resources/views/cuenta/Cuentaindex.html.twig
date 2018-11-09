@@ -1,0 +1,50 @@
+{% extends "layout/base-layout.html.twig" %}
+
+{% block page_title %} Cuentas | {% endblock %}
+{% block page_subtitle %}Catalogo De Cuenta {% endblock %}
+
+{% block page_content %}
+
+<div class="box box-primary">
+<div style="width:90%; margin-left:5%; margin-top: 2% ">
+
+<div align="left">
+    <button class="btn btn-primary" data-toggle="modal" data-target="#CrearCuenta"> + Nueva Cuenta</button>
+    {{ render(controller('AppBundle:Cuenta:new')) }}
+</div>
+<br> </br>
+
+    <table class="table table-bordered table-hover table-striped table-responsive" style="width:90%" id="tabelMahasiswa">
+        <thead class="thead-light">
+            <tr>
+                <th>ID</th>
+                <th>Numero</th>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Fecha Apertura</th>
+                <th>Saldo Inicial</th>
+                <th>Estado</th>
+                <th>Accion</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for cuentum in cuentas %}
+            <tr>
+                <td>{{ cuentum.idcuenta }}</td>
+                <td>{{ cuentum.numcuenta }}</td>
+                <td>{{ cuentum.nomcuenta }}</td>
+                <td>{{ cuentum.descripcioncuenta }}</td>
+                <td>{% if cuentum.fechaapertura %}{{ cuentum.fechaapertura|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ cuentum.saldocuenta }}</td>
+                <td>{% if cuentum.estadocuenta %}Yes{% else %}No{% endif %}</td>
+              
+            </tr>
+
+          </div>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    </div>
+{% endblock %}

@@ -347,6 +347,71 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
+<<<<<<< HEAD
+=======
+        if (0 === strpos($pathinfo, '/cuenta')) {
+            // cuenta_index
+            if (rtrim($pathinfo, '/') === '/cuenta') {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_cuenta_index;
+                }
+
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'cuenta_index');
+                }
+
+                return array (  '_controller' => 'AppBundle\\Controller\\CuentaController::indexAction',  '_route' => 'cuenta_index',);
+            }
+            not_cuenta_index:
+
+            // cuenta_new
+            if ($pathinfo === '/cuenta/new') {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_cuenta_new;
+                }
+
+                return array (  '_controller' => 'AppBundle\\Controller\\CuentaController::newAction',  '_route' => 'cuenta_new',);
+            }
+            not_cuenta_new:
+
+            // cuenta_show
+            if (preg_match('#^/cuenta/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_cuenta_show;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'cuenta_show')), array (  '_controller' => 'AppBundle\\Controller\\CuentaController::showAction',));
+            }
+            not_cuenta_show:
+
+            // cuenta_edit
+            if (preg_match('#^/cuenta/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_cuenta_edit;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'cuenta_edit')), array (  '_controller' => 'AppBundle\\Controller\\CuentaController::editAction',));
+            }
+            not_cuenta_edit:
+
+            // cuenta_delete
+            if (preg_match('#^/cuenta/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if ($this->context->getMethod() != 'DELETE') {
+                    $allow[] = 'DELETE';
+                    goto not_cuenta_delete;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'cuenta_delete')), array (  '_controller' => 'AppBundle\\Controller\\CuentaController::deleteAction',));
+            }
+            not_cuenta_delete:
+
+        }
+
+>>>>>>> HenryFG
         // homepage
         if ($pathinfo === '/dashboard') {
             return array (  '_controller' => 'AppBundle\\Controller\\DashboardController::indexAction',  '_route' => 'homepage',);

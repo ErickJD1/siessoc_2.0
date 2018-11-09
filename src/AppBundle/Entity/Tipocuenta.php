@@ -125,4 +125,8 @@ class Tipocuenta
     {
         return $this->idtipocuenta;
     }
+
+    public function __toString(){
+          return $this->getNombrecuenta();
+    }
 }

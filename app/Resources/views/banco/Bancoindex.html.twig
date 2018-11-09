@@ -1,0 +1,50 @@
+{% extends "layout/base-layout.html.twig" %}
+
+{% block page_title %} Bancos | {% endblock %}
+{% block page_subtitle %}Catalogo De Bancos {% endblock %}
+
+{% block page_content %}
+
+<div class="box box-primary">
+<div style="width:90%; margin-left:5%; margin-top: 2% ">
+
+<div align="left">
+    <button class="btn btn-primary" data-toggle="modal" data-target="#CrearBanco"> + Banco</button>
+        {{ render(controller('AppBundle:Banco:new' )) }}
+</div>
+<br> </br>
+
+    <table class="table table-bordered table-hover table-striped table-responsive" style="width:90%" id="tabelMahasiswa">
+          <thead class="thead-light">
+            <tr>
+                <th>Id</th>
+                <th>Banco</th>
+                <th>Estado</th>
+                <th>Accion</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for banco in bancos %}
+        <tr>
+              <td>{{ banco.idbanco }}</td>
+              <td>{{ banco.nombanco }}</td>
+              <td>{% if banco.estadobanco %}Activo{% else %}Inactivo{% endif %}</td>
+              <td>
+                <div style="float:left;"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#showBanco{{ banco.idbanco }}"><i class="fa fa-eye" style="font-size: 20px"></i></button>
+                        {{ render(controller('AppBundle:Banco:show', { 'id' : banco.idbanco } )) }}
+                </div>
+
+
+              </td>
+
+          </tr>
+
+        </div>
+      {% endfor %}
+      </tbody>
+  </table>
+  </div>
+  </div>
+{% endblock %}

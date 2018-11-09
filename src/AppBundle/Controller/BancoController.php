@@ -26,7 +26,7 @@ class BancoController extends Controller
 
         $bancos = $em->getRepository('AppBundle:Banco')->findAll();
 
-        return $this->render('banco/index.html.twig', array(
+        return $this->render('banco/Bancoindex.html.twig', array(
             'bancos' => $bancos,
         ));
     }
@@ -48,10 +48,11 @@ class BancoController extends Controller
             $em->persist($banco);
             $em->flush($banco);
 
-            return $this->redirectToRoute('banco_show', array('id' => $banco->getId()));
+            $this->addFlash('success', 'Banco Creado Exitosamente!');
+            return $this->redirectToRoute('banco_index');
         }
 
-        return $this->render('banco/new.html.twig', array(
+        return $this->render('banco/Banconew.html.twig', array(
             'banco' => $banco,
             'form' => $form->createView(),
         ));
@@ -67,7 +68,7 @@ class BancoController extends Controller
     {
         $deleteForm = $this->createDeleteForm($banco);
 
-        return $this->render('banco/show.html.twig', array(
+        return $this->render('banco/Bancoshow.html.twig', array(
             'banco' => $banco,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -91,7 +92,7 @@ class BancoController extends Controller
             return $this->redirectToRoute('banco_edit', array('id' => $banco->getId()));
         }
 
-        return $this->render('banco/edit.html.twig', array(
+        return $this->render('banco/Bancoedit.html.twig', array(
             'banco' => $banco,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

@@ -14,7 +14,9 @@ class TipocuentaType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nombrecuenta',null,array('label'=>'Nombre Tipo Cuenta'))->add('descripcion')->add('estadotipocuenta', CheckboxType::class, array('label'=>'Estado'))        ;
+        $builder->add('nombrecuenta',null,array('label'=>'Nombre Tipo Cuenta'))
+                ->add('descripcion')
+                ->add('estadotipocuenta', CheckboxType::class, array('label'=>'Estado'))        ;
     }
 
     /**

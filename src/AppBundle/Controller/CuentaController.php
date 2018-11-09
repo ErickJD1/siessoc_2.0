@@ -68,6 +68,7 @@ class CuentaController extends Controller
      */
     public function showAction(Cuenta $Cuenta)
     {
+
         $deleteForm = $this->createDeleteForm($Cuenta);
 
         return $this->render('cuenta/Cuentashow.html.twig', array(
@@ -119,6 +120,7 @@ class CuentaController extends Controller
             $em->flush($Cuenta);
         }
 
+        $this->addFlash('success', 'La cuenta fue eliminada con Exito!');
         return $this->redirectToRoute('cuenta_index');
     }
 

@@ -37,6 +37,8 @@ framework:
 
 # Twig Configuration
 twig:
+    date:
+        timezone: America/El_Salvador
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
     form_themes:

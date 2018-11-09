@@ -85,7 +85,7 @@ class Cuenta
     private $idbanco;
 
     public function __construct(){
-    $this->fechaapertura= new \DateTime();
+    $this->fechaapertura= new \DateTime("now");
     }
 
     /**

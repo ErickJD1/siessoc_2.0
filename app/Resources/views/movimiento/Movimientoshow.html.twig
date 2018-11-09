@@ -1,40 +1,44 @@
-{% extends 'base.html.twig' %}
+<div class="modal fade" id="VerMovi{{  movimiento.idmov }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+			<div class="modal-content">
 
-{% block body %}
-    <h1>Movimiento</h1>
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4>Informacion Del Movimiento</h4>
+				</div>
+				<div class="modal-body">
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Descripcionmov</th>
-                <td>{{ movimiento.descripcionmov }}</td>
-            </tr>
-            <tr>
-                <th>Monto</th>
-                <td>{{ movimiento.monto }}</td>
-            </tr>
-            <tr>
-                <th>Estadomov</th>
-                <td>{% if movimiento.estadomov %}Yes{% else %}No{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Idmov</th>
-                <td>{{ movimiento.idmov }}</td>
-            </tr>
-        </tbody>
-    </table>
+  <div class="list-group">
+    <!--modal-->
 
-    <ul>
-        <li>
-            <a href="{{ path('movimiento_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('movimiento_edit', { 'id': movimiento.idmov }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
-{% endblock %}
+                <h4>ID</h4>
+                <p class="list-group-item">{{ movimiento.idmov }}</p>
+
+                <h4>Descripcion Del Movimiento</h4>
+                <p class="list-group-item">{{ movimiento.descripcionmov }}</p>
+
+                <h4>Monto</h4>
+                <p class="list-group-item">{{ movimiento.monto }}</p>
+
+                <h4>Estado</h4>
+                <p class="list-group-item">{% if movimiento.estadomov %}Yes{% else %}No{% endif %}</p>
+
+								<h4>Tipo Cuenta</h4>
+								<p class="list-group-item">{{ movimiento.idcuenta }}</p>
+
+								<h4>Tipo De Movimiento</h4>
+								<p class="list-group-item">{{ movimiento.idtipomov }}</p>
+								</div>
+
+								<div class="modal-footer">
+						    <div style="float:left">
+						    		{{ form_start(delete_form) }}
+						    		<input type="submit" class="btn btn-danger" value="Delete">
+						    		{{ form_end(delete_form) }}
+						    </div>
+						    <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+						    </div>
+						    </div>
+						    </div>
+						    </div>
+						    </div>

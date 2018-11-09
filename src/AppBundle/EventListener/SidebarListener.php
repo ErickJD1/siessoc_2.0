@@ -30,6 +30,7 @@ class SidebarListener
         //Item del menu
         $rootItems = array(
             $dash = new MenuItemModel('site', 'WebSite', 'web_index', $earg, 'fa fa-home'),
+            $dash = new MenuItemModel('solicitud', 'Solicitud', 'web_index', $earg, 'fa fa-home'),
             $usuario = new MenuItemModel('usuario', 'Usuarios', '', $earg, 'fa fa-user'),
             $expediente = new MenuItemModel('expediente', 'Expedientes', '', $earg, 'fa fa-search'),
             $actividad= new MenuItemModel('actividad', 'Actividades', '', $earg, 'fa fa-calendar'),
@@ -70,14 +71,16 @@ class SidebarListener
             $fondos->addChild($movimiento);
             $fondos->addChild($movimiento1);
             $fondos->addChild($movimiento2);
-
+            
+             $ssocial->addChild(new MenuItemModel('proyectoss', 'Proyecto Servicio Social', 'proyectoserviciosocial_index', $earg))
+            ->addChild($icons = new MenuItemModel('servicios', 'Gestionar Servicio Social', 'serviciosocial_index', $earg));
             /*  $movimiento= new MenuItemModel('movimiento', 'Consultar Tipo Cuenta', 'tipocuenta_index', $earg );
               $movimiento->addChild(new MenuItemModel('crear_movimiento', 'Crear Movimiento', 'avanzu_admin_ui_gen_demo', $earg));
               $movimiento->addChild(new MenuItemModel('consultar_movimiento', 'Consultar Movimiento', 'avanzu_admin_ui_gen_demo', $earg));
               $fondos->addChild($movimiento);*/
 
          return $this->activateByRoute($request->get('_route'), $rootItems);
-
+   
     }
 
     /**

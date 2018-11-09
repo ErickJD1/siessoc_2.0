@@ -187,4 +187,9 @@ class Proyectoserviciosocial
     {
         return $this->idproyectservisocial;
     }
+    
+    public function __toString(){
+        
+        return $this->getNombreproyecto();
+    }
 }

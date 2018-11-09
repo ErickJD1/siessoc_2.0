@@ -1,3 +1,15 @@
+app_proyectoserviciosocial:
+    resource: "@AppBundle/Controller/ProyectoserviciosocialController.php"
+    type:     annotation
+
+app_serviciosocial:
+    resource: "@AppBundle/Controller/ServiciosocialController.php"
+    type:     annotation
+
+app_serviciosocial:
+    resource: "@AppBundle/Controller/ServiciosocialController.php"
+    type:     annotation
+
 app_solicitudbecario:
     resource: "@AppBundle/Controller/SolicitudbecarioController.php"
     type:     annotation

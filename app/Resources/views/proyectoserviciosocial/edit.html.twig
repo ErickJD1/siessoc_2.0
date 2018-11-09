@@ -1,0 +1,25 @@
+{% extends "layout/base-layout.html.twig" %}
+
+{% block page_title %} Proyeto Servicio Social| {% endblock %}
+{% block page_subtitle %}Edit {% endblock %}
+
+{% block page_content %}
+    <h1>Proyectoserviciosocial edit</h1>
+
+    {{ form_start(edit_form) }}
+    <a href="edit.html.twig"></a>
+        {{ form_widget(edit_form) }}
+        <input type="submit" value="Edit" />
+    {{ form_end(edit_form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('proyectoserviciosocial_index') }}">Back to the list</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "layout/base-layout.html.twig" %}
+
+{% block page_title %}Servicio Social| {% endblock %}
+{% block page_subtitle %}Show{% endblock %}
+
+{% block page_content %}
+    <h1>Serviciosocial</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idexpbecario</th>
+                <td>{{ serviciosocial.idexpbecario }}</td>
+            </tr>
+            <tr>
+                <th>Fechaaprovacionservicio</th>
+                <td>{% if serviciosocial.fechaaprovacionservicio %}{{ serviciosocial.fechaaprovacionservicio|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fechainicioservicio</th>
+                <td>{% if serviciosocial.fechainicioservicio %}{{ serviciosocial.fechainicioservicio|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fechafinservicio</th>
+                <td>{% if serviciosocial.fechafinservicio %}{{ serviciosocial.fechafinservicio|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Estadoservicio</th>
+                <td>{{ serviciosocial.estadoservicio }}</td>
+            </tr>
+            <tr>
+                <th>Idserviciosocial</th>
+                <td>{{ serviciosocial.idserviciosocial }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('serviciosocial_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('serviciosocial_edit', { 'id': serviciosocial.idserviciosocial }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,21 +1,83 @@
-{% extends 'base.html.twig' %}
+<div class="modal fade" id="EditMovi{{ movimiento.idmov }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+			<div class="modal-content">
 
-{% block body %}
-    <h1>Movimiento edit</h1>
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4>Datos Del Movimiento</h4>
+				</div>
+				<div class="modal-body">
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+				<div class="list-group">
+				<a herf="#" class=""list-group-item active">
+			    <!--modal-->
+				</a>
 
-    <ul>
-        <li>
-            <a href="{{ path('movimiento_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
-{% endblock %}
+    {{ form_start(edit_form, {'action': path('movimiento_edit', {'id': movimiento.idmov}), 'Method': 'POST' }) }}
+
+    {{ form_errors(edit_form) }}
+
+    <div class="list-group" align="left">
+     <div class="list-group-item">
+     <div class="form-group">
+       <label class="col-md-4 control-label" for="textinput">Descripcion Del Movimiento</label>
+            {{ form_errors(edit_form.descripcionmov) }}
+            <div class="col-md-4">
+            {{ form_widget(edit_form.descripcionmov) }}
+            </div>
+             </div>
+     </div>
+
+     <div class="list-group" align="left">
+      <div class="list-group-item">
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="textinput">Monto Del Movimiento</label>
+             {{ form_errors(edit_form.monto) }}
+             <div class="col-md-4">
+             {{ form_widget(edit_form.monto,{'disabled':'true'}) }}
+             </div>
+              </div>
+      </div>
+
+      <div class="list-group" align="left">
+       <div class="list-group-item">
+       <div class="form-group">
+         <label class="col-md-4 control-label" for="textinput">Tipo De Cuenta</label>
+              {{ form_errors(edit_form.idcuenta) }}
+              <div class="col-md-4">
+              {{ form_widget(edit_form.idcuenta) }}
+              </div>
+               </div>
+       </div>
+
+       <div class="list-group" align="left">
+        <div class="list-group-item">
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="textinput">Tipo De Movimiento</label>
+               {{ form_errors(edit_form.idtipomov) }}
+               <div class="col-md-4">
+               {{ form_widget(edit_form.idtipomov) }}
+               </div>
+                </div>
+        </div>
+
+				<div class="list-group" align="left">
+				 <div class="list-group-item">
+				 <div class="form-group">
+					 <label class="col-md-4 control-label" for="textinput">Estado</label>
+								{{ form_errors(edit_form.estadomov) }}
+								<div class="col-md-4">
+								{{ form_widget(edit_form.estadomov) }}
+								</div>
+								 </div>
+				 </div>
+
+				<div class="modal-footer">
+	      <input type="submit" value="Guardar" class="btn btn-primary btn-sm" />
+	      <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">Cerrar</button>
+	      {{ form_end(edit_form) }}
+	      </div>
+	      </div>
+	      </div>
+	      </div>
+	      </div>

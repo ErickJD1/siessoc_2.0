@@ -14,13 +14,14 @@
 </div>
 <br> </br>
 
-    <table class="table table-bordered table-hover table-striped table-responsive" style="width:90%" id="tabelMahasiswa">
+    <table class="table table-bordered table-hover table-striped table-responsive" style="width:100%" id="tabelMahasiswa">
         <thead class="thead-light">
             <tr>
                 <th>ID</th>
                 <th>Numero</th>
                 <th>Nombre</th>
                 <th>Descripcion</th>
+                <th>Banco</th>
                 <th>Fecha Apertura</th>
                 <th>Saldo Inicial</th>
                 <th>Estado</th>
@@ -35,10 +36,20 @@
                 <td>{{ cuentum.numcuenta }}</td>
                 <td>{{ cuentum.nomcuenta }}</td>
                 <td>{{ cuentum.descripcioncuenta }}</td>
+                <td>{{ cuentum.idbanco }}</td>
                 <td>{% if cuentum.fechaapertura %}{{ cuentum.fechaapertura|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ cuentum.saldocuenta }}</td>
-                <td>{% if cuentum.estadocuenta %}Yes{% else %}No{% endif %}</td>
-              
+                <td>{% if cuentum.estadocuenta %}Activo{% else %}Inactivo{% endif %}</td>
+                <td>
+                  <div style="float:left;"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#VerCuenta{{ cuentum.idcuenta }}"><i class="fa fa-eye" style="font-size: 20px"></i></button>
+                          {{ render(controller('AppBundle:Cuenta:show', { 'id' : cuentum.idcuenta } )) }}
+                  </div>
+
+                  <div style="float:left;"><button class="" style="background-color: transparent;  border: none;" data-toggle="modal" data-target="#EditCuenta{{ cuentum.idcuenta }}"><i class="fa fa-edit" style="font-size: 20px"></i></button>
+                          {{ render(controller('AppBundle:Cuenta:edit', { 'id' : cuentum.idcuenta } )) }}
+                  </div>
+                </td>
+
             </tr>
 
           </div>

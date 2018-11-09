@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="AppBundle\Entity\Banco" table="banco">
-    <indexes>
-      <index name="FK_RELATIONSHIP_36" columns="IDCUENTA"/>
-    </indexes>
+
     <id name="idbanco" type="integer" column="IDBANCO">
       <generator strategy="IDENTITY"/>
     </id>
@@ -13,10 +11,6 @@
       </options>
     </field>
     <field name="estadobanco" type="boolean" column="ESTADOBANCO" nullable="true"/>
-    <many-to-one field="idcuenta" target-entity="Cuenta" fetch="LAZY">
-      <join-columns>
-        <join-column name="IDCUENTA" referenced-column-name="IDCUENTA"/>
-      </join-columns>
-    </many-to-one>
+  
   </entity>
 </doctrine-mapping>

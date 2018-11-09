@@ -1,4 +1,4 @@
-<div class="modal fade" id="showBanco{{ tipocuenta.idtipocuenta }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="showBanco{{ banco.idbanco }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 			<div class="modal-content">
 
@@ -15,7 +15,7 @@
     <h4>Banco</h4>
     <p class="list-group-item">{{  banco.nombanco }}</p>
     <h4>Estado</h4>
-    <p class="list-group-item">{% if banco.estadobanco.==1  %} Activa {% else %} Inactiva {% endif %}</p>
+    <p class="list-group-item">{% if banco.estadobanco==1  %} Activa {% else %} Inactiva {% endif %}</p>
     </div>
 
     <div class="modal-footer">

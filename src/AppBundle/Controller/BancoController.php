@@ -129,7 +129,7 @@ class BancoController extends Controller
     private function createDeleteForm(Banco $banco)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('banco_delete', array('id' => $banco->getId())))
+            ->setAction($this->generateUrl('banco_delete', array('id' => $banco->getIdbanco())))
             ->setMethod('DELETE')
             ->getForm()
         ;

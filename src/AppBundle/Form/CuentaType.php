@@ -13,14 +13,14 @@ class CuentaType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('numcuenta')
-                ->add('nomcuenta')
-                ->add('descripcioncuenta')
+        $builder->add('numcuenta',null,array('label'=>'Numero Cuenta'))
+                ->add('nomcuenta',null,array('label'=>'Nombre Cuenta'))
+                ->add('descripcioncuenta',null,array('label'=>'Descripcion'))
               //  ->add('fechaapertura')
-                ->add('saldocuenta')
-                ->add('estadocuenta')
-                ->add('idbanco')
-                ->add('idtipocuenta')        ;
+                ->add('saldocuenta',null,array('label'=>'Saldo Inicial'))
+                ->add('estadocuenta',null,array('label'=>'Estado'))
+                ->add('idbanco',null,array('label'=>'Banco'))
+                ->add('idtipocuenta',null,array('label'=>'Tipo Cuenta'));
     }
 
     /**

@@ -13,9 +13,10 @@ class BancoType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nombanco')->add('estadobanco')->add('idcuenta')        ;
+        $builder->add('nombanco',null,array('label'=>'Banco'))
+                ->add('estadobanco',null,array('label'=>'Estado'));
     }
-    
+
     /**
      * {@inheritdoc}
      */

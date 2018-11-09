@@ -35,15 +35,7 @@ class Banco
      */
     private $estadobanco;
 
-    /**
-     * @var \Cuenta
-     *
-     * @ORM\ManyToOne(targetEntity="Cuenta")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="IDCUENTA", referencedColumnName="IDCUENTA")
-     * })
-     */
-    private $idcuenta;
+
 
 
 
@@ -105,29 +97,7 @@ class Banco
         return $this->idbanco;
     }
 
-    /**
-     * Set idcuenta
-     *
-     * @param \AppBundle\Entity\Cuenta $idcuenta
-     *
-     * @return Banco
-     */
-    public function setIdcuenta(\AppBundle\Entity\Cuenta $idcuenta = null)
-    {
-        $this->idcuenta = $idcuenta;
 
-        return $this;
-    }
-
-    /**
-     * Get idcuenta
-     *
-     * @return \AppBundle\Entity\Cuenta
-     */
-    public function getIdcuenta()
-    {
-        return $this->idcuenta;
-    }
 
 
     public function __toString(){

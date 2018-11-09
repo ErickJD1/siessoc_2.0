@@ -1,21 +1,108 @@
-{% extends 'base.html.twig' %}
+<div class="modal fade" id="EditCuenta{{ cuenta.idcuenta }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+			<div class="modal-content">
 
-{% block body %}
-    <h1>Cuentum edit</h1>
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4>Datos Tipo Cuenta</h4>
+				</div>
+				<div class="modal-body">
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+				<div class="list-group">
+				<a herf="#" class=""list-group-item active">
+			    <!--modal-->
+				</a>
 
-    <ul>
-        <li>
-            <a href="{{ path('cuenta_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
-{% endblock %}
+    {{ form_start(edit_form, {'action': path('cuenta_edit', {'id': cuenta.idcuenta}), 'Method': 'POST' }) }}
+
+    {{ form_errors(edit_form) }}
+
+
+     <div class="list-group" align="center">
+      <div class="list-group-item">
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="textinput">Numero De Cuenta</label>
+             {{ form_errors(edit_form.numcuenta) }}
+             <div class="col-md-4">
+             {{ form_widget(edit_form.numcuenta,{'disabled':'true'}) }}
+             </div>
+              </div>
+      </div>
+
+   <div class="list-group">
+    <div class="list-group-item">
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textinput">Nombre De Cuenta</label>
+           {{ form_errors(edit_form.nomcuenta) }}
+           <div class="col-md-4">
+           {{ form_widget(edit_form.nomcuenta,{'disabled':'true'}) }}
+           </div>
+            </div>
+    </div>
+
+    <div class="list-group">
+     <div class="list-group-item">
+     <div class="form-group">
+       <label class="col-md-4 control-label" for="textinput">Descripcion</label>
+            {{ form_errors(edit_form.descripcioncuenta) }}
+            <div class="col-md-4">
+            {{ form_widget(edit_form.descripcioncuenta) }}
+            </div>
+             </div>
+     </div>
+
+
+
+      <div class="list-group">
+       <div class="list-group-item">
+       <div class="form-group">
+         <label class="col-md-4 control-label" for="textinput">Saldo Inicial</label>
+              {{ form_errors(edit_form.saldocuenta) }}
+              <div class="col-md-4">
+              {{ form_widget(edit_form.saldocuenta,{'disabled':'true'}) }}
+              </div>
+               </div>
+       </div>
+
+     <div class="list-group">
+      <div class="list-group-item">
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="textinput">Estado</label>
+             {{ form_errors(edit_form.estadocuenta) }}
+             <div class="col-md-4">
+             {{ form_widget(edit_form.estadocuenta) }}
+             </div>
+              </div>
+      </div>
+
+      <div class="list-group">
+       <div class="list-group-item">
+       <div class="form-group">
+         <label class="col-md-4 control-label" for="textinput">Banco</label>
+              {{ form_errors(edit_form.idbanco) }}
+              <div class="col-md-4">
+              {{ form_widget(edit_form.idbanco) }}
+              </div>
+               </div>
+       </div>
+
+       <div class="list-group">
+        <div class="list-group-item">
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="textinput">Tipo Cuenta</label>
+               {{ form_errors(edit_form.idtipocuenta) }}
+               <div class="col-md-4">
+               {{ form_widget(edit_form.idtipocuenta) }}
+               </div>
+                </div>
+        </div>
+
+      <div class="modal-footer">
+      <input type="submit" value="Guardar" class="btn btn-primary btn-sm" />
+      <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">Cerrar</button>
+      {{ form_end(edit_form) }}
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>

@@ -10,7 +10,7 @@
 
 <div align="left">
     <button class="btn btn-primary" data-toggle="modal" data-target="#CrearBanco"> + Banco</button>
-        {{ render(controller('AppBundle:Banco:new' )) }}
+      {{ render(controller('AppBundle:Banco:new')) }}
 </div>
 <br> </br>
 
@@ -36,6 +36,9 @@
                         {{ render(controller('AppBundle:Banco:show', { 'id' : banco.idbanco } )) }}
                 </div>
 
+                <div style="float:left;"><button class="" style="background-color: transparent;  border: none;" data-toggle="modal" data-target="#EditBanco{{ banco.idbanco }}"><i class="fa fa-edit" style="font-size: 20px"></i></button>
+                        {{ render(controller('AppBundle:Banco:edit', { 'id' : banco.idbanco } )) }}
+                </div>
 
               </td>
 

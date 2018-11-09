@@ -1,3 +1,7 @@
+app_cuenta:
+    resource: "@AppBundle/Controller/CuentaController.php"
+    type:     annotation
+
 app_banco:
     resource: "@AppBundle/Controller/BancoController.php"
     type:     annotation

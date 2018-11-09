@@ -34,6 +34,7 @@ class SidebarListener
             $expediente = new MenuItemModel('expediente', 'Expedientes', '', $earg, 'fa fa-search'),
             $actividad= new MenuItemModel('actividad', 'Actividades', '', $earg, 'fa fa-calendar'),
             $academico= new MenuItemModel('seguimiento', 'Seguimiento Academico', 'homepage', $earg, 'fa fa-book'),
+            $solicitud= new MenuItemModel('solicitud', 'Solicitudes', 'homepage', $earg, 'fa fa-book'),
             $ssocial= new MenuItemModel('social', 'Servicio Social', 'homepage', $earg, 'fa fa-list'),
             $fondos= new MenuItemModel('fondos', 'Fondos', 'homepage', $earg, 'fa fa-money'),
             $reportes= new MenuItemModel('reportes', 'Reportes', 'homepage', $earg, 'fa fa-money'),
@@ -53,6 +54,9 @@ class SidebarListener
             $actividad->addChild(new MenuItemModel('crear_actividad', 'Crear Actividad', 'avanzu_admin_ui_gen_demo', $earg))
             ->addChild($icons = new MenuItemModel('consultar_actividades', 'Consultar Actividades', 'avanzu_admin_ui_icon_demo', $earg));
 
+              $soli= new MenuItemModel('cuenta', 'Solicitudes', 'avanzu_admin_ui_gen_demo', $earg );
+              $soli->addChild(new MenuItemModel('consultar_solicitudes', 'Consultar Solicitudes', 'solicitudbecario_index', $earg));
+              $solicitud->addChild($soli);
             //Creacion desegundio nivel de menu
             $movimiento= new MenuItemModel('cuenta', 'Cuentas y Movimientos', 'avanzu_admin_ui_gen_demo', $earg );
             $movimiento->addChild(new MenuItemModel('consultar_movimientos', 'Tipos De Movimiento', 'tipomovimiento_index', $earg));
@@ -62,7 +66,6 @@ class SidebarListener
             $movimiento1->addChild(new MenuItemModel('consultar_bancos', 'Consultar Bancos', 'banco_index', $earg));
             $movimiento2= new MenuItemModel('cuenta2', 'Movimientos', 'avanzu_admin_ui_gen_demo', $earg );
             $movimiento2->addChild(new MenuItemModel('Consultar', 'Consultar Movimientos', 'movimiento_index', $earg));
-
 
             $fondos->addChild($movimiento);
             $fondos->addChild($movimiento1);

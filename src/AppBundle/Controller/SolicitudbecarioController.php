@@ -26,7 +26,7 @@ class SolicitudbecarioController extends Controller
 
         $solicitudbecarios = $em->getRepository('AppBundle:Solicitudbecario')->findAll();
 
-        return $this->render('solicitudbecario/index.html.twig', array(
+        return $this->render('solicitudbecario/Solicitudbecarioindex.html.twig', array(
             'solicitudbecarios' => $solicitudbecarios,
         ));
     }
@@ -48,10 +48,11 @@ class SolicitudbecarioController extends Controller
             $em->persist($solicitudbecario);
             $em->flush($solicitudbecario);
 
-            return $this->redirectToRoute('solicitudbecario_show', array('id' => $solicitudbecario->getId()));
+            $this->addFlash('success', 'Solicitud Enviada Correctamente!');
+            return $this->redirectToRoute('solicitudbecario_index');
         }
 
-        return $this->render('solicitudbecario/new.html.twig', array(
+        return $this->render('solicitudbecario/Solicitudbecarionew.html.twig', array(
             'solicitudbecario' => $solicitudbecario,
             'form' => $form->createView(),
         ));
@@ -67,7 +68,7 @@ class SolicitudbecarioController extends Controller
     {
         $deleteForm = $this->createDeleteForm($solicitudbecario);
 
-        return $this->render('solicitudbecario/show.html.twig', array(
+        return $this->render('solicitudbecario/Solicitudbecarioshow.html.twig', array(
             'solicitudbecario' => $solicitudbecario,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -88,10 +89,11 @@ class SolicitudbecarioController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('solicitudbecario_edit', array('id' => $solicitudbecario->getId()));
+            $this->addFlash('success', 'Solicitud Modificada con Exito!');
+             return $this->redirectToRoute('solicitudbecario_index');
         }
 
-        return $this->render('solicitudbecario/edit.html.twig', array(
+        return $this->render('solicitudbecario/Solicitudbecarioedit.html.twig', array(
             'solicitudbecario' => $solicitudbecario,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -128,7 +130,7 @@ class SolicitudbecarioController extends Controller
     private function createDeleteForm(Solicitudbecario $solicitudbecario)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('solicitudbecario_delete', array('id' => $solicitudbecario->getId())))
+            ->setAction($this->generateUrl('solicitudbecario_delete', array('id' => $solicitudbecario->getIdsolibecario())))
             ->setMethod('DELETE')
             ->getForm()
         ;

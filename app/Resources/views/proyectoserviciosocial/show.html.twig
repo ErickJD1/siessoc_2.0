@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Proyectoserviciosocial</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Nombreproyecto</th>
+                <td>{{ proyectoserviciosocial.nombreproyecto }}</td>
+            </tr>
+            <tr>
+                <th>Descripcionproyecto</th>
+                <td>{{ proyectoserviciosocial.descripcionproyecto }}</td>
+            </tr>
+            <tr>
+                <th>Encargadoproyecto</th>
+                <td>{{ proyectoserviciosocial.encargadoproyecto }}</td>
+            </tr>
+            <tr>
+                <th>Lugarproyecto</th>
+                <td>{{ proyectoserviciosocial.lugarproyecto }}</td>
+            </tr>
+            <tr>
+                <th>Estadoproyecto</th>
+                <td>{% if proyectoserviciosocial.estadoproyecto %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Idproyectservisocial</th>
+                <td>{{ proyectoserviciosocial.idproyectservisocial }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('proyectoserviciosocial_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('proyectoserviciosocial_edit', { 'id': proyectoserviciosocial.idproyectservisocial }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

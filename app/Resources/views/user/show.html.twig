@@ -87,7 +87,9 @@
 
                                             <div class="form-group">
                                                 <div class="col-sm-offset-2 col-sm-10">
-                                                    <a class="btn btn-primary" href="{{ path('fos_user_profile_edit') }}"><i class="fa fa-fw fa-edit"></i>Edit</a>
+                                                    {{ form_start(delete_form) }}
+                                                         <input class="btn btn-danger " type="submit" value="Delete">
+                                                    {{ form_end(delete_form) }}
                                                 </div>
                                             </div>
 

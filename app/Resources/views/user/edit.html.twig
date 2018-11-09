@@ -10,40 +10,72 @@
                 <div class="list-group">
                     <!--modal-->
 
-                    <div class="box box-success" style="width: 100%">
-                        <div class="container"  style="width: 75%; margin-top: 3%; margin-bottom: 3%">
-                            {{ form_start(edit_form,{'action': path('user_edit',{'id':user.id}), 'method': 'POST'}) }}
-                            {{ form_widget(edit_form) }}
-                            <input type="submit" class="btn btn-success btn-xl" value="Edit" />
-                            {{ form_end(edit_form) }}
+                    {{ form_start(edit_form, {'action': path('user_edit', {'id': user.id}), 'Method': 'POST' }) }}
 
-                            <ul>
-                                <li>
-                                    <a href="{{ path('user_index') }}">Back to the list</a>
-                                </li>
-                                <li>
-                                    {{ form_start(delete_form) }}
-                                    <input type="submit" value="Delete">
-                                    {{ form_end(delete_form) }}
-                                </li>
-                            </ul>
-                            </br>
-                            <ul>
-                                <li>
-                                    <a href="{{ path('user_index') }}">Back to the list</a>
-                                </li>
-                            </ul>
+
+                    <div class="list-group">
+                        <div class="list-group-item">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="textinput">First Name</label>
+                                {{ form_errors(edit_form.firstName) }}
+                                <div class="col-md-4">
+                                    {{ form_widget(edit_form.firstName) }}
+                                </div>
+                            </div>
                         </div>
-                        </br>    
+                                
+                        <div class="list-group-item">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="textinput">Last Name</label>
+                                {{ form_errors(edit_form.lastName) }}
+                                <div class="col-md-4">
+                                    {{ form_widget(edit_form.lastName) }}
+                                </div>
+                            </div>
+                        </div>
+                             
+                        <div class="list-group-item">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="textinput">Picture Profile</label>
+                                {{ form_errors(edit_form.profile_picture_file) }}
+                                <div align="center"  class="col-md-4">
+                                 {{ form_widget(edit_form.profile_picture_file,{'attr': {'class': 'form-control' },'style':{'width':'200px'}}) }}
+                                </div>
+                            </div>
+                        </div>        
+                          
+                                
+                                
+                        <input type="submit" class="btn btn-success btn-xl" value="Edit" />
+                        {{ form_end(edit_form) }}
                     </div>
-
-                    <!--modal-->
+                    <ul>
+                        <li>
+                            <a href="{{ path('user_index') }}">Back to the list</a>
+                        </li>
+                        <li>
+                            {{ form_start(delete_form) }}
+                            <input type="submit" value="Delete">
+                            {{ form_end(delete_form) }}
+                        </li>
+                    </ul>
+                    </br>
+                    <ul>
+                        <li>
+                            <a href="{{ path('user_index') }}">Back to the list</a>
+                        </li>
+                    </ul>
                 </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-                </div>
+                </br>    
             </div>
+
+            <!--modal-->
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
         </div>
     </div>
+</div>
+</div>
 

@@ -10,6 +10,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 use FOS\UserBundle\Util\LegacyFormHelper;
+
 class UserType extends AbstractType
 {
     /**

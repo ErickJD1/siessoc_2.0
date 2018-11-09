@@ -65,6 +65,8 @@ class UserController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $user->setEnabled(true);
+            $user->setPassword($user->claveAleatoria());
             $em->persist($user);
             $em->flush($user);
             
@@ -105,7 +107,7 @@ class UserController extends Controller
     public function editAction(Request $request, User $user)
     {
         $deleteForm = $this->createDeleteForm($user);
-        $editForm = $this->createForm('SalexUserBundle\Form\UserType', $user);
+        $editForm = $this->createForm('SalexUserBundle\Form\UserCustomType', $user);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -136,6 +138,8 @@ class UserController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($user);
             $em->flush($user);
+            $this->addFlash('success', 'El usuario fue eliminada con exito!');
+
         }
 
         return $this->redirectToRoute('user_index');

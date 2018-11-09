@@ -68,7 +68,9 @@ class SidebarListener
             $fondos->addChild($movimiento);
             $fondos->addChild($movimiento1);
             $fondos->addChild($movimiento2);
-
+            
+             $ssocial->addChild(new MenuItemModel('proyectoss', 'Proyecto Servicio Social', 'proyectoserviciosocial_index', $earg))
+            ->addChild($icons = new MenuItemModel('servicios', 'Gestionar Servicio Social', 'serviciosocial_index', $earg));
             /*  $movimiento= new MenuItemModel('movimiento', 'Consultar Tipo Cuenta', 'tipocuenta_index', $earg );
               $movimiento->addChild(new MenuItemModel('crear_movimiento', 'Crear Movimiento', 'avanzu_admin_ui_gen_demo', $earg));
               $movimiento->addChild(new MenuItemModel('consultar_movimiento', 'Consultar Movimiento', 'avanzu_admin_ui_gen_demo', $earg));

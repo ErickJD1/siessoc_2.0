@@ -88,7 +88,7 @@ class ProyectoserviciosocialController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('proyectoserviciosocial_edit', array('id' => $proyectoserviciosocial->getId()));
+            return $this->redirectToRoute('proyectoserviciosocial_index', array('id' => $proyectoserviciosocial->getIdProyectservisocial()));
         }
 
         return $this->render('proyectoserviciosocial/edit.html.twig', array(
@@ -128,7 +128,7 @@ class ProyectoserviciosocialController extends Controller
     private function createDeleteForm(Proyectoserviciosocial $proyectoserviciosocial)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('proyectoserviciosocial_delete', array('id' => $proyectoserviciosocial->getId())))
+            ->setAction($this->generateUrl('proyectoserviciosocial_delete', array('id' => $proyectoserviciosocial->getIdProyectservisocial())))
             ->setMethod('DELETE')
             ->getForm()
         ;

@@ -48,7 +48,7 @@ class ServiciosocialController extends Controller
             $em->persist($serviciosocial);
             $em->flush($serviciosocial);
 
-            return $this->redirectToRoute('serviciosocial_show', array('id' => $serviciosocial->getId()));
+            return $this->redirectToRoute('serviciosocial_show', array('id' => $serviciosocial->getIdServiciosocial()));
         }
 
         return $this->render('serviciosocial/new.html.twig', array(
@@ -128,7 +128,7 @@ class ServiciosocialController extends Controller
     private function createDeleteForm(Serviciosocial $serviciosocial)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('serviciosocial_delete', array('id' => $serviciosocial->getId())))
+            ->setAction($this->generateUrl('serviciosocial_delete', array('id' => $serviciosocial->getIdServiciosocial())))
             ->setMethod('DELETE')
             ->getForm()
         ;

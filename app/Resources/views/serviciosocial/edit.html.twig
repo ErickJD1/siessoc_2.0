@@ -1,6 +1,9 @@
-{% extends 'base.html.twig' %}
+{% extends "layout/base-layout.html.twig" %}
 
-{% block body %}
+{% block page_title %} Servicio Social| {% endblock %}
+{% block page_subtitle %}Edit{% endblock %}
+
+{% block page_content %}
     <h1>Serviciosocial edit</h1>
 
     {{ form_start(edit_form) }}

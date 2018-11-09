@@ -1,0 +1,52 @@
+{% extends "layout/base-layout.html.twig" %}
+
+{% block page_title %} Tipos De Movimiento | {% endblock %}
+{% block page_subtitle %}Catalogo De Movimientos {% endblock %}
+
+{% block page_content %}
+
+<div class="box box-primary">
+<div style="width:90%; margin-left:5%; margin-top: 2% ">
+
+<div align="left">
+    <button class="btn btn-primary" data-toggle="modal" data-target="#CrearMov"> + Tipo Movimiento</button>
+     {{ render(controller('AppBundle:Tipomovimiento:new' )) }}
+</div>
+<br> </br>
+
+      <table class="table table-bordered table-hover table-striped table-responsive" style="width:90%" id="tabelMahasiswa">
+              <thead class="thead-light">
+            <tr>
+                <th>ID</th>
+                <th>Movimiento</th>
+                <th>Descripcion</th>
+                <th>Estado</th>
+                <th>Accion</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tipomovimiento in tipomovimientos %}
+            <tr>
+                <td>{{ tipomovimiento.idtipomov }}</td>
+                <td>{{ tipomovimiento.nombretipo }}</td>
+                <td>{{ tipomovimiento.descripciontipomov }}</td>
+                <td>{% if tipomovimiento.estadotipomov %}Activo{% else %}Inactivo{% endif %}</td>
+                <td>
+                  <div style="float:left;"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#VerMov{{ tipomovimiento.idtipomov }}"><i class="fa fa-eye" style="font-size: 20px"></i></button>
+                          {{ render(controller('AppBundle:Tipomovimiento:show', { 'id' : tipomovimiento.idtipomov } )) }}
+                  </div>
+
+                  <div style="float:left;"><button class="" style="background-color: transparent;  border: none;" data-toggle="modal" data-target="#EditMov{{ tipomovimiento.idtipomov }}"><i class="fa fa-edit" style="font-size: 20px"></i></button>
+                          {{ render(controller('AppBundle:Tipomovimiento:edit', { 'id' : tipomovimiento.idtipomov } )) }}
+                  </div>
+
+                </td>
+            </tr>
+
+          </div>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    </div>
+{% endblock %}

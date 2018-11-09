@@ -125,4 +125,9 @@ class Tipomovimiento
     {
         return $this->idtipomov;
     }
+
+    public function __toString(){
+          return $this->getNombretipo();
+    }
+
 }

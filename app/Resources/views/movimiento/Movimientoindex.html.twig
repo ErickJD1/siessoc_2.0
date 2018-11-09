@@ -1,0 +1,44 @@
+{% extends "layout/base-layout.html.twig" %}
+
+{% block page_title %} Movimientos | {% endblock %}
+{% block page_subtitle %}Movimientos {% endblock %}
+
+{% block page_content %}
+
+<div class="box box-primary">
+<div style="width:90%; margin-left:5%; margin-top: 2% ">
+
+<div align="left">
+    <button class="btn btn-primary" data-toggle="modal" data-target="#CrearMovi"> + Movimiento</button>
+     {{ render(controller('AppBundle:Movimiento:new' )) }}
+</div>
+<br> </br>
+
+        <table class="table table-bordered table-hover table-striped table-responsive" style="width:100%" id="tabelMahasiswa">
+            <thead class="thead-light">
+            <tr>
+                <th>ID</th>
+                <th>Descripcion Del Movimiento</th>
+                <th>Monto</th>
+                <th>Estado</th>
+                <th>Accion</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for movimiento in movimientos %}
+            <tr>
+                <td>{{ movimiento.idmov }}</td>
+                <td>{{ movimiento.descripcionmov }}</td>
+                <td>{{ movimiento.monto }}</td>
+                <td>{% if movimiento.estadomov %}Yes{% else %}No{% endif %}</td>
+
+            </tr>
+
+          </div>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    </div>
+{% endblock %}

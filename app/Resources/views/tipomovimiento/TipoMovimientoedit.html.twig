@@ -1,0 +1,63 @@
+<div class="modal fade" id="EditMov{{ tipomovimiento.getIdtipomov }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+			<div class="modal-content">
+
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4>Datos Del Movimiento</h4>
+				</div>
+				<div class="modal-body">
+
+				<div class="list-group">
+				<a herf="#" class=""list-group-item active">
+			    <!--modal-->
+				</a>
+
+    {{ form_start(edit_form, {'action': path('tipomovimiento_edit', {'id': tipomovimiento.getIdtipomov}), 'Method': 'POST' }) }}
+
+    {{ form_errors(edit_form) }}
+
+
+
+     <div class="list-group">
+      <div class="list-group-item">
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="textinput">Movimiento</label>
+             {{ form_errors(edit_form.nombretipo) }}
+             <div class="col-md-4">
+             {{ form_widget(edit_form.nombretipo,{'disabled':'true'}) }}
+             </div>
+              </div>
+      </div>
+
+      <div class="list-group">
+       <div class="list-group-item">
+       <div class="form-group">
+         <label class="col-md-4 control-label" for="textinput">Descripcion</label>
+              {{ form_errors(edit_form.descripciontipomov) }}
+              <div class="col-md-4">
+              {{ form_widget(edit_form.descripciontipomov) }}
+              </div>
+               </div>
+       </div>
+
+       <div class="list-group">
+        <div class="list-group-item">
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="textinput">Estado</label>
+               {{ form_errors(edit_form.estadotipomov) }}
+               <div class="col-md-4">
+               {{ form_widget(edit_form.estadotipomov) }}
+               </div>
+                </div>
+        </div>
+
+        <div class="modal-footer">
+        <input type="submit" value="Guardar" class="btn btn-primary btn-sm" />
+        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">Cerrar</button>
+        {{ form_end(edit_form) }}
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>

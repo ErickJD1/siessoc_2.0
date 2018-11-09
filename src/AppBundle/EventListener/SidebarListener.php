@@ -54,11 +54,15 @@ class SidebarListener
             ->addChild($icons = new MenuItemModel('consultar_actividades', 'Consultar Actividades', 'avanzu_admin_ui_icon_demo', $earg));
 
             //Creacion desegundio nivel de menu
-            $movimiento= new MenuItemModel('cuenta', 'Cuenta', 'avanzu_admin_ui_gen_demo', $earg );
-            $movimiento->addChild(new MenuItemModel('Consultar', 'Consultar Tipo Cuenta', 'tipocuenta_index', $earg));
-            $movimiento->addChild(new MenuItemModel('consultar_cuentas', 'Consultar Cuentas', 'cuenta_index', $earg));
-            $movimiento->addChild(new MenuItemModel('consultar_bancos', 'Consultar Bancos', 'banco_index', $earg));
+            $movimiento= new MenuItemModel('cuenta', 'Cuentas y Movimientos', 'avanzu_admin_ui_gen_demo', $earg );
+            $movimiento->addChild(new MenuItemModel('consultar_movimientos', 'Movimientos', 'tipomovimiento_index', $earg));
+            $movimiento->addChild(new MenuItemModel('consultar_cuentas', 'Cuentas', 'cuenta_index', $earg));
+            $movimiento1= new MenuItemModel('cuenta1', 'Catalogos', 'avanzu_admin_ui_gen_demo', $earg );
+            $movimiento1->addChild(new MenuItemModel('Consultar', 'Consultar Tipo Cuenta', 'tipocuenta_index', $earg));
+            $movimiento1->addChild(new MenuItemModel('consultar_bancos', 'Consultar Bancos', 'banco_index', $earg));
+
             $fondos->addChild($movimiento);
+              $fondos->addChild($movimiento1);
 
             /*  $movimiento= new MenuItemModel('movimiento', 'Consultar Tipo Cuenta', 'tipocuenta_index', $earg );
               $movimiento->addChild(new MenuItemModel('crear_movimiento', 'Crear Movimiento', 'avanzu_admin_ui_gen_demo', $earg));

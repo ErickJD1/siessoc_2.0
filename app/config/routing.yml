@@ -1,3 +1,19 @@
+app_solicitudbecario:
+    resource: "@AppBundle/Controller/SolicitudbecarioController.php"
+    type:     annotation
+
+app_movimiento:
+    resource: "@AppBundle/Controller/MovimientoController.php"
+    type:     annotation
+
+app_movimientoinventario:
+    resource: "@AppBundle/Controller/MovimientoinventarioController.php"
+    type:     annotation
+
+app_tipomovimiento:
+    resource: "@AppBundle/Controller/TipomovimientoController.php"
+    type:     annotation
+
 app_cuenta:
     resource: "@AppBundle/Controller/CuentaController.php"
     type:     annotation

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Movimiento</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Descripcionmov</th>
+                <td>{{ movimiento.descripcionmov }}</td>
+            </tr>
+            <tr>
+                <th>Monto</th>
+                <td>{{ movimiento.monto }}</td>
+            </tr>
+            <tr>
+                <th>Estadomov</th>
+                <td>{% if movimiento.estadomov %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Idmov</th>
+                <td>{{ movimiento.idmov }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('movimiento_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('movimiento_edit', { 'id': movimiento.idmov }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

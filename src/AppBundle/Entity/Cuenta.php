@@ -290,5 +290,8 @@ class Cuenta
         return $this->idtipocuenta;
     }
 
+    public function __toString(){
+          return $this->getNomcuenta();
+    }
 
 }

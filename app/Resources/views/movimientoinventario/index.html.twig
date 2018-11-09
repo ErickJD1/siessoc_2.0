@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Movimientoinventarios list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombremovinv</th>
+                <th>Estadomovinv</th>
+                <th>Idmovinv</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for movimientoinventario in movimientoinventarios %}
+            <tr>
+                <td><a href="{{ path('movimientoinventario_show', { 'id': movimientoinventario.idmovinv }) }}">{{ movimientoinventario.nombremovinv }}</a></td>
+                <td>{% if movimientoinventario.estadomovinv %}Yes{% else %}No{% endif %}</td>
+                <td>{{ movimientoinventario.idmovinv }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('movimientoinventario_show', { 'id': movimientoinventario.idmovinv }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('movimientoinventario_edit', { 'id': movimientoinventario.idmovinv }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('movimientoinventario_new') }}">Create a new movimientoinventario</a>
+        </li>
+    </ul>
+{% endblock %}

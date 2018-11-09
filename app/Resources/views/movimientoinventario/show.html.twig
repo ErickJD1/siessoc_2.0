@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Movimientoinventario</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Nombremovinv</th>
+                <td>{{ movimientoinventario.nombremovinv }}</td>
+            </tr>
+            <tr>
+                <th>Estadomovinv</th>
+                <td>{% if movimientoinventario.estadomovinv %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Idmovinv</th>
+                <td>{{ movimientoinventario.idmovinv }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('movimientoinventario_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('movimientoinventario_edit', { 'id': movimientoinventario.idmovinv }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

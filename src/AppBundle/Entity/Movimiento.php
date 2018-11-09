@@ -193,4 +193,6 @@ class Movimiento
     {
         return $this->idtipomov;
     }
+
+
 }

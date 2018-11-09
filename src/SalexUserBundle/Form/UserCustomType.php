@@ -21,6 +21,7 @@ class UserCustomType extends AbstractType {
         $builder
                 ->add('firstName')
                 ->add('lastName')
+                ->add('email')
                 ->add('profile_picture_file', VichImageType::class, array(
                     'required' => false,
                     'label' => 'Profile Picture',

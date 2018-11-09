@@ -1,3 +1,0 @@
-[2018-11-09 02:29:44] assetic.ERROR: The template ":actividad:edit.html.twig" contains an error: Cannot extend from a block in ":actividad:edit.html.twig" at line 6. [] []
-[2018-11-09 02:29:44] assetic.ERROR: The template ":actividad:show.html.twig" contains an error: Cannot extend from a block in ":actividad:show.html.twig" at line 8. [] []
-[2018-11-09 02:29:44] assetic.ERROR: The template ":banco:Bancoshow.html.twig" contains an error: Expected name or number in ":banco:Bancoshow.html.twig" at line 18. [] []

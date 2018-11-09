@@ -60,13 +60,14 @@ class UserController extends Controller
     {
         $dispatcher = $this->get('event_dispatcher');
         $user = new User();
+        $password=$user->claveAleatoria();
+        $user->setPlainPassword($password);
         $form = $this->createForm('SalexUserBundle\Form\UserType', $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $user->setEnabled(true);
-            $user->setPassword($user->claveAleatoria());
             $em->persist($user);
             $em->flush($user);
             
@@ -112,9 +113,10 @@ class UserController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('user_edit', array('id' => $user->getId()));
+            $this->addFlash('success', 'El usuario fue modificado con exito!');
+            return $this->redirectToRoute('user_index', array('id' => $user->getId()));
         }
+        
 
         return $this->render('user/edit.html.twig', array(
             'user' => $user,

@@ -19,6 +19,14 @@ class UserRepository extends EntityRepository {
                         )
                         ->getResult();
     }
+    
+    public function findAllRole() {
+        return $this->getEntityManager()
+                        ->createQuery(
+                                'SELECT r FROM AppBundle:Role r ORDER BY r.id ASC'
+                        )
+                        ->getResult();
+    }
 
     public function createFindAllQuery() {
         return $this->_em->getRepository('SalexUserBundle:User')->createQueryBuilder('bp');

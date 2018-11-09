@@ -30,6 +30,7 @@ class SidebarListener
         //Item del menu
         $rootItems = array(
             $dash = new MenuItemModel('site', 'WebSite', 'web_index', $earg, 'fa fa-home'),
+            $dash = new MenuItemModel('solicitud', 'Solicitud', 'web_index', $earg, 'fa fa-home'),
             $usuario = new MenuItemModel('usuario', 'Usuarios', '', $earg, 'fa fa-user'),
             $expediente = new MenuItemModel('expediente', 'Expedientes', '', $earg, 'fa fa-search'),
             $actividad= new MenuItemModel('actividad', 'Actividades', '', $earg, 'fa fa-calendar'),
@@ -66,7 +67,7 @@ class SidebarListener
               $fondos->addChild($movimiento);*/
 
          return $this->activateByRoute($request->get('_route'), $rootItems);
-
+   
     }
 
     /**

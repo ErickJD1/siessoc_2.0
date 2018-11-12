@@ -29,6 +29,14 @@ class User extends BaseUser implements ThemeUser
      */
     protected $id;
 
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=500, nullable=true)
+     */
+    protected $description;    
+    
     /**
      * @var string
      *
@@ -353,5 +361,29 @@ class User extends BaseUser implements ThemeUser
             $listado = str_shuffle($listado);
         }
         return $password;
+    }
+    
+        /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return User
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

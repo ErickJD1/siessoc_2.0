@@ -62,6 +62,8 @@ class UserController extends Controller
         $user = new User();
         $password=$user->claveAleatoria();
         $user->setPlainPassword($password);
+        $user->addRole('ROLE_BECARIO');
+        $user->addRole('ROLE_TEAM');
         $form = $this->createForm('SalexUserBundle\Form\UserType', $user);
         $form->handleRequest($request);
 

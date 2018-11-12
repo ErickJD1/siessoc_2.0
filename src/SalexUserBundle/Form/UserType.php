@@ -24,6 +24,7 @@ class UserType extends AbstractType {
                 ->add('firstName')
                 ->add('lastName')
                 ->add('lastName')
+                ->add('description')
                 /* ->add('plainPassword', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\RepeatedType'), array(
                   'type' => LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\PasswordType'),
                   'options' => array('translation_domain' => 'FOSUserBundle'),

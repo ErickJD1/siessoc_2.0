@@ -23,10 +23,10 @@ class UserCustomType extends AbstractType {
                 ->add('lastName')
                 ->add('email')
                 ->add('profile_picture_file', VichImageType::class, array(
+                    'label' => false,
                     'required' => false,
-                    'label' => 'Profile Picture',
-//                    'attr' => array('class'=>'btn btn-success '),
-
+                    'allow_delete' => false,
+                    'download_link' => true,
                         )
                 )
         ;

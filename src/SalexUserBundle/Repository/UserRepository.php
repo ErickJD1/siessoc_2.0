@@ -29,11 +29,13 @@ class UserRepository extends EntityRepository {
                         ->setParameter('word', '%'.$word.'%')
                         ->getResult();
     }
+    
+
 
     public function findAllRole() {
         return $this->getEntityManager()
                         ->createQuery(
-                                'SELECT r FROM AppBundle:Role r ORDER BY r.id ASC'
+                                'SELECT r FROM AppBundle:Role r '
                         )
                         ->getResult();
     }

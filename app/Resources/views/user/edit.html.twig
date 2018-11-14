@@ -1,3 +1,4 @@
+{% import "AvanzuAdminThemeBundle:layout:macros.html.twig" as macro %}
 <div class="modal fade" id="edit{{user.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -48,8 +49,9 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="textinput">Picture Profile</label>
                                 {{ form_errors(edit_form.profile_picture_file) }}
-                                <div  class="col-md-4">
+                                <div  class="vich-image">
                                     {{ form_widget(edit_form.profile_picture_file) }}
+
                                 </div>
                             </div>
                         </div>        

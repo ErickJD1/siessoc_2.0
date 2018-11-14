@@ -21,7 +21,7 @@
             <link rel="stylesheet" href="{{absolute_url(asset('css/fonts/font-awesome.css'))}}">
             <link rel="stylesheet" href="{{absolute_url(asset('css/sweetalert.css'))}}">
             <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-            
+
         {% endblock %}
 
 
@@ -107,7 +107,7 @@
                             {{ render(controller('AvanzuAdminThemeBundle:Sidebar:searchForm')) }}
                         {% endif %}
                         {{ render(controller('AvanzuAdminThemeBundle:Sidebar:menu', {'request':app.request})) }}
-                        {% endblock %}
+                    {% endblock %}
                 </section>
                 <!-- /.sidebar -->
             </aside>
@@ -236,6 +236,17 @@
                                     });
                                    
                                 });
+
+                                // Preview image thumbnail on upload for vich
+                                $.fn.previewImage = function () {
+                                    $(this).change(function (e) {
+                                        var url = URL.createObjectURL(e.target.files[0]);
+                                        $(this).parents('.vich-image').children('img').remove();
+                                        $(this).parents('.vich-image').prepend('<img class="preview_image" src="' + url + '"/>');
+                                    })
+                                }
+                                $('#profile_avatarImage_file').previewImage();
+                                $('#profile_logo_file').previewImage();
                             </script>
 
                         <script src="{{ asset('js/sweetalert.min.js') }}"></script>

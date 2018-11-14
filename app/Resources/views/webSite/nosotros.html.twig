@@ -26,7 +26,7 @@
                                 {% if u.getProfilePicture() is not empty %}
                                     {% set user_image = 'images/profile/'~ u.getProfilePicture() %}
                                 {% endif %}
-                                <img  src="{{user_image}}" style="width:35%; height:150px; align:center !important; margin-top: 2%; border-radius: 400px " class="img-circle"></img>
+                                <img  src="{{asset(user_image)}}" style="width:35%; height:150px; align:center !important; margin-top: 2%; border-radius: 400px " class="img-circle"></img>
                             </div>
                         </div>
                         {#Fin de panel de equipo#}

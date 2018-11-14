@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Colaboracionmonetaria
@@ -25,6 +26,11 @@ class Colaboracionmonetaria
      * @var string
      *
      * @ORM\Column(name="MONTOMESCOLABORACION", type="decimal", precision=10, scale=0, nullable=true)
+     * @Assert\NotNull
+     * @Assert\Type(
+     * type="numeric",
+     * message="El valor {{ value }} no es del tipo {{ type }}."
+     *)
      */
     private $montomescolaboracion;
 

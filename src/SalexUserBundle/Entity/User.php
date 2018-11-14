@@ -55,8 +55,8 @@ class User extends BaseUser implements ThemeUser
      * @Assert\Image(
      *     
      *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg"},
-     *     maxWidth=1800,
-     *     maxHeight=1800
+     *     maxWidth=700,
+     *     maxHeight=700
      * )
      * @Vich\UploadableField(mapping="profile_image", fileNameProperty="profile_picture")
      * @var [type]

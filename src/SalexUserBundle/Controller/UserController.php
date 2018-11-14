@@ -3,51 +3,53 @@
 namespace SalexUserBundle\Controller;
 
 use SalexUserBundle\Entity\User;
+use SalexUserBundle\Repository\UserRepository;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\FOSUserEvents;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 /**
  * User controller.
  *
  * @Route("user")
  */
-class UserController extends Controller
-{
+class UserController extends Controller {
+
     /**
      * Lists all user entities.
      *
      * @Route("/adminUser", name="user_index")
      * @Method("GET")
      */
-    public function indexAction(Request $request)
-    {
+    public function indexAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
 
         $pagination = $em->getRepository('SalexUserBundle:User')->findAll();
-        
-       /* if ($request->query->getAlnum('filter')) {
-            $users
-                ->where('bp.firstName LIKE :firstName')
-                ->setParameter('firstName', '%'.$request->query->getAlnum('filter').'%');
-        }*/
+
+        /* if ($request->query->getAlnum('filter')) {
+          $users
+          ->where('bp.firstName LIKE :firstName')
+          ->setParameter('firstName', '%'.$request->query->getAlnum('filter').'%');
+          } */
 
 
-       # $paginator  = $this->get('knp_paginator');
-       # $pagination = $paginator->paginate(
-       # $users, /* query NOT result */
+        # $paginator  = $this->get('knp_paginator');
+        # $pagination = $paginator->paginate(
+        # $users, /* query NOT result */
         #$request->query->getInt('page', 1)/*page number*/,2/*limit per page*/);
-       # $pagination->setCustomParameters(array(
+        # $pagination->setCustomParameters(array(
         #   'align' => 'center', # center|right (for template: twitter_bootstrap_v4_pagination)	   
-         #  'style' => 'bottom',
-         #  'span_class' => 'whatever'
-       # ));
+        #  'style' => 'bottom',
+        #  'span_class' => 'whatever'
+        # ));
 
-        return $this->render('user/index.html.twig', array('pagination' => $pagination ));
+        return $this->render('user/index.html.twig', array('pagination' => $pagination));
     }
 
     /**
@@ -56,15 +58,22 @@ class UserController extends Controller
      * @Route("/new", name="user_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
-    {
+    public function newAction(Request $request) {
+       
         $dispatcher = $this->get('event_dispatcher');
         $user = new User();
-        $password=$user->claveAleatoria();
+        $password = $user->claveAleatoria();
         $user->setPlainPassword($password);
-        $user->addRole('ROLE_BECARIO');
-        $user->addRole('ROLE_TEAM');
+        $em = $this->getDoctrine()->getManager();
+        $role = $em->getRepository('SalexUserBundle:User')->findAllRole();
         $form = $this->createForm('SalexUserBundle\Form\UserType', $user);
+        $form->add('roles', EntityType::class, array(
+            'required' => true,
+            'data' => $role,
+            'placeholder' => 'Select a role',
+            'class' => 'AppBundle:Role',
+            'multiple'=>'true'
+        ));
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -72,7 +81,7 @@ class UserController extends Controller
             $user->setEnabled(true);
             $em->persist($user);
             $em->flush($user);
-            
+
             $event = new FormEvent($form, $request);
             $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
 
@@ -80,8 +89,8 @@ class UserController extends Controller
         }
 
         return $this->render('user/new.html.twig', array(
-            'user' => $user,
-            'form' => $form->createView(),
+                    'user' => $user,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -91,13 +100,12 @@ class UserController extends Controller
      * @Route("/{id}", name="user_show")
      * @Method("GET")
      */
-    public function showAction(User $user)
-    {
+    public function showAction(User $user) {
         $deleteForm = $this->createDeleteForm($user);
 
         return $this->render('user/show.html.twig', array(
-            'user' => $user,
-            'delete_form' => $deleteForm->createView(),
+                    'user' => $user,
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -107,10 +115,19 @@ class UserController extends Controller
      * @Route("/{id}/edit", name="user_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, User $user)
-    {
+    public function editAction(Request $request, User $user) {
         $deleteForm = $this->createDeleteForm($user);
         $editForm = $this->createForm('SalexUserBundle\Form\UserCustomType', $user);
+        $em = $this->getDoctrine()->getManager();
+        $role = $em->getRepository('SalexUserBundle:User')->findAllRole();
+        $form = $this->createForm('SalexUserBundle\Form\UserType', $user);
+        $form->add('roles', EntityType::class, array(
+            'required' => true,
+            'data' => $role,
+            'placeholder' => 'Select a role',
+            'class' => 'AppBundle:Role',
+            'multiple'=>'true'
+        ));
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -118,12 +135,12 @@ class UserController extends Controller
             $this->addFlash('success', 'El usuario fue modificado con exito!');
             return $this->redirectToRoute('user_index', array('id' => $user->getId()));
         }
-        
+
 
         return $this->render('user/edit.html.twig', array(
-            'user' => $user,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'user' => $user,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -133,8 +150,7 @@ class UserController extends Controller
      * @Route("/{id}", name="user_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, User $user)
-    {
+    public function deleteAction(Request $request, User $user) {
         $form = $this->createDeleteForm($user);
         $form->handleRequest($request);
 
@@ -143,7 +159,6 @@ class UserController extends Controller
             $em->remove($user);
             $em->flush($user);
             $this->addFlash('success', 'El usuario fue eliminada con exito!');
-
         }
 
         return $this->redirectToRoute('user_index');
@@ -156,12 +171,12 @@ class UserController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(User $user)
-    {
+    private function createDeleteForm(User $user) {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('user_delete', array('id' => $user->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
+                        ->setAction($this->generateUrl('user_delete', array('id' => $user->getId())))
+                        ->setMethod('DELETE')
+                        ->getForm()
         ;
     }
+
 }

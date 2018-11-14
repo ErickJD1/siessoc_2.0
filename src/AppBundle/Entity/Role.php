@@ -125,4 +125,13 @@ class Role
     {
         return $this->idrole;
     }
+    
+    
+    /**
+     * @return string
+     */
+    public function __toString() {
+        return $this->getDescripcionrole();
+    }
+    
 }

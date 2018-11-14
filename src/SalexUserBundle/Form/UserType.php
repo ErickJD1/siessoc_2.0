@@ -10,6 +10,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 use FOS\UserBundle\Util\LegacyFormHelper;
+use AppBundle\Entity\Role;
+use Doctrine\ORM\EntityRepository;
 
 class UserType extends AbstractType {
 
@@ -38,8 +40,8 @@ class UserType extends AbstractType {
                 ->add('profile_picture_file', VichImageType::class, array(
                     'required' => false,
                     'label' => 'Profile Picture',
-                    'allow_delete' => false,
-
+                    'allow_delete' => true,
+                    'download_link' => true,
                         )
                 )
         ;

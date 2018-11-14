@@ -3,12 +3,15 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Tipocuenta
  *
  * @ORM\Table(name="tipocuenta")
  * @ORM\Entity
+ * @UniqueEntity("nombrecuenta")
  */
 class Tipocuenta
 {
@@ -25,6 +28,7 @@ class Tipocuenta
      * @var string
      *
      * @ORM\Column(name="NOMBRECUENTA", type="string", length=50, nullable=true)
+     * @Assert\NotBlank()
      */
     private $nombrecuenta;
 
@@ -32,6 +36,7 @@ class Tipocuenta
      * @var string
      *
      * @ORM\Column(name="DESCRIPCION", type="string", length=250, nullable=true)
+     * @Assert\NotBlank()
      */
     private $descripcion;
 

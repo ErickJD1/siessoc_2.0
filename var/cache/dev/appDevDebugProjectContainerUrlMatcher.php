@@ -919,6 +919,68 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
             }
 
+            if (0 === strpos($pathinfo, '/tipotransaccion')) {
+                // tipotransaccion_index
+                if (rtrim($pathinfo, '/') === '/tipotransaccion') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_tipotransaccion_index;
+                    }
+
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'tipotransaccion_index');
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\TipotransaccionController::indexAction',  '_route' => 'tipotransaccion_index',);
+                }
+                not_tipotransaccion_index:
+
+                // tipotransaccion_new
+                if ($pathinfo === '/tipotransaccion/new') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_tipotransaccion_new;
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\TipotransaccionController::newAction',  '_route' => 'tipotransaccion_new',);
+                }
+                not_tipotransaccion_new:
+
+                // tipotransaccion_show
+                if (preg_match('#^/tipotransaccion/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_tipotransaccion_show;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'tipotransaccion_show')), array (  '_controller' => 'AppBundle\\Controller\\TipotransaccionController::showAction',));
+                }
+                not_tipotransaccion_show:
+
+                // tipotransaccion_edit
+                if (preg_match('#^/tipotransaccion/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_tipotransaccion_edit;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'tipotransaccion_edit')), array (  '_controller' => 'AppBundle\\Controller\\TipotransaccionController::editAction',));
+                }
+                not_tipotransaccion_edit:
+
+                // tipotransaccion_delete
+                if (preg_match('#^/tipotransaccion/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'DELETE') {
+                        $allow[] = 'DELETE';
+                        goto not_tipotransaccion_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'tipotransaccion_delete')), array (  '_controller' => 'AppBundle\\Controller\\TipotransaccionController::deleteAction',));
+                }
+                not_tipotransaccion_delete:
+
+            }
+
         }
 
         // web_index

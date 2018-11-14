@@ -13,11 +13,11 @@ class MovimientoType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('descripcionmov')
-                ->add('monto')
-                ->add('estadomov')
-                ->add('idcuenta')
-                ->add('idtipomov');
+        $builder->add('descripcionmov',null,array('label'=>'Descripcion'))
+                ->add('monto',null,array('label'=>'Monto'))
+                ->add('estadomov',null,array('label'=>'Estado'))
+                ->add('idcuenta',null,array('label'=>'Cuenta'))
+                ->add('idtipomov',null,array('label'=>'Tipo Movimiento'));
     }
 
     /**

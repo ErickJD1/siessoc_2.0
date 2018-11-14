@@ -6,6 +6,7 @@ use Avanzu\AdminThemeBundle\Event\SidebarMenuEvent;
 use Avanzu\AdminThemeBundle\Model\MenuItemModel;
 use Symfony\Component\HttpFoundation\Request;
 
+
 class SidebarListener
 {
     public function onSetupMenu(SidebarMenuEvent $event)
@@ -59,19 +60,20 @@ class SidebarListener
               $soli->addChild(new MenuItemModel('consultar_solicitudes', 'Consultar Solicitudes', 'solicitudbecario_index', $earg));
               $solicitud->addChild($soli);
             //Creacion desegundio nivel de menu
+            $movimiento1= new MenuItemModel('cuenta1', 'Catalogos', 'tipocuenta_index', $earg );
+            $movimiento1->addChild(new MenuItemModel('Consultar', 'Consultar Tipo Cuenta', 'tipocuenta_index', $earg));
+            $movimiento1->addChild(new MenuItemModel('consultar_bancos', 'Consultar Bancos', 'banco_index', $earg));
             $movimiento= new MenuItemModel('cuenta', 'Cuentas y Movimientos', 'avanzu_admin_ui_gen_demo', $earg );
             $movimiento->addChild(new MenuItemModel('consultar_movimientos', 'Tipos De Movimiento', 'tipomovimiento_index', $earg));
             $movimiento->addChild(new MenuItemModel('consultar_cuentas', 'Cuentas', 'cuenta_index', $earg));
-            $movimiento1= new MenuItemModel('cuenta1', 'Catalogos', 'avanzu_admin_ui_gen_demo', $earg );
-            $movimiento1->addChild(new MenuItemModel('Consultar', 'Consultar Tipo Cuenta', 'tipocuenta_index', $earg));
-            $movimiento1->addChild(new MenuItemModel('consultar_bancos', 'Consultar Bancos', 'banco_index', $earg));
             $movimiento2= new MenuItemModel('cuenta2', 'Movimientos', 'avanzu_admin_ui_gen_demo', $earg );
             $movimiento2->addChild(new MenuItemModel('Consultar', 'Consultar Movimientos', 'movimiento_index', $earg));
+            $movimiento2->addChild(new MenuItemModel('ConsultarTransacciones', 'Consultar Transacciones', 'tipotransaccion_index', $earg));
 
-            $fondos->addChild($movimiento);
             $fondos->addChild($movimiento1);
+            $fondos->addChild($movimiento);
             $fondos->addChild($movimiento2);
-            
+
              $ssocial->addChild(new MenuItemModel('proyectoss', 'Proyecto Servicio Social', 'proyectoserviciosocial_index', $earg))
             ->addChild($icons = new MenuItemModel('servicios', 'Gestionar Servicio Social', 'serviciosocial_index', $earg));
             /*  $movimiento= new MenuItemModel('movimiento', 'Consultar Tipo Cuenta', 'tipocuenta_index', $earg );
@@ -80,7 +82,7 @@ class SidebarListener
               $fondos->addChild($movimiento);*/
 
          return $this->activateByRoute($request->get('_route'), $rootItems);
-   
+
     }
 
     /**

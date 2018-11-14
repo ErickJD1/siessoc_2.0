@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 
+
 /**
  * tipocuenta controller.
  *
@@ -49,7 +50,7 @@ class TipocuentaController extends Controller
             $em->persist($Tipocuenta);
             $em->flush($Tipocuenta);
 
-            $this->addFlash('success', 'Cuenta creada exitosamente!');
+            $this->addFlash('success', 'Tipo Cuenta Creada Exitosamente!');
             return $this->redirectToRoute('tipocuenta_index');
         }
 
@@ -139,4 +140,7 @@ class TipocuentaController extends Controller
             ->getForm()
         ;
     }
+
+
+
 }

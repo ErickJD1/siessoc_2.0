@@ -1,3 +1,7 @@
+app_tipotransaccion:
+    resource: "@AppBundle/Controller/TipotransaccionController.php"
+    type:     annotation
+
 app_proyectoserviciosocial:
     resource: "@AppBundle/Controller/ProyectoserviciosocialController.php"
     type:     annotation

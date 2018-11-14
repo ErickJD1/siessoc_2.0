@@ -4,22 +4,24 @@
 
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4>Información Tipo Cuenta</h4>
+					<h4 align="Center">Información Tipo Cuenta</h4>
 				</div>
 				<div class="modal-body">
 
   <div class="list-group">
     <!--modal-->
-<h4>ID</h4>
+
+<div class="list-group">
+<a href="#" class="list-group-item">ID</a>
 <p class="list-group-item">{{  tipocuenta.idtipocuenta }}</p>
-<h4>Nombre Tipo Cuenta</h4>
+<a href="#" class="list-group-item">Tipo Cuenta</a>
 <p class="list-group-item">{{  tipocuenta.Nombrecuenta }}</p>
-<h4>Descripcion</h4>
+<a href="#" class="list-group-item">Descripcion</a>
 <p class="list-group-item">{{  tipocuenta.descripcion }}</p>
-<h4>Estado</h4>
+<a href="#" class="list-group-item">Estado</a>
 <p class="list-group-item">{% if tipocuenta.estadotipocuenta==1  %} Activa {% else %} Inactiva {% endif %}</p>
 </div>
-
+</div>
 
 
 <div class="modal-footer">

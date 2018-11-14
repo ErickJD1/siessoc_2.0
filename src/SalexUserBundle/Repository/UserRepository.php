@@ -19,7 +19,17 @@ class UserRepository extends EntityRepository {
                         )
                         ->getResult();
     }
-    
+
+    public function findAllTeam() {
+        $word = "TEAM";
+        return $this->getEntityManager()
+                        ->createQuery(
+                                'SELECT u FROM SalexUserBundle:User u WHERE u.roles LIKE :word'
+                        )
+                        ->setParameter('word', '%'.$word.'%')
+                        ->getResult();
+    }
+
     public function findAllRole() {
         return $this->getEntityManager()
                         ->createQuery(

@@ -1,60 +1,47 @@
 {# app/Resources/views/blog/index.html.twig #}
+{% import "AvanzuAdminThemeBundle:layout:macros.html.twig" as macro %}
 {% extends 'base.html.twig' %}
 {% block body %}
-<!-- Page Content -->
-<div class="container">
-  <!-- Page Heading/Breadcrumbs -->
-  <h1 class="mt-4 mb-3">Bar de Paco
-    <small>Nosotros</small>
-  </h1>
+    <!-- Page Content -->
+    <div class="container">
+        <!-- Page Heading/Breadcrumbs -->
+        <h1 class="mt-4 mb-3">ESSOC
+            <small>Nuestro equipo</small>
+        </h1>
+        <hr>
+        <!-- Image Header -->
+        <img class="img-fluid rounded mb-4" src="{{ asset('img/nosotros.png') }}" alt="">
 
-  <!-- Image Header -->
-  <img class="img-fluid rounded mb-4" src="{{ asset('img/nosotros.png') }}" alt="">
+        <!-- Team Members -->
 
-  <!-- Team Members -->
-  <h2>Nuestro equipo</h2>
+        <div class="row">
+        {% for u in user %}
+            
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100 text-center">
+                        {#Panel de equipo#}
+                        <div class="user-panel">
+                            <div class="pull-left image" >
+                                {% set user_image = false %}
+                                {% if u.getProfilePicture() is not empty %}
+                                    {% set user_image = 'images/profile/'~ u.getProfilePicture() %}
+                                {% endif %}
+                                <img  src="{{user_image}}" style="width:35%; height:150px; align:center !important; margin-top: 2%; border-radius: 400px " class="img-circle"></img>
+                            </div>
+                        </div>
+                        {#Fin de panel de equipo#}
+                        <div class="card-body">
+                            <h4 class="card-title">{{u.firstName~' '~u.lastName}}</h4>
 
-  <div class="row">
-    <div class="col-lg-4 mb-4">
-      <div class="card h-100 text-center">
-        <img class="card-img-top" src="{{ asset('img/paco.png') }}" alt="">
-        <div class="card-body">
-          <h4 class="card-title">Paco Gomez</h4>
-          <h6 class="card-subtitle mb-2 text-muted">Director</h6>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus aut mollitia eum ipsum fugiat odio officiis odit.</p>
+                            <p class="card-text">{{u.description}}</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#">{{u.email}}</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
-        <div class="card-footer">
-          <a href="#">name@example.com</a>
-        </div>
-      </div>
+        <!-- /.row -->
     </div>
-    <div class="col-lg-4 mb-4">
-      <div class="card h-100 text-center">
-        <img class="card-img-top" src="{{ asset('img/paco.png') }}" alt="">
-        <div class="card-body">
-          <h4 class="card-title">Paco Gomez</h4>
-          <h6 class="card-subtitle mb-2 text-muted">Chef</h6>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus aut mollitia eum ipsum fugiat odio officiis odit.</p>
-        </div>
-        <div class="card-footer">
-          <a href="#">name@example.com</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4 mb-4">
-      <div class="card h-100 text-center">
-        <img class="card-img-top" src="{{ asset('img/paco.png') }}" alt="">
-        <div class="card-body">
-          <h4 class="card-title">Paco Gomez</h4>
-          <h6 class="card-subtitle mb-2 text-muted">Metre</h6>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus aut mollitia eum ipsum fugiat odio officiis odit.</p>
-        </div>
-        <div class="card-footer">
-          <a href="#">name@example.com</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- /.row -->
-</div>
 {% endblock %}

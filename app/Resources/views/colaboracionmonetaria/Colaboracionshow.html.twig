@@ -1,0 +1,77 @@
+
+<div class="modal fade" id="showCola{{ colaboracion.idcolaboracion }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+			<div class="modal-content">
+
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4>Información De Colaboracion</h4>
+				</div>
+				<div class="modal-body">
+
+  <div class="list-group">
+    <!--modal-->
+    <h4>ID</h4>
+    <p class="list-group-item">{{  colaboracion.idcolaboracion }}</p>
+    <h4>Descripcion</h4>
+    <p class="list-group-item">{{  colaboracion.Descripcioncolaboracion }}</p>
+    <h4>Colaboracion $</h4>
+    <p class="list-group-item">{{  colaboracion.Montomescolaboracion }}</p>
+    <h4>Monto $</h4>
+    <p class="list-group-item">{{  colaboracion.Saldocolaboracion }}</p>
+    <h4>Estado</h4>
+    <p class="list-group-item">{% if colaboracion.Estadocolaboracion==1  %} Concluiodo {% else %} Pendiente {% endif %}</p>
+    </div>
+
+    <div class="modal-footer">
+    <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Colaboracionmonetarium</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Montomescolaboracion</th>
+                <td>{{ colaboracionmonetarium.montomescolaboracion }}</td>
+            </tr>
+            <tr>
+                <th>Descripcioncolaboracion</th>
+                <td>{{ colaboracionmonetarium.descripcioncolaboracion }}</td>
+            </tr>
+            <tr>
+                <th>Saldocolaboracion</th>
+                <td>{{ colaboracionmonetarium.saldocolaboracion }}</td>
+            </tr>
+            <tr>
+                <th>Estadocolaboracion</th>
+                <td>{% if colaboracionmonetarium.estadocolaboracion %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Idcolaboracion</th>
+                <td>{{ colaboracionmonetarium.idcolaboracion }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('colaboracionmonetaria_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('colaboracionmonetaria_edit', { 'id': colaboracionmonetarium.idcolaboracion }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

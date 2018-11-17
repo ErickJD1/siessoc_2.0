@@ -3,9 +3,9 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <!-- Page Content -->
-    <div class="container">
+    <div class="container" style="font-family: Palatino Header !important;">
         <!-- Page Heading/Breadcrumbs -->
-        <h1 class="mt-4 mb-3">ESSOC
+        <h1 class="mt-4 mb-3" >ESSOC
             <small>Nuestro equipo</small>
         </h1>
         <hr>
@@ -33,7 +33,7 @@
                         <div class="card-body">
                             <h4 class="card-title">{{u.firstName~' '~u.lastName}}</h4>
 
-                            <p class="card-text">{{u.description}}</p>
+                            <p class="card-text" align="justify" style="font-family: Palatino body !important; font-size:13pt;">{{u.description}}</p>
                         </div>
                         <div class="card-footer">
                             <a href="#">{{u.email}}</a>

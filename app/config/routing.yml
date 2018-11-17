@@ -43,13 +43,6 @@ app_tipocuenta:
     type:     annotation
 
 
-app_actividad:
-    resource: "@AppBundle/Controller/ActividadController.php"
-    type:     annotation
-
-app_bitacora:
-    resource: "@AppBundle/Controller/BitacoraController.php"
-    type:     annotation
 
 app_solicitudss:
     resource: "@AppBundle/Controller/SolicitudssController.php"

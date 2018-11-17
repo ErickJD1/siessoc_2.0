@@ -1,7 +1,12 @@
 {% extends "layout/base-layout.html.twig" %}
 
+
 {% block page_title %} Colaboracion | {% endblock %}
 {% block page_subtitle %}Colaboracion Monetaria {% endblock %}
+
+{% block page_title %} Bancos | {% endblock %}
+{% block page_subtitle %}Catalogo De Bancos {% endblock %}
+
 
 {% block page_content %}
 
@@ -9,6 +14,7 @@
 <div style="width:90%; margin-left:5%; margin-top: 2% ">
 
 <div align="left">
+
       <button class="btn btn-primary" data-toggle="modal" data-target="#CrearCola"> + Registrar Colaboracion</button>
       {{ render(controller('AppBundle:Colaboracionmonetaria:createColaboracion')) }}
 </div>
@@ -22,10 +28,26 @@
                 <th>Colaboracion $</th>
                 <th>Monto $</th>
                 <th>Estado</th>
+
+    <button class="btn btn-primary" data-toggle="modal" data-target="#CrearCola"> + Ingresar Colaboracion</button>
+      {{ render(controller('AppBundle:Colaboracionmonetaria:new')) }}
+</div>
+<br> </br>
+
+    <table class="table table-bordered table-hover table-striped table-responsive" style="width:90%" id="tabelMahasiswa">
+          <thead class="thead-light">
+            <tr>
+                <th>ID</th>
+                <th>Colaboracion $</th>
+                <th>Descripcion</th>
+                <th>Saldo $</th>
+                <th>Estadoco</th>
+
                 <th>Accion</th>
             </tr>
         </thead>
         <tbody>
+
 
         {%for colaboracionmonetaria in colaboracion %}
         <tr>
@@ -52,3 +74,22 @@
   </div>
   </div>
 {% endblock %}
+
+        {% for colaboracionmonetaria in colaboracionmonetarias %}
+            <tr>
+                <td>{{ colaboracionmonetaria .idcolaboracion }}</td>
+                <td>{{ colaboracionmonetaria .montomescolaboracion }}</a></td>
+                <td>{{ colaboracionmonetaria .descripcioncolaboracion }}</td>
+                <td>{{ colaboracionmonetaria .saldocolaboracion }}</td>
+                <td>{% if colaboracionmonetaria .estadocolaboracion %}Concluido{% else %}Pendiente{% endif %}</td>
+
+
+                </tr>
+
+                </div>
+                {% endfor %}
+                </tbody>
+                </table>
+                </div>
+                </div>
+                {% endblock %}

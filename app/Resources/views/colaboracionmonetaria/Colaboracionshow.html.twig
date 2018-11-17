@@ -1,3 +1,4 @@
+
 <div class="modal fade" id="showCola{{ colaboracion.idcolaboracion }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 			<div class="modal-content">
@@ -29,3 +30,48 @@
     </div>
     </div>
     </div>
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Colaboracionmonetarium</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Montomescolaboracion</th>
+                <td>{{ colaboracionmonetarium.montomescolaboracion }}</td>
+            </tr>
+            <tr>
+                <th>Descripcioncolaboracion</th>
+                <td>{{ colaboracionmonetarium.descripcioncolaboracion }}</td>
+            </tr>
+            <tr>
+                <th>Saldocolaboracion</th>
+                <td>{{ colaboracionmonetarium.saldocolaboracion }}</td>
+            </tr>
+            <tr>
+                <th>Estadocolaboracion</th>
+                <td>{% if colaboracionmonetarium.estadocolaboracion %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Idcolaboracion</th>
+                <td>{{ colaboracionmonetarium.idcolaboracion }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('colaboracionmonetaria_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('colaboracionmonetaria_edit', { 'id': colaboracionmonetarium.idcolaboracion }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

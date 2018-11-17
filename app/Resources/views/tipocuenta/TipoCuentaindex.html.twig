@@ -9,7 +9,7 @@
 <div style="width:90%; margin-left:5%; margin-top: 2% ">
 
 <div align="left">
-    <button class="btn btn-primary" data-toggle="modal" data-target="#crearCuenta"> + Tipo Cuenta</button> 
+    <button class="btn btn-primary" data-toggle="modal" data-target="#crearCuenta"> + Tipo Cuenta</button>
      {{ render(controller('AppBundle:Tipocuenta:new' )) }}
 </div>
 <br> </br>
@@ -27,7 +27,7 @@
         <tbody>
 
         {% for tipocuentum in tipocuentas %}
-            <tr>
+            <tr data-id="{{ tipocuentum.idtipocuenta }}">
                 <td>{{ tipocuentum.idtipocuenta }}</td>
                 <td>{{ tipocuentum.Nombrecuenta }}</td>
                 <td>{{ tipocuentum.descripcion }}</td>
@@ -39,6 +39,10 @@
 
                   <div style="float:left;"><button class="" style="background-color: transparent;  border: none;" data-toggle="modal" data-target="#editcuenta{{ tipocuentum.idtipocuenta }}"><i class="fa fa-edit" style="font-size: 20px"></i></button>
                           {{ render(controller('AppBundle:Tipocuenta:edit', { 'id' : tipocuentum.idtipocuenta } )) }}
+                  </div>
+
+                  <di><button style="background-color: transparent;  border: none;"><i class="fa fa-edit" style="font-size: 20px"></i></button>
+
                   </div>
 
                 </td>

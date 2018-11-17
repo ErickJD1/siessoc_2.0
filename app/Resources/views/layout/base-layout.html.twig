@@ -130,6 +130,7 @@
                 {% if app.session.flashBag.has('success')
         or app.session.flashBag.has('error')
         or app.session.flashBag.has('notice')
+        or app.session.flashBag.has('warning')
                 %}
                 <section class="flash-messages content-header">
                     <div class="row">
@@ -137,14 +138,14 @@
                             {% if app.session.flashBag.has('success') %}
                              {% set msj=1 %}
                               {% set txt=(app.session.flashBag.get('success')|join(', ')) %}
-                             
+
                               {#  <div class="alert alert-success alert-dismissible">
                                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                                     <h4><i class="icon fa fa-check"></i> Success!</h4>
                                     {% for msg in app.session.flashBag.get('success') %}
                                         {{ msg }}
                                     {% endfor %}
-                                    
+
                                 </div> #}
 
                             {% endif %}
@@ -158,7 +159,7 @@
                                     {% for msg in app.session.flashBag.get('error') %}
                                         {{ msg }}
                                     {% endfor %}
-                                    
+
                                 </div> #}
                             {% endif %}
 
@@ -173,6 +174,8 @@
                             {% endif %}
 
                             {% if app.session.flashBag.has('warning') %}
+                            {% set msj=3 %}
+                            {% set txt=(app.session.flashBag.get('warning')|join(', ')) %}
                                 {# <div class="alert alert-info alert-dismissible">
                                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                                     <h4><i class="icon fa fa-warning"></i> Warning!</h4>
@@ -216,11 +219,21 @@
                                       var texto='{{txt}}';
                                        if(suc==="1"){
                                        swal('EXITO',texto,'success');
+                                       suc=0;
                                        }else{
 
                                      if(suc==="2"){
                                            swal('Error',texto,'error');
-                                          }
+                                           suc=0;
+                                         }else{
+                                           if(suc==="3"){
+                                                 swal('Warning',texto,'warning');
+                                                 suc=0;
+                                               }else{
+
+                                               }
+
+                                         }
                                        }
                                    }
                                     $('#tabelMahasiswa').DataTable({
@@ -234,7 +247,7 @@
                                         // Toggle the visibility
                                         column.visible(!column.visible());
                                     });
-                                   
+
                                 });
 
                                 // Preview image thumbnail on upload for vich
@@ -248,7 +261,7 @@
                                 $('#profile_avatarImage_file').previewImage();
                                 $('#profile_logo_file').previewImage();
                             </script>
-
+                        <!-- <script src="{{ asset('js/delete-registros.js') }}"></script>-->
                         <script src="{{ asset('js/sweetalert.min.js') }}"></script>
 
                         {% endblock %}

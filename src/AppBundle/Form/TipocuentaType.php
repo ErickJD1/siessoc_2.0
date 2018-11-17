@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 
 class TipocuentaType extends AbstractType
@@ -15,8 +16,9 @@ class TipocuentaType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nombrecuenta',null,array('label'=>'Nombre Tipo Cuenta'))
-                ->add('descripcion')
+        $builder
+                ->add('nombrecuenta',null,array('label'=>'Nombre Tipo Cuenta'))
+                ->add('descripcion',null,array('label'=>'Descripcion'))
                 ->add('estadotipocuenta', CheckboxType::class, array('label'=>'Estado'))        ;
     }
 

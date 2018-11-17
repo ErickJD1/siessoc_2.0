@@ -26,9 +26,10 @@
 
 <div class="modal-footer">
 <div style="float:left">
-		{{ form_start(delete_form) }}
-		<input type="submit" class="btn btn-danger" value="Delete">
+		{{ form_start(delete_form, {'action': path('tipocuenta_delete', {'id': tipocuenta.idtipocuenta}), 'Method': 'POST' }) }}
+		<input type="submit" class="btn btn-danger" type="button" value="Delete">
 		{{ form_end(delete_form) }}
+
 </div>
 <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
 </div>

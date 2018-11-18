@@ -27,7 +27,7 @@
         <tbody>
 
         {% for banco in bancos %}
-        <tr>
+        <tr>s
               <td>{{ banco.idbanco }}</td>
               <td>{{ banco.nombanco }}</td>
               <td>{% if banco.estadobanco %}Activo{% else %}Inactivo{% endif %}</td>
@@ -36,9 +36,6 @@
                         {{ render(controller('AppBundle:Banco:show', { 'id' : banco.idbanco } )) }}
                 </div>
 
-                <div style="float:left;"><button class="" style="background-color: transparent;  border: none;" data-toggle="modal" data-target="#EditBanco{{ banco.idbanco }}"><i class="fa fa-edit" style="font-size: 20px"></i></button>
-                        {{ render(controller('AppBundle:Banco:edit', { 'id' : banco.idbanco } )) }}
-                </div>
 
               </td>
 

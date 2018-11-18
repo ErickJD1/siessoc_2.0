@@ -21,7 +21,6 @@
             <link rel="stylesheet" href="{{absolute_url(asset('css/fonts/font-awesome.css'))}}">
             <link rel="stylesheet" href="{{absolute_url(asset('css/sweetalert.css'))}}">
             <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-            <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
 
             <style>
                 .skin-blue  .main-header .navbar  {
@@ -55,7 +54,7 @@
 
     </head>
 
-    Apply one or more of the following classes to get the
+    <!--Apply one or more of the following classes to get the
     desired effect
     |---------------------------------------------------------|
     | SKINS         | skin-blue                               |
@@ -86,7 +85,7 @@
                                 <img src="{{ asset('bundles/app/images/logo-mini.jpg') }}" alt="">
                             </span>
                             <span class="logo-lg">
-                                <img style="width:33px;" src="{{ asset('bundles/app/images/logo-mini.png') }}"></img>{{ block('title') }}
+                                <img style="width:25px;" src="{{ asset('bundles/app/images/logo-mini.png') }}"></img>{{ block('title') }}
                             </span>
                         </a>
                     {% endblock %}
@@ -143,9 +142,9 @@
                 {% set txt="" %}
                 <!-- Alert Boxes -->
                 {% if app.session.flashBag.has('success')
-        or app.session.flashBag.has('error')
-        or app.session.flashBag.has('notice')
-        or app.session.flashBag.has('warning')
+                        or app.session.flashBag.has('error')
+                        or app.session.flashBag.has('notice')
+                        or app.session.flashBag.has('warning')
                 %}
                 <section class="flash-messages content-header">
                     <div class="row">
@@ -162,17 +161,17 @@
                                       {% endfor %}
                                       
                                   </div> #}
-                             {% set msj=1 %}
-                              {% set txt=(app.session.flashBag.get('success')|join(', ')) %}
+                                {% set msj=1 %}
+                                {% set txt=(app.session.flashBag.get('success')|join(', ')) %}
 
-                              {#  <div class="alert alert-success alert-dismissible">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                    <h4><i class="icon fa fa-check"></i> Success!</h4>
-                                    {% for msg in app.session.flashBag.get('success') %}
-                                        {{ msg }}
-                                    {% endfor %}
-
-                                </div> #}
+                                {#  <div class="alert alert-success alert-dismissible">
+                                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                      <h4><i class="icon fa fa-check"></i> Success!</h4>
+                                      {% for msg in app.session.flashBag.get('success') %}
+                                          {{ msg }}
+                                      {% endfor %}
+  
+                                  </div> #}
 
                             {% endif %}
 
@@ -187,16 +186,16 @@
                                       {% endfor %}
                                       
                                   </div> #}
-                            {% set msj=2 %}
-                            {% set txt=(app.session.flashBag.get('error')|join(', ')) %}
-                              {#  <div class="alert alert-danger alert-dismissible">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                    <h4><i class="icon fa fa-ban"></i> Error!</h4>
-                                    {% for msg in app.session.flashBag.get('error') %}
-                                        {{ msg }}
-                                    {% endfor %}
-
-                                </div> #}
+                                {% set msj=2 %}
+                                {% set txt=(app.session.flashBag.get('error')|join(', ')) %}
+                                {#  <div class="alert alert-danger alert-dismissible">
+                                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                      <h4><i class="icon fa fa-ban"></i> Error!</h4>
+                                      {% for msg in app.session.flashBag.get('error') %}
+                                          {{ msg }}
+                                      {% endfor %}
+  
+                                  </div> #}
                             {% endif %}
 
                             {% if app.session.flashBag.has('notice') %}
@@ -210,8 +209,8 @@
                             {% endif %}
 
                             {% if app.session.flashBag.has('warning') %}
-                            {% set msj=3 %}
-                            {% set txt=(app.session.flashBag.get('warning')|join(', ')) %}
+                                {% set msj=3 %}
+                                {% set txt=(app.session.flashBag.get('warning')|join(', ')) %}
                                 {# <div class="alert alert-info alert-dismissible">
                                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                                     <h4><i class="icon fa fa-warning"></i> Warning!</h4>
@@ -255,10 +254,20 @@
                                             var texto = '{{txt}}';
                                             if (suc === "1") {
                                                 swal('EXITO', texto, 'success');
+                                                suc = 0;
                                             } else {
 
                                                 if (suc === "2") {
                                                     swal('Error', texto, 'error');
+                                                    suc = 0;
+                                                } else {
+                                                    if (suc === "3") {
+                                                        swal('Warning', texto, 'warning');
+                                                        suc = 0;
+                                                    } else {
+
+                                                    }
+
                                                 }
                                             }
                                         }
@@ -275,64 +284,6 @@
                                         });
 
                                     });
-                        </div>
-                        <!-- ./wrapper -->
-
-                        {# ------------------------------------------------------------------------------------------------------ JAVASCRIPTS #}
-                        {% block javascripts %}
-
-                            <script src="{{ asset('bundles/avanzuadmintheme/static/'~app.environment~'/scripts/admin-lte-all.js') }}"></script>
-                            <script>
-                                $(document).ready(function () {
-                                   if("{{msj}}" != ""){
-                                      var suc="{{msj}}";
-                                      var texto='{{txt}}';
-                                       if(suc==="1"){
-                                       swal('EXITO',texto,'success');
-                                       suc=0;
-                                       }else{
-
-                                     if(suc==="2"){
-                                           swal('Error',texto,'error');
-                                           suc=0;
-                                         }else{
-                                           if(suc==="3"){
-                                                 swal('Warning',texto,'warning');
-                                                 suc=0;
-                                               }else{
-
-                                               }
-
-                                         }
-                                       }
-                                   }
-                                    $('#tabelMahasiswa').DataTable({
-                                        "scrollY": "300px",
-                                        "scrollX": "100%",
-                                    });
-                                    $('a.toggle-vis').on('click', function (e) {
-                                        e.preventDefault();
-                                        // Get the column API object
-                                        var column = table.column($(this).attr('data-column'));
-                                        // Toggle the visibility
-                                        column.visible(!column.visible());
-                                    });
-
-                                });
-
-                                // Preview image thumbnail on upload for vich
-                                $.fn.previewImage = function () {
-                                    $(this).change(function (e) {
-                                        var url = URL.createObjectURL(e.target.files[0]);
-                                        $(this).parents('.vich-image').children('img').remove();
-                                        $(this).parents('.vich-image').prepend('<img class="preview_image" src="' + url + '"/>');
-                                    })
-                                }
-                                $('#profile_avatarImage_file').previewImage();
-                                $('#profile_logo_file').previewImage();
-                            </script>
-                        <!-- <script src="{{ asset('js/delete-registros.js') }}"></script>-->
-                        <script src="{{ asset('js/sweetalert.min.js') }}"></script>
 
                                     // Preview image thumbnail on upload for vich
                                     $.fn.previewImage = function () {
@@ -345,6 +296,8 @@
                                     $('#profile_avatarImage_file').previewImage();
                                     $('#profile_logo_file').previewImage();
                                 </script>
+                            <!-- <script src="{{ asset('js/delete-registros.js') }}"></script>-->
+                                <script src="{{ asset('js/sweetalert.min.js') }}"></script>
 
                                 <script src="{{ asset('js/sweetalert.min.js') }}"></script>
 

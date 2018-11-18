@@ -1,18 +1,10 @@
-
 <div class="modal fade" id="CrearCola" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-
-<div class="modal fade" id="CrearBanco" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-
     <div class="modal-dialog">
         <div class="modal-content">
 
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-
-                <h4>Registro De Colaboracion</h4>
-
-                <h4>Registrar Banco</h4>
-
+                <h4>Registrar Colaboracion</h4>
             </div>
             <div class="modal-body">
 
@@ -54,33 +46,17 @@
                               </div>
 
                             {{ form_end(form) }}
-                            </div>
-
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
-                            </div>
+                            </br>
                         </div>
+                        </br>
                     </div>
-                  </div>
-                </div>
-              </div>
+
+                    <!--modal-->
             </div>
 
-                            {{ form_start(form, {'action': path('colaboracionmonetaria_new'), 'method': 'POST'}) }}
-                            {{ form_widget(form) }}
-                            <input class="btn btn-primary btn-xl" type="submit" value="Guardar" />
-                            {{ form_end(form) }}
-                            </br>
-                            </div>
-                            </br>
-                      </div>
-
-                      <!--modal-->
-                      </div>
-
-                      <div class="modal-footer">
-                      <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
-                      </div>
-                      </div>
-                      </div>
-                      </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+  </div>

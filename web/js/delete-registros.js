@@ -1,18 +1,46 @@
 $(document).ready(function () {
-  swal({
-       title: "¿Estas seguro que deseas eliminar este registro?",
-       text: "Si eliminas este registro, no podras recuperarlo",
-       type: "warning",
-       showCancelButton: true,
-       confirmButtonColor: '#DD6B55',
-       confirmButtonText: '¡Si, estoy seguro!',
-       cancelButtonText: "Cancelar",
-       closeOnConfirm: true,
-       closeOnCancel: true
-   },
-   function(isConfirm) {
-       if (isConfirm) {
-         document.form.submit();
-         }
-   });
+    $('.btn-delete').click(function (e) {
+        e.preventDefault();
+
+        //var row = $(this).parent('tr');
+
+        var id = $(this).closest('tr').attr('id');
+
+        alert(id);
+
+        var form = $('#form-delete');
+
+        var url = form.attr('action').replace(':USER_ID', id);
+
+        var data = form.serialize();
+
+        //alert(data);
+
+        bootbox.confirm(message, function (res) {
+            if (res == true)
+            {
+                $.post(url, data, function (result) {
+                    if (result.removed == 1)
+                    {
+                        row.fadeOut();
+                        $('#message').removeClass('hidden');
+
+                        $('#user-message').text(result.message);
+                    } else
+                    {
+                        $('#message-danger').removeClass('hidden');
+
+                        $('#user-message-danger').text(result.message);
+                    }
+
+                        $('#tabelMahasiswa').dataTable().draw();
+                        //$('#tabelMahasiswa').DataTable().ajax.reload();   S
+                }).fail(function () {
+                    alert('ERROR');
+                    row.show();
+                });
+            }
+        });
+
+    });
 });

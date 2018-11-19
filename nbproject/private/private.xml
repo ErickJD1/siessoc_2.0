@@ -3,14 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/siessoc/src/AppBundle/Entity/Proyectoserviciosocial.php</file>
-            <file>file:/C:/xampp/htdocs/siessoc/app/Resources/views/tipocuenta/TipoCuentaindex.html.twig</file>
-            <file>file:/C:/xampp/htdocs/siessoc/app/Resources/views/tipocuenta/TipoCuentanew.html.twig</file>
-            <file>file:/C:/xampp/htdocs/siessoc/src/AppBundle/Controller/ServiciosocialController.php</file>
-            <file>file:/C:/xampp/htdocs/siessoc/app/Resources/views/proyectoserviciosocial/new.html.twig</file>
-            <file>file:/C:/xampp/htdocs/siessoc/app/Resources/views/proyectoserviciosocial/index.html.twig</file>
-            <file>file:/C:/xampp/htdocs/siessoc/src/AppBundle/Form/ProyectoserviciosocialType.php</file>
-            <file>file:/C:/xampp/htdocs/siessoc/src/AppBundle/Controller/ProyectoserviciosocialController.php</file>
+            <file>file:/C:/xampp/htdocs/siessoc/src/AppBundle/Controller/WebSiteController.php</file>
+            <file>file:/C:/xampp/htdocs/siessoc/app/Resources/views/user/index.html.twig</file>
+            <file>file:/C:/xampp/htdocs/siessoc/app/Resources/views/layout/base-layout.html.twig</file>
+            <file>file:/C:/xampp/htdocs/siessoc/app/config/config.yml</file>
+            <file>file:/C:/xampp/htdocs/siessoc/app/Resources/views/webSite/bares.html.twig</file>
         </group>
     </open-files>
 </project-private>

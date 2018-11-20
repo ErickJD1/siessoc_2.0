@@ -78,7 +78,7 @@ class BancoController extends Controller
     /**
      * Displays a form to edit an existing banco entity.
      *
-     * @Route("/{id}/edit", name="banco_edit")
+     * @Route("/edit/{id}", name="banco_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Banco $banco)
@@ -90,7 +90,7 @@ class BancoController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('banco_edit', array('id' => $banco->getId()));
+            return $this->redirectToRoute('banco_index', array('id' => $banco->getIdbanco()));
         }
 
         return $this->render('banco/Bancoedit.html.twig', array(

@@ -53,5 +53,19 @@ class WebSiteController extends Controller {
                         'webSite/history.html.twig'
         );
     }
+    
+        /**
+     *
+     *
+     * @Route("/calendar", name="web_history")
+     * @Method("GET")
+     */
+        public function calendarAction() {
+
+        return $this->render(
+                        'webSite/bares.html.twig'
+        );
+    }
+
 
 }

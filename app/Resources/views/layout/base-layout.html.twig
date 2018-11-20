@@ -164,10 +164,7 @@
                                       {% endfor %}
 
                                   </div> #}
-                                {% set msj=1 %}
-                                {% set txt=(app.session.flashBag.get('success')|join(', ')) %}
-
-
+                             
                                 {#  <div class="alert alert-success alert-dismissible">
                                       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                                       <h4><i class="icon fa fa-check"></i> Success!</h4>
@@ -284,7 +281,7 @@
                                             var column = table.column($(this).attr('data-column'));
                                             // Toggle the visibility
                                             column.visible(!column.visible());
-                                        });
+                                        }); 
 
                                     });
 
@@ -299,7 +296,7 @@
                                     $('#profile_avatarImage_file').previewImage();
                                     $('#profile_logo_file').previewImage();
                                 </script>
-                            <!-- <script src="{{ asset('js/delete-registros.js') }}"></script>-->
+                             
                                 <script src="{{ asset('js/sweetalert.min.js') }}"></script>
 
                                 <script src="{{ asset('js/sweetalert.min.js') }}"></script>

@@ -1,7 +1,3 @@
-app_colaboracionmonetaria:
-    resource: "@AppBundle/Controller/ColaboracionmonetariaController.php"
-    type:     annotation
-
 app_tipotransaccion:
     resource: "@AppBundle/Controller/TipotransaccionController.php"
     type:     annotation

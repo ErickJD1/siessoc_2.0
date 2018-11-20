@@ -5,6 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class TipomovimientoType extends AbstractType
 {
@@ -14,7 +15,7 @@ class TipomovimientoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('nombretipo',null,array('label'=>'Nombre Del Movimiento'))
-                ->add('descripciontipomov',null,array('label'=>'Descripcion Del Movimiento'))
+                ->add('descripciontipomov',TextareaType::class,array('label'=>'Descripcion Del Movimiento'))
                 ->add('estadotipomov',null,array('label'=>'Estado Del Movimiento')) ;
     }
 

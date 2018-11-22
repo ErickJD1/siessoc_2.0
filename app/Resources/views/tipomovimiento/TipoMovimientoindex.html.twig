@@ -11,7 +11,7 @@
 <div align="left">
     <a href="{{ absolute_url(asset('')) }}tipomovimiento/new" class="btn btn-primary btn-sm">+ Nuevo Movimiento</a>
 </div>
-<br> </br>
+<br> <br>
 
       <table class="table table-bordered table-hover table-striped table-responsive" style="width:90%" id="tabelMahasiswa">
               <thead class="thead-light">
@@ -32,7 +32,7 @@
                 <td>{% if tipomovimiento.estadotipomov %}Activo{% else %}Inactivo{% endif %}</td>
                 <td>
                     
-                  <div style="float:left;"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#showBanco{{ tipomovimiento.idtipomov }}"><i class="fa fa-eye" style="font-size: 20px"></i></button>
+                  <div style="float:left;"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#VerMov{{ tipomovimiento.idtipomov }}"><i class="fa fa-eye" style="font-size: 20px"></i></button>
                         {{ render(controller('AppBundle:Tipomovimiento:show', { 'id' : tipomovimiento.idtipomov } )) }}
                    </div>
 

@@ -1,0 +1,41 @@
+<div  class="modal fade" id="showBanco{{ actividad.idactividad }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" >
+			<div class="modal-content" style="border-radius: 40px">
+
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h3 align="center"><strong>¿Eliminar Actividad?</strong></h3>
+				</div>
+                            
+				<div class="modal-body">
+
+  <div class="list-group">
+    <!--modal-->
+    <h4>ID</h4>
+    <p class="list-group-item">{{ actividad.idactividad }}</p>
+    <h4>Nombre de la Actividad</h4>
+    <p class="list-group-item">{{ actividad.nomactividad }}</p>
+    <h4>Fecha De La Actividad</h4>
+    <p class="list-group-item">{% if actividad.fechaactividad %}{{ actividad.fechaactividad|date('Y-m-d') }}{% endif %}</p>
+    <h4>Descripcions</h4>
+    <p class="list-group-item">{{ actividad.descripcionactividad }}</p>   
+    <h4>Estado</h4>
+    <p class="list-group-item">{% if actividad.estadoactividad %}Concluido{% else %}Pendiente{% endif %}</p>   
+    <h4>Requerido</h4>
+    <p class="list-group-item">{% if actividad.requisito %}Obligatoria{% else %}Opcional{% endif %}</p> 
+       </div>
+
+    <div class="modal-footer">
+    <div style="float:left">
+      {{ form_start(delete_form) }}
+         <input type="submit" class="btn btn-danger" value="Delete">
+      {{ form_end(delete_form) }}
+      </div>
+      <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>       
+             
+            

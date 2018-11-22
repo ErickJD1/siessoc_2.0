@@ -90,6 +90,7 @@ class BancoController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash('success', 'Banco Modificado exitosamente!');
             return $this->redirectToRoute('banco_index', array('id' => $banco->getIdbanco()));
         }
 
@@ -110,14 +111,20 @@ class BancoController extends Controller
     {
         $form = $this->createDeleteForm($banco);
         $form->handleRequest($request);
-
+        
         if ($form->isSubmitted() && $form->isValid()) {
+            try {
+                
             $em = $this->getDoctrine()->getManager();
             $em->remove($banco);
             $em->flush($banco);
+            $this->addFlash('success', 'Registro Eliminado Exitosamente!');
+            return $this->redirectToRoute('banco_index');
+             } catch (\Doctrine\DBAL\DBALException $e) {
+                 $this->addFlash('error', 'El banco Esta Asociado con una cuenta!');
+                 return $this->redirectToRoute('banco_index');
+            }
         }
-
-        return $this->redirectToRoute('banco_index');
     }
 
     /**

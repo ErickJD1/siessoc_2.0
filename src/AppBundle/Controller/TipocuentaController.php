@@ -112,14 +112,23 @@ class TipocuentaController extends Controller
     {
         $form = $this->createDeleteForm($Tipocuenta);
         $form->handleRequest($request);
-
+        
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($Tipocuenta);
-            $em->flush($Tipocuenta);
-
-            $this->addFlash('success', 'La cuenta fue eliminada con exito!');
-            return $this->redirectToRoute('tipocuenta_index');
+            
+            try
+            {
+                $em = $this->getDoctrine()->getManager();
+                $em->remove($Tipocuenta);
+                $em->flush($Tipocuenta);
+                $this->addFlash('success', 'La cuenta fue eliminada con exito!');
+                return $this->redirectToRoute('tipocuenta_index');
+            } catch (\Doctrine\DBAL\DBALException $e)
+            {
+                $this->addFlash('error', 'La cuenta no pudo ser eliminada!');
+                return $this->redirectToRoute('tipocuenta_index');
+            }
+            
+            
         }
 
         return $this->redirectToRoute('tipocuenta_index');

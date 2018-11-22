@@ -3,18 +3,21 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Tipomovimiento
  *
  * @ORM\Table(name="tipomovimiento")
  * @ORM\Entity
+ * @UniqueEntity("nombretipo")
  */
 class Tipomovimiento
 {
     /**
      * @var integer
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="IDTIPOMOV", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -23,21 +26,21 @@ class Tipomovimiento
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="NOMBRETIPO", type="string", length=50, nullable=true)
      */
     private $nombretipo;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="DESCRIPCIONTIPOMOV", type="string", length=250, nullable=true)
      */
     private $descripciontipomov;
 
     /**
      * @var boolean
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="ESTADOTIPOMOV", type="boolean", nullable=true)
      */
     private $estadotipomov;

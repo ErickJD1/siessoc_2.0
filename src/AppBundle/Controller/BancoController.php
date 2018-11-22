@@ -78,7 +78,7 @@ class BancoController extends Controller
     /**
      * Displays a form to edit an existing banco entity.
      *
-     * @Route("/{id}/edit", name="banco_edit")
+     * @Route("/edit/{id}", name="banco_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Banco $banco)
@@ -90,7 +90,8 @@ class BancoController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('banco_edit', array('id' => $banco->getId()));
+            $this->addFlash('success', 'Banco Modificado exitosamente!');
+            return $this->redirectToRoute('banco_index', array('id' => $banco->getIdbanco()));
         }
 
         return $this->render('banco/Bancoedit.html.twig', array(
@@ -110,14 +111,20 @@ class BancoController extends Controller
     {
         $form = $this->createDeleteForm($banco);
         $form->handleRequest($request);
-
+        
         if ($form->isSubmitted() && $form->isValid()) {
+            try {
+                
             $em = $this->getDoctrine()->getManager();
             $em->remove($banco);
             $em->flush($banco);
+            $this->addFlash('success', 'Registro Eliminado Exitosamente!');
+            return $this->redirectToRoute('banco_index');
+             } catch (\Doctrine\DBAL\DBALException $e) {
+                 $this->addFlash('error', 'El banco Esta Asociado con una cuenta!');
+                 return $this->redirectToRoute('banco_index');
+            }
         }
-
-        return $this->redirectToRoute('banco_index');
     }
 
     /**

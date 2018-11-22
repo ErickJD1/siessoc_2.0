@@ -1,5 +1,5 @@
-app_colaboracionmonetaria:
-    resource: "@AppBundle/Controller/ColaboracionmonetariaController.php"
+app_actividad:
+    resource: "@AppBundle/Controller/ActividadController.php"
     type:     annotation
 
 app_tipotransaccion:

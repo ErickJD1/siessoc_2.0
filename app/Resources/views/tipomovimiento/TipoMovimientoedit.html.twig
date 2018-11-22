@@ -1,63 +1,47 @@
-<div class="modal fade" id="EditMov{{ tipomovimiento.getIdtipomov }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-			<div class="modal-content">
+{% extends "layout/base-layout.html.twig" %}
 
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4>Datos Del Movimiento</h4>
-				</div>
-				<div class="modal-body">
+{% block page_title %} Movimientos | {% endblock %}
+{% block page_subtitle %}Modificar Movimiento {% endblock %}
 
-				<div class="list-group">
-				<a herf="#" class=""list-group-item active">
-			    <!--modal-->
-				</a>
+{% block page_content %}
 
-    {{ form_start(edit_form, {'action': path('tipomovimiento_edit', {'id': tipomovimiento.getIdtipomov}), 'Method': 'POST' }) }}
+    <div class="box box-primary" style="width: 100%">
 
-    {{ form_errors(edit_form) }}
+        <div  style="width:50%; margin-top: 2%; margin-left: 25%" class="panel panel-default"> 
+
+            <div class="col col-md-12" align="center" > 
+                <img style="width:80px;margin-top: 2%;margin-bottom: 2%" src="{{ asset('img/Banco.png') }}"></img>
+            </div>   
+            <div class="col col-md-12 " align="center" style="margin-top:-15px"> 
+                <h2 class="col col-md-12" style="font-family: palatino header" >Modificar Movimiento</h2>
+                <h5 class="col col-md-12" style="color:grey; font-family: palatino body;margin-top: -4px">Complete los campos requeridos</h5>
+                
+            </div>
+            <hr>
+            <div  class="container"  style="width: 75%; margin-top: 3%; margin-bottom: 3%">
+    
+                {{ form_start(edit_form) }}
+                {{ form_widget(edit_form) }}
+                     
+                   <div class="row">
+                    <div class="col col-md-12" align="right">
+                        <a href="{{ absolute_url(asset('')) }}tipomovimiento" class="btn btn-primary btn-xl">Cancelar</a>
+                        <input  class="btn btn-success btn-xl" type="submit"  value="Guardar" />
 
 
-
-     <div class="list-group">
-      <div class="list-group-item">
-      <div class="form-group">
-        <label class="col-md-4 control-label" for="textinput">Movimiento</label>
-             {{ form_errors(edit_form.nombretipo) }}
-             <div class="col-md-4">
-             {{ form_widget(edit_form.nombretipo,{'disabled':'true'}) }}
-             </div>
-              </div>
-      </div>
-
-      <div class="list-group">
-       <div class="list-group-item">
-       <div class="form-group">
-         <label class="col-md-4 control-label" for="textinput">Descripcion</label>
-              {{ form_errors(edit_form.descripciontipomov) }}
-              <div class="col-md-4">
-              {{ form_widget(edit_form.descripciontipomov) }}
-              </div>
-               </div>
-       </div>
-
-       <div class="list-group">
-        <div class="list-group-item">
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="textinput">Estado</label>
-               {{ form_errors(edit_form.estadotipomov) }}
-               <div class="col-md-4">
-               {{ form_widget(edit_form.estadotipomov) }}
-               </div>
+                    </div>
                 </div>
+                     {{ form_end(edit_form) }}
+                     
+                
+                <br>
+                <br>
+            </div>
+            </br>
         </div>
+        <br>
+        <br>
+    </div>
 
-        <div class="modal-footer">
-        <input type="submit" value="Guardar" class="btn btn-primary btn-sm" />
-        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">Cerrar</button>
-        {{ form_end(edit_form) }}
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
+
+{% endblock %}

@@ -5,7 +5,8 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Tipomovimiento;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Tipomovimiento controller.
@@ -77,7 +78,7 @@ class TipomovimientoController extends Controller
     /**
      * Displays a form to edit an existing tipomovimiento entity.
      *
-     * @Route("/{id}/edit", name="tipomovimiento_edit")
+     * @Route("/edit/{id}", name="tipomovimiento_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Tipomovimiento $tipomovimiento)
@@ -90,7 +91,7 @@ class TipomovimientoController extends Controller
             $this->getDoctrine()->getManager()->flush();
 
             $this->addFlash('success', 'El movimiento se modifico con Exito!');
-             return $this->redirectToRoute('tipomovimiento_index');
+             return $this->redirectToRoute('tipomovimiento_index', array('id' => $tipomovimiento->getIdtipomov()));
         }
 
         return $this->render('tipomovimiento/Tipomovimientoedit.html.twig', array(
@@ -112,13 +113,20 @@ class TipomovimientoController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($tipomovimiento);
-            $em->flush($tipomovimiento);
+            
+            try
+            {
+                $em = $this->getDoctrine()->getManager();
+                $em->remove($tipomovimiento);
+                $em->flush($tipomovimiento); 
+                $this->addFlash('success', 'El movimiento fue eliminada con Exito!');
+                return $this->redirectToRoute('tipomovimiento_index');
+            } catch (\Doctrine\DBAL\DBALException $e)
+            {
+                $this->addFlash('error', 'El movimiento no puede ser eliminado!');
+                return $this->redirectToRoute('tipomovimiento_index');
+            }
         }
-
-        $this->addFlash('success', 'Elmovimiento fue eliminada con Exito!');
-        return $this->redirectToRoute('tipomovimiento_index');
     }
 
     /**

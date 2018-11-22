@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 
 class TipocuentaType extends AbstractType
@@ -18,7 +19,7 @@ class TipocuentaType extends AbstractType
     {
         $builder
                 ->add('nombrecuenta',null,array('label'=>'Nombre Tipo Cuenta'))
-                ->add('descripcion',null,array('label'=>'Descripcion'))
+                ->add('descripcion',TextareaType::class, array('label'=>'Descripcion'))
                 ->add('estadotipocuenta', CheckboxType::class, array('label'=>'Estado'))        ;
     }
 

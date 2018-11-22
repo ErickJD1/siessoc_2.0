@@ -79,7 +79,7 @@ class TipocuentaController extends Controller
     /**
      * Displays a form to edit an existing tipocuenta entity.
      *
-     * @Route("/{id}/edit", name="tipocuenta_edit")
+     * @Route("/edit/{id}", name="tipocuenta_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Tipocuenta $Tipocuenta)
@@ -92,7 +92,7 @@ class TipocuentaController extends Controller
             $this->getDoctrine()->getManager()->flush();
 
             $this->addFlash('success', 'La cuenta se modifico con Exito!');
-            return $this->redirectToRoute('tipocuenta_index');
+            return $this->redirectToRoute('tipocuenta_index', array('id' => $Tipocuenta->getIdtipocuenta()));
         }
 
         return $this->render('tipocuenta/TipoCuentaedit.html.twig', array(
@@ -112,14 +112,23 @@ class TipocuentaController extends Controller
     {
         $form = $this->createDeleteForm($Tipocuenta);
         $form->handleRequest($request);
-
+        
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($Tipocuenta);
-            $em->flush($Tipocuenta);
-
-            $this->addFlash('success', 'La cuenta fue eliminada con exito!');
-            return $this->redirectToRoute('tipocuenta_index');
+            
+            try
+            {
+                $em = $this->getDoctrine()->getManager();
+                $em->remove($Tipocuenta);
+                $em->flush($Tipocuenta);
+                $this->addFlash('success', 'La cuenta fue eliminada con exito!');
+                return $this->redirectToRoute('tipocuenta_index');
+            } catch (\Doctrine\DBAL\DBALException $e)
+            {
+                $this->addFlash('error', 'La cuenta no pudo ser eliminada!');
+                return $this->redirectToRoute('tipocuenta_index');
+            }
+            
+            
         }
 
         return $this->redirectToRoute('tipocuenta_index');

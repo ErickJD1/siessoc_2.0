@@ -4,9 +4,10 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * Cuenta
- *
+ * @UniqueEntity("numcuenta")
  * @ORM\Table(name="cuenta", indexes={@ORM\Index(name="FK_RELATIONSHIP_14", columns={"IDTIPOCUENTA"}), @ORM\Index(name="FK_RELATIONSHIP_33", columns={"IDBANCO"})})
  * @ORM\Entity
  */
@@ -14,7 +15,6 @@ class Cuenta
 {
     /**
      * @var integer
-     *
      * @ORM\Column(name="IDCUENTA", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -23,28 +23,28 @@ class Cuenta
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="NUMCUENTA", type="string", length=10, nullable=true)
      */
     private $numcuenta;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="NOMCUENTA", type="string", length=100, nullable=true)
      */
     private $nomcuenta;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="DESCRIPCIONCUENTA", type="string", length=250, nullable=true)
      */
     private $descripcioncuenta;
 
     /**
      * @var \DateTime
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="FECHAAPERTURA", type="datetime", nullable=true)
      * @Assert\Type("\DateTime")
      */
@@ -52,34 +52,34 @@ class Cuenta
 
     /**
      * @var float
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="SALDOCUENTA", type="float", precision=10, scale=0, nullable=true)
      */
     private $saldocuenta;
 
     /**
      * @var boolean
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="ESTADOCUENTA", type="boolean", nullable=true)
      */
     private $estadocuenta;
 
     /**
      * @var \Tipocuenta
-     *
+     * @Assert\NotBlank()
      * @ORM\ManyToOne(targetEntity="Tipocuenta")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="IDTIPOCUENTA", referencedColumnName="IDTIPOCUENTA")
+     * @ORM\JoinColumn(name="IDTIPOCUENTA", referencedColumnName="IDTIPOCUENTA")
      * })
      */
     private $idtipocuenta;
 
     /**
      * @var \Banco
-     *
+     * @Assert\NotBlank()
      * @ORM\ManyToOne(targetEntity="Banco")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="IDBANCO", referencedColumnName="IDBANCO")
+     * @ORM\JoinColumn(name="IDBANCO", referencedColumnName="IDBANCO")
      * })
      */
     private $idbanco;

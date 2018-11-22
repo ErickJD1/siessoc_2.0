@@ -3,12 +3,15 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Banco
  *
  * @ORM\Table(name="banco", indexes={@ORM\Index(name="FK_RELATIONSHIP_36", columns={"IDCUENTA"})})
  * @ORM\Entity
+ * @UniqueEntity("nombanco")
  */
 class Banco
 {
@@ -23,14 +26,14 @@ class Banco
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="NOMBANCO", type="string", length=200, nullable=true)
      */
     private $nombanco;
 
     /**
      * @var boolean
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="ESTADOBANCO", type="boolean", nullable=true)
      */
     private $estadobanco;

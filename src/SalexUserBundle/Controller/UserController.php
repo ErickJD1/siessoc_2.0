@@ -112,16 +112,15 @@ class UserController extends Controller {
     /**
      * Displays a form to edit an existing user entity.
      *
-     * @Route("/{id}/edit", name="user_edit")
+     * @Route("/edit/{id}", name="user_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, User $user) {
-        $deleteForm = $this->createDeleteForm($user);
-        $editForm = $this->createForm('SalexUserBundle\Form\UserCustomType', $user);
         $em = $this->getDoctrine()->getManager();
-        $role = $em->getRepository('SalexUserBundle:User')->findAllRole();
-        $form = $this->createForm('SalexUserBundle\Form\UserType', $user);
-        $form->add('roles', EntityType::class, array(
+        $deleteForm = $this->createDeleteForm($user);
+        $editForm = $this->createForm('SalexUserBundle\Form\UserType', $user);
+        $role = $em->getRepository('SalexUserBundle:User')->findById($user->getId());
+        $editForm->add('roles', EntityType::class, array(
             'required' => true,
             'data' => $role,
             'placeholder' => 'Select a role',
@@ -131,6 +130,15 @@ class UserController extends Controller {
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+             /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
+            $userManager = $this->get('fos_user.user_manager');
+
+            $event = new FormEvent($editForm, $request);
+
+            $user->setUpdateAt(new \DateTime());
+            $userManager->updateUser($user);
+
+            
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success', 'El usuario fue modificado con exito!');
             return $this->redirectToRoute('user_index', array('id' => $user->getId()));

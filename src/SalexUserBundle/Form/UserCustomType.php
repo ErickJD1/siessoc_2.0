@@ -19,13 +19,25 @@ class UserCustomType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
+                ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
+                ->add('email', EmailType::class, array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
                 ->add('firstName')
                 ->add('lastName')
-                ->add('email')
+                ->add('description')
+                /* ->add('plainPassword', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\RepeatedType'), array(
+                  'type' => LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\PasswordType'),
+                  'options' => array('translation_domain' => 'FOSUserBundle'),
+                  'first_options' => array('label' => 'form.password'),
+                  'second_options' => array('label' => 'form.password_confirmation'),
+                  'invalid_message' => 'fos_user.password.mismatch',
+                  )) */
+                /*  ->add('createdAt', DateType::class, array(
+                  'data' =>( new \DateTime())
+                  )) */
                 ->add('profile_picture_file', VichImageType::class, array(
-                    'label' => false,
                     'required' => false,
-                    'allow_delete' => false,
+                    'label' => 'Profile Picture',
+                    'allow_delete' => true,
                     'download_link' => true,
                         )
                 )

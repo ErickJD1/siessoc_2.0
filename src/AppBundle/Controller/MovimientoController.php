@@ -5,7 +5,8 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Movimiento;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Movimiento controller.
@@ -77,7 +78,7 @@ class MovimientoController extends Controller
     /**
      * Displays a form to edit an existing movimiento entity.
      *
-     * @Route("/{id}/edit", name="movimiento_edit")
+     * @Route("/edit/{id}", name="movimiento_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Movimiento $movimiento)
@@ -90,7 +91,7 @@ class MovimientoController extends Controller
             $this->getDoctrine()->getManager()->flush();
 
             $this->addFlash('success', 'El Movimiento se modifico con Exito!');
-             return $this->redirectToRoute('movimiento_index');
+             return $this->redirectToRoute('movimiento_index', array('id' => $movimiento->getIdmov()));
         }
 
         return $this->render('movimiento/Movimientoedit.html.twig', array(

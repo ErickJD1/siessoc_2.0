@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Actividad
@@ -23,14 +24,14 @@ class Actividad
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="NOMACTIVIDAD", type="string", length=100, nullable=true)
      */
     private $nomactividad;
 
     /**
      * @var \DateTime
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="FECHAACTIVIDAD", type="date", nullable=true)
      */
     private $fechaactividad;
@@ -44,14 +45,14 @@ class Actividad
 
     /**
      * @var boolean
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="ESTADOACTIVIDAD", type="boolean", nullable=true)
      */
     private $estadoactividad;
 
     /**
      * @var boolean
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="REQUISITO", type="boolean", nullable=true)
      */
     private $requisito;

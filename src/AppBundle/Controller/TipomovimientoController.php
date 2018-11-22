@@ -113,13 +113,20 @@ class TipomovimientoController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($tipomovimiento);
-            $em->flush($tipomovimiento);
+            
+            try
+            {
+                $em = $this->getDoctrine()->getManager();
+                $em->remove($tipomovimiento);
+                $em->flush($tipomovimiento); 
+                $this->addFlash('success', 'El movimiento fue eliminada con Exito!');
+                return $this->redirectToRoute('tipomovimiento_index');
+            } catch (\Doctrine\DBAL\DBALException $e)
+            {
+                $this->addFlash('error', 'El movimiento no puede ser eliminado!');
+                return $this->redirectToRoute('tipomovimiento_index');
+            }
         }
-
-        $this->addFlash('success', 'Elmovimiento fue eliminada con Exito!');
-        return $this->redirectToRoute('tipomovimiento_index');
     }
 
     /**

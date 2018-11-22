@@ -80,7 +80,7 @@ class CuentaController extends Controller
     /**
      * Displays a form to edit an existing cuenta entity.
      *
-     * @Route("/{id}/edit", name="cuenta_edit")
+     * @Route("/edit/{id}", name="cuenta_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Cuenta $Cuenta)
@@ -93,7 +93,7 @@ class CuentaController extends Controller
             $this->getDoctrine()->getManager()->flush();
 
           $this->addFlash('success', 'La cuenta se modifico con Exito!');
-           return $this->redirectToRoute('cuenta_index');
+           return $this->redirectToRoute('cuenta_index', array('id' => $Cuenta->getIdcuenta()));
         }
 
         return $this->render('cuenta/Cuentaedit.html.twig', array(

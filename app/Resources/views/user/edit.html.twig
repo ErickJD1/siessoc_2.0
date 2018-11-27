@@ -19,20 +19,57 @@
             </div>
             <hr>
             <div  class="container"  style="width: 75%; margin-top: 3%; margin-bottom: 3%">
-                    {% trans_default_domain 'FOSUserBundle' %}
+                {% trans_default_domain 'FOSUserBundle' %}
 
-                    {{ form_start(edit_form, { 'action': path('user_edit',{'id':user.id}), 'attr': { 'class': 'fos_user_profile_edit'} }) }}
-                    <div class="box-body">
-                        {{ form_widget(edit_form) }}
+                {{ form_start(edit_form, { 'action': path('user_edit',{'id':user.id}), 'attr': { 'class': 'fos_user_profile_edit'} }) }}
+                <div class="box-body">
+
+                    <div class="row">
+                        <label for="form_username">Usuario</label>
+                        {{ form_widget(edit_form.username) }}
+                       {{ form_errors(edit_form.username) }}
                     </div>
-                    <!-- End of box-body-->
-                    <div class="box-footer">
-                        <input type="submit" value="{{ 'profile.edit.submit'|trans }} profile" name="submit" class="btn btn-success" />
-                        <a class="btn btn-danger pull-right" href="{{ path('user_index') }}">Cancel</a>
+                    
+                    <div class="row">
+                        <label for="form_firstname">Nombres</label>
+                        {{ form_widget(edit_form.firstName) }}
+                       {{ form_errors(edit_form.firstName) }}
                     </div>
-                    <!-- End of box-footer-->
-                    {{ form_end(edit_form) }}
- <br>
+                    
+                    <div class="row">
+                        <label for="form_lastname">Apellidos</label>
+                        {{ form_widget(edit_form.lastName) }}
+                       {{ form_errors(edit_form.lastName) }}
+                    </div>
+                    
+                    <div class="row">
+                        <label for="form_email">Email</label>
+                        {{ form_widget(edit_form.email) }}
+                       {{ form_errors(edit_form.email) }}
+                    </div>
+                    
+                    <div class="row">
+                        <label for="form_profile_picture">Foto Perfil</label>
+                        {{ form_widget(edit_form.profile_picture_file) }}
+                       {{ form_errors(edit_form.profile_picture_file) }}
+                    </div>
+                    
+                    
+
+
+
+
+
+
+                </div>
+                <!-- End of box-body-->
+                <div class="box-footer">
+                    <input type="submit" value="{{ 'profile.edit.submit'|trans }} profile" name="submit" class="btn btn-success" />
+                    <a class="btn btn-danger pull-right" href="{{ path('user_index') }}">Cancel</a>
+                </div>
+                <!-- End of box-footer-->
+                {{ form_end(edit_form) }}
+                <br>
                 <br>
             </div>
             </br>
@@ -40,5 +77,5 @@
         <br>
         <br>
     </div>
- 
- {% endblock %}
+
+{% endblock %}

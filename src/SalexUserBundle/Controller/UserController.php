@@ -119,7 +119,7 @@ class UserController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $deleteForm = $this->createDeleteForm($user);
         $editForm = $this->createForm('SalexUserBundle\Form\UserType', $user);
-        $role = $em->getRepository('SalexUserBundle:User')->findById($user->getId());
+        $role = $user->getRoles();
         $editForm->add('roles', EntityType::class, array(
             'required' => true,
             'data' => $role,

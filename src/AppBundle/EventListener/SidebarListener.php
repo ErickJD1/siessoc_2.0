@@ -93,6 +93,8 @@ class SidebarListener {
             $ssocial->addChild(new MenuItemModel('social_lista', 'Lista de Servicio Social', 'serviciosocial_index', $earg));
             $ssocial->addChild(new MenuItemModel('social_proyecto', 'Proyectos Servicio Social', 'proyectoserviciosocial_index', $earg));
             
+            
+             $actividad->addChild(new MenuItemModel('actividades', 'Lista de actividades', 'actividad_index', $earg));
         }
 
 //

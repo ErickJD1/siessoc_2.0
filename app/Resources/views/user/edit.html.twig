@@ -27,35 +27,38 @@
                     <div class="row">
                         <label for="form_username">Usuario</label>
                         {{ form_widget(edit_form.username) }}
-                       {{ form_errors(edit_form.username) }}
+                        {{ form_errors(edit_form.username) }}
                     </div>
-                    
+
                     <div class="row">
                         <label for="form_firstname">Nombres</label>
                         {{ form_widget(edit_form.firstName) }}
-                       {{ form_errors(edit_form.firstName) }}
+                        {{ form_errors(edit_form.firstName) }}
                     </div>
-                    
+
                     <div class="row">
                         <label for="form_lastname">Apellidos</label>
                         {{ form_widget(edit_form.lastName) }}
-                       {{ form_errors(edit_form.lastName) }}
+                        {{ form_errors(edit_form.lastName) }}
                     </div>
-                    
+
                     <div class="row">
                         <label for="form_email">Email</label>
                         {{ form_widget(edit_form.email) }}
-                       {{ form_errors(edit_form.email) }}
+                        {{ form_errors(edit_form.email) }}
                     </div>
-                    
+
                     <div class="row">
                         <label for="form_profile_picture">Foto Perfil</label>
                         {{ form_widget(edit_form.profile_picture_file) }}
-                       {{ form_errors(edit_form.profile_picture_file) }}
+                        {{ form_errors(edit_form.profile_picture_file) }}
                     </div>
-                    
-                    
 
+                    <div class="row">
+                        <label for="form_profile_picture">Roles</label>
+                        {{ form_widget(edit_form.roles) }}
+                        {{ form_errors(edit_form.roles) }}
+                    </div>
 
 
 

@@ -1,3 +1,7 @@
+app_role:
+    resource: "@AppBundle/Controller/RoleController.php"
+    type:     annotation
+
 app_actividad:
     resource: "@AppBundle/Controller/ActividadController.php"
     type:     annotation

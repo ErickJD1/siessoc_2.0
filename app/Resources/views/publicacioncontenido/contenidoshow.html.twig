@@ -1,0 +1,46 @@
+{% import "AvanzuAdminThemeBundle:layout:macros.html.twig" as macro %}
+<div  class="modal fade" id="showContenido{{ publicacioncontenido.idcontenido }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" >
+			<div class="modal-content" style="border-radius: 40px">
+
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h3 align="center"><strong>¿Eliminar Banco?</strong></h3>
+				</div>
+                            
+				<div class="modal-body">
+
+  <div class="list-group">
+    <!--modal-->
+    
+               <h4>ID</h4>
+               <p class="list-group-item">{{ publicacioncontenido.idcontenido }}</p>
+               <h4>Titulo</h4>
+               <p class="list-group-item">{{ publicacioncontenido.titulo }}</p>
+               <h4>Subtitulo</h4>
+               <p class="list-group-item">{{ publicacioncontenido.subtitulo }}</p>
+               <h4>Descripcion</h4>
+               <p class="list-group-item">{{ publicacioncontenido.descripcioncontenido }}</p>
+               <h4>Fecha Contenido</h4>
+               <p class="list-group-item">{% if publicacioncontenido.fechacontenido %}{{ publicacioncontenido.fechacontenido|date('Y-m-d H:i:s') }}{% endif %}</p>
+               <h4>Estado</h4>
+               <p class="list-group-item">{% if publicacioncontenido.estadocontenido %}Publicado{% else %}Pendiente{% endif %}</p>
+               <h4>Imagen Contenido</h4>
+               {% set profile_picture_path = 'images/profile/'~ publicacioncontenido.ContenidoPicture %}
+                {{ macro.avatar(profile_picture_path, publicacioncontenido.ContenidoPicture, 'profile-user-img img-responsive img-circle') }}
+                
+              </div>
+             
+            
+  <div class="modal-footer">
+    <div style="float:left">
+      {{ form_start(delete_form) }}
+         <input type="submit" class="btn btn-danger" value="Delete">
+      {{ form_end(delete_form) }}
+      </div>
+      <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>

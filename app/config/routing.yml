@@ -1,3 +1,11 @@
+app_publicacioncontenido:
+    resource: "@AppBundle/Controller/PublicacioncontenidoController.php"
+    type:     annotation
+
+app_programarpublicacion:
+    resource: "@AppBundle/Controller/ProgramarpublicacionController.php"
+    type:     annotation
+
 app_actividad:
     resource: "@AppBundle/Controller/ActividadController.php"
     type:     annotation

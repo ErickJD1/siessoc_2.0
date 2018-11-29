@@ -4,6 +4,11 @@
     <id name="idcontenido" type="integer" column="IDCONTENIDO">
       <generator strategy="IDENTITY"/>
     </id>
+    <field name="contenidoPicture" type="string" column="contenido_picture" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
     <field name="titulo" type="string" column="TITULO" length="250" nullable="true">
       <options>
         <option name="fixed"/>

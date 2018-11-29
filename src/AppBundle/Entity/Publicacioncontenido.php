@@ -3,15 +3,21 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Carbon\Carbon;
+use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Publicacioncontenido
  *
  * @ORM\Table(name="publicacioncontenido")
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
+ * @Vich\Uploadable
  */
-class Publicacioncontenido
-{
+class Publicacioncontenido {
+
     /**
      * @var integer
      *
@@ -56,7 +62,25 @@ class Publicacioncontenido
      */
     private $estadocontenido;
 
+    /**
+     * @Assert\Image(
+     *     maxSize="5M",
+     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg"},
+     *     maxWidth=700,
+     *     maxHeight=700
+     * )
+     * @Vich\UploadableField(mapping="profile_image", fileNameProperty="contenidoPicture")
+     * @var [type]
+     */
+    private $contenido_picture_file;
 
+    /**
+     * @ORM\Column(name="contenidoPicture", type="string", nullable=true)
+     * @var string
+     */
+    private $contenidoPicture;
+
+   
 
     /**
      * Set titulo
@@ -65,8 +89,7 @@ class Publicacioncontenido
      *
      * @return Publicacioncontenido
      */
-    public function setTitulo($titulo)
-    {
+    public function setTitulo($titulo) {
         $this->titulo = $titulo;
 
         return $this;
@@ -77,8 +100,7 @@ class Publicacioncontenido
      *
      * @return string
      */
-    public function getTitulo()
-    {
+    public function getTitulo() {
         return $this->titulo;
     }
 
@@ -89,9 +111,58 @@ class Publicacioncontenido
      *
      * @return Publicacioncontenido
      */
-    public function setSubtitulo($subtitulo)
-    {
+    public function setSubtitulo($subtitulo) {
         $this->subtitulo = $subtitulo;
+
+        return $this;
+    }
+
+    /**
+     * Gets the value of contenido_picture_file.
+     *
+     * @return string
+     */
+    public function getContenidoPictureFile() {
+        return $this->contenido_picture_file;
+    }
+
+    /**
+     * Sets the value of contenido_picture_file.
+     *
+     * @param File $contenido_picture_file
+     *
+     * @return self
+     */
+    public function setContenidoPictureFile(File $contenido_picture_file) {
+        $this->contenido_picture_file = $contenido_picture_file;
+
+        // Only change the updated af if the file is really uploaded to avoid database updates.
+        // This is needed when the file should be set when loading the entity.
+        if ($this->contenido_picture_file instanceof UploadedFile) {
+            $this->setUpdateAt(new Carbon());
+        }
+
+        return $this;
+    }
+
+    /**
+     * Gets the value of contenidoPicture.
+     *
+     * @return string
+     */
+    public function getContenidoPicture() {
+        return $this->contenidoPicture;
+    }
+
+    /**
+     * Sets the value of ContenidoPicture.
+     *
+     * @param string $ContenidoPicture 
+     *
+     * @return self
+     */
+    public function setContenidoPicture($contenidoPicture) {
+        $this->contenidoPicture = $contenidoPicture;
 
         return $this;
     }
@@ -101,8 +172,7 @@ class Publicacioncontenido
      *
      * @return string
      */
-    public function getSubtitulo()
-    {
+    public function getSubtitulo() {
         return $this->subtitulo;
     }
 
@@ -113,8 +183,7 @@ class Publicacioncontenido
      *
      * @return Publicacioncontenido
      */
-    public function setDescripcioncontenido($descripcioncontenido)
-    {
+    public function setDescripcioncontenido($descripcioncontenido) {
         $this->descripcioncontenido = $descripcioncontenido;
 
         return $this;
@@ -125,8 +194,7 @@ class Publicacioncontenido
      *
      * @return string
      */
-    public function getDescripcioncontenido()
-    {
+    public function getDescripcioncontenido() {
         return $this->descripcioncontenido;
     }
 
@@ -137,8 +205,7 @@ class Publicacioncontenido
      *
      * @return Publicacioncontenido
      */
-    public function setFechacontenido($fechacontenido)
-    {
+    public function setFechacontenido($fechacontenido) {
         $this->fechacontenido = $fechacontenido;
 
         return $this;
@@ -149,8 +216,7 @@ class Publicacioncontenido
      *
      * @return \DateTime
      */
-    public function getFechacontenido()
-    {
+    public function getFechacontenido() {
         return $this->fechacontenido;
     }
 
@@ -161,8 +227,7 @@ class Publicacioncontenido
      *
      * @return Publicacioncontenido
      */
-    public function setEstadocontenido($estadocontenido)
-    {
+    public function setEstadocontenido($estadocontenido) {
         $this->estadocontenido = $estadocontenido;
 
         return $this;
@@ -173,8 +238,7 @@ class Publicacioncontenido
      *
      * @return boolean
      */
-    public function getEstadocontenido()
-    {
+    public function getEstadocontenido() {
         return $this->estadocontenido;
     }
 
@@ -183,8 +247,12 @@ class Publicacioncontenido
      *
      * @return integer
      */
-    public function getIdcontenido()
-    {
+    public function getIdcontenido() {
         return $this->idcontenido;
     }
+
+    public function __toString() {
+        return $this->getIdcontenido();
+    }
+
 }

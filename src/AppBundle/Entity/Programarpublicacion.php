@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Programarpublicacion
@@ -23,21 +25,21 @@ class Programarpublicacion
 
     /**
      * @var \DateTime
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="FECHAPUBLICACION", type="date", nullable=true)
      */
     private $fechapublicacion;
 
     /**
      * @var \DateTime
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="HORAPUBLICACION", type="time", nullable=true)
      */
     private $horapublicacion;
 
     /**
      * @var integer
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="ESTADOPULICACION", type="integer", nullable=true)
      */
     private $estadopulicacion;
@@ -49,6 +51,7 @@ class Programarpublicacion
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="IDCONTENIDO", referencedColumnName="IDCONTENIDO")
      * })
+     * @Assert\NotBlank()
      */
     private $idcontenido;
 
@@ -158,5 +161,6 @@ class Programarpublicacion
     public function getIdcontenido()
     {
         return $this->idcontenido;
-    }
+    }  
+    
 }

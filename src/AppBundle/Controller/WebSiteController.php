@@ -57,7 +57,7 @@ class WebSiteController extends Controller {
         /**
      *
      *
-     * @Route("/calendar", name="web_history")
+     * @Route("/calendar", name="web_calendar")
      * @Method("GET")
      */
         public function calendarAction() {

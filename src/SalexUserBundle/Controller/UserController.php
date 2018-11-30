@@ -141,7 +141,7 @@ class UserController extends Controller {
             
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success', 'El usuario fue modificado con exito!');
-            return $this->redirectToRoute('user_index', array('id' => $user->getId()));
+            return $this->redirectToRoute('user_index');
         }
 
 

@@ -540,6 +540,27 @@
         <parameter key="default_image">null</parameter>
         <parameter key="post_processors" type="collection"/>
       </parameter>
+      <parameter key="contenido_picture" type="collection">
+        <parameter key="quality">90</parameter>
+        <parameter key="filters" type="collection">
+          <parameter key="thumbail" type="collection">
+            <parameter key="size" type="collection">
+              <parameter>100</parameter>
+              <parameter>100</parameter>
+            </parameter>
+            <parameter key="mode">outbound</parameter>
+          </parameter>
+        </parameter>
+        <parameter key="jpeg_quality">null</parameter>
+        <parameter key="png_compression_level">null</parameter>
+        <parameter key="png_compression_filter">null</parameter>
+        <parameter key="format">null</parameter>
+        <parameter key="animated">false</parameter>
+        <parameter key="cache">null</parameter>
+        <parameter key="data_loader">null</parameter>
+        <parameter key="default_image">null</parameter>
+        <parameter key="post_processors" type="collection"/>
+      </parameter>
     </parameter>
     <parameter key="liip_imagine.binary.loader.default">default</parameter>
     <parameter key="liip_imagine.controller.filter_action">liip_imagine.controller:filterAction</parameter>
@@ -878,7 +899,7 @@
                   <tag name="cache.pool"/>
                   <argument>9So5vqRUWP</argument>
                   <argument>0</argument>
-                  <argument>T4xPNNmIprqoGUkKdCJ-jL</argument>
+                  <argument>wFxwvEQLbFjPt9L2PM2-wB</argument>
                   <argument>/home/ubuntu/workspace/var/cache/dev/pools</argument>
                   <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                   <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -891,7 +912,7 @@
                   <tag name="cache.pool"/>
                   <argument>b1xzfWVkDL</argument>
                   <argument>0</argument>
-                  <argument>T4xPNNmIprqoGUkKdCJ-jL</argument>
+                  <argument>wFxwvEQLbFjPt9L2PM2-wB</argument>
                   <argument>/home/ubuntu/workspace/var/cache/dev/pools</argument>
                   <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                   <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -1577,7 +1598,7 @@
       <tag name="cache.pool"/>
       <argument>MB4t0MztHD</argument>
       <argument>0</argument>
-      <argument>T4xPNNmIprqoGUkKdCJ-jL</argument>
+      <argument>wFxwvEQLbFjPt9L2PM2-wB</argument>
       <argument>/home/ubuntu/workspace/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -2463,7 +2484,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>5bf66709cedf81.36639660</argument>
+            <argument>5c00b29759ace9.04178676</argument>
           </service>
         </argument>
       </argument>
@@ -2791,7 +2812,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>5bf66709cedf81.36639660</argument>
+            <argument>5c00b29759ace9.04178676</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -4187,6 +4208,27 @@
           <argument key="post_processors" type="collection"/>
         </argument>
         <argument key="profile_picture" type="collection">
+          <argument key="quality">90</argument>
+          <argument key="filters" type="collection">
+            <argument key="thumbail" type="collection">
+              <argument key="size" type="collection">
+                <argument>100</argument>
+                <argument>100</argument>
+              </argument>
+              <argument key="mode">outbound</argument>
+            </argument>
+          </argument>
+          <argument key="jpeg_quality">null</argument>
+          <argument key="png_compression_level">null</argument>
+          <argument key="png_compression_filter">null</argument>
+          <argument key="format">null</argument>
+          <argument key="animated">false</argument>
+          <argument key="cache">null</argument>
+          <argument key="data_loader">null</argument>
+          <argument key="default_image">null</argument>
+          <argument key="post_processors" type="collection"/>
+        </argument>
+        <argument key="contenido_picture" type="collection">
           <argument key="quality">90</argument>
           <argument key="filters" type="collection">
             <argument key="thumbail" type="collection">

@@ -124,6 +124,10 @@ liip_imagine:
             quality: 90
             filters:
                 thumbail: { size: [100, 100], mode: outbound }
+        contenido_picture:
+            quality: 90
+            filters:
+                thumbail: { size: [100, 100], mode: outbound }
 
 # KNP Menu configuration
 # http://symfony.com/doc/master/bundles/KnpMenuBundle/index.html

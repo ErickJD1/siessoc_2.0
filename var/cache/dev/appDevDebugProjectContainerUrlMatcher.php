@@ -478,65 +478,195 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        if (0 === strpos($pathinfo, '/proyectoserviciosocial')) {
-            // proyectoserviciosocial_index
-            if (rtrim($pathinfo, '/') === '/proyectoserviciosocial') {
-                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'HEAD'));
-                    goto not_proyectoserviciosocial_index;
+        if (0 === strpos($pathinfo, '/p')) {
+            if (0 === strpos($pathinfo, '/pro')) {
+                if (0 === strpos($pathinfo, '/programarpublicacion')) {
+                    // programarpublicacion_index
+                    if (rtrim($pathinfo, '/') === '/programarpublicacion') {
+                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'HEAD'));
+                            goto not_programarpublicacion_index;
+                        }
+
+                        if (substr($pathinfo, -1) !== '/') {
+                            return $this->redirect($pathinfo.'/', 'programarpublicacion_index');
+                        }
+
+                        return array (  '_controller' => 'AppBundle\\Controller\\ProgramarpublicacionController::indexAction',  '_route' => 'programarpublicacion_index',);
+                    }
+                    not_programarpublicacion_index:
+
+                    // programarpublicacion_new
+                    if ($pathinfo === '/programarpublicacion/new') {
+                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                            goto not_programarpublicacion_new;
+                        }
+
+                        return array (  '_controller' => 'AppBundle\\Controller\\ProgramarpublicacionController::newAction',  '_route' => 'programarpublicacion_new',);
+                    }
+                    not_programarpublicacion_new:
+
+                    // programarpublicacion_show
+                    if (preg_match('#^/programarpublicacion/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'HEAD'));
+                            goto not_programarpublicacion_show;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'programarpublicacion_show')), array (  '_controller' => 'AppBundle\\Controller\\ProgramarpublicacionController::showAction',));
+                    }
+                    not_programarpublicacion_show:
+
+                    // programarpublicacion_edit
+                    if (0 === strpos($pathinfo, '/programarpublicacion/edit') && preg_match('#^/programarpublicacion/edit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                            goto not_programarpublicacion_edit;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'programarpublicacion_edit')), array (  '_controller' => 'AppBundle\\Controller\\ProgramarpublicacionController::editAction',));
+                    }
+                    not_programarpublicacion_edit:
+
+                    // programarpublicacion_delete
+                    if (preg_match('#^/programarpublicacion/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        if ($this->context->getMethod() != 'DELETE') {
+                            $allow[] = 'DELETE';
+                            goto not_programarpublicacion_delete;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'programarpublicacion_delete')), array (  '_controller' => 'AppBundle\\Controller\\ProgramarpublicacionController::deleteAction',));
+                    }
+                    not_programarpublicacion_delete:
+
                 }
 
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'proyectoserviciosocial_index');
+                if (0 === strpos($pathinfo, '/proyectoserviciosocial')) {
+                    // proyectoserviciosocial_index
+                    if (rtrim($pathinfo, '/') === '/proyectoserviciosocial') {
+                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'HEAD'));
+                            goto not_proyectoserviciosocial_index;
+                        }
+
+                        if (substr($pathinfo, -1) !== '/') {
+                            return $this->redirect($pathinfo.'/', 'proyectoserviciosocial_index');
+                        }
+
+                        return array (  '_controller' => 'AppBundle\\Controller\\ProyectoserviciosocialController::indexAction',  '_route' => 'proyectoserviciosocial_index',);
+                    }
+                    not_proyectoserviciosocial_index:
+
+                    // proyectoserviciosocial_new
+                    if ($pathinfo === '/proyectoserviciosocial/new') {
+                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                            goto not_proyectoserviciosocial_new;
+                        }
+
+                        return array (  '_controller' => 'AppBundle\\Controller\\ProyectoserviciosocialController::newAction',  '_route' => 'proyectoserviciosocial_new',);
+                    }
+                    not_proyectoserviciosocial_new:
+
+                    // proyectoserviciosocial_show
+                    if (preg_match('#^/proyectoserviciosocial/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'HEAD'));
+                            goto not_proyectoserviciosocial_show;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'proyectoserviciosocial_show')), array (  '_controller' => 'AppBundle\\Controller\\ProyectoserviciosocialController::showAction',));
+                    }
+                    not_proyectoserviciosocial_show:
+
+                    // proyectoserviciosocial_edit
+                    if (preg_match('#^/proyectoserviciosocial/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                            goto not_proyectoserviciosocial_edit;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'proyectoserviciosocial_edit')), array (  '_controller' => 'AppBundle\\Controller\\ProyectoserviciosocialController::editAction',));
+                    }
+                    not_proyectoserviciosocial_edit:
+
+                    // proyectoserviciosocial_delete
+                    if (preg_match('#^/proyectoserviciosocial/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        if ($this->context->getMethod() != 'DELETE') {
+                            $allow[] = 'DELETE';
+                            goto not_proyectoserviciosocial_delete;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'proyectoserviciosocial_delete')), array (  '_controller' => 'AppBundle\\Controller\\ProyectoserviciosocialController::deleteAction',));
+                    }
+                    not_proyectoserviciosocial_delete:
+
                 }
 
-                return array (  '_controller' => 'AppBundle\\Controller\\ProyectoserviciosocialController::indexAction',  '_route' => 'proyectoserviciosocial_index',);
             }
-            not_proyectoserviciosocial_index:
 
-            // proyectoserviciosocial_new
-            if ($pathinfo === '/proyectoserviciosocial/new') {
-                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                    goto not_proyectoserviciosocial_new;
+            if (0 === strpos($pathinfo, '/publicacioncontenido')) {
+                // publicacioncontenido_index
+                if (rtrim($pathinfo, '/') === '/publicacioncontenido') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_publicacioncontenido_index;
+                    }
+
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'publicacioncontenido_index');
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\PublicacioncontenidoController::indexAction',  '_route' => 'publicacioncontenido_index',);
                 }
+                not_publicacioncontenido_index:
 
-                return array (  '_controller' => 'AppBundle\\Controller\\ProyectoserviciosocialController::newAction',  '_route' => 'proyectoserviciosocial_new',);
-            }
-            not_proyectoserviciosocial_new:
+                // publicacioncontenido_new
+                if ($pathinfo === '/publicacioncontenido/new') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_publicacioncontenido_new;
+                    }
 
-            // proyectoserviciosocial_show
-            if (preg_match('#^/proyectoserviciosocial/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'HEAD'));
-                    goto not_proyectoserviciosocial_show;
+                    return array (  '_controller' => 'AppBundle\\Controller\\PublicacioncontenidoController::newAction',  '_route' => 'publicacioncontenido_new',);
                 }
+                not_publicacioncontenido_new:
 
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'proyectoserviciosocial_show')), array (  '_controller' => 'AppBundle\\Controller\\ProyectoserviciosocialController::showAction',));
-            }
-            not_proyectoserviciosocial_show:
+                // publicacioncontenido_show
+                if (preg_match('#^/publicacioncontenido/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_publicacioncontenido_show;
+                    }
 
-            // proyectoserviciosocial_edit
-            if (preg_match('#^/proyectoserviciosocial/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                    goto not_proyectoserviciosocial_edit;
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'publicacioncontenido_show')), array (  '_controller' => 'AppBundle\\Controller\\PublicacioncontenidoController::showAction',));
                 }
+                not_publicacioncontenido_show:
 
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'proyectoserviciosocial_edit')), array (  '_controller' => 'AppBundle\\Controller\\ProyectoserviciosocialController::editAction',));
-            }
-            not_proyectoserviciosocial_edit:
+                // publicacioncontenido_edit
+                if (preg_match('#^/publicacioncontenido/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_publicacioncontenido_edit;
+                    }
 
-            // proyectoserviciosocial_delete
-            if (preg_match('#^/proyectoserviciosocial/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                if ($this->context->getMethod() != 'DELETE') {
-                    $allow[] = 'DELETE';
-                    goto not_proyectoserviciosocial_delete;
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'publicacioncontenido_edit')), array (  '_controller' => 'AppBundle\\Controller\\PublicacioncontenidoController::editAction',));
                 }
+                not_publicacioncontenido_edit:
 
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'proyectoserviciosocial_delete')), array (  '_controller' => 'AppBundle\\Controller\\ProyectoserviciosocialController::deleteAction',));
+                // publicacioncontenido_delete
+                if (preg_match('#^/publicacioncontenido/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'DELETE') {
+                        $allow[] = 'DELETE';
+                        goto not_publicacioncontenido_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'publicacioncontenido_delete')), array (  '_controller' => 'AppBundle\\Controller\\PublicacioncontenidoController::deleteAction',));
+                }
+                not_publicacioncontenido_delete:
+
             }
-            not_proyectoserviciosocial_delete:
 
         }
 

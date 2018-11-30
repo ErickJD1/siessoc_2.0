@@ -17,16 +17,16 @@
         <div class="row">
         {% for u in user %}
             
-                <div class="col-lg-4 mb-4">
-                    <div class="card h-100 text-center">
+                <div align="center"  class="col-lg-4 mb-4">
+                    <div  class="card h-100 text-center">
                         {#Panel de equipo#}
                         <div class="user-panel">
-                            <div class="pull-left image" >
+                            <div class="pull-center image" >
                                 {% set user_image = false %}
                                 {% if u.getProfilePicture() is not empty %}
                                     {% set user_image = 'images/profile/'~ u.getProfilePicture() %}
                                 {% endif %}
-                                <img  src="{{asset(user_image)}}" style="width:35%; height:150px; align:center !important; margin-top: 2%; border-radius: 400px " class="img-circle"></img>
+                                <img  src="{{asset(user_image)}}" style="width:150px; height:150px; align:center !important; margin-top: 2%; border-radius: 400px " class="img-circle"></img>
                             </div>
                         </div>
                         {#Fin de panel de equipo#}

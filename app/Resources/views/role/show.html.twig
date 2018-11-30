@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Role</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Nomrole</th>
+                <td>{{ role.nomrole }}</td>
+            </tr>
+            <tr>
+                <th>Descripcionrole</th>
+                <td>{{ role.descripcionrole }}</td>
+            </tr>
+            <tr>
+                <th>Estadorole</th>
+                <td>{% if role.estadorole %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Idrole</th>
+                <td>{{ role.idrole }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('role_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('role_edit', { 'id': role.idrole }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -4,6 +4,7 @@ app_publicacioncontenido:
 
 app_programarpublicacion:
     resource: "@AppBundle/Controller/ProgramarpublicacionController.php"
+
     type:     annotation
 
 app_actividad:

@@ -81,5 +81,206 @@ class Cheque
     private $idemisor;
 
 
-}
 
+    /**
+     * Set idexpbecario
+     *
+     * @param integer $idexpbecario
+     *
+     * @return Cheque
+     */
+    public function setIdexpbecario($idexpbecario)
+    {
+        $this->idexpbecario = $idexpbecario;
+
+        return $this;
+    }
+
+    /**
+     * Get idexpbecario
+     *
+     * @return integer
+     */
+    public function getIdexpbecario()
+    {
+        return $this->idexpbecario;
+    }
+
+    /**
+     * Set codigocheque
+     *
+     * @param string $codigocheque
+     *
+     * @return Cheque
+     */
+    public function setCodigocheque($codigocheque)
+    {
+        $this->codigocheque = $codigocheque;
+
+        return $this;
+    }
+
+    /**
+     * Get codigocheque
+     *
+     * @return string
+     */
+    public function getCodigocheque()
+    {
+        return $this->codigocheque;
+    }
+
+    /**
+     * Set montocheque
+     *
+     * @param float $montocheque
+     *
+     * @return Cheque
+     */
+    public function setMontocheque($montocheque)
+    {
+        $this->montocheque = $montocheque;
+
+        return $this;
+    }
+
+    /**
+     * Get montocheque
+     *
+     * @return float
+     */
+    public function getMontocheque()
+    {
+        return $this->montocheque;
+    }
+
+    /**
+     * Set destinatariocheque
+     *
+     * @param string $destinatariocheque
+     *
+     * @return Cheque
+     */
+    public function setDestinatariocheque($destinatariocheque)
+    {
+        $this->destinatariocheque = $destinatariocheque;
+
+        return $this;
+    }
+
+    /**
+     * Get destinatariocheque
+     *
+     * @return string
+     */
+    public function getDestinatariocheque()
+    {
+        return $this->destinatariocheque;
+    }
+
+    /**
+     * Set bancocheque
+     *
+     * @param string $bancocheque
+     *
+     * @return Cheque
+     */
+    public function setBancocheque($bancocheque)
+    {
+        $this->bancocheque = $bancocheque;
+
+        return $this;
+    }
+
+    /**
+     * Get bancocheque
+     *
+     * @return string
+     */
+    public function getBancocheque()
+    {
+        return $this->bancocheque;
+    }
+
+    /**
+     * Set fechaemisioncheque
+     *
+     * @param \DateTime $fechaemisioncheque
+     *
+     * @return Cheque
+     */
+    public function setFechaemisioncheque($fechaemisioncheque)
+    {
+        $this->fechaemisioncheque = $fechaemisioncheque;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaemisioncheque
+     *
+     * @return \DateTime
+     */
+    public function getFechaemisioncheque()
+    {
+        return $this->fechaemisioncheque;
+    }
+
+    /**
+     * Set estadocheque
+     *
+     * @param string $estadocheque
+     *
+     * @return Cheque
+     */
+    public function setEstadocheque($estadocheque)
+    {
+        $this->estadocheque = $estadocheque;
+
+        return $this;
+    }
+
+    /**
+     * Get estadocheque
+     *
+     * @return string
+     */
+    public function getEstadocheque()
+    {
+        return $this->estadocheque;
+    }
+
+    /**
+     * Get idcheque
+     *
+     * @return integer
+     */
+    public function getIdcheque()
+    {
+        return $this->idcheque;
+    }
+
+    /**
+     * Set idemisor
+     *
+     * @param \AppBundle\Entity\Emisor $idemisor
+     *
+     * @return Cheque
+     */
+    public function setIdemisor(\AppBundle\Entity\Emisor $idemisor = null)
+    {
+        $this->idemisor = $idemisor;
+
+        return $this;
+    }
+
+    /**
+     * Get idemisor
+     *
+     * @return \AppBundle\Entity\Emisor
+     */
+    public function getIdemisor()
+    {
+        return $this->idemisor;
+    }
+}

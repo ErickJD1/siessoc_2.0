@@ -54,7 +54,7 @@ class User extends BaseUser implements ThemeUser
     /**
      * @Assert\Image(
      *     maxSize="5M",
-     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg"},
+     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg",},
      *     maxWidth=700,
      *     maxHeight=700
      * )

@@ -40,8 +40,8 @@
                                 <ul class="nav nav-tabs">
                                     <li class="active"><a href="#activity{{user.id}}" data-toggle="tab">Account Details</a></li>
                                     <li><a href="#roles-and-permission{{user.id}}" data-toggle="tab">Roles and Permissions</a></li>
-                                    <li><a href="#change-password{{user.id}}" data-toggle="tab">Change Password</a></li>
-                                </ul>
+                                        {#                                    <li><a href="#change-password{{user.id}}" data-toggle="tab">Change Password</a></li>
+                                        #}                                </ul>
                                 <div class="tab-content">
                                     <div class="active tab-pane" id="activity{{user.id}}">
                                         <div class="form-horizontal">
@@ -85,13 +85,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-group">
-                                                <div class="col-sm-offset-2 col-sm-10">
-                                                    {{ form_start(delete_form) }}
-                                                         <input class="btn btn-danger " type="submit" value="Delete">
-                                                    {{ form_end(delete_form) }}
-                                                </div>
-                                            </div>
+
 
                                         </div>
                                     </div><!-- /.tab-pane -->
@@ -115,10 +109,10 @@
                                         {% endif %}
                                     </div>
 
-                                    <div class="tab-pane" id="change-password{{user.id}}">
+                                    {#<div class="tab-pane" id="change-password{{user.id}}">
                                         <p class="text-aqua">Please click the link below to change your current password</p>
                                         <div><a href="{{ path('fos_user_change_password') }}" class="btn btn-default"><i class="fa fa-fw fa-lock"></i>Change Password</a></div>
-                                    </div>
+                                    </div>#}
 
                                 </div><!-- /.tab-content -->
                             </div><!-- /.nav-tabs-custom -->
@@ -127,9 +121,16 @@
 
                     <!--modal-->
                 </div>
-
+                
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                    <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        {{ form_start(delete_form) }}
+                        <input class="btn btn-danger " type="submit" value="Delete">
+                        {{ form_end(delete_form) }}
+                    </div>
+                </div>
                 </div>
             </div>
         </div>

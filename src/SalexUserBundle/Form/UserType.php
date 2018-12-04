@@ -8,7 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Vich\UploaderBundle\Form\Type\VichImageType;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 use FOS\UserBundle\Util\LegacyFormHelper;
 use AppBundle\Entity\Role;
 use Doctrine\ORM\EntityRepository;
@@ -29,13 +29,13 @@ class UserType extends AbstractType {
         ->add('lastName')
         ->add('lastName')
         ->add('description')
-        ->add('roles', ChoiceType::class, array(
+        ->add('roles', EntityType::class, array(
         'required' => true,
-        'choices'=>array('AppBundle:Role'),
         'placeholder' => 'Select a role',
-        'multiple' => true,
-        
+        'class' => 'AppBundle:Role',
+        'multiple' => 'true'
         ))
+        
         /* ->add('plainPassword', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\RepeatedType'), array(
           'type' => LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\PasswordType'),
           'options' => array('translation_domain' => 'FOSUserBundle'),
@@ -46,12 +46,9 @@ class UserType extends AbstractType {
         /*  ->add('createdAt', DateType::class, array(
           'data' =>( new \DateTime())
           )) */
-        ->add('profile_picture_file', VichImageType::class, array(
+        ->add('profile_picture_file', VichFileType::class, [
             'required' => false,
-            'label' => 'Profile Picture',
-            'allow_delete' => true,
-            'download_link' => true,
-                )
+            'download_link' => false]
         )
         ;
     }

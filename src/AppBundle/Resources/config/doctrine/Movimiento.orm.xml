@@ -8,7 +8,7 @@
     <id name="idmov" type="integer" column="IDMOV">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="descripcionmov" type="string" column="DESCRIPCIONMOV" length="250" nullable="true">
+    <field name="comprobante" type="string" column="COMPROBANTE" length="250" nullable="true">
       <options>
         <option name="fixed"/>
       </options>

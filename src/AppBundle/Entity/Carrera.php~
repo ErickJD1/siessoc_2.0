@@ -63,5 +63,134 @@ class Carrera
     private $iduniversidad;
 
 
-}
 
+    /**
+     * Set nomcarrera
+     *
+     * @param string $nomcarrera
+     *
+     * @return Carrera
+     */
+    public function setNomcarrera($nomcarrera)
+    {
+        $this->nomcarrera = $nomcarrera;
+
+        return $this;
+    }
+
+    /**
+     * Get nomcarrera
+     *
+     * @return string
+     */
+    public function getNomcarrera()
+    {
+        return $this->nomcarrera;
+    }
+
+    /**
+     * Set descripcioncarrera
+     *
+     * @param string $descripcioncarrera
+     *
+     * @return Carrera
+     */
+    public function setDescripcioncarrera($descripcioncarrera)
+    {
+        $this->descripcioncarrera = $descripcioncarrera;
+
+        return $this;
+    }
+
+    /**
+     * Get descripcioncarrera
+     *
+     * @return string
+     */
+    public function getDescripcioncarrera()
+    {
+        return $this->descripcioncarrera;
+    }
+
+    /**
+     * Set estadocarrera
+     *
+     * @param boolean $estadocarrera
+     *
+     * @return Carrera
+     */
+    public function setEstadocarrera($estadocarrera)
+    {
+        $this->estadocarrera = $estadocarrera;
+
+        return $this;
+    }
+
+    /**
+     * Get estadocarrera
+     *
+     * @return boolean
+     */
+    public function getEstadocarrera()
+    {
+        return $this->estadocarrera;
+    }
+
+    /**
+     * Get idcarrera
+     *
+     * @return integer
+     */
+    public function getIdcarrera()
+    {
+        return $this->idcarrera;
+    }
+
+    /**
+     * Set iduniversidad
+     *
+     * @param \AppBundle\Entity\Universidad $iduniversidad
+     *
+     * @return Carrera
+     */
+    public function setIduniversidad(\AppBundle\Entity\Universidad $iduniversidad = null)
+    {
+        $this->iduniversidad = $iduniversidad;
+
+        return $this;
+    }
+
+    /**
+     * Get iduniversidad
+     *
+     * @return \AppBundle\Entity\Universidad
+     */
+    public function getIduniversidad()
+    {
+        return $this->iduniversidad;
+    }
+
+    /**
+     * Set idmateria
+     *
+     * @param \AppBundle\Entity\Materia $idmateria
+     *
+     * @return Carrera
+     */
+    public function setIdmateria(\AppBundle\Entity\Materia $idmateria = null)
+    {
+        $this->idmateria = $idmateria;
+
+        return $this;
+    }
+
+    /**
+     * Get idmateria
+     *
+     * @return \AppBundle\Entity\Materia
+     */
+    public function getIdmateria()
+    {
+        return $this->idmateria;
+    }
+}

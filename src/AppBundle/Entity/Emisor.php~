@@ -36,5 +36,62 @@ class Emisor
     private $estadoemisor;
 
 
-}
 
+    /**
+     * Set nombreemisor
+     *
+     * @param string $nombreemisor
+     *
+     * @return Emisor
+     */
+    public function setNombreemisor($nombreemisor)
+    {
+        $this->nombreemisor = $nombreemisor;
+
+        return $this;
+    }
+
+    /**
+     * Get nombreemisor
+     *
+     * @return string
+     */
+    public function getNombreemisor()
+    {
+        return $this->nombreemisor;
+    }
+
+    /**
+     * Set estadoemisor
+     *
+     * @param boolean $estadoemisor
+     *
+     * @return Emisor
+     */
+    public function setEstadoemisor($estadoemisor)
+    {
+        $this->estadoemisor = $estadoemisor;
+
+        return $this;
+    }
+
+    /**
+     * Get estadoemisor
+     *
+     * @return boolean
+     */
+    public function getEstadoemisor()
+    {
+        return $this->estadoemisor;
+    }
+
+    /**
+     * Get idemisor
+     *
+     * @return integer
+     */
+    public function getIdemisor()
+    {
+        return $this->idemisor;
+    }
+}

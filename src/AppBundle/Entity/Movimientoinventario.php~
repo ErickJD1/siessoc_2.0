@@ -36,5 +36,62 @@ class Movimientoinventario
     private $estadomovinv;
 
 
-}
 
+    /**
+     * Set nombremovinv
+     *
+     * @param string $nombremovinv
+     *
+     * @return Movimientoinventario
+     */
+    public function setNombremovinv($nombremovinv)
+    {
+        $this->nombremovinv = $nombremovinv;
+
+        return $this;
+    }
+
+    /**
+     * Get nombremovinv
+     *
+     * @return string
+     */
+    public function getNombremovinv()
+    {
+        return $this->nombremovinv;
+    }
+
+    /**
+     * Set estadomovinv
+     *
+     * @param boolean $estadomovinv
+     *
+     * @return Movimientoinventario
+     */
+    public function setEstadomovinv($estadomovinv)
+    {
+        $this->estadomovinv = $estadomovinv;
+
+        return $this;
+    }
+
+    /**
+     * Get estadomovinv
+     *
+     * @return boolean
+     */
+    public function getEstadomovinv()
+    {
+        return $this->estadomovinv;
+    }
+
+    /**
+     * Get idmovinv
+     *
+     * @return integer
+     */
+    public function getIdmovinv()
+    {
+        return $this->idmovinv;
+    }
+}

@@ -65,7 +65,36 @@ class Movimiento
     private $idcuenta;
 
 
+    /**
+     * @var \idusuario
+     *
+     * @ORM\ManyToOne(targetEntity="Users")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idusuario", referencedColumnName="idusuario")
+     * })
+     */
+    private $idusuario;
+    
+     /**
+     * Get idusuario
+     *
+     * @return string
+     */
+    function getIdusuario() {
+        return $this->idusuario;
+    }
+  /**
+     * Set idusuario
+     *
+     * @param string $idusuario
+     *
+     * @return Movimiento
+     */
+    function setIdusuario($idusuario) {
+        $this->idusuario = $idusuario;
+    }
 
+    
     /**
      * Set descripcionmov
      *

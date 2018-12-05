@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
-
+use AppBundle\Repository\MovimientoRepository;
 /**
  * Movimiento controller.
  *
@@ -25,7 +25,8 @@ class MovimientoController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $movimientos = $em->getRepository('AppBundle:Movimiento')->findAll();
+        $movimientos = $em->getRepository('AppBundle:Movimiento')->allMovimiento();
+        
 
         return $this->render('movimiento/Movimientoindex.html.twig', array(
             'movimientos' => $movimientos,
@@ -42,6 +43,7 @@ class MovimientoController extends Controller
     {
         $movimiento = new Movimiento();
         $form = $this->createForm('AppBundle\Form\MovimientoType', $movimiento);
+        $movimiento->setIdusuario($this->getUser()->getId());
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

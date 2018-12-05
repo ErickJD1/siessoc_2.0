@@ -59,7 +59,7 @@ class UserController extends Controller {
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request) {
-       
+
         $dispatcher = $this->get('event_dispatcher');
         $user = new User();
         $password = $user->claveAleatoria();
@@ -72,7 +72,7 @@ class UserController extends Controller {
             'data' => $role,
             'placeholder' => 'Select a role',
             'class' => 'AppBundle:Role',
-            'multiple'=>'true'
+            'multiple' => 'true'
         ));
         $form->handleRequest($request);
 
@@ -119,18 +119,12 @@ class UserController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $deleteForm = $this->createDeleteForm($user);
         $editForm = $this->createForm('SalexUserBundle\Form\UserType', $user);
-        $role = $em->getRepository('SalexUserBundle:User')->findById($user->getId());
-        $editForm->add('roles', EntityType::class, array(
-            'required' => true,
-            'data' => $role,
-            'placeholder' => 'Select a role',
-            'class' => 'AppBundle:Role',
-            'multiple'=>'true'
-        ));
+        $myrole = $user->getRoles();
+
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-             /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
+            /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
             $userManager = $this->get('fos_user.user_manager');
 
             $event = new FormEvent($editForm, $request);
@@ -138,7 +132,7 @@ class UserController extends Controller {
             $user->setUpdateAt(new \DateTime());
             $userManager->updateUser($user);
 
-            
+
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success', 'El usuario fue modificado con exito!');
             return $this->redirectToRoute('user_index', array('id' => $user->getId()));

@@ -13,6 +13,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 /**
  * User controller.
@@ -69,7 +70,7 @@ class UserController extends Controller {
         $form = $this->createForm('SalexUserBundle\Form\UserType', $user);
         $form->add('roles', EntityType::class, array(
             'required' => true,
-            'data' => $role,
+            //'data' => $role,
             'placeholder' => 'Select a role',
             'class' => 'AppBundle:Role',
             'multiple' => 'true'
@@ -120,6 +121,19 @@ class UserController extends Controller {
         $deleteForm = $this->createDeleteForm($user);
         $editForm = $this->createForm('SalexUserBundle\Form\UserType', $user);
         $myrole = $user->getRoles();
+        $roles = array();
+        foreach ($myrole as $rol) {
+            $roles[] = ($rol);
+        }
+
+        $editForm->add('roles', EntityType::class, array(
+            'required' => false,
+            'placeholder' => 'Select a role',
+            'class' => 'AppBundle:Role',
+            //'data' => array($myrole),
+            'preferred_choices' => array($myrole),
+            'multiple' => 'true'
+        ));
 
         $editForm->handleRequest($request);
 
@@ -135,7 +149,7 @@ class UserController extends Controller {
 
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success', 'El usuario fue modificado con exito!');
-            return $this->redirectToRoute('user_index', array('id' => $user->getId()));
+            return $this->redirectToRoute('user_index');
         }
 
 

@@ -63,5 +63,134 @@ class Inventario
     private $idinsumo;
 
 
-}
 
+    /**
+     * Set idexpbecario
+     *
+     * @param integer $idexpbecario
+     *
+     * @return Inventario
+     */
+    public function setIdexpbecario($idexpbecario)
+    {
+        $this->idexpbecario = $idexpbecario;
+
+        return $this;
+    }
+
+    /**
+     * Get idexpbecario
+     *
+     * @return integer
+     */
+    public function getIdexpbecario()
+    {
+        return $this->idexpbecario;
+    }
+
+    /**
+     * Set cantidadinventario
+     *
+     * @param integer $cantidadinventario
+     *
+     * @return Inventario
+     */
+    public function setCantidadinventario($cantidadinventario)
+    {
+        $this->cantidadinventario = $cantidadinventario;
+
+        return $this;
+    }
+
+    /**
+     * Get cantidadinventario
+     *
+     * @return integer
+     */
+    public function getCantidadinventario()
+    {
+        return $this->cantidadinventario;
+    }
+
+    /**
+     * Set fechainventario
+     *
+     * @param \DateTime $fechainventario
+     *
+     * @return Inventario
+     */
+    public function setFechainventario($fechainventario)
+    {
+        $this->fechainventario = $fechainventario;
+
+        return $this;
+    }
+
+    /**
+     * Get fechainventario
+     *
+     * @return \DateTime
+     */
+    public function getFechainventario()
+    {
+        return $this->fechainventario;
+    }
+
+    /**
+     * Get idinventario
+     *
+     * @return integer
+     */
+    public function getIdinventario()
+    {
+        return $this->idinventario;
+    }
+
+    /**
+     * Set idinsumo
+     *
+     * @param \AppBundle\Entity\Insumo $idinsumo
+     *
+     * @return Inventario
+     */
+    public function setIdinsumo(\AppBundle\Entity\Insumo $idinsumo = null)
+    {
+        $this->idinsumo = $idinsumo;
+
+        return $this;
+    }
+
+    /**
+     * Get idinsumo
+     *
+     * @return \AppBundle\Entity\Insumo
+     */
+    public function getIdinsumo()
+    {
+        return $this->idinsumo;
+    }
+
+    /**
+     * Set idmovinv
+     *
+     * @param \AppBundle\Entity\Movimientoinventario $idmovinv
+     *
+     * @return Inventario
+     */
+    public function setIdmovinv(\AppBundle\Entity\Movimientoinventario $idmovinv = null)
+    {
+        $this->idmovinv = $idmovinv;
+
+        return $this;
+    }
+
+    /**
+     * Get idmovinv
+     *
+     * @return \AppBundle\Entity\Movimientoinventario
+     */
+    public function getIdmovinv()
+    {
+        return $this->idmovinv;
+    }
+}

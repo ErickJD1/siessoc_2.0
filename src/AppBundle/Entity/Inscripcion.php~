@@ -64,5 +64,158 @@ class Inscripcion
     private $estadoinscripcion;
 
 
-}
 
+    /**
+     * Set idexpbecario
+     *
+     * @param integer $idexpbecario
+     *
+     * @return Inscripcion
+     */
+    public function setIdexpbecario($idexpbecario)
+    {
+        $this->idexpbecario = $idexpbecario;
+
+        return $this;
+    }
+
+    /**
+     * Get idexpbecario
+     *
+     * @return integer
+     */
+    public function getIdexpbecario()
+    {
+        return $this->idexpbecario;
+    }
+
+    /**
+     * Set anioinscripcion
+     *
+     * @param \DateTime $anioinscripcion
+     *
+     * @return Inscripcion
+     */
+    public function setAnioinscripcion($anioinscripcion)
+    {
+        $this->anioinscripcion = $anioinscripcion;
+
+        return $this;
+    }
+
+    /**
+     * Get anioinscripcion
+     *
+     * @return \DateTime
+     */
+    public function getAnioinscripcion()
+    {
+        return $this->anioinscripcion;
+    }
+
+    /**
+     * Set numcicloinscripcion
+     *
+     * @param integer $numcicloinscripcion
+     *
+     * @return Inscripcion
+     */
+    public function setNumcicloinscripcion($numcicloinscripcion)
+    {
+        $this->numcicloinscripcion = $numcicloinscripcion;
+
+        return $this;
+    }
+
+    /**
+     * Get numcicloinscripcion
+     *
+     * @return integer
+     */
+    public function getNumcicloinscripcion()
+    {
+        return $this->numcicloinscripcion;
+    }
+
+    /**
+     * Set montomatriculainscripcion
+     *
+     * @param string $montomatriculainscripcion
+     *
+     * @return Inscripcion
+     */
+    public function setMontomatriculainscripcion($montomatriculainscripcion)
+    {
+        $this->montomatriculainscripcion = $montomatriculainscripcion;
+
+        return $this;
+    }
+
+    /**
+     * Get montomatriculainscripcion
+     *
+     * @return string
+     */
+    public function getMontomatriculainscripcion()
+    {
+        return $this->montomatriculainscripcion;
+    }
+
+    /**
+     * Set montomensualidad
+     *
+     * @param string $montomensualidad
+     *
+     * @return Inscripcion
+     */
+    public function setMontomensualidad($montomensualidad)
+    {
+        $this->montomensualidad = $montomensualidad;
+
+        return $this;
+    }
+
+    /**
+     * Get montomensualidad
+     *
+     * @return string
+     */
+    public function getMontomensualidad()
+    {
+        return $this->montomensualidad;
+    }
+
+    /**
+     * Set estadoinscripcion
+     *
+     * @param boolean $estadoinscripcion
+     *
+     * @return Inscripcion
+     */
+    public function setEstadoinscripcion($estadoinscripcion)
+    {
+        $this->estadoinscripcion = $estadoinscripcion;
+
+        return $this;
+    }
+
+    /**
+     * Get estadoinscripcion
+     *
+     * @return boolean
+     */
+    public function getEstadoinscripcion()
+    {
+        return $this->estadoinscripcion;
+    }
+
+    /**
+     * Get idinscripcion
+     *
+     * @return integer
+     */
+    public function getIdinscripcion()
+    {
+        return $this->idinscripcion;
+    }
+}

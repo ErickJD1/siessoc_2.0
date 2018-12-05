@@ -2230,7 +2230,7 @@
                 "homepage": "https://github.com/KnpLabs/KnpMenuBundle/contributors"
             }
         ],
-        "description": "This bundle provides an integration of the KnpMenu library",
+        "description": "This bundle provides an integration of the KnpPaginator library",
         "keywords": [
             "menu"
         ]
@@ -4118,8 +4118,8 @@
     },
     {
         "name": "whiteoctober/breadcrumbs-bundle",
-        "version": "1.2.2",
-        "version_normalized": "1.2.2.0",
+        "version": "1.8.5",
+        "version_normalized": "1.8.5.0",
         "target-dir": "WhiteOctober/BreadcrumbsBundle",
         "source": {
             "type": "git",

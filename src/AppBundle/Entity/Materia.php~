@@ -74,5 +74,182 @@ class Materia
     private $idinscripcion;
 
 
-}
 
+    /**
+     * Set nombremateria
+     *
+     * @param string $nombremateria
+     *
+     * @return Materia
+     */
+    public function setNombremateria($nombremateria)
+    {
+        $this->nombremateria = $nombremateria;
+
+        return $this;
+    }
+
+    /**
+     * Get nombremateria
+     *
+     * @return string
+     */
+    public function getNombremateria()
+    {
+        return $this->nombremateria;
+    }
+
+    /**
+     * Set unidadesvalorativasmateria
+     *
+     * @param integer $unidadesvalorativasmateria
+     *
+     * @return Materia
+     */
+    public function setUnidadesvalorativasmateria($unidadesvalorativasmateria)
+    {
+        $this->unidadesvalorativasmateria = $unidadesvalorativasmateria;
+
+        return $this;
+    }
+
+    /**
+     * Get unidadesvalorativasmateria
+     *
+     * @return integer
+     */
+    public function getUnidadesvalorativasmateria()
+    {
+        return $this->unidadesvalorativasmateria;
+    }
+
+    /**
+     * Set notamateria
+     *
+     * @param float $notamateria
+     *
+     * @return Materia
+     */
+    public function setNotamateria($notamateria)
+    {
+        $this->notamateria = $notamateria;
+
+        return $this;
+    }
+
+    /**
+     * Get notamateria
+     *
+     * @return float
+     */
+    public function getNotamateria()
+    {
+        return $this->notamateria;
+    }
+
+    /**
+     * Set aniomateria
+     *
+     * @param \DateTime $aniomateria
+     *
+     * @return Materia
+     */
+    public function setAniomateria($aniomateria)
+    {
+        $this->aniomateria = $aniomateria;
+
+        return $this;
+    }
+
+    /**
+     * Get aniomateria
+     *
+     * @return \DateTime
+     */
+    public function getAniomateria()
+    {
+        return $this->aniomateria;
+    }
+
+    /**
+     * Set numciclomateria
+     *
+     * @param integer $numciclomateria
+     *
+     * @return Materia
+     */
+    public function setNumciclomateria($numciclomateria)
+    {
+        $this->numciclomateria = $numciclomateria;
+
+        return $this;
+    }
+
+    /**
+     * Get numciclomateria
+     *
+     * @return integer
+     */
+    public function getNumciclomateria()
+    {
+        return $this->numciclomateria;
+    }
+
+    /**
+     * Set estadomateria
+     *
+     * @param string $estadomateria
+     *
+     * @return Materia
+     */
+    public function setEstadomateria($estadomateria)
+    {
+        $this->estadomateria = $estadomateria;
+
+        return $this;
+    }
+
+    /**
+     * Get estadomateria
+     *
+     * @return string
+     */
+    public function getEstadomateria()
+    {
+        return $this->estadomateria;
+    }
+
+    /**
+     * Get idmateria
+     *
+     * @return integer
+     */
+    public function getIdmateria()
+    {
+        return $this->idmateria;
+    }
+
+    /**
+     * Set idinscripcion
+     *
+     * @param \AppBundle\Entity\Inscripcion $idinscripcion
+     *
+     * @return Materia
+     */
+    public function setIdinscripcion(\AppBundle\Entity\Inscripcion $idinscripcion = null)
+    {
+        $this->idinscripcion = $idinscripcion;
+
+        return $this;
+    }
+
+    /**
+     * Get idinscripcion
+     *
+     * @return \AppBundle\Entity\Inscripcion
+     */
+    public function getIdinscripcion()
+    {
+        return $this->idinscripcion;
+    }
+}

@@ -5,12 +5,16 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
+use Carbon\Carbon;
 
 /**
  * Movimiento
  *
  * @ORM\Table(name="movimiento", indexes={@ORM\Index(name="FK_RELATIONSHIP_13", columns={"IDTIPOMOV"}), @ORM\Index(name="FK_RELATIONSHIP_15", columns={"IDCUENTA"})})
  * @ORM\Entity
+ * @Vich\Uploadable
  */
 class Movimiento
 {
@@ -63,9 +67,68 @@ class Movimiento
      * })
      */
     private $idcuenta;
+    
+    /**
+     * @Assert\Image(
+     *     maxSize="5M",
+     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg","application/pdf","application/xlsx","application/doc"},
+     *     maxWidth=700,
+     *     maxHeight=700
+     * )
+     * @Vich\UploadableField(mapping="document_file", fileNameProperty="comprobante")
+     * @var [type]
+     */
+    private $comprobante_file;
+    
+    /**
+     * @ORM\Column(name="comprobante", type="string", nullable=true)
+     * @var string
+     */
+    private $comprobante;
 
+    
+        /**
+     * Gets the value of comprobante_file.
+     *
+     * @return string
+     */
+    public function getComprobanteFile()
+    {
+        return $this->comprobante_file;
+    }
 
     /**
+     * Sets the value of comprobante_file.
+     *
+     * @param File $comprobante_file
+     *
+     * @return self
+     */
+    public function setComprobanteFile(File $comprobante_file)
+    {
+        $this->profile_picture_file = $comprobante_file;
+
+        // Only change the updated af if the file is really uploaded to avoid database updates.
+        // This is needed when the file should be set when loading the entity.
+        if ($this->profile_picture_file instanceof UploadedFile) {
+            $this->setUpdateAt(new Carbon());
+        }
+
+        return $this;
+    }
+
+    
+    /**
+     * Get comprobante
+     *
+     * @return string
+     */
+    function getComprobante() {
+        return $this->comprobante;
+    }
+
+    /**
+<<<<<<< HEAD
      * @var \idusuario
      *
      * @ORM\ManyToOne(targetEntity="Users")
@@ -92,6 +155,16 @@ class Movimiento
      */
     function setIdusuario($idusuario) {
         $this->idusuario = $idusuario;
+=======
+     * Set comprobante
+     *
+     * @param string $comprobante
+     *
+     * @return Movimiento
+     */
+    function setComprobante($comprobante) {
+        $this->comprobante = $comprobante;
+>>>>>>> master
     }
 
     

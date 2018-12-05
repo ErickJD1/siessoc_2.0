@@ -8,29 +8,21 @@
 				</div>
 				<div class="modal-body">
 
-  <div class="list-group">
+  <div class="row" align="center">
     <!--modal-->
 
-    <h4>ID</h4>
-    <p class="list-group-item">{{  cuenta.idcuenta }}</p>
-    <h4>Numero De Cuenta</h4>
-    <p class="list-group-item">{{  cuenta.numcuenta }}</p>
+    <h4>Numero Cuenta</h4>
+    <p class="form-group"><strong>{{  cuenta.numcuenta }}</strong></p>
     <h4>Nombre Cuenta</h4>
-    <p class="list-group-item">{{  cuenta.nomcuenta }}</p>
-    <h4>Descripcion</h4>
-    <p class="list-group-item">{{  cuenta.descripcioncuenta }}</p>
-    <h4>Fecha Creacion</h4>
-    <p class="list-group-item">{{  cuenta.fechaapertura|date('Y-m-d H:i:s') }}</p>
-    <h4>Saldo Inicial</h4>
-    <p class="list-group-item">{{  cuenta.saldocuenta }}</p>
+    <p class="form-group"><strong>{{  cuenta.nomcuenta }}</strong></p>
     <h4>Estado</h4>
-    <p class="list-group-item">{% if cuenta.estadocuenta==1  %} Activa {% else %} Inactiva {% endif %}</p>
+    <p class="form-group"><strong>{% if cuenta.estadocuenta==1  %} Activa {% else %} Inactiva {% endif %}</strong></p>
     </div>
 
-    <div class="modal-footer">
-    <div style="float:left">
+    <div class="modal-footer" al>
+    <div style="float:right">
     		{{ form_start(delete_form) }}
-    		<input type="submit" class="btn btn-danger" value="Delete">
+    		<input type="submit" class="btn btn-danger" style="margin-left:1px" value="Delete">
     		{{ form_end(delete_form) }}
     </div>
     <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>

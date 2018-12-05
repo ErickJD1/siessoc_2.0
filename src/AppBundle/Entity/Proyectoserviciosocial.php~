@@ -57,5 +57,139 @@ class Proyectoserviciosocial
     private $estadoproyecto;
 
 
-}
 
+    /**
+     * Set nombreproyecto
+     *
+     * @param string $nombreproyecto
+     *
+     * @return Proyectoserviciosocial
+     */
+    public function setNombreproyecto($nombreproyecto)
+    {
+        $this->nombreproyecto = $nombreproyecto;
+
+        return $this;
+    }
+
+    /**
+     * Get nombreproyecto
+     *
+     * @return string
+     */
+    public function getNombreproyecto()
+    {
+        return $this->nombreproyecto;
+    }
+
+    /**
+     * Set descripcionproyecto
+     *
+     * @param string $descripcionproyecto
+     *
+     * @return Proyectoserviciosocial
+     */
+    public function setDescripcionproyecto($descripcionproyecto)
+    {
+        $this->descripcionproyecto = $descripcionproyecto;
+
+        return $this;
+    }
+
+    /**
+     * Get descripcionproyecto
+     *
+     * @return string
+     */
+    public function getDescripcionproyecto()
+    {
+        return $this->descripcionproyecto;
+    }
+
+    /**
+     * Set encargadoproyecto
+     *
+     * @param string $encargadoproyecto
+     *
+     * @return Proyectoserviciosocial
+     */
+    public function setEncargadoproyecto($encargadoproyecto)
+    {
+        $this->encargadoproyecto = $encargadoproyecto;
+
+        return $this;
+    }
+
+    /**
+     * Get encargadoproyecto
+     *
+     * @return string
+     */
+    public function getEncargadoproyecto()
+    {
+        return $this->encargadoproyecto;
+    }
+
+    /**
+     * Set lugarproyecto
+     *
+     * @param string $lugarproyecto
+     *
+     * @return Proyectoserviciosocial
+     */
+    public function setLugarproyecto($lugarproyecto)
+    {
+        $this->lugarproyecto = $lugarproyecto;
+
+        return $this;
+    }
+
+    /**
+     * Get lugarproyecto
+     *
+     * @return string
+     */
+    public function getLugarproyecto()
+    {
+        return $this->lugarproyecto;
+    }
+
+    /**
+     * Set estadoproyecto
+     *
+     * @param boolean $estadoproyecto
+     *
+     * @return Proyectoserviciosocial
+     */
+    public function setEstadoproyecto($estadoproyecto)
+    {
+        $this->estadoproyecto = $estadoproyecto;
+
+        return $this;
+    }
+
+    /**
+     * Get estadoproyecto
+     *
+     * @return boolean
+     */
+    public function getEstadoproyecto()
+    {
+        return $this->estadoproyecto;
+    }
+
+    /**
+     * Get idproyectservisocial
+     *
+     * @return integer
+     */
+    public function getIdproyectservisocial()
+    {
+        return $this->idproyectservisocial;
+    }
+    
+    public function __toString(){
+        
+        return $this->getNombreproyecto();
+    }
+}

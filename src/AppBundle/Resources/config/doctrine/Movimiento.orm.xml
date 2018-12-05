@@ -25,5 +25,7 @@
         <join-column name="IDTIPOMOV" referenced-column-name="IDTIPOMOV"/>
       </join-columns>
     </many-to-one>
+    <field name="idusuario" type="integer" column="IDUSUARIO" precision="20" scale="0" nullable="true"/>
+    
   </entity>
 </doctrine-mapping>

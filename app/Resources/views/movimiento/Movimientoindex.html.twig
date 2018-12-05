@@ -22,6 +22,7 @@
                 <th>Estado</th>
                 <th>Tipo Cuenta</th>
                 <th>Tipo De Movimiento</th>
+                <th>Usuario</th>
                 <th>Accion</th>
             </tr>
         </thead>
@@ -32,9 +33,10 @@
                 <td>{{ movimiento.idmov }}</td>
                 <td>{{ movimiento.descripcionmov }}</td>
                 <td>{{ movimiento.monto }}</td>
-                <td>{% if movimiento.estadomov %}Yes{% else %}No{% endif %}</td>
+                <td>{% if movimiento.estadomov %}Concluido{% else %}Pendiente{% endif %}</td>
                 <td>{{ movimiento.idcuenta }}</td>
                 <td>{{ movimiento.idtipomov }}</td>
+                <td>{{ movimiento.idusuario }}</td>
                 <td>
                   <div style="float:left;"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#VerMovi{{ movimiento.idmov }}"><i class="fa fa-eye" style="font-size: 20px"></i></button>
                           {{ render(controller('AppBundle:Movimiento:show', { 'id' : movimiento.idmov } )) }}

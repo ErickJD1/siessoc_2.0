@@ -16,7 +16,7 @@ class TipomovimientoType extends AbstractType
     {
         $builder->add('nombretipo',null,array('label'=>'Nombre Del Movimiento'))
                 ->add('descripciontipomov',TextareaType::class,array('label'=>'Descripcion Del Movimiento'))
-                ->add('estadotipomov',null,array('label'=>'Estado Del Movimiento')) ;
+                ->add('estadotipomov',null,array('label'=>'Estado Del Movimiento','data'=>TRUE)) ;
     }
 
     /**

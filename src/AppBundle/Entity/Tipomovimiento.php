@@ -17,7 +17,6 @@ class Tipomovimiento
 {
     /**
      * @var integer
-     * @Assert\NotBlank()
      * @ORM\Column(name="IDTIPOMOV", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")

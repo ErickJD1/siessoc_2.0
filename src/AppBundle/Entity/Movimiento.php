@@ -128,6 +128,34 @@ class Movimiento
     }
 
     /**
+<<<<<<< HEAD
+     * @var \idusuario
+     *
+     * @ORM\ManyToOne(targetEntity="Users")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idusuario", referencedColumnName="idusuario")
+     * })
+     */
+    private $idusuario;
+    
+     /**
+     * Get idusuario
+     *
+     * @return string
+     */
+    function getIdusuario() {
+        return $this->idusuario;
+    }
+  /**
+     * Set idusuario
+     *
+     * @param string $idusuario
+     *
+     * @return Movimiento
+     */
+    function setIdusuario($idusuario) {
+        $this->idusuario = $idusuario;
+=======
      * Set comprobante
      *
      * @param string $comprobante
@@ -136,6 +164,7 @@ class Movimiento
      */
     function setComprobante($comprobante) {
         $this->comprobante = $comprobante;
+>>>>>>> master
     }
 
     

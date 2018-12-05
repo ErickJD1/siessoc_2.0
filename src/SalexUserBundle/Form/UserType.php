@@ -28,7 +28,7 @@ class UserType extends AbstractType {
         ->add('firstName')
         ->add('lastName')
         ->add('lastName')
-        ->add('description')
+        ->add('description', TextareaType::class)
         ->add('roles', EntityType::class, array(
         'required' => true,
         'placeholder' => 'Select a role',

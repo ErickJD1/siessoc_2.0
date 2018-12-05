@@ -44,7 +44,6 @@ class Cuenta
 
     /**
      * @var \DateTime
-     * @Assert\NotBlank()
      * @ORM\Column(name="FECHAAPERTURA", type="datetime", nullable=true)
      * @Assert\Type("\DateTime")
      */

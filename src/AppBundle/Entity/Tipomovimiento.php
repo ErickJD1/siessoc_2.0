@@ -39,7 +39,6 @@ class Tipomovimiento
 
     /**
      * @var boolean
-     * @Assert\NotBlank()
      * @ORM\Column(name="ESTADOTIPOMOV", type="boolean", nullable=true)
      */
     private $estadotipomov;

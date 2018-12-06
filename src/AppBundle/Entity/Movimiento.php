@@ -155,7 +155,8 @@ class Movimiento
      */
     function setIdusuario($idusuario) {
         $this->idusuario = $idusuario;
-=======
+    }
+   /**
      * Set comprobante
      *
      * @param string $comprobante
@@ -164,9 +165,9 @@ class Movimiento
      */
     function setComprobante($comprobante) {
         $this->comprobante = $comprobante;
->>>>>>> master
-    }
 
+    }
+    
     
     /**
      * Set descripcionmov

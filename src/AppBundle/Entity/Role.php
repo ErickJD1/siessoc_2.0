@@ -134,4 +134,18 @@ class Role
         return $this->getDescripcionrole();
     }
     
+
+    /**
+     * Set idrole
+     *
+     * @param string $idrole
+     *
+     * @return Role
+     */
+    public function setIdrole($idrole)
+    {
+        $this->idrole = $idrole;
+    
+        return $this;
+    }
 }

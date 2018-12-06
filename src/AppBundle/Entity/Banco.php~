@@ -33,7 +33,6 @@ class Banco
 
     /**
      * @var boolean
-     * @Assert\NotBlank()
      * @ORM\Column(name="ESTADOBANCO", type="boolean", nullable=true)
      */
     private $estadobanco;

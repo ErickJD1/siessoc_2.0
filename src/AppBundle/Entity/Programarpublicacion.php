@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Programarpublicacion
  *
  * @ORM\Table(name="programarpublicacion", indexes={@ORM\Index(name="FK_RELATIONSHIP_12", columns={"IDCONTENIDO"})})
- * @ORM\Entity
+ * * @ORM\Entity
  */
 class Programarpublicacion
 {
@@ -49,7 +49,7 @@ class Programarpublicacion
      *
      * @ORM\ManyToOne(targetEntity="Publicacioncontenido")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="IDCONTENIDO", referencedColumnName="IDCONTENIDO")
+     * @ORM\JoinColumn(name="IDCONTENIDO", referencedColumnName="IDCONTENIDO")
      * })
      * @Assert\NotBlank()
      */
@@ -160,7 +160,11 @@ class Programarpublicacion
      */
     public function getIdcontenido()
     {
-        return $this->idcontenido;
+        return $this->idpublicacion;
     }  
+    
+       public function __toString(){
+          return $this->getIdpublicacion();
+    }
     
 }

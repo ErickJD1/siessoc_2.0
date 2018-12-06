@@ -43,7 +43,7 @@ class MovimientoController extends Controller
     {
         $movimiento = new Movimiento();
         $form = $this->createForm('AppBundle\Form\MovimientoType', $movimiento);
-        $movimiento->setIdusuario($this->getUser()->getId());
+        $movimiento->setIdusuario($this->getUser());
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

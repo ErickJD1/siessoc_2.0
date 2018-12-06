@@ -125,15 +125,15 @@ class Role
     {
         return $this->idrole;
     }
-    
-    
+
+
     /**
      * @return string
      */
     public function __toString() {
         return $this->getDescripcionrole();
     }
-    
+
 
     /**
      * Set idrole
@@ -145,7 +145,7 @@ class Role
     public function setIdrole($idrole)
     {
         $this->idrole = $idrole;
-    
+
         return $this;
     }
 }

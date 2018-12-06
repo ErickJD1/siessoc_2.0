@@ -22,7 +22,7 @@
                 <th>Estado</th>
                 <th>Tipo Cuenta</th>
                 <th>Tipo De Movimiento</th>
-                <th>Usuario</th>
+                <th>Usuario Movimiento</th>
                 <th>Accion</th>
             </tr>
         </thead>
@@ -32,7 +32,7 @@
             <tr>
                 <td>{{ movimiento.idmov }}</td>
                 <td>{{ movimiento.descripcionmov }}</td>
-                <td>{{ movimiento.monto }}</td>
+                <td>{{ "$"~movimiento.monto }}</td>
                 <td>{% if movimiento.estadomov %}Concluido{% else %}Pendiente{% endif %}</td>
                 <td>{{ movimiento.idcuenta }}</td>
                 <td>{{ movimiento.idtipomov }}</td>
@@ -43,7 +43,7 @@
                   </div>
 
                   <div style="float:left;" >
-                    <a href="{{ absolute_url(asset('')) }}movimiento/edit/{{ movimiento.idmov }}" style="background-color: transparent; border: none;"><i class="fa fa-edit" style="font-size: 20px"></i></a>
+                    <a href="{{ absolute_url(asset('')) }}movimiento/edit/{{ movimiento.idmov }}" style="background-color: transparent; border: none;"><i class="fa fa-edit" style="font-size: 20px; color: black"></i></a>
                   </div>
                 </td>
             </tr>

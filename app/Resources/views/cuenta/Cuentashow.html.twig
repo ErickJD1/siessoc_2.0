@@ -8,26 +8,45 @@
 				</div>
 				<div class="modal-body">
 
-  <div class="row" align="center">
+  <div class="row" style="margin-left:5%" align="left">
     <!--modal-->
-
+    <div class="col col-md-6">
     <h4>Numero Cuenta</h4>
     <p class="form-group"><strong>{{  cuenta.numcuenta }}</strong></p>
+    <hr>
     <h4>Nombre Cuenta</h4>
     <p class="form-group"><strong>{{  cuenta.nomcuenta }}</strong></p>
+    <hr>
+    <h4>Descripcion</h4>
+    <p class="form-group"><strong>{{  cuenta.descripcioncuenta }}</strong></p>
+    <hr>
+    <h4>Saldo Inicial</h4>
+    <p class="form-group"><strong>{{ "$"~cuenta.saldocuenta }}</strong></p>
+    <hr>
+    <h4>Banco</h4>
+    <p class="form-group"><strong>{{  cuenta.idbanco }}</strong></p>
+    <hr>
+     <h4>Cuenta</h4>
+    <p class="form-group"><strong>{{  cuenta.nomcuenta }}</strong></p>
+    <hr>
     <h4>Estado</h4>
     <p class="form-group"><strong>{% if cuenta.estadocuenta==1  %} Activa {% else %} Inactiva {% endif %}</strong></p>
     </div>
+    <div class="col col-md-6">
 
-    <div class="modal-footer" al>
-    <div style="float:right">
-    		{{ form_start(delete_form) }}
-    		<input type="submit" class="btn btn-danger" style="margin-left:1px" value="Delete">
-    		{{ form_end(delete_form) }}
+    <img style="width:75%;margin-top: 10%;margin-bottom: 2%" src="{{ asset('img/delete.png') }}"></img>
+                    </div>
+                </div>
+
+                <div class="modal-footer" al>
+                    <div style="float:right">
+                        {{ form_start(delete_form) }}
+                        <input type="submit" class="btn btn-danger" style="margin-left:1px" value="Delete">
+                        {{ form_end(delete_form) }}
+                    </div>
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
     </div>
-    <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
+</div>

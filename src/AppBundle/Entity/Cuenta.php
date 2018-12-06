@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use SalexUserBundle\Entity\User;
 /**
  * Cuenta
  * @UniqueEntity("numcuenta")
@@ -82,7 +83,39 @@ class Cuenta
      * })
      */
     private $idbanco;
+    
+      /**
+     * @var \idusuario
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     * @ORM\JoinColumn(name="idusuario", referencedColumnName="id")
+     * })
+     */
+    private $idusuario;
+    
 
+      /**
+     * Get idusuario
+     *
+     * @return integer
+     */
+    public function getIdusuario() {
+        return $this->idusuario;
+    }
+
+    /**
+     * Set idusuario
+     *
+     * @param \SalexUserBundle\Entity\User $idusuario
+     *
+     * @return Movimiento
+     */
+    public function setIdusuario(\SalexUserBundle\Entity\User $idusuario=null) {
+        $this->idusuario = $idusuario;
+    }
+    
+    
     public function __construct(){
     $this->fechaapertura= new \DateTime("now");
     }

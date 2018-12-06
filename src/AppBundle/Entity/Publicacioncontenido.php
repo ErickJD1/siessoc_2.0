@@ -11,7 +11,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 /**
  * Publicacioncontenido
  *
- * * @ORM\Table(name="publicacioncontenido", indexes={@ORM\Index(name="FK_RELATIONSHIP_12", columns={"IDPUBLICACION"})})
+ * @ORM\Table(name="publicacioncontenido", indexes={@ORM\Index(name="FK_RELATIONSHIP_12", columns={"IDPUBLICACION"})})
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  * @Vich\Uploadable

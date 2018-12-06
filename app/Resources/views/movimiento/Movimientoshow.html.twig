@@ -1,44 +1,45 @@
 <div class="modal fade" id="VerMovi{{  movimiento.idmov }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-			<div class="modal-content"  style="border-radius: 40px">
+    <div class="modal-dialog">
+        <div class="modal-content"  style="border-radius: 40px">
 
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h3 align="center"><strong>¿Eliminar Movimiento?</strong></h3>
-				</div>
-				<div class="modal-body">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 align="center"><strong>¿Eliminar Movimiento De Fondos {{ movimiento.idmov }}?</strong></h3>
+            </div>
+            <div class="modal-body">
 
-  <div class="list-group">
-    <!--modal-->
+                <div class="row" style="margin-left:5%" align="left">
+                    <!--modal-->
+                    <div class="col col-md-6">
+                    <h4>Descripcion Del Movimiento</h4>
+                    <p class="form-group"><strong>{{ movimiento.descripcionmov }}</strong></p>
+                    <hr>
+                    <h4>Monto</h4>
+                    <p class="form-group"><strong>{{ "$"~movimiento.monto }}</strong></p>
+<hr>
+                    <h4>Estado</h4>
+                    <p class="form-group"><strong>{% if movimiento.estadomov %}Yes{% else %}No{% endif %}</strong></p>
+<hr>
+                    <h4>Tipo Cuenta</h4>
+                    <p class="form-group"><strong>{{ movimiento.idcuenta }}</strong></p>
+<hr>
+                    <h4>Tipo De Movimiento</h4>
+                    <p class="form-group"><strong>{{ movimiento.idtipomov }}</strong></p>
+                    </div>
+                    <div class="col col-md-6">
+                        <img style="width:75%;margin-top: 10%;margin-bottom: 2%" src="{{ asset('img/delete.png') }}"></img>
+                    </div>
+                </div>
 
-                <h4>ID</h4>
-                <p class="list-group-item">{{ movimiento.idmov }}</p>
-
-                <h4>Descripcion Del Movimiento</h4>
-                <p class="list-group-item">{{ movimiento.descripcionmov }}</p>
-
-                <h4>Monto</h4>
-                <p class="list-group-item">{{ movimiento.monto }}</p>
-
-                <h4>Estado</h4>
-                <p class="list-group-item">{% if movimiento.estadomov %}Yes{% else %}No{% endif %}</p>
-
-								<h4>Tipo Cuenta</h4>
-								<p class="list-group-item">{{ movimiento.idcuenta }}</p>
-
-								<h4>Tipo De Movimiento</h4>
-								<p class="list-group-item">{{ movimiento.idtipomov }}</p>
-								</div>
-
-								<div class="modal-footer">
-						    <div style="float:left">
-						    		{{ form_start(delete_form) }}
-						    		<input type="submit" class="btn btn-danger" value="Delete">
-						    		{{ form_end(delete_form) }}
-						    </div>
-						    <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
-						    </div>
-						    </div>
-						    </div>
-						    </div>
-						    </div>
+                <div class="modal-footer" al>
+                    <div style="float:right">
+                        {{ form_start(delete_form) }}
+                        <input type="submit" class="btn btn-danger" style="margin-left:1px" value="Delete">
+                        {{ form_end(delete_form) }}
+                    </div>
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

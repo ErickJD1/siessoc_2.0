@@ -24,6 +24,7 @@ class MovimientoType extends AbstractType
                 ->add('comprobante_file', VichImageType::class, array(
                     'required' => false,
                     'download_link' =>true,
+                    'allow_delete' =>true,
                     
                     ));
                   

@@ -7,17 +7,18 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
+use SalexUserBundle\Entity\User;
 use Carbon\Carbon;
 
 /**
  * Movimiento
  *
  * @ORM\Table(name="movimiento", indexes={@ORM\Index(name="FK_RELATIONSHIP_13", columns={"IDTIPOMOV"}), @ORM\Index(name="FK_RELATIONSHIP_15", columns={"IDCUENTA"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="src\AppBundle\Repository\MovimientoRepository")
  * @Vich\Uploadable
  */
-class Movimiento
-{
+class Movimiento {
+
     /**
      * @var integer
      *
@@ -67,7 +68,7 @@ class Movimiento
      * })
      */
     private $idcuenta;
-    
+
     /**
      * @Assert\Image(
      *     maxSize="5M",
@@ -79,21 +80,29 @@ class Movimiento
      * @var [type]
      */
     private $comprobante_file;
-    
+
     /**
      * @ORM\Column(name="comprobante", type="string", nullable=true)
      * @var string
      */
     private $comprobante;
 
-    
-        /**
+    /**
+     * @var \idusuario
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     * @ORM\JoinColumn(name="idusuario", referencedColumnName="id")
+     * })
+     */
+    private $idusuario;
+
+    /**
      * Gets the value of comprobante_file.
      *
      * @return string
      */
-    public function getComprobanteFile()
-    {
+    public function getComprobanteFile() {
         return $this->comprobante_file;
     }
 
@@ -104,8 +113,7 @@ class Movimiento
      *
      * @return self
      */
-    public function setComprobanteFile(File $comprobante_file)
-    {
+    public function setComprobanteFile(File $comprobante_file) {
         $this->profile_picture_file = $comprobante_file;
 
         // Only change the updated af if the file is really uploaded to avoid database updates.
@@ -117,7 +125,6 @@ class Movimiento
         return $this;
     }
 
-    
     /**
      * Get comprobante
      *
@@ -128,46 +135,36 @@ class Movimiento
     }
 
     /**
-<<<<<<< HEAD
-     * @var \idusuario
-     *
-     * @ORM\ManyToOne(targetEntity="Users")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idusuario", referencedColumnName="idusuario")
-     * })
-     */
-    private $idusuario;
-    
-     /**
      * Get idusuario
      *
-     * @return string
+     * @return integer
      */
-    function getIdusuario() {
+    public function getIdusuario() {
         return $this->idusuario;
     }
-  /**
+
+    /**
      * Set idusuario
      *
-     * @param string $idusuario
+     * @param \SalexUserBundle\Entity\User $idusuario
      *
      * @return Movimiento
      */
-    function setIdusuario($idusuario) {
+    public function setIdusuario(\SalexUserBundle\Entity\User $idusuario=null) {
         $this->idusuario = $idusuario;
-=======
+    }
+
+    /**
      * Set comprobante
      *
      * @param string $comprobante
      *
      * @return Movimiento
      */
-    function setComprobante($comprobante) {
+    public function setComprobante($comprobante) {
         $this->comprobante = $comprobante;
->>>>>>> master
     }
 
-    
     /**
      * Set descripcionmov
      *
@@ -175,8 +172,7 @@ class Movimiento
      *
      * @return Movimiento
      */
-    public function setDescripcionmov($descripcionmov)
-    {
+    public function setDescripcionmov($descripcionmov) {
         $this->descripcionmov = $descripcionmov;
 
         return $this;
@@ -187,8 +183,7 @@ class Movimiento
      *
      * @return string
      */
-    public function getDescripcionmov()
-    {
+    public function getDescripcionmov() {
         return $this->descripcionmov;
     }
 
@@ -199,8 +194,7 @@ class Movimiento
      *
      * @return Movimiento
      */
-    public function setMonto($monto)
-    {
+    public function setMonto($monto) {
         $this->monto = $monto;
 
         return $this;
@@ -211,8 +205,7 @@ class Movimiento
      *
      * @return float
      */
-    public function getMonto()
-    {
+    public function getMonto() {
         return $this->monto;
     }
 
@@ -223,8 +216,7 @@ class Movimiento
      *
      * @return Movimiento
      */
-    public function setEstadomov($estadomov)
-    {
+    public function setEstadomov($estadomov) {
         $this->estadomov = $estadomov;
 
         return $this;
@@ -235,8 +227,7 @@ class Movimiento
      *
      * @return boolean
      */
-    public function getEstadomov()
-    {
+    public function getEstadomov() {
         return $this->estadomov;
     }
 
@@ -245,8 +236,7 @@ class Movimiento
      *
      * @return integer
      */
-    public function getIdmov()
-    {
+    public function getIdmov() {
         return $this->idmov;
     }
 
@@ -257,8 +247,7 @@ class Movimiento
      *
      * @return Movimiento
      */
-    public function setIdcuenta(\AppBundle\Entity\Cuenta $idcuenta = null)
-    {
+    public function setIdcuenta(\AppBundle\Entity\Cuenta $idcuenta = null) {
         $this->idcuenta = $idcuenta;
 
         return $this;
@@ -269,8 +258,7 @@ class Movimiento
      *
      * @return \AppBundle\Entity\Cuenta
      */
-    public function getIdcuenta()
-    {
+    public function getIdcuenta() {
         return $this->idcuenta;
     }
 
@@ -281,8 +269,7 @@ class Movimiento
      *
      * @return Movimiento
      */
-    public function setIdtipomov(\AppBundle\Entity\Tipomovimiento $idtipomov = null)
-    {
+    public function setIdtipomov(\AppBundle\Entity\Tipomovimiento $idtipomov = null) {
         $this->idtipomov = $idtipomov;
 
         return $this;
@@ -293,10 +280,8 @@ class Movimiento
      *
      * @return \AppBundle\Entity\Tipomovimiento
      */
-    public function getIdtipomov()
-    {
+    public function getIdtipomov() {
         return $this->idtipomov;
     }
-
 
 }

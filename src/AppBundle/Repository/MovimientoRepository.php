@@ -14,12 +14,14 @@ class MovimientoRepository extends EntityRepository {
     
     
     public function allMovimiento() {
-        return $this->getEntityManager()
-                        ->createQuery(
-                                'SELECT m FROM AppBundle:Movimiento m '
-                               
-                        )
-                        ->getResult();
+         return $this->getEntityManager()
+        ->createQueryBuilder()
+        ->select('m')
+        ->from('AppBundle:Movimiento', 'm')
+        ->leftJoin('m.idusuario','u')
+        //->where('u.id = m.idusuario')
+        ->getQuery()
+        ->getResult();
     }
 
 

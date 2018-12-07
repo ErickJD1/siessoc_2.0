@@ -27,47 +27,49 @@
                                 {{ form_errors(edit_form.numcuenta) }}
                     </div>
             
-                    <br>
+                    
                     <div class="col col-md-6" align="left">
                         <label for="form_nomcuenta">Nombre De Cuenta <span style="font-size: 25;color: red" >*</span></label>
                                 {{ form_widget(edit_form.nomcuenta) }}
                                 {{ form_errors(edit_form.nomcuenta) }}
                     </div>
             </div>
+                 <br>   
              <div class="row">
-                 <div class="col col-md-12">
+                 <div class="col col-md-10">
                      <label for="form_descripcion">Descripcion</label>
                                 {{ form_errors(edit_form.descripcioncuenta) }}
                                 {{ form_widget(edit_form.descripcioncuenta) }}
                  </div>
-             </div>
-              <br>
-              <div class="row">
-                  <div class="col col-xs-4" align='left'>
-                  <label for="form_saldo">Saldo Inicial <span style="font-size: 25;color: red" >*</span></label>
-                                {{ form_errors(edit_form.saldocuenta) }}
-                                {{ form_widget(edit_form.saldocuenta) }}
-                  </div>
-                  <div class="col col-xs-4" align='left'>
-                  <label for="form_banco">Banco <span style="font-size: 25;color: red" >*</span></label>
-                                {{ form_errors(edit_form.idbanco) }}
-                                {{ form_widget(edit_form.idbanco) }}
-                  </div>
-                  <div class="col col-xs-4" align='left'>
-                  <label for="form_cuenta">Cuenta <span style="font-size: 25;color: red" >*</span></label>
-                                {{ form_errors(edit_form.idtipocuenta) }}
-                                {{ form_widget(edit_form.idtipocuenta) }}
-                  </div>
-                    <div class="col col-xs-4" align="right">
+                 <div class="col col-md-2" align="right">
                         <label for="form_estado">Estado</label>
                         {{ form_widget(edit_form.estadocuenta) }}
                         {{ form_errors(edit_form.estadocuenta) }}
                     </div>
+             </div>
+              <br>
+              <div class="row">
+                  <div class="col col-md-4" align='left'>
+                  <label for="form_saldo">Saldo Inicial <span style="font-size: 25;color: red" >*</span></label>
+                                {{ form_errors(edit_form.saldocuenta) }}
+                                {{ form_widget(edit_form.saldocuenta) }}
+                  </div>
+                  <div class="col col-md-4" align='left'>
+                  <label for="form_banco">Banco <span style="font-size: 25;color: red" >*</span></label>
+                                {{ form_errors(edit_form.idbanco) }}
+                                {{ form_widget(edit_form.idbanco) }}
+                  </div>
+                  <div class="col col-md-4" align='left'>
+                  <label for="form_cuenta">Cuenta <span style="font-size: 25;color: red" >*</span></label>
+                                {{ form_errors(edit_form.idtipocuenta) }}
+                                {{ form_widget(edit_form.idtipocuenta) }}
+                  </div>
+                    
                 </div>
              <hr>
                 <div class="row">
                     <div class="col col-md-12" align="right">
-                        <a href="{{ absolute_url(asset('')) }}movimiento" class="btn btn-primary btn-xl">Cancelar</a>
+                        <a href="{{ absolute_url(asset('')) }}cuenta" class="btn btn-primary btn-xl">Cancelar</a>
                         <input  class="btn btn-success btn-xl" type="submit"  value="Guardar" />
                     </div>
                 </div>
@@ -78,14 +80,6 @@
         <br>
         <br>
     </div>
-
-
-</div>
-</br>
-</div>
-<br>
-<br>
-</div>
 
 
 {% endblock %}

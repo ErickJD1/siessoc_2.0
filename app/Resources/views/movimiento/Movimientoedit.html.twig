@@ -17,8 +17,6 @@
             </div>
 
             <div  class="container"  style="width: 80%; margin-top: 3%; margin-bottom: 3%">
-
-
                 {{ form_start(edit_form) }}
                 <div class="row">
                     <div class="col col-md-6">
@@ -34,29 +32,30 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col col-md-12">
+                    <div class="col col-md-10">
                         <label for="form_lastname">Descripcion</label>
                         {{ form_widget(edit_form.descripcionmov) }}
                         {{ form_errors(edit_form.descripcionmov) }}
                     </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col col-xs-4" align="left">
-                        <label for="form_monto">Monto <span style="font-size: 25;color: red" >*</span></label>
-                        {{ form_widget(edit_form.monto) }}
-                        {{ form_errors(edit_form.monto) }}
-                    </div>
-                    <div class="col col-xs-4" align="center">
-                        <label for="form_file">Adjuntar Comprobante</label>
-                        {{ form_widget(edit_form.comprobante_file) }}
-                        {{ form_errors(edit_form.comprobante_file) }}
-                    </div>
-                    <div class="col col-xs-4" align="right">
+                    <div class="col col-md-2" >
                         <label for="form_estado">Estado <span style="font-size: 25;color: red" >*</span></label>
                         {{ form_widget(edit_form.estadomov) }}
                         {{ form_errors(edit_form.estadomov) }}
                     </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col col-md-6" align="left">
+                        <label for="form_monto">Monto <span style="font-size: 25;color: red" >*</span></label>
+                        {{ form_widget(edit_form.monto) }}
+                        {{ form_errors(edit_form.monto) }}
+                    </div>
+                    <div class="col col-md-6" align="center">
+                        <label for="form_file">Adjuntar Comprobante</label>
+                        {{ form_widget(edit_form.comprobante_file) }}
+                        {{ form_errors(edit_form.comprobante_file) }}
+                    </div>
+                    
                 </div>
                 <hr>
                 <div class="row">
@@ -72,14 +71,8 @@
         <br>
         <br>
     </div>
-
-
-</div>
-</br>
-</div>
 <br>
 <br>
-</div>
 
 
 {% endblock %}

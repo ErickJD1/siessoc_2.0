@@ -59,7 +59,6 @@ class Cuenta
 
     /**
      * @var boolean
-     * @Assert\NotBlank()
      * @ORM\Column(name="ESTADOCUENTA", type="boolean", nullable=true)
      */
     private $estadocuenta;

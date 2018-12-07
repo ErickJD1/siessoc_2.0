@@ -18,7 +18,7 @@ class MovimientoType extends AbstractType
     {
         $builder->add('descripcionmov',TextareaType::class, array('label'=>'Descripcion'))
                 ->add('monto',null,array('label'=>'Monto', 'invalid_message' => 'Valor Incorreco Campo Numerico, maximo %num% caracteres','invalid_message_parameters' => array('%num%' => 9)))
-                ->add('estadomov',null,array('label'=>'Estado'))
+                ->add('estadomov',null,array('label'=>'Estado','data'=>true,'required'=>false))
                 ->add('idcuenta',null,array('label'=>'Cuenta'))
                 ->add('idtipomov',null,array('label'=>'Tipo Movimiento'))
                 ->add('comprobante_file', VichImageType::class, array(

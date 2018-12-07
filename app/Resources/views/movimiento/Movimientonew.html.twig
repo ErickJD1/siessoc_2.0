@@ -1,7 +1,7 @@
 {% extends "layout/base-layout.html.twig" %}
 
 {% block page_title %} Movimientos | {% endblock %}
-{% block page_subtitle %}Lista De Movimientos {% endblock %}
+{% block page_subtitle %}Registrar Movimientos {% endblock %}
 
 {% block page_content %}
 
@@ -42,7 +42,7 @@
                         {{ form_errors(form.descripcionmov) }}
                     </div>
                     <div class="col col-md-3" >
-                        <label for="form_estado">Estado<span style="font-size: 25;color: red" >*</span></label>
+                        <label for="form_estado">Estado</label>
                         {{ form_widget(form.estadomov) }}
                         {{ form_errors(form.estadomov) }}
                     </div>

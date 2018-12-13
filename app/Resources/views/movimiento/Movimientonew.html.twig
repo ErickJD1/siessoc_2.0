@@ -1,11 +1,11 @@
 {% extends "layout/base-layout.html.twig" %}
 
 {% block page_title %} Movimientos | {% endblock %}
-{% block page_subtitle %}Lista De Movimientos {% endblock %}
+{% block page_subtitle %}Registrar Movimientos {% endblock %}
 
 {% block page_content %}
-    
- <div class="box box-primary" style="width: 100%;">
+
+    <div class="box box-primary" style="width: 100%;">
 
         <div  style="width:90%; margin-top: 5%; margin-left: 5%; background-color:#D8D8D8; border-radius:5px " class="panel panel-default"> 
 
@@ -14,7 +14,7 @@
             </div>   
             <div class="col col-md-12 " align="center" style="margin-top:-15px"> 
                 <h2 class="col col-md-12" style="font-family: palatino header" >Registrar Movimiento De Fondos</h2>
-                <h5 class="col col-md-12" style="color:grey; font-family: palatino body;margin-top: -4px">Complete los campos requeridos</h5>
+                <h4 class="col col-md-12" style="color:grey; font-family: palatino body; margin-top: -3px;">Complete los campos requeridos:<span style="font-size: 25;color: red" >*</span></h4>
 
             </div>
             <hr>
@@ -24,41 +24,42 @@
                 {{ form_start(form) }}
                 <div class="row">
                     <div class="col col-md-6">
-                        <label for="form_firstname">Asociar Cuenta</label>
+                        <label for="form_firstname">Asociar Cuenta<span style="font-size: 25;color: red" >*</span></label>
                         {{ form_widget(form.idcuenta) }}
                         {{ form_errors(form.idcuenta) }}
                     </div>
                     <div class="col col-md-6">
-                        <label for="form_lastname">Tipo de movimiento</label>
+                        <label for="form_lastname">Tipo de movimiento<span style="font-size: 25;color: red" >*</span></label>
                         {{ form_widget(form.idtipomov) }}
                         {{ form_errors(form.idtipomov) }}
                     </div>
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col col-md-12">
-                        <label for="form_lastname">Descripcion</label>
+                    <div class="col col-md-9">
+                        <label for="form_lastname">Descripcion<span style="font-size: 25;color: red" >*</span></label>
                         {{ form_widget(form.descripcionmov) }}
                         {{ form_errors(form.descripcionmov) }}
                     </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col col-xs-4" align="left">
-                        <label for="form_monto">Monto</label>
-                        {{ form_widget(form.monto) }}
-                        {{ form_errors(form.monto) }}
-                    </div>
-                    <div class="col col-xs-4" align="center">
-                        <label for="form_file">Adjuntar Comprobante</label>
-                        {{ form_widget(form.comprobante_file) }}
-                        {{ form_errors(form.comprobante_file) }}
-                    </div>
-                    <div class="col col-xs-4" align="right">
+                    <div class="col col-md-3" >
                         <label for="form_estado">Estado</label>
                         {{ form_widget(form.estadomov) }}
                         {{ form_errors(form.estadomov) }}
                     </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col col-md-6" align="left">
+                        <label for="form_monto">Monto ($)<span style="font-size: 25;color: red" >*</span></label>
+                        {{ form_widget(form.monto) }}
+                        {{ form_errors(form.monto) }}
+                    </div>
+                    <div class="col col-md-6" align="center">
+                        <label for="form_file">Adjuntar Comprobante</label>
+                        {{ form_widget(form.comprobante_file) }}
+                        {{ form_errors(form.comprobante_file) }}
+                    </div>
+
                 </div>
                 <hr>
                 <div class="row">
@@ -75,13 +76,6 @@
         <br>
     </div>
 
-
-</div>
-</br>
-</div>
-<br>
-<br>
-</div>
 
 
 {% endblock %}

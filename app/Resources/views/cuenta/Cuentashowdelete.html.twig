@@ -1,12 +1,10 @@
-<div class="modal fade" id="VerCuenta{{ cuenta.idcuenta }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div style="width:70%; margin-left: 15%" class="modal-dialog">
+<div class="modal fade" id="deleteCuenta{{ cuenta.idcuenta }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div style="width:70%;margin-left: 15%" class="modal-dialog">
         <div class="modal-content" style="border-radius: 40px">
 
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <div class="row">	
-                    <h3 class="col col-md-11 col-md-offset-1" align="center"><strong>N° Cuenta: <strong>{{  cuenta.numcuenta }}<strong>  -   {{  cuenta.nomcuenta }}</strong></strong></strong></h3>
-                </div>
+                <h3 align="center"><strong>¿Eliminar Cuenta?</strong></h3>
             </div>
             <div class="modal-body">
 
@@ -14,8 +12,12 @@
                     <!--modal-->
                     <div class="col col-md-7">
 
-                        <h4><i class="fa fa-list"></i>  Descripcion</h4>
-                        <p class="form-group"><strong>{{  cuenta.descripcioncuenta }}</strong></p>
+                        <hr>
+                        <h4><i class="fa fa-list-ol"></i>  No Cuenta</h4>
+                        <p class="form-group"><strong>{{ cuenta.numcuenta }}</strong></p>
+                        <hr>
+                        <h4><i class="fa fa-calculator"></i>  Cuenta</h4>
+                        <p class="form-group"><strong>{{  cuenta.nomcuenta }}</strong></p>
                         <hr>
                         <h4><i class="fa fa-money"></i>  Saldo Inicial</h4>
                         <p class="form-group"><strong>{{ "$"~cuenta.saldocuenta }}</strong></p>
@@ -23,19 +25,21 @@
                         <h4><i class="fa fa-home"></i>  Banco</h4>
                         <p class="form-group"><strong>{{  cuenta.idbanco }}</strong></p>
                         <hr>
-                        <h4><i class="fa fa-calculator"></i>  Cuenta</h4>
-                        <p class="form-group"><strong>{{  cuenta.nomcuenta }}</strong></p>
-                        <hr>
                         <h4><i class="fa fa-check-square"></i>  Estado</h4>
                         <p class="form-group"><strong>{% if cuenta.estadocuenta==1  %} Activa {% else %} Inactiva {% endif %}</strong></p>
                     </div>
                     <div class="col col-md-5">
 
-                        <img style="width:75%;margin-top: 10%;margin-bottom: 2%" src="{{ asset('img/budget.png') }}"></img>
+                        <img style="width:75%;margin-top: 10%;margin-bottom: 2%" src="{{ asset('img/delete.png') }}"></img>
                     </div>
                 </div>
 
                 <div class="modal-footer" al>
+                    <div style="float:right">
+                        {{ form_start(delete_form) }}
+                        <input type="submit" class="btn btn-danger" style="margin-left:1px" value="Delete">
+                        {{ form_end(delete_form) }}
+                    </div>
                     <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
                 </div>
             </div>

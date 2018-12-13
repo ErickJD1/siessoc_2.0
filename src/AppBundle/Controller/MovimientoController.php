@@ -76,6 +76,23 @@ class MovimientoController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+    
+        /**
+     * Finds and displays a movimiento entity.
+     *
+     * @Route("/{id}", name="movimiento_show_delete")
+     * @Method("GET")
+     */
+    public function showDeleteAction(Movimiento $movimiento)
+    {
+        $deleteForm = $this->createDeleteForm($movimiento);
+
+        return $this->render('movimiento/Movimientoshowdelete.html.twig', array(
+            'movimiento' => $movimiento,
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
 
     /**
      * Displays a form to edit an existing movimiento entity.

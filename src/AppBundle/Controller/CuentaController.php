@@ -64,17 +64,35 @@ class CuentaController extends Controller
     /**
      * Finds and displays a cuenta entity.
      *
-     * @Route("/{id}", name="cuenta_show")
+     * @Route("/{id}", name="cuenta_show_delete")
      * @Method("GET")
      */
-    public function showAction(Cuenta $Cuenta)
+    public function showDeleteAction(Cuenta $Cuenta)
     {
 
         $deleteForm = $this->createDeleteForm($Cuenta);
 
-        return $this->render('cuenta/Cuentashow.html.twig', array(
+        return $this->render('cuenta/Cuentashowdelete.html.twig', array(
             'cuenta' => $Cuenta,
             'delete_form' => $deleteForm->createView(),
+        ));
+    }
+    
+        /**
+     * Finds and displays a cuenta entity.
+     *
+     * @Route("/{id}", name="cuenta_show")
+     * @Method("GET")
+     */
+    public function showAction(Request $request,Cuenta $Cuenta)
+    {
+
+        $editForm = $this->createForm('AppBundle\Form\CuentaType', $Cuenta);
+        $editForm->handleRequest($request);
+
+        return $this->render('cuenta/Cuentashow.html.twig', array(
+            'cuenta' => $Cuenta,
+            'edit_form' => $editForm->createView(),
         ));
     }
 
@@ -114,14 +132,17 @@ class CuentaController extends Controller
     {
         $form = $this->createDeleteForm($Cuenta);
         $form->handleRequest($request);
-
+     try{
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($Cuenta);
             $em->flush($Cuenta);
         }
-
-        $this->addFlash('success', 'La cuenta fue eliminada con Exito!');
+     }catch(\Exception $e){
+        $this->addFlash('error', 'La cuenta no puede ser eliminada! Verifica si la cuenta tiene movimientos relacionados. Puedes inactivar la cuenta en Editar Cuenta.');
+        return $this->redirectToRoute('cuenta_index');
+     }
+      $this->addFlash('success', 'La cuenta fue eliminada con Exito!');
         return $this->redirectToRoute('cuenta_index');
     }
 

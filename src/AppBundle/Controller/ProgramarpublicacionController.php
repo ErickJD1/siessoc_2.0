@@ -42,6 +42,7 @@ class ProgramarpublicacionController extends Controller
     {
         $programarpublicacion = new Programarpublicacion();
         $form = $this->createForm('AppBundle\Form\ProgramarpublicacionType', $programarpublicacion);
+        $programarpublicacion->setIdusuario($this->getUser());
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -94,7 +95,7 @@ class ProgramarpublicacionController extends Controller
             return $this->redirectToRoute('programarpublicacion_index', array('id' => $programarpublicacion->getIdpublicacion()));
         }
 
-        return $this->render('programarpublicacion/edit.html.twig', array(
+        return $this->render('programarpublicacion/publicacionedit.html.twig', array(
             'programarpublicacion' => $programarpublicacion,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

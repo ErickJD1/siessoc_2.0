@@ -5,6 +5,9 @@ _wdt:
 _profiler:
     resource: "@WebProfilerBundle/Resources/config/routing/profiler.xml"
     prefix:   /_profiler
+_app_movimiento:
+    resource: "@AppBundle/Controller/MovimientoController.php"
+    type:     annotation
 
 _errors:
     resource: "@TwigBundle/Resources/config/routing/errors.xml"

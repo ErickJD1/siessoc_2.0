@@ -23,6 +23,7 @@
                 <th>Fecha</th>
                 <th>Imagen Contenido</th>
                 <th>Estado</th>
+                <th>Usuario</th>
                 <th>Accion</th>
             </tr>
         </thead>
@@ -36,7 +37,8 @@
                 <td>{% if publicacioncontenido.fechacontenido %}{{ publicacioncontenido.fechacontenido|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ publicacioncontenido.ContenidoPicture }}</td>
                 <td>{% if publicacioncontenido.estadocontenido %}Publicado{% else %}Pendiente{% endif %}</td>
-                 <td>
+                 <td>{{ publicacioncontenido.idusuario }}</td>
+                <td>
                   
                 <div style="float:left;"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#showContenido{{ publicacioncontenido.idcontenido }}"><i class="fa fa-eye" style="font-size: 20px"></i></button>
                         {{ render(controller('AppBundle:Publicacioncontenido:show', { 'id' : publicacioncontenido.idcontenido } )) }}

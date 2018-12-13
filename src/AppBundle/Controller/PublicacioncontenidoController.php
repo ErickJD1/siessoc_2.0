@@ -42,6 +42,7 @@ class PublicacioncontenidoController extends Controller
     {
         $publicacioncontenido = new Publicacioncontenido();
         $form = $this->createForm('AppBundle\Form\PublicacioncontenidoType', $publicacioncontenido);
+        $publicacioncontenido->setIdusuario($this->getUser());
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -49,7 +50,8 @@ class PublicacioncontenidoController extends Controller
             $em->persist($publicacioncontenido);
             $em->flush($publicacioncontenido);
 
-            return $this->redirectToRoute('publicacioncontenido_show', array('id' => $publicacioncontenido->getIdcontenido()));
+            $this->addFlash('success', 'Publicacion Guardada Exitosamente!');
+            return $this->redirectToRoute('publicacioncontenido_index');
         }
 
         return $this->render('publicacioncontenido/contenidonew.html.twig', array(
@@ -77,7 +79,7 @@ class PublicacioncontenidoController extends Controller
     /**
      * Displays a form to edit an existing publicacioncontenido entity.
      *
-     * @Route("/{id}/edit", name="publicacioncontenido_edit")
+     * @Route("/edit/{id}", name="publicacioncontenido_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Publicacioncontenido $publicacioncontenido)
@@ -89,7 +91,9 @@ class PublicacioncontenidoController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('publicacioncontenido_edit', array('id' => $publicacioncontenido->getId()));
+            $this->addFlash('success', 'Publicacion Modificada Exitosamente!');
+            return $this->redirectToRoute('publicacioncontenido_index');
+            
         }
 
         return $this->render('publicacioncontenido/contenidoedit.html.twig', array(
@@ -116,7 +120,8 @@ class PublicacioncontenidoController extends Controller
             $em->flush($publicacioncontenido);
         }
 
-        return $this->redirectToRoute('publicacioncontenido_index');
+        $this->addFlash('success', 'Publicacion Eliminada Exitosamente!');
+         return $this->redirectToRoute('publicacioncontenido_index');
     }
 
     /**

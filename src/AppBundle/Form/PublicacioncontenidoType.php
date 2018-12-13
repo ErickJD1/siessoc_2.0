@@ -23,7 +23,7 @@ class PublicacioncontenidoType extends AbstractType
                 ->add('descripcioncontenido',TextareaType::class, array('label'=>'Descripcion'))
                 ->add('fechacontenido', DateType::class, array('label'=>'Fecha De Publicacion Del Contenido','data' =>( new \DateTime()),'widget'=>'single_text'))
                 ->add('contenido_picture_file', VichImageType::class, array('required' => false,'label' => 'Contenido','allow_delete' => true,'download_link' => true,))
-                ->add('estadocontenido', CheckboxType::class, array('label'=>'Estado'));
+                ->add('estadocontenido', CheckboxType::class, array('label'=>'Activado'));
     }
     
     /**

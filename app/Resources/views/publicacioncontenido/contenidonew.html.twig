@@ -7,7 +7,7 @@
 
     <div class="box box-primary" style="width: 100%">
 
-        <div  style="width:50%; margin-top: 2%; margin-left: 25%" class="panel panel-default"> 
+        <div  style="width:90%; margin-top: 2%; background-color:#D8D8D8; margin-left: 5%" class="panel panel-default"> 
 
             <div class="col col-md-12" align="center" > 
                 <img style="width:80px;margin-top: 2%;margin-bottom: 2%" src="{{ asset('img/Banco.png') }}"></img>
@@ -20,26 +20,73 @@
             <hr>
             <div  class="container"  style="width: 75%; margin-top: 3%; margin-bottom: 3%">
 
-                {{ form_start(form, {'action': path('publicacioncontenido_new'), 'method': 'POST'}) }}
-                {{ form_widget(form) }}
+                {{ form_start(form) }}
+
                 <div class="row">
-                    <div class="col col-md-12" align="right">
-                        <a href="{{ absolute_url(asset('')) }}publicacioncontenido" class="btn btn-primary btn-xl">Cancelar</a>
-                        <input  class="btn btn-success btn-xl" type="submit"  value="Guardar" />
+                    <div class="col-xs-6">
+                        <label for="form_Titulo">Titulo<span style="font-size: 25;color: red" >*</span></label>
+                        {{ form_widget(form.titulo) }}
+                        {{ form_errors(form.titulo) }}
+                    </div>
 
-
+                    <div class="col-xs-6">
+                        <label for="form_Subtitulo">SubTitulo<span style="font-size: 25;color: red" >*</span></label>
+                        {{ form_widget(form.subtitulo) }}
+                        {{ form_errors(form.subtitulo) }}
+                    </div>
+                </div>
+<br>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label for="form_Descripcion">Descripcion</label>
+                        {{ form_widget(form.descripcioncontenido) }}
+                        {{ form_errors(form.descripcioncontenido) }}
+                    </div>
+                </div>
+                    <br>
+                <div class="row">
+                    <div class="col-md-6" id='datetimepicker1'>
+                        <label for="form_FechaContenido">Fecha De Publicacion</label>
+                        {{ form_widget(form.fechacontenido) }}
+                        {{ form_errors(form.fechacontenido) }}
+                    </div>  
+     
+                    <div class="col-md-6">
+                        <label for="form_Contenido">Contenido</label>
+                        {{ form_widget(form.contenido_picture_file) }}
+                        {{ form_errors(form.contenido_picture_file) }}       
+                    </div>
+                </div>
+                    <br>
+                <div class="row">
+                    <div class="col col-md-12" align="left"> 
+                        <strong>Estado</strong>
+                     
+                        {{ form_widget(form.estadocontenido) }}
+                        {{ form_errors(form.estadocontenido) }}   
                     </div>
                 </div>
 
-                {{ form_end(form) }}
-                <br>
-                <br>
             </div>
-            </br>
+
+            <div class="row">
+                <div class="col col-md-10" align="right">
+                    <a href="{{ absolute_url(asset('')) }}publicacioncontenido" class="btn btn-primary btn-xl">Cancelar</a>
+                    <input  class="btn btn-success btn-xl" type="submit"  value="Guardar" />
+
+
+                </div>
+            </div>
+
+            {{ form_end(form) }}
+            <br>
+            <br>
         </div>
-        <br>
-        <br>
+        </br>
     </div>
+    <br>
+    <br>
+</div>
 
 
 {% endblock %}

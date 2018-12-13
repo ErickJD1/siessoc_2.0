@@ -42,7 +42,7 @@ class CuentaController extends Controller
     {
         $Cuenta = new Cuenta();
         $form = $this->createForm('AppBundle\Form\CuentaType', $Cuenta);
-        $movimiento->setIdusuario($this->getUser());
+        $Cuenta->setIdusuario($this->getUser());
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

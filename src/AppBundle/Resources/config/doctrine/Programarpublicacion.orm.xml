@@ -19,5 +19,10 @@
         <join-column name="IDCONTENIDO" referenced-column-name="IDCONTENIDO"/>
       </join-columns>
     </many-to-one>
+    <many-to-one field="idusuario" target-entity="SalexUserBundle\Entity\User" fetch="LAZY">
+      <join-columns>
+        <join-column name="idusuario" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
   </entity>
 </doctrine-mapping>

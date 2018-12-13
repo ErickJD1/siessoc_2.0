@@ -4,7 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-
+use SalexUserBundle\Entity\User;
 
 /**
  * Programarpublicacion
@@ -55,6 +55,35 @@ class Programarpublicacion
      */
     private $idcontenido;
 
+    /**
+     * @var \idusuario
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     * @ORM\JoinColumn(name="idusuario", referencedColumnName="id")
+     * })
+     */
+    private $idusuario;
+
+      /**
+     * Get idusuario
+     *
+     * @return integer
+     */
+    public function getIdusuario() {
+        return $this->idusuario;
+    }
+
+    /**
+     * Set idusuario
+     *
+     * @param \SalexUserBundle\Entity\User $idusuario
+     *
+     * @return Movimiento
+     */
+    public function setIdusuario(\SalexUserBundle\Entity\User $idusuario=null) {
+        $this->idusuario = $idusuario;
+    }
 
 
     /**
@@ -160,11 +189,11 @@ class Programarpublicacion
      */
     public function getIdcontenido()
     {
-        return $this->idpublicacion;
+        return $this->idcontenido;
     }  
     
        public function __toString(){
-          return $this->getIdpublicacion();
+          return $this->getIdcontenido();
     }
     
 }

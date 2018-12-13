@@ -7,7 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class ProgramarpublicacionType extends AbstractType
 {
@@ -19,7 +19,7 @@ class ProgramarpublicacionType extends AbstractType
         $builder->add('fechapublicacion', DateType::class, array('label'=>'Fecha De Publicacion','data' =>( new \DateTime()),'widget'=>'single_text'))
                 ->add('horapublicacion', TimeType::class, array('label'=>'Hora De Publiacion', 'input'  => 'datetime','widget' => 'choice',))
                 ->add('idcontenido', NULL, array('label'=>'Publicacion'))
-                ->add('estadopulicacion', CheckboxType::class, array('label'=>'Estado'));
+                ->add('estadopulicacion', NULL, array('label'=>'Programar'));
     }
     
     /**

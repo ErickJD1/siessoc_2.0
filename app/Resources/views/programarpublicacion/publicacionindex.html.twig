@@ -9,7 +9,7 @@
 <div style="width:90%; margin-left:5%; margin-top: 2% ">
 
 <div align="left">
-    <a href="{{ absolute_url(asset('')) }}programarpublicacion/new" class="btn btn-primary btn-sm">+ Agregar Publicacion</a>
+    <a href="{{ absolute_url(asset('')) }}programarpublicacion/new" class="btn btn-primary btn-sm">+ Programar Publicacion</a>
 </div>
 <br>
 
@@ -21,6 +21,7 @@
                 <th>Hora Publicacion</th>
                 <th>Contenido</th>
                 <th>Estado</th>
+                <th>Usuario</th>
                 <th>Accion</th>
             </tr>
         </thead>
@@ -28,10 +29,11 @@
         {% for programarpublicacion in programarpublicacions %}
             <tr>
                 <td>{{ programarpublicacion.idpublicacion }}</td>
-                <td>{% if programarpublicacion.fechapublicacion %}{{ programarpublicacion.fechapublicacion|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if programarpublicacion.horapublicacion %}{{ programarpublicacion.horapublicacion|date('H:i:s') }}{% endif %}</td>
+                <td>{% if programarpublicacion.fechapublicacion %}{{ programarpublicacion.fechapublicacion|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if programarpublicacion.horapublicacion %}{{ programarpublicacion.horapublicacion|date('H:i') }}{% endif %}</td>
                 <td>{{ programarpublicacion.idcontenido }}</td>
-                <td>{%if programarpublicacion.estadopulicacion %}Programado{% else %}Pendiente{% endif %}</td>
+                <td>{%if programarpublicacion.estadopulicacion==1 %}Programado{% else %}Pendiente{% endif %}</td>
+                <td>{{ programarpublicacion.idusuario }}</td>
               <td>
                   
                 <div style="float:left;"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#showPublicacion{{ programarpublicacion.idpublicacion }}"><i class="fa fa-eye" style="font-size: 20px"></i></button>

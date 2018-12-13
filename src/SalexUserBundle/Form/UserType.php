@@ -33,8 +33,10 @@ class UserType extends AbstractType {
         'required' => true,
         'placeholder' => 'Select a role',
         'class' => 'AppBundle:Role',
-        'multiple' => 'true'
+        'multiple' => 'true',
+          
         ))
+
         
         /* ->add('plainPassword', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\RepeatedType'), array(
           'type' => LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\PasswordType'),
@@ -59,7 +61,7 @@ class UserType extends AbstractType {
     public function configureOptions(OptionsResolver $resolver) {
         $resolver->setDefaults(array(
             'data_class' => 'SalexUserBundle\Entity\User',
-            'validation_groups' => 'Profile'
+            'validation_groups' => 'Profile',
         ));
     }
 
@@ -71,11 +73,5 @@ class UserType extends AbstractType {
         return $this->getBlockPrefix();
     }
 
-    public function updateDefaultsFromObject() {
-        parent::updateDefaultsFromObject();
-        if ($this->isNew()) {
-            $this->setDefault('roles', array('ROLE_ADMIN', 'ROLE_BECARIO'));
-        }
-    }
 
 }

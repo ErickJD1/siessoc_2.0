@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Programarpublicacion
  *
  * @ORM\Table(name="programarpublicacion", indexes={@ORM\Index(name="FK_RELATIONSHIP_12", columns={"IDCONTENIDO"})})
- * @ORM\Entity
+ * * @ORM\Entity
  */
 class Programarpublicacion
 {

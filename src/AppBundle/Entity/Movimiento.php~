@@ -163,6 +163,7 @@ class Movimiento {
      */
     public function setComprobante($comprobante) {
         $this->comprobante = $comprobante;
+    }
 
     /**
      * Set descripcionmov

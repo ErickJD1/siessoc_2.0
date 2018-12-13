@@ -18,8 +18,8 @@
         {% block stylesheets %}
             <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
             <link rel="stylesheet" href="{{ asset('bundles/avanzuadmintheme/static/'~ app.environment ~'/styles/admin-lte-all.css') }}" />
-            <link rel="stylesheet" href="{{absolute_url(asset('css/fonts/font-awesome.css'))}}">
-            <link rel="stylesheet" href="{{absolute_url(asset('css/sweetalert.css'))}}">
+            <link rel="stylesheet" href="{{asset('css/fonts/font-awesome.css')}}">
+            <link rel="stylesheet" href="{{asset('css/sweetalert.css')}}">
             <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
 
@@ -30,6 +30,14 @@
                     background-image: linear-gradient(#04519b, #033C73 60%, #02325f);
                     background-repeat: no-repeat;
                 }
+                
+                .help-block {
+
+    color: red;
+
+}
+
+
 
                 .skin-blue .main-header .logo {
                     /* background-color: #357ca5; */

@@ -130,8 +130,6 @@ class UserController extends Controller {
             'required' => false,
             'placeholder' => 'Select a role',
             'class' => 'AppBundle:Role',
-            //'data' => array($myrole),
-            'preferred_choices' => array($myrole),
             'multiple' => 'true'
         ));
 

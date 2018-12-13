@@ -33,26 +33,46 @@ class SidebarListener {
         $earg = array();
         $rootItems = array();
         //Item del menu
-        //PERMISOS ASPIRANTE
+        
+        
+        //PERMISOS FINANCIERO
+        if ($this->container->get('security.authorization_checker')->isGranted('ROLE_FINANCIERO')) {
+            $rootItems = array(
+                $dash = new MenuItemModel('site', 'WebSite', 'web_index', $earg, 'fa fa-home'),
+                 $fondos = new MenuItemModel('fondos', 'Fondos', 'homepage', $earg, 'fa fa-money'),
+                  $colaboracion= new MenuItemModel('colaboracion', 'Colaboracion Monetaria', 'homepage', $earg, 'fa fa-dollar'),
+                $insumos= new MenuItemModel('insumos', 'Insumos Academicos', 'homepage', $earg, 'fa fa-cubes'),                
+                $catalogos = new MenuItemModel('catalogos', 'Catalogos', 'homepage', $earg, 'fa fa-list'),
+            );
+        }
+        
+        //PERMISOS ASPIRANTE BECARIO
         if ($this->container->get('security.authorization_checker')->isGranted('ROLE_ASPIRANTE_BECARIO')) {
             $rootItems = array(
                 $dash = new MenuItemModel('site', 'WebSite', 'web_index', $earg, 'fa fa-home'),
-                $dash = new MenuItemModel('solicitud', 'Solicitud', 'web_index', $earg, 'fa fa-home'),
+                $solicitudes = new MenuItemModel('solicitud', 'Solicitud Aspirantes', 'web_index', $earg, 'fa fa-window-restore'),
             );
         }
 
-
+        //PERMISOS ASPIRANTE PATROCINADOR
+          if ($this->container->get('security.authorization_checker')->isGranted('ROLE_ASPIRANTE_PATROCINADOR')) {
+                $rootItems = array(
+                $dash = new MenuItemModel('site', 'WebSite', 'web_index', $earg, 'fa fa-home'),
+                $solicitudes = new MenuItemModel('solicitud', 'Solicitud Aspirantes', 'web_index', $earg, 'fa fa-window-restore'),
+            );
+        }
 
 
         //PERMISOS BECARIO
-        if ($this->container->get('security.authorization_checker')->isGranted('ROLE_ASPIRANTE_PATROCINADOR')) {
+        if ($this->container->get('security.authorization_checker')->isGranted('ROLE_BECARIO')) {
             $rootItems = array(
                 $dash = new MenuItemModel('site', 'WebSite', 'web_index', $earg, 'fa fa-home'),
-                $expediente = new MenuItemModel('expediente', 'Expedientes', '', $earg, 'fa fa-search'),
+                $Miexpediente = new MenuItemModel('expediente', 'Mi Expediente', '', $earg, 'fa fa-search'),
                 $actividad = new MenuItemModel('actividad', 'Actividades', '', $earg, 'fa fa-calendar'),
-                $ssocial = new MenuItemModel('social', 'Servicio Social', 'homepage', $earg, 'fa fa-list'),
             );
         }
+        
+        
 
 
 

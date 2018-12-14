@@ -16,7 +16,6 @@
         <table class="table table-bordered table-hover table-striped table-responsive" style="width:100%" id="tabelMahasiswa">
             <thead class="thead-light">
             <tr>
-                <th>ID</th>
                 <th>Descripcion Del Movimiento</th>
                 <th>Monto</th>
                 <th>Estado</th>
@@ -30,10 +29,9 @@
 
         {% for movimiento in movimientos %}
             <tr>
-                <td>{{ movimiento.idmov }}</td>
                 <td>{{ movimiento.descripcionmov }}</td>
                 <td>{{ "$"~movimiento.monto }}</td>
-                <td>{% if movimiento.estadomov %}Concluido{% else %}Pendiente{% endif %}</td>
+                <td>{% if movimiento.estadomov %}Aprobado{% else %}Pendiente{% endif %}</td>
                 <td>{{ movimiento.idcuenta }}</td>
                 <td>{{ movimiento.idtipomov }}</td>
                 <td>{{ movimiento.idusuario }}</td>

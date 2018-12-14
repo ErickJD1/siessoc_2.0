@@ -16,9 +16,8 @@
       <table class="table table-bordered table-hover table-striped table-responsive" style="width:100%" id="tabelMahasiswa">
               <thead class="thead-light">
             <tr>
-                <th>ID</th>
-                <th>Numero</th>
-                <th>Nombre</th>
+                <th>Numero Cuenta</th>
+                <th>Nombre Cuenta</th>
                 <th>Descripcion</th>
                 <th>Banco</th>
                 <th>Fecha Apertura</th>
@@ -32,7 +31,6 @@
 
         {% for cuentum in cuentas %}
             <tr>
-                <td>{{ cuentum.idcuenta }}</td>
                 <td>{{ cuentum.numcuenta }}</td>
                 <td>{{ cuentum.nomcuenta }}</td>
                 <td>{{ cuentum.descripcioncuenta }}</td>

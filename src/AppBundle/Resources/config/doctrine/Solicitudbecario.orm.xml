@@ -70,16 +70,49 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="miembrossolifamilibecario" type="integer" column="MIEMBROSSOLIFAMILIBECARIO" nullable="true">
-      <options>
-        <option name="unsigned"/>
-      </options>
-    </field>
     <field name="direccionsolibecario" type="string" column="DIRECCIONSOLIBECARIO" length="500" nullable="true">
       <options>
         <option name="fixed"/>
       </options>
     </field>
     <field name="estadosolibecario" type="boolean" column="ESTADOSOLIBECARIO" nullable="true"/>
+    <field name="religion" type="string" column="RELIGION" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="edad" type="integer" column="EDAD" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="sexo" type="string" column="SEXO" length="10" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+     <field name="paes" type="float" column="PAES" precision="20" scale="0" nullable="true"/>
+    <field name="ocupacionpadre" type="string" column="OCUPACIONPADRE" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+     <field name="ocupacionmadre" type="string" column="OCUPACIONMADRE" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+     <field name="otrasbecas" type="boolean" column="OTRASBECAS" nullable="true"/>
   </entity>
+  <field name="montootrasbecas" type="float" column="MONTOOTRASBECAS" precision="20" scale="0" nullable="true"/>
+ <field name="antecedentespersonales" type="string" column="ANTECEDENTESPERSONALES" length="500" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+      <field name="comprobante" type="string" column="FORMULARIO" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
 </doctrine-mapping>

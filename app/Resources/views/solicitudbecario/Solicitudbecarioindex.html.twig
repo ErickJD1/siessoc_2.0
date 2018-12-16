@@ -9,15 +9,13 @@
 <div style="width:90%; margin-left:5%; margin-top: 2% ">
 
 <div align="left">
-    <button class="btn btn-primary" data-toggle="modal" data-target="#CrearSoli"> + Solicitud</button>
-     {{ render(controller('AppBundle:solicitudbecario:new' )) }}
+<a href="{{ path('solicitudbecario_new') }}" class="btn btn-primary btn-sm">+ Registrar Solicitud</a>
 </div>
 <br> </br>
 
     <table class="table table-bordered table-hover table-striped table-responsive" style="width:90%" id="tabelMahasiswa">
         <thead class="thead-light">
             <tr>
-                <th>ID</th>
                 <th>Telefonos</th>
                 <th>Ingresos familiares</th>
                 <th>Miembros familiares</th>
@@ -36,7 +34,6 @@
                 <th>Nombre de la madre</th>
                 <th>En emergencias Llamar</th>
                 <th>Telefono Del Becario</th>
-                <th>Miembros de la familia</th>
                 <th>Direccion</th>
                 <th>Estado</th>
                 <th>Accion</th>
@@ -46,7 +43,6 @@
 
         {% for solicitudbecario in solicitudbecarios %}
             <tr>
-                <td>{{ solicitudbecario.idsolibecario }}</td>
                 <td>{{ solicitudbecario.telefonosolibecario }}</td>
                 <td>{{ solicitudbecario.ingresossolifamiliabecario }}</td>
                 <td>{{ solicitudbecario.miembrossolifamiliabecario }}</td>
@@ -65,16 +61,15 @@
                 <td>{{ solicitudbecario.nomsolimadrebecario }}</td>
                 <td>{{ solicitudbecario.telsoliemergenciabecario }}</td>
                 <td>{{ solicitudbecario.telsolipersonalbecario }}</td>
-                <td>{{ solicitudbecario.miembrossolifamilibecario }}</td>
                 <td>{{ solicitudbecario.direccionsolibecario }}</td>
                 <td>{% if solicitudbecario.estadosolibecario %}Yes{% else %}No{% endif %}</td>
                 <td>
-                  <div style="float:left;"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#miventana{{ tipocuentum.idtipocuenta }}"><i class="fa fa-eye" style="font-size: 20px"></i></button>
-                          {{ render(controller('AppBundle:Tipocuenta:show', { 'id' : tipocuentum.idtipocuenta } )) }}
+                  <div style="float:left;"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#miventana{{ solicitudbecario.idsolibecario }}"><i class="fa fa-eye" style="font-size: 20px"></i></button>
+                          {{ render(controller('AppBundle:Solicitudbecario:show', { 'id' : solicitudbecario.idsolibecario } )) }}
                   </div>
 
-                  <div style="float:left;"><button class="" style="background-color: transparent;  border: none;" data-toggle="modal" data-target="#editcuenta{{ tipocuentum.idtipocuenta }}"><i class="fa fa-edit" style="font-size: 20px"></i></button>
-                          {{ render(controller('AppBundle:Tipocuenta:edit', { 'id' : tipocuentum.idtipocuenta } )) }}
+                  <div style="float:left;"><button class="" style="background-color: transparent;  border: none;" data-toggle="modal" data-target="#editcuenta{{ solicitudbecario.idsolibecario }}"><i class="fa fa-edit" style="font-size: 20px"></i></button>
+                          {{ render(controller('AppBundle:Solicitudbecario:edit', { 'id' : solicitudbecario.idsolibecario } )) }}
                   </div>
 
                 </td>

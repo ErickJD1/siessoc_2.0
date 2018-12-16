@@ -1,4 +1,56 @@
 {% extends "layout/base-layout.html.twig" %}
+{% block stylesheets%}
+    {{parent()}}
+    <style>
+nav > .nav.nav-tabs{
+
+  border: none;
+    color:#fff;
+    background:grey;
+    border-radius:0;
+
+}
+nav > div a.nav-item.nav-link,
+nav > div a.nav-item.nav-link.active
+{
+  border: none;
+    padding: 18px 25px;
+    color:#fff;
+    background:gray;
+    border-radius:0;
+}
+
+nav > div a.nav-item.nav-link.active:after
+ {
+  content: "";
+  position: relative;
+  bottom: -60px;
+  left: -10%;
+  border: 15px solid transparent;
+  border-top-color: gainsboro;
+}
+.tab-content{
+  background: #fdfdfd;
+    line-height: 25px;
+    border: 1px solid #ddd;
+border-top: 5px solid gainsboro;
+border-bottom: 5px solid gainsboro;
+    padding:30px 25px;
+}
+
+nav > div a.nav-item.nav-link:hover,
+nav > div a.nav-item.nav-link:focus
+{
+  border: none;
+    background: gainsboro;
+    color:#fff;
+    border-radius:0;
+    transition:background 0.20s linear;
+}
+        
+    </style>
+{% endblock stylesheets%}
+
 
 {% block page_title %} Solicitud | {% endblock %}
 {% block page_subtitle %}Registro De Solicitud {% endblock %}
@@ -7,7 +59,7 @@
 
     <div class="box box-primary" style="width: 100%;">
 
-        <div  style="width:90%; margin-top: 5%; margin-left: 5%; background-color:#D8D8D8; border-radius:5px " class="panel panel-default">
+        <div  style="width:90%; margin-top: 5%; margin-left: 5%; background-color:#F3F3F3; border-radius:5px " class="panel panel-default">
 
             <div class="col col-md-12" align="center" >
                 <img style="width:80px;margin-top: 2%;margin-bottom: 2%" src="{{ asset('img/Banco.png') }}"></img>
@@ -22,251 +74,272 @@
              <hr>
                    
                 {{ form_start(form) }}
-                <br>
-                <h4 align="center"><i class="fa fa-list"></i> Datos Generales</h4>
-                <div class="row">
+              <nav style="margin-top:15%">
+                       <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link " id="nav-home-tab" data-toggle="tab" href="#2005" role="tab" aria-controls="nav-home" aria-selected="true" >Datos Generales</a>
+                            <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#2008" role="tab" aria-controls="nav-profile" aria-selected="false">Datos Personales</a>
+                            <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#2013" role="tab" aria-controls="nav-profile" aria-selected="false">Datos Academicos</a>
+                            <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#2014" role="tab" aria-controls="nav-contact" aria-selected="false">Datos Familiares</a>
+    
+                        <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent" style="color:black">
+                            <div style="width:90%; margin-left:5%" class="tab-pane active" id="2005" role="tabpanel" aria-labelledby="nav-home-tab">
+                                <h3>Datos Generales</h3>
+                                <hr>
+                                <div class="row">
                   
-                     <div class="col col-md-2" align="left">
-                        <label for="form_edad">Edad<span style="font-size: 25;color: red" >*</span></label>
-                          {{ form_widget(form.edad) }}
-                          {{ form_errors(form.edad) }}   
-                    </div>
-                    
-                      <div class="col col-md-2" align="left">
-                        <label for="form_edad">Sexo<span style="font-size: 25;color: red" >*</span></label>
-                          {{ form_widget(form.sexo) }}
-                          {{ form_errors(form.sexo) }}   
-                      </div>
-                     
-                       <div class="col col-md-4" align="left" id='datetimepicker1'>
-                        <label for="form_anioinicio">Fecha Ingreso<span style="font-size: 25;color: red" >*</span></label>
-                          {{ form_widget(form.aniosoliingresobecario) }}
-                          {{ form_errors(form.aniosoliingresobecario) }}   
-                      </div>
-                      
-                       <div class="col col-md-4" align="left" id='datetimepicker2'>
-                        <label for="form_aniofin">Fecha Previa de graduacion<span style="font-size: 25;color: red" >*</span></label>
-                          {{ form_widget(form.aniosolifinalizacionbecario) }}
-                          {{ form_errors(form.aniosolifinalizacionbecario) }}   
-                      </div>
-                </div>
-                      <br>    
-                <div class="row">  
-                    <div class="col col-md-12" align="left">
-                        <label for="form_religion">Religion que pertenece<span style="font-size: 25;color: red" >*</span></label>
-                          {{ form_widget(form.religion) }}
-                          {{ form_errors(form.religion) }}   
-                    </div>
-                    
-                </div>
-                   <br> 
-                 <div class="row">  
-                    <div class="col col-md-12" align="left">
-                        <label for="form_direccion">Dirección<span style="font-size: 25;color: red" >*</span></label>
-                          {{ form_widget(form.direccionsolibecario) }}
-                          {{ form_errors(form.direccionsolibecario) }}   
-                    </div> 
-                </div>
-                 <br>  
-                 <h4 align="center"><i class="fa fa-list"></i> Datos Personales</h4>
-                 
-                 <br>
-                  <div class="row">  
-                    <div class="col col-md-6" align="left">
-                        <label for="form_documento">Numero de documento<span style="font-size: 25;color: red" >*</span></label>
-                          {{ form_widget(form.docsoliidentidadbecario) }}
-                          {{ form_errors(form.docsoliidentidadbecario) }}   
-                    </div> 
-                    
-                    <div class="col col-md-4" align="left">
-                        <label for="form_cdirecto">Numero de contacto directo<span style="font-size: 25;color: red" >*</span></label>
-                          {{ form_widget(form.telsolipersonalbecario) }}
-                          {{ form_errors(form.telsolipersonalbecario) }}   
-                    </div> 
-                  </div>
-                    <br>
-                  <div class="row">  
-                    <div class="col col-md-12" align="left">
-                        <label for="form_antecedentes">Antecedentes</label>
-                          {{ form_widget(form.antecedentes) }}
-                          {{ form_errors(form.antecedentes) }}   
-                    </div> 
-                  </div>
-                    <br>
-                    <br>
-                    
-                   <div class="row">
-                     <div class="col col-md-4" align="center">
-                        <label for="form_estadon">Estado</label>
-                          {{ form_widget(form.estadosolibecario) }}
-                          {{ form_errors(form.estadosolibecario) }}   
-                    </div> 
-                    
-                    <div class="col col-md-4" align="right">
-                        <label for="form_trabajo">Posee trabajo<span style="font-size: 25;color: red" >*</span></label>
-                          {{ form_widget(form.trabajosolibecario) }}
-                          {{ form_errors(form.trabajosolibecario) }}   
-                    </div> 
-                </div>
-                 <br>  
-                 <h4 align="center"><i class="fa fa-list"></i> Datos Academicos</h4>
-                  <div class="row">  
-                    <div class="col col-md-6" align="left">
-                        <label for="form_tsolicitud">Tipo de solicitud<span style="font-size: 25;color: red" >*</span></label>
-                          {{ form_widget(form.tiposolicasabecario) }}
-                          {{ form_errors(form.tiposolicasabecario) }}   
-                    </div> 
-                    
-                    <div class="col col-md-6" align="left">
-                        <label for="form_carrera">Carrera<span style="font-size: 25;color: red" >*</span></label>
-                          {{ form_widget(form.carrerasoliestudiarbecario) }}
-                          {{ form_errors(form.carrerasoliestudiarbecario) }}   
-                    </div> 
-                  </div>
-                    <br>
-                 <div class="row">
-                    <div class="col col-md-8" align="left">
-                        <label for="form_universidad">Universidad<span style="font-size: 25;color: red" >*</span></label>
-                          {{ form_widget(form.universidadsolibecario) }}
-                          {{ form_errors(form.universidadsolibecario) }}   
-                    </div>
-                    
-                    <div class="col col-md-4" align="left">
-                        <label for="form_paes">Nota Paes<span style="font-size: 25;color: red" >*</span></label>
-                          {{ form_widget(form.paes) }}
-                          {{ form_errors(form.paes) }}   
-                    </div>
-                 </div>
-                    <br>
-                    
-                    <div class="row">
-                    <div class="col col-md-4" align="left">
-                        <label for="form_matricula">Monto Matricula<span style="font-size: 25;color: red" >*</span></label>
-                          {{ form_widget(form.montosolimatriculabecario) }}
-                          {{ form_errors(form.montosolimatriculabecario) }}   
-                    </div>
-                    
-                    <div class="col col-md-4" align="left">
-                        <label for="form_cuotaM">Cuota Mensual<span style="font-size: 25;color: red" >*</span></label>
-                          {{ form_widget(form.cuotasolimensualbecario) }}
-                          {{ form_errors(form.cuotasolimensualbecario) }}   
-                    </div>
-                    
-                     <div class="col col-md-4" align="left">
-                        <label for="form_duracion">Duracion de la carrera<span style="font-size: 25;color: red" >*</span></label>
-                          {{ form_widget(form.duracionsolicarrerabecario) }}
-                          {{ form_errors(form.duracionsolicarrerabecario) }}   
-                    </div>
-                 </div>
-                    <br>
-                    <div class="row">
-                        <div class="col col-md-3" align="left">
-                        <label for="form_otrasbecas">Posee otras becas</label>
-                          {{ form_widget(form.otrasbecas) }}
-                          {{ form_errors(form.otrasbecas) }}   
-                        </div> 
-                        
-                         <div class="col col-md-3" align="left">
-                        <label for="form_Motrasbecas">Monto de otras becas</label>
-                          {{ form_widget(form.montootrasbecas) }}
-                          {{ form_errors(form.montootrasbecas) }}   
-                        </div>
-                        
-                         <div class="col col-md-6" align="left">
-                        <label for="form_comprobante">Comprobante<span style="font-size: 25;color: red" >*</span></label>
-                          {{ form_widget(form.comprobante_file) }}
-                          {{ form_errors(form.comprobante_file) }}   
-                        </div>
-                    </div>
-                        
-                  <br>  
-                 <h4 align="center"><i class="fa fa-list"></i> Datos Familiares</h4>
-                 <br>
-                       <div class="row">
+                                    <div class="col col-md-2" align="left">
+                                       <label for="form_edad">Edad<span style="font-size: 25;color: red" >*</span></label>
+                                         {{ form_widget(form.edad) }}
+                                         {{ form_errors(form.edad) }}   
+                                   </div>
+                                   
+                                     <div class="col col-md-2" align="left">
+                                       <label for="form_edad">Sexo<span style="font-size: 25;color: red" >*</span></label>
+                                         {{ form_widget(form.sexo) }}
+                                         {{ form_errors(form.sexo) }}   
+                                     </div>
+                                    
+                                      <div class="col col-md-4" align="left" id='datetimepicker1'>
+                                       <label for="form_anioinicio">Fecha Ingreso<span style="font-size: 25;color: red" >*</span></label>
+                                         {{ form_widget(form.aniosoliingresobecario) }}
+                                         {{ form_errors(form.aniosoliingresobecario) }}   
+                                     </div>
+                                     
+                                      <div class="col col-md-4" align="left" id='datetimepicker2'>
+                                       <label for="form_aniofin">Fecha Previa de graduacion<span style="font-size: 25;color: red" >*</span></label>
+                                         {{ form_widget(form.aniosolifinalizacionbecario) }}
+                                         {{ form_errors(form.aniosolifinalizacionbecario) }}   
+                                     </div>
+                               </div>
+                                     <br>    
+                               <div class="row">  
+                                   <div class="col col-md-12" align="left">
+                                       <label for="form_religion">Religion que pertenece<span style="font-size: 25;color: red" >*</span></label>
+                                         {{ form_widget(form.religion) }}
+                                         {{ form_errors(form.religion) }}   
+                                   </div>
+                                   
+                               </div>
+                                  <br> 
+                                <div class="row">  
+                                   <div class="col col-md-12" align="left">
+                                       <label for="form_direccion">Dirección<span style="font-size: 25;color: red" >*</span></label>
+                                         {{ form_widget(form.direccionsolibecario) }}
+                                         {{ form_errors(form.direccionsolibecario) }}   
+                                   </div> 
+                               </div>
+                            </div><!-- /.tab-pane -->
+
+                            <div style="width:90%; margin-left:5%" class="tab-pane " id="2008" role="tabpanel" aria-labelledby="nav-profile-tab">
+                               <h3>Datos Personales</h3>
+                               <hr>
+                               <div class="row">  
+                                <div class="col col-md-6" align="left">
+                                    <label for="form_documento">Numero de documento<span style="font-size: 25;color: red" >*</span></label>
+                                      {{ form_widget(form.docsoliidentidadbecario) }}
+                                      {{ form_errors(form.docsoliidentidadbecario) }}   
+                                </div> 
+                                
+                                <div class="col col-md-4" align="left">
+                                    <label for="form_cdirecto">Numero de contacto directo<span style="font-size: 25;color: red" >*</span></label>
+                                      {{ form_widget(form.telsolipersonalbecario) }}
+                                      {{ form_errors(form.telsolipersonalbecario) }}   
+                                </div> 
+                              </div>
+                                <br>
+                              <div class="row">  
+                                <div class="col col-md-12" align="left">
+                                    <label for="form_antecedentes">Antecedentes</label>
+                                      {{ form_widget(form.antecedentes) }}
+                                      {{ form_errors(form.antecedentes) }}   
+                                </div> 
+                              </div>
+                                <br>
+                                <br>
+                                
+                               <div class="row">
+                                 <div class="col col-md-4" align="center">
+                                    <label for="form_estadon">Estado</label>
+                                      {{ form_widget(form.estadosolibecario) }}
+                                      {{ form_errors(form.estadosolibecario) }}   
+                                </div> 
+                                
+                                <div class="col col-md-4" align="right">
+                                    <label for="form_trabajo">Posee trabajo<span style="font-size: 25;color: red" >*</span></label>
+                                      {{ form_widget(form.trabajosolibecario) }}
+                                      {{ form_errors(form.trabajosolibecario) }}   
+                                </div> 
+                            </div>
+                            </div>
+
+                            <div style="width:90%; margin-left:5%" class="tab-pane" id="2013" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                <h3>Datos Academicos</h3>
+                               <hr>
+                               <div class="row">  
+                                <div class="col col-md-6" align="left">
+                                    <label for="form_tsolicitud">Tipo de solicitud<span style="font-size: 25;color: red" >*</span></label>
+                                      {{ form_widget(form.tiposolicasabecario) }}
+                                      {{ form_errors(form.tiposolicasabecario) }}   
+                                </div> 
+                                
+                                <div class="col col-md-6" align="left">
+                                    <label for="form_carrera">Carrera<span style="font-size: 25;color: red" >*</span></label>
+                                      {{ form_widget(form.carrerasoliestudiarbecario) }}
+                                      {{ form_errors(form.carrerasoliestudiarbecario) }}   
+                                </div> 
+                              </div>
+                                <br>
+                             <div class="row">
+                                <div class="col col-md-8" align="left">
+                                    <label for="form_universidad">Universidad<span style="font-size: 25;color: red" >*</span></label>
+                                      {{ form_widget(form.universidadsolibecario) }}
+                                      {{ form_errors(form.universidadsolibecario) }}   
+                                </div>
+                                
+                                <div class="col col-md-4" align="left">
+                                    <label for="form_paes">Nota Paes<span style="font-size: 25;color: red" >*</span></label>
+                                      {{ form_widget(form.paes) }}
+                                      {{ form_errors(form.paes) }}   
+                                </div>
+                             </div>
+                                <br>
+                                
+                                <div class="row">
+                                <div class="col col-md-4" align="left">
+                                    <label for="form_matricula">Monto Matricula<span style="font-size: 25;color: red" >*</span></label>
+                                      {{ form_widget(form.montosolimatriculabecario) }}
+                                      {{ form_errors(form.montosolimatriculabecario) }}   
+                                </div>
+                                
+                                <div class="col col-md-4" align="left">
+                                    <label for="form_cuotaM">Cuota Mensual<span style="font-size: 25;color: red" >*</span></label>
+                                      {{ form_widget(form.cuotasolimensualbecario) }}
+                                      {{ form_errors(form.cuotasolimensualbecario) }}   
+                                </div>
+                                
+                                 <div class="col col-md-4" align="left">
+                                    <label for="form_duracion">Duracion de la carrera<span style="font-size: 25;color: red" >*</span></label>
+                                      {{ form_widget(form.duracionsolicarrerabecario) }}
+                                      {{ form_errors(form.duracionsolicarrerabecario) }}   
+                                </div>
+                             </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col col-md-3" align="left">
+                                    <label for="form_otrasbecas">Posee otras becas</label>
+                                      {{ form_widget(form.otrasbecas) }}
+                                      {{ form_errors(form.otrasbecas) }}   
+                                    </div> 
+                                    
+                                     <div class="col col-md-3" align="left">
+                                    <label for="form_Motrasbecas">Monto de otras becas</label>
+                                      {{ form_widget(form.montootrasbecas) }}
+                                      {{ form_errors(form.montootrasbecas) }}   
+                                    </div>
+                                    
+                                     <div class="col col-md-6" align="left">
+                                    <label for="form_comprobante">Comprobante<span style="font-size: 25;color: red" >*</span></label>
+                                      {{ form_widget(form.comprobante_file) }}
+                                      {{ form_errors(form.comprobante_file) }}   
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="width:90%; margin-left:5%" class="tab-pane" id="2014" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                <h3>Datos Famiiares</h3>
+                               <hr>
+                               <div class="row">
                            
-                       <div class="col col-md-4" align="left">
-                        <label for="form_telefono">Telefono<span style="font-size: 25;color: red" >*</span></label>
-                          {{ form_widget(form.telefonosolibecario) }}
-                          {{ form_errors(form.telefonosolibecario) }}   
-                        </div> 
-                        
-                        <div class="col col-md-4" align="left">
-                        <label for="form_ingresos">Ingresos Familiares<span style="font-size: 25;color: red" >*</span></label>
-                          {{ form_widget(form.ingresossolifamiliabecario) }}
-                          {{ form_errors(form.ingresossolifamiliabecario) }}   
+                                <div class="col col-md-4" align="left">
+                                 <label for="form_telefono">Telefono<span style="font-size: 25;color: red" >*</span></label>
+                                   {{ form_widget(form.telefonosolibecario) }}
+                                   {{ form_errors(form.telefonosolibecario) }}   
+                                 </div> 
+                                 
+                                 <div class="col col-md-4" align="left">
+                                 <label for="form_ingresos">Ingresos Familiares<span style="font-size: 25;color: red" >*</span></label>
+                                   {{ form_widget(form.ingresossolifamiliabecario) }}
+                                   {{ form_errors(form.ingresossolifamiliabecario) }}   
+                                  </div>
+                                  
+                                   <div class="col col-md-4" align="left">
+                                 <label for="form_miembros">Numero de miembreos familiares<span style="font-size: 25;color: red" >*</span></label>
+                                   {{ form_widget(form.miembrossolifamiliabecario) }}
+                                   {{ form_errors(form.miembrossolifamiliabecario) }}   
+                                  </div>
+                                  
+                                </div>
+                          <br>
+                          
+                          <div class="row">
+                              
+                             <div class="col col-md-12" align="left">
+                                 <label for="form_nompadre">Nombre del padre<span style="font-size: 25;color: red" >*</span></label>
+                                   {{ form_widget(form.nomsolipadrebecario) }}
+                                   {{ form_errors(form.nomsolipadrebecario) }}   
+                              </div> 
+                              
+                          </div>
+                              <br> 
+                         <div class="row">
+                              
+                             <div class="col col-md-12" align="left">
+                                 <label for="form_nommadre">Nombre de la madre<span style="font-size: 25;color: red" >*</span></label>
+                                   {{ form_widget(form.nomsolimadrebecario) }}
+                                   {{ form_errors(form.nomsolimadrebecario) }}   
+                             </div> 
+                              
+                          </div>
+                             <br>
+                           <div class="row">
+                                   
+                               <div class="col col-md-4" align="left">
+                                 <label for="form_Temergencia">Telefono en caso de emergencia<span style="font-size: 25;color: red" >*</span></label>
+                                   {{ form_widget(form.telsoliemergenciabecario) }}
+                                   {{ form_errors(form.telsoliemergenciabecario) }}   
+                               </div>
+               
+                               <div class="col col-md-4" align="left">
+                                 <label for="form_hermanos">Cantidad de hermanos</label>
+                                   {{ form_widget(form.cantsolihermanosbecario) }}
+                                   {{ form_errors(form.cantsolihermanosbecario) }}   
+                               </div>
+                          
+                           </div>
+                                <br>
+                           <div class="row">
+                                   
+                               <div class="col col-md-12" align="left">
+                                 <label for="form_ocupacionp">Ocupacion del padre<span style="font-size: 25;color: red" >*</span></label>
+                                   {{ form_widget(form.ocupacionpadre) }}
+                                   {{ form_errors(form.ocupacionpadre) }}   
+                               </div>
+                           </div>
+                               <br>
+                           <div class="row">
+                                   
+                               <div class="col col-md-12" align="left">
+                                 <label for="form_ocupacionm">Ocupacion de la madre<span style="font-size: 25;color: red" >*</span></label>
+                                   {{ form_widget(form.ocupacionmadre) }}
+                                   {{ form_errors(form.ocupacionmadre) }}   
+                               </div>
+                           </div>
+                          <br>
+                         <div class="row">
+                             <div class="col col-md-12" align="right">
+                                 <a href="{{ path('solicitudbecario_index') }}" class="btn btn-primary btn-xl">Cancelar</a>
+                                 <input  class="btn btn-success btn-xl" type="submit"  value="Guardar" />
+         
+         
+                             </div>
                          </div>
-                         
-                          <div class="col col-md-4" align="left">
-                        <label for="form_miembros">Numero de miembreos familiares<span style="font-size: 25;color: red" >*</span></label>
-                          {{ form_widget(form.miembrossolifamiliabecario) }}
-                          {{ form_errors(form.miembrossolifamiliabecario) }}   
-                         </div>
-                         
-                       </div>
-                 <br>
-                 
-                 <div class="row">
-                     
-                    <div class="col col-md-12" align="left">
-                        <label for="form_nompadre">Nombre del padre<span style="font-size: 25;color: red" >*</span></label>
-                          {{ form_widget(form.nomsolipadrebecario) }}
-                          {{ form_errors(form.nomsolipadrebecario) }}   
-                     </div> 
-                     
-                 </div>
-                     <br> 
-                <div class="row">
-                     
-                    <div class="col col-md-12" align="left">
-                        <label for="form_nommadre">Nombre de la madre<span style="font-size: 25;color: red" >*</span></label>
-                          {{ form_widget(form.nomsolimadrebecario) }}
-                          {{ form_errors(form.nomsolimadrebecario) }}   
-                    </div> 
-                     
-                 </div>
-                    <br>
-                  <div class="row">
-                          
-                      <div class="col col-md-4" align="left">
-                        <label for="form_Temergencia">Telefono en caso de emergencia<span style="font-size: 25;color: red" >*</span></label>
-                          {{ form_widget(form.telsoliemergenciabecario) }}
-                          {{ form_errors(form.telsoliemergenciabecario) }}   
-                      </div>
-      
-                      <div class="col col-md-4" align="left">
-                        <label for="form_hermanos">Cantidad de hermanos</label>
-                          {{ form_widget(form.cantsolihermanosbecario) }}
-                          {{ form_errors(form.cantsolihermanosbecario) }}   
-                      </div>
-                 
-                  </div>
-                       <br>
-                  <div class="row">
-                          
-                      <div class="col col-md-12" align="left">
-                        <label for="form_ocupacionp">Ocupacion del padre<span style="font-size: 25;color: red" >*</span></label>
-                          {{ form_widget(form.ocupacionpadre) }}
-                          {{ form_errors(form.ocupacionpadre) }}   
-                      </div>
-                  </div>
-                      <br>
-                  <div class="row">
-                          
-                      <div class="col col-md-12" align="left">
-                        <label for="form_ocupacionm">Ocupacion de la madre<span style="font-size: 25;color: red" >*</span></label>
-                          {{ form_widget(form.ocupacionmadre) }}
-                          {{ form_errors(form.ocupacionmadre) }}   
-                      </div>
-                  </div>
-                 <br>
-                <div class="row">
-                    <div class="col col-md-12" align="right">
-                        <a href="{{ path('solicitudbecario_index') }}" class="btn btn-primary btn-xl">Cancelar</a>
-                        <input  class="btn btn-success btn-xl" type="submit"  value="Guardar" />
+                                
+                            </div>
 
 
-                    </div>
-                </div>
+                        </div><!-- /.tab-content -->
+                        </div>
+                    </nav><!-- /.nav-tabs-custom -->
                             
                     {{ form_end(form) }}
                 <br>

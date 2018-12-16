@@ -3,17 +3,15 @@
 namespace SalexUserBundle\Controller;
 
 use SalexUserBundle\Entity\User;
-use SalexUserBundle\Repository\UserRepository;
-use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\Event\FormEvent;
-use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\FOSUserEvents;
+use AppBundle\Repository\RoleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+
 
 /**
  * User controller.
@@ -66,15 +64,7 @@ class UserController extends Controller {
         $password = $user->claveAleatoria();
         $user->setPlainPassword($password);
         $em = $this->getDoctrine()->getManager();
-        $role = $em->getRepository('SalexUserBundle:User')->findAllRole();
         $form = $this->createForm('SalexUserBundle\Form\UserType', $user);
-        $form->add('roles', EntityType::class, array(
-            'required' => true,
-            //'data' => $role,
-            'placeholder' => 'Select a role',
-            'class' => 'AppBundle:Role',
-            'multiple' => 'true'
-        ));
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -117,22 +107,22 @@ class UserController extends Controller {
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, User $user) {
+        
         $em = $this->getDoctrine()->getManager();
         $deleteForm = $this->createDeleteForm($user);
         $editForm = $this->createForm('SalexUserBundle\Form\UserType', $user);
-        $myrole = $user->getRoles();
-        $roles = array();
-        foreach ($myrole as $rol) {
-            $roles[] = ($rol);
+        $permissions = array();
+        $result = $em->getRepository('AppBundle:Role')->findAllRoles();
+        foreach ($result as $row){
+            $permissions[$row->getNomRole()]=$row->getIdRole();
         }
-
-        $editForm->add('roles', EntityType::class, array(
-            'required' => false,
-            'placeholder' => 'Select a role',
-            'class' => 'AppBundle:Role',
-            'multiple' => 'true'
+        
+        $editForm->add('roles', ChoiceType::class, array(
+            'label'   => 'Roles',
+            'choices' => $permissions,
+            'multiple' => true,
+            'expanded' => true
         ));
-
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

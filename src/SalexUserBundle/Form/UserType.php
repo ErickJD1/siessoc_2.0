@@ -3,17 +3,16 @@
 namespace SalexUserBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichFileType;
-use FOS\UserBundle\Util\LegacyFormHelper;
-use AppBundle\Entity\Role;
-use Doctrine\ORM\EntityRepository;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use AppBundle\Repository\RoleRepository;
+
+
 
 class UserType extends AbstractType {
 
@@ -22,6 +21,13 @@ class UserType extends AbstractType {
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
+     
+ //       $permissions = $em->getRepository('AppBundle:Role')->findAll();
+//        $permissions = array(
+//        'ROLE_USER'        => 'ROLE_USER',
+//        'ROLE_ADMIN'     => 'ROLE_ADMIN'
+//    );
+//        
         $builder
         ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
         ->add('email', EmailType::class, array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
@@ -29,14 +35,6 @@ class UserType extends AbstractType {
         ->add('lastName')
         ->add('lastName')
         ->add('description', TextareaType::class)
-        ->add('roles', EntityType::class, array(
-        'required' => true,
-        'placeholder' => 'Select a role',
-        'class' => 'AppBundle:Role',
-        'multiple' => 'true',
-          
-        ))
-
         
         /* ->add('plainPassword', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\RepeatedType'), array(
           'type' => LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\PasswordType'),

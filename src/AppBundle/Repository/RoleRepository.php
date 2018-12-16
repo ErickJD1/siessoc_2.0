@@ -12,12 +12,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class RoleRepository extends EntityRepository {
 
-    public function findAll() {
+    public function findAllRoles() {
         return $this->getEntityManager()
-                        ->createQuery(
-                                'SELECT u FROM AppBundle:Role u'
-                        )
-                        ->getResult();
+        ->createQueryBuilder()
+        ->select('m')
+        ->from('AppBundle:Role', 'm')
+        //->leftJoin('m.idusuario','u')
+        //->where('u.id = m.idusuario')
+        ->getQuery()
+        ->getResult();
     }
 
    

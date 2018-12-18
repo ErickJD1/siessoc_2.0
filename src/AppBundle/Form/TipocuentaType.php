@@ -20,7 +20,7 @@ class TipocuentaType extends AbstractType
         $builder
                 ->add('nombrecuenta',null,array('label'=>'Nombre Tipo Cuenta'))
                 ->add('descripcion',TextareaType::class, array('label'=>'Descripcion'))
-                ->add('estadotipocuenta', CheckboxType::class, array('label'=>'Estado'))        ;
+                ->add('estadotipocuenta', CheckboxType::class, array('label'=>'Estado','data'=>true))        ;
     }
 
     /**

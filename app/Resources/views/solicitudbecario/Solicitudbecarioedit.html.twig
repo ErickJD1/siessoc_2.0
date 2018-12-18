@@ -1,6 +1,10 @@
-{% extends 'base.html.twig' %}
+{% extends "layout/base-layout.html.twig" %}
 
-{% block body %}
+{% block page_title %} Solicitud | {% endblock %}
+{% block page_subtitle %}Lista De solicitudes {% endblock %}
+
+{% block page_content %}
+    
     <h1>Solicitudbecario edit</h1>
 
     {{ form_start(edit_form) }}

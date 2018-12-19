@@ -36,6 +36,13 @@ class Tipomovimiento
      * @ORM\Column(name="DESCRIPCIONTIPOMOV", type="string", length=250, nullable=true)
      */
     private $descripciontipomov;
+    
+    /**
+     * @var boolean
+     * @Assert\NotBlank()
+     * @ORM\Column(name="CLASIFICACION", type="boolean", nullable=true)
+     */
+    private $clasificacion;
 
     /**
      * @var boolean
@@ -125,6 +132,30 @@ class Tipomovimiento
     public function getIdtipomov()
     {
         return $this->idtipomov;
+    }
+    
+    /**
+     * Set clasificacion
+     *
+     * @param boolean $clasificacion
+     *
+     * @return Tipomovimiento
+     */
+    public function setClasificacion($clasificacion)
+    {
+        $this->clasificacion = $clasificacion;
+
+        return $this;
+    }
+
+    /**
+     * Get clasificacion
+     *
+     * @return boolean
+     */
+    public function getClasificacion()
+    {
+        return $this->clasificacion;
     }
 
     public function __toString(){

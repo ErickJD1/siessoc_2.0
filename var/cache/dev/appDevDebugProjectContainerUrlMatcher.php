@@ -1051,7 +1051,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                         goto not_tipomovimiento_show;
                     }
 
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'tipomovimiento_show')), array (  '_controller' => 'AppBundle\\Controller\\TipomovimientoController::showAction',));
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'tipomovimiento_show')), array (  '_controller' => 'AppBundle\\Controller\\TipomovimientoController::showdeleteAction',));
                 }
                 not_tipomovimiento_show:
 

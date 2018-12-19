@@ -14,6 +14,7 @@
         <option name="fixed"/>
       </options>
     </field>
+    <field name="clasificacion" type="boolean" column="CLASIFICACION" nullable="true"/>
     <field name="estadotipomov" type="boolean" column="ESTADOTIPOMOV" nullable="true"/>
   </entity>
 </doctrine-mapping>

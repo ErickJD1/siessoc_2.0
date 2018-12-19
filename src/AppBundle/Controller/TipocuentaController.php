@@ -75,6 +75,23 @@ class TipocuentaController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+    
+    
+        /**
+     * Finds and displays a tipocuenta entity.
+     *
+     * @Route("/{id}", name="tipocuenta_showdelete")
+     * @Method("GET")
+     */
+    public function showdeleteAction(Tipocuenta $Tipocuenta)
+    {
+        $deleteForm = $this->createDeleteForm($Tipocuenta);
+
+        return $this->render('tipocuenta/TipoCuentashowdelete.html.twig', array(
+            'tipocuenta' => $Tipocuenta,
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
 
     /**
      * Displays a form to edit an existing tipocuenta entity.
@@ -124,7 +141,7 @@ class TipocuentaController extends Controller
                 return $this->redirectToRoute('tipocuenta_index');
             } catch (\Doctrine\DBAL\DBALException $e)
             {
-                $this->addFlash('error', 'La cuenta no pudo ser eliminada!');
+                $this->addFlash('error', 'El Tipo De Cuenta no puede ser eliminado! Verifica si el tipo de cuenta tiene cuentas relacionadas. Puedes inactivar el Tipo De Cuenta en Editar Tipo De Cuenta.');
                 return $this->redirectToRoute('tipocuenta_index');
             }
             

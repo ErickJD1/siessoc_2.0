@@ -1,7 +1,7 @@
 {% extends "layout/base-layout.html.twig" %}
 
-{% block page_title %} Cuentas | {% endblock %}
-{% block page_subtitle %}Modificar Cuenta {% endblock %}
+{% block page_title %} Tipo De Cuenta | {% endblock %}
+{% block page_subtitle %}Modificar Tipo De Cuenta {% endblock %}
 
 {% block page_content %}
 
@@ -26,7 +26,7 @@
                 
                      <div class="row">
                     <div class="col col-md-12" align="right">
-                        <a href="{{ absolute_url(asset('')) }}banco" class="btn btn-primary btn-xl">Cancelar</a>
+                        <a href="{{path('tipocuenta_index')}}" class="btn btn-primary btn-xl">Cancelar</a>
                         <input  class="btn btn-success btn-xl" type="submit"  value="Guardar" />
 
 

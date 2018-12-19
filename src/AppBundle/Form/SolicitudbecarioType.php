@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Vich\UploaderBundle\Form\Type\VichImageType;
@@ -40,7 +41,7 @@ class SolicitudbecarioType extends AbstractType
                 ->add('estadosolibecario', CheckboxType::class, array('label'=>'Activo'))
                 ->add('religion',TextareaType::class,array('label'=>'Religion'))
                 ->add('edad',null, array('label'=>'Edad','invalid_message'=>'Valor Incorrecto, Campo Numerico, maximo %num% de numero', 'invalid_message_parameters' => array('%num%' => 2)))
-                ->add('sexo', null, array('label'=>'Sexo'))
+                ->add('sexo', ChoiceType::class, array('label'=>'Sexo','choices'=>array('M'=>'M', 'F'=>'F'),'placeholder'=>'Seleccionar Sexos'))
                 ->add('paes',null, array('label'=>'Paes','invalid_message'=>'Valor Incorrecto, Campo Numerico, maximo %num% de numero', 'invalid_message_parameters' => array('%num%' => 3)))
                 ->add('ocupacionpadre',TextareaType::class,array('label'=>'Ocupacion Padre'))
                 ->add('ocupacionmadre',TextareaType::class,array('label'=>'Ocupacion Madre'))

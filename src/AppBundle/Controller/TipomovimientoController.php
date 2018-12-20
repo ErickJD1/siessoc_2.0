@@ -27,7 +27,7 @@ class TipomovimientoController extends Controller
 
         $tipomovimientos = $em->getRepository('AppBundle:Tipomovimiento')->findAll();
 
-        return $this->render('tipomovimiento/Tipomovimientoindex.html.twig', array(
+        return $this->render('tipomovimiento/TipoMovimientoindex.html.twig', array(
             'tipomovimientos' => $tipomovimientos,
         ));
     }
@@ -53,7 +53,7 @@ class TipomovimientoController extends Controller
             return $this->redirectToRoute('tipomovimiento_index');
         }
 
-        return $this->render('tipomovimiento/Tipomovimientonew.html.twig', array(
+        return $this->render('tipomovimiento/TipoMovimientonew.html.twig', array(
             'tipomovimiento' => $tipomovimiento,
             'form' => $form->createView(),
         ));
@@ -69,7 +69,23 @@ class TipomovimientoController extends Controller
     {
         $deleteForm = $this->createDeleteForm($tipomovimiento);
 
-        return $this->render('tipomovimiento/Tipomovimientoshow.html.twig', array(
+        return $this->render('tipomovimiento/TipoMovimientoshow.html.twig', array(
+            'tipomovimiento' => $tipomovimiento,
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+    
+        /**
+     * Finds and displays a tipomovimiento entity.
+     *
+     * @Route("/{id}", name="tipomovimiento_show")
+     * @Method("GET")
+     */
+    public function showdeleteAction(Tipomovimiento $tipomovimiento)
+    {
+        $deleteForm = $this->createDeleteForm($tipomovimiento);
+
+        return $this->render('tipomovimiento/TipoMovimientoshowdelete.html.twig', array(
             'tipomovimiento' => $tipomovimiento,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -94,7 +110,7 @@ class TipomovimientoController extends Controller
              return $this->redirectToRoute('tipomovimiento_index', array('id' => $tipomovimiento->getIdtipomov()));
         }
 
-        return $this->render('tipomovimiento/Tipomovimientoedit.html.twig', array(
+        return $this->render('tipomovimiento/TipoMovimientoedit.html.twig', array(
             'tipomovimiento' => $tipomovimiento,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

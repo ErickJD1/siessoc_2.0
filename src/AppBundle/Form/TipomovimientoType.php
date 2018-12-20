@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+
 
 class TipomovimientoType extends AbstractType
 {
@@ -14,9 +16,10 @@ class TipomovimientoType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nombretipo',null,array('label'=>'Nombre Del Movimiento'))
-                ->add('descripciontipomov',TextareaType::class,array('label'=>'Descripcion Del Movimiento'))
-                ->add('estadotipomov',null,array('label'=>'Estado Del Movimiento','data'=>TRUE)) ;
+        $builder->add('nombretipo',null,array('label'=>'Nombre Tipo Movimiento','attr'=>array('placeholder'=>'Ej: Ingreso de fondos')))
+                ->add('descripciontipomov',TextareaType::class,array('label'=>'Descripción'))
+                ->add('clasificacion',ChoiceType::class,array('label'=>'Clasificación','placeholder' => 'Seleccione la clasificación','choices'=>array('Ingreso'=>1, 'Gasto'=>0)))
+                ->add('estadotipomov',null,array('label'=>'Activo','data'=>TRUE)) ;
     }
 
     /**

@@ -74,7 +74,23 @@ class BancoController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+        /**
+     * Finds and displays a bano entity.
+     *
+     * @Route("/{id}", name="banco_showdelete")
+     * @Method("GET")
+     */
+    
+       public function showdeleteAction(Banco $banco)
+    {
+        $deleteForm = $this->createDeleteForm($banco);
 
+        return $this->render('banco/Bancoshowdelete.html.twig', array(
+            'banco' => $banco,
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+    
     /**
      * Displays a form to edit an existing banco entity.
      *

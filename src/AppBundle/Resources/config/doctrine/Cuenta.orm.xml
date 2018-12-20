@@ -41,5 +41,6 @@
         <join-column name="idusuario" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
+    <field name="saldoactual" type="float" column="SALDOACTUAL" precision="10" scale="0" nullable="true"/>
   </entity>
 </doctrine-mapping>

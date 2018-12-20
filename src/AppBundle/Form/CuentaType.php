@@ -19,8 +19,8 @@ class CuentaType extends AbstractType
                 ->add('nomcuenta',null,array('label'=>'Nombre Cuenta'))
                 ->add('descripcioncuenta',TextareaType::class,array('label'=>'Descripcion'))
               //  ->add('fechaapertura')
-                ->add('saldocuenta',null,array('label'=>'Saldo Inicial','invalid_message' => 'Valor Incorreco Campo Numerico, maximo %num% caracteres','invalid_message_parameters' => array('%num%' => 6)))
-                ->add('estadocuenta',null,array('label'=>'Estado','required'=>true,'data'=>true))
+                ->add('saldocuenta',null,array('label'=>'Saldo Inicial','invalid_message' => 'Valor Incorreco Campo Numerico, Verifique los datos','invalid_message_parameters' => array('%num%' => 6)))
+                ->add('estadocuenta',null,array('label'=>'Activa'))
                 ->add('idbanco',null,array('label'=>'Banco'))
                 ->add('idtipocuenta',null,array('label'=>'Tipo Cuenta'));
     }

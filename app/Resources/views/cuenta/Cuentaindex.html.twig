@@ -9,7 +9,7 @@
 <div style="width:90%; margin-left:5%; margin-top: 2% ">
 
 <div align="left">
-    <a href="{{ path('cuenta_new') }}" class="btn btn-primary btn-sm">+ Registrar Cuenta</a>
+    <a style="font-size: 20px" href="{{ path('cuenta_new') }}" class="btn btn-success btn-sm"><i style="font-size: 20px" class="fa fa-plus-circle"></i> Cuenta</a>
 </div>
 <br> <br>
 
@@ -22,6 +22,7 @@
                 <th>Banco</th>
                 <th>Fecha Apertura</th>
                 <th>Saldo Inicial</th>
+                <th>Saldo Actual</th>
                 <th>Estado</th>
                 <th>Usuario</th>
                 <th>Accion</th>
@@ -37,6 +38,7 @@
                 <td>{{ cuentum.idbanco }}</td>
                 <td>{% if cuentum.fechaapertura %}{{ cuentum.fechaapertura|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ cuentum.saldocuenta }}</td>
+                <td>{{ cuentum.saldoactual }}</td>
                 <td>{% if cuentum.estadocuenta %}Activa{% else %}Inactiva{% endif %}</td>
                 <td>{{ cuentum.idusuario }}</td>
                 <td>

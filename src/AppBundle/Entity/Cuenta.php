@@ -93,7 +93,22 @@ class Cuenta
      */
     private $idusuario;
     
+       /**
+     * @var float
+     * @ORM\Column(name="SALDOACTUAL", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $saldoactual;
+    
+    
+    function getSaldoactual() {
+        return $this->saldoactual;
+    }
 
+    function setSaldoactual($saldoactual) {
+        $this->saldoactual = $saldoactual;
+    }
+
+    
       /**
      * Get idusuario
      *

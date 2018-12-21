@@ -8,7 +8,7 @@
     <id name="idcuenta" type="integer" column="IDCUENTA">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="numcuenta" type="string" column="NUMCUENTA" length="10" nullable="true">
+    <field name="numcuenta" type="string" column="NUMCUENTA" length="25" nullable="true">
       <options>
         <option name="fixed"/>
       </options>

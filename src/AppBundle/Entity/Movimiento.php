@@ -15,6 +15,7 @@ use Carbon\Carbon;
  *
  * @ORM\Table(name="movimiento", indexes={@ORM\Index(name="FK_RELATIONSHIP_13", columns={"IDTIPOMOV"}), @ORM\Index(name="FK_RELATIONSHIP_15", columns={"IDCUENTA"})})
  * @ORM\Entity(repositoryClass="src\AppBundle\Repository\MovimientoRepository")
+ * @ORM\HasLifecycleCallbacks
  * @Vich\Uploadable
  */
 class Movimiento {
@@ -64,7 +65,7 @@ class Movimiento {
      *
      * @ORM\ManyToOne(targetEntity="Cuenta")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="IDCUENTA", referencedColumnName="IDCUENTA")
+     * @ORM\JoinColumn(name="IDCUENTA", referencedColumnName="IDCUENTA")
      * })
      */
     private $idcuenta;
@@ -72,9 +73,7 @@ class Movimiento {
     /**
      * @Assert\Image(
      *     maxSize="5M",
-     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg","application/pdf","application/xlsx","application/doc"},
-     *     maxWidth=700,
-     *     maxHeight=700
+     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg","application/pdf","application/xls","application/docx","application/txt",}   
      * )
      * @Vich\UploadableField(mapping="document_file", fileNameProperty="comprobante")
      * @var [type]
@@ -114,11 +113,11 @@ class Movimiento {
      * @return self
      */
     public function setComprobanteFile(File $comprobante_file) {
-        $this->profile_picture_file = $comprobante_file;
+        $this->comprobante_file = $comprobante_file;
 
         // Only change the updated af if the file is really uploaded to avoid database updates.
         // This is needed when the file should be set when loading the entity.
-        if ($this->profile_picture_file instanceof UploadedFile) {
+        if ($this->comprobante_file instanceof UploadedFile) {
             $this->setUpdateAt(new Carbon());
         }
 
@@ -150,7 +149,7 @@ class Movimiento {
      *
      * @return Movimiento
      */
-    public function setIdusuario(\SalexUserBundle\Entity\User $idusuario=null) {
+    public function setIdusuario(\SalexUserBundle\Entity\User $idusuario = null) {
         $this->idusuario = $idusuario;
     }
 

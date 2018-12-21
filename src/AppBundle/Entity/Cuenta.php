@@ -25,7 +25,7 @@ class Cuenta
     /**
      * @var string
      * @Assert\NotBlank()
-     * @ORM\Column(name="NUMCUENTA", type="string", length=10, nullable=true)
+     * @ORM\Column(name="NUMCUENTA", type="string", length=25, nullable=true)
      */
     private $numcuenta;
 

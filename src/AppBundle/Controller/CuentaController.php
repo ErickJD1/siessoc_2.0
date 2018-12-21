@@ -47,6 +47,9 @@ class CuentaController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            if($Cuenta->getSaldoactual()== null){
+                $Cuenta->setSaldoactual($Cuenta->getSaldocuenta());
+            }
           //  $Cuenta->setFechaapertura(date('Y-m-d H:i:s'));
             $em->persist($Cuenta);
             $em->flush($Cuenta);

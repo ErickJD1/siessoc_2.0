@@ -30,6 +30,8 @@
         <join-column name="IDTIPOMOV" referenced-column-name="IDTIPOMOV"/>
       </join-columns>
     </many-to-one>
+        <field name="createdAt" type="datetime" column="CREATED_AT"  nullable="true"/>
+        <field name="updateAt" type="datetime" column="UPDATED_AT" nullable="true"/>
 <!--    <field name="idusuario" type="integer" column="IDUSUARIO" precision="20" scale="0" nullable="true"/>-->
      <many-to-one field="idusuario" target-entity="SalexUserBundle\Entity\User" fetch="LAZY">
       <join-columns>

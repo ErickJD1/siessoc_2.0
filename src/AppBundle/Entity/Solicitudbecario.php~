@@ -3,12 +3,17 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
+use Carbon\Carbon;
 
 /**
  * Solicitudbecario
  *
  * @ORM\Table(name="solicitudbecario")
  * @ORM\Entity
+ * @Vich\Uploadable
  */
 class Solicitudbecario
 {
@@ -168,8 +173,87 @@ class Solicitudbecario
      */
     private $estadosolibecario;
 
+ /**
+     * @var string
+     *
+     * @ORM\Column(name="RELIGION", type="string", length=250, nullable=true)
+     */
+    private $religion;
+    
+     /**
+     * @var integer
+     *
+     * @ORM\Column(name="EDAD", type="integer", nullable=true)
+     */
+    private $edad;
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="SEXO", type="string", length=10, nullable=true)
+     */
+    private $sexo;
 
+    /**
+     * @var float
+     * @ORM\Column(name="PAES", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $paes;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="OCUPACIONPADRE", type="string", length=250, nullable=true)
+     */
+    private $ocupacionpadre;
+    
+      /**
+     * @var string
+     *
+     * @ORM\Column(name="OCUPACIONMADRE", type="string", length=250, nullable=true)
+     */
+    private $ocupacionmadre;
+    
+     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="OTRASBECAS", type="boolean", nullable=true)
+     */
+    private $otrasbecas;
+    
+     /**
+     * @var float
+     *
+     * @ORM\Column(name="MONTOOTRASBECAS", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $montootrasbecas;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ANTECEDENTES", type="string", length=250, nullable=true)
+     */
+    private $antecedentes;
+   
+    
+       /**
+     * @Assert\Image(
+     *     maxSize="5M",
+     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg","application/pdf","application/xlsx","application/doc"},
+     *     maxWidth=700,
+     *     maxHeight=700
+     * )
+     * @Vich\UploadableField(mapping="profile_image", fileNameProperty="comprobante")
+     * @var [type]
+     */
+    private $comprobante_file;
 
+    /**
+     * @ORM\Column(name="comprobante", type="string", nullable=true)
+     * @var string
+     */
+    private $comprobante;
+    
     /**
      * Set telefonosolibecario
      *
@@ -177,6 +261,45 @@ class Solicitudbecario
      *
      * @return Solicitudbecario
      */
+    
+    
+     /**
+     * Gets the value of comprobante_file.
+     *
+     * @return string
+     */
+    public function getComprobanteFile() {
+        return $this->comprobante_file;
+    }
+
+    /**
+     * Sets the value of comprobante_file.
+     *
+     * @param File $comprobante_file
+     *
+     * @return self
+     */
+    public function setComprobanteFile(File $comprobante_file) {
+        $this->profile_picture_file = $comprobante_file;
+
+        // Only change the updated af if the file is really uploaded to avoid database updates.
+        // This is needed when the file should be set when loading the entity.
+        if ($this->profile_picture_file instanceof UploadedFile) {
+            $this->setUpdateAt(new Carbon());
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get comprobante
+     *
+     * @return string
+     */
+    function getComprobante() {
+        return $this->comprobante;
+    }
+    
     public function setTelefonosolibecario($telefonosolibecario)
     {
         $this->telefonosolibecario = $telefonosolibecario;
@@ -184,7 +307,87 @@ class Solicitudbecario
         return $this;
     }
 
-    /**
+    function getMiembrossolifamilibecario() {
+        return $this->miembrossolifamilibecario;
+    }
+
+    function getReligion() {
+        return $this->religion;
+    }
+
+    function getEdad() {
+        return $this->edad;
+    }
+
+    function getSexo() {
+        return $this->sexo;
+    }
+
+    function getPaes() {
+        return $this->paes;
+    }
+
+    function getOcupacionpadre() {
+        return $this->ocupacionpadre;
+    }
+
+    function getOcupacionmadre() {
+        return $this->ocupacionmadre;
+    }
+
+    function getOtrasbecas() {
+        return $this->otrasbecas;
+    }
+
+    function getMontootrasbecas() {
+        return $this->montootrasbecas;
+    }
+
+    function getAntecedentes() {
+        return $this->antecedentes;
+    }
+
+    function setMiembrossolifamilibecario($miembrossolifamilibecario) {
+        $this->miembrossolifamilibecario = $miembrossolifamilibecario;
+    }
+
+    function setReligion($religion) {
+        $this->religion = $religion;
+    }
+
+    function setEdad($edad) {
+        $this->edad = $edad;
+    }
+
+    function setSexo($sexo) {
+        $this->sexo = $sexo;
+    }
+
+    function setPaes($paes) {
+        $this->paes = $paes;
+    }
+
+    function setOcupacionpadre($ocupacionpadre) {
+        $this->ocupacionpadre = $ocupacionpadre;
+    }
+
+    function setOcupacionmadre($ocupacionmadre) {
+        $this->ocupacionmadre = $ocupacionmadre;
+    }
+
+    function setOtrasbecas($otrasbecas) {
+        $this->otrasbecas = $otrasbecas;
+    }
+
+    function setMontootrasbecas($montootrasbecas) {
+        $this->montootrasbecas = $montootrasbecas;
+    }
+
+    function setAntecedentes($antecedentes) {
+        $this->antecedentes = $antecedentes;
+    }
+
+        /**
      * Get telefonosolibecario
      *
      * @return string
@@ -600,30 +803,6 @@ class Solicitudbecario
     public function getTelsolipersonalbecario()
     {
         return $this->telsolipersonalbecario;
-    }
-
-    /**
-     * Set miembrossolifamilibecario
-     *
-     * @param integer $miembrossolifamilibecario
-     *
-     * @return Solicitudbecario
-     */
-    public function setMiembrossolifamilibecario($miembrossolifamilibecario)
-    {
-        $this->miembrossolifamilibecario = $miembrossolifamilibecario;
-
-        return $this;
-    }
-
-    /**
-     * Get miembrossolifamilibecario
-     *
-     * @return integer
-     */
-    public function getMiembrossolifamilibecario()
-    {
-        return $this->miembrossolifamilibecario;
     }
 
     /**

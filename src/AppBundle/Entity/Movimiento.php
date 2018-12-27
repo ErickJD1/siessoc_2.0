@@ -95,7 +95,26 @@ class Movimiento {
      * })
      */
     private $idusuario;
-
+    
+   /**
+     * @var datetime $createdAt
+     *
+     * @ORM\Column(name="CREATED_AT", type="datetime")
+     * @Assert\Type("\DateTime")
+     * 
+     */
+    private $createdAt;
+    
+   /**
+     * @var datetime $updateAt
+     * 
+     * @ORM\Column(name="UPDATED_AT", type="datetime", nullable = true)
+     * @Assert\Type("\DateTime")
+     * 
+     */
+    private $updateAt;
+    
+    
     /**
      * Gets the value of comprobante_file.
      *
@@ -282,5 +301,78 @@ class Movimiento {
     public function getIdtipomov() {
         return $this->idtipomov;
     }
+    
+    
+   /**
+     * Gets triggered only on insert
+
+     * @ORM\PrePersist
+     */
+    public function onPrePersist()
+    {
+        $this->createdAt = new Carbon();
+    }
+
+    /**
+     * Gets triggered every time on update
+
+     * @ORM\PreUpdate
+     */
+    public function onPreUpdate()
+    {
+        $this->updateAt = new Carbon();
+    }
+
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updateAt
+     *
+     * @param \DateTime $updateAt
+     *
+     * @return User
+     */
+    public function setUpdateAt($updateAt)
+    {
+        $this->updateAt = $updateAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updateAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdateAt()
+    {
+        return $this->updateAt;
+    }
+
+
+
+    /**
+     * Set createAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return Movimiento
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
 
 }

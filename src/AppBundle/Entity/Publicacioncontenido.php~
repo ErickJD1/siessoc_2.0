@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\File\File;
 use Carbon\Carbon;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use SalexUserBundle\Entity\User;
 
 /**
  * Publicacioncontenido
@@ -80,8 +81,37 @@ class Publicacioncontenido {
      */
     private $contenidoPicture;
 
-   
+   /**
+     * @var \idusuario
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     * @ORM\JoinColumn(name="idusuario", referencedColumnName="id")
+     * })
+     */
+    private $idusuario;
 
+      /**
+     * Get idusuario
+     *
+     * @return integer
+     */
+    public function getIdusuario() {
+        return $this->idusuario;
+    }
+
+    /**
+     * Set idusuario
+     *
+     * @param \SalexUserBundle\Entity\User $idusuario
+     *
+     * @return Movimiento
+     */
+    public function setIdusuario(\SalexUserBundle\Entity\User $idusuario=null) {
+        $this->idusuario = $idusuario;
+    }
+    
+    
     /**
      * Set titulo
      *

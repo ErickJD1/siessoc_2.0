@@ -105,7 +105,7 @@ class MovimientoController extends Controller
         $deleteForm = $this->createDeleteForm($movimiento);
         $editForm = $this->createForm('AppBundle\Form\MovimientoType', $movimiento);
         $editForm->handleRequest($request);
-
+        
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 

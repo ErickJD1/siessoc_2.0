@@ -23,9 +23,8 @@ class MovimientoType extends AbstractType
                 ->add('idtipomov',null,array('label'=>'Tipo Movimiento'))
                 ->add('comprobante_file', VichFileType::class, array(
                     'required' => false,
-                    'download_link' =>true,
+                    'download_link' =>false,
                     'allow_delete' =>true,
-                    
                     ));
                   
     }

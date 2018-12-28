@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Vich\UploaderBundle\Form\Type\VichImageType;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 
 class MovimientoType extends AbstractType
@@ -21,7 +21,7 @@ class MovimientoType extends AbstractType
                 ->add('estadomov',null,array('label'=>'Estado','data'=>true,'required'=>false))
                 ->add('idcuenta',null,array('label'=>'Cuenta'))
                 ->add('idtipomov',null,array('label'=>'Tipo Movimiento'))
-                ->add('comprobante_file', VichImageType::class, array(
+                ->add('comprobante_file', VichFileType::class, array(
                     'required' => false,
                     'download_link' =>true,
                     'allow_delete' =>true,

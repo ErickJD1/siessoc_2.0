@@ -58,6 +58,7 @@ class SolicitudbecarioController extends Controller
         ));
     }
 
+    
     /**
      * Finds and displays a solicitudbecario entity.
      *
@@ -74,6 +75,25 @@ class SolicitudbecarioController extends Controller
         ));
     }
 
+
+ /**
+     * Finds and displays a solicitudbecario entity.
+     *
+     * @Route("/{id}", name="solicitudbecario_show_delete")
+     * @Method("GET")
+     */
+    public function showDeleteAction(Solicitudbecario $solicitudbecario)
+    {
+        $deleteForm = $this->createDeleteForm($solicitudbecario);
+
+        return $this->render('solicitudbecario/Solicitudbecarioshowdelete.html.twig', array(
+            'solicitudbecario' => $solicitudbecario,
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+
+    
     /**
      * Displays a form to edit an existing solicitudbecario entity.
      *

@@ -9,7 +9,7 @@
         <div style="width:90%; margin-left:5%; margin-top: 2% ">
 
             <div align="left">
-                <a href="{{ path('solicitudbecario_new') }}" class="btn btn-primary btn-sm">+ Registrar Solicitud</a>
+                <a style="font-size: 20px" href="{{ path('solicitudbecario_new') }}" class="btn btn-success btn-sm"><i style="font-size: 20px" class="fa fa-plus-circle"></i> Registrar Solicitud</a>
             </div>
             <br> </br>
 
@@ -22,14 +22,29 @@
                         <th>Tipo Solicitud</th>
                         <th>Carrera A Estudiar</th>
                         <th>Universidad</th>
+                        <th>Matricula</th>
+                        <th>Cuota Mensual</th>
+                        <th>Duracion Carrera</th>
                         <th>Trabajo</th>
                         <th>Documento De Identidad</th>
                         <th>Año de ingreso</th>
                         <th>Año de finalizacion</th>
+                        <th>Numero De Hermanos</th>
+                        <th>Nombre del padre</th>
+                        <th>Nombre de la madre</th>
+                        <th>Edad</th>
+                        <th>Sexo</th>
+                        <th>Nota Paes</th>
+                        <th>Ocupacion del padre</th>
+                        <th>Ocupacion de la madre</th>
+                        <th>Otras becas</th>
+                        <th>Monto de otras becas</th>
+                        <th>Antecendetes</th>
                         <th>En emergencias Llamar</th>
                         <th>Telefono Del Becario</th>
                         <th>Direccion</th>
                         <th>Estado</th>
+                        <th>Religion</th>
                         <th>Accion</th>
                     </tr>
                 </thead>
@@ -43,21 +58,41 @@
                             <td>{{ solicitudbecario.tiposolicasabecario }}</td>
                             <td>{{ solicitudbecario.carrerasoliestudiarbecario }}</td>
                             <td>{{ solicitudbecario.universidadsolibecario }}</td>
-                            <td>{% if solicitudbecario.trabajosolibecario %}Yes{% else %}No{% endif %}</td>
+                            <td>{{ solicitudbecario.montosolimatriculabecario }}</td>
+                            <td>{{ solicitudbecario.cuotasolimensualbecario }}</td>
+                            <td>{{ solicitudbecario.duracionsolicarrerabecario }}</td>
+                            <td>{% if solicitudbecario.trabajosolibecario %}Si{% else %}No{% endif %}</td>
                             <td>{{ solicitudbecario.docsoliidentidadbecario }}</td>
                             <td>{% if solicitudbecario.aniosoliingresobecario %}{{ solicitudbecario.aniosoliingresobecario|date('Y-m-d') }}{% endif %}</td>
                             <td>{% if solicitudbecario.aniosolifinalizacionbecario %}{{ solicitudbecario.aniosolifinalizacionbecario|date('Y-m-d') }}{% endif %}</td>
+                            <td>{{ solicitudbecario.cantsolihermanosbecario }}</td>
+                            <td>{{ solicitudbecario.nomsolipadrebecario }}</td>
+                            <td>{{ solicitudbecario.nomsolimadrebecario }}</td>
+                            <td>{{ solicitudbecario.edad }}</td>
+                            <td>{{ solicitudbecario.sexo }}</td>
+                            <td>{{ solicitudbecario.paes }}</td>
+                            <td>{{ solicitudbecario.ocupacionpadre }}</td>
+                            <td>{{ solicitudbecario.ocupacionmadre }}</td>
+                            <td>{% if solicitudbecario.otrasbecas %}Si{% else %}No{% endif %}</td>
+                            <td>{{ solicitudbecario.montootrasbecas }}</td>
+                            <td>{{ solicitudbecario.antecedentes }}</td>
                             <td>{{ solicitudbecario.telsoliemergenciabecario }}</td>
                             <td>{{ solicitudbecario.telsolipersonalbecario }}</td>
                             <td>{{ solicitudbecario.direccionsolibecario }}</td>
+                            <td>{{ solicitudbecario.religion }}</td>
                             <td>{% if solicitudbecario.estadosolibecario %}Yes{% else %}No{% endif %}</td>
                             <td>
-                                <div style="float:left;"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#show{{ solicitudbecario.idsolibecario }}"><i class="fa fa-eye" style="font-size: 20px"></i></button>
-                                        {{ render(controller('AppBundle:Solicitudbecario:show', { 'id' : solicitudbecario.idsolibecario } )) }}
+                            
+                                <div style="float:left;"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#deletesoli{{ solicitudbecario.idsolibecario }}"><i class="fa fa-trash" style="font-size: 20px; color: crimson"></i></button>
+                                    {{ render(controller('AppBundle:Solicitudbecario:showDelete', { 'id' : solicitudbecario.idsolibecario } )) }}
                                 </div>
-
-                                <div style="float:left;"><a href="{{path('solicitudbecario_edit',{ 'id' : solicitudbecario.idsolibecario })}}" class="" style="background-color: transparent;  border: none;"><i class="fa fa-edit" style="font-size: 20px"></i></a>
-
+                                
+                               <div style="float:left;">
+                                   <a title="Editar Solicitud" href="{{path('solicitudbecario_edit',{ 'id' : solicitudbecario.idsolibecario })}}" style="background-color: transparent; border: none;"><i class="fa fa-edit" style="font-size: 20px; color: limegreen"></i></a>
+                               </div>
+                                
+                                <div style="float:left;"><button title="Ver Soli" class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#VerSoli{{ solicitudbecario.idsolibecario }}"><i style="font-size: 20px"></i><i class="fa fa-eye" style="font-size: 20px; color: deepskyblue"></i></button>
+                                        {{ render(controller('AppBundle:Solicitudbecario:show', { 'id' : solicitudbecario.idsolibecario } )) }}
                                 </div>
 
                             </td>

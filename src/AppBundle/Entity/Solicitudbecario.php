@@ -28,7 +28,7 @@ class Solicitudbecario
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="TELEFONOSOLIBECARIO", type="string", length=10, nullable=true)
      */
     private $telefonosolibecario;
@@ -42,77 +42,77 @@ class Solicitudbecario
 
     /**
      * @var integer
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="MIEMBROSSOLIFAMILIABECARIO", type="integer", nullable=true)
      */
     private $miembrossolifamiliabecario;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="TIPOSOLICASABECARIO", type="string", length=500, nullable=true)
      */
     private $tiposolicasabecario;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="CARRERASOLIESTUDIARBECARIO", type="string", length=256, nullable=true)
      */
     private $carrerasoliestudiarbecario;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="UNIVERSIDADSOLIBECARIO", type="string", length=100, nullable=true)
      */
     private $universidadsolibecario;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="MONTOSOLIMATRICULABECARIO", type="decimal", precision=10, scale=0, nullable=true)
      */
     private $montosolimatriculabecario;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="CUOTASOLIMENSUALBECARIO", type="decimal", precision=10, scale=0, nullable=true)
      */
     private $cuotasolimensualbecario;
 
     /**
      * @var integer
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="DURACIONSOLICARRERABECARIO", type="integer", nullable=true)
      */
     private $duracionsolicarrerabecario;
 
     /**
      * @var boolean
-     *
+     
      * @ORM\Column(name="TRABAJOSOLIBECARIO", type="boolean", nullable=true)
      */
     private $trabajosolibecario;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="DOCSOLIIDENTIDADBECARIO", type="string", length=20, nullable=true)
      */
     private $docsoliidentidadbecario;
 
     /**
      * @var \DateTime
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="ANIOSOLIINGRESOBECARIO", type="date", nullable=true)
      */
     private $aniosoliingresobecario;
 
     /**
      * @var \DateTime
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="ANIOSOLIFINALIZACIONBECARIO", type="date", nullable=true)
      */
     private $aniosolifinalizacionbecario;
@@ -140,14 +140,14 @@ class Solicitudbecario
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="TELSOLIEMERGENCIABECARIO", type="string", length=11, nullable=true)
      */
     private $telsoliemergenciabecario;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="TELSOLIPERSONALBECARIO", type="string", length=11, nullable=true)
      */
     private $telsolipersonalbecario;
@@ -161,7 +161,7 @@ class Solicitudbecario
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="DIRECCIONSOLIBECARIO", type="string", length=500, nullable=true)
      */
     private $direccionsolibecario;
@@ -182,20 +182,21 @@ class Solicitudbecario
     
      /**
      * @var integer
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="EDAD", type="integer", nullable=true)
      */
     private $edad;
     
      /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="SEXO", type="string", length=10, nullable=true)
      */
     private $sexo;
 
     /**
      * @var float
+     * @Assert\NotBlank()
      * @ORM\Column(name="PAES", type="float", precision=10, scale=0, nullable=true)
      */
     private $paes;
@@ -224,7 +225,7 @@ class Solicitudbecario
      /**
      * @var float
      *
-     * @ORM\Column(name="MONTOOTRASBECAS", type="float", precision=10, scale=0, nullable=true)
+     * @ORM\Column(name="MONTOOTRASBECAS", type="decimal", precision=10, scale=0, nullable=true)
      */
     private $montootrasbecas;
     

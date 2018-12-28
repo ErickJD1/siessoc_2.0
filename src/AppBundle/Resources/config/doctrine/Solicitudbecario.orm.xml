@@ -103,9 +103,8 @@
       </options>
     </field>
      <field name="otrasbecas" type="boolean" column="OTRASBECAS" nullable="true"/>
-  </entity>
-  <field name="montootrasbecas" type="float" column="MONTOOTRASBECAS" precision="20" scale="0" nullable="true"/>
- <field name="antecedentespersonales" type="string" column="ANTECEDENTESPERSONALES" length="500" nullable="true">
+      <field name="montootrasbecas" type="decimal" column="MONTOOTRASBECAS" precision="10" scale="0" nullable="true"/>
+ <field name="antecedentes" type="string" column="ANTECEDENTES" length="250" nullable="true">
       <options>
         <option name="fixed"/>
       </options>
@@ -115,4 +114,6 @@
         <option name="fixed"/>
       </options>
     </field>
+  </entity>
+ 
 </doctrine-mapping>

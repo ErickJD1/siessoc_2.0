@@ -1,4 +1,4 @@
-<div class="modal fade" id="VerSoli{{ solicitudbecario.idsolibecario }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="deletesoli{{ solicitudbecario.idsolibecario }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div style="width:70%; margin-left: 15%" class="modal-dialog">
         <div class="modal-content" style="border-radius: 40px">
 
@@ -101,15 +101,20 @@
         </div>
                     <div class="col col-md-5">
 
-                        <img style="width:75%;margin-top: 10%;margin-bottom: 2%" src="{{ asset('img/budget.png') }}"></img>
+                        <img style="width:75%;margin-top: 10%;margin-bottom: 2%" src="{{ asset('img/delete.png') }}"></img>
                     </div>
                 </div>
 
-                <div class="modal-footer" al>
+                    
+             <div class="modal-footer" al>
+                    <div style="float:right">
+                        {{ form_start(delete_form) }}
+                        <input type="submit" class="btn btn-danger" style="margin-left:1px" value="Delete">
+                        {{ form_end(delete_form) }}
+                    </div>
                     <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
-   

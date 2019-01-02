@@ -51,9 +51,14 @@
                 <div class="row">
                     <div class="col col-md-6" align="left">
                         <label for="form_monto">Monto ($)<span style="font-size: 25;color: red" >*</span></label>
-                        {{ form_widget(form.monto) }}
+                        {{ form_widget(form.monto, {attr:{'onchange':'cargarData()'}}) }}
                         {{ form_errors(form.monto) }}
+
+                        <span class="help-block" id="montoerror">    
+
+                        </span>
                     </div>
+
                     <div class="col col-md-6" align="center">
                         <label for="form_file">Adjuntar Comprobante</label>
                         {{ form_widget(form.comprobante_file) }}
@@ -65,7 +70,7 @@
                 <div class="row">
                     <div class="col col-md-12" align="right">
                         <a href="{{ absolute_url(asset('')) }}movimiento" class="btn btn-primary btn-xl">Cancelar</a>
-                        <input  class="btn btn-success btn-xl" type="submit"  value="Guardar" />
+                        <input  class="btn btn-success btn-xl" id="enviar" type="submit"  value="Guardar" />
                     </div>
                 </div>
                 {{ form_end(form) }}
@@ -78,4 +83,74 @@
 
 
 
+{% endblock %}
+
+{% block javascripts_inline %}
+
+    <script>
+        function cargarData()
+        {
+            var id1 = document.getElementById('appbundle_movimiento_idcuenta');
+            var id2 = id1.options[id1.selectedIndex].value;
+
+            $.ajax({
+                method: "GET",
+                url: "{{ url('ajax_posts') }}",
+                data: "idcuenta=" + id2,
+                dataType: 'json',
+                success: function (data)
+                {
+                    if (data.hasOwnProperty("response") && data.response === "success")
+                    {
+                        if (data.hasOwnProperty("posts"))
+                        {
+                            //http://stackoverflow.com/questions/3710204/how-to-check-if-a-string-is-a-valid-json-string-in-javascript-without-using-try/3710226
+                            if (/^[\],:{}\s]*$/.test(data.posts.replace(/\\["\\\/bfnrtu]/g, '@').
+                                    replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']').
+                                    replace(/(?:^|:|,)(?:\s*\[)+/g, '')))
+                            {
+                                var posts = JSON.parse(data.posts);
+                                if (posts.length > 0)
+                                {
+                                    var saldoActual = 0;
+                                    for (d in posts)
+                                    {
+                                        saldoActual = posts[d]["saldoactual"];
+                                    }
+                                }
+                                $('#error').val(saldoActual);
+                                if ($('#appbundle_movimiento_monto').val() > saldoActual)
+                                {
+                                    $('#montoerror').html(`<ul class="list-unstyled"><li><span class="glyphicon glyphicon-exclamation-sign">
+                                </span>Monto disponible $` + saldoActual + `</li></ul>`);
+                                    $("#enviar").attr("disabled","disabled");
+
+                                } else {
+                                    $('#montoerror').html(`<ul style="color:green" class="list-unstyled"><li><span class="fa fa-check" style="color:green">
+                                </span>Monto Valido!</li></ul>`);
+                                $("#enviar").removeAttr("disabled","disabled");
+
+                                }
+
+                            } else
+                            {
+                                console.log("INVALID JSON STRING");
+                            }
+                        } else
+                        {
+                            console.log("POSTS NOT FOUND");
+                        }
+                    }
+                },
+                error: function (jqXHR, exception)
+                {
+                    if (jqXHR.status === 405)
+                    {
+                        console.error("METHOD NOT ALLOWED!");
+                    }
+                }
+            });
+        }
+        ;
+    </script>
 {% endblock %}

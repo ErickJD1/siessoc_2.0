@@ -1,6 +1,11 @@
 app_role:
     resource: "@AppBundle/Controller/RoleController.php"
     type:     annotation
+    
+
+app_ajax:
+    resource: "@AppBundle/Controller/AjaxController.php"
+    type:     annotation
 
 app_publicacioncontenido:
     resource: "@AppBundle/Controller/PublicacioncontenidoController.php"

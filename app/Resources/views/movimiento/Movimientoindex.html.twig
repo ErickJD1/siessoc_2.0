@@ -22,6 +22,7 @@
                 <th>Tipo Cuenta</th>
                 <th>Tipo De Movimiento</th>
                 <th>Usuario Movimiento</th>
+                <th>Fecha Movimiento</th>
                 <th>Accion</th>
             </tr>
         </thead>
@@ -35,6 +36,7 @@
                 <td>{{ movimiento.idcuenta }}</td>
                 <td>{{ movimiento.idtipomov }}</td>
                 <td>{{ movimiento.idusuario }}</td>
+                <td>{% if movimiento.createdAt %}{{ movimiento.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
                   <div style="float:left;"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#deleteMovi{{ movimiento.idmov }}"><i class="fa fa-trash" style="font-size: 20px; color: crimson"></i></button>
                           {{ render(controller('AppBundle:Movimiento:showDelete', { 'id' : movimiento.idmov } )) }}

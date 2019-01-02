@@ -30,12 +30,12 @@
                     background-image: linear-gradient(#04519b, #033C73 60%, #02325f);
                     background-repeat: no-repeat;
                 }
-                
+
                 .help-block {
 
-    color: red;
+                    color: red;
 
-}
+                }
 
 
 
@@ -93,7 +93,7 @@
                             <!-- Add the class icon to your logo image or logo icon to add the margining -->
                             <span class="logo-mini">
                                 <!-- mini logo for sidebar mini 50x50 pixels -->
-                                 <img style="width:25px;" src="{{ asset('bundles/app/images/logo-mini.png') }}"></img>
+                                <img style="width:25px;" src="{{ asset('bundles/app/images/logo-mini.png') }}"></img>
                             </span>
                             <span class="logo-lg">
                                 <img style="width:25px;" src="{{ asset('bundles/app/images/logo-mini.png') }}"></img>{{ block('title') }}
@@ -172,7 +172,7 @@
                                       {% endfor %}
 
                                   </div> #}
-                             
+
                                 {#  <div class="alert alert-success alert-dismissible">
                                       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                                       <h4><i class="icon fa fa-check"></i> Success!</h4>
@@ -280,6 +280,26 @@
                                         $('#tabelMahasiswa').DataTable({
                                             "scrollY": "300px",
                                             "scrollX": "100%",
+                                            language: {
+                                                "decimal": "",
+                                                "emptyTable": "No hay información",
+                                                "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                                                "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                                                "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                                                "infoPostFix": "",
+                                                "thousands": ",",
+                                                "lengthMenu": "Mostrar _MENU_ Entradas",
+                                                "loadingRecords": "Cargando...",
+                                                "processing": "Procesando...",
+                                                "search": "Buscar:",
+                                                "zeroRecords": "Sin resultados encontrados",
+                                                "paginate": {
+                                                    "first": "Primero",
+                                                    "last": "Ultimo",
+                                                    "next": "Siguiente",
+                                                    "previous": "Anterior"
+                                                }
+                                            },
                                         });
                                         $('a.toggle-vis').on('click', function (e) {
                                             e.preventDefault();
@@ -287,7 +307,7 @@
                                             var column = table.column($(this).attr('data-column'));
                                             // Toggle the visibility
                                             column.visible(!column.visible());
-                                        }); 
+                                        });
 
                                     });
 
@@ -302,7 +322,7 @@
                                     $('#profile_avatarImage_file').previewImage();
                                     $('#profile_logo_file').previewImage();
                                 </script>
-                             
+
                                 <script src="{{ asset('js/sweetalert.min.js') }}"></script>
 
                                 <script src="{{ asset('js/sweetalert.min.js') }}"></script>

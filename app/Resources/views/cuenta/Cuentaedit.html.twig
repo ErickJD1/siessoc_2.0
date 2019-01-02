@@ -21,14 +21,14 @@
 
                 {{ form_start(edit_form) }}
                <div class="row">
-                    <div class="col col-md-6" align="left">
+                    <div class="col col-md-6 hidden" align="left">
                         <label for="form_ncuenta">Numero De Cuenta <span style="font-size: 25;color: red" >*</span></label>
-                                {{ form_widget(edit_form.numcuenta,{'attr':{'disabled':'true'}}) }}
+                                {{ form_widget(edit_form.numcuenta) }}
                                 {{ form_errors(edit_form.numcuenta) }}
                     </div>
             
                     
-                    <div class="col col-md-6" align="left">
+                    <div class="col col-md-12" align="left">
                         <label for="form_nomcuenta">Nombre De Cuenta <span style="font-size: 25;color: red" >*</span></label>
                                 {{ form_widget(edit_form.nomcuenta) }}
                                 {{ form_errors(edit_form.nomcuenta) }}
@@ -49,17 +49,17 @@
              </div>
               <br>
               <div class="row">
-                  <div class="col col-md-4" align='left'>
+                  <div class="col col-md-4 hidden" align='left'>
                   <label for="form_saldo">Saldo Inicial <span style="font-size: 25;color: red" >*</span></label>
-                                {{ form_widget(edit_form.saldocuenta, {'attr':{'disabled':'true'}}) }}
+                                {{ form_widget(edit_form.saldocuenta) }}
                                  {{ form_errors(edit_form.saldocuenta ) }}
                   </div>
-                  <div class="col col-md-4" align='left'>
+                  <div class="col col-md-6" align='left'>
                   <label for="form_banco">Banco <span style="font-size: 25;color: red" >*</span></label>
                                 {{ form_errors(edit_form.idbanco) }}
                                 {{ form_widget(edit_form.idbanco) }}
                   </div>
-                  <div class="col col-md-4" align='left'>
+                  <div class="col col-md-6" align='left'>
                   <label for="form_cuenta">Cuenta <span style="font-size: 25;color: red" >*</span></label>
                                 {{ form_errors(edit_form.idtipocuenta) }}
                                 {{ form_widget(edit_form.idtipocuenta) }}

@@ -3,11 +3,14 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Movimiento;
+use AppBundle\Entity\Cuenta;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Repository\MovimientoRepository;
+
+
 /**
  * Movimiento controller.
  *
@@ -32,6 +35,26 @@ class MovimientoController extends Controller
             'movimientos' => $movimientos,
         ));
     }
+    
+    
+     /**
+     * Lists all movimiento entities.
+     *
+     * @Route("/cuenFind/{id}", name="cuenta_find")
+     * @Method("GET")
+     */
+    public function cuenFindAction(Request $request, Cuenta $cuenta)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $movimientos = $em->getRepository('AppBundle:Movimiento')->findMovimiento($cuenta->getIdcuenta());
+        
+
+        return $this->render('cuenta/Movimientocuenta.html.twig', array(
+            'movimientos' => $movimientos,
+            'cuenta'=>$cuenta,
+        ));
+    }
 
     /**
      * Creates a new movimiento entity.
@@ -45,13 +68,21 @@ class MovimientoController extends Controller
         $form = $this->createForm('AppBundle\Form\MovimientoType', $movimiento);
         $movimiento->setIdusuario($this->getUser());
         $form->handleRequest($request);
-
+       
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $movimiento->setCreatedAt(new \DateTime());
+            $cuenta = new Cuenta();
+            $cuenta = $em->getRepository('AppBundle:Cuenta')->findOneBy(array('idcuenta' =>$movimiento->getIdCuenta()));
+
+            if(($movimiento->getMonto())<=$cuenta->getSaldoactual()){
             $em->persist($movimiento);
             $em->flush($movimiento);
-
             $this->addFlash('success', 'Movimiento Ingresado Correctamente!');
+            }else{
+            $this->addFlash('error', 'Monto del movimiento incorrectos!');
+            }
+            
             return $this->redirectToRoute('movimiento_index');
         }
 
@@ -103,6 +134,7 @@ class MovimientoController extends Controller
     public function editAction(Request $request, Movimiento $movimiento)
     {
         $deleteForm = $this->createDeleteForm($movimiento);
+        $movimiento->setUpdateAt(new \DateTime());
         $editForm = $this->createForm('AppBundle\Form\MovimientoType', $movimiento);
         $editForm->handleRequest($request);
         

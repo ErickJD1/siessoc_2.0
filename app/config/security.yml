@@ -7,8 +7,12 @@ security:
     role_hierarchy:
         ROLE_BECARIO: [ROLE_BECARIO]
         ROLE_PATROCINADOR: [ROLE_PATROCINADOR]
+        ROLE_ASPIRANTE_PATROCINADOR: [ROLE_ASPIRANTE_PATROCINADOR]
+        ROLE_ASPIRANTE_BECARIO: [ROLE_ASPIRANTE_BECARIO]
+        ROLE_FINANCIERO: [ROLE_FINANCIERO]
         ROLE_ADMIN: [ROLE_USER]
         ROLE_TEAM: [ROLE_TEAM]
+        ROLE_COORDINADOR: [ROLE_COORDINADOR]
         ROLE_SUPER_ADMIN: [ROLE_ADMIN]
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
@@ -47,8 +51,8 @@ security:
 
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/dashboard, role: [ROLE_ADMIN,ROLE_BECARIO,ROLE_PATROCINADOR] }
-        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/dashboard, role: [ROLE_ADMIN,ROLE_BECARIO,ROLE_PATROCINADOR, ROLE_FINANCIERO, ROLE_ASPIRANTE_BECARIO, ROLE_ASPIRANTE_PATROCINADOR] }
+        - { path: ^/resetting, role: [ROLE_ADMIN,ROLE_BECARIO,ROLE_PATROCINADOR, ROLE_FINANCIERO, ROLE_ASPIRANTE_BECARIO, ROLE_ASPIRANTE_PATROCINADOR] }
         - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/cuenta, role: IS_AUTHENTICATED_ANONYMOUSLY }

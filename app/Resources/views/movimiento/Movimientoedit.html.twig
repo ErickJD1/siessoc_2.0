@@ -54,7 +54,7 @@
                         <label for="form_file">Adjuntar Comprobante</label>
                         {{ form_widget(edit_form.comprobante_file) }}
                         {{ form_errors(edit_form.comprobante_file) }}
-                        <a href="{{asset('images/documents/'~movimiento.getComprobante())}}" target="blank">Descargar Comprobante</a>
+                        {% if(movimiento.getComprobante()) %}  <a href="{{asset('images/documents/'~movimiento.getComprobante())}}" target="blank">Descargar Comprobante</a>{% endif %}
                     </div>
                     
                 </div>

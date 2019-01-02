@@ -11,18 +11,26 @@ use Doctrine\ORM\EntityRepository;
  * repository methods below.
  */
 class MovimientoRepository extends EntityRepository {
-    
-    
+
     public function allMovimiento() {
-         return $this->getEntityManager()
-        ->createQueryBuilder()
-        ->select('m')
-        ->from('AppBundle:Movimiento', 'm')
-        ->leftJoin('m.idusuario','u')
-        //->where('u.id = m.idusuario')
-        ->getQuery()
-        ->getResult();
+        return $this->getEntityManager()
+                        ->createQueryBuilder()
+                        ->select('m')
+                        ->from('AppBundle:Movimiento', 'm')
+                        ->leftJoin('m.idusuario', 'u')
+                        //->where('u.id = m.idusuario')
+                        ->getQuery()
+                        ->getResult();
     }
 
+    public function findMovimiento($idcuenta) {
+        $id = $idcuenta;
+        return $this->getEntityManager()
+                        ->createQuery(
+                                'SELECT u FROM AppBundle:Movimiento u WHERE u.idcuenta=:cuenta'
+                        )
+                        ->setParameter('cuenta',$id)
+                        ->getResult();
+    }
 
 }

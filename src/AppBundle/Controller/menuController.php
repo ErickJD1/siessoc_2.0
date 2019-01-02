@@ -1,0 +1,29 @@
+<?php
+
+namespace AppBundle\Controller;
+
+use AppBundle\Entity\Actividad;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+
+/**
+ * Actividad controller.
+ *
+ * @Route("menu")
+ */
+class menuController extends Controller
+{
+    /**
+     * Lists all actividad entities.
+     *
+     * @Route("/fondos", name="menu_fondos")
+     * @Method("GET")
+     */
+    public function fondosAction()
+    {
+        return $this->render('menu/menuFondos.html.twig');
+    }
+
+}

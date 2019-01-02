@@ -9,7 +9,7 @@
 <div style="width:90%; margin-left:5%; margin-top: 2% ">
 
 <div align="left">
-    <a style="font-size: 20px" href="{{ path('cuenta_new') }}" class="btn btn-success btn-sm"><i style="font-size: 20px" class="fa fa-plus-circle"></i> Cuenta</a>
+    <a style="font-size: 15px" href="{{ path('cuenta_new') }}" class="btn btn-success btn-sm"><i style="font-size: 20px" class="fa fa-plus-circle"></i> Registrar Cuenta</a>
 </div>
 <br> <br>
 
@@ -32,7 +32,9 @@
 
         {% for cuentum in cuentas %}
             <tr>
-                <td>{{ cuentum.numcuenta }}</td>
+                <td><a data-toggle="modal" data-target="#MovimientoCB{{cuentum.idcuenta}}">{{ cuentum.numcuenta }}</a>
+                {{ render(controller('AppBundle:Movimiento:cuenFind',{'id':cuentum.idcuenta} )) }}
+                </td>
                 <td>{{ cuentum.nomcuenta }}</td>
                 <td>{{ cuentum.descripcioncuenta }}</td>
                 <td>{{ cuentum.idbanco }}</td>

@@ -1,0 +1,77 @@
+{% extends "layout/base-layout.html.twig" %}
+
+{% block title %}AppBundle:Ajax:index{% endblock %}
+
+{% block page_content %}
+    <h1>Welcome to the Ajax:index page</h1>
+    <input id="valida" type="text" placeholder="Probando Ajax"/>
+    <input id="error"/>
+    <div id="containerPosts"></div>
+    <select id="select" onChange="cargarData()">
+        <option value="5">5</option>
+        <option value="9">9</option>
+    </select>
+
+{% endblock %}
+
+{% block javascripts_inline %}
+
+    <script>
+        function cargarData()
+        {
+            var id1 = document.getElementById('select');
+            var id2 = id1.options[id1.selectedIndex].value;
+            
+            $.ajax({
+                method: "GET",
+                url: "{{ url('ajax_posts') }}",
+                data:"idcuenta="+id2,
+                dataType: 'json',
+                success: function (data)
+                {
+                    if (data.hasOwnProperty("response") && data.response === "success")
+                    {
+                        if (data.hasOwnProperty("posts"))
+                        {
+                            //http://stackoverflow.com/questions/3710204/how-to-check-if-a-string-is-a-valid-json-string-in-javascript-without-using-try/3710226
+                            if (/^[\],:{}\s]*$/.test(data.posts.replace(/\\["\\\/bfnrtu]/g, '@').
+                                    replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']').
+                                    replace(/(?:^|:|,)(?:\s*\[)+/g, '')))
+                            {
+                                var posts = JSON.parse(data.posts);
+                                if (posts.length > 0)
+                                {
+                                    var saldoActual = 0;
+                                    for (d in posts)
+                                    {
+                                        saldoActual = posts[d]["saldoactual"];
+                                    }
+                                }
+                                $('#error').val(saldoActual);
+                                if ($('#valida').val() > saldoActual)
+                                {
+                                    alert("El monto debe estar dentro del saldo disponible");
+                                }
+
+                            } else
+                            {
+                                console.log("INVALID JSON STRING");
+                            }
+                        } else
+                        {
+                            console.log("POSTS NOT FOUND");
+                        }
+                    }
+                },
+                error: function (jqXHR, exception)
+                {
+                    if (jqXHR.status === 405)
+                    {
+                        console.error("METHOD NOT ALLOWED!");
+                    }
+                }
+            });
+        }
+        ;
+    </script>
+{% endblock %}

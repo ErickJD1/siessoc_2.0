@@ -87,7 +87,7 @@ class SidebarListener {
                 $academico = new MenuItemModel('seguimiento', 'Seguimiento Academico', 'homepage', $earg, 'fa fa-book'),
                 $publicacion = new MenuItemModel('publicar', 'Publicaciones', 'homepage', $earg, 'fa fa-globe'),
                 $ssocial = new MenuItemModel('social', 'Servicio Social', 'homepage', $earg, 'fa fa-signing'),
-                $fondos = new MenuItemModel('fondos', 'Fondos', 'homepage', $earg, 'fa fa-money'),
+                $fondos = new MenuItemModel('fondos', 'Fondos', 'menu_fondos', $earg, 'fa fa-money'),
                 $colaboracion= new MenuItemModel('colaboracion', 'Colaboracion Monetaria', 'homepage', $earg, 'fa fa-dollar'),
                 $insumos= new MenuItemModel('insumos', 'Insumos Academicos', 'homepage', $earg, 'fa fa-cubes'),                
                 $catalogos = new MenuItemModel('catalogos', 'Catalogos', 'homepage', $earg, 'fa fa-list'),
@@ -103,8 +103,8 @@ class SidebarListener {
 
             $insumos->addChild(new MenuItemModel('Soli_patrocina', 'Solicitudes Patrocinadores', 'movimientoinventario_index', $earg));
 
-            $fondos->addChild(new MenuItemModel('consultar_cuentas', 'Administrar Cuentas', 'cuenta_index', $earg));
-            $fondos->addChild(new MenuItemModel('Consultar', 'Administrar Movimientos', 'movimiento_index', $earg));
+//            $fondos->addChild(new MenuItemModel('consultar_cuentas', 'Administrar Cuentas', 'cuenta_index', $earg));
+//            $fondos->addChild(new MenuItemModel('Consultar', 'Administrar Movimientos', 'movimiento_index', $earg));
 
 
             $catalogos->addChild(new MenuItemModel('tipo_cuentas', 'Tipos de Cuenta', 'tipocuenta_index', $earg));

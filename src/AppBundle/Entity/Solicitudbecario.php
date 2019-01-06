@@ -7,13 +7,16 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
 use Carbon\Carbon;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Solicitudbecario
  *
  * @ORM\Table(name="solicitudbecario")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="src\AppBundle\Repository\SolicitudesRepository")
+ * @ORM\HasLifecycleCallbacks
  * @Vich\Uploadable
+ * @UniqueEntity("docsoliidentidadbecario")
  */
 class Solicitudbecario
 {
@@ -124,7 +127,7 @@ class Solicitudbecario
      */
     private $cantsolihermanosbecario;
 
-    /**
+        /**
      * @var string
      *
      * @ORM\Column(name="NOMSOLIPADREBECARIO", type="string", length=300, nullable=true)
@@ -237,6 +240,16 @@ class Solicitudbecario
     private $antecedentes;
    
     
+      /**
+     * @var \idusuario
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     * @ORM\JoinColumn(name="idusuario", referencedColumnName="id")
+     * })
+     */
+    private $idusuario;
+    
        /**
      * @Assert\Image(
      *     maxSize="5M",
@@ -299,6 +312,27 @@ class Solicitudbecario
      */
     function getComprobante() {
         return $this->comprobante;
+    }
+    
+    
+      /**
+     * Get idusuario
+     *
+     * @return integer
+     */
+    public function getIdusuario() {
+        return $this->idusuario;
+    }
+
+    /**
+     * Set idusuario
+     *
+     * @param \SalexUserBundle\Entity\User $idusuario
+     *
+     * @return Movimiento
+     */
+    public function setIdusuario(\SalexUserBundle\Entity\User $idusuario=null) {
+        $this->idusuario = $idusuario;
     }
     
     public function setTelefonosolibecario($telefonosolibecario)
@@ -724,6 +758,7 @@ class Solicitudbecario
         return $this;
     }
 
+   
     /**
      * Get nomsolipadrebecario
      *
@@ -733,6 +768,9 @@ class Solicitudbecario
     {
         return $this->nomsolipadrebecario;
     }
+    
+    
+    
 
     /**
      * Set nomsolimadrebecario
@@ -863,4 +901,5 @@ class Solicitudbecario
     {
         return $this->idsolibecario;
     }
+    
 }

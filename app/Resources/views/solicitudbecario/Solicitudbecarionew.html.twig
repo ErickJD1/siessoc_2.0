@@ -133,7 +133,9 @@ nav > div a.nav-item.nav-link:focus
                             <div style="width:90%; margin-left:5%" class="tab-pane " id="2008" role="tabpanel" aria-labelledby="nav-profile-tab">
                                <h3>Datos Personales</h3>
                                <hr>
-                               <div class="row">  
+                               
+                               <div class="row">     
+                                 
                                 <div class="col col-md-6" align="left">
                                     <label for="form_documento">Numero de documento<span style="font-size: 25;color: red" >*</span></label>
                                       {{ form_widget(form.docsoliidentidadbecario) }}
@@ -155,16 +157,8 @@ nav > div a.nav-item.nav-link:focus
                                 </div> 
                               </div>
                                 <br>
-                                <br>
-                                
                                <div class="row">
-                                 <div class="col col-md-4" align="center">
-                                    <label for="form_estadon">Estado</label>
-                                      {{ form_widget(form.estadosolibecario) }}
-                                      {{ form_errors(form.estadosolibecario) }}   
-                                </div> 
-                                
-                                <div class="col col-md-4" align="right">
+                                <div class="col col-md-4" align="LEFT">
                                     <label for="form_trabajo">Posee trabajo</label>
                                       {{ form_widget(form.trabajosolibecario) }}
                                       {{ form_errors(form.trabajosolibecario) }}   
@@ -325,6 +319,7 @@ nav > div a.nav-item.nav-link:focus
                                </div>
                            </div>
                           <br>
+                   
                          <div class="row">
                              <div class="col col-md-12" align="right">
                                  <a href="{{ path('solicitudbecario_index') }}" class="btn btn-primary btn-xl">Cancelar</a>

@@ -134,6 +134,9 @@ nav > div a.nav-item.nav-link:focus
                                <h3>Datos Personales</h3>
                                <hr>
                                <div class="row">  
+                                </div>
+                                <hr>
+                               <div class="row">  
                                 <div class="col col-md-6" align="left">
                                     <label for="form_documento">Numero de documento<span style="font-size: 25;color: red" >*</span></label>
                                       {{ form_widget(edit_form.docsoliidentidadbecario) }}
@@ -157,14 +160,8 @@ nav > div a.nav-item.nav-link:focus
                                 <br>
                                 <br>
                                 
-                               <div class="row">
-                                 <div class="col col-md-4" align="center">
-                                    <label for="form_estadon">Estado</label>
-                                      {{ form_widget(edit_form.estadosolibecario) }}
-                                      {{ form_errors(edit_form.estadosolibecario) }}   
-                                </div> 
-                                
-                                <div class="col col-md-4" align="right">
+                               <div class="row"> 
+                                <div class="col col-md-4" align="left">
                                     <label for="form_trabajo">Posee trabajo<span style="font-size: 25;color: red" >*</span></label>
                                       {{ form_widget(edit_form.trabajosolibecario) }}
                                       {{ form_errors(edit_form.trabajosolibecario) }}   

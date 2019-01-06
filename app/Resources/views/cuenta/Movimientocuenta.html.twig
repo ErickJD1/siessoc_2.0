@@ -1,6 +1,7 @@
+
 <div class="modal fade" id="MovimientoCB{{cuenta.idcuenta}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     {% set cuen = cuenta.idcuenta %}
-    <div style="width: 80%" class="modal-dialog">
+    <div style="width:50%; margin-left:25%" class="modal-dialog">
         <div class="modal-content">
 
             <div class="modal-header">
@@ -10,82 +11,82 @@
             <div class="modal-body">
 
 
-                    <div class="box box-primary">
-                        <div style="width:90%; margin-left:5%; margin-top: 2% ">
+                <div class="box box-primary">
+                    <div style="width:90%; margin-left:5%; margin-top: 2% ">
 
 
-                            <table class="table table-bordered table-hover table-striped table-responsive" style="width:100%; " id="tabelMahasiswa{{cuenta.idcuenta}}">
-                                <thead class="thead-light">
+                        <table class="table table-bordered table-hover table-striped table-responsive" id="tabelMahasiswa{{cuenta.idcuenta}}">
+                            <thead>
+                                <tr>
+                                    <th>Descripcion</th>
+                                    <th>Monto</th>
+                                    <th>Estado</th>
+                                    <th>Cuenta</th>
+                                    <th>Tipo</th>
+                                    <th>Usuario</th>
+                                    <th>Fecha</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                {% for movimiento in movimientos %}
                                     <tr>
-                                        <th>Descripcion Del Movimiento</th>
-                                        <th>Monto</th>
-                                        <th>Estado</th>
-                                        <th>Cuenta</th>
-                                        <th>Tipo De Movimiento</th>
-                                        <th>Usuario Movimiento</th>
-                                        <th>Fecha Movimiento</th>
+                                        <td>{{ movimiento.descripcionmov }}</td>
+                                        <td>{{ "$"~movimiento.monto }}</td>
+                                        <td>{% if movimiento.estadomov %}Aprobado{% else %}Pendiente{% endif %}</td>
+                                        <td>{{ movimiento.idcuenta }}</td>
+                                        <td>{{ movimiento.idtipomov }}</td>
+                                        <td>{{ movimiento.idusuario }}</td>
+                                        <td>{% if movimiento.createdAt %}{{ movimiento.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
                                     </tr>
-                                </thead>
-                                <tbody>
+                                {% endfor %}
+                            </tbody>
+                        </table>
 
-                                    {% for movimiento in movimientos %}
-                                        <tr>
-                                            <td>{{ movimiento.descripcionmov }}</td>
-                                            <td>{{ "$"~movimiento.monto }}</td>
-                                            <td>{% if movimiento.estadomov %}Aprobado{% else %}Pendiente{% endif %}</td>
-                                            <td>{{ movimiento.idcuenta }}</td>
-                                            <td>{{ movimiento.idtipomov }}</td>
-                                            <td>{{ movimiento.idusuario }}</td>
-                                            <td>{% if movimiento.createdAt %}{{ movimiento.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-
-                                        </tr>
-                                        </div>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
-                          
-                        </div>
                     </div>
-
-
-
-                    <!--modal-->
                 </div>
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
-                </div>
+
+
+                <!--modal-->
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
-
-
 </div>
-{% block javascripts %}
-    <script src="{{ asset('bundles/avanzuadmintheme/static/'~app.environment~'/scripts/admin-lte-all.js') }}"></script>
 
-    <script>
-        $("#tabelMahasiswa{{cuen}}").DataTable({
-            language: {
-                "decimal": "",
-                "emptyTable": "No hay información",
-                "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
-                "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
-                "infoFiltered": "(Filtrado de _MAX_ total entradas)",
-                "infoPostFix": "",
-                "thousands": ",",
-                "lengthMenu": "Mostrar _MENU_ Entradas",
-                "loadingRecords": "Cargando...",
-                "processing": "Procesando...",
-                "search": "Buscar:",
-                "zeroRecords": "Sin resultados encontrados",
-                "paginate": {
-                    "first": "Primero",
-                    "last": "Ultimo",
-                    "next": "Siguiente",
-                    "previous": "Anterior"
-                }
-            },
+{% block javascripts_inline %}
+
+    <script language="JavaScript" type="text/javascript">
+
+        $(document).ready(function () {
+            $("#tabelMahasiswa{{cuenta.idcuenta}}").DataTable({
+                "scrollX": "100%",
+                "scrollY": "200px",
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Entradas",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                },
+            });
         });
 
     </script>

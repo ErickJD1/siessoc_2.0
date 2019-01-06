@@ -34,19 +34,7 @@
                                 {{ form_errors(edit_form.nomcuenta) }}
                     </div>
             </div>
-                 <br>   
-             <div class="row">
-                 <div class="col col-md-10">
-                     <label for="form_descripcion">Descripcion</label>
-                                {{ form_errors(edit_form.descripcioncuenta) }}
-                                {{ form_widget(edit_form.descripcioncuenta) }}
-                 </div>
-                 <div class="col col-md-2" align="right">
-                        <label for="form_estado">Activo</label>
-                        {{ form_widget(edit_form.estadocuenta) }}
-                        {{ form_errors(edit_form.estadocuenta) }}
-                    </div>
-             </div>
+
               <br>
               <div class="row">
                   <div class="col col-md-4 hidden" align='left'>
@@ -66,10 +54,23 @@
                   </div>
                     
                 </div>
+                                   <br>   
+             <div class="row">
+                 <div class="col col-md-10">
+                     <label for="form_descripcion">Descripcion</label>
+                                {{ form_errors(edit_form.descripcioncuenta) }}
+                                {{ form_widget(edit_form.descripcioncuenta) }}
+                 </div>
+                 <div class="col col-md-2" align="right">
+                        <label for="form_estado">Estado</label>
+                        {{ form_widget(edit_form.estadocuenta) }}
+                        {{ form_errors(edit_form.estadocuenta) }}
+                    </div>
+             </div>
              <hr>
                 <div class="row">
                     <div class="col col-md-12" align="right">
-                        <a href="{{ absolute_url(asset('cuenta_index')) }}cuenta" class="btn btn-primary btn-xl">Cancelar</a>
+                        <a href="{{ path('cuenta_index') }}" class="btn btn-primary btn-xl">Cancelar</a>
                         <input  class="btn btn-success btn-xl" type="submit"  value="Guardar" />
                     </div>
                 </div>

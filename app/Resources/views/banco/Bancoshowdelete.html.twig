@@ -1,24 +1,24 @@
 <div  class="modal fade" id="showdeleteBanco{{ banco.idbanco }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog" >
-			<div class="modal-content" style="border-radius: 40px">
+    <div class="modal-dialog" >
+        <div class="modal-content" style="border-radius: 40px">
 
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h3 align="center"><strong>{{ banco.nombanco }}</strong></h3>
-				</div>
-                            
-				<div class="modal-body">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 align="center"><strong>¿Eliminar Banco?</strong></h3>
+            </div>
 
-  <div class="list-group">
-    <!--modal-->
-<div class="row" style="margin-left:5%" align="left">
-  <div class="col col-md-7">
-    <h4><i class="fa fa-font"></i>Banco</h4>
-    <p class="form-group"><strong>{{  banco.nombanco }}</strong></p>
-    <h4>Estado</h4>
-    <h4><i class="fa fa-check-square"></i>{% if banco.estadobanco==1  %} Activa {% else %} Inactiva {% endif %}</h4>
-  </div>
-<div class="col col-md-5">
+            <div class="modal-body">
+
+                <div class="list-group">
+                    <!--modal-->
+                    <div class="row" style="margin-left:5%" align="left">
+                        <div class="col col-md-7">
+                            <h4><i class="fa fa-font"></i>Banco</h4>
+                            <p class="form-group"><strong>{{  banco.nombanco }}</strong></p>
+                            <h4>Estado</h4>
+                            <h4><i class="fa fa-check-square"></i>{% if banco.estadobanco==1  %} Activa {% else %} Inactiva {% endif %}</h4>
+                        </div>
+                        <div class="col col-md-5">
 
                             <img style="width:75%;margin-top: 10%;margin-bottom: 2%" src="{{ asset('img/delete.png') }}"></img>
                         </div>
@@ -26,19 +26,19 @@
 
 
                     <div class="modal-footer">
-                          <div style="float:right">
+                        <div style="float:right">
                             {{ form_start(delete_form, {'action': path('banco_delete', {'id': banco.idbanco}), 'Method': 'POST' }) }}
-                            <input type="submit" class="btn btn-danger" type="button" value="Delete">
+                            <input type="submit" class="btn btn-danger" type="button" value="Eliminar">
                             {{ form_end(delete_form) }}
                         </div>
-                        
-                            <button type="button" class="btn btn-success" style="margin-right: 1px" data-dismiss="modal">Cerrar</button>
+
+                        <button type="button" class="btn btn-success" style="margin-right: 1px" data-dismiss="modal">Cerrar</button>
 
                     </div>
                 </div>
             </div>
         </div>
-        </div>
+    </div>
 </div>
 
 

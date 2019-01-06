@@ -33,15 +33,15 @@
               <td>
                   <center>
                         <div class="row">
-                        <div align="center" class="col col-sm-4"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#showdeleteBanco{{ banco.idbanco }}"><i class="fa fa-trash" style="font-size: 20px; color: crimson"></i></button>
+                        <div style="float:left;"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#showdeleteBanco{{ banco.idbanco }}"><i class="fa fa-trash" style="font-size: 20px; color: crimson"></i></button>
                                 {{ render(controller('AppBundle:Banco:showdelete', { 'id' : banco.idbanco } )) }}
                         </div>
 
-                        <div align="center" class="col col-sm-4" >
+                        <div style="float:left;" >
                             <a href="{{ path('banco_edit',{ 'id' : banco.idbanco }) }}" style="background-color: transparent; border: none;"><i class="fa fa-edit" style="font-size: 20px; color: limegreen"></i></a>
                         </div>
                         
-                        <div align="center" class="col col-sm-4"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#showBanco{{ banco.idbanco }}"><i class="fa fa-eye" style="font-size: 20px; color: deepskyblue"></i></button>
+                        <div style="float:left;"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#showBanco{{ banco.idbanco }}"><i class="fa fa-eye" style="font-size: 20px; color: deepskyblue"></i></button>
                                 {{ render(controller('AppBundle:Banco:show', { 'id' : banco.idbanco } )) }}
                         </div>
                         </div>

@@ -93,7 +93,24 @@ class SidebarListener {
             );
         }
 
-
+         //PERMISOS ADMINISTRADOR
+        if ($this->container->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+            $rootItems = array(
+                $dash = new MenuItemModel('site', 'WebSite', 'web_index', $earg, 'fa fa-home'),
+                $expediente = new MenuItemModel('expediente', 'Expedientes', '', $earg, 'fa fa-address-card'),
+                $actividad = new MenuItemModel('actividad', 'Actividades', '', $earg, 'fa fa-calendar'),
+                $academico = new MenuItemModel('seguimiento', 'Seguimiento Academico', 'homepage', $earg, 'fa fa-book'),
+                $publicacion = new MenuItemModel('publicar', 'Publicaciones', 'homepage', $earg, 'fa fa-globe'),
+                $ssocial = new MenuItemModel('social', 'Servicio Social', 'homepage', $earg, 'fa fa-signing'),
+                $fondos = new MenuItemModel('fondos', 'Fondos', 'menu_fondos', $earg, 'fa fa-money'),
+                $colaboracion= new MenuItemModel('colaboracion', 'Colaboracion Monetaria', 'homepage', $earg, 'fa fa-dollar'),
+                $insumos= new MenuItemModel('insumos', 'Insumos Academicos', 'homepage', $earg, 'fa fa-cubes'),                
+                $catalogos = new MenuItemModel('catalogos', 'Catalogos', 'homepage', $earg, 'fa fa-list'),
+                $reportes = new MenuItemModel('reportes', 'Reportes', 'homepage', $earg, 'fa fa-line-chart'),
+                
+            );
+        }
+        
         //PERMISOS ADMINISTRADOR
         if ($this->container->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
             $rootItems = array(

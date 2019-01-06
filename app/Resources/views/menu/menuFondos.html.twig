@@ -9,20 +9,22 @@
     <div class="box box-primary">
         <div style="width:90%; margin-left:5%; margin-top: 2% ">
             <div class="row">
-                <div class="col-lg-6 col-xs-6">
-                    <!-- small box -->
-                    <div class="small-box bg-aqua">
-                        <div class="inner">
-                            <h3>Cuentas</h3>
+                {% if app.user.hasRole('ROLE_ADMIN') or app.user.hasRole('ROLE_FINANCIERO') or app.user.hasRole('ROLE_COORDINADOR') %}      
+                    <div class="col-lg-6 col-xs-6">
+                        <!-- small box -->
+                        <div class="small-box bg-aqua">
+                            <div class="inner">
+                                <h3>Cuentas</h3>
 
-                            <p>Administrar Cuentas</p>
+                                <p>Administrar Cuentas</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-card"></i>
+                            </div>
+                            <a href="{{path('cuenta_index')}}" class="small-box-footer">Administrar <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
-                        <div class="icon">
-                            <i class="ion ion-card"></i>
-                        </div>
-                        <a href="{{path('cuenta_index')}}" class="small-box-footer">Administrar <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
-                </div>
+                {% endif %}
                 <!-- ./col -->
                 <div class="col-lg-6 col-xs-6">
                     <!-- small box -->

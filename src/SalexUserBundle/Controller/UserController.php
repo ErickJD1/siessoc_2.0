@@ -11,7 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-
+use FOS\UserBundle\Util\LegacyFormHelper;
 
 /**
  * User controller.
@@ -62,9 +62,30 @@ class UserController extends Controller {
         $dispatcher = $this->get('event_dispatcher');
         $user = new User();
         $password = $user->claveAleatoria();
-        $user->setPlainPassword($password);
+        //$user->setPlainPassword($password);
+        
         $em = $this->getDoctrine()->getManager();
         $form = $this->createForm('SalexUserBundle\Form\UserType', $user);
+        $form ->add('plainPassword', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\RepeatedType'), array(
+          'type' => LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\PasswordType'),
+          'options' => array('translation_domain' => 'FOSUserBundle'),
+          'first_options' => array('label' => 'form.password'),
+          'second_options' => array('label' => 'form.password_confirmation'),
+          'invalid_message' => 'fos_user.password.mismatch',
+          ));
+        $permissions = array();
+        $result = $em->getRepository('AppBundle:Role')->findAllRoles();
+        foreach ($result as $row){
+            $permissions[$row->getNomRole()]=$row->getIdRole();
+        }
+        
+        $form->add('roles', ChoiceType::class, array(
+            'label'   => 'Roles',
+            'choices' => $permissions,
+            'multiple' => true,
+            'expanded' => true
+        ));
+        
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

@@ -33,10 +33,9 @@ class UserType extends AbstractType {
         ->add('email', EmailType::class, array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
         ->add('firstName')
         ->add('lastName')
-        ->add('lastName')
         ->add('description', TextareaType::class)
         
-        /* ->add('plainPassword', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\RepeatedType'), array(
+        /*->add('plainPassword', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\RepeatedType'), array(
           'type' => LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\PasswordType'),
           'options' => array('translation_domain' => 'FOSUserBundle'),
           'first_options' => array('label' => 'form.password'),

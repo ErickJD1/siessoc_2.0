@@ -91,7 +91,7 @@ class SidebarListener {
                 $reportes = new MenuItemModel('reportes', 'Reportes', 'homepage', $earg, 'fa fa-line-chart'),
                 
             );
-        
+        }
 
 
         //PERMISOS ADMINISTRADOR

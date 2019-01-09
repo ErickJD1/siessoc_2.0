@@ -5,7 +5,9 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Solicitudbecario;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Repository\SolicitudesRepository;
 
 /**
  * Solicitudbecario controller.
@@ -31,6 +33,36 @@ class SolicitudbecarioController extends Controller
         ));
     }
 
+    
+    /**
+     * Lists all user entities.
+     *
+     * @Route("/aprobados", name="soli_aprobados")
+     * @Method("GET")
+     */
+    public function aprobadosAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+
+        $aprobados = $em->getRepository('AppBundle:Solicitudbecario')->aprobadosrepo();
+        return $this->render('Solicitudbecario/Solicitudbecarioaprobado.html.twig', array('aprobados' => $aprobados));
+    }
+    
+   
+      /**
+     * Lists all user entities.
+     *
+     * @Route("/rechazados", name="soli_rechazados")
+     * @Method("GET")
+     */
+    public function rechazadosrepo(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+
+        $rechazados = $em->getRepository('AppBundle:Solicitudbecario')->rechazadosrepo();
+        return $this->render('Solicitudbecario/Solicitudbecariorechazado.html.twig', array('rechazados' => $rechazados));
+    }
+    
+    
+    
     /**
      * Creates a new solicitudbecario entity.
      *
@@ -41,6 +73,7 @@ class SolicitudbecarioController extends Controller
     {
         $solicitudbecario = new Solicitudbecario();
         $form = $this->createForm('AppBundle\Form\SolicitudbecarioType', $solicitudbecario);
+        $solicitudbecario->setIdusuario($this->getUser());
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

@@ -23,44 +23,44 @@ class __TwigTemplate_b928c5d188582d7dfa4c885105f88cfb534d73dc86117c6c295ea299bf5
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_6ccfd28caad7b1a8b9fcae493541f35124a77e00e4ade36d7563bcc33da3e2b9 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_6ccfd28caad7b1a8b9fcae493541f35124a77e00e4ade36d7563bcc33da3e2b9->enter($__internal_6ccfd28caad7b1a8b9fcae493541f35124a77e00e4ade36d7563bcc33da3e2b9_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "banco/Bancoindex.html.twig"));
+        $__internal_05caf73cc1ced880cc68c1f8b0f6d7e33393f50f03d701d77f713c37323b1078 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_05caf73cc1ced880cc68c1f8b0f6d7e33393f50f03d701d77f713c37323b1078->enter($__internal_05caf73cc1ced880cc68c1f8b0f6d7e33393f50f03d701d77f713c37323b1078_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "banco/Bancoindex.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_6ccfd28caad7b1a8b9fcae493541f35124a77e00e4ade36d7563bcc33da3e2b9->leave($__internal_6ccfd28caad7b1a8b9fcae493541f35124a77e00e4ade36d7563bcc33da3e2b9_prof);
+        $__internal_05caf73cc1ced880cc68c1f8b0f6d7e33393f50f03d701d77f713c37323b1078->leave($__internal_05caf73cc1ced880cc68c1f8b0f6d7e33393f50f03d701d77f713c37323b1078_prof);
 
     }
 
     // line 3
     public function block_page_title($context, array $blocks = array())
     {
-        $__internal_a65731eca53003f2dfc985bdffbef17c53043a1f2b687c04e273e1197b3f5572 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_a65731eca53003f2dfc985bdffbef17c53043a1f2b687c04e273e1197b3f5572->enter($__internal_a65731eca53003f2dfc985bdffbef17c53043a1f2b687c04e273e1197b3f5572_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_title"));
+        $__internal_70c6dbbb75f23793d0d12de27fee64cc0cfac5ab54208fd3a418f6daa7599732 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_70c6dbbb75f23793d0d12de27fee64cc0cfac5ab54208fd3a418f6daa7599732->enter($__internal_70c6dbbb75f23793d0d12de27fee64cc0cfac5ab54208fd3a418f6daa7599732_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_title"));
 
-        echo " Bancos | ";
+        echo " Catálogos ";
         
-        $__internal_a65731eca53003f2dfc985bdffbef17c53043a1f2b687c04e273e1197b3f5572->leave($__internal_a65731eca53003f2dfc985bdffbef17c53043a1f2b687c04e273e1197b3f5572_prof);
+        $__internal_70c6dbbb75f23793d0d12de27fee64cc0cfac5ab54208fd3a418f6daa7599732->leave($__internal_70c6dbbb75f23793d0d12de27fee64cc0cfac5ab54208fd3a418f6daa7599732_prof);
 
     }
 
     // line 4
     public function block_page_subtitle($context, array $blocks = array())
     {
-        $__internal_4262d8012ee3fe65835718e92df6fa296cf9f5654381234752c3b078d509a6ab = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_4262d8012ee3fe65835718e92df6fa296cf9f5654381234752c3b078d509a6ab->enter($__internal_4262d8012ee3fe65835718e92df6fa296cf9f5654381234752c3b078d509a6ab_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_subtitle"));
+        $__internal_96b45b87c8ddb5bcf17c20892b27a746c5541317d1feaeb2ae7a6c839f037372 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_96b45b87c8ddb5bcf17c20892b27a746c5541317d1feaeb2ae7a6c839f037372->enter($__internal_96b45b87c8ddb5bcf17c20892b27a746c5541317d1feaeb2ae7a6c839f037372_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_subtitle"));
 
-        echo "Catalogo De Bancos ";
+        echo "Banco ";
         
-        $__internal_4262d8012ee3fe65835718e92df6fa296cf9f5654381234752c3b078d509a6ab->leave($__internal_4262d8012ee3fe65835718e92df6fa296cf9f5654381234752c3b078d509a6ab_prof);
+        $__internal_96b45b87c8ddb5bcf17c20892b27a746c5541317d1feaeb2ae7a6c839f037372->leave($__internal_96b45b87c8ddb5bcf17c20892b27a746c5541317d1feaeb2ae7a6c839f037372_prof);
 
     }
 
     // line 6
     public function block_page_content($context, array $blocks = array())
     {
-        $__internal_855e52e144970e9673ef502fb7f3b67f3686e719593c6c357a238cd4d4612490 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_855e52e144970e9673ef502fb7f3b67f3686e719593c6c357a238cd4d4612490->enter($__internal_855e52e144970e9673ef502fb7f3b67f3686e719593c6c357a238cd4d4612490_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_content"));
+        $__internal_c3976da61d94c5f90538923794a0a752248b6e5a88890acd1a9f75cfed4ae60e = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_c3976da61d94c5f90538923794a0a752248b6e5a88890acd1a9f75cfed4ae60e->enter($__internal_c3976da61d94c5f90538923794a0a752248b6e5a88890acd1a9f75cfed4ae60e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_content"));
 
         // line 7
         echo "
@@ -68,7 +68,7 @@ class __TwigTemplate_b928c5d188582d7dfa4c885105f88cfb534d73dc86117c6c295ea299bf5
 <div style=\"width:90%; margin-left:5%; margin-top: 2% \">
 
 <div align=\"left\">
-    <a style=\"font-size: 20px\" href=\"";
+    <a style=\"font-size: 15px\" href=\"";
         // line 12
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("banco_new");
         echo "\" class=\"btn btn-success btn-sm\"><i style=\"font-size: 20px\" class=\"fa fa-plus-circle\"></i> Banco</a>
@@ -78,64 +78,59 @@ class __TwigTemplate_b928c5d188582d7dfa4c885105f88cfb534d73dc86117c6c295ea299bf5
     <table class=\"table table-bordered table-hover table-striped table-responsive\" style=\"width:100%\" id=\"tabelMahasiswa\">
           <thead class=\"thead-light\">
             <tr>
-                <th>Id</th>
-                <th>Banco</th>
-                <th>Estado</th>
-                <th>Accion</th>
+                <th><center>Banco</center></th>
+                <th><center></center></th>
+                <th><center>Accion</center></th>
 
             </tr>
         </thead>
         <tbody>
 
         ";
-        // line 28
+        // line 27
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["bancos"]) ? $context["bancos"] : $this->getContext($context, "bancos")));
         foreach ($context['_seq'] as $context["_key"] => $context["banco"]) {
-            // line 29
+            // line 28
             echo "        <tr>
-              <td>";
-            // line 30
-            echo twig_escape_filter($this->env, $this->getAttribute($context["banco"], "idbanco", array()), "html", null, true);
-            echo "</td>
-              <td>";
-            // line 31
+              <td><center>";
+            // line 29
             echo twig_escape_filter($this->env, $this->getAttribute($context["banco"], "nombanco", array()), "html", null, true);
-            echo "</td>
-              <td>";
-            // line 32
+            echo "</center></td>
+              <td><center>";
+            // line 30
             if ($this->getAttribute($context["banco"], "estadobanco", array())) {
                 echo "Activo";
             } else {
                 echo "Inactivo";
             }
-            echo "</td>
+            echo "</center></td>
               <td>
                   <center>
-                        <div class=\"row\">
-                        <div align=\"center\" class=\"col col-sm-4\"><button class=\"\" style=\"background-color: transparent; border: none;\" data-toggle=\"modal\" data-target=\"#showdeleteBanco";
-            // line 36
+                        <div class=\"row\" style=\"width: 100px\">
+                        <div style=\"float:left;\"><button class=\"\" style=\"background-color: transparent; border: none;\" data-toggle=\"modal\" data-target=\"#showdeleteBanco";
+            // line 34
             echo twig_escape_filter($this->env, $this->getAttribute($context["banco"], "idbanco", array()), "html", null, true);
             echo "\"><i class=\"fa fa-trash\" style=\"font-size: 20px; color: crimson\"></i></button>
                                 ";
-            // line 37
+            // line 35
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\HttpKernelExtension')->renderFragment($this->env->getExtension('Symfony\Bridge\Twig\Extension\HttpKernelExtension')->controller("AppBundle:Banco:showdelete", array("id" => $this->getAttribute($context["banco"], "idbanco", array()))));
             echo "
                         </div>
 
-                        <div align=\"center\" class=\"col col-sm-4\" >
+                        <div style=\"float:left;\" >
                             <a href=\"";
-            // line 41
+            // line 39
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("banco_edit", array("id" => $this->getAttribute($context["banco"], "idbanco", array()))), "html", null, true);
             echo "\" style=\"background-color: transparent; border: none;\"><i class=\"fa fa-edit\" style=\"font-size: 20px; color: limegreen\"></i></a>
                         </div>
                         
-                        <div align=\"center\" class=\"col col-sm-4\"><button class=\"\" style=\"background-color: transparent; border: none;\" data-toggle=\"modal\" data-target=\"#showBanco";
-            // line 44
+                        <div style=\"float:left;\"><button class=\"\" style=\"background-color: transparent; border: none;\" data-toggle=\"modal\" data-target=\"#showBanco";
+            // line 42
             echo twig_escape_filter($this->env, $this->getAttribute($context["banco"], "idbanco", array()), "html", null, true);
             echo "\"><i class=\"fa fa-eye\" style=\"font-size: 20px; color: deepskyblue\"></i></button>
                                 ";
-            // line 45
+            // line 43
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\HttpKernelExtension')->renderFragment($this->env->getExtension('Symfony\Bridge\Twig\Extension\HttpKernelExtension')->controller("AppBundle:Banco:show", array("id" => $this->getAttribute($context["banco"], "idbanco", array()))));
             echo "
                         </div>
@@ -151,14 +146,14 @@ class __TwigTemplate_b928c5d188582d7dfa4c885105f88cfb534d73dc86117c6c295ea299bf5
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['banco'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 55
+        // line 53
         echo "      </tbody>
   </table>
   </div>
   </div>
 ";
         
-        $__internal_855e52e144970e9673ef502fb7f3b67f3686e719593c6c357a238cd4d4612490->leave($__internal_855e52e144970e9673ef502fb7f3b67f3686e719593c6c357a238cd4d4612490_prof);
+        $__internal_c3976da61d94c5f90538923794a0a752248b6e5a88890acd1a9f75cfed4ae60e->leave($__internal_c3976da61d94c5f90538923794a0a752248b6e5a88890acd1a9f75cfed4ae60e_prof);
 
     }
 
@@ -174,7 +169,7 @@ class __TwigTemplate_b928c5d188582d7dfa4c885105f88cfb534d73dc86117c6c295ea299bf5
 
     public function getDebugInfo()
     {
-        return array (  155 => 55,  139 => 45,  135 => 44,  129 => 41,  122 => 37,  118 => 36,  107 => 32,  103 => 31,  99 => 30,  96 => 29,  92 => 28,  73 => 12,  66 => 7,  60 => 6,  48 => 4,  36 => 3,  11 => 1,);
+        return array (  150 => 53,  134 => 43,  130 => 42,  124 => 39,  117 => 35,  113 => 34,  102 => 30,  98 => 29,  95 => 28,  91 => 27,  73 => 12,  66 => 7,  60 => 6,  48 => 4,  36 => 3,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -189,8 +184,8 @@ class __TwigTemplate_b928c5d188582d7dfa4c885105f88cfb534d73dc86117c6c295ea299bf5
     {
         return new Twig_Source("{% extends \"layout/base-layout.html.twig\" %}
 
-{% block page_title %} Bancos | {% endblock %}
-{% block page_subtitle %}Catalogo De Bancos {% endblock %}
+{% block page_title %} Catálogos {% endblock %}
+{% block page_subtitle %}Banco {% endblock %}
 
 {% block page_content %}
 
@@ -198,17 +193,16 @@ class __TwigTemplate_b928c5d188582d7dfa4c885105f88cfb534d73dc86117c6c295ea299bf5
 <div style=\"width:90%; margin-left:5%; margin-top: 2% \">
 
 <div align=\"left\">
-    <a style=\"font-size: 20px\" href=\"{{ path('banco_new') }}\" class=\"btn btn-success btn-sm\"><i style=\"font-size: 20px\" class=\"fa fa-plus-circle\"></i> Banco</a>
+    <a style=\"font-size: 15px\" href=\"{{ path('banco_new') }}\" class=\"btn btn-success btn-sm\"><i style=\"font-size: 20px\" class=\"fa fa-plus-circle\"></i> Banco</a>
 </div>
 <br>
 
     <table class=\"table table-bordered table-hover table-striped table-responsive\" style=\"width:100%\" id=\"tabelMahasiswa\">
           <thead class=\"thead-light\">
             <tr>
-                <th>Id</th>
-                <th>Banco</th>
-                <th>Estado</th>
-                <th>Accion</th>
+                <th><center>Banco</center></th>
+                <th><center></center></th>
+                <th><center>Accion</center></th>
 
             </tr>
         </thead>
@@ -216,21 +210,20 @@ class __TwigTemplate_b928c5d188582d7dfa4c885105f88cfb534d73dc86117c6c295ea299bf5
 
         {% for banco in bancos %}
         <tr>
-              <td>{{ banco.idbanco }}</td>
-              <td>{{ banco.nombanco }}</td>
-              <td>{% if banco.estadobanco %}Activo{% else %}Inactivo{% endif %}</td>
+              <td><center>{{ banco.nombanco }}</center></td>
+              <td><center>{% if banco.estadobanco %}Activo{% else %}Inactivo{% endif %}</center></td>
               <td>
                   <center>
-                        <div class=\"row\">
-                        <div align=\"center\" class=\"col col-sm-4\"><button class=\"\" style=\"background-color: transparent; border: none;\" data-toggle=\"modal\" data-target=\"#showdeleteBanco{{ banco.idbanco }}\"><i class=\"fa fa-trash\" style=\"font-size: 20px; color: crimson\"></i></button>
+                        <div class=\"row\" style=\"width: 100px\">
+                        <div style=\"float:left;\"><button class=\"\" style=\"background-color: transparent; border: none;\" data-toggle=\"modal\" data-target=\"#showdeleteBanco{{ banco.idbanco }}\"><i class=\"fa fa-trash\" style=\"font-size: 20px; color: crimson\"></i></button>
                                 {{ render(controller('AppBundle:Banco:showdelete', { 'id' : banco.idbanco } )) }}
                         </div>
 
-                        <div align=\"center\" class=\"col col-sm-4\" >
+                        <div style=\"float:left;\" >
                             <a href=\"{{ path('banco_edit',{ 'id' : banco.idbanco }) }}\" style=\"background-color: transparent; border: none;\"><i class=\"fa fa-edit\" style=\"font-size: 20px; color: limegreen\"></i></a>
                         </div>
                         
-                        <div align=\"center\" class=\"col col-sm-4\"><button class=\"\" style=\"background-color: transparent; border: none;\" data-toggle=\"modal\" data-target=\"#showBanco{{ banco.idbanco }}\"><i class=\"fa fa-eye\" style=\"font-size: 20px; color: deepskyblue\"></i></button>
+                        <div style=\"float:left;\"><button class=\"\" style=\"background-color: transparent; border: none;\" data-toggle=\"modal\" data-target=\"#showBanco{{ banco.idbanco }}\"><i class=\"fa fa-eye\" style=\"font-size: 20px; color: deepskyblue\"></i></button>
                                 {{ render(controller('AppBundle:Banco:show', { 'id' : banco.idbanco } )) }}
                         </div>
                         </div>

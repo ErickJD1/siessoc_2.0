@@ -23,44 +23,44 @@ class __TwigTemplate_a9bc8ad0d859e1436eb713f6f7f47891886ac24056088db0689199c8674
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_b398c6faa58503d3fa8bd1ceceed73ba6faaa71743d89da610f29221d7ea2d66 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_b398c6faa58503d3fa8bd1ceceed73ba6faaa71743d89da610f29221d7ea2d66->enter($__internal_b398c6faa58503d3fa8bd1ceceed73ba6faaa71743d89da610f29221d7ea2d66_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "tipocuenta/TipoCuentaindex.html.twig"));
+        $__internal_a03ebc88223542df6741a8b8af1f578d5625881c20293c59108f637341537a63 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_a03ebc88223542df6741a8b8af1f578d5625881c20293c59108f637341537a63->enter($__internal_a03ebc88223542df6741a8b8af1f578d5625881c20293c59108f637341537a63_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "tipocuenta/TipoCuentaindex.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_b398c6faa58503d3fa8bd1ceceed73ba6faaa71743d89da610f29221d7ea2d66->leave($__internal_b398c6faa58503d3fa8bd1ceceed73ba6faaa71743d89da610f29221d7ea2d66_prof);
+        $__internal_a03ebc88223542df6741a8b8af1f578d5625881c20293c59108f637341537a63->leave($__internal_a03ebc88223542df6741a8b8af1f578d5625881c20293c59108f637341537a63_prof);
 
     }
 
     // line 3
     public function block_page_title($context, array $blocks = array())
     {
-        $__internal_d2f7e6ce990978b528269f68885ead69b9f15e71f20323ac21833fdf0d327ea5 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_d2f7e6ce990978b528269f68885ead69b9f15e71f20323ac21833fdf0d327ea5->enter($__internal_d2f7e6ce990978b528269f68885ead69b9f15e71f20323ac21833fdf0d327ea5_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_title"));
+        $__internal_f284262d3859b6cb34b177c4b4d1f8cefbbc763474334f4ffb2cc56e06b0dfa7 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_f284262d3859b6cb34b177c4b4d1f8cefbbc763474334f4ffb2cc56e06b0dfa7->enter($__internal_f284262d3859b6cb34b177c4b4d1f8cefbbc763474334f4ffb2cc56e06b0dfa7_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_title"));
 
-        echo " Catalogo | ";
+        echo "Catálogo";
         
-        $__internal_d2f7e6ce990978b528269f68885ead69b9f15e71f20323ac21833fdf0d327ea5->leave($__internal_d2f7e6ce990978b528269f68885ead69b9f15e71f20323ac21833fdf0d327ea5_prof);
+        $__internal_f284262d3859b6cb34b177c4b4d1f8cefbbc763474334f4ffb2cc56e06b0dfa7->leave($__internal_f284262d3859b6cb34b177c4b4d1f8cefbbc763474334f4ffb2cc56e06b0dfa7_prof);
 
     }
 
     // line 4
     public function block_page_subtitle($context, array $blocks = array())
     {
-        $__internal_5dbc4ac47d13256638d246ce88eeb099ff4a4c9db3acd621e3cf65b0e376483d = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_5dbc4ac47d13256638d246ce88eeb099ff4a4c9db3acd621e3cf65b0e376483d->enter($__internal_5dbc4ac47d13256638d246ce88eeb099ff4a4c9db3acd621e3cf65b0e376483d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_subtitle"));
+        $__internal_d3e4be5692cdc771f0494813d3c9470f282bedef7af2559be71b23cd84ad49ab = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_d3e4be5692cdc771f0494813d3c9470f282bedef7af2559be71b23cd84ad49ab->enter($__internal_d3e4be5692cdc771f0494813d3c9470f282bedef7af2559be71b23cd84ad49ab_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_subtitle"));
 
-        echo "Tipo Cuenta ";
+        echo "Tipo Cuenta";
         
-        $__internal_5dbc4ac47d13256638d246ce88eeb099ff4a4c9db3acd621e3cf65b0e376483d->leave($__internal_5dbc4ac47d13256638d246ce88eeb099ff4a4c9db3acd621e3cf65b0e376483d_prof);
+        $__internal_d3e4be5692cdc771f0494813d3c9470f282bedef7af2559be71b23cd84ad49ab->leave($__internal_d3e4be5692cdc771f0494813d3c9470f282bedef7af2559be71b23cd84ad49ab_prof);
 
     }
 
     // line 6
     public function block_page_content($context, array $blocks = array())
     {
-        $__internal_e95322257fbe9eeb2553eaad7ec702b6085e1852ed38510ba0906b497f42f6af = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_e95322257fbe9eeb2553eaad7ec702b6085e1852ed38510ba0906b497f42f6af->enter($__internal_e95322257fbe9eeb2553eaad7ec702b6085e1852ed38510ba0906b497f42f6af_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_content"));
+        $__internal_8165bee8fc38d938e333982f32fe1a664001f1d06d4c7ef529ead9c71cddbdc8 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_8165bee8fc38d938e333982f32fe1a664001f1d06d4c7ef529ead9c71cddbdc8->enter($__internal_8165bee8fc38d938e333982f32fe1a664001f1d06d4c7ef529ead9c71cddbdc8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_content"));
 
         // line 7
         echo "
@@ -71,7 +71,7 @@ class __TwigTemplate_a9bc8ad0d859e1436eb713f6f7f47891886ac24056088db0689199c8674
                 <a style=\"font-size: 15px\" href=\"";
         // line 12
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("tipocuenta_new");
-        echo "\" class=\"btn btn-success btn-sm\"><i style=\"font-size: 20px\" class=\"fa fa-plus-circle\"></i> Tipo De Cuenta</a>
+        echo "\" class=\"btn btn-success btn-sm\"><i style=\"font-size: 20px\" class=\"fa fa-plus-circle\"></i> Tipo Cuenta</a>
             </div>
 
             <br> </br>
@@ -107,9 +107,9 @@ class __TwigTemplate_a9bc8ad0d859e1436eb713f6f7f47891886ac24056088db0689199c8674
                             <td><center>";
             // line 32
             if ($this->getAttribute($context["tipocuentum"], "estadotipocuenta", array())) {
-                echo "Activa";
+                echo "Activo";
             } else {
-                echo "Inactiva";
+                echo "Inactivo";
             }
             echo "</center></td>
                     <td>
@@ -159,7 +159,7 @@ class __TwigTemplate_a9bc8ad0d859e1436eb713f6f7f47891886ac24056088db0689199c8674
 </div>
 ";
         
-        $__internal_e95322257fbe9eeb2553eaad7ec702b6085e1852ed38510ba0906b497f42f6af->leave($__internal_e95322257fbe9eeb2553eaad7ec702b6085e1852ed38510ba0906b497f42f6af_prof);
+        $__internal_8165bee8fc38d938e333982f32fe1a664001f1d06d4c7ef529ead9c71cddbdc8->leave($__internal_8165bee8fc38d938e333982f32fe1a664001f1d06d4c7ef529ead9c71cddbdc8_prof);
 
     }
 
@@ -190,8 +190,8 @@ class __TwigTemplate_a9bc8ad0d859e1436eb713f6f7f47891886ac24056088db0689199c8674
     {
         return new Twig_Source("{% extends \"layout/base-layout.html.twig\" %}
 
-{% block page_title %} Catalogo | {% endblock %}
-{% block page_subtitle %}Tipo Cuenta {% endblock %}
+{% block page_title %}Catálogo{% endblock %}
+{% block page_subtitle %}Tipo Cuenta{% endblock %}
 
 {% block page_content %}
 
@@ -199,7 +199,7 @@ class __TwigTemplate_a9bc8ad0d859e1436eb713f6f7f47891886ac24056088db0689199c8674
         <div style=\"width:90%; margin-left:5%; margin-top: 2% \">
 
             <div align=\"left\">
-                <a style=\"font-size: 15px\" href=\"{{ path('tipocuenta_new') }}\" class=\"btn btn-success btn-sm\"><i style=\"font-size: 20px\" class=\"fa fa-plus-circle\"></i> Tipo De Cuenta</a>
+                <a style=\"font-size: 15px\" href=\"{{ path('tipocuenta_new') }}\" class=\"btn btn-success btn-sm\"><i style=\"font-size: 20px\" class=\"fa fa-plus-circle\"></i> Tipo Cuenta</a>
             </div>
 
             <br> </br>
@@ -219,7 +219,7 @@ class __TwigTemplate_a9bc8ad0d859e1436eb713f6f7f47891886ac24056088db0689199c8674
                         <tr data-id=\"{{ tipocuentum.idtipocuenta }}\">
                             <td>{{ tipocuentum.Nombrecuenta }}</td>
                             <td>{{ tipocuentum.descripcion }}</td>
-                            <td><center>{% if tipocuentum.estadotipocuenta %}Activa{% else %}Inactiva{% endif %}</center></td>
+                            <td><center>{% if tipocuentum.estadotipocuenta %}Activo{% else %}Inactivo{% endif %}</center></td>
                     <td>
                     <center>
                         <div class=\"row\">

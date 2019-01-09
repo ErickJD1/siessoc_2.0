@@ -877,6 +877,28 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 }
                 not_solicitudbecario_index:
 
+                // soli_aprobados
+                if ($pathinfo === '/solicitudbecario/aprobados') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_soli_aprobados;
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\SolicitudbecarioController::aprobadosAction',  '_route' => 'soli_aprobados',);
+                }
+                not_soli_aprobados:
+
+                // soli_rechazados
+                if ($pathinfo === '/solicitudbecario/rechazados') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_soli_rechazados;
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\SolicitudbecarioController::rechazadosrepo',  '_route' => 'soli_rechazados',);
+                }
+                not_soli_rechazados:
+
                 // solicitudbecario_new
                 if ($pathinfo === '/solicitudbecario/new') {
                     if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {

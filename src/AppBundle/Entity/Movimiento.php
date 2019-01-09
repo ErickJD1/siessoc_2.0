@@ -45,7 +45,6 @@ class Movimiento {
 
     /**
      * @var boolean
-     * @Assert\NotBlank()
      * @ORM\Column(name="ESTADOMOV", type="boolean", nullable=true)
      */
     private $estadomov;

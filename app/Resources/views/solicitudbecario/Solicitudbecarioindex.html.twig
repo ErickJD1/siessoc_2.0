@@ -16,35 +16,15 @@
             <table class="table table-bordered table-hover table-striped table-responsive" style="width:90%" id="tabelMahasiswa">
                 <thead class="thead-light">
                     <tr>
+                        <th>Solicitante</th>
                         <th>Telefonos</th>
-                        <th>Ingresos familiares</th>
-                        <th>Miembros familiares</th>
                         <th>Tipo Solicitud</th>
                         <th>Carrera A Estudiar</th>
                         <th>Universidad</th>
-                        <th>Matricula</th>
-                        <th>Cuota Mensual</th>
-                        <th>Duracion Carrera</th>
-                        <th>Trabajo</th>
                         <th>Documento De Identidad</th>
                         <th>Año de ingreso</th>
                         <th>Año de finalizacion</th>
-                        <th>Numero De Hermanos</th>
-                        <th>Nombre del padre</th>
-                        <th>Nombre de la madre</th>
-                        <th>Edad</th>
-                        <th>Sexo</th>
-                        <th>Nota Paes</th>
-                        <th>Ocupacion del padre</th>
-                        <th>Ocupacion de la madre</th>
-                        <th>Otras becas</th>
-                        <th>Monto de otras becas</th>
-                        <th>Antecendetes</th>
-                        <th>En emergencias Llamar</th>
-                        <th>Telefono Del Becario</th>
-                        <th>Direccion</th>
                         <th>Estado</th>
-                        <th>Religion</th>
                         <th>Accion</th>
                     </tr>
                 </thead>
@@ -52,35 +32,15 @@
 
                     {% for solicitudbecario in solicitudbecarios %}
                         <tr>
-                            <td>{{ solicitudbecario.telefonosolibecario }}</td>
-                            <td>{{ solicitudbecario.ingresossolifamiliabecario }}</td>
-                            <td>{{ solicitudbecario.miembrossolifamiliabecario }}</td>
+                            <td>{{ solicitudbecario.idusuario.firstName~" "~solicitudbecario.idusuario.lastName }}</td>
+                            <td>{{ solicitudbecario.telsolipersonalbecario }}</td>
                             <td>{{ solicitudbecario.tiposolicasabecario }}</td>
                             <td>{{ solicitudbecario.carrerasoliestudiarbecario }}</td>
                             <td>{{ solicitudbecario.universidadsolibecario }}</td>
-                            <td>{{ solicitudbecario.montosolimatriculabecario }}</td>
-                            <td>{{ solicitudbecario.cuotasolimensualbecario }}</td>
-                            <td>{{ solicitudbecario.duracionsolicarrerabecario }}</td>
-                            <td>{% if solicitudbecario.trabajosolibecario %}Si{% else %}No{% endif %}</td>
                             <td>{{ solicitudbecario.docsoliidentidadbecario }}</td>
                             <td>{% if solicitudbecario.aniosoliingresobecario %}{{ solicitudbecario.aniosoliingresobecario|date('Y-m-d') }}{% endif %}</td>
                             <td>{% if solicitudbecario.aniosolifinalizacionbecario %}{{ solicitudbecario.aniosolifinalizacionbecario|date('Y-m-d') }}{% endif %}</td>
-                            <td>{{ solicitudbecario.cantsolihermanosbecario }}</td>
-                            <td>{{ solicitudbecario.nomsolipadrebecario }}</td>
-                            <td>{{ solicitudbecario.nomsolimadrebecario }}</td>
-                            <td>{{ solicitudbecario.edad }}</td>
-                            <td>{{ solicitudbecario.sexo }}</td>
-                            <td>{{ solicitudbecario.paes }}</td>
-                            <td>{{ solicitudbecario.ocupacionpadre }}</td>
-                            <td>{{ solicitudbecario.ocupacionmadre }}</td>
-                            <td>{% if solicitudbecario.otrasbecas %}Si{% else %}No{% endif %}</td>
-                            <td>{{ solicitudbecario.montootrasbecas }}</td>
-                            <td>{{ solicitudbecario.antecedentes }}</td>
-                            <td>{{ solicitudbecario.telsoliemergenciabecario }}</td>
-                            <td>{{ solicitudbecario.telsolipersonalbecario }}</td>
-                            <td>{{ solicitudbecario.direccionsolibecario }}</td>
-                            <td>{{ solicitudbecario.religion }}</td>
-                            <td>{% if solicitudbecario.estadosolibecario %}Yes{% else %}No{% endif %}</td>
+                            <td>{% if solicitudbecario.estadosolibecario %}Aprobado{% else %}Rechazado{% endif %}</td>
                             <td>
                             
                                 <div style="float:left;"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#deletesoli{{ solicitudbecario.idsolibecario }}"><i class="fa fa-trash" style="font-size: 20px; color: crimson"></i></button>

@@ -3,59 +3,58 @@
 {% import "AvanzuAdminThemeBundle:layout:macros.html.twig" as macro %}
 {% block stylesheets %}
     {{ parent() }}
- {%endblock%}
+{%endblock%}
 {% block page_title %} Usuarios | {% endblock %}
 {% block page_subtitle %}Gestion de Usuarios {% endblock %}
 
 {% block page_content %}
 
     <div class="box box-primary">
-   <div style="width:90%; margin-left:5%; margin-top: 2% ">
-    
-        <div align="left">
-            <button class="btn btn-info" data-toggle="modal" data-target="#create1"> + Usuario</button>
-         {{ render(controller('SalexUserBundle:User:new' )) }}
-        </div>
-        <br> </br>
-        <table id="tabelMahasiswa" style="width:100%;"  align="center" class="table table-bordered table-hover table-striped table-responsive" id="tabelMahasiswa">
-            <thead>
-                <tr role="row">
-                    
-                    <th>Id</th>
-                    <th>Firstname</th>
-                    <th>Lastname</th>
-                    <th>Username</th>
-                    <th>email</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for user in pagination %}
-                    <tr>
-                        <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.id }}</a></td>
-                        <td>{{ user.firstName }}</td>
-                        <td>{{ user.lastName }}</td>
-                        <td>{{ user.username }}</td>
-                        <td>{{ user.email }}</td>
-                       {# <td>{% if user.createdAt %}{{ user.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-                        <td>{% if user.updateAt %}{{ user.updateAt|date('Y-m-d H:i:s') }}{% endif %}</td>#}
-                        <td align="center">
-                            <div style="float:left;"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#show{{ user.id }}"><i class="fa fa-eye" style="font-size: 20px"></i></button>
-                            {{ render(controller('SalexUserBundle:User:show',{ 'id':user.id })) }}</div>
-                            <div style="float:left;"><a href="{{ path('user_edit', { 'id': user.id }) }}" class="" style="background-color: transparent;  border: none;"><i class="fa fa-edit" style="font-size: 20px"></i></a>
-                            </div> 
-                            
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
+        <div style="width:90%; margin-left:5%; margin-top: 2% ">
 
-        </table>
+            <div align="left">
+                <a style="font-size: 15px" href="{{ path('user_new') }}" class="btn btn-success btn-sm"><i style="font-size: 20px" class="fa fa-plus-circle"></i> Registrar Usuario</a>
+            </div>
+            <br> </br>
+            <table id="tabelMahasiswa" style="width:100%;"  align="center" class="table table-bordered table-hover table-striped table-responsive" id="tabelMahasiswa">
+                <thead>
+                    <tr role="row">
+
+                        <th>Id</th>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
+                        <th>Username</th>
+                        <th>email</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in pagination %}
+                        <tr>
+                            <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.id }}</a></td>
+                            <td>{{ user.firstName }}</td>
+                            <td>{{ user.lastName }}</td>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.email }}</td>
+                            {# <td>{% if user.createdAt %}{{ user.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                             <td>{% if user.updateAt %}{{ user.updateAt|date('Y-m-d H:i:s') }}{% endif %}</td>#}
+                            <td align="center">
+                                <div style="float:left;"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#show{{ user.id }}"><i class="fa fa-eye" style="font-size: 20px"></i></button>
+                                    {{ render(controller('SalexUserBundle:User:show',{ 'id':user.id })) }}</div>
+                                <div style="float:left;"><a href="{{ path('user_edit', { 'id': user.id }) }}" class="" style="background-color: transparent;  border: none;"><i class="fa fa-edit" style="font-size: 20px"></i></a>
+                                </div> 
+
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
 
         </div>
 
     </div>                    
-    
+
 
 
 {% endblock %}

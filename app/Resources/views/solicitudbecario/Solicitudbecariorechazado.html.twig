@@ -1,0 +1,67 @@
+{% extends "layout/base-layout.html.twig" %}
+
+{% block page_title %} Solicitud | {% endblock %}
+{% block page_subtitle %}Lista De solicitudes {% endblock %}
+
+{% block page_content %}
+
+    <div class="box box-primary">
+        <div style="width:90%; margin-left:5%; margin-top: 2% ">
+
+            <div align="left">
+                <a style="font-size: 20px" href="{{ path('solicitudbecario_new') }}" class="btn btn-success btn-sm"><i style="font-size: 20px" class="fa fa-plus-circle"></i> Registrar Solicitud</a>
+            </div>
+            <br> </br>
+
+            <table class="table table-bordered table-hover table-striped table-responsive" style="width:90%" id="tabelMahasiswa">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Solicitante</th>
+                        <th>Telefonos</th>
+                        <th>Tipo Solicitud</th>
+                        <th>Carrera A Estudiar</th>
+                        <th>Universidad</th>
+                        <th>Documento De Identidad</th>
+                        <th>Año de ingreso</th>
+                        <th>Año de finalizacion</th>
+                        <th>Estado</th>
+                        <th>Accion</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for solicitudbecario in rechazados %}
+                        <tr>
+                            <td>{{ solicitudbecario.idusuario.firstName~" "~solicitudbecario.idusuario.lastName }}</td>
+                            <td>{{ solicitudbecario.telsolipersonalbecario }}</td>
+                            <td>{{ solicitudbecario.tiposolicasabecario }}</td>
+                            <td>{{ solicitudbecario.carrerasoliestudiarbecario }}</td>
+                            <td>{{ solicitudbecario.universidadsolibecario }}</td>
+                            <td>{{ solicitudbecario.docsoliidentidadbecario }}</td>
+                            <td>{% if solicitudbecario.aniosoliingresobecario %}{{ solicitudbecario.aniosoliingresobecario|date('Y-m-d') }}{% endif %}</td>
+                            <td>{% if solicitudbecario.aniosolifinalizacionbecario %}{{ solicitudbecario.aniosolifinalizacionbecario|date('Y-m-d') }}{% endif %}</td>
+                            <td>{% if solicitudbecario.estadosolibecario %}Aprobado{% else %}Rechazado{% endif %}</td>
+                            <td>
+                            
+                                <div style="float:left;"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#deletesoli{{ solicitudbecario.idsolibecario }}"><i class="fa fa-trash" style="font-size: 20px; color: crimson"></i></button>
+                                    {{ render(controller('AppBundle:Solicitudbecario:showDelete', { 'id' : solicitudbecario.idsolibecario } )) }}
+                                </div>
+                                
+                               <div style="float:left;">
+                                   <a title="Editar Solicitud" href="{{path('solicitudbecario_edit',{ 'id' : solicitudbecario.idsolibecario })}}" style="background-color: transparent; border: none;"><i class="fa fa-edit" style="font-size: 20px; color: limegreen"></i></a>
+                               </div>
+                                
+                                <div style="float:left;"><button title="Ver Soli" class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#VerSoli{{ solicitudbecario.idsolibecario }}"><i style="font-size: 20px"></i><i class="fa fa-eye" style="font-size: 20px; color: deepskyblue"></i></button>
+                                        {{ render(controller('AppBundle:Solicitudbecario:show', { 'id' : solicitudbecario.idsolibecario } )) }}
+                                </div>
+
+                            </td>
+                        </tr>
+
+                        </div>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

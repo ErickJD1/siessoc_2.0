@@ -924,7 +924,7 @@
                   <tag name="cache.pool"/>
                   <argument>9So5vqRUWP</argument>
                   <argument>0</argument>
-                  <argument>pu9Fth-HZyEVeCi5NlL4Tg</argument>
+                  <argument>EuQNXhxKF39kHgU+Mn2kDk</argument>
                   <argument>/home/ubuntu/workspace/var/cache/dev/pools</argument>
                   <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                   <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -937,7 +937,7 @@
                   <tag name="cache.pool"/>
                   <argument>b1xzfWVkDL</argument>
                   <argument>0</argument>
-                  <argument>pu9Fth-HZyEVeCi5NlL4Tg</argument>
+                  <argument>EuQNXhxKF39kHgU+Mn2kDk</argument>
                   <argument>/home/ubuntu/workspace/var/cache/dev/pools</argument>
                   <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                   <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -1623,7 +1623,7 @@
       <tag name="cache.pool"/>
       <argument>MB4t0MztHD</argument>
       <argument>0</argument>
-      <argument>pu9Fth-HZyEVeCi5NlL4Tg</argument>
+      <argument>EuQNXhxKF39kHgU+Mn2kDk</argument>
       <argument>/home/ubuntu/workspace/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -2509,7 +2509,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>5c3582c92b51f7.72678916</argument>
+            <argument>5c358540928df1.50356091</argument>
           </service>
         </argument>
       </argument>
@@ -2678,11 +2678,13 @@
                   </argument>
                   <argument type="collection">
                     <argument>ROLE_ADMIN</argument>
+                    <argument>ROLE_STAFF</argument>
                     <argument>ROLE_BECARIO</argument>
                     <argument>ROLE_PATROCINADOR</argument>
                     <argument>ROLE_FINANCIERO</argument>
                     <argument>ROLE_ASPIRANTE_BECARIO</argument>
                     <argument>ROLE_ASPIRANTE_PATROCINADOR</argument>
+                    <argument>ROLE_COORDINADOR</argument>
                   </argument>
                   <argument>null</argument>
                 </call>
@@ -2699,28 +2701,7 @@
                     <argument>ROLE_FINANCIERO</argument>
                     <argument>ROLE_ASPIRANTE_BECARIO</argument>
                     <argument>ROLE_ASPIRANTE_PATROCINADOR</argument>
-                  </argument>
-                  <argument>null</argument>
-                </call>
-                <call method="add">
-                  <argument type="service">
-                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-                      <argument>^/</argument>
-                    </service>
-                  </argument>
-                  <argument type="collection">
-                    <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
-                  </argument>
-                  <argument>null</argument>
-                </call>
-                <call method="add">
-                  <argument type="service">
-                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-                      <argument>^/register</argument>
-                    </service>
-                  </argument>
-                  <argument type="collection">
-                    <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
+                    <argument>ROLE_COORDINADOR</argument>
                   </argument>
                   <argument>null</argument>
                 </call>
@@ -2731,7 +2712,64 @@
                     </service>
                   </argument>
                   <argument type="collection">
-                    <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
+                    <argument>ROLE_ADMIN</argument>
+                    <argument>ROLE_STAFF</argument>
+                    <argument>ROLE_FINANCIERO</argument>
+                  </argument>
+                  <argument>null</argument>
+                </call>
+                <call method="add">
+                  <argument type="service">
+                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                      <argument>^/movimiento</argument>
+                    </service>
+                  </argument>
+                  <argument type="collection">
+                    <argument>ROLE_ADMIN</argument>
+                    <argument>ROLE_STAFF</argument>
+                    <argument>ROLE_FINANCIERO</argument>
+                    <argument>ROLE_COORDINADOR</argument>
+                  </argument>
+                  <argument>null</argument>
+                </call>
+                <call method="add">
+                  <argument type="service">
+                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                      <argument>^/tipocuenta</argument>
+                    </service>
+                  </argument>
+                  <argument type="collection">
+                    <argument>ROLE_ADMIN</argument>
+                    <argument>ROLE_STAFF</argument>
+                    <argument>ROLE_FINANCIERO</argument>
+                    <argument>ROLE_COORDINADOR</argument>
+                  </argument>
+                  <argument>null</argument>
+                </call>
+                <call method="add">
+                  <argument type="service">
+                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                      <argument>^/tipomovimiento</argument>
+                    </service>
+                  </argument>
+                  <argument type="collection">
+                    <argument>ROLE_ADMIN</argument>
+                    <argument>ROLE_STAFF</argument>
+                    <argument>ROLE_FINANCIERO</argument>
+                  </argument>
+                  <argument>null</argument>
+                </call>
+                <call method="add">
+                  <argument type="service">
+                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                      <argument>^/banco</argument>
+                    </service>
+                  </argument>
+                  <argument type="collection">
+                    <argument>ROLE_ADMIN</argument>
+                    <argument>ROLE_STAFF</argument>
+                    <argument>ROLE_FINANCIERO</argument>
+                    <argument>ROLE_COORDINADOR</argument>
                   </argument>
                   <argument>null</argument>
                 </call>
@@ -2868,7 +2906,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>5c3582c92b51f7.72678916</argument>
+            <argument>5c358540928df1.50356091</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -2899,11 +2937,13 @@
                   </argument>
                   <argument type="collection">
                     <argument>ROLE_ADMIN</argument>
+                    <argument>ROLE_STAFF</argument>
                     <argument>ROLE_BECARIO</argument>
                     <argument>ROLE_PATROCINADOR</argument>
                     <argument>ROLE_FINANCIERO</argument>
                     <argument>ROLE_ASPIRANTE_BECARIO</argument>
                     <argument>ROLE_ASPIRANTE_PATROCINADOR</argument>
+                    <argument>ROLE_COORDINADOR</argument>
                   </argument>
                   <argument>null</argument>
                 </call>
@@ -2920,28 +2960,7 @@
                     <argument>ROLE_FINANCIERO</argument>
                     <argument>ROLE_ASPIRANTE_BECARIO</argument>
                     <argument>ROLE_ASPIRANTE_PATROCINADOR</argument>
-                  </argument>
-                  <argument>null</argument>
-                </call>
-                <call method="add">
-                  <argument type="service">
-                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-                      <argument>^/</argument>
-                    </service>
-                  </argument>
-                  <argument type="collection">
-                    <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
-                  </argument>
-                  <argument>null</argument>
-                </call>
-                <call method="add">
-                  <argument type="service">
-                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-                      <argument>^/register</argument>
-                    </service>
-                  </argument>
-                  <argument type="collection">
-                    <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
+                    <argument>ROLE_COORDINADOR</argument>
                   </argument>
                   <argument>null</argument>
                 </call>
@@ -2952,7 +2971,64 @@
                     </service>
                   </argument>
                   <argument type="collection">
-                    <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
+                    <argument>ROLE_ADMIN</argument>
+                    <argument>ROLE_STAFF</argument>
+                    <argument>ROLE_FINANCIERO</argument>
+                  </argument>
+                  <argument>null</argument>
+                </call>
+                <call method="add">
+                  <argument type="service">
+                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                      <argument>^/movimiento</argument>
+                    </service>
+                  </argument>
+                  <argument type="collection">
+                    <argument>ROLE_ADMIN</argument>
+                    <argument>ROLE_STAFF</argument>
+                    <argument>ROLE_FINANCIERO</argument>
+                    <argument>ROLE_COORDINADOR</argument>
+                  </argument>
+                  <argument>null</argument>
+                </call>
+                <call method="add">
+                  <argument type="service">
+                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                      <argument>^/tipocuenta</argument>
+                    </service>
+                  </argument>
+                  <argument type="collection">
+                    <argument>ROLE_ADMIN</argument>
+                    <argument>ROLE_STAFF</argument>
+                    <argument>ROLE_FINANCIERO</argument>
+                    <argument>ROLE_COORDINADOR</argument>
+                  </argument>
+                  <argument>null</argument>
+                </call>
+                <call method="add">
+                  <argument type="service">
+                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                      <argument>^/tipomovimiento</argument>
+                    </service>
+                  </argument>
+                  <argument type="collection">
+                    <argument>ROLE_ADMIN</argument>
+                    <argument>ROLE_STAFF</argument>
+                    <argument>ROLE_FINANCIERO</argument>
+                  </argument>
+                  <argument>null</argument>
+                </call>
+                <call method="add">
+                  <argument type="service">
+                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                      <argument>^/banco</argument>
+                    </service>
+                  </argument>
+                  <argument type="collection">
+                    <argument>ROLE_ADMIN</argument>
+                    <argument>ROLE_STAFF</argument>
+                    <argument>ROLE_FINANCIERO</argument>
+                    <argument>ROLE_COORDINADOR</argument>
                   </argument>
                   <argument>null</argument>
                 </call>

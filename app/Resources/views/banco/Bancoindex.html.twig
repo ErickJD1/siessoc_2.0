@@ -1,7 +1,7 @@
 {% extends "layout/base-layout.html.twig" %}
 
-{% block page_title %} Bancos | {% endblock %}
-{% block page_subtitle %}Catalogo De Bancos {% endblock %}
+{% block page_title %} Catálogos {% endblock %}
+{% block page_subtitle %}Banco {% endblock %}
 
 {% block page_content %}
 
@@ -9,17 +9,16 @@
 <div style="width:90%; margin-left:5%; margin-top: 2% ">
 
 <div align="left">
-    <a style="font-size: 20px" href="{{ path('banco_new') }}" class="btn btn-success btn-sm"><i style="font-size: 20px" class="fa fa-plus-circle"></i> Banco</a>
+    <a style="font-size: 15px" href="{{ path('banco_new') }}" class="btn btn-success btn-sm"><i style="font-size: 20px" class="fa fa-plus-circle"></i> Banco</a>
 </div>
 <br>
 
     <table class="table table-bordered table-hover table-striped table-responsive" style="width:100%" id="tabelMahasiswa">
           <thead class="thead-light">
             <tr>
-                <th>Id</th>
-                <th>Banco</th>
-                <th>Estado</th>
-                <th>Accion</th>
+                <th><center>Banco</center></th>
+                <th><center></center></th>
+                <th><center>Accion</center></th>
 
             </tr>
         </thead>
@@ -27,12 +26,11 @@
 
         {% for banco in bancos %}
         <tr>
-              <td>{{ banco.idbanco }}</td>
-              <td>{{ banco.nombanco }}</td>
-              <td>{% if banco.estadobanco %}Activo{% else %}Inactivo{% endif %}</td>
+              <td><center>{{ banco.nombanco }}</center></td>
+              <td><center>{% if banco.estadobanco %}Activo{% else %}Inactivo{% endif %}</center></td>
               <td>
                   <center>
-                        <div class="row">
+                        <div class="row" style="width: 100px">
                         <div style="float:left;"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#showdeleteBanco{{ banco.idbanco }}"><i class="fa fa-trash" style="font-size: 20px; color: crimson"></i></button>
                                 {{ render(controller('AppBundle:Banco:showdelete', { 'id' : banco.idbanco } )) }}
                         </div>

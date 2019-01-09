@@ -48,7 +48,7 @@ class SidebarListener {
         if ($this->container->get('security.authorization_checker')->isGranted('ROLE_ASPIRANTE_BECARIO')) {
             $rootItems = array(
                 $dash = new MenuItemModel('site', 'WebSite', 'web_index', $earg, 'fa fa-home'),
-                $solicitudes = new MenuItemModel('solicitud', 'Solicitud Aspirantes', 'web_index', $earg, 'fa fa-window-restore'),
+                $solicitudes = new MenuItemModel('solicitud', 'Solicitud Aspirantes', 'solicitudbecario_index', $earg, 'fa fa-window-restore'),
             );
         }
 
@@ -70,6 +70,38 @@ class SidebarListener {
             );
         }
 
+        //PERMISOS STAFF
+        if ($this->container->get('security.authorization_checker')->isGranted('ROLE_STAFF')) {
+            $rootItems = array(
+                $inicio = new MenuItemModel('inicio', 'Inicio', 'homepage', $earg, 'fa fa-home'),
+                $dash = new MenuItemModel('site', 'WebSite', 'web_index', $earg, 'fa fa-world'),
+                $expediente = new MenuItemModel('expediente', 'Expedientes', '', $earg, 'fa fa-address-card'),
+                $actividad = new MenuItemModel('actividad', 'Actividades', '', $earg, 'fa fa-calendar'),
+                $academico = new MenuItemModel('seguimiento', 'Seguimiento Academico', 'homepage', $earg, 'fa fa-book'),
+                $publicacion = new MenuItemModel('publicar', 'Publicaciones', 'homepage', $earg, 'fa fa-globe'),
+                $ssocial = new MenuItemModel('social', 'Servicio Social', 'homepage', $earg, 'fa fa-signing'),
+                $fondos = new MenuItemModel('fondos', 'Fondos', 'menu_fondos', $earg, 'fa fa-money'),
+                $colaboracion = new MenuItemModel('colaboracion', 'Colaboracion Monetaria', 'homepage', $earg, 'fa fa-dollar'),
+                $insumos = new MenuItemModel('insumos', 'Insumos Academicos', 'homepage', $earg, 'fa fa-cubes'),
+                $reportes = new MenuItemModel('reportes', 'Reportes', 'homepage', $earg, 'fa fa-line-chart'),
+            );
+            
+             $expediente->addChild(new MenuItemModel('consulta_expediente', 'Consultar Expedientes', 'avanzu_admin_ui_gen_demo', $earg));
+
+            $insumos->addChild(new MenuItemModel('Soli_patrocina', 'Solicitudes Patrocinadores', 'movimientoinventario_index', $earg));
+
+//           $fondos->addChild(new MenuItemModel('consultar_cuentas', 'Administrar Cuentas', 'cuenta_index', $earg));
+//           $fondos->addChild(new MenuItemModel('Consultar', 'Administrar Movimientos', 'movimiento_index', $earg));
+            
+            $ssocial->addChild(new MenuItemModel('social_lista', 'Lista de Servicio Social', 'serviciosocial_index', $earg));
+            $ssocial->addChild(new MenuItemModel('social_proyecto', 'Proyectos Servicio Social', 'proyectoserviciosocial_index', $earg));
+
+
+            $actividad->addChild(new MenuItemModel('actividades', 'Lista de actividades', 'actividad_index', $earg));
+            $publicacion->addChild(new MenuItemModel('RegistrarContent', 'Registrar contenido', 'publicacioncontenido_index', $earg));
+            $publicacion->addChild(new MenuItemModel('RegistrarContent1', 'Programar Publicacoion', 'programarpublicacion_index', $earg));
+        
+        }
 
 
         //PERMISOS COORDINADOR
@@ -115,7 +147,7 @@ class SidebarListener {
         if ($this->container->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
             $rootItems = array(
                 $dash = new MenuItemModel('site', 'WebSite', 'web_index', $earg, 'fa fa-home'),
-                $solicitudes = new MenuItemModel('solicitud', 'Solicitud Aspirantes', 'web_index', $earg, 'fa fa-window-restore'),
+                $solicitudes = new MenuItemModel('solicitud', 'Solicitud Aspirantes', 'solicitudbecario_index', $earg, 'fa fa-window-restore'),
                 $usuario = new MenuItemModel('usuario', 'Usuarios', '', $earg, 'fa fa-user'),
                 $expediente = new MenuItemModel('expediente', 'Expedientes', '', $earg, 'fa fa-address-card'),
                 $actividad = new MenuItemModel('actividad', 'Actividades', '', $earg, 'fa fa-calendar'),

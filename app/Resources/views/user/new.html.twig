@@ -32,7 +32,7 @@
                         {{ form_errors(form.lastName) }}
                     </div>
                 </div>
-                    <br>
+                <br>
                 <div class="row">
                     <div class="col col-md-6">
 
@@ -47,7 +47,7 @@
                         {{ form_errors(form.email) }}
                     </div>
                 </div>
-                    <br>
+                <br>
                 <div class="row">
                     <div class="col col-md-6">
                         <label for="form_descripcion">Descripcion</label>
@@ -61,20 +61,30 @@
                     </div>
                 </div>
 
-                    <br>
-                <div class="row" align="center">
-                    <label for="form_profile_picture">Foto Perfil</label>
-                    {{ form_widget(form.profile_picture_file) }}
-                    {{ form_errors(form.profile_picture_file) }}
+                <br>
+
+                <div class="row">
+                    <div class="col col-md-12" align='center'>
+                        <label for="form_profile_picture">Foto Perfil</label>
+                        {{ form_widget(form.profile_picture_file) }}
+                        {{ form_errors(form.profile_picture_file) }}
+                    </div>
+
+                    <div class="col col-md-12">
+                        <label for="form_profile_picture"></label>
+                        {{ form_widget(form.plainPassword) }}
+                        {{ form_errors(form.plainPassword) }}
+                    </div>
+                    
                 </div>
                 <br>
 
             </div>
             <!-- End of box-body-->
-            <div class="box-footer">
+            <div class="box-footer" style='margin-right:7%'>
                 <div class="row" align="right">
                     <input type="submit" value="Guardar" name="submit" class="btn btn-success" />
-                    <a class="btn btn-danger pull-right" href="{{ path('user_index') }}" style="margin-left: 1px">Cancel</a>
+                    <a class="btn btn-danger" href="{{ path('user_index') }}" style="">Cancel</a>
                 </div>
             </div>
             <!-- End of box-footer-->

@@ -35,6 +35,13 @@ class Movimiento {
      * @ORM\Column(name="DESCRIPCIONMOV", type="string", length=250, nullable=true)
      */
     private $descripcionmov;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="OBSERVACIONES", type="string", length=250, nullable=true)
+     */
+    private $observaciones;
 
     /**
      * @var float
@@ -44,8 +51,8 @@ class Movimiento {
     private $monto;
 
     /**
-     * @var boolean
-     * @ORM\Column(name="ESTADOMOV", type="boolean", nullable=true)
+     * @var integer
+     * @ORM\Column(name="ESTADOMOV", type="integer", nullable=true)
      */
     private $estadomov;
 
@@ -160,6 +167,7 @@ class Movimiento {
         return $this->idusuario;
     }
 
+    
     /**
      * Set idusuario
      *
@@ -205,6 +213,26 @@ class Movimiento {
     }
 
     /**
+     * Get observaciones
+     *
+     * @return string
+     */
+    function getObservaciones() {
+        return $this->observaciones;
+    }
+
+    /**
+     * Set observaciones
+     *
+     * @param string $observaciones
+     *
+     * @return Movimiento
+     */
+    function setObservaciones($observaciones) {
+        $this->observaciones = $observaciones;
+    }
+
+     /**
      * Set monto
      *
      * @param float $monto
@@ -229,7 +257,7 @@ class Movimiento {
     /**
      * Set estadomov
      *
-     * @param boolean $estadomov
+     * @param integer $estadomov
      *
      * @return Movimiento
      */
@@ -242,7 +270,7 @@ class Movimiento {
     /**
      * Get estadomov
      *
-     * @return boolean
+     * @return integer
      */
     public function getEstadomov() {
         return $this->estadomov;

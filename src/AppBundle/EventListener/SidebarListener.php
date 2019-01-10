@@ -48,7 +48,7 @@ class SidebarListener {
         if ($this->container->get('security.authorization_checker')->isGranted('ROLE_ASPIRANTE_BECARIO')) {
             $rootItems = array(
                 $dash = new MenuItemModel('site', 'WebSite', 'web_index', $earg, 'fa fa-home'),
-                $solicitudes = new MenuItemModel('solicitud', 'Solicitud Aspirantes', 'solicitudbecario_index', $earg, 'fa fa-window-restore'),
+                $solicitudes = new MenuItemModel('solicitud', 'Solicitud Aspirantes', 'homepage', $earg, 'fa fa-window-restore'),
             );
 
             $solicitudes->addChild(new MenuItemModel('soli_becarios', 'Solicitudes Becarios', 'solicitudbecario_index', $earg));
@@ -159,7 +159,7 @@ class SidebarListener {
                 $fondos = new MenuItemModel('fondos', 'Fondos', 'menu_fondos', $earg, 'fa fa-money'),
                 $colaboracion = new MenuItemModel('colaboracion', 'Colaboracion Monetaria', 'homepage', $earg, 'fa fa-dollar'),
                 $insumos = new MenuItemModel('insumos', 'Insumos Academicos', 'homepage', $earg, 'fa fa-cubes'),
-                $catalogos = new MenuItemModel('catalogos', 'Catalogos', 'homepage', $earg, 'fa fa-list'),
+                $catalogos = new MenuItemModel('catalogos', 'Catalogos', 'menu_catalogos', $earg, 'fa fa-list'),
                 $reportes = new MenuItemModel('reportes', 'Reportes', 'homepage', $earg, 'fa fa-line-chart'),
             );
 
@@ -177,9 +177,9 @@ class SidebarListener {
 //            $fondos->addChild(new MenuItemModel('Consultar', 'Administrar Movimientos', 'movimiento_index', $earg));
 
 
-            $catalogos->addChild(new MenuItemModel('tipo_cuentas', 'Tipos de Cuenta', 'tipocuenta_index', $earg));
-            $catalogos->addChild(new MenuItemModel('lista_bancos', 'Bancos', 'banco_index', $earg));
-            $catalogos->addChild(new MenuItemModel('consultar_movimientos', 'Tipos De Movimiento', 'tipomovimiento_index', $earg));
+//            $catalogos->addChild(new MenuItemModel('tipo_cuentas', 'Tipos de Cuenta', 'tipocuenta_index', $earg));
+//            $catalogos->addChild(new MenuItemModel('lista_bancos', 'Bancos', 'banco_index', $earg));
+//            $catalogos->addChild(new MenuItemModel('consultar_movimientos', 'Tipos De Movimiento', 'tipomovimiento_index', $earg));
 
             $ssocial->addChild(new MenuItemModel('social_lista', 'Lista de Servicio Social', 'serviciosocial_index', $earg));
             $ssocial->addChild(new MenuItemModel('social_proyecto', 'Proyectos Servicio Social', 'proyectoserviciosocial_index', $earg));

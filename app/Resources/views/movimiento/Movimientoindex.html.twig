@@ -16,14 +16,14 @@
             <table class="table table-bordered table-hover table-striped table-responsive" style="width:100%" id="tabelMahasiswa">
                 <thead class="thead-light">
                     <tr>
-                        <th>Descripción</th>
-                        <th>Monto</th>
-                        <th>Estado</th>
-                        <th>Cuenta</th>
-                        <th>Tipo Movimiento</th>
-                        <th>Usuario</th>
-                        <th>Fecha</th>
-                        <th>Accion</th>
+                        <th><center>Descripción</center></th>
+                        <th><center>Monto</center></th>
+                        <th><center>Estado</center></th>
+                        <th><center>Cuenta</center></th>
+                        <th><center>Tipo Movimiento</center></th>
+                        <th><center>Usuario</center></th>
+                        <th><center>Fecha</center></th>
+                        <th><center>Accion</center></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,25 +31,24 @@
                     {% for movimiento in movimientos %}
                         <tr>
                             <td>{{ movimiento.descripcionmov }}</td>
-                            <td>{{ "$"~movimiento.monto }}</td>
-                            <td>{% if movimiento.estadomov %}Aprobado{% else %}Pendiente{% endif %}</td>
-                            <td>{{ movimiento.idcuenta~" | "~movimiento.idcuenta.numcuenta }}</td>
-                            <td>{{ movimiento.idtipomov }}</td>
-                            <td>{{ movimiento.idusuario }}</td>
-                            <td>{% if movimiento.createdAt %}{{ movimiento.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-                            <td>
+                            <td><center>{{ "$"~movimiento.monto }}</center></td>
+                            <td><center>{% if movimiento.estadomov %}Aprobado{% else %}Pendiente{% endif %}</center></td>
+                            <td><center>{{ movimiento.idcuenta~" | "~movimiento.idcuenta.numcuenta }}</center></td>
+                            <td><center>{{ movimiento.idtipomov }}</center></td>
+                            <td><center>{{ movimiento.idusuario }}</center></td>
+                            <td><center>{% if movimiento.createdAt %}{{ movimiento.createdAt|date('Y-m-d H:i:s') }}{% endif %}</center></td>
+                            <td class="row">
                     <center>
-                        {% if app.user.hasRole('ROLE_ADMIN') or app.user.hasRole('ROLE_FINANCIERO') or app.user.hasRole('ROLE_COORDINADOR') %}      
-
-                            <div style="float:left;"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#deleteMovi{{ movimiento.idmov }}"><i class="fa fa-trash" style="font-size: 20px; color: crimson"></i></button>
+                        {% if app.user.hasRole('ROLE_ADMIN') or app.user.hasRole('ROLE_COORDINADOR') or app.user.hasRole('ROLE_FINANCIERO') or (app.user.getId()==movimiento.idUsuario.id) %}
+                            <div class="col col-md-4"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#deleteMovi{{ movimiento.idmov }}"><i class="fa fa-trash" style="font-size: 20px; color: crimson"></i></button>
                                     {{ render(controller('AppBundle:Movimiento:showDelete', { 'id' : movimiento.idmov } )) }}
                             </div>
 
-                            <div style="float:left;" >
+                            <div class="col col-md-4" >
                                 <a href="{{ path('movimiento_edit',{ 'id' : movimiento.idmov }) }}" style="background-color: transparent; border: none;"><i class="fa fa-edit" style="font-size: 20px; color: limegreen"></i></a>
                             </div>
                         {% endif %}
-                        <div style="float:left;"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#VerMovi{{ movimiento.idmov }}"><i class="fa fa-eye" style="font-size: 20px; color: deepskyblue"></i></button>
+                        <div class="col col-md-4"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#VerMovi{{ movimiento.idmov }}"><i class="fa fa-eye" style="font-size: 20px; color: deepskyblue"></i></button>
                                 {{ render(controller('AppBundle:Movimiento:show', { 'id' : movimiento.idmov } )) }}
                         </div>
                     </center>

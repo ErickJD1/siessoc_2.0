@@ -67,6 +67,11 @@ class MovimientoController extends Controller
         $movimiento = new Movimiento();
         $form = $this->createForm('AppBundle\Form\MovimientoType', $movimiento);
         $movimiento->setIdusuario($this->getUser());
+        if($this->getUser()->hasRole('ROLE_STAFF')){
+            $movimiento->setEstadomov(0);
+        }elseif($this->getUser()->hasRole('ROLE_COORDINADOR') OR $this->getUser()->hasRole('ROLE_FINANCIERO') OR $this->getUser()->hasRole('ROLE_ADMIN')){
+            $movimiento->setEstadomov(1);
+        }
         $form->handleRequest($request);
        
         if ($form->isSubmitted() && $form->isValid()) {
@@ -136,6 +141,11 @@ class MovimientoController extends Controller
         $deleteForm = $this->createDeleteForm($movimiento);
         $movimiento->setUpdateAt(new \DateTime());
         $editForm = $this->createForm('AppBundle\Form\MovimientoType', $movimiento);
+        if($this->getUser()->hasRole('ROLE_STAFF')){
+            $movimiento->setEstadomov(0);
+        }elseif($this->getUser()->hasRole('ROLE_COORDINADOR') OR $this->getUser()->hasRole('ROLE_FINANCIERO') OR $this->getUser()->hasRole('ROLE_ADMIN')){
+            $movimiento->setEstadomov(1);
+        }
         $editForm->handleRequest($request);
         
         if ($editForm->isSubmitted() && $editForm->isValid()) {

@@ -1268,16 +1268,30 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         }
         not_web_calendar:
 
-        // menu_fondos
-        if ($pathinfo === '/menu/fondos') {
-            if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                $allow = array_merge($allow, array('GET', 'HEAD'));
-                goto not_menu_fondos;
-            }
+        if (0 === strpos($pathinfo, '/menu')) {
+            // menu_fondos
+            if ($pathinfo === '/menu/fondos') {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_menu_fondos;
+                }
 
-            return array (  '_controller' => 'AppBundle\\Controller\\menuController::fondosAction',  '_route' => 'menu_fondos',);
+                return array (  '_controller' => 'AppBundle\\Controller\\menuController::fondosAction',  '_route' => 'menu_fondos',);
+            }
+            not_menu_fondos:
+
+            // menu_catalogos
+            if ($pathinfo === '/menu/catalogos') {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_menu_catalogos;
+                }
+
+                return array (  '_controller' => 'AppBundle\\Controller\\menuController::catalogosAction',  '_route' => 'menu_catalogos',);
+            }
+            not_menu_catalogos:
+
         }
-        not_menu_fondos:
 
         // avanzu_admin_home
         if (rtrim($pathinfo, '/') === '/demo-admin') {

@@ -48,12 +48,9 @@ class SidebarListener {
         //PERMISOS ASPIRANTE BECARIO
         if ($this->container->get('security.authorization_checker')->isGranted('ROLE_ASPIRANTE_BECARIO')) {
             $rootItems = array(
-<<<<<<< HEAD
                 $dash = new MenuItemModel('site', 'WebSite', 'web_index', $earg, 'fa fa-home'),
-=======
                 $inicio = new MenuItemModel('inicio', 'Inicio', 'homepage', $earg, 'fa fa-home'),
                 $dash = new MenuItemModel('site', 'WebSite', 'web_index', $earg, 'fa fa-internet-explorer'),
->>>>>>> 64e0977d7cdcee12414c906b015f6396ac5babe0
                 $solicitudes = new MenuItemModel('solicitud', 'Solicitud Aspirantes', 'homepage', $earg, 'fa fa-window-restore'),
             );
 

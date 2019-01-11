@@ -9,7 +9,7 @@
         <div style="width:90%; margin-left:5%; margin-top: 2% ">
 
             <div align="left">
-                <a style="font-size: 15px" href="{{ path('cuenta_new') }}" class="btn btn-success btn-sm"><i style="font-size: 20px" class="fa fa-plus-circle"></i> Registrar Cuenta</a>
+                <a style="font-size: 15px" href="{{ path('cuenta_new') }}" class="btn btn-success btn-sm"><i style="font-size: 20px" class="fa fa-plus-circle"></i>Cuenta</a>
             </div>
             <br> <br>
 
@@ -25,7 +25,7 @@
                         <th><center>Saldo Actual</center></th>
                         <th><center>Estado</center></th>
                         <th><center>Usuario</center></th>
-                        <th style="width:150px;"><center>Accion</center></th>
+                        <th><center>Accion</center></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -44,7 +44,7 @@
                             <td><center>{{ "$"~cuentum.saldoactual }}</center></td>
                             <td><center>{% if cuentum.estadocuenta %}Activo{% else %}Inactivo{% endif %}</center></td>
                             <td><center>{{ cuentum.idusuario }}</center></td>
-                            <td class="row" style="width:150px;">
+                            <td class="row">
 
                                 <div class="col col-md-4"><button title="Eliminar Cuenta" class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#deleteCuenta{{ cuentum.idcuenta }}"><i class="fa fa-trash" style="font-size: 20px; color: crimson"></i></button>
                                         {{ render(controller('AppBundle:Cuenta:showDelete', { 'id' : cuentum.idcuenta } )) }}

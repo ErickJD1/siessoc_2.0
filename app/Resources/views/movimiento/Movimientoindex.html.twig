@@ -17,14 +17,14 @@
                 <thead class="thead-light">
                     <tr>
                         <th><center>Descripción</center></th>
-                        <th><center>Monto</center></th>
-                        <th><center>Estado</center></th>
-                        <th><center>Cuenta</center></th>
-                        <th><center>Tipo Movimiento</center></th>
-                        <th><center>Usuario</center></th>
-                        <th><center>Fecha</center></th>
-                        <th><center>Accion</center></th>
-                    </tr>
+                <th><center>Monto</center></th>
+                <th><center>Estado</center></th>
+                <th><center>Cuenta</center></th>
+                <th><center>Tipo</center></th>
+                <th><center>Usuario</center></th>
+                <th><center>Fecha</center></th>
+                <th><center>Accion</center></th>
+                </tr>
                 </thead>
                 <tbody>
 
@@ -32,24 +32,26 @@
                         <tr>
                             <td>{{ movimiento.descripcionmov }}</td>
                             <td><center>{{ "$"~movimiento.monto }}</center></td>
-                            <td><center>{% if movimiento.estadomov %}Aprobado{% else %}Pendiente{% endif %}</center></td>
-                            <td><center>{{ movimiento.idcuenta~" | "~movimiento.idcuenta.numcuenta }}</center></td>
-                            <td><center>{{ movimiento.idtipomov }}</center></td>
-                            <td><center>{{ movimiento.idusuario }}</center></td>
-                            <td><center>{% if movimiento.createdAt %}{{ movimiento.createdAt|date('Y-m-d H:i:s') }}{% endif %}</center></td>
-                            <td class="row">
+                    <td><center>{% if movimiento.estadomov %}Aprobado{% else %}Pendiente{% endif %}</center></td>
+                    <td><center>{{ movimiento.idcuenta~" | "~movimiento.idcuenta.numcuenta }}</center></td>
+                    <td><center>{{ movimiento.idtipomov }}</center></td>
+                    <td><center>{{ movimiento.idusuario }}</center></td>
+                    <td><center>{% if movimiento.createdAt %}{{ movimiento.createdAt|date('Y-m-d H:i:s') }}{% endif %}</center></td>
+                    <td>
                     <center>
-                        {% if app.user.hasRole('ROLE_ADMIN') or app.user.hasRole('ROLE_COORDINADOR') or app.user.hasRole('ROLE_FINANCIERO') or (app.user.getId()==movimiento.idUsuario.id) %}
-                            <div class="col col-md-4"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#deleteMovi{{ movimiento.idmov }}"><i class="fa fa-trash" style="font-size: 20px; color: crimson"></i></button>
-                                    {{ render(controller('AppBundle:Movimiento:showDelete', { 'id' : movimiento.idmov } )) }}
-                            </div>
+                        <div class="row">
+                            {% if app.user.hasRole('ROLE_ADMIN') or app.user.hasRole('ROLE_COORDINADOR') or app.user.hasRole('ROLE_FINANCIERO') or (app.user.getId()==movimiento.idUsuario.id) and movimiento.estadomov != 1 %}
+                                <div class="col col-md-4"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#deleteMovi{{ movimiento.idmov }}"><i class="fa fa-trash" style="font-size: 20px; color: crimson"></i></button>
+                                        {{ render(controller('AppBundle:Movimiento:showDelete', { 'id' : movimiento.idmov } )) }}
+                                </div>
 
-                            <div class="col col-md-4" >
-                                <a href="{{ path('movimiento_edit',{ 'id' : movimiento.idmov }) }}" style="background-color: transparent; border: none;"><i class="fa fa-edit" style="font-size: 20px; color: limegreen"></i></a>
+                                <div class="col col-md-4" >
+                                    <a href="{{ path('movimiento_edit',{ 'id' : movimiento.idmov }) }}" style="background-color: transparent; border: none;"><i class="fa fa-edit" style="font-size: 20px; color: limegreen"></i></a>
+                                </div>
+                            {% endif %}
+                            <div class="col col-md-4"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#VerMovi{{ movimiento.idmov }}"><i class="fa fa-eye" style="font-size: 20px; color: deepskyblue"></i></button>
+                                    {{ render(controller('AppBundle:Movimiento:show', { 'id' : movimiento.idmov } )) }}
                             </div>
-                        {% endif %}
-                        <div class="col col-md-4"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#VerMovi{{ movimiento.idmov }}"><i class="fa fa-eye" style="font-size: 20px; color: deepskyblue"></i></button>
-                                {{ render(controller('AppBundle:Movimiento:show', { 'id' : movimiento.idmov } )) }}
                         </div>
                     </center>
                     </td>

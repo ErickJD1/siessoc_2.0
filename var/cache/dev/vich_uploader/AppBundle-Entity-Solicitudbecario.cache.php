@@ -1,0 +1,1 @@
+<?php return unserialize('C:42:"Vich\\UploaderBundle\\Metadata\\ClassMetadata":260:{a:6:{i:0;s:33:"AppBundle\\Entity\\Solicitudbecario";i:1;a:0:{}i:2;a:0:{}i:3;a:0:{}i:4;i:1547012395;i:5;a:1:{s:16:"comprobante_file";a:3:{s:7:"mapping";s:13:"profile_image";s:12:"propertyName";s:16:"comprobante_file";s:16:"fileNameProperty";s:11:"comprobante";}}}}');

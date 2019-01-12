@@ -48,13 +48,13 @@ class SidebarListener {
         //PERMISOS ASPIRANTE BECARIO
         if ($this->container->get('security.authorization_checker')->isGranted('ROLE_ASPIRANTE_BECARIO')) {
             $rootItems = array(
+                $dash = new MenuItemModel('site', 'WebSite', 'web_index', $earg, 'fa fa-home'),
                 $inicio = new MenuItemModel('inicio', 'Inicio', 'homepage', $earg, 'fa fa-home'),
                 $dash = new MenuItemModel('site', 'WebSite', 'web_index', $earg, 'fa fa-internet-explorer'),
                 $solicitudes = new MenuItemModel('solicitud', 'Solicitud Aspirantes', 'homepage', $earg, 'fa fa-window-restore'),
             );
 
-            $solicitudes->addChild(new MenuItemModel('soli_becarios', 'Solicitudes Becarios', 'solicitudbecario_index', $earg));
-            $solicitudes->addChild(new MenuItemModel('Soli_patrocina', 'Solicitudes Patrocinadores', 'solicitudbecario_index', $earg));
+            $solicitudes->addChild(new MenuItemModel('soli_becarios', 'Solicitudes Becarios', 'solicitudbecario_new', $earg));
         }
 
         //PERMISOS ASPIRANTE PATROCINADOR

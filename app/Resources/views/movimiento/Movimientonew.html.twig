@@ -115,7 +115,7 @@
                                     }
                                 }
                                 $('#error').val(saldoActual);
-                                if ($('#appbundle_movimiento_monto').val() > saldoActual)
+                                if ($('#appbundle_movimiento_monto').val() > saldoActual or ('#appbundle_movimiento_monto').val()="") 
                                 {
                                     $('#montoerror').html(`<ul class="list-unstyled"><li><span class="glyphicon glyphicon-exclamation-sign">
                                 </span>Monto disponible $` + saldoActual + `</li></ul>`);

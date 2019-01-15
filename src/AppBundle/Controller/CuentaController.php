@@ -50,6 +50,7 @@ class CuentaController extends Controller
             if($Cuenta->getSaldoactual()== null){
                 $Cuenta->setSaldoactual($Cuenta->getSaldocuenta());
             }
+            $Cuenta->setEstadocuenta(true);
           //  $Cuenta->setFechaapertura(date('Y-m-d H:i:s'));
             $em->persist($Cuenta);
             $em->flush($Cuenta);

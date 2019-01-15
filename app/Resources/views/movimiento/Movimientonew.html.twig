@@ -25,12 +25,12 @@
                 <div class="row">
                     <div class="col col-md-6">
                         <label for="form_firstname">Asociar Cuenta<span style="font-size: 25;color: red" >*</span></label>
-                        {{ form_widget(form.idcuenta) }}
+                        {{ form_widget(form.idcuenta, {attr:{'onchange':'cargarData()'}}) }}
                         {{ form_errors(form.idcuenta) }}
                     </div>
                     <div class="col col-md-6">
                         <label for="form_lastname">Tipo de movimiento<span style="font-size: 25;color: red" >*</span></label>
-                        {{ form_widget(form.idtipomov) }}
+                        {{ form_widget(form.idtipomov, {attr:{'onchange':'cargarData()'}}) }}
                         {{ form_errors(form.idtipomov) }}
                     </div>
                 </div>
@@ -115,7 +115,7 @@
                                     }
                                 }
                                 $('#error').val(saldoActual);
-                                if ($('#appbundle_movimiento_monto').val() > saldoActual or ('#appbundle_movimiento_monto').val()="") 
+                                if ((($('#appbundle_movimiento_monto').val() > saldoActual) || $('#appbundle_movimiento_monto').val()==='' || $('#appbundle_movimiento_monto').val()===' ') && $('#appbundle_movimiento_idtipomov option:selected').text()==="Egreso" ) 
                                 {
                                     $('#montoerror').html(`<ul class="list-unstyled"><li><span class="glyphicon glyphicon-exclamation-sign">
                                 </span>Monto disponible $` + saldoActual + `</li></ul>`);

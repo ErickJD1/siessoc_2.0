@@ -65,7 +65,6 @@ class Cuenta
 
     /**
      * @var \Tipocuenta
-     * @Assert\NotBlank()
      * @ORM\ManyToOne(targetEntity="Tipocuenta")
      * @ORM\JoinColumns({
      * @ORM\JoinColumn(name="IDTIPOCUENTA", referencedColumnName="IDTIPOCUENTA")

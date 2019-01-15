@@ -8,33 +8,58 @@
             </div>
             <div class="modal-body">
 
-                 <div class="row" style="margin-left:5%" align="left">
+                <div class="row" style="margin-left:5%" align="left">
                     <!--modal-->
                     <div class="col col-md-7">
-                    <h4><i class="fa fa-list"></i>  Descripcion Del Movimiento</h4>
-                    <p class="form-group"><strong>{{ movimiento.descripcionmov }}</strong></p>
-                    <hr>
-                    <h4><i class="fa fa-money"></i>  Monto</h4>
-                    <p class="form-group"><strong>{{ "$"~movimiento.monto }}</strong></p>
-<hr>
-                    <h4><i class="fa fa-check-square"></i>  Estado</h4>
-                    <p class="form-group"><strong>{% if movimiento.estadomov %}Activo{% else %}Inactivo{% endif %}</strong></p>
-<hr>
-                    <h4><i class="fa fa-table"></i>  Tipo Cuenta</h4>
-                    <p class="form-group"><strong>{{ movimiento.idcuenta }}</strong></p>
-<hr>
-                    <h4><i class="fa fa-table"></i>  Tipo De Movimiento</h4>
-                    <p class="form-group"><strong>{{ movimiento.idtipomov }}</strong></p>
+                        <h4><i class="fa fa-list"></i>  Descripcion Del Movimiento</h4>
+                        <p class="form-group"><strong>{{ movimiento.descripcionmov }}</strong></p>
+                        <hr>
+                        <h4><i class="fa fa-money"></i>  Monto</h4>
+                        <p class="form-group"><strong>{{ "$"~movimiento.monto }}</strong></p>
+                        <hr>
+                        <h4><i class="fa fa-check-square"></i>  Estado</h4>
+                        <p class="form-group"><strong>{% if movimiento.estadomov==1 %}Aprobado{% elseif  movimiento.estadomov==0  %}Pendiente{% else %}Rechazado{% endif %}</strong></p>
+                        <hr>
+                        <h4><i class="fa fa-table"></i>  Tipo Cuenta</h4>
+                        <p class="form-group"><strong>{{ movimiento.idcuenta }}</strong></p>
+                        <hr>
+                        <h4><i class="fa fa-table"></i>  Tipo De Movimiento</h4>
+                        <p class="form-group"><strong>{{ movimiento.idtipomov }}</strong></p>
+                        <hr>
+                        <h4><i class="fa fa-warning"></i> Observaciones</h4>
+                        <p class="form-group"><strong>{{ movimiento.observaciones }}</strong></p>
                     </div>
                     <div class="col col-md-5">
                         <img style="width:75%;margin-top: 10%;margin-bottom: 2%" src="{{ asset('img/budget.png') }}"></img>
                     </div>
                 </div>
 
-                <div class="modal-footer" al>
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+                <div class="modal-footer">
+                    <div align="right">
+                        <div style="float:right;margin-left: 1px"><button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button></div>
+                        {% if (app.user.hasRole('ROLE_ADMIN') or app.user.hasRole('ROLE_COORDINADOR') or app.user.hasRole('ROLE_FINANCIERO')) and movimiento.estadomov == 0 %}
+                            <div style="float:right;margin-left: 1px"> <form style="" action="{{path('movimiento_aprobacion',{'id':movimiento.idmov,'val':1})}}" method="POST"> 
+
+                                    <button type="submit" class="btn btn-success" >Aprobar</button>
+                                </form></div>
+                            <div style="float:right;margin-left: 1px"> <form action="{{path('movimiento_aprobacion',{'id':movimiento.idmov,'val':2})}}" method="POST"> 
+                                    <div class="modal fade" id="recha{{  movimiento.idmov }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div style="width:50%; margin-left: 25%;" class="modal-dialog">
+                                            <div class="modal-content"  style="border-radius: 10px">
+                                                <div class="modal-body">
+                                                    <textarea class="form-control" id="descripcion" name="descripcion" style="width:100%" placeholder="Observaciones del rechazo" name="descripcion"></textarea>
+                                                     <button type="submit" class="btn btn-success" style="margin-top:1%;widt:100%" >Guardar</button>
+                                                </div>
+                                            </div>
+                                        </div>   
+                                    </div> 
+
+                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#recha{{ movimiento.idmov }}" >Rechazar</button>
+                                </form>
+                            </div>
+                            {% endif %}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>

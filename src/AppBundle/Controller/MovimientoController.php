@@ -171,9 +171,9 @@ class MovimientoController extends Controller {
             $movimiento->setEstadomov(2);
             $movimiento->setObservaciones($descripcion);
             $this->getDoctrine()->getManager()->flush();
-            $msj = "El movimiento ha sido rechazado!".$descripcion;
+            $msj = "El movimiento ha sido rechazado!";
         }
-        $this->addFlash('success', $msj);
+        $this->addFlash('warning', $msj);
         return $this->redirectToRoute('movimiento_index', array('id' => $movimiento->getIdmov()));
     }
 

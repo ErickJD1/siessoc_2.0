@@ -25,5 +25,17 @@ class menuController extends Controller
     {
         return $this->render('menu/menuFondos.html.twig');
     }
+    
+    
+    /**
+     * Lists all actividad entities.
+     *
+     * @Route("/catalogos", name="menu_catalogos")
+     * @Method("GET")
+     */
+    public function catalogosAction()
+    {
+        return $this->render('menu/menuCatalogos.html.twig');
+    }
 
 }

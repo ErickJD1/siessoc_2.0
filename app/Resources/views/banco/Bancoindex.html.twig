@@ -1,7 +1,7 @@
 {% extends "layout/base-layout.html.twig" %}
 
-{% block page_title %} Bancos | {% endblock %}
-{% block page_subtitle %}Catalogo De Bancos {% endblock %}
+{% block page_title %} Catálogos {% endblock %}
+{% block page_subtitle %}Banco {% endblock %}
 
 {% block page_content %}
 
@@ -9,17 +9,16 @@
 <div style="width:90%; margin-left:5%; margin-top: 2% ">
 
 <div align="left">
-    <a style="font-size: 20px" href="{{ path('banco_new') }}" class="btn btn-success btn-sm"><i style="font-size: 20px" class="fa fa-plus-circle"></i> Banco</a>
+    <a style="font-size: 15px" href="{{ path('banco_new') }}" class="btn btn-success btn-sm"><i style="font-size: 20px" class="fa fa-plus-circle"></i> Banco</a>
 </div>
 <br>
 
     <table class="table table-bordered table-hover table-striped table-responsive" style="width:100%" id="tabelMahasiswa">
           <thead class="thead-light">
             <tr>
-                <th>Id</th>
-                <th>Banco</th>
-                <th>Estado</th>
-                <th>Accion</th>
+                <th><center>Banco</center></th>
+                <th><center>Nombre</center></th>
+                <th style="width:150px;"><center>Accion</center></th>
 
             </tr>
         </thead>
@@ -27,25 +26,21 @@
 
         {% for banco in bancos %}
         <tr>
-              <td>{{ banco.idbanco }}</td>
-              <td>{{ banco.nombanco }}</td>
-              <td>{% if banco.estadobanco %}Activo{% else %}Inactivo{% endif %}</td>
-              <td>
-                  <center>
-                        <div class="row">
-                        <div style="float:left;"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#showdeleteBanco{{ banco.idbanco }}"><i class="fa fa-trash" style="font-size: 20px; color: crimson"></i></button>
+              <td><center>{{ banco.nombanco }}</center></td>
+              <td><center>{% if banco.estadobanco %}Activo{% else %}Inactivo{% endif %}</center></td>
+              <td class="row" style="width:150px;">
+  
+                        <div class="col col-md-4"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#showdeleteBanco{{ banco.idbanco }}"><i class="fa fa-trash" style="font-size: 20px; color: crimson"></i></button>
                                 {{ render(controller('AppBundle:Banco:showdelete', { 'id' : banco.idbanco } )) }}
                         </div>
 
-                        <div style="float:left;" >
+                        <div class="col col-md-4" >
                             <a href="{{ path('banco_edit',{ 'id' : banco.idbanco }) }}" style="background-color: transparent; border: none;"><i class="fa fa-edit" style="font-size: 20px; color: limegreen"></i></a>
                         </div>
                         
-                        <div style="float:left;"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#showBanco{{ banco.idbanco }}"><i class="fa fa-eye" style="font-size: 20px; color: deepskyblue"></i></button>
+                        <div class="col col-md-4"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#showBanco{{ banco.idbanco }}"><i class="fa fa-eye" style="font-size: 20px; color: deepskyblue"></i></button>
                                 {{ render(controller('AppBundle:Banco:show', { 'id' : banco.idbanco } )) }}
                         </div>
-                        </div>
-                    </center>
                 
               </td>
 

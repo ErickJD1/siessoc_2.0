@@ -25,27 +25,23 @@
                 <div class="row">
                     <div class="col col-md-6">
                         <label for="form_firstname">Asociar Cuenta<span style="font-size: 25;color: red" >*</span></label>
-                        {{ form_widget(form.idcuenta) }}
+                        {{ form_widget(form.idcuenta, {attr:{'onchange':'cargarData()'}}) }}
                         {{ form_errors(form.idcuenta) }}
                     </div>
                     <div class="col col-md-6">
                         <label for="form_lastname">Tipo de movimiento<span style="font-size: 25;color: red" >*</span></label>
-                        {{ form_widget(form.idtipomov) }}
+                        {{ form_widget(form.idtipomov, {attr:{'onchange':'cargarData()'}}) }}
                         {{ form_errors(form.idtipomov) }}
                     </div>
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col col-md-9">
+                    <div class="col col-md-12">
                         <label for="form_lastname">Descripcion<span style="font-size: 25;color: red" >*</span></label>
                         {{ form_widget(form.descripcionmov) }}
                         {{ form_errors(form.descripcionmov) }}
                     </div>
-                    <div class="col col-md-3" >
-                        <label for="form_estado">Estado</label>
-                        {{ form_widget(form.estadomov) }}
-                        {{ form_errors(form.estadomov) }}
-                    </div>
+
                 </div>
                 <br>
                 <div class="row">
@@ -119,7 +115,7 @@
                                     }
                                 }
                                 $('#error').val(saldoActual);
-                                if ($('#appbundle_movimiento_monto').val() > saldoActual)
+                                if ((($('#appbundle_movimiento_monto').val() > saldoActual) || $('#appbundle_movimiento_monto').val()=='' || $('#appbundle_movimiento_monto').val()==' ') || $('#appbundle_movimiento_idtipomov option:selected').val()===0 ) 
                                 {
                                     $('#montoerror').html(`<ul class="list-unstyled"><li><span class="glyphicon glyphicon-exclamation-sign">
                                 </span>Monto disponible $` + saldoActual + `</li></ul>`);

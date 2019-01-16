@@ -37,12 +37,12 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col col-md-9">
+                    <div class="col col-md-12">
                         <label for="form_descripcion">Descripcion<span style="font-size: 25;color: red" >*</span></label>
                         {{ form_errors(form.descripcioncuenta) }}
                         {{ form_widget(form.descripcioncuenta) }}
                     </div>
-                    <div class="col col-md-3" >
+                    <div class="col col-md-3 hidden" >
                         <label for="form_estado">Estado</label>
                         {{ form_widget(form.estadocuenta) }}
                         {{ form_errors(form.estadocuenta) }}
@@ -69,19 +69,20 @@
                 </div>
             </div>
                 <hr>
-                <div class="row">
+                <div class="row" style="width: 90%">
                     <div class="col col-md-12" align="right">
                         <a href="{{ path('cuenta_index') }}" class="btn btn-primary btn-xl">Cancelar</a>
                         <input  class="btn btn-success btn-xl" type="submit"  value="Guardar" />
                     </div>
                 </div>
-
+                                <br>
+                                
                 {{ form_end(form) }}
             </div>
+            <br>
+            <br>
         </div>
-        <br>
-        <br>
-
-    </div>
+        
+     
 
 {% endblock %}

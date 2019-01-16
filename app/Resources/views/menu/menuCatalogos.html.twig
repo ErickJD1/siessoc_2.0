@@ -1,0 +1,76 @@
+{% extends "layout/base-layout.html.twig" %}
+
+{% block page_title %} Menu | Catalogos {% endblock %}
+
+
+{% block page_content %}
+
+
+    <div class="box box-primary">
+        <div style="width:90%; margin-left:5%; margin-top: 2% ">
+            <div class="row">
+                    <div class="col-lg-6 col-xs-6">
+                        <!-- small box -->
+                        <div class="small-box bg-aqua">
+                            <div class="inner">
+                                <h3>Tipo Cuenta</h3>
+
+                                <p>Gestionar Tipo Cuenta</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-card"></i>
+                            </div>
+                            <a href="{{path('tipocuenta_index')}}" class="small-box-footer">Administrar <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                <!-- ./col -->
+                <div class="col-lg-6 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-green">
+                        <div class="inner">
+                            <h3>Tipo Movimiento<sup style="font-size: 20px"></sup></h3>
+
+                            <p>Gestionar Tipo Movimeinto</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-stats-bars"></i>
+                        </div>
+                        <a href="{{path('tipomovimiento_index')}}" class="small-box-footer">Administrar <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-6 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-yellow">
+                        <div class="inner">
+                            <h3>Banco</h3>
+
+                            <p>Gestionar Bancos</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-briefcase"></i>
+                        </div>
+                        <a href="{{path('banco_index')}}" class="small-box-footer">Administrar<i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+{#                <div class="col-lg-6 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-red">
+                        <div class="inner">
+                            <h3>Beca</h3>
+
+                            <p>Entregar Beca</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-pie-graph"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">Consultar <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>#}
+                <!-- ./col -->
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

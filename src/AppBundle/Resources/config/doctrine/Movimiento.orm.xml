@@ -18,8 +18,13 @@
         <option name="fixed"/>
       </options>
     </field>
+    <field name="observaciones" type="string" column="OBSERVACIONES" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
     <field name="monto" type="float" column="MONTO" precision="20" scale="0" nullable="true"/>
-    <field name="estadomov" type="boolean" column="ESTADOMOV" nullable="true"/>
+    <field name="estadomov" type="integer" column="ESTADOMOV" nullable="true"/>
     <many-to-one field="idcuenta" target-entity="Cuenta" fetch="LAZY">
       <join-columns>
         <join-column name="IDCUENTA" referenced-column-name="IDCUENTA"/>

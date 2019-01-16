@@ -115,7 +115,7 @@
                                     }
                                 }
                                 $('#error').val(saldoActual);
-                                if ((($('#appbundle_movimiento_monto').val() > saldoActual) || $('#appbundle_movimiento_monto').val()==='' || $('#appbundle_movimiento_monto').val()===' ') && $('#appbundle_movimiento_idtipomov option:selected').text()==="Egreso" ) 
+                                if ((($('#appbundle_movimiento_monto').val() > saldoActual) || $('#appbundle_movimiento_monto').val()=='' || $('#appbundle_movimiento_monto').val()==' ') || $('#appbundle_movimiento_idtipomov option:selected').val()===0 ) 
                                 {
                                     $('#montoerror').html(`<ul class="list-unstyled"><li><span class="glyphicon glyphicon-exclamation-sign">
                                 </span>Monto disponible $` + saldoActual + `</li></ul>`);

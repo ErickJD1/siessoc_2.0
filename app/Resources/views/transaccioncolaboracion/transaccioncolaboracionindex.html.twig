@@ -1,0 +1,60 @@
+{% extends "layout/base-layout.html.twig" %}
+
+{% block page_title %} Transacciones | {% endblock %}
+{% block page_subtitle %}Transacciones de colaboracion {% endblock %}
+
+{% block page_content %}
+
+    <div class="box box-primary">
+        <div style="width:90%; margin-left:5%; margin-top: 2% ">
+
+            <div align="left">
+                <a style="font-size: 15px" href="{{ path('transaccioncolaboracion_new') }}" class="btn btn-success btn-sm"><i style="font-size: 20px" class="fa fa-plus-circle"></i> Ingresar Colaboracion</a>
+            </div>
+            <br> <br>
+
+            <table class="table table-bordered table-hover table-striped table-responsive" style="width:100%" id="tabelMahasiswa">
+                <thead class="thead-light">
+            <tr>
+                <th>Descripcion</th>
+                <th>Tipo De Transaccion</th>
+                <th>Tipo De Colaboracion</th>
+                <th>Fecha Emision</th>
+                <th>Mes De Pago</th>
+                <th>Monto De La Colaboracion</th>
+                <th>Estado</th>
+                <th>Accion</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for transaccioncolaboracion in transaccioncolaboracions %}
+            <tr>
+                <td>{{ transaccioncolaboracion.descripciontransaccolabora }}</td>
+                <td>{{ transaccioncolaboracion.tipotransaccolabora }}</td>
+                <td>{{ transaccioncolaboracion.idcolaboracion }}</td>
+                <td>{% if transaccioncolaboracion.fechatransaccolabora %}{{ transaccioncolaboracion.fechatransaccolabora|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ transaccioncolaboracion.mespagotransaccolabora }}</td>
+                <td>{{ transaccioncolaboracion.montotrasaccolabora }}</td>
+                <td>{{ transaccioncolaboracion.estadotransaccolabora }}</td>
+              <td>
+                            
+                <div style="float:left;"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#deletetransaccion{{ transaccioncolaboracion.idtransaccolaboracion }}"><i class="fa fa-trash" style="font-size: 20px; color: crimson"></i></button>
+                    {{ render(controller('AppBundle:Transaccioncolaboracion:showDelete', { 'id' : transaccioncolaboracion.idtransaccolaboracion } )) }}
+                </div> 
+             
+                <div style="float:left;">
+                    <a title="Editar Solicitud" href="{{path('transaccioncolaboracion_edit',{ 'id' : transaccioncolaboracion.idtransaccolaboracion })}}" style="background-color: transparent; border: none;"><i class="fa fa-edit" style="font-size: 20px; color: limegreen"></i></a>
+                </div>
+                                
+                <div style="float:left;"><button title="Ver Soli" class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#Vercolaboracion{{ transaccioncolaboracion.idtransaccolaboracion }}"><i style="font-size: 20px"></i><i class="fa fa-eye" style="font-size: 20px; color: deepskyblue"></i></button>
+                    {{ render(controller('AppBundle:Transaccioncolaboracion:show', { 'id' : transaccioncolaboracion.idtransaccolaboracion } )) }}
+                </div>         
+               
+              </td>
+            </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

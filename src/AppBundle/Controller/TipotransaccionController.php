@@ -59,6 +59,24 @@ class TipotransaccionController extends Controller
         ));
     }
 
+    
+      /**
+     * Finds and displays a tipotransaccion entity.
+     *
+     * @Route("/{id}", name="tipotransaccion_show_delete")
+     * @Method("GET")
+     */
+    public function showDeleteAction(Tipotransaccion $tipotransaccion)
+    {
+
+        $deleteForm = $this->createDeleteForm($tipotransaccion);
+
+        return $this->render('tipotransaccion/Tipotransaccionshowdelete.html.twig', array(
+            'tipotransaccion' => $tipotransaccion,
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+    
     /**
      * Finds and displays a tipotransaccion entity.
      *

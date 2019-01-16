@@ -1,7 +1,7 @@
 {% extends "layout/base-layout.html.twig" %}
 
-{% block page_title %} Cuentas | {% endblock %}
-{% block page_subtitle %}Catalogo De Cuenta {% endblock %}
+{% block page_title %} Transacciones | {% endblock %}
+{% block page_subtitle %}Catalogo Tipo De Transaccion {% endblock %}
 
 {% block page_content %}
 
@@ -9,15 +9,13 @@
 <div style="width:90%; margin-left:5%; margin-top: 2% ">
 
 <div align="left">
-    <button class="btn btn-primary" data-toggle="modal" data-target="#CrearTransaccion"> + Registrar Transaccion</button>
-    {{ render(controller('AppBundle:Tipotransaccion:new')) }}
+    <a style="font-size: 15px" href="{{ path('tipotransaccion_new') }}" class="btn btn-success btn-sm"><i style="font-size: 20px" class="fa fa-plus-circle"></i> Registrar Transaccion</a>
 </div>
 <br> </br>
 
     <table class="table table-bordered table-hover table-striped table-responsive" style="width:100%" id="tabelMahasiswa">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Tipo De Transaccion</th>
                 <th>Estado</th>
                 <th>Accion</th>
@@ -27,17 +25,19 @@
 
         {% for tipotransaccion in tipotransaccions %}
             <tr>
-                <td>{{ tipotransaccion.idtipotransaccion }}</td>
                 <td>{{ tipotransaccion.nombretipotransac }}</td>
                 <td>{% if tipotransaccion.estadotipotransac %}Alta{% else %}Baja{% endif %}</td>
                 <td>
-                  <div style="float:left;"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#VerTransac{{ tipotransaccion.idtipotransaccion }}"><i class="fa fa-eye" style="font-size: 20px"></i></button>
-                          {{ render(controller('AppBundle:Tipotransaccion:show', { 'id' : tipotransaccion.idtipotransaccion } )) }}
-                  </div>
+                    <div style="float:left;"><button title="Eliminar Ttransaccion" class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#deleteTipotransaccion{{ tipotransaccion.idtipotransaccion }}"><i class="fa fa-trash" style="font-size: 20px; color: crimson"></i></button>
+                                        {{ render(controller('AppBundle:Tipotransaccion:showDelete', { 'id' : tipotransaccion.idtipotransaccion } )) }}
+                                </div>
+                                <div style="float:left;" >
+                                    <a title="Editar Ttransaccion" href="{{ path('tipotransaccion_edit',{ 'id' : tipotransaccion.idtipotransaccion }) }}" style="background-color: transparent; border: none;"><i class="fa fa-edit" style="font-size: 20px; color: limegreen"></i></a>
+                                </div>
 
-                  <div style="float:left;"><button class="" style="background-color: transparent;  border: none;" data-toggle="modal" data-target="#EditTransaccion{{ tipotransaccion.idtipotransaccion }}"><i class="fa fa-edit" style="font-size: 20px"></i></button>
-                          {{ render(controller('AppBundle:Tipotransaccion:edit', { 'id' : tipotransaccion.idtipotransaccion } )) }}
-                  </div>
+                                <div style="float:left;"><button title="Ver Ttransaccion" class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#VerTransac{{ tipotransaccion.idtipotransaccion }}"><i class="fa fa-eye" style="font-size: 20px; color: deepskyblue"></i></button>
+                                        {{ render(controller('AppBundle:Tipotransaccion:show', { 'id' : tipotransaccion.idtipotransaccion } )) }}
+                                </div>  
                 </td>
             </tr>
 

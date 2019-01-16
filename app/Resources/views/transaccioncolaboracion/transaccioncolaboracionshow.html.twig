@@ -1,0 +1,51 @@
+<div class="modal fade" id="Vercolaboracion{{ transaccioncolaboracion.idtransaccolaboracion }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div style="width:60%; margin-left: 15%" class="modal-dialog">
+        <div class="modal-content" style="border-radius: 40px">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <div class="row">	
+                    <h3 class="col col-md-11 col-md-offset-0" align="center"><strong>N° Cuenta: <strong>{{  transaccioncolaboracion.idtransaccolaboracion }}<strong>  -   {{  transaccioncolaboracion.descripciontransaccolabora }}</strong></strong></strong></h3>
+                </div>
+            </div>
+            <div class="modal-body">
+
+                <div class="row" style="margin-left:5%" align="left">
+                    <!--modal-->
+                    <div class="col col-md-7">   
+                        
+                <h4><i class="fa fa-calendar"></i> Fecha Emision</h4>
+                <p class="form-group"><strong>{% if transaccioncolaboracion.fechatransaccolabora %}{{ transaccioncolaboracion.fechatransaccolabora|date('Y-m-d H:i:s') }}{% endif %}</strong></p>
+                <br>
+                <h4><i class="fa fa-list"></i> Descripcion</h4>
+                <p class="form-group"><strong>{{ transaccioncolaboracion.descripciontransaccolabora }}</strong></p>
+                <br>
+                <h4><i class="fa fa-list"></i> Tipo De Transaccion</h4>
+                <p class="form-group"><strong>{{ transaccioncolaboracion.tipotransaccolabora }}</strong></p>
+                <br>
+                <h4><i class="fa fa-list"></i> Tipo De Colaboracion</h4>
+                <p class="form-group"><strong>{{ transaccioncolaboracion.idcolaboracion }}</strong></p>
+                <br>
+                <h4><i class="fa fa-money"></i> Monto</h4>
+                <p class="form-group"><strong>{{ "$"~transaccioncolaboracion.montotrasaccolabora }}</strong></p>
+                <br>
+                <h4><i class="fa fa-Calendar"></i> Mes De Pago</h4>
+                <p class="form-group"><strong>{{ transaccioncolaboracion.mespagotransaccolabora }}</strong></p>
+                <br>
+                <h4><i class="fa fa-check"></i> Estadotransaccolabora</h4>
+                <p class="form-group"><strong>{{ transaccioncolaboracion.estadotransaccolabora }}</strong></p>
+               </div>
+                    
+               <div class="col col-md-5">
+
+                        <img style="width:75%;margin-top: 10%;margin-bottom: 2%" src="{{ asset('img/budget.png') }}"></img>
+                    </div>
+                </div>
+
+                <div class="modal-footer" al>
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,38 +1,31 @@
 <div class="modal fade" id="VerTransac{{ tipotransaccion.idtipotransaccion }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-			<div class="modal-content">
+    <div style="width:70%; margin-left: 15%" class="modal-dialog">
+        <div class="modal-content"  style="border-radius: 40px">
 
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 align="Center">Información Tipo Cuenta</h4>
-				</div>
-				<div class="modal-body">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 align="center"><strong>Información Tipo Transaccion</strong></h3>
+            </div>
+            <div class="modal-body">
 
-  <div class="list-group">
-    <!--modal-->
+             <div class="row" style="margin-left:5%" align="left">
+                    <!--modal-->
+                    <div class="col col-md-7">
+                    <h4><i class="fa fa-table"></i>  Tipo De Transaccion</h4>
+                    <p class="form-group"><strong>{{ tipotransaccion.nombretipotransac }}</strong></p>
+                    <hr>
+                    <h4><i class="fa fa-check-square"></i>  Estado</h4>
+                    <p class="form-group"><strong>{% if tipotransaccion.estadotipotransac %}Activo{% else %}Inactivo{% endif %}</strong></p>
+                    </div>
+                    <div class="col col-md-5">
+                        <img style="width:75%;margin-top: 10%;margin-bottom: 2%" src="{{ asset('img/budget.png') }}"></img>
+                    </div>
+                </div>
 
-    <div class="list-group">
-    <a href="#" class="list-group-item">ID</a>
-    <p class="list-group-item">{{  tipotransaccion.idtipotransaccion }}</p>
-
-    <a href="#" class="list-group-item">Transaccion</a>
-    <p class="list-group-item">{{  tipotransaccion.nombretipotransac }}</p>
-
-    <div class="list-group">
-    <a href="#" class="list-group-item">Estado</a>
-    <p class="list-group-item">{% if tipotransaccion.estadotipotransac %}Yes{% else %}No{% endif %}</p>
+                <div class="modal-footer" al>
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
     </div>
-    </div>
-
-                <div class="modal-footer">
-                <div style="float:left">
-                		{{ form_start(delete_form) }}
-                		<input type="submit" class="btn btn-danger" value="Delete">
-                		{{ form_end(delete_form) }}
-                </div>
-                <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
-                </div>
-                </div>
-                </div>
-                </div>
-                </div>
+</div>

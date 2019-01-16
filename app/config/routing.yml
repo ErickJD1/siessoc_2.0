@@ -1,3 +1,11 @@
+app_colaboracionmonetaria:
+    resource: "@AppBundle/Controller/ColaboracionmonetariaController.php"
+    type:     annotation
+
+app_transaccioncolaboracion:
+    resource: "@AppBundle/Controller/TransaccioncolaboracionController.php"
+    type:     annotation
+
 app_role:
     resource: "@AppBundle/Controller/RoleController.php"
     type:     annotation

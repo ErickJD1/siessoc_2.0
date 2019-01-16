@@ -1,0 +1,54 @@
+{% extends "layout/base-layout.html.twig" %}
+
+{% block page_title %} Colaboracion | {% endblock %}
+{% block page_subtitle %}Catalogo de tipos de colaboracion {% endblock %}
+
+{% block page_content %}
+
+<div class="box box-primary">
+<div style="width:90%; margin-left:5%; margin-top: 2% ">
+
+<div align="left">
+     <a style="font-size: 15px" href="{{ path('colaboracionmonetaria_new') }}" class="btn btn-success btn-sm"><i style="font-size: 20px" class="fa fa-plus-circle"></i> Registrar Tipo De Colaboracion</a>
+</div>
+<br> </br>
+
+        <table class="table table-bordered table-hover table-striped table-responsive" style="width:100%" id="tabelMahasiswa">
+            <thead class="thead-light">
+            <tr>
+                <th>Tipo Colaboracion</th>
+                <th>Monto Fijo De Colaboracion</th>
+                <th>Saldo</th>
+                <th>Estado</th>
+
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for colaboracionmonetaria in colaboracionmonetarias %}
+            <tr>
+                <td>{{ colaboracionmonetaria.descripcioncolaboracion }}</td>
+                <td>{{ "$"~colaboracionmonetaria.montomescolaboracion }}</td>
+                <td>{{ "$"~colaboracionmonetaria.saldocolaboracion }}</td>
+                <td>{% if colaboracionmonetaria.estadocolaboracion %}Activa{% else %}Baja{% endif %}</td>
+                  <td>
+                  <div style="float:left;"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#deleteTipocta{{ colaboracionmonetaria.idcolaboracion }}"><i class="fa fa-trash" style="font-size: 20px; color: crimson"></i></button>
+                          {{ render(controller('AppBundle:Colaboracionmonetaria:showDelete', { 'id' : colaboracionmonetaria.idcolaboracion } )) }}
+                  </div>
+
+                  <div style="float:left;" >
+                    <a href="{{ path('colaboracionmonetaria_edit',{ 'id' : colaboracionmonetaria.idcolaboracion }) }}" style="background-color: transparent; border: none;"><i class="fa fa-edit" style="font-size: 20px; color: limegreen"></i></a>
+                  </div>
+                  
+                  <div style="float:left;"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#VerTipocta{{ colaboracionmonetaria.idcolaboracion }}"><i class="fa fa-eye" style="font-size: 20px; color: deepskyblue"></i></button>
+                          {{ render(controller('AppBundle:Colaboracionmonetaria:show', { 'id' : colaboracionmonetaria.idcolaboracion } )) }}
+                  </div>
+                </td>
+            </tr>
+         
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+{% endblock %}

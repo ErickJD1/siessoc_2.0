@@ -1,50 +1,58 @@
-<div class="modal fade" id="EditTransaccion{{ tipotransaccion.idtipotransaccion }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-			<div class="modal-content">
+{% extends "layout/base-layout.html.twig" %}
 
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 align="Center">Datos Tipo Transaccion</h4>
-				</div>
-				<div class="modal-body">
+{% block page_title %} Transaccion | {% endblock %}
+{% block page_subtitle %}Modificar Tipo Transaccion {% endblock %}
 
-				<div class="list-group">
-				<a herf="#" class=""list-group-item active">
-			    <!--modal-->
-				</a>
+{% block page_content %}
 
-                        {{ form_start(edit_form, {'action': path('tipotransaccion_edit', {'id': tipotransaccion.idtipotransaccion }), 'Method': 'POST' }) }}
+    <div class="box box-primary" style="width: 100%;">
 
-                        {{ form_errors(edit_form) }}
+        <div  style="width:90%; margin-top: 5%; margin-left: 5%; background-color:#F3F3F3; border-radius:5px " class="panel panel-default"> 
 
-        <div class="list-group">
-		    <div class="list-group-item">
-		        <div class="form-group">
-		   <label class="col-md-4 control-label" for="textinput">Tipo Transaccion</label>
-		        {{ form_errors(edit_form.nombretipotransac)  }}
-						<div class="col-md-4">
-		        {{ form_widget(edit_form.nombretipotransac) }}
-			    </div>
-			</div>
-		 </div>
+            <div class="col col-md-12" align="center" > 
+                <img style="width:80px;margin-top: 2%;margin-bottom: 2%" src="{{ asset('img/Banco.png') }}"></img>
+            </div>   
+            <div class="col col-md-12 " align="center" style="margin-top:-15px"> 
+                <h2 class="col col-md-12" style="font-family: palatino header" >Modificar Tipo De Transaccion</h2>
+                <h4 class="col col-md-12" style="color:grey; font-family: palatino body; margin-top: -3px;">Complete los campos requeridos:<span style="font-size: 25;color: red" >*</span></h4>
+
+            </div>
+            <hr>
+            <div  class="container"  style="width: 80%; margin-top: 3%; margin-bottom: 3%">
 
 
-		 <div class="list-group-item">
-		 <div class="form-group">
- 			 <label class="col-md-4 control-label" for="textinput">Estado</label>
- 						{{ form_errors(edit_form.estadotipotransac) }}
- 						<div class="col-md-4">
- 						{{ form_widget(edit_form.estadotipotransac) }}
- 						</div>
- 						</div>
-						</div>
+                {{ form_start(edit_form) }}
+                <div class="row">
+                    <div class="col col-md-12">
+                        <label for="form_Ntipotransaccion">Nombre Tipo Transaccion<span style="font-size: 25;color: red" >*</span></label>
+                        {{ form_widget(edit_form.nombretipotransac) }}
+                        {{ form_errors(edit_form.nombretipotransac) }}
+                    </div>
+                </div>
+                    
+                   <div class="row">
+                        <div class="col col-md-12">
+                        <label for="form_estadp">Estado</label>
+                        {{ form_widget(edit_form.estadotipotransac) }}
+                        {{ form_errors(edit_form.estadotipotransac) }}
+                    </div>
+                   </div>
+                    
+                <br>                
+                <div class="row">
+                    <div class="col col-md-12" align="right">
+                        <a href="{{ path('tipotransaccion_index') }}" class="btn btn-primary btn-xl">Cancelar</a>
+                        <input  class="btn btn-success btn-xl" id="enviar" type="submit"  value="Guardar" />
+                    </div>
+                </div>
+                {{ form_end(edit_form) }}
+
+            </div>
+        </div>
+        <br>
+        <br>
+    </div>
 
 
-<div class="modal-footer">
-<input type="submit" value="Guardar" class="btn btn-primary btn-sm" />
-<button type="button" class="btn btn-success btn-sm" data-dismiss="modal">Cerrar</button>
-{{ form_end(edit_form) }}
-</div>
-</div>
-</div>
-</div>
+
+{% endblock %}

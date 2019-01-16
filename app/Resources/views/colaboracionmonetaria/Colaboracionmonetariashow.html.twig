@@ -1,0 +1,48 @@
+<div class="modal fade" id="VerTipocta{{ colaboracionmonetaria.idcolaboracion }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="border-radius: 40px">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 align="center"><strong><strong>{{  colaboracionmonetaria.descripcioncolaboracion }}</strong></strong></h3>
+            </div>
+            <div class="modal-body">
+
+                <div class="list-group">
+                    <!--modal-->
+                    
+                      <div class="row" style="margin-left:5%" align="left">
+                        <!--modal-->
+                        <div class="col col-md-7">
+
+                 <h4><i class="fa fa-list"></i> Descripcioncolaboracion</h4>
+                <p class="form-group"><strong>{{ colaboracionmonetaria.descripcioncolaboracion }}</strong></p>
+                <hr>
+                <h4><i class="fa fa-money"></i> Montomescolaboracion</h4>
+                <p class="form-group"><strong>{{ "$"~colaboracionmonetaria.montomescolaboracion }}</strong></p>
+                <hr>
+                <h4><i class="fa fa-money"></i> Saldocolaboracion</h4>
+                <p class="form-group"><strong>{{ "$"~colaboracionmonetaria.saldocolaboracion }}</strong></p>
+                <hr>
+                <h4><i class="fa fa-check"></i> Estadocolaboracion</h4>
+                <p class="form-group"><strong>{% if colaboracionmonetaria.estadocolaboracion %}Activa{% else %}Baja{% endif %}</strong></p>
+  </div>
+                        <div class="col col-md-5">
+
+                            <img style="width:75%;margin-top: 10%;margin-bottom: 2%" src="{{ asset('img/budget.png') }}"></img>
+                        </div>
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <div style="float:right">
+                            <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

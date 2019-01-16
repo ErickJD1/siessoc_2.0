@@ -14,7 +14,7 @@ class TipotransaccionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('nombretipotransac',null,array('label'=>'Tipo Transaccion'))
-                ->add('estadotipotransac',null,array('label'=>'Estado'));
+                ->add('estadotipotransac',null,array('label'=>'Activa'));
     }
     
     /**

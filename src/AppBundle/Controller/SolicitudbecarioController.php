@@ -33,7 +33,6 @@ class SolicitudbecarioController extends Controller
         ));
     }
 
-    
     /**
      * Lists all user entities.
      *

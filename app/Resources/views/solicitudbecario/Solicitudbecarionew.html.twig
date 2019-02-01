@@ -13,7 +13,7 @@ nav > .nav.nav-tabs{
 nav > div a.nav-item.nav-link,
 nav > div a.nav-item.nav-link.active
 {
-  border: none;
+    border: none;
     padding: 18px 25px;
     color:#fff;
     background:gray;
@@ -49,7 +49,7 @@ nav > div a.nav-item.nav-link:focus
 }
         
     </style>
-{% endblock stylesheets%}
+{% endblock stylesheets %}
 
 
 {% block page_title %} Solicitud | {% endblock %}
@@ -100,13 +100,13 @@ nav > div a.nav-item.nav-link:focus
                                      </div>
                                     
                                       <div class="col col-md-4" align="left" id='datetimepicker1'>
-                                       <label for="form_anioinicio">Fecha Ingreso<span style="font-size: 25;color: red" >*</span></label>
+                                       <label for="form_anioinicio">Fecha Ingreso Universidad<span style="font-size: 25;color: red" >*</span></label>
                                          {{ form_widget(form.aniosoliingresobecario) }}
                                          {{ form_errors(form.aniosoliingresobecario) }}   
                                      </div>
                                      
                                       <div class="col col-md-4" align="left" id='datetimepicker2'>
-                                       <label for="form_aniofin">Fecha Previa de graduacion<span style="font-size: 25;color: red" >*</span></label>
+                                       <label for="form_aniofin">Fecha Egreso Universidad<span style="font-size: 25;color: red" >*</span></label>
                                          {{ form_widget(form.aniosolifinalizacionbecario) }}
                                          {{ form_errors(form.aniosolifinalizacionbecario) }}   
                                      </div>
@@ -142,7 +142,7 @@ nav > div a.nav-item.nav-link:focus
                                       {{ form_errors(form.docsoliidentidadbecario) }}   
                                 </div> 
                                 
-                                <div class="col col-md-4" align="left">
+                                <div class="col col-md-6" align="left">
                                     <label for="form_cdirecto">Numero de contacto directo<span style="font-size: 25;color: red" >*</span></label>
                                       {{ form_widget(form.telsolipersonalbecario) }}
                                       {{ form_errors(form.telsolipersonalbecario) }}   
@@ -151,7 +151,7 @@ nav > div a.nav-item.nav-link:focus
                                 <br>
                               <div class="row">  
                                 <div class="col col-md-12" align="left">
-                                    <label for="form_antecedentes">Antecedentes</label>
+                                    <label for="form_antecedentes">Descripción Personal</label>
                                       {{ form_widget(form.antecedentes) }}
                                       {{ form_errors(form.antecedentes) }}   
                                 </div> 

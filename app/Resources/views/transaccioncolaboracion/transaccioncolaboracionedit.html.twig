@@ -1,21 +1,87 @@
-{% extends 'base.html.twig' %}
+{% extends "layout/base-layout.html.twig" %}
 
-{% block body %}
-    <h1>Transaccioncolaboracion edit</h1>
+{% block page_title %} Colaboracion | {% endblock %}
+{% block page_subtitle %}Transacciones De Colaboracion Monetaria {% endblock %}
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+{% block page_content %}
 
-    <ul>
-        <li>
-            <a href="{{ path('transaccioncolaboracion_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <div class="box box-primary" style="width: 100%;">
+
+        <div  style="width:90%; margin-top: 5%; margin-left: 5%; background-color:#F3F3F3; border-radius:5px " class="panel panel-default">
+
+            <div class="col col-md-12" align="center" >
+                <img style="width:80px;margin-top: 2%;margin-bottom: 2%" src="{{ asset('img/Banco.png') }}"></img>
+            </div>
+            <div class="col col-md-12 " align="center" style="margin-top:-15px">
+                <h2 class="col col-md-12" style="font-family: palatino header" >Nueva Transaccion</h2>
+                <h4 class="col col-md-12" style="color:grey; font-family: palatino body; margin-top: -3px;">Complete los campos requeridos:<span style="font-size: 25;color: red" >*</span></h4>
+
+            </div>
+
+            <div  class="container"  style="width: 80%; margin-top: 3%; margin-bottom: 3%">
+                <hr>
+                {{ form_start(edit_form) }}
+                 <div class="row">
+                    <div class="col col-md-12" align="left">
+                        <label for="form_Descripcion">Descripcion de la transaccion<span style="font-size: 25;color: red" >*</span></label>
+                        {{ form_widget(edit_form.descripciontransaccolabora) }}
+                        {{ form_errors(edit_form.descripciontransaccolabora) }}
+                    </div>
+                 </div>
+                    <br>
+                    <div class="row">
+                    <div class="col col-md-6" align="left">
+                        <label for="form_Ttipo">Tipo De Transaccion<span style="font-size: 25;color: red" >*</span></label>
+                        {{ form_widget(edit_form.idtipotransaccion) }}
+                        {{ form_errors(edit_form.idtipotransaccion) }}
+                    </div>
+                 </div>
+                    <br>
+                    <div class="row">
+                    <div class="col col-md-6" align="left">
+                        <label for="form_TipoColaboracion">Tipo De Colaboracion<span style="font-size: 25;color: red" >*</span></label>
+                        {{ form_widget(edit_form.idcolaboracion) }}
+                        {{ form_errors(edit_form.idcolaboracion) }}
+                    </div>
+                 </div>
+                     <br>
+                    <div class="row">
+                    <div class="col col-md-6" align="left">
+                        <label for="form_Mes">Mes De Pago<span style="font-size: 25;color: red" >*</span></label>
+                        {{ form_widget(edit_form.mespagotransaccolabora) }}
+                        {{ form_errors(edit_form.mespagotransaccolabora) }}
+                    </div>
+                 </div>
+                     <br>
+                    <div class="row">
+                    <div class="col col-md-4" align="left">
+                        <label for="form_Monto">Monto<span style="font-size: 25;color: red" >*</span></label>
+                        {{ form_widget(edit_form.montotrasaccolabora) }}
+                        {{ form_errors(edit_form.montotrasaccolabora) }}
+                    </div>
+                 </div>
+                    <hr>
+                     <div class="row">
+                    <div class="col col-md-6" align="left">
+                        <label for="form_Fecha">Fecha Emision<span style="font-size: 25;color: red" >*</span></label>
+                        {{ form_widget(edit_form.fechatransaccolabora) }}
+                        {{ form_errors(edit_form.fechatransaccolabora) }}
+                    </div>
+                 </div>
+                    <hr>
+                   <div class="row">
+                    <div class="col col-md-12" align="right">
+                        <a href="{{ path('transaccioncolaboracion_index') }}" class="btn btn-primary btn-xl">Cancelar</a>
+                        <input  class="btn btn-success btn-xl" type="submit"  value="Guardar" />
+                    </div>
+                </div>
+                
+                {{ form_end(edit_form) }}
+  </div>
+        </div>
+        <br>
+        <br>
+
+    </div>
+
 {% endblock %}

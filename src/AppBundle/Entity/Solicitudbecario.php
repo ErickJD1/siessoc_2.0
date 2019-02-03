@@ -52,7 +52,6 @@ class Solicitudbecario
 
     /**
      * @var string
-     * @Assert\NotBlank()
      * @ORM\Column(name="TIPOSOLICASABECARIO", type="string", length=500, nullable=true)
      */
     private $tiposolicasabecario;
@@ -170,9 +169,9 @@ class Solicitudbecario
     private $direccionsolibecario;
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="ESTADOSOLIBECARIO", type="boolean", nullable=true)
+     * @ORM\Column(name="ESTADOSOLIBECARIO", type="integer", nullable=true)
      */
     private $estadosolibecario;
 
@@ -186,9 +185,9 @@ class Solicitudbecario
      /**
      * @var integer
      * @Assert\NotBlank()
-     * @ORM\Column(name="EDAD", type="integer", nullable=true)
+     * @ORM\Column(name="FECHANACIMIENTO", type="date", nullable=true)
      */
-    private $edad;
+    private $fechaNacimiento;
     
      /**
      * @var string
@@ -250,14 +249,12 @@ class Solicitudbecario
      */
     private $idusuario;
     
-       /**
+    /**
      * @Assert\Image(
      *     maxSize="5M",
-     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg","application/pdf","application/xlsx","application/doc"},
-     *     maxWidth=700,
-     *     maxHeight=700
+     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg","application/pdf","application/xls","application/docx","application/txt",}   
      * )
-     * @Vich\UploadableField(mapping="profile_image", fileNameProperty="comprobante")
+     * @Vich\UploadableField(mapping="document_file", fileNameProperty="comprobante")
      * @var [type]
      */
     private $comprobante_file;
@@ -294,13 +291,10 @@ class Solicitudbecario
      * @return self
      */
     public function setComprobanteFile(File $comprobante_file) {
-        $this->profile_picture_file = $comprobante_file;
+        $this->comprobante_file = $comprobante_file;
 
         // Only change the updated af if the file is really uploaded to avoid database updates.
         // This is needed when the file should be set when loading the entity.
-        if ($this->profile_picture_file instanceof UploadedFile) {
-            $this->setUpdateAt(new Carbon());
-        }
 
         return $this;
     }
@@ -314,6 +308,11 @@ class Solicitudbecario
         return $this->comprobante;
     }
     
+    function setComprobante($comprobante) {
+        $this->comprobante = $comprobante;
+    }
+
+        
     
       /**
      * Get idusuario
@@ -350,8 +349,8 @@ class Solicitudbecario
         return $this->religion;
     }
 
-    function getEdad() {
-        return $this->edad;
+    function getFechaNacimiento() {
+        return $this->fechaNacimiento;
     }
 
     function getSexo() {
@@ -390,8 +389,8 @@ class Solicitudbecario
         $this->religion = $religion;
     }
 
-    function setEdad($edad) {
-        $this->edad = $edad;
+    function setFechaNacimiento($fechaNacimiento) {
+        $this->fechaNacimiento = $fechaNacimiento;
     }
 
     function setSexo($sexo) {
@@ -871,7 +870,7 @@ class Solicitudbecario
     /**
      * Set estadosolibecario
      *
-     * @param boolean $estadosolibecario
+     * @param integer $estadosolibecario
      *
      * @return Solicitudbecario
      */
@@ -885,7 +884,7 @@ class Solicitudbecario
     /**
      * Get estadosolibecario
      *
-     * @return boolean
+     * @return integer
      */
     public function getEstadosolibecario()
     {

@@ -51,7 +51,7 @@ class SidebarListener {
                 $dash = new MenuItemModel('site', 'WebSite', 'web_index', $earg, 'fa fa-home'),
                 $inicio = new MenuItemModel('inicio', 'Inicio', 'homepage', $earg, 'fa fa-home'),
                 $dash = new MenuItemModel('site', 'WebSite', 'web_index', $earg, 'fa fa-internet-explorer'),
-                $solicitudes = new MenuItemModel('solicitud', 'Solicitud Aspirantes', 'homepage', $earg, 'fa fa-window-restore'),
+                $solicitudes = new MenuItemModel('solicitud', 'Solicitudes', 'menu_solicitud', $earg, 'fa fa-window-restore'),
             );
 
             $solicitudes->addChild(new MenuItemModel('soli_becarios', 'Solicitudes Becarios', 'solicitudbecario_new', $earg));
@@ -62,7 +62,7 @@ class SidebarListener {
             $rootItems = array(
                 $inicio = new MenuItemModel('inicio', 'Inicio', 'homepage', $earg, 'fa fa-home'),
                 $dash = new MenuItemModel('site', 'WebSite', 'web_index', $earg, 'fa fa-internet-explorer'),
-                $solicitudes = new MenuItemModel('solicitud', 'Solicitud Aspirantes', 'web_index', $earg, 'fa fa-window-restore'),
+                $solicitudes = new MenuItemModel('solicitud', 'Solicitudes', 'menu_solicitud', $earg, 'fa fa-window-restore'),
             );
         }
 
@@ -71,7 +71,7 @@ class SidebarListener {
         if ($this->container->get('security.authorization_checker')->isGranted('ROLE_BECARIO')) {
             $rootItems = array(
                 $inicio = new MenuItemModel('inicio', 'Inicio', 'homepage', $earg, 'fa fa-home'),
-                $dash = new MenuItemModel('site', 'WebSite', 'web_index', $earg, 'fa fa-internet-explorer'),
+                $dash = new MenuItemModel('site', 'WebSite', 'web_index', $earg, 'fa fa-globe'),
                 $Miexpediente = new MenuItemModel('expediente', 'Mi Expediente', '', $earg, 'fa fa-search'),
                 $actividad = new MenuItemModel('actividad', 'Actividades', '', $earg, 'fa fa-calendar'),
             );
@@ -81,7 +81,7 @@ class SidebarListener {
         if ($this->container->get('security.authorization_checker')->isGranted('ROLE_STAFF')) {
             $rootItems = array(
                 $inicio = new MenuItemModel('inicio', 'Inicio', 'homepage', $earg, 'fa fa-home'),
-                $dash = new MenuItemModel('site', 'WebSite', 'web_index', $earg, 'fa fa-internet-explorer'),
+                $dash = new MenuItemModel('site', 'WebSite', 'web_index', $earg, 'fa fa-globe'),
                 $expediente = new MenuItemModel('expediente', 'Expedientes', '', $earg, 'fa fa-address-card'),
                 $actividad = new MenuItemModel('actividad', 'Actividades', '', $earg, 'fa fa-calendar'),
                 $academico = new MenuItemModel('seguimiento', 'Seguimiento Academico', 'homepage', $earg, 'fa fa-book'),
@@ -114,7 +114,7 @@ class SidebarListener {
         if ($this->container->get('security.authorization_checker')->isGranted('ROLE_COORDINADOR')) {
             $rootItems = array(
                 $inicio = new MenuItemModel('inicio', 'Inicio', 'homepage', $earg, 'fa fa-home'),
-                $dash = new MenuItemModel('site', 'WebSite', 'web_index', $earg, 'fa fa-internet-explorer'),
+                $dash = new MenuItemModel('site', 'WebSite', 'web_index', $earg, 'fa fa-globe'),
                 $expediente = new MenuItemModel('expediente', 'Expedientes', '', $earg, 'fa fa-address-card'),
                 $actividad = new MenuItemModel('actividad', 'Actividades', '', $earg, 'fa fa-calendar'),
                 $academico = new MenuItemModel('seguimiento', 'Seguimiento Academico', 'homepage', $earg, 'fa fa-book'),
@@ -127,8 +127,11 @@ class SidebarListener {
                 $reportes = new MenuItemModel('reportes', 'Reportes', 'homepage', $earg, 'fa fa-line-chart'),
             );
 
+            
+            
+            
+           
             $expediente->addChild(new MenuItemModel('consulta_expediente', 'Consultar Expedientes', 'avanzu_admin_ui_gen_demo', $earg));
-
             $insumos->addChild(new MenuItemModel('Soli_patrocina', 'Solicitudes Patrocinadores', 'movimientoinventario_index', $earg));
 
 //           $fondos->addChild(new MenuItemModel('consultar_cuentas', 'Administrar Cuentas', 'cuenta_index', $earg));
@@ -152,8 +155,8 @@ class SidebarListener {
         if ($this->container->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
             $rootItems = array(
                 $inicio = new MenuItemModel('inicio', 'Inicio', 'homepage', $earg, 'fa fa-home'),
-                $dash = new MenuItemModel('site', 'WebSite', 'web_index', $earg, 'fa fa-internet-explorer'),
-                $solicitudes = new MenuItemModel('solicitud', 'Solicitud Aspirantes', 'solicitudbecario_index', $earg, 'fa fa-window-restore'),
+                $dash = new MenuItemModel('site', 'WebSite', 'web_index', $earg, 'fa fa-globe'),
+                $solicitudes = new MenuItemModel('solicitud', 'Solicitudes', 'menu_solicitud', $earg, 'fa fa-window-restore'),
                 $usuario = new MenuItemModel('usuario', 'Usuarios', '', $earg, 'fa fa-user'),
                 $expediente = new MenuItemModel('expediente', 'Expedientes', '', $earg, 'fa fa-address-card'),
                 $actividad = new MenuItemModel('actividad', 'Actividades', '', $earg, 'fa fa-calendar'),
@@ -172,8 +175,8 @@ class SidebarListener {
             $usuario->addChild($icons = new MenuItemModel('gestionar_usuario', 'Administrar Usuarios', 'user_index', $earg));
             $expediente->addChild(new MenuItemModel('consulta_expediente', 'Consultar Expedientes', 'avanzu_admin_ui_gen_demo', $earg));
 
-            $solicitudes->addChild(new MenuItemModel('soli_becarios', 'Solicitudes Becarios', 'solicitudbecario_index', $earg));
-            $solicitudes->addChild(new MenuItemModel('Soli_patrocina', 'Solicitudes Patrocinadores', 'solicitudbecario_index', $earg));
+//            $solicitudes->addChild(new MenuItemModel('soli_becarios', 'Solicitudes Becarios', 'solicitudbecario_index', $earg));
+//            $solicitudes->addChild(new MenuItemModel('Soli_patrocina', 'Solicitudes Patrocinadores', 'solicitudbecario_index', $earg));
 
             $insumos->addChild(new MenuItemModel('Soli_patrocina', 'Solicitudes Patrocinadores', 'movimientoinventario_index', $earg));
 

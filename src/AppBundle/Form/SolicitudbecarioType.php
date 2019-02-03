@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Vich\UploaderBundle\Form\Type\VichImageType;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 
 class SolicitudbecarioType extends AbstractType
@@ -22,7 +23,7 @@ class SolicitudbecarioType extends AbstractType
         $builder->add('telefonosolibecario', null, array('label'=>'Telefono','invalid_message'=>'Valor Incorrecto, Campo Numerico, maximo %num% de numero', 'invalid_message_parameters' => array('%num%' => 8)))
                 ->add('ingresossolifamiliabecario', null, array('label'=>'Ingreso Familiar'))
                 ->add('miembrossolifamiliabecario',null, array('label'=>'Cantidad de miembros de la familia','invalid_message'=>'Valor Incorrecto, Campo Numerico, maximo %num% de numero', 'invalid_message_parameters' => array('%num%' => 2)))
-                ->add('tiposolicasabecario', ChoiceType::class, array('label'=>'Tipo De Solicitud','choices'=>array('Becario'=>'Becario', 'Patrocinador'=>'Patrocinador'),'placeholder'=>'Seleccionar Tipo De Solicitud'))
+//                ->add('tiposolicasabecario', ChoiceType::class, array('label'=>'Tipo De Solicitud','choices'=>array('Becario'=>'Becario', 'Patrocinador'=>'Patrocinador'),'placeholder'=>'Seleccionar Tipo De Solicitud'))
                 ->add('carrerasoliestudiarbecario', null, array('label'=>'Carrera a estudiar'))
                 ->add('universidadsolibecario',null, array('label'=>'Universidad'))
                 ->add('montosolimatriculabecario',null, array('label'=>'Monto Matricula','invalid_message'=>'Valor Incorrecto, Campo Numerico, maximo %num% de numero', 'invalid_message_parameters' => array('%num%' => 9)))
@@ -30,7 +31,7 @@ class SolicitudbecarioType extends AbstractType
                 ->add('duracionsolicarrerabecario',null, array('label'=>'Duracion de la carrera','invalid_message'=>'Valor Incorrecto, Campo Numerico, maximo %num% de numero', 'invalid_message_parameters' => array('%num%' => 2)))
                 ->add('trabajosolibecario', CheckboxType::class, array('label'=>'SI','required'=>FALSE))
                 ->add('docsoliidentidadbecario',  null, array('label'=>'Numero de documento','invalid_message'=>'Dui Incorrecto, Campo Numerico, maximo %num% de numero', 'invalid_message_parameters' => array('%num%' => 9)))
-                ->add('aniosoliingresobecario', DateType::class, array('label'=>'Fecha De Ingreso','data' =>( new \DateTime()),'widget'=>'single_text'))
+                ->add('aniosoliingresobecario', DateType::class, array('label'=>'Fecha De Ingreso','data' =>( new \DateTime()),'widget'=>'single_text','format' => 'yyyy-MM-dd'))
                 ->add('aniosolifinalizacionbecario', DateType::class, array('label'=>'Fecha De Finalizacion','data' =>( new \DateTime()),'widget'=>'single_text'))
                 ->add('cantsolihermanosbecario',null, array('label'=>'Cantidad de Hermanos','invalid_message'=>'Valor Incorrecto, Campo Numerico, maximo %num% de numero', 'invalid_message_parameters' => array('%num%' => 2)))
                 ->add('nomsolipadrebecario', null, array('label'=>'Nombre Del Padre'))
@@ -39,7 +40,7 @@ class SolicitudbecarioType extends AbstractType
                 ->add('telsolipersonalbecario', null, array('label'=>'Telefono Personal Del Becario','invalid_message'=>'Valor Incorrecto, Campo Numerico, maximo %num% de numero', 'invalid_message_parameters' => array('%num%' => 8)))
                 ->add('direccionsolibecario',TextareaType::class,array('label'=>'Direccion Del Becario'))
                 ->add('religion',TextareaType::class,array('label'=>'Religion'))
-                ->add('edad',null, array('label'=>'Edad','invalid_message'=>'Valor Incorrecto, Campo Numerico, maximo %num% de numero', 'invalid_message_parameters' => array('%num%' => 2)))
+                ->add('fechaNacimiento', DateType::class, array('label'=>'Fecha De Nacimiento','data' =>( new \DateTime()),'years' => range(date('Y'), date('Y') -50)))
                 ->add('sexo', ChoiceType::class, array('label'=>'Sexo','choices'=>array('M'=>'M', 'F'=>'F'),'placeholder'=>'Sexo'))
                 ->add('paes',null, array('label'=>'Paes','invalid_message'=>'Valor Incorrecto, Campo Numerico, maximo %num% de numero', 'invalid_message_parameters' => array('%num%' => 3)))
                 ->add('ocupacionpadre',TextareaType::class,array('label'=>'Ocupacion Padre'))
@@ -47,7 +48,7 @@ class SolicitudbecarioType extends AbstractType
                 ->add('otrasbecas', CheckboxType::class, array('label'=>'SI', 'required'=>false))
                 ->add('montootrasbecas',null, array('label'=>'Monto Otras Becas', 'required'=>false, 'invalid_message'=>'Valor Incorrecto, Campo Numerico, maximo %num% de numero', 'invalid_message_parameters' => array('%num%' => 9)))
                 ->add('antecedentes',TextareaType::class,array('label'=>'Antecedentes'))
-                ->add('comprobante_file', VichImageType::class, array(
+                ->add('comprobante_file', VichFileType::class, array(
                     'required' => false,
                     'download_link' =>true,
                     'allow_delete' =>true,

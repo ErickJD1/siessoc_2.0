@@ -37,5 +37,17 @@ class menuController extends Controller
     {
         return $this->render('menu/menuCatalogos.html.twig');
     }
+    
+    
+    /**
+     * Lists all actividad entities.
+     *
+     * @Route("/solicitud", name="menu_solicitud")
+     * @Method("GET")
+     */
+    public function solicitudAction()
+    {
+        return $this->render('menu/menuSolicitud.html.twig');
+    }
 
 }

@@ -28,6 +28,22 @@ class WebSiteController extends Controller {
         );
     }
 
+    
+    /**
+     *
+     *
+     * @Route("/contacto", name="web_contacto")
+     * @Method("GET")
+     */
+    public function contactoAction() {
+
+        return $this->render(
+                        'webSite/contacto.html.twig'
+        );
+    }
+    
+    
+    
     /**
      * Lists all user entities.
      *
@@ -54,7 +70,10 @@ class WebSiteController extends Controller {
         );
     }
     
-        /**
+    
+    
+    
+    /**
      *
      *
      * @Route("/calendar", name="web_calendar")

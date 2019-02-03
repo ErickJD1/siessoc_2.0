@@ -75,13 +75,13 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="estadosolibecario" type="boolean" column="ESTADOSOLIBECARIO" nullable="true"/>
+    <field name="estadosolibecario" type="integer" column="ESTADOSOLIBECARIO" nullable="true"/>
     <field name="religion" type="string" column="RELIGION" length="250" nullable="true">
       <options>
         <option name="fixed"/>
       </options>
     </field>
-    <field name="edad" type="integer" column="EDAD" nullable="true">
+    <field name="fechaNacimiento" type="date" column="FECHANACIMIENTO" nullable="true">
       <options>
         <option name="fixed"/>
       </options>

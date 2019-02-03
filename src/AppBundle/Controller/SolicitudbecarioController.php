@@ -73,6 +73,7 @@ class SolicitudbecarioController extends Controller
         $solicitudbecario = new Solicitudbecario();
         $form = $this->createForm('AppBundle\Form\SolicitudbecarioType', $solicitudbecario);
         $solicitudbecario->setIdusuario($this->getUser());
+        $solicitudbecario->setEstadosolibecario(0);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

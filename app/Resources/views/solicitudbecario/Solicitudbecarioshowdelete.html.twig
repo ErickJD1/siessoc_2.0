@@ -18,8 +18,8 @@
                  <div class="row">
                   
                                     <div class="col col-md-3" align="left">
-                                       <h4><i class="fa fa-list"></i> Edad</h4>
-                                         <p class="form-group"><strong>{{ solicitudbecario.edad }}</strong></p> 
+                                       <h4><i class="fa fa-list"></i> Fecha Nacimiento</h4>
+                                         <p class="form-group"><strong>{% if solicitudbecario.fechaNacimiento %}{{ solicitudbecario.aniosolifinalizacionbecario|date('Y-m-d') }}{% endif %}</strong></p> 
                                    </div>
                                    
                                      <div class="col col-md-3" align="left">

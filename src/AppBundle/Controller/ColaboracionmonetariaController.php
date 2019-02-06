@@ -42,6 +42,7 @@ class ColaboracionmonetariaController extends Controller
     {
         $colaboracionmonetaria = new Colaboracionmonetaria();
         $form = $this->createForm('AppBundle\Form\ColaboracionmonetariaType', $colaboracionmonetaria);
+        $colaboracionmonetaria->setIdusuario($this->getUser());
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

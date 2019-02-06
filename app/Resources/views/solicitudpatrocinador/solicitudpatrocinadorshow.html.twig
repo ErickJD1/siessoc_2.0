@@ -1,0 +1,51 @@
+<div class="modal fade" id="VerSoliP{{ solicitudpatrocinador.idsolipatrocinador }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="border-radius: 40px">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 align="center"><strong><strong>{{ solicitudpatrocinador.idusuario.firstName~" "~solicitudpatrocinador.idusuario.lastName }}</strong></strong></h3>
+            </div>
+            <div class="modal-body">
+
+                <div class="list-group">
+                    <!--modal-->
+           <div class="row" style="margin-left:5%" align="left">
+              <div class="col col-md-7">
+                    
+                <h4><i class="fa fa-list"></i> Documento De Identidad</h4>
+                <p class="form-group"><strong>{{ solicitudpatrocinador.docidentidadsolipatrocinador }}</strong></p>
+                <hr>
+                <h4><i class="fa fa-money"></i> Monto Patrocinado</h4>
+                <p class="form-group"><strong>{{ solicitudpatrocinador.montoaportarsolipatrocinador }}</strong></p>
+                <hr>
+                <h4><i class="fa fa-list"></i> Telefono</h4>
+                <p class="form-group"><strong>{{ solicitudpatrocinador.telefonosolipatrocinador }}</strong></p>
+                <hr>
+                <h4><i class="fa fa-list"></i> Direccion</h4>
+                <p class="form-group"><strong>{{ solicitudpatrocinador.direccionsolipatrocinador }}</strong></p>
+                <hr>
+                <h4><i class="fa fa-text"></i> Estado</h4>
+                <p class="form-group"><strong>{% if solicitudpatrocinador.estadosolipatrocinador == 0 %}En Espera{% elseif  solicitudpatrocinador.estadosolipatrocinador == 1 %}Aprobado{% elseif  solicitudpatrocinador.estadosolipatrocinador == 2 %}Rechazado{% endif %}</strong></p>
+                <hr>
+            </div>
+                        <div class="col col-md-5">
+
+                            <img style="width:75%;margin-top: 10%;margin-bottom: 2%" src="{{ asset('img/budget.png') }}"></img>
+                        </div>
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <div style="float:right">
+                            <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

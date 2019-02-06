@@ -1,3 +1,7 @@
+app_solicitudpatrocinador:
+    resource: "@AppBundle/Controller/SolicitudpatrocinadorController.php"
+    type:     annotation
+
 app_colaboracionmonetaria:
     resource: "@AppBundle/Controller/ColaboracionmonetariaController.php"
     type:     annotation

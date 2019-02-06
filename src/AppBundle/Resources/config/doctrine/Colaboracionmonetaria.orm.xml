@@ -12,5 +12,12 @@
     </field>
     <field name="saldocolaboracion" type="decimal" column="SALDOCOLABORACION" precision="10" scale="0" nullable="true"/>
     <field name="estadocolaboracion" type="boolean" column="ESTADOCOLABORACION" nullable="true"/>
+  
+      <many-to-one field="idusuario" target-entity="SalexUserBundle\Entity\User" fetch="LAZY">
+      <join-columns>
+        <join-column name="idusuario" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  
   </entity>
 </doctrine-mapping>

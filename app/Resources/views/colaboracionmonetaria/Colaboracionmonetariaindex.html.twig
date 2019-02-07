@@ -16,6 +16,7 @@
         <table class="table table-bordered table-hover table-striped table-responsive" style="width:100%" id="tabelMahasiswa">
             <thead class="thead-light">
             <tr>
+                <th>Usuario</th>
                 <th>Tipo Colaboracion</th>
                 <th>Monto Fijo De Colaboracion</th>
                 <th>Saldo</th>
@@ -27,6 +28,7 @@
         <tbody>
         {% for colaboracionmonetaria in colaboracionmonetarias %}
             <tr>
+                <td>{{ colaboracionmonetaria.idusuario }}</td>
                 <td>{{ colaboracionmonetaria.descripcioncolaboracion }}</td>
                 <td>{{ "$"~colaboracionmonetaria.montomescolaboracion }}</td>
                 <td>{{ "$"~colaboracionmonetaria.saldocolaboracion }}</td>

@@ -12,12 +12,12 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/siessoc/app/Resources/views/movimiento/Movimientonew.html.twig</file>
-            <file>file:/C:/xampp/htdocs/siessoc/src/AppBundle/Form/MovimientoType.php</file>
-            <file>file:/C:/xampp/htdocs/siessoc/app/Resources/views/movimiento/Movimientoindex.html.twig</file>
-            <file>file:/C:/xampp/htdocs/siessoc/src/AppBundle/Controller/MovimientoController.php</file>
-            <file>file:/C:/xampp/htdocs/siessoc/src/AppBundle/Controller/TipomovimientoController.php</file>
-            <file>file:/C:/xampp/htdocs/siessoc/src/AppBundle/Entity/Tipomovimiento.php</file>
+            <file>file:/C:/xampp/htdocs/siessoc_2.0/app/Resources/views/transaccioncolaboracion/transaccioncolaboracionedit.html.twig</file>
+            <file>file:/C:/xampp/htdocs/siessoc_2.0/app/Resources/views/transaccioncolaboracion/listabecarios.html.twig</file>
+            <file>file:/C:/xampp/htdocs/siessoc_2.0/src/AppBundle/Controller/TransaccioncolaboracionController.php</file>
+            <file>file:/C:/xampp/htdocs/siessoc_2.0/app/Resources/views/transaccioncolaboracion/transaccioncolaboracionshowdelete.html.twig</file>
+            <file>file:/C:/xampp/htdocs/siessoc_2.0/app/Resources/views/transaccioncolaboracion/transaccioncolaboracionindex.html.twig</file>
+            <file>file:/C:/xampp/htdocs/siessoc_2.0/app/Resources/views/cuenta/Cuentaedit.html.twig</file>
         </group>
     </open-files>
 </project-private>

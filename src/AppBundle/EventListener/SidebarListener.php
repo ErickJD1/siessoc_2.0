@@ -161,7 +161,7 @@ class SidebarListener {
                 $expediente = new MenuItemModel('expediente', 'Expedientes', '', $earg, 'fa fa-address-card'),
                 $actividad = new MenuItemModel('actividad', 'Actividades', '', $earg, 'fa fa-calendar'),
                 $academico = new MenuItemModel('seguimiento', 'Seguimiento Academico', 'homepage', $earg, 'fa fa-book'),
-                $publicacion = new MenuItemModel('publicar', 'Publicaciones', 'homepage', $earg, 'fa fa-globe'),
+                $publicacion = new MenuItemModel('publicar', 'Publicaciones', 'menu_solicitud', $earg, 'fa fa-globe'),
                 $ssocial = new MenuItemModel('social', 'Servicio Social', 'homepage', $earg, 'fa fa-signing'),
                 $fondos = new MenuItemModel('fondos', 'Fondos', 'menu_fondos', $earg, 'fa fa-money'),
                 $colaboracion = new MenuItemModel('colaboracion', 'Colaboracion Monetaria', 'homepage', $earg, 'fa fa-dollar'),

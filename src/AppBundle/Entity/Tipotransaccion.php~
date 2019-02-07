@@ -10,6 +10,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *
  * @ORM\Table(name="tipotransaccion")
  * @ORM\Entity
+ * @UniqueEntity("nombretipotransac")
  */
 class Tipotransaccion
 {
@@ -95,5 +96,9 @@ class Tipotransaccion
     public function getIdtipotransaccion()
     {
         return $this->idtipotransaccion;
+    }
+    
+     public function __toString(){
+          return $this->getNombretipotransac();
     }
 }

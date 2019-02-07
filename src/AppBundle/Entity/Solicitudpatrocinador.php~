@@ -3,12 +3,17 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use SalexUserBundle\Entity\User;
+
 
 /**
  * Solicitudpatrocinador
  *
  * @ORM\Table(name="solicitudpatrocinador")
  * @ORM\Entity
+ * @UniqueEntity("docidentidadsolipatrocinador")
  */
 class Solicitudpatrocinador
 {
@@ -55,9 +60,74 @@ class Solicitudpatrocinador
      * @ORM\Column(name="ESTADOSOLIPATROCINADOR", type="string", length=1, nullable=true)
      */
     private $estadosolipatrocinador;
+    
+    
+      /**
+     * @var \DateTime
+     * @ORM\Column(name="FECHACREACION", type="datetime", nullable=true)
+     * @Assert\Type("\DateTime")
+     */
+    private $fechacreacion;
+    
+    
+      /**
+     * @var \idusuario
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     * @ORM\JoinColumn(name="idusuario", referencedColumnName="id")
+     * })
+     */
+    private $idusuario;
+    
+    
+    
+    /**
+     * Get idusuario
+     *
+     * @return integer
+     */
+    public function getIdusuario() {
+        return $this->idusuario;
+    }
 
+    
+    /**
+     * Set idusuario
+     *
+     * @param \SalexUserBundle\Entity\User $idusuario
+     *
+     * @return Movimiento
+     */
+    public function setIdusuario(\SalexUserBundle\Entity\User $idusuario = null) {
+        $this->idusuario = $idusuario;
+    }
+    
 
+      /**
+     * Set fechacreacion
+     *
+     * @param \DateTime $fechacreacion
+     *
+     * @return Solicitudpatrocinador
+     */
+    public function setFechaapertura($fechacreacion)
+    {
+        $this->fechaapertura = $fechacreacion;
 
+        return $this;
+    }
+
+    /**
+     * Get fechacreacion
+     *
+     * @return \DateTime
+     */
+    public function getFechaapertura()
+    {
+        return $this->fechacreacion;
+    }
+    
     /**
      * Set docidentidadsolipatrocinador
      *

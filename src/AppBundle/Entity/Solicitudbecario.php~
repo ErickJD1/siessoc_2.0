@@ -7,13 +7,16 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
 use Carbon\Carbon;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Solicitudbecario
  *
  * @ORM\Table(name="solicitudbecario")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="src\AppBundle\Repository\SolicitudesRepository")
+ * @ORM\HasLifecycleCallbacks
  * @Vich\Uploadable
+ * @UniqueEntity("docsoliidentidadbecario")
  */
 class Solicitudbecario
 {
@@ -28,7 +31,7 @@ class Solicitudbecario
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="TELEFONOSOLIBECARIO", type="string", length=10, nullable=true)
      */
     private $telefonosolibecario;
@@ -42,77 +45,76 @@ class Solicitudbecario
 
     /**
      * @var integer
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="MIEMBROSSOLIFAMILIABECARIO", type="integer", nullable=true)
      */
     private $miembrossolifamiliabecario;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="TIPOSOLICASABECARIO", type="string", length=500, nullable=true)
      */
     private $tiposolicasabecario;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="CARRERASOLIESTUDIARBECARIO", type="string", length=256, nullable=true)
      */
     private $carrerasoliestudiarbecario;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="UNIVERSIDADSOLIBECARIO", type="string", length=100, nullable=true)
      */
     private $universidadsolibecario;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="MONTOSOLIMATRICULABECARIO", type="decimal", precision=10, scale=0, nullable=true)
      */
     private $montosolimatriculabecario;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="CUOTASOLIMENSUALBECARIO", type="decimal", precision=10, scale=0, nullable=true)
      */
     private $cuotasolimensualbecario;
 
     /**
      * @var integer
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="DURACIONSOLICARRERABECARIO", type="integer", nullable=true)
      */
     private $duracionsolicarrerabecario;
 
     /**
      * @var boolean
-     *
+     
      * @ORM\Column(name="TRABAJOSOLIBECARIO", type="boolean", nullable=true)
      */
     private $trabajosolibecario;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="DOCSOLIIDENTIDADBECARIO", type="string", length=20, nullable=true)
      */
     private $docsoliidentidadbecario;
 
     /**
      * @var \DateTime
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="ANIOSOLIINGRESOBECARIO", type="date", nullable=true)
      */
     private $aniosoliingresobecario;
 
     /**
      * @var \DateTime
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="ANIOSOLIFINALIZACIONBECARIO", type="date", nullable=true)
      */
     private $aniosolifinalizacionbecario;
@@ -124,7 +126,7 @@ class Solicitudbecario
      */
     private $cantsolihermanosbecario;
 
-    /**
+        /**
      * @var string
      *
      * @ORM\Column(name="NOMSOLIPADREBECARIO", type="string", length=300, nullable=true)
@@ -140,14 +142,14 @@ class Solicitudbecario
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="TELSOLIEMERGENCIABECARIO", type="string", length=11, nullable=true)
      */
     private $telsoliemergenciabecario;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="TELSOLIPERSONALBECARIO", type="string", length=11, nullable=true)
      */
     private $telsolipersonalbecario;
@@ -161,15 +163,15 @@ class Solicitudbecario
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="DIRECCIONSOLIBECARIO", type="string", length=500, nullable=true)
      */
     private $direccionsolibecario;
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="ESTADOSOLIBECARIO", type="boolean", nullable=true)
+     * @ORM\Column(name="ESTADOSOLIBECARIO", type="integer", nullable=true)
      */
     private $estadosolibecario;
 
@@ -182,20 +184,21 @@ class Solicitudbecario
     
      /**
      * @var integer
-     *
-     * @ORM\Column(name="EDAD", type="integer", nullable=true)
+     * @Assert\NotBlank()
+     * @ORM\Column(name="FECHANACIMIENTO", type="date", nullable=true)
      */
-    private $edad;
+    private $fechaNacimiento;
     
      /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="SEXO", type="string", length=10, nullable=true)
      */
     private $sexo;
 
     /**
      * @var float
+     * @Assert\NotBlank()
      * @ORM\Column(name="PAES", type="float", precision=10, scale=0, nullable=true)
      */
     private $paes;
@@ -224,7 +227,7 @@ class Solicitudbecario
      /**
      * @var float
      *
-     * @ORM\Column(name="MONTOOTRASBECAS", type="float", precision=10, scale=0, nullable=true)
+     * @ORM\Column(name="MONTOOTRASBECAS", type="decimal", precision=10, scale=0, nullable=true)
      */
     private $montootrasbecas;
     
@@ -236,14 +239,22 @@ class Solicitudbecario
     private $antecedentes;
    
     
-       /**
+      /**
+     * @var \idusuario
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     * @ORM\JoinColumn(name="idusuario", referencedColumnName="id")
+     * })
+     */
+    private $idusuario;
+    
+    /**
      * @Assert\Image(
      *     maxSize="5M",
-     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg","application/pdf","application/xlsx","application/doc"},
-     *     maxWidth=700,
-     *     maxHeight=700
+     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg","application/pdf","application/xls","application/docx","application/txt",}   
      * )
-     * @Vich\UploadableField(mapping="profile_image", fileNameProperty="comprobante")
+     * @Vich\UploadableField(mapping="document_file", fileNameProperty="comprobante")
      * @var [type]
      */
     private $comprobante_file;
@@ -280,13 +291,10 @@ class Solicitudbecario
      * @return self
      */
     public function setComprobanteFile(File $comprobante_file) {
-        $this->profile_picture_file = $comprobante_file;
+        $this->comprobante_file = $comprobante_file;
 
         // Only change the updated af if the file is really uploaded to avoid database updates.
         // This is needed when the file should be set when loading the entity.
-        if ($this->profile_picture_file instanceof UploadedFile) {
-            $this->setUpdateAt(new Carbon());
-        }
 
         return $this;
     }
@@ -298,6 +306,32 @@ class Solicitudbecario
      */
     function getComprobante() {
         return $this->comprobante;
+    }
+    
+    function setComprobante($comprobante) {
+        $this->comprobante = $comprobante;
+    }
+
+        
+    
+      /**
+     * Get idusuario
+     *
+     * @return integer
+     */
+    public function getIdusuario() {
+        return $this->idusuario;
+    }
+
+    /**
+     * Set idusuario
+     *
+     * @param \SalexUserBundle\Entity\User $idusuario
+     *
+     * @return Movimiento
+     */
+    public function setIdusuario(\SalexUserBundle\Entity\User $idusuario=null) {
+        $this->idusuario = $idusuario;
     }
     
     public function setTelefonosolibecario($telefonosolibecario)
@@ -315,8 +349,8 @@ class Solicitudbecario
         return $this->religion;
     }
 
-    function getEdad() {
-        return $this->edad;
+    function getFechaNacimiento() {
+        return $this->fechaNacimiento;
     }
 
     function getSexo() {
@@ -355,8 +389,8 @@ class Solicitudbecario
         $this->religion = $religion;
     }
 
-    function setEdad($edad) {
-        $this->edad = $edad;
+    function setFechaNacimiento($fechaNacimiento) {
+        $this->fechaNacimiento = $fechaNacimiento;
     }
 
     function setSexo($sexo) {
@@ -723,6 +757,7 @@ class Solicitudbecario
         return $this;
     }
 
+   
     /**
      * Get nomsolipadrebecario
      *
@@ -732,6 +767,9 @@ class Solicitudbecario
     {
         return $this->nomsolipadrebecario;
     }
+    
+    
+    
 
     /**
      * Set nomsolimadrebecario
@@ -832,7 +870,7 @@ class Solicitudbecario
     /**
      * Set estadosolibecario
      *
-     * @param boolean $estadosolibecario
+     * @param integer $estadosolibecario
      *
      * @return Solicitudbecario
      */
@@ -846,7 +884,7 @@ class Solicitudbecario
     /**
      * Get estadosolibecario
      *
-     * @return boolean
+     * @return integer
      */
     public function getEstadosolibecario()
     {
@@ -862,4 +900,5 @@ class Solicitudbecario
     {
         return $this->idsolibecario;
     }
+    
 }

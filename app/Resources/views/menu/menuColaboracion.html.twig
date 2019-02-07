@@ -1,6 +1,6 @@
 {% extends "layout/base-layout.html.twig" %}
 
-{% block page_title %} Menu | Fondos {% endblock %}
+{% block page_title %} Menu | Colaboracion Monetaria {% endblock %}
 
 {% block stylesheets %}
     {{parent()}}
@@ -23,16 +23,16 @@
                         <!-- small box -->
                         <div class="small-box bg-blue">
                             <div class="inner">
-                                <h3 class="menuT">Solicitud Becario</h3>
+                                <h3 class="menuT">Solventes</h3>
 
-                                <p>Ingresar Solicitud</p>
+                                <p>Modificar Becario</p>
                             </div>
                             <div class="icon">
                                 <i class="fa fa-file-text">
 
                                 </i>
                             </div>
-                            <a href="{{path('solicitudbecario_index')}}" class="small-box-footer">Ingresar <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="{{path('colaboracionmonetaria_index')}}" class="small-box-footer">Ingresar <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                 {% endif %}
@@ -43,14 +43,14 @@
                         <!-- small box -->
                         <div class="small-box bg-green">
                             <div class="inner">
-                                <h3 class="menuT">Solicitud Patrocinador</h3>
+                                <h3 class="menuT">Insolvente</h3>
 
-                                <p>Ingresar Solicitud</p>
+                                <p>Modificar Becario</p>
                             </div>
                             <div class="icon">
                                 <i class="fa fa-file-text"></i>
                             </div>
-                            <a href="{{path('solicitudpatrocinador_index')}}" class="small-box-footer">Ingresar<i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="{{path('colaboracionmonetaria_index')}}" class="small-box-footer">Ingresar<i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                 {% endif %}

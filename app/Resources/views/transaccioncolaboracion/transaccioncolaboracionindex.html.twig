@@ -29,7 +29,11 @@
         <tbody>
         {% for transaccioncolaboracion in transaccioncolaboracions %}
             <tr>
-                <td>{{ transaccioncolaboracion.descripciontransaccolabora }}</td>
+                <td><a data-toggle="modal" data-target="#deletetransaccion{{ transaccioncolaboracion.idtransaccolaboracion }}">{{ transaccioncolaboracion.descripciontransaccolabora }}</a>
+                                {{ render(controller('AppBundle:Transaccioncolaboracion:showDelete',{'id':transaccioncolaboracion.idtransaccolaboracion} )) }}
+                                
+                            </td>
+               <!-- <td>{{ transaccioncolaboracion.descripciontransaccolabora }}</td>-->
                 <td>{{ transaccioncolaboracion.tipotransaccolabora }}</td>
                 <td>{{ transaccioncolaboracion.idcolaboracion }}</td>
                 <td>{% if transaccioncolaboracion.fechatransaccolabora %}{{ transaccioncolaboracion.fechatransaccolabora|date('Y-m-d') }}{% endif %}</td>

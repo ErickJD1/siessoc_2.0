@@ -1,0 +1,148 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Expedientebecario</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Telefonoexpbecario</th>
+                <td>{{ expedientebecario.telefonoexpbecario }}</td>
+            </tr>
+            <tr>
+                <th>Ingresosexpfamiliabecario</th>
+                <td>{{ expedientebecario.ingresosexpfamiliabecario }}</td>
+            </tr>
+            <tr>
+                <th>Miembrosexpfamiliabecario</th>
+                <td>{{ expedientebecario.miembrosexpfamiliabecario }}</td>
+            </tr>
+            <tr>
+                <th>Tipoexpcasabecario</th>
+                <td>{{ expedientebecario.tipoexpcasabecario }}</td>
+            </tr>
+            <tr>
+                <th>Carreraexpestudiarbecario</th>
+                <td>{{ expedientebecario.carreraexpestudiarbecario }}</td>
+            </tr>
+            <tr>
+                <th>Universidadexpbecario</th>
+                <td>{{ expedientebecario.universidadexpbecario }}</td>
+            </tr>
+            <tr>
+                <th>Montoexpmatriculabecario</th>
+                <td>{{ expedientebecario.montoexpmatriculabecario }}</td>
+            </tr>
+            <tr>
+                <th>Cuotaexpmensualbecario</th>
+                <td>{{ expedientebecario.cuotaexpmensualbecario }}</td>
+            </tr>
+            <tr>
+                <th>Duracionexpcarrerabecario</th>
+                <td>{{ expedientebecario.duracionexpcarrerabecario }}</td>
+            </tr>
+            <tr>
+                <th>Trabajoexpbecario</th>
+                <td>{% if expedientebecario.trabajoexpbecario %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Docexpidentidadbecario</th>
+                <td>{{ expedientebecario.docexpidentidadbecario }}</td>
+            </tr>
+            <tr>
+                <th>Anioexpingresobecario</th>
+                <td>{% if expedientebecario.anioexpingresobecario %}{{ expedientebecario.anioexpingresobecario|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Anioexpfinalizacionbecario</th>
+                <td>{% if expedientebecario.anioexpfinalizacionbecario %}{{ expedientebecario.anioexpfinalizacionbecario|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Cantexphermanosbecario</th>
+                <td>{{ expedientebecario.cantexphermanosbecario }}</td>
+            </tr>
+            <tr>
+                <th>Nomexppadrebecario</th>
+                <td>{{ expedientebecario.nomexppadrebecario }}</td>
+            </tr>
+            <tr>
+                <th>Nomexpmadrebecario</th>
+                <td>{{ expedientebecario.nomexpmadrebecario }}</td>
+            </tr>
+            <tr>
+                <th>Telexpemergenciabecario</th>
+                <td>{{ expedientebecario.telexpemergenciabecario }}</td>
+            </tr>
+            <tr>
+                <th>Telexppersonalbecario</th>
+                <td>{{ expedientebecario.telexppersonalbecario }}</td>
+            </tr>
+            <tr>
+                <th>Direccionexpbecario</th>
+                <td>{{ expedientebecario.direccionexpbecario }}</td>
+            </tr>
+            <tr>
+                <th>Estadoexpbecario</th>
+                <td>{{ expedientebecario.estadoexpbecario }}</td>
+            </tr>
+            <tr>
+                <th>Religion</th>
+                <td>{{ expedientebecario.religion }}</td>
+            </tr>
+            <tr>
+                <th>Fechanacimiento</th>
+                <td>{% if expedientebecario.fechaNacimiento %}{{ expedientebecario.fechaNacimiento|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Sexo</th>
+                <td>{{ expedientebecario.sexo }}</td>
+            </tr>
+            <tr>
+                <th>Paes</th>
+                <td>{{ expedientebecario.paes }}</td>
+            </tr>
+            <tr>
+                <th>Ocupacionpadre</th>
+                <td>{{ expedientebecario.ocupacionpadre }}</td>
+            </tr>
+            <tr>
+                <th>Ocupacionmadre</th>
+                <td>{{ expedientebecario.ocupacionmadre }}</td>
+            </tr>
+            <tr>
+                <th>Otrasbecas</th>
+                <td>{% if expedientebecario.otrasbecas %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Montootrasbecas</th>
+                <td>{{ expedientebecario.montootrasbecas }}</td>
+            </tr>
+            <tr>
+                <th>Antecedentes</th>
+                <td>{{ expedientebecario.antecedentes }}</td>
+            </tr>
+            <tr>
+                <th>Comprobante</th>
+                <td>{{ expedientebecario.comprobante }}</td>
+            </tr>
+            <tr>
+                <th>Idexpbecario</th>
+                <td>{{ expedientebecario.idexpbecario }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('expedientebecario_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('expedientebecario_edit', { 'id': expedientebecario.idexpbecario }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

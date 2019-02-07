@@ -32,7 +32,7 @@
                                 <div class="row">     
 
                                     <div class="col col-md-6" align="left">
-                                        <label for="form_documento"><i class="fa fa-id-card"></i> Numero de documento: </label>
+                                        <label for="form_documento"><i class="fa fa-id-card"></i> Documento Identidad: </label>
                                         {{ solicitudbecario.docsoliidentidadbecario   }}
 
                                     </div> 
@@ -73,7 +73,7 @@
 
                                 <div class="row">  
                                     <div class="col col-md-6" align="left">
-                                        <label for="form_religion"><i class="fa fa-child"></i> Religion que pertenece:</label>
+                                        <label for="form_religion"><i class="fa fa-child"></i> Religion:</label>
                                         {{ solicitudbecario.religion   }}
 
                                     </div>
@@ -84,7 +84,7 @@
                                     </div>   
 
                                 </div>
-                                        <br>
+                                <br>
                                 <div class="row">  
                                     <div class="col col-md-12" align="left">
                                         <label for="form_direccion"><i class="fa fa-street-view"></i> Dirección: </label>
@@ -102,13 +102,13 @@
                                 <div class="row">  
 
                                     <div class="col col-md-6" align="left">
-                                        <label for="form_carrera">Carrera: </label>
+                                        <label for="form_carrera"><i class="fa fa-graduation-cap"></i> Carrera: </label>
                                         {{ solicitudbecario.carrerasoliestudiarbecario   }}
 
                                     </div> 
 
                                     <div class="col col-md-6" align="left">
-                                        <label for="form_universidad">Universidad: </label>
+                                        <label for="form_universidad"><i class="fa fa-university"></i> Universidad: </label>
                                         {{ solicitudbecario.universidadsolibecario   }}
 
                                     </div>
@@ -118,13 +118,13 @@
 
                                 <div class="row">
                                     <div class="col col-md-6" align="left" id='datetimepicker1'>
-                                        <label for="form_anioinicio">Fecha Ingreso Universidad: </label>
+                                        <label for="form_anioinicio"><i class="fa fa-calendar"></i> Fecha Ingreso Universidad: </label>
                                         <strong>{% if solicitudbecario.aniosoliingresobecario %}{{ solicitudbecario.aniosoliingresobecario|date('Y-m-d') }}{% endif %}</strong>
 
                                     </div>
 
                                     <div class="col col-md-6" align="left" id='datetimepicker2'>
-                                        <label for="form_aniofin">Fecha Egreso Universidad: </label>
+                                        <label for="form_aniofin"><i class="fa fa-calendar"></i> Fecha Egreso Universidad: </label>
 
                                         <strong>{% if solicitudbecario.aniosolifinalizacionbecario %}{{ solicitudbecario.aniosolifinalizacionbecario|date('Y-m-d') }}{% endif %}</strong>
                                     </div>
@@ -133,45 +133,46 @@
 
                                 <div class="row">
                                     <div class="col col-md-3" align="left">
-                                        <label for="form_paes">Nota Paes: </label>
+                                        <label for="form_paes"><i class="fa fa-list-alt"></i> Nota Paes: </label>
                                         {{ solicitudbecario.paes   }}
 
                                     </div>
 
                                     <div class="col col-md-3" align="left">
-                                        <label for="form_matricula">Monto Matricula: </label>
-                                        {{ solicitudbecario.montosolimatriculabecario   }}
+                                        <label for="form_matricula"><i class="fa fa-usd"></i> Monto Matricula: </label>
+                                        ${{ solicitudbecario.montosolimatriculabecario   }}
 
                                     </div>
 
                                     <div class="col col-md-3" align="left">
-                                        <label for="form_cuotaM">Cuota Mensual: </label>
-                                        {{ solicitudbecario.cuotasolimensualbecario   }}
+                                        <label for="form_cuotaM"><i class="fa fa-usd"></i> Cuota Mensual: </label>
+                                        ${{ solicitudbecario.cuotasolimensualbecario   }}
 
                                     </div>
 
                                     <div class="col col-md-3" align="left">
-                                        <label for="form_duracion">Duracion Carrera: </label>
+                                        <label for="form_duracion"><i class="fa fa-history"></i> Duracion Carrera: </label>
                                         {{ solicitudbecario.duracionsolicarrerabecario }} 
 
                                     </div>
                                 </div>
                                 <br>
+
                                 <div class="row">
                                     <div class="col col-md-3" align="left">
-                                        <label for="form_otrasbecas">Posee otras becas</label>
+                                        <label for="form_otrasbecas"><i class="fa fa-handshake-o"></i> Posee otras becas</label>
                                         {{ solicitudbecario.otrasbecas }}
 
                                     </div> 
 
                                     <div class="col col-md-3" align="left">
-                                        <label for="form_Motrasbecas">Monto de otras becas</label>
-                                        {{ solicitudbecario.montootrasbecas }}
+                                        <label for="form_Motrasbecas"><i class="fa fa-usd"></i> Monto otras becas</label>
+                                        ${{ solicitudbecario.montootrasbecas }}
 
                                     </div>
 
                                     <div class="col col-md-6" align="left">
-                                        <label for="form_comprobante">Comprobante: </label>
+                                        <label for="form_comprobante"><i class="fa fa-paperclip"></i> Comprobante: </label>
                                         <a href="{{ asset('images/profile/'~solicitudbecario.getComprobante() )  }}">Descargar Comprobante</a>
 
                                     </div>
@@ -179,30 +180,32 @@
                             </div><!-- /.tab-pane -->
 
                             <div class="tab-pane" id="datosFamiliares{{solicitudbecario.idsolibecario}}" style="width:90%; margin-left: 5%">
-                                <h3>Datos Famiiares</h3>
+                                <h3>Datos Familiares</h3>
                                 <hr>
                                 <div class="row">
 
-                                    <div class="col col-md-3" align="left">
-                                        <label for="form_ingresos">Ingresos Familiares</label>
-                                        {{ solicitudbecario.ingresossolifamiliabecario   }}
+                                    <div class="col col-md-6" align="left">
+                                        <label for="form_ingresos"><i class="fa fa-usd"></i> Ingresos Familiares</label>
+                                        ${{ solicitudbecario.ingresossolifamiliabecario   }}
 
                                     </div>
 
-                                    <div class="col col-md-3" align="left">
-                                        <label for="form_miembros">Miembros familiares: </label>
+                                    <div class="col col-md-6" align="left">
+                                        <label for="form_miembros"><i class="fa fa-users"></i> Miembros familia: </label>
                                         {{ solicitudbecario.miembrossolifamiliabecario   }}
 
                                     </div>
-
-                                    <div class="col col-md-3" align="left">
-                                        <label for="form_hermanos">Cantidad de hermanos</label>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col col-md-6" align="left">
+                                        <label for="form_hermanos"><i class="fa fa-users"></i> Cantidad de hermanos</label>
                                         {{ solicitudbecario.cantsolihermanosbecario   }}
 
                                     </div>
 
-                                    <div class="col col-md-3" align="left">
-                                        <label for="form_Temergencia">Tel. Emergencia: </label>
+                                    <div class="col col-md-6" align="left">
+                                        <label for="form_Temergencia"><i class="fa fa-phone"></i> Tel. Emergencia: </label>
                                         {{ solicitudbecario.telsoliemergenciabecario   }}
 
                                     </div>
@@ -213,13 +216,13 @@
                                 <div class="row">
 
                                     <div class="col col-md-6" align="left">
-                                        <label for="form_nompadre">Nombre del padre: </label>
+                                        <label for="form_nompadre"><i class="fa fa-male"></i> Nombre del padre: </label>
                                         {{ solicitudbecario.nomsolipadrebecario   }}
 
                                     </div> 
 
                                     <div class="col col-md-6" align="left">
-                                        <label for="form_nommadre">Nombre de la madre: </label>
+                                        <label for="form_nommadre"><i class="fa fa-female"></i> Nombre de la madre: </label>
                                         {{ solicitudbecario.nomsolimadrebecario   }}
 
                                     </div> 
@@ -228,32 +231,20 @@
                                 <br>
                                 <div class="row">
 
-                                    <div class="col col-md-12" align="left">
-                                        <label for="form_ocupacionp">Ocupacion del padre: </label>
+                                    <div class="col col-md-6" align="left">
+                                        <label for="form_ocupacionp"><i class="fa fa-user-md"></i> Ocupacion del padre: </label>
                                         {{ solicitudbecario.ocupacionpadre   }}
 
                                     </div>
-                                </div>
-                                <br>
-                                <div class="row">
 
-                                    <div class="col col-md-12" align="left">
-                                        <label for="form_ocupacionm">Ocupacion de la madre: </label>
+
+                                    <div class="col col-md-6" align="left">
+                                        <label for="form_ocupacionm"><i class="fa fa-user-md"></i> Ocupacion de la madre: </label>
                                         {{ solicitudbecario.ocupacionmadre   }}
 
                                     </div>
                                 </div>
                                 <br>
-
-                                <div class="row">
-                                    <div class="col col-md-12" align="right">
-                                        <a href="{{ path('solicitudbecario_index')   }}" class="btn btn-primary btn-xl">Cancelar</a>
-                                        <input  class="btn btn-success btn-xl" type="submit"  value="Guardar" />
-
-
-                                    </div>
-                                </div>
-
 
                             </div><!-- /.tab-pane -->
 
@@ -265,6 +256,32 @@
                     </div><!-- /.tab-content -->
                     <br>
                 </div><!-- /.nav-tabs-custom -->
+            </div>
+
+            <div class="modal-footer">
+                {% if (app.user.hasRole('ROLE_ADMIN') or app.user.hasRole('ROLE_COORDINADOR'))  %}
+                    <div class="row">
+                        <form style="" action="{{path('solicitud_aprobacion',{'id':solicitudbecario.idsolibecario,'val':1})}}" method="POST"> 
+
+                            <button type="submit" class="btn btn-success" >Aprobar</button>
+                        </form></div>
+                    <div style="float:right; margin-left: 1px"> 
+                        <form action="{{path('solicitud_aprobacion',{'id':solicitudbecario.idsolibecario,'val':2})}}" method="POST"> 
+                            <div class="modal fade" id="recha{{  solicitudbecario.idsolibecario }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div style="width:50%; margin-left: 25%;" class="modal-dialog">
+                                    <div class="modal-content"  style="border-radius: 10px">
+                                        <div class="modal-body">
+                                            <textarea class="form-control" id="descripcion" name="descripcion" style="width:100%" placeholder="Observaciones del rechazo" name="descripcion"></textarea>
+                                            <button type="submit" class="btn btn-success" style="margin-top:1%;widt:100%" >Guardar</button>
+                                        </div>
+                                    </div>
+                                </div>   
+                            </div> 
+
+                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#recha{{ solicitudbecario.idsolibecario }}" >Rechazar</button>
+                        </form>
+                    </div>
+                {% endif %}                
             </div>
         </div>
     </div>

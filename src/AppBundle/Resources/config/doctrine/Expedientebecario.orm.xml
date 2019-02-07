@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Expedientebecario" table="expedientebecario" repository-class="AppBundle\Repository\SolicitudesRepository">
+    <id name="idexpbecario" type="integer" column="IDEXPBECARIO">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="telefonoexpbecario" type="string" column="TELEFONOEXPBECARIO" length="10" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="ingresosexpfamiliabecario" type="decimal" column="INGRESOSEXPFAMILIABECARIO" precision="8" scale="0" nullable="true"/>
+    <field name="miembrosexpfamiliabecario" type="integer" column="MIEMBROSEXPFAMILIABECARIO" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="tipoexpcasabecario" type="string" column="TIPOEXPCASABECARIO" length="500" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="carreraexpestudiarbecario" type="string" column="CARRERAEXPESTUDIARBECARIO" length="256" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="universidadexpbecario" type="string" column="UNIVERSIDADEXPBECARIO" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="montoexpmatriculabecario" type="decimal" column="MONTOEXPMATRICULABECARIO" precision="10" scale="0" nullable="true"/>
+    <field name="cuotaexpmensualbecario" type="decimal" column="CUOTAEXPMENSUALBECARIO" precision="10" scale="0" nullable="true"/>
+    <field name="duracionexpcarrerabecario" type="integer" column="DURACIONEXPCARRERABECARIO" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="trabajoexpbecario" type="boolean" column="TRABAJOEXPBECARIO" nullable="true"/>
+    <field name="docexpidentidadbecario" type="string" column="DOCEXPIDENTIDADBECARIO" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="anioexpingresobecario" type="date" column="ANIOEXPINGRESOBECARIO" nullable="true"/>
+    <field name="anioexpfinalizacionbecario" type="date" column="ANIOEXPFINALIZACIONBECARIO" nullable="true"/>
+    <field name="cantexphermanosbecario" type="integer" column="CANTEXPHERMANOSBECARIO" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="nomexppadrebecario" type="string" column="NOMEXPPADREBECARIO" length="300" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nomexpmadrebecario" type="string" column="NOMEXPMADREBECARIO" length="300" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="telexpemergenciabecario" type="string" column="TELEXPEMERGENCIABECARIO" length="11" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="telexppersonalbecario" type="string" column="TELEXPPERSONALBECARIO" length="11" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="direccionexpbecario" type="string" column="DIRECCIONEXPBECARIO" length="500" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="estadoexpbecario" type="integer" column="ESTADOEXPBECARIO" nullable="true"/>
+    <field name="religion" type="string" column="RELIGION" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="fechaNacimiento" type="date" column="FECHANACIMIENTO" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="sexo" type="string" column="SEXO" length="10" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+     <field name="paes" type="float" column="PAES" precision="20" scale="0" nullable="true"/>
+    <field name="ocupacionpadre" type="string" column="OCUPACIONPADRE" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+     <field name="ocupacionmadre" type="string" column="OCUPACIONMADRE" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+     <field name="otrasbecas" type="boolean" column="OTRASBECAS" nullable="true"/>
+      <field name="montootrasbecas" type="decimal" column="MONTOOTRASBECAS" precision="10" scale="0" nullable="true"/>
+ <field name="antecedentes" type="string" column="ANTECEDENTES" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+      <field name="comprobante" type="string" column="FORMULARIO" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+      <many-to-one field="idusuario" target-entity="SalexUserBundle\Entity\User" fetch="LAZY">
+      <join-columns>
+        <join-column name="idusuario" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+ 
+</doctrine-mapping>

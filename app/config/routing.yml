@@ -1,3 +1,19 @@
+app_expedientebecario:
+    resource: "@AppBundle/Controller/ExpedientebecarioController.php"
+    type:     annotation
+
+app_expedientebecario:
+    resource: "@AppBundle/Controller/ExpedientebecarioController.php"
+    type:     annotation
+
+app_expedientebecario:
+    resource: "@AppBundle/Controller/ExpedientebecarioController.php"
+    type:     annotation
+
+app_expedientebecario:
+    resource: "@AppBundle/Controller/ExpedientebecarioController.php"
+    type:     annotation
+
 app_colaboracionmonetaria:
     resource: "@AppBundle/Controller/ColaboracionmonetariaController.php"
     type:     annotation

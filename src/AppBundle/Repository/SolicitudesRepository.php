@@ -3,7 +3,7 @@
 namespace AppBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
-
+use SalexUserBundle\Entity\User;
 /**
  * SolicitudesRepository
  *
@@ -21,6 +21,14 @@ class SolicitudesRepository extends EntityRepository {
     }
 
      public function rechazadosrepo() {
+        return $this->getEntityManager()
+                        ->createQuery(
+                                'SELECT s FROM AppBundle:Solicitudbecario s WHERE s.estadosolibecario=0'
+                        )
+                        ->getResult();
+    }
+    
+    public function userSolicitud() {
         return $this->getEntityManager()
                         ->createQuery(
                                 'SELECT s FROM AppBundle:Solicitudbecario s WHERE s.estadosolibecario=0'

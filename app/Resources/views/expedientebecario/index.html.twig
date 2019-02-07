@@ -1,0 +1,47 @@
+{% extends "layout/base-layout.html.twig" %}
+
+
+{% block page_content %}
+
+    <div class="box box-primary">
+        <div style="width:90%; margin-left:5%; margin-top: 2% ">
+
+            {# <div align="left">
+                 <a style="font-size: 15px" href="{{ path('movimiento_new') }}" class="btn btn-success btn-sm"><i style="font-size: 20px" class="fa fa-plus-circle"></i> Registrar Movimiento</a>
+             </div>#}
+            <br> 
+
+            <table class="table table-bordered table-hover table-striped table-responsive" style="width:100%" id="tabelMahasiswa">
+                <thead class="thead-light">
+                    <tr>
+
+                        <th>Becario</th>
+                        <th>Carrera</th>
+                        <th>Universidad</th>
+                        <th>Estado</th>
+                        <th>Descipción</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for expedientebecario in expedientebecarios %}
+                        <tr>
+
+                            <td>{{ expedientebecario.idusuario.getFirstName()~' '~expedientebecario.idusuario.getLastName() }}</td>
+                            <td>{{ expedientebecario.carreraexpestudiarbecario }}</td>
+                            <td>{{ expedientebecario.universidadexpbecario }}</td>              
+                            <td>{% if(expedientebecario.estadoexpbecario==1) %}Activo{%else%}Inactivo{%endif%}</td>
+                            <td>{{ expedientebecario.antecedentes }}</td>
+                            <td>
+                                <div class="col col-md-3"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#VerExp{{ expedientebecario.idexpbecario}}"><i class="fa fa-eye" style="font-size: 20px; color: deepskyblue"></i></button>          
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+{% endblock %}

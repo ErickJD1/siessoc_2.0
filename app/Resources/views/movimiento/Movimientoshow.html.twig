@@ -38,17 +38,19 @@
                     <div align="right">
                         <div style="float:right;margin-left: 1px"><button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button></div>
                         {% if (app.user.hasRole('ROLE_ADMIN') or app.user.hasRole('ROLE_COORDINADOR') or app.user.hasRole('ROLE_FINANCIERO')) and movimiento.estadomov == 0 %}
-                            <div style="float:right;margin-left: 1px"> <form style="" action="{{path('movimiento_aprobacion',{'id':movimiento.idmov,'val':1})}}" method="POST"> 
+                            <div style="float:right;margin-left: 1px"> 
+                                <form style="" action="{{path('movimiento_aprobacion',{'id':movimiento.idmov,'val':1})}}" method="POST"> 
 
                                     <button type="submit" class="btn btn-success" >Aprobar</button>
                                 </form></div>
-                            <div style="float:right;margin-left: 1px"> <form action="{{path('movimiento_aprobacion',{'id':movimiento.idmov,'val':2})}}" method="POST"> 
+                            <div style="float:right;margin-left: 1px"> 
+                                <form action="{{path('movimiento_aprobacion',{'id':movimiento.idmov,'val':2})}}" method="POST"> 
                                     <div class="modal fade" id="recha{{  movimiento.idmov }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                         <div style="width:50%; margin-left: 25%;" class="modal-dialog">
                                             <div class="modal-content"  style="border-radius: 10px">
                                                 <div class="modal-body">
                                                     <textarea class="form-control" id="descripcion" name="descripcion" style="width:100%" placeholder="Observaciones del rechazo" name="descripcion"></textarea>
-                                                     <button type="submit" class="btn btn-success" style="margin-top:1%;widt:100%" >Guardar</button>
+                                                    <button type="submit" class="btn btn-success" style="margin-top:1%;widt:100%" >Guardar</button>
                                                 </div>
                                             </div>
                                         </div>   
@@ -57,7 +59,7 @@
                                     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#recha{{ movimiento.idmov }}" >Rechazar</button>
                                 </form>
                             </div>
-                            {% endif %}
+                        {% endif %}
                     </div>
                 </div>
             </div>

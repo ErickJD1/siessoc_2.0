@@ -15,49 +15,42 @@
 
             <table class="table table-bordered table-hover table-striped table-responsive" style="width:100%" id="tabelMahasiswa">
                 <thead class="thead-light">
-            <tr>
-                <th>Usuario</th>
-                <th>Solicitante A Patrocinador</th>
-                <th>Email</th>
-                <th>Documento De Identidad</th>
-                <th>Monto ha Patrocinar</th>
-                <th>Telefono</th>
-                <th>Direccion</th>
-                <th>Estado</th>
-                <th>Accion</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for solicitudpatrocinador in solicitudpatrocinador %}
-            <tr>
-                <td>{{ solicitudpatrocinador.idusuario }}</td>
-                <td>{{ solicitudpatrocinador.idusuario.firstName~" "~solicitudpatrocinador.idusuario.lastName }}</td>
-                <td>{{ solicitudpatrocinador.idusuario.email }}</td>
-                <td>{{ solicitudpatrocinador.docidentidadsolipatrocinador }}</a></td>
-                <td>{{"$"~solicitudpatrocinador.montoaportarsolipatrocinador }}</td>
-                <td>{{ solicitudpatrocinador.telefonosolipatrocinador }}</td>
-                <td>{{ solicitudpatrocinador.direccionsolipatrocinador }}</td>
-                <td>{% if solicitudpatrocinador.estadosolipatrocinador == 0 %}En Espera{% elseif  solicitudpatrocinador.estadosolipatrocinador == 1 %}Aprobado{% elseif  solicitudpatrocinador.estadosolipatrocinador == 2 %}Rechazado{% endif %}</td>
-                <td>
-                    <div class="row">
-                               
-                        <div class="col col-md-3"><button title="ShowSoliPatrocinador" class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#VerSoliP{{ solicitudpatrocinador.idsolipatrocinador }}"><i style="font-size: 20px"></i><i class="fa fa-eye" style="font-size: 20px; color: deepskyblue"></i></button>
-                                   {{ render(controller('AppBundle:Solicitudpatrocinador:show', { 'id' : solicitudpatrocinador.idsolipatrocinador } )) }}
-                        </div>
-                        
-                        <div class="col col-md-3"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#DeleteSoliP{{ solicitudpatrocinador.idsolipatrocinador }}"><i class="fa fa-trash" style="font-size: 20px; color: crimson"></i></button>
-                                {{ render(controller('AppBundle:Solicitudpatrocinador:showDelete', { 'id' : solicitudpatrocinador.idsolipatrocinador } )) }}
-                        </div>
-                        
-                        <div class="col col-md-3">
-                            <a title="Editar Solicitud" href="{{path('solicitudpatrocinador_edit',{ 'id' : solicitudpatrocinador.idsolipatrocinador })}}" style="background-color: transparent; border: none;"><i class="fa fa-edit" style="font-size: 20px; color: limegreen"></i></a>
-                        </div>
-                        
-                    </div>
-                </td>
-            </tr>
+                    <tr>
+                        <th>Usuario</th>
+                        <th>Aspirante Patrocinador</th>
+                        <th>Email</th>
+                        <th>Documento De Identidad</th>
+                        <th>Monto ha Patrocinar</th>
+                        <th>Telefono</th>
+                        <th>Direccion</th>
+                        <th>Estado</th>
+                        <th>Accion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for solicitudpatrocinador in solicitudpatrocinador %}
+                        <tr>
+                            <td>{{ solicitudpatrocinador.idusuario }}</td>
+                            <td>{{ solicitudpatrocinador.idusuario.firstName~" "~solicitudpatrocinador.idusuario.lastName }}</td>
+                            <td>{{ solicitudpatrocinador.idusuario.email }}</td>
+                            <td>{{ solicitudpatrocinador.docidentidadsolipatrocinador }}</a></td>
+                            <td>{{"$"~solicitudpatrocinador.montoaportarsolipatrocinador }}</td>
+                            <td>{{ solicitudpatrocinador.telefonosolipatrocinador }}</td>
+                            <td>{{ solicitudpatrocinador.direccionsolipatrocinador }}</td>
+                            <td>{% if solicitudpatrocinador.estadosolipatrocinador == 0 %}En Espera{% elseif  solicitudpatrocinador.estadosolipatrocinador == 1 %}Aprobado{% elseif  solicitudpatrocinador.estadosolipatrocinador == 2 %}Rechazado{% endif %}</td>
+                            <td>
+                                <div class="row" align="center">
+                                    {#<div class="col col-md-6">
+                                        <a title="Editar Solicitud" href="{{path('solicitudbecario_edit',{ 'id' : solicitudbecario.idsolibecario })}}" style="background-color: transparent; border: none;"><i class="fa fa-edit" style="font-size: 20px; color: limegreen"></i></a>
+                                    </div>#}
 
-                        </div>
+                                    <div class="col col-md-12" align="center"><button title="Ver Solicitud" class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#VerSoliP{{ solicitudpatrocinador.idsolipatrocinador }}"><i style="font-size: 20px; "></i><i class="fa fa-eye" style="font-size: 20px; color: deepskyblue"></i>{% if((solicitudpatrocinador.estadosolipatrocinador == 0) and app.user.hasRole('ROLE_ADMIN') or app.user.hasRole('ROLE_COORDINADOR') ) %}<span class="label label-danger" style="border-radius: 18px; position: absolute; margin-left: -0.8em; top:-0.3em">1</span>{% elseif solicitudpatrocinador.estadosolipatrocinador==2 and app.user.hasRole('ROLE_ASPIRANTE_BECARIO')   %}<span class="label label-danger" style="border-radius: 18px; position: absolute; margin-left: -0.8em; top:-0.3em">1</span>{% elseif solicitudpatrocinador.estadosolipatrocinador==1 %}{% endif %}</button>
+                                                {{ render(controller('AppBundle:Solicitudpatrocinador:show', { 'id' : solicitudpatrocinador.idsolipatrocinador } )) }}
+                                    </div>
+                                </div>
+                            </td>
+                           
+                        </tr>
                     {% endfor %}
                 </tbody>
             </table>

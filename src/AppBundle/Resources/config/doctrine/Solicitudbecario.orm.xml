@@ -104,8 +104,10 @@
     </field>
      <field name="otrasbecas" type="boolean" column="OTRASBECAS" nullable="true"/>
       <field name="montootrasbecas" type="decimal" column="MONTOOTRASBECAS" precision="10" scale="0" nullable="true"/>
- <field name="antecedentes" type="string" column="ANTECEDENTES" length="250" nullable="true">
-      <options>
+ <field name="antecedentes" type="string" column="ANTECEDENTES" length="250" nullable="true"/>
+ <field name="observacionrechazo" type="string" column="OBSERVACIONRECHAZO" length="500" nullable="true">
+   
+     <options>
         <option name="fixed"/>
       </options>
     </field>

@@ -48,7 +48,7 @@ class ExpedientebecarioController extends Controller
             $em->persist($expedientebecario);
             $em->flush($expedientebecario);
 
-            return $this->redirectToRoute('expedientebecario_show', array('id' => $expedientebecario->getId()));
+            return $this->redirectToRoute('expedientebecario_show', array('id' => $expedientebecario->getIdExpbecario()));
         }
 
         return $this->render('expedientebecario/new.html.twig', array(
@@ -88,7 +88,7 @@ class ExpedientebecarioController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('expedientebecario_edit', array('id' => $expedientebecario->getId()));
+            return $this->redirectToRoute('expedientebecario_edit', array('id' => $expedientebecario->getIdExpbecario()));
         }
 
         return $this->render('expedientebecario/edit.html.twig', array(
@@ -128,7 +128,7 @@ class ExpedientebecarioController extends Controller
     private function createDeleteForm(Expedientebecario $expedientebecario)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('expedientebecario_delete', array('id' => $expedientebecario->getId())))
+            ->setAction($this->generateUrl('expedientebecario_delete', array('id' => $expedientebecario->getIdExpbecario())))
             ->setMethod('DELETE')
             ->getForm()
         ;

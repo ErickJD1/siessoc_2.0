@@ -308,6 +308,7 @@ class Expedientebecario
         return $this->comprobante;
     }
     
+    
     function setComprobante($comprobante) {
         $this->comprobante = $comprobante;
     }
@@ -690,7 +691,7 @@ class Expedientebecario
      *
      * @return \DateTime
      */
-    public function getAnioeExpingresobecario()
+    public function getAnioExpingresobecario()
     {
         return $this->anioexpingresobecario;
     }

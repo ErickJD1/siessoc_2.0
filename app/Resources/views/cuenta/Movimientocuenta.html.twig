@@ -1,8 +1,8 @@
 
 <div class="modal fade" id="MovimientoCB{{cuenta.idcuenta}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     {% set cuen = cuenta.idcuenta %}
-    <div style="width:50%; margin-left:25%" class="modal-dialog">
-        <div class="modal-content">
+    <div style="width:80%; margin-left:10%" class="modal-dialog">
+        <div class="modal-content" style="border-radius: 8px">
 
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -15,7 +15,7 @@
                     <div style="width:90%; margin-left:5%; margin-top: 2% ">
 
 
-                        <table class="table table-bordered table-hover table-striped table-responsive" id="tabelMahasiswa{{cuenta.idcuenta}}">
+                        <table class="table table-bordered table-hover table-striped table-responsive"  id="tabelMahasiswa{{cuenta.idcuenta}}">
                             <thead>
                                 <tr>
                                     <th>Descripcion</th>
@@ -31,13 +31,13 @@
 
                                 {% for movimiento in movimientos %}
                                     <tr>
-                                        <td>{{ movimiento.descripcionmov }}</td>
-                                        <td>{{ "$"~movimiento.monto }}</td>
-                                        <td>{% if movimiento.estadomov %}Aprobado{% else %}Pendiente{% endif %}</td>
-                                        <td>{{ movimiento.idcuenta }}</td>
-                                        <td>{{ movimiento.idtipomov }}</td>
-                                        <td>{{ movimiento.idusuario }}</td>
-                                        <td>{% if movimiento.createdAt %}{{ movimiento.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                        <td class="th">{{ movimiento.descripcionmov }}</td>
+                                        <td class="th">{{ "$"~movimiento.monto }}</td>
+                                        <td class="th">{% if movimiento.estadomov %}Aprobado{% else %}Pendiente{% endif %}</td>
+                                        <td class="th">{{ movimiento.idcuenta }}</td>
+                                        <td class="th">{{ movimiento.idtipomov }}</td>
+                                        <td class="th">{{ movimiento.idusuario }}</td>
+                                        <td class="th">{% if movimiento.createdAt %}{{ movimiento.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
                                     </tr>
                                 {% endfor %}
                             </tbody>
@@ -45,9 +45,6 @@
 
                     </div>
                 </div>
-
-
-
                 <!--modal-->
             </div>
 
@@ -58,36 +55,36 @@
     </div>
 </div>
 
-{% block javascripts_inline %}
 
-    <script language="JavaScript" type="text/javascript">
+<script language="JavaScript" type="text/javascript">
 
-        $(document).ready(function () {
-            $("#tabelMahasiswa{{cuenta.idcuenta}}").DataTable({
-                "scrollX": "100%",
-                "scrollY": "200px",
-                language: {
-                    "decimal": "",
-                    "emptyTable": "No hay información",
-                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
-                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
-                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
-                    "infoPostFix": "",
-                    "thousands": ",",
-                    "lengthMenu": "Mostrar _MENU_ Entradas",
-                    "loadingRecords": "Cargando...",
-                    "processing": "Procesando...",
-                    "search": "Buscar:",
-                    "zeroRecords": "Sin resultados encontrados",
-                    "paginate": {
-                        "first": "Primero",
-                        "last": "Ultimo",
-                        "next": "Siguiente",
-                        "previous": "Anterior"
-                    }
-                },
-            });
+    $(document).ready(function () {
+        $("#tabelMahasiswa{{cuenta.idcuenta}}").DataTable({
+
+            language: {
+                "decimal": "",
+                "emptyTable": "No hay información",
+                "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "Mostrar _MENU_ Entradas",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "search": "Buscar:",
+                "zeroRecords": "Sin resultados encontrados",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Ultimo",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            },
         });
+        
+         $("#tabelMahasiswa{{cuenta.idcuenta}}").removeAttr("style");
+         $('.sorting').removeAttr("style");
+    });
 
-    </script>
-{% endblock %}
+</script>

@@ -12,7 +12,7 @@
 
                 <div style="background-color: lightgray;" > 
                     <br>
-                    <div class="nav-tabs-custom" style="width:95%; margin-left: 2.5%; ">
+                    <div class="nav-tabs-custom" style="width:90%; margin-top: 2% ">
                         <ul class="nav nav-tabs">
                             <li class="active"><a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#datosPersonales{{solicitudbecario.idsolibecario}}" role="tab" aria-controls="nav-profile" aria-selected="false">Datos Personales</a></li>
                             <li><a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#datosAcademicos{{solicitudbecario.idsolibecario}}" role="tab" aria-controls="nav-profile" aria-selected="false">Datos Academicos</a></li>
@@ -23,13 +23,13 @@
 
                             <div class="active tab-pane" id="datosPersonales{{solicitudbecario.idsolibecario}}" style="width:90%; margin-left: 5%">
                                 <div class="row">
-                                    <div class="col col-md-6"><h3>Datos Personales</h3></div>
+                                    <div class="col col-md-6" align="left"><h3>Datos Personales</h3></div>
                                     <div class="col col-md-6">
                                         <p align="right"><strong>Aspirante:</strong><u> {{app.user.getFirstName()  ~" "~app.user.getLastName()  }}</u></p>
                                     </div>
                                 </div>
                                 <hr>
-                                <div class="row">     
+                                <div class="row">
 
                                     <div class="col col-md-6" align="left">
                                         <label for="form_documento"><i class="fa fa-id-card"></i> Documento Identidad: </label>
@@ -42,19 +42,23 @@
                                         {{ solicitudbecario.telsolipersonalbecario   }}
 
                                     </div> 
-
+                                </div>
+                                <br>
+                                <div class="row">
                                     <div class="col col-md-6" align="left">
                                         <label for="form_telefono"><i class="fa fa-phone"></i> Otro Contacto: </label>
                                         {{ solicitudbecario.telefonosolibecario   }}
 
                                     </div> 
-                                    <br>
 
                                     <div class="col col-md-6" align="left">
                                         <label for="form_edad"><i class="fa fa-calendar"></i> Fecha Nacimiento: </label>
                                         <strong>{% if solicitudbecario.fechaNacimiento %}{{ solicitudbecario.fechaNacimiento|date('Y-m-d') }}{% endif %}</strong>
 
                                     </div>
+                                </div>
+                                <br>
+                                <div class="row">
 
                                     <div class="col col-md-6" align="left">
                                         <label for="form_edad"><i class="fa fa-venus-mars"></i> Sexo: </label>
@@ -97,7 +101,12 @@
                             </div><!-- /.tab-pane -->
 
                             <div class="tab-pane" id="datosAcademicos{{solicitudbecario.idsolibecario}}" style="width:90%; margin-left: 5%">
-                                <h3>Datos Academicos</h3>
+                                <div class="row">
+                                    <div class="col col-md-6" align="left"><h3>Datos Academicos</h3></div>
+                                    <div class="col col-md-6">
+                                        <p align="right"><strong>Aspirante:</strong><u> {{app.user.getFirstName()  ~" "~app.user.getLastName()  }}</u></p>
+                                    </div>
+                                </div>
                                 <hr>
                                 <div class="row">  
 
@@ -132,25 +141,27 @@
                                 <br>
 
                                 <div class="row">
-                                    <div class="col col-md-3" align="left">
+                                    <div class="col col-md-6" align="left">
                                         <label for="form_paes"><i class="fa fa-list-alt"></i> Nota Paes: </label>
                                         {{ solicitudbecario.paes   }}
 
                                     </div>
 
-                                    <div class="col col-md-3" align="left">
+                                    <div class="col col-md-6" align="left">
                                         <label for="form_matricula"><i class="fa fa-usd"></i> Monto Matricula: </label>
                                         ${{ solicitudbecario.montosolimatriculabecario   }}
 
                                     </div>
-
-                                    <div class="col col-md-3" align="left">
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col col-md-6" align="left">
                                         <label for="form_cuotaM"><i class="fa fa-usd"></i> Cuota Mensual: </label>
                                         ${{ solicitudbecario.cuotasolimensualbecario   }}
 
                                     </div>
 
-                                    <div class="col col-md-3" align="left">
+                                    <div class="col col-md-6" align="left">
                                         <label for="form_duracion"><i class="fa fa-history"></i> Duracion Carrera: </label>
                                         {{ solicitudbecario.duracionsolicarrerabecario }} 
 
@@ -180,7 +191,12 @@
                             </div><!-- /.tab-pane -->
 
                             <div class="tab-pane" id="datosFamiliares{{solicitudbecario.idsolibecario}}" style="width:90%; margin-left: 5%">
-                                <h3>Datos Familiares</h3>
+                                <div class="row">
+                                    <div class="col col-md-6" align="left"><h3>Datos Familiares</h3></div>
+                                    <div class="col col-md-6">
+                                        <p align="right"><strong>Aspirante:</strong><u> {{app.user.getFirstName()  ~" "~app.user.getLastName()  }}</u></p>
+                                    </div>
+                                </div>
                                 <hr>
                                 <div class="row">
 
@@ -254,13 +270,14 @@
                             </div>#}
                         </div>
                     </div><!-- /.tab-content -->
+                    {%if (solicitudbecario.estadosolibecario==2 )%} <p style="color: crimson; font-size: 20px "><i class="fa fa-warning"></i> {{ solicitudbecario.observacionrechazo   }} </p>{% elseif(solicitudbecario.estadosolibecario==1) %} <p style="color: forestgreen; font-size: 20px "><i class="fa fa-check"></i> Felicidades! Su solicitud ha sido aprobada! </p> {%endif%}
                     <br>
                 </div><!-- /.nav-tabs-custom -->
             </div>
 
             <div class="modal-footer">
-                {% if (app.user.hasRole('ROLE_ADMIN') or app.user.hasRole('ROLE_COORDINADOR'))  %}
-                    <div class="row">
+                {% if ((app.user.hasRole('ROLE_ADMIN') or app.user.hasRole('ROLE_COORDINADOR')) and solicitudbecario.estadosolibecario==0)  %}
+                    <div style="float:right; margin-left: 1px">
                         <form style="" action="{{path('solicitud_aprobacion',{'id':solicitudbecario.idsolibecario,'val':1})}}" method="POST"> 
 
                             <button type="submit" class="btn btn-success" >Aprobar</button>

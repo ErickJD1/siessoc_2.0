@@ -11,11 +11,11 @@
             <div align="left">
                 <a style="font-size: 15px" href="{{ path('movimiento_new') }}" class="btn btn-success btn-sm"><i style="font-size: 20px" class="fa fa-plus-circle"></i> Registrar Movimiento</a>
             </div>
-            <br> </br>
+            <br>
 
             <table class="table table-bordered table-hover table-striped table-responsive" style="width:100%" id="tabelMahasiswa">
                 <thead class="thead-light">
-                    <tr>
+                <tr>
                 <th><center>Descripción</center></th>
                 <th><center>Monto</center></th>
                 <th><center>Estado</center></th>
@@ -29,36 +29,33 @@
                 <tbody>
 
                     {% for movimiento in movimientos %}
-                        <tr>
-                            <td>{{ movimiento.descripcionmov }}</td>
-                            <td><center>{{ "$"~movimiento.monto }}</center></td>
+                    <tr>
+                    <td>{{ movimiento.descripcionmov }}</td>
+                    <td><center>{{ "$"~movimiento.monto }}</center></td>
                     <td><center>{% if movimiento.estadomov==1 %}Aprobado{% elseif movimiento.estadomov==0  %}Pendiente{% else %}Rechazado{% endif %}</center></td>
-                    <td><center>{{ movimiento.idcuenta~" | "~movimiento.idcuenta.numcuenta }}</center></td>
+                    <td><center>{{ movimiento.idcuenta.numcuenta }}</center></td>
                     <td><center>{{ movimiento.idtipomov }}</center></td>
                     <td><center>{{ movimiento.idusuario }}</center></td>
                     <td><center>{% if movimiento.createdAt %}{{ movimiento.createdAt|date('Y-m-d H:i:s') }}{% endif %}</center></td>
                     <td>
-                    <center>
                         <div class="row">
 
-                        {% if app.user.hasRole('ROLE_ADMIN') or app.user.hasRole('ROLE_COORDINADOR') or app.user.hasRole('ROLE_FINANCIERO') or (app.user.getId()==movimiento.idUsuario.id) and movimiento.estadomov != 1 %}
-                            <div class="col col-md-3"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#deleteMovi{{ movimiento.idmov }}"><i class="fa fa-trash" style="font-size: 20px; color: crimson"></i></button>
-                                    {{ render(controller('AppBundle:Movimiento:showDelete', { 'id' : movimiento.idmov } )) }}
-                            </div>
+                            {% if app.user.hasRole('ROLE_ADMIN') or app.user.hasRole('ROLE_COORDINADOR') or app.user.hasRole('ROLE_FINANCIERO') or app.user.hasRole('ROLE_STAFF')  and (movimiento.estadomov == 2 or movimiento.estadomov == 0) and (app.user.getId()==movimiento.idUsuario.id)   %}
+                                <div class="col col-md-4"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#deleteMovi{{ movimiento.idmov }}"><i class="fa fa-trash" style="font-size: 20px; color: crimson"></i></button>
+                                        {{ render(controller('AppBundle:Movimiento:showDelete', { 'id' : movimiento.idmov } )) }}
+                                </div>
 
-                            <div class="col col-md-3" >
-                                <a href="{{ path('movimiento_edit',{ 'id' : movimiento.idmov }) }}" style="background-color: transparent; border: none;"><i class="fa fa-edit" style="font-size: 20px; color: limegreen"></i></a>
-                            </div>
-                        {% endif %}
-                        
-                        <div class="col col-md-3"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#VerMovi{{ movimiento.idmov }}"><i class="fa fa-eye" style="font-size: 20px; color: deepskyblue"></i>{% if((movimiento.estadomov == 0) and app.user.hasRole('ROLE_ADMIN') or app.user.hasRole('ROLE_COORDINADOR') or app.user.hasRole('ROLE_FINANCIERO') ) %}<span class="label label-danger" style="border-radius: 18px; position: absolute; margin-top: -15%;margin-left: -25%">1</span>{% elseif movimiento.estadomov==2 and app.user.hasRole('ROLE_STAFF')  %}<span class="label label-danger" style="border-radius: 18px; position: absolute; margin-left: -0.8em; top:-0.3em">1</span>{% endif %}</button>          
-                                    {{ render(controller('AppBundle:Movimiento:show', { 'id' : movimiento.idmov } )) }}
+                                <div class="col col-md-4" >
+                                    <a href="{{ path('movimiento_edit',{ 'id' : movimiento.idmov }) }}" style="background-color: transparent; border: none;"><i class="fa fa-edit" style="font-size: 20px; color: limegreen"></i></a>
+                                </div>
+                            {% endif %}
+
+                            <div class="col col-md-4"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#VerMovi{{ movimiento.idmov }}"><i class="fa fa-eye" style="font-size: 20px; color: deepskyblue"></i>{% if((movimiento.estadomov == 0) and app.user.hasRole('ROLE_ADMIN') or app.user.hasRole('ROLE_COORDINADOR') or app.user.hasRole('ROLE_FINANCIERO') ) %}<span class="label label-danger" style="border-radius: 18px; position: absolute; margin-top: -15%;margin-left: -25%">1</span>{% elseif movimiento.estadomov==2 and app.user.hasRole('ROLE_STAFF')  %}<span class="label label-danger" style="border-radius: 18px; position: absolute; margin-left: -0.8em; top:-0.3em">1</span>{% endif %}</button>          
+                                        {{ render(controller('AppBundle:Movimiento:show', { 'id' : movimiento.idmov } )) }}
                             </div>
                         </div>
-                    </center>
                     </td>
                     </tr>
-            </div>
         {% endfor %}
     </tbody>
 </table>

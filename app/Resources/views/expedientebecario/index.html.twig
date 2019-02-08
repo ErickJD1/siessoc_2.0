@@ -1,6 +1,7 @@
 {% extends "layout/base-layout.html.twig" %}
 
-
+{% block page_title %}Expediente{% endblock %}
+{% block page_subtitle %}{% endblock %}
 {% block page_content %}
 
     <div class="box box-primary">
@@ -34,6 +35,8 @@
                             <td>{{ expedientebecario.antecedentes }}</td>
                             <td>
                                 <div class="col col-md-3"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#VerExp{{ expedientebecario.idexpbecario}}"><i class="fa fa-eye" style="font-size: 20px; color: deepskyblue"></i></button>          
+                                        {{ render(controller('AppBundle:Expedientebecario:show', { 'id' : expedientebecario.idexpbecario } )) }}
+
                                 </div>
                             </td>
                         </tr>

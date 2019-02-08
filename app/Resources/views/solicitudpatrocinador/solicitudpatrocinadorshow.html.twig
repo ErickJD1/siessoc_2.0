@@ -1,51 +1,96 @@
 <div class="modal fade" id="VerSoliP{{ solicitudpatrocinador.idsolipatrocinador }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog" style="width:80%;margin-left: 10%">
         <div class="modal-content" style="border-radius: 40px">
 
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3 align="center"><strong><strong>{{ solicitudpatrocinador.idusuario.firstName~" "~solicitudpatrocinador.idusuario.lastName }}</strong></strong></h3>
+                <h3 align="center"><strong><strong>Solicitud Patrocinador</strong></strong></h3>
             </div>
             <div class="modal-body">
-
-                <div class="list-group">
+                <div style="background-color: lightgray; width: 95%; ">
                     <!--modal-->
-           <div class="row" style="margin-left:5%" align="left">
-              <div class="col col-md-7">
-                    
-                <h4><i class="fa fa-list"></i> Documento De Identidad</h4>
-                <p class="form-group"><strong>{{ solicitudpatrocinador.docidentidadsolipatrocinador }}</strong></p>
-                <hr>
-                <h4><i class="fa fa-money"></i> Monto Patrocinado</h4>
-                <p class="form-group"><strong>{{ solicitudpatrocinador.montoaportarsolipatrocinador }}</strong></p>
-                <hr>
-                <h4><i class="fa fa-list"></i> Telefono</h4>
-                <p class="form-group"><strong>{{ solicitudpatrocinador.telefonosolipatrocinador }}</strong></p>
-                <hr>
-                <h4><i class="fa fa-list"></i> Direccion</h4>
-                <p class="form-group"><strong>{{ solicitudpatrocinador.direccionsolipatrocinador }}</strong></p>
-                <hr>
-                <h4><i class="fa fa-text"></i> Estado</h4>
-                <p class="form-group"><strong>{% if solicitudpatrocinador.estadosolipatrocinador == 0 %}En Espera{% elseif  solicitudpatrocinador.estadosolipatrocinador == 1 %}Aprobado{% elseif  solicitudpatrocinador.estadosolipatrocinador == 2 %}Rechazado{% endif %}</strong></p>
-                <hr>
-            </div>
-                        <div class="col col-md-5">
+                    <div class="row" style="width: 90%; margin-left:5%;" align="left">
+                        <div class="row"> 
+                            <div class="col col-md-6">
+                                <h4><i class="fa fa-user"></i> Aspirante</h4>
+                                <p class="form-group"><strong>{{ app.user.firstName~" "~app.user.lastName}}</strong></p>
+                            </div>
+                            <div class="col col-md-6">
 
-                            <img style="width:75%;margin-top: 10%;margin-bottom: 2%" src="{{ asset('img/budget.png') }}"></img>
+                                <h4><i class="fa fa-envelope-open"></i> Correo</h4>
+                                <p class="form-group"><strong>{{ app.user.email}}</strong></p>
+
+                            </div>    
+                        </div> 
+                        <br>
+                        <div class="row">
+                            <div class="col col-md-6">
+
+                                <h4><i class="fa fa-card"></i> Documento De Identidad</h4>
+                                <p class="form-group"><strong>{{ solicitudpatrocinador.docidentidadsolipatrocinador }}</strong></p>
+                            </div>
+                            <div class="col col-md-6">
+                                <h4><i class="fa fa-money"></i> Monto Patrocinado</h4>
+                                <p class="form-group"><strong>{{ solicitudpatrocinador.montoaportarsolipatrocinador }}</strong></p>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">    
+                            <div class="col col-md-6">
+
+                                <h4><i class="fa fa-phone"></i> Telefono</h4>
+                                <p class="form-group"><strong>{{ solicitudpatrocinador.telefonosolipatrocinador }}</strong></p>
+                            </div>
+                            <div class="col col-md-6">
+                                <h4><i class="fa fa-street-view"></i> Direccion</h4>
+                                <p class="form-group"><strong>{{ solicitudpatrocinador.direccionsolipatrocinador }}</strong></p>
+
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row"  align="left">
+
+                            <div class="col col-md-6">
+                                <h4><i class="fa fa-check"></i> Estado</h4>
+                                <p class="form-group"><strong>{% if solicitudpatrocinador.estadosolipatrocinador == 0 %}En Espera{% elseif  solicitudpatrocinador.estadosolipatrocinador == 1 %}Aprobado{% elseif  solicitudpatrocinador.estadosolipatrocinador == 2 %}Rechazado{% endif %}</strong></p>
+
+                            </div>
                         </div>
                     </div>
 
-
-                    <div class="modal-footer">
-                        <div style="float:right">
-                            <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
-
-                        </div>
-
-                    </div>
                 </div>
+
+            </div>
+
+             <div class="modal-footer">
+                {% if ((app.user.hasRole('ROLE_ADMIN') or app.user.hasRole('ROLE_COORDINADOR')) and solicitudpatrocinador.estadosolipatrocinador==0)  %}
+                    <div style="float:right; margin-left: 1px">
+                        <form style="" action="{{path('solicitud_aprobacion',{'id':solicitudpatrocinador.idsolipatrocinador,'val':1})}}" method="POST"> 
+
+                            <button type="submit" class="btn btn-success" >Aprobar</button>
+                        </form></div>
+                    <div style="float:right; margin-left: 1px"> 
+                        <form action="{{path('solicitud_aprobacion',{'id':solicitudpatrocinador.idsolipatrocinador,'val':2})}}" method="POST"> 
+                            <div class="modal fade" id="recha{{  solicitudpatrocinador.idsolipatrocinador }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div style="width:50%; margin-left: 25%;" class="modal-dialog">
+                                    <div class="modal-content"  style="border-radius: 10px">
+                                        <div class="modal-body">
+                                            <textarea class="form-control" id="descripcion" name="descripcion" style="width:100%" placeholder="Observaciones del rechazo" name="descripcion"></textarea>
+                                            <button type="submit" class="btn btn-success" style="margin-top:1%;widt:100%" >Guardar</button>
+                                        </div>
+                                    </div>
+                                </div>   
+                            </div> 
+
+                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#recha{{ solicitudpatrocinador.idsolipatrocinador }}" >Rechazar</button>
+                        </form>
+                    </div>
+                {% endif %}                
             </div>
         </div>
     </div>
+</div>
+</div>
+</div>
 </div>
 

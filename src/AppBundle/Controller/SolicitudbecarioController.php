@@ -26,6 +26,7 @@ class SolicitudbecarioController extends Controller {
     public function indexAction() {
         $em = $this->getDoctrine()->getManager();
 
+        
         $solicitudbecarios = $em->getRepository('AppBundle:Solicitudbecario')->findAll();
         if ($this->getUser()->hasRole('ROLE_COORDINADOR') or $this->getUser()->hasRole('ROLE_ADMIN')) {
             return $this->render('solicitudbecario/Solicitudbecarioindex.html.twig', array(
@@ -184,6 +185,8 @@ class SolicitudbecarioController extends Controller {
             $this->addFlash('success', $msj);
         return $this->redirectToRoute('solicitudbecario_index');
         } elseif ($val == 2) {
+            $descripcion=$request->get("descripcion");
+            $solicitudbecario->setObservacionrechazo($descripcion);
             $solicitudbecario->setEstadosolibecario(2);
             $this->getDoctrine()->getManager()->flush();
             $msj = "El movimiento ha sido rechazado!";

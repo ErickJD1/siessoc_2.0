@@ -3,12 +3,14 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Pagocolaboracion;
+use AppBundle\Entity\Colaboracionmonetaria;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Pagocolaboracion controller.
+ * 
  *
  * @Route("pagocolaboracion")
  */
@@ -17,17 +19,18 @@ class PagocolaboracionController extends Controller
     /**
      * Lists all pagocolaboracion entities.
      *
-     * @Route("/", name="pagocolaboracion_index")
+     * @Route("/{id}", name="pagocolaboracion_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request, Colaboracionmonetaria $colaboracion)
     {
         $em = $this->getDoctrine()->getManager();
 
         $pagocolaboracions = $em->getRepository('AppBundle:Pagocolaboracion')->findAll();
 
-        return $this->render('pagocolaboracion/index.html.twig', array(
+        return $this->render('pagocolaboracion/pagocolaboracionindex.html.twig', array(
             'pagocolaboracions' => $pagocolaboracions,
+            'colaboracion' => $colaboracion
         ));
     }
 
@@ -51,7 +54,7 @@ class PagocolaboracionController extends Controller
             return $this->redirectToRoute('pagocolaboracion_show', array('id' => $pagocolaboracion->getId()));
         }
 
-        return $this->render('pagocolaboracion/new.html.twig', array(
+        return $this->render('pagocolaboracion/pagocolaboracionnew.html.twig', array(
             'pagocolaboracion' => $pagocolaboracion,
             'form' => $form->createView(),
         ));
@@ -67,11 +70,30 @@ class PagocolaboracionController extends Controller
     {
         $deleteForm = $this->createDeleteForm($pagocolaboracion);
 
-        return $this->render('pagocolaboracion/show.html.twig', array(
+        return $this->render('pagocolaboracion/pagocolaboracionshow.html.twig', array(
             'pagocolaboracion' => $pagocolaboracion,
             'delete_form' => $deleteForm->createView(),
         ));
     }
+    
+    
+     /**
+     * Finds and displays a pagocolaboracion entity.
+     *
+     * @Route("/{id}", name="pagocolaboracion_show_delete")
+     * @Method("GET")
+     */
+    public function showdeleteAction(Pagocolaboracion $pagocolaboracion)
+    {
+        $deleteForm = $this->createDeleteForm($pagocolaboracion);
+
+        return $this->render('pagocolaboracion/pagocolaboracionshowdelete.html.twig', array(
+            'pagocolaboracion' => $pagocolaboracion,
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+    
+    
 
     /**
      * Displays a form to edit an existing pagocolaboracion entity.
@@ -88,10 +110,11 @@ class PagocolaboracionController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('pagocolaboracion_edit', array('id' => $pagocolaboracion->getId()));
+            $this->addFlash('success', 'Registro Modificado Exitosamente!');
+             return $this->redirectToRoute('pagocolaboracion_index');
         }
 
-        return $this->render('pagocolaboracion/edit.html.twig', array(
+        return $this->render('pagocolaboracion/pagocolaboracionedit.html.twig', array(
             'pagocolaboracion' => $pagocolaboracion,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -128,7 +151,7 @@ class PagocolaboracionController extends Controller
     private function createDeleteForm(Pagocolaboracion $pagocolaboracion)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('pagocolaboracion_delete', array('id' => $pagocolaboracion->getId())))
+            ->setAction($this->generateUrl('pagocolaboracion_delete', array('id' => $pagocolaboracion->getIdpagocolaboracion())))
             ->setMethod('DELETE')
             ->getForm()
         ;

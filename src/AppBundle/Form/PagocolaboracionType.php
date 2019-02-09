@@ -13,7 +13,14 @@ class PagocolaboracionType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nombre')->add('apellido')->add('telefono')->add('monto')->add('fecha')->add('descripcionpago')->add('idusuario')        ;
+        $builder->add('nombre')
+                ->add('apellido')
+                ->add('telefono')
+                ->add('monto')
+                ->add('fecha')
+                ->add('pagorealizado')
+                ->add('descripcionpago');
+                //->add('idusuario')    
     }
     
     /**

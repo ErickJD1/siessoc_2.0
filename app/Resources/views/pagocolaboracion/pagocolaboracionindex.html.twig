@@ -1,0 +1,95 @@
+<div class="modal fade" id="VerAlumnos{{colaboracion.idcolaboracion}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width:80%; margin-left: 10%">
+        <div class="modal-content" style="border-radius: 8px">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 align="center"><strong><strong>Tipo De Colaboracion</strong></strong></h3>
+            </div>
+            <div class="modal-body">
+
+                <div class="list-group">
+                    <!--modal-->
+
+                    <table class="table table-bordered table-hover table-striped table-responsive" style="width:100%" id="tabelMahasiswa{{colaboracion.idcolaboracion}}">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Telefono</th>
+                                <th>Monto</th>
+                                <th>Tipo Colaboracion</th>
+                                <th>Realizo Pago</th>
+                                <th>Fecha</th>
+                                <th>Descripcionpago</th>
+                                <th>Accion</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for pagocolaboracion in pagocolaboracions %}
+                                <tr>
+                                    <td>{{ pagocolaboracion.nombre }}</td>
+                                    <td>{{ pagocolaboracion.apellido }}</td>
+                                    <td>{{ pagocolaboracion.telefono }}</td>
+                                    <td>{{ pagocolaboracion.monto }}</td>
+                                    <td>{{ pagocolaboracion.descripcioncolaboracion }}</td>
+                                    <td>{{ pagocolaboracion.pagorealizado }}</td>
+                                    <td>{% if pagocolaboracion.fecha %}{{ pagocolaboracion.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                    <td>{{ pagocolaboracion.descripcionpago }}</td>
+                                    <td>
+                                        <div style="float:left;">
+                                            <button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#VerpagoR{{ pagocolaboracion.idpagocolaboracion }}"><i class="fa fa-trash" style="font-size: 20px; color: crimson"></i></button>
+                                                {{ render(controller('AppBundle:Pagocolaboracion:edit', { 'id' : pagocolaboracion.idpagocolaboracion } )) }}
+                                        </div>
+                                    </td>
+                                </tr>
+
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <div class="modal-footer">
+                        <div style="float:right">
+                            <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% block javascripts_inline %}
+
+    <script language="JavaScript" type="text/javascript">
+
+        $(document).ready(function () {
+            $("#tabelMahasiswa{{colaboracion.idcolaboracion}}").DataTable({
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Lista De Becarios",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                    "infoFiltered": "(Filtrado de MAX total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar MENU Entradas",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                },
+            });
+            $("#tabelMahasiswa{{colaboracion.idcolaboracion}}").removeAttr("style");
+        });
+
+    </script>
+
+{%endblock%}

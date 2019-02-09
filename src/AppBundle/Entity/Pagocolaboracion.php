@@ -81,6 +81,20 @@ class Pagocolaboracion
     private $descripcionpago;
     
     
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="descripcioncolaboracion", type="string", length=100, nullable=true)
+     */
+    private $descripcioncolaboracion;
+    
+      /**
+     * @var string
+     *
+     * @ORM\Column(name="pagorealizado", type="string", length=2, nullable=true)
+     */
+    private $pagorealizado;
+    
       /**
      * @var \idusuario
      *
@@ -183,6 +197,22 @@ class Pagocolaboracion
 
     function setFecha(\DateTime $fecha) {
         $this->fecha = $fecha;
+    }
+
+    function getDescripcioncolaboracion() {
+        return $this->descripcioncolaboracion;
+    }
+
+    function setDescripcioncolaboracion($descripcioncolaboracion) {
+        $this->descripcioncolaboracion = $descripcioncolaboracion;
+    }
+
+    function getPagorealizado() {
+        return $this->pagorealizado;
+    }
+
+    function setPagorealizado($pagorealizado) {
+        $this->pagorealizado = $pagorealizado;
     }
 
 

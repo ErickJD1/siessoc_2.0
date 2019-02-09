@@ -1,0 +1,86 @@
+<div class="modal fade" id="VerpagoR{{ pagocolaboracion.idpagocolaboracion }}" tabindex="-1"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="border-radius: 40px">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 align="center"><strong><strong>{{  pagocolaboracion.idpagocolaboracion }}</strong></strong></h3>
+            </div>
+            <div class="modal-body">
+
+                <div class="list-group">
+                    <!--modal-->
+
+                    <div class="row" style="margin-left:5%" align="left">
+                        <!--modal-->
+                        <div class="col col-md-7">
+
+                            {{ form_start(edit_form) }}
+
+                            <div class="row">
+                                <div class="col col-md-6" align="left">
+                                    <label for="form_nombre">Nombre<span style="font-size: 25;color: red" >*</span></label>
+                                    {{ form_widget(edit_form.nombre) }}
+                                    {{ form_errors(edit_form.nombre) }}
+                                </div>
+
+                                <div class="col col-md-6" align="left">
+                                    <label for="form_nombre">Apellido<span style="font-size: 25;color: red" >*</span></label>
+                                    {{ form_widget(edit_form.apellido) }}
+                                    {{ form_errors(edit_form.apellido) }}
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col col-md-6" align="left">
+                                    <label for="form_nombre">Telefono<span style="font-size: 25;color: red" >*</span></label>
+                                    {{ form_widget(edit_form.telefono) }}
+                                    {{ form_errors(edit_form.telefono) }}
+                                </div>
+
+                                <div class="col col-md-6" align="left">
+                                    <label for="form_nombre">Monto<span style="font-size: 25;color: red" >*</span></label>
+                                    {{ form_widget(edit_form.monto) }}
+                                    {{ form_errors(edit_form.monto) }}
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col col-md-6" align="left">
+                                    <label for="form_fecha">Fecha<span style="font-size: 25;color: red" >*</span></label>
+                                    {{ form_widget(edit_form.fecha) }}
+                                    {{ form_errors(edit_form.fecha) }}
+                                </div>
+
+                                <div class="col col-md-6" align="left">
+                                    <label for="form_nombre">Pago Realizado<span style="font-size: 25;color: red" >*</span></label>
+                                    {{ form_widget(edit_form.pagorealizado) }}
+                                    {{ form_errors(edit_form.pagorealizado) }}
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col col-md-6" align="left">
+                                    <label for="form_fecha">Descripcion<span style="font-size: 25;color: red" >*</span></label>
+                                    {{ form_widget(edit_form.descripcionpago) }}
+                                    {{ form_errors(edit_form.descripcionpago) }}
+                                </div>
+                            </div>
+                            {{ form_end(edit_form) }}
+                        </div>
+
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <div style="float:right">
+                            <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

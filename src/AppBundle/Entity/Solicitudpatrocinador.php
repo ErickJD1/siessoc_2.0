@@ -7,7 +7,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use SalexUserBundle\Entity\User;
 
-
 /**
  * Solicitudpatrocinador
  *
@@ -15,8 +14,8 @@ use SalexUserBundle\Entity\User;
  * @ORM\Entity
  * @UniqueEntity("docidentidadsolipatrocinador")
  */
-class Solicitudpatrocinador
-{
+class Solicitudpatrocinador {
+
     /**
      * @var integer
      *
@@ -57,20 +56,25 @@ class Solicitudpatrocinador
     /**
      * @var string
      *
+     * @ORM\Column(name="OBSERVACIONPATROCINADOR", type="string", length=500, nullable=true)
+     */
+    private $observacionpatrocinador;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="ESTADOSOLIPATROCINADOR", type="string", length=1, nullable=true)
      */
     private $estadosolipatrocinador;
-    
-    
-      /**
+
+    /**
      * @var \DateTime
      * @ORM\Column(name="FECHACREACION", type="datetime", nullable=true)
      * @Assert\Type("\DateTime")
      */
     private $fechacreacion;
-    
-    
-      /**
+
+    /**
      * @var \idusuario
      *
      * @ORM\ManyToOne(targetEntity="User")
@@ -79,10 +83,17 @@ class Solicitudpatrocinador
      * })
      */
     private $idusuario;
+
     
-    
-    
-    /**
+    function getObservacionpatrocinador() {
+        return $this->observacionpatrocinador;
+    }
+
+    function setObservacionpatrocinador($observacionpatrocinador) {
+        $this->observacionpatrocinador = $observacionpatrocinador;
+    }
+
+        /**
      * Get idusuario
      *
      * @return integer
@@ -91,7 +102,6 @@ class Solicitudpatrocinador
         return $this->idusuario;
     }
 
-    
     /**
      * Set idusuario
      *
@@ -102,17 +112,15 @@ class Solicitudpatrocinador
     public function setIdusuario(\SalexUserBundle\Entity\User $idusuario = null) {
         $this->idusuario = $idusuario;
     }
-    
 
-      /**
+    /**
      * Set fechacreacion
      *
      * @param \DateTime $fechacreacion
      *
      * @return Solicitudpatrocinador
      */
-    public function setFechaapertura($fechacreacion)
-    {
+    public function setFechaapertura($fechacreacion) {
         $this->fechaapertura = $fechacreacion;
 
         return $this;
@@ -123,11 +131,10 @@ class Solicitudpatrocinador
      *
      * @return \DateTime
      */
-    public function getFechaapertura()
-    {
+    public function getFechaapertura() {
         return $this->fechacreacion;
     }
-    
+
     /**
      * Set docidentidadsolipatrocinador
      *
@@ -135,8 +142,7 @@ class Solicitudpatrocinador
      *
      * @return Solicitudpatrocinador
      */
-    public function setDocidentidadsolipatrocinador($docidentidadsolipatrocinador)
-    {
+    public function setDocidentidadsolipatrocinador($docidentidadsolipatrocinador) {
         $this->docidentidadsolipatrocinador = $docidentidadsolipatrocinador;
 
         return $this;
@@ -147,8 +153,7 @@ class Solicitudpatrocinador
      *
      * @return string
      */
-    public function getDocidentidadsolipatrocinador()
-    {
+    public function getDocidentidadsolipatrocinador() {
         return $this->docidentidadsolipatrocinador;
     }
 
@@ -159,8 +164,7 @@ class Solicitudpatrocinador
      *
      * @return Solicitudpatrocinador
      */
-    public function setMontoaportarsolipatrocinador($montoaportarsolipatrocinador)
-    {
+    public function setMontoaportarsolipatrocinador($montoaportarsolipatrocinador) {
         $this->montoaportarsolipatrocinador = $montoaportarsolipatrocinador;
 
         return $this;
@@ -171,8 +175,7 @@ class Solicitudpatrocinador
      *
      * @return string
      */
-    public function getMontoaportarsolipatrocinador()
-    {
+    public function getMontoaportarsolipatrocinador() {
         return $this->montoaportarsolipatrocinador;
     }
 
@@ -183,8 +186,7 @@ class Solicitudpatrocinador
      *
      * @return Solicitudpatrocinador
      */
-    public function setTelefonosolipatrocinador($telefonosolipatrocinador)
-    {
+    public function setTelefonosolipatrocinador($telefonosolipatrocinador) {
         $this->telefonosolipatrocinador = $telefonosolipatrocinador;
 
         return $this;
@@ -195,8 +197,7 @@ class Solicitudpatrocinador
      *
      * @return string
      */
-    public function getTelefonosolipatrocinador()
-    {
+    public function getTelefonosolipatrocinador() {
         return $this->telefonosolipatrocinador;
     }
 
@@ -207,8 +208,7 @@ class Solicitudpatrocinador
      *
      * @return Solicitudpatrocinador
      */
-    public function setDireccionsolipatrocinador($direccionsolipatrocinador)
-    {
+    public function setDireccionsolipatrocinador($direccionsolipatrocinador) {
         $this->direccionsolipatrocinador = $direccionsolipatrocinador;
 
         return $this;
@@ -219,8 +219,7 @@ class Solicitudpatrocinador
      *
      * @return string
      */
-    public function getDireccionsolipatrocinador()
-    {
+    public function getDireccionsolipatrocinador() {
         return $this->direccionsolipatrocinador;
     }
 
@@ -231,8 +230,7 @@ class Solicitudpatrocinador
      *
      * @return Solicitudpatrocinador
      */
-    public function setEstadosolipatrocinador($estadosolipatrocinador)
-    {
+    public function setEstadosolipatrocinador($estadosolipatrocinador) {
         $this->estadosolipatrocinador = $estadosolipatrocinador;
 
         return $this;
@@ -243,8 +241,7 @@ class Solicitudpatrocinador
      *
      * @return string
      */
-    public function getEstadosolipatrocinador()
-    {
+    public function getEstadosolipatrocinador() {
         return $this->estadosolipatrocinador;
     }
 
@@ -253,8 +250,7 @@ class Solicitudpatrocinador
      *
      * @return integer
      */
-    public function getIdsolipatrocinador()
-    {
+    public function getIdsolipatrocinador() {
         return $this->idsolipatrocinador;
     }
 
@@ -265,10 +261,9 @@ class Solicitudpatrocinador
      *
      * @return Solicitudpatrocinador
      */
-    public function setFechacreacion($fechacreacion)
-    {
+    public function setFechacreacion($fechacreacion) {
         $this->fechacreacion = $fechacreacion;
-    
+
         return $this;
     }
 
@@ -277,8 +272,8 @@ class Solicitudpatrocinador
      *
      * @return \DateTime
      */
-    public function getFechacreacion()
-    {
+    public function getFechacreacion() {
         return $this->fechacreacion;
     }
+
 }

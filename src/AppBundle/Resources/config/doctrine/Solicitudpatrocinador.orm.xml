@@ -20,6 +20,11 @@
         <option name="fixed"/>
       </options>
     </field>
+    <field name="observacionpatrocinador" type="string" column="OBSERVACIONPATROCINADOR" length="500" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
     <field name="estadosolipatrocinador" type="string" column="ESTADOSOLIPATROCINADOR" length="1" nullable="true">
       <options>
         <option name="fixed">1</option>

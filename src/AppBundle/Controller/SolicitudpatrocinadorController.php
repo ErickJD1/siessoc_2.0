@@ -74,8 +74,8 @@ class SolicitudpatrocinadorController extends Controller {
             return $this->redirectToRoute('solicitudpatrocinador_index');
         } elseif ($val == 2) {
             $descripcion = $request->get("descripcion");
-//            $solicitudpatrocinador->setObservacionrechazo($descripcion);
-//            $solicitudpatrocinador->setEstadosolipatrocinador(2);
+            $solicitudpatrocinador->setObservacionpatrocinador($descripcion);
+            $solicitudpatrocinador->setEstadosolipatrocinador(2);
             $this->getDoctrine()->getManager()->flush();
             $msj = "El movimiento ha sido rechazado!";
             $this->addFlash('success', $msj);
@@ -94,6 +94,7 @@ class SolicitudpatrocinadorController extends Controller {
         $form = $this->createForm('AppBundle\Form\SolicitudpatrocinadorType', $solicitudpatrocinador);
         $solicitudpatrocinador->setIdusuario($this->getUser());
         $solicitudpatrocinador->setEstadosolipatrocinador(0);
+        $solicitudpatrocinador->setFechacreacion(new \DateTime());
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

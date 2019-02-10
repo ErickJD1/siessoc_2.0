@@ -130,6 +130,9 @@ class PagocolaboracionController extends Controller {
             return $this->redirectToRoute('pagocolaboracion_edit');
         }
 
+       // $form = new ColaboracionmonetariaController();
+       // $form->getformulario();
+        
         return $this->render('pagocolaboracion/pagocolaboracionedit.html.twig', array(
                     'pagocolaboracion' => $pagocolaboracion,
                     'edit_form' => $editForm->createView(),

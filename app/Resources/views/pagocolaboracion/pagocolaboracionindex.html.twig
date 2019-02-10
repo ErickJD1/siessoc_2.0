@@ -39,13 +39,14 @@
                                     <td>{{ pagocolaboracion.descripcionpago }}</td>
                                     <td>
                                         <div style="float:left;">
-                                            <button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#VerpagoR{{ pagocolaboracion.idpagocolaboracion }}"><i class="fa fa-trash" style="font-size: 20px; color: crimson"></i></button>
+                                            <button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#VerpagoR{{ pagocolaboracion.idpagocolaboracion }}"><i class="fa fa-edit" style="font-size: 20px; color: crimson"></i></button>
                                                 {{ render(controller('AppBundle:Pagocolaboracion:edit', { 'id' : pagocolaboracion.idpagocolaboracion } )) }}
                                         </div>
                                     </td>
                                 </tr>
 
-                        {% endfor %}
+
+                            {% endfor %}
                         </tbody>
                     </table>
                     <div class="modal-footer">

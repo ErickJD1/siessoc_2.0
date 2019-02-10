@@ -4,7 +4,7 @@
 
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3 align="center"><strong><strong>{{  pagocolaboracion.idpagocolaboracion }}</strong></strong></h3>
+                <h3 align="center"><strong><strong>{{  pagocolaboracion.nombre~" "~pagocolaboracion.apellido }}</strong></strong></h3>
             </div>
             <div class="modal-body">
 
@@ -17,7 +17,7 @@
 
                             {{ form_start(edit_form) }}
 
-                            <div class="row">
+                            <div class="row hidden">
                                 <div class="col col-md-6" align="left">
                                     <label for="form_nombre">Nombre<span style="font-size: 25;color: red" >*</span></label>
                                     {{ form_widget(edit_form.nombre) }}
@@ -30,8 +30,8 @@
                                     {{ form_errors(edit_form.apellido) }}
                                 </div>
                             </div>
-                            <br>
-                            <div class="row">
+
+                            <div class="row hidden">
                                 <div class="col col-md-6" align="left">
                                     <label for="form_nombre">Telefono<span style="font-size: 25;color: red" >*</span></label>
                                     {{ form_widget(edit_form.telefono) }}
@@ -44,43 +44,50 @@
                                     {{ form_errors(edit_form.monto) }}
                                 </div>
                             </div>
-                            <br>
+
                             <div class="row">
-                                <div class="col col-md-6" align="left">
+                                <div class="col col-md-6 hidden" align="left">
                                     <label for="form_fecha">Fecha<span style="font-size: 25;color: red" >*</span></label>
                                     {{ form_widget(edit_form.fecha) }}
                                     {{ form_errors(edit_form.fecha) }}
                                 </div>
 
+
+                            </div>
+
+                            <div class="row">
                                 <div class="col col-md-6" align="left">
                                     <label for="form_nombre">Pago Realizado<span style="font-size: 25;color: red" >*</span></label>
                                     {{ form_widget(edit_form.pagorealizado) }}
                                     {{ form_errors(edit_form.pagorealizado) }}
                                 </div>
-                            </div>
-                            <br>
-                            <div class="row">
                                 <div class="col col-md-6" align="left">
                                     <label for="form_fecha">Descripcion<span style="font-size: 25;color: red" >*</span></label>
                                     {{ form_widget(edit_form.descripcionpago) }}
                                     {{ form_errors(edit_form.descripcionpago) }}
                                 </div>
                             </div>
-                            {{ form_end(edit_form) }}
+                            <br>
+                            
                         </div>
 
                     </div>
 
 
                     <div class="modal-footer">
-                        <div style="float:right">
-                            <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+                        <div class="row">
+                            <div class="col col-md-12" align="right">
+                                <a href="{{ path('colaboracionmonetaria_index') }}" class="btn btn-primary btn-xl">Cancelar</a>
+                                <input  class="btn btn-success btn-xl" type="submit"  value="Guardar" />
 
+
+                            </div>
                         </div>
-
                     </div>
+                            {{ form_end(edit_form) }}
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>

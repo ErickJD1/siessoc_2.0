@@ -38,9 +38,15 @@
                                     <td>{% if pagocolaboracion.fecha %}{{ pagocolaboracion.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
                                     <td>{{ pagocolaboracion.descripcionpago }}</td>
                                     <td>
-                                        <div style="float:left;">
-                                            <button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#VerpagoR{{ pagocolaboracion.idpagocolaboracion }}"><i class="fa fa-edit" style="font-size: 20px; color: crimson"></i></button>
-                                                {{ render(controller('AppBundle:Pagocolaboracion:edit', { 'id' : pagocolaboracion.idpagocolaboracion } )) }}
+                                        <div align="center">
+                                            {% if( pagocolaboracion.pagorealizado=='NO') %}
+                                                <form id="formPago" action="{{path('pagocolaboracion_realizarpago',{'id':pagocolaboracion.idpagocolaboracion,'val':'SI'})}}" method="POST"> 
+                                                    <input class="hidden" type="text" id="pagoReali" value="{{pagocolaboracion.idpagocolaboracion}}">
+                                                    <button type="button" onClick="realizarPago()" class="btn btn-warning" style="margin-top:1%;widt:100%" title="Pagar"><i class="fa fa-money"></i></button>
+                                                </form> 
+                                            {%else%}
+                                                <i style="color: green" class="fa fa-check"></i>
+                                            {% endif %}
                                         </div>
                                     </td>
                                 </tr>
@@ -90,6 +96,75 @@
             });
             $("#tabelMahasiswa{{colaboracion.idcolaboracion}}").removeAttr("style");
         });
+
+
+        function realizarPago()
+        {
+            var form = document.getElementById('formPago');
+            var id2 = document.getElementById('pagoReali').value;
+            $.ajax({
+                method: "GET",
+                url: "{{ url('pagocolaboracion_realizarp') }}",
+                data: "idpago=" + id2,
+                dataType: 'json',
+                success: function (data)
+                {
+                    if (data.hasOwnProperty("response") && data.response === "success")
+                    {
+                        if (data.hasOwnProperty("posts"))
+                        {
+                            //http://stackoverflow.com/questions/3710204/how-to-check-if-a-string-is-a-valid-json-string-in-javascript-without-using-try/3710226
+                            if (/^[\],:{}\s]*$/.test(data.posts.replace(/\\["\\\/bfnrtu]/g, '@').
+                                    replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']').
+                                    replace(/(?:^|:|,)(?:\s*\[)+/g, '')))
+                            {
+                                var posts = JSON.parse(data.posts);
+                                if (posts.length > 0)
+                                {
+
+                                } else
+                                {
+                                    console.log("INVALID JSON STRING");
+                                }
+                            } else
+                            {
+                                console.log("POSTS NOT FOUND");
+                            }
+                        }
+                    }
+                },
+                error: function (jqXHR, exception)
+                {
+                    if (jqXHR.status === 405)
+                    {
+                        console.error("METHOD NOT ALLOWED!");
+                    }
+                }
+            });
+
+
+            $.ajax({
+                url: "{{ url('pagocolaboracion_indexupdate',{'id':colaboracion.idcolaboracion}) }}",
+                type: "GET",
+                data: {veruser: 1},
+                success: function (data) {
+                    // En caso de que se ejecute
+                    //$('#tabelMahasiswa{{colaboracion.idcolaboracion}} > tbody').html(data);
+        {# var myTable = $('#tabelMahasiswa{{colaboracion.idcolaboracion}}').DataTable();
+         myTable.ajax.reload();#}
+
+                         var table = $('#tabelMahasiswa{{colaboracion.idcolaboracion}}').DataTable();
+                         table.clear();
+                         table.rows.add(data.data).draw();
+
+                     }
+                 });
+
+
+
+             }
+             ;
+
 
     </script>
 

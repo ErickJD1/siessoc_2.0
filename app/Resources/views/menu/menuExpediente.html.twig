@@ -1,6 +1,6 @@
 {% extends "layout/base-layout.html.twig" %}
 
-{% block page_title %} Menu | Colaboracion Monetaria {% endblock %}
+{% block page_title %} Menu | Expediente {% endblock %}
 
 {% block stylesheets %}
     {{parent()}}
@@ -18,39 +18,39 @@
     <div class="box box-primary" style="min-height: 400px; min-width: 300px;">
         <div style="width:90%; margin-left:5%; margin-top: 2% ">
             <div class="row">
-                {% if app.user.hasRole('ROLE_COORDINADOR') or app.user.hasRole('ROLE_STAFF') or app.user.hasRole('ROLE_ADMIN') or app.user.hasRole('ROLE_FINANCIERO') %}      
+                {% if app.user.hasRole('ROLE_COORDINADOR') or app.user.hasRole('ROLE_STAFF') or app.user.hasRole('ROLE_ADMIN')  %} 
                     <div class="col-lg-6 col-md-6">
                         <!-- small box -->
-                        <div class="small-box bg-red">
+                        <div class="small-box bg-blue">
                             <div class="inner">
-                                <h3 class="menuT">Colaboracion Monetaria</h3>
+                                <h3 class="menuT">Expedientes Becario</h3>
 
-                                <p>Definir Colaboracion</p>
+                                <p>Ver Expedientes</p>
                             </div>
                             <div class="icon">
-                                <i class="fa fa-money">
+                                <i class="fa fa-file-text">
 
                                 </i>
                             </div>
-                            <a href="{{path('colaboracionmonetaria_index')}}" class="small-box-footer">Ingresar <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="{{path('expedientebecario_index')}}" class="small-box-footer">Ingresar <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                 {% endif %}
 
-                {% if app.user.hasRole('ROLE_COORDINADOR') or app.user.hasRole('ROLE_STAFF') or app.user.hasRole('ROLE_ADMIN') or app.user.hasRole('ROLE_FINANCIERO') %}      
+                {% if app.user.hasRole('ROLE_COORDINADOR') or app.user.hasRole('ROLE_STAFF') or app.user.hasRole('ROLE_ADMIN')  %} 
                     <!-- ./col -->
                     <div class="col-lg-6 col-md-6">
                         <!-- small box -->
                         <div class="small-box bg-green">
                             <div class="inner">
-                                <h3 class="menuT">Entrega de Colaboracion</h3>
+                                <h3 class="menuT">Expedientes Patrocinador</h3>
 
-                                <p>Entregar Colaboracion</p>
+                                <p>ver Expediente</p>
                             </div>
                             <div class="icon">
                                 <i class="fa fa-file-text"></i>
                             </div>
-                            <a href="{{path('colaboracionmonetaria_index')}}" class="small-box-footer">Ingresar<i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="{{path('expedientebecario_index')}}" class="small-box-footer">Ingresar<i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                 {% endif %}

@@ -18,7 +18,7 @@ class TipomovimientoType extends AbstractType
     {
         $builder->add('nombretipo',null,array('label'=>'Nombre Tipo Movimiento','attr'=>array('placeholder'=>'Ej: Ingreso de fondos')))
                 ->add('descripciontipomov',TextareaType::class,array('label'=>'Descripción'))
-                ->add('clasificacion',ChoiceType::class,array('label'=>'Clasificación','placeholder' => 'Seleccione la clasificación','choices'=>array('Ingreso'=>1, 'Egreso'=>0)))
+                ->add('clasificacion',ChoiceType::class,array('label'=>'Clasificación','placeholder' => '','choices'=>array('Ingreso'=>1, 'Egreso'=>0)))
                 ->add('estadotipomov',null,array('label'=>'Activo','data'=>TRUE)) ;
     }
 

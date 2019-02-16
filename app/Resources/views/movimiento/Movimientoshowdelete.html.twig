@@ -4,14 +4,14 @@
 
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3 align="center"><strong>¿Eliminar Movimiento?</strong></h3>
+                <h3 align="center"><strong>¿Eliminar Movimiento de Fondos?</strong></h3>
             </div>
             <div class="modal-body">
 
                 <div class="row" style="margin-left:5%" align="left">
                     <!--modal-->
                     <div class="col col-md-7">
-                    <h4><i class="fa fa-list"></i>  Descripcion Del Movimiento</h4>
+                    <h4><i class="fa fa-list"></i>  Descripción Del Movimiento</h4>
                     <p class="form-group"><strong>{{ movimiento.descripcionmov }}</strong></p>
                     <hr>
                     <h4><i class="fa fa-money"></i>  Monto</h4>
@@ -20,10 +20,10 @@
                     <h4><i class="fa fa-check-square"></i>  Estado</h4>
                     <p class="form-group"><strong>{% if movimiento.estadomov %}Activo{% else %}Inactivo{% endif %}</strong></p>
 <hr>
-                    <h4><i class="fa fa-table"></i>  Tipo Cuenta</h4>
+                    <h4><i class="fa fa-table"></i>  Tipo de Cuenta</h4>
                     <p class="form-group"><strong>{{ movimiento.idcuenta }}</strong></p>
 <hr>
-                    <h4><i class="fa fa-table"></i>  Tipo De Movimiento</h4>
+                    <h4><i class="fa fa-table"></i>  Tipo de Movimiento</h4>
                     <p class="form-group"><strong>{{ movimiento.idtipomov }}</strong></p>
                     </div>
                     <div class="col col-md-5">

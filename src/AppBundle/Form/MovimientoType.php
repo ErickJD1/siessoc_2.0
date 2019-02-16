@@ -18,7 +18,7 @@ class MovimientoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('descripcionmov',TextareaType::class, array('label'=>'Descripcion'))
-                ->add('monto',null,array('label'=>'Monto', 'invalid_message' => 'Valor Incorreco Campo Numerico, maximo %num% caracteres','invalid_message_parameters' => array('%num%' => 9)))
+                ->add('monto',null,array('label'=>'Monto', 'invalid_message' => 'Se require un valor numérico con un máximo de %num% caracteres','invalid_message_parameters' => array('%num%' => 9)))
                 ->add('idcuenta',EntityType::class,array('class'=>'AppBundle:Cuenta'))
                 ->add('idtipomov')
                 ->add('comprobante_file', VichFileType::class, array(
@@ -26,7 +26,7 @@ class MovimientoType extends AbstractType
                     'download_link' =>false,
                     'allow_delete' =>true,
                     ));
-                  
+
     }
 
     /**

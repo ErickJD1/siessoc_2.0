@@ -23,14 +23,14 @@
                 {{ form_start(form) }}
                 <div class="row">
                     <div class="col col-md-6" align="left">
-                        <label for="form_ncuenta">Numero De Cuenta<span style="font-size: 25;color: red" >*</span></label>
+                        <label for="form_ncuenta">Número de Cuenta<span style="font-size: 25;color: red" >*</span></label>
                         {{ form_widget(form.numcuenta) }}
                         {{ form_errors(form.numcuenta) }}
                     </div>
 
                     <br>
                     <div class="col col-md-6" align="left">
-                        <label for="form_nomcuenta">Nombre De Cuenta<span style="font-size: 25;color: red" >*</span></label>
+                        <label for="form_nomcuenta">Cuenta<span style="font-size: 25;color: red" >*</span></label>
                         {{ form_widget(form.nomcuenta) }}
                         {{ form_errors(form.nomcuenta) }}
                     </div>
@@ -38,7 +38,7 @@
                 <br>
                 <div class="row">
                     <div class="col col-md-12">
-                        <label for="form_descripcion">Descripcion<span style="font-size: 25;color: red" >*</span></label>
+                        <label for="form_descripcion">Descripción<span style="font-size: 25;color: red" >*</span></label>
                         {{ form_errors(form.descripcioncuenta) }}
                         {{ form_widget(form.descripcioncuenta) }}
                     </div>
@@ -71,18 +71,18 @@
                 <hr>
                 <div class="row" style="width: 90%">
                     <div class="col col-md-12" align="right">
-                        <a href="{{ path('cuenta_index') }}" class="btn btn-primary btn-xl">Cancelar</a>
+                        <a href="{{ path('cuenta_index') }}" class="btn btn-danger btn-xl">Cancelar</a>
                         <input  class="btn btn-success btn-xl" type="submit"  value="Guardar" />
                     </div>
                 </div>
                                 <br>
-                                
+
                 {{ form_end(form) }}
             </div>
             <br>
             <br>
         </div>
-        
-     
+
+
 
 {% endblock %}

@@ -17,8 +17,8 @@
           <thead class="thead-light">
             <tr>
                 <th><center>Banco</center></th>
-                <th><center>Nombre</center></th>
-                <th style="width:150px;"><center>Accion</center></th>
+                <th><center>Estado</center></th>
+                <th style="width:150px;"><center>Acciones</center></th>
 
             </tr>
         </thead>
@@ -29,7 +29,7 @@
               <td><center>{{ banco.nombanco }}</center></td>
               <td><center>{% if banco.estadobanco %}Activo{% else %}Inactivo{% endif %}</center></td>
               <td class="row" style="width:150px;">
-  
+
                         <div class="col col-md-4"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#showdeleteBanco{{ banco.idbanco }}"><i class="fa fa-trash" style="font-size: 20px; color: crimson"></i></button>
                                 {{ render(controller('AppBundle:Banco:showdelete', { 'id' : banco.idbanco } )) }}
                         </div>
@@ -37,15 +37,15 @@
                         <div class="col col-md-4" >
                             <a href="{{ path('banco_edit',{ 'id' : banco.idbanco }) }}" style="background-color: transparent; border: none;"><i class="fa fa-edit" style="font-size: 20px; color: limegreen"></i></a>
                         </div>
-                        
+
                         <div class="col col-md-4"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#showBanco{{ banco.idbanco }}"><i class="fa fa-eye" style="font-size: 20px; color: deepskyblue"></i></button>
                                 {{ render(controller('AppBundle:Banco:show', { 'id' : banco.idbanco } )) }}
                         </div>
-                
+
               </td>
 
           </tr>
-    
+
       {% endfor %}
       </tbody>
   </table>

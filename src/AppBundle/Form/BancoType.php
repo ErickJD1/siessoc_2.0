@@ -15,7 +15,7 @@ class BancoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('nombanco',null,array('label'=>'Banco'))
-                ->add('estadobanco',null,array('label'=>'Estado')) ;
+                ->add('estadobanco',null,array('label'=>'Activo')) ;
     }
 
     /**

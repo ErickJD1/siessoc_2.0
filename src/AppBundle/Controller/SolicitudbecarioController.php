@@ -124,7 +124,7 @@ class SolicitudbecarioController extends Controller {
     /**
      * Finds and displays a solicitudbecario entity.
      *
-     * @Route("/{id}?{val}", name="solicitud_aprobacion")
+     * @Route("/{id}?{val}", name="solicitudbecario_aprobacion")
      * @Method({"GET", "POST"})
      */
     public function aprobarAction(Request $request, Solicitudbecario $solicitudbecario, $val) {

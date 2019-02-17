@@ -106,6 +106,15 @@ class Pagocolaboracion
     private $idusuario;
     
     
+       /**
+     * @var integer
+     *
+     * @ORM\Column(name="idcolaboracion", type="integer", nullable=false)
+     * @ORM\Id
+     */
+    private $idcolaboracion;
+    
+    
       /**
      * Get idusuario
      *
@@ -215,6 +224,12 @@ class Pagocolaboracion
         $this->pagorealizado = $pagorealizado;
     }
 
+    function getIdcolaboracion() {
+        return $this->idcolaboracion;
+    }
 
+    function setIdcolaboracion($idcolaboracion) {
+        $this->idcolaboracion = $idcolaboracion;
+    }
 
 }

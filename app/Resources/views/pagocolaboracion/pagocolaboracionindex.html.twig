@@ -21,7 +21,6 @@
                                 <th>Tipo Colaboracion</th>
                                 <th>Realizo Pago</th>
                                 <th>Fecha</th>
-                                <th>Descripcionpago</th>
                                 <th>Accion</th>
 
                             </tr>
@@ -34,11 +33,9 @@
                                     <td>{{ pagocolaboracion.telefono }}</td>
                                     <td>{{ pagocolaboracion.monto }}</td>
                                     <td>{{ pagocolaboracion.descripcioncolaboracion }}</td>
-                                    <td>{{ pagocolaboracion.pagorealizado }}</td>
-                                    <td>{% if pagocolaboracion.fecha %}{{ pagocolaboracion.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
-                                    <td>{{ pagocolaboracion.descripcionpago }}</td>
-                                    <td>
-                                        <div align="center">
+                                    <td id="pagoTD{{pagocolaboracion.idpagocolaboracion}}">{{ pagocolaboracion.pagorealizado }}</td>
+                                    <td>{% if pagocolaboracion.fecha %}{{ pagocolaboracion.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>                                    <td>
+                                        <div align="center" id="check{{pagocolaboracion.idpagocolaboracion}}">
                                             {% if( pagocolaboracion.pagorealizado=='NO') %}
                                                 <form id="formPago" action="{{path('pagocolaboracion_realizarpago',{'id':pagocolaboracion.idpagocolaboracion,'val':'SI'})}}" method="POST"> 
                                                     <input class="hidden" type="text" id="pagoReali" value="{{pagocolaboracion.idpagocolaboracion}}">
@@ -121,7 +118,9 @@
                                 var posts = JSON.parse(data.posts);
                                 if (posts.length > 0)
                                 {
-
+                                        var idPago=$('#pagoReali').val();
+                                        $('#check'+idPago).html(`<i style="color: green" class="fa fa-check"></i>`);
+                                        $('#pagoTD'+idPago).html("SI");
                                 } else
                                 {
                                     console.log("INVALID JSON STRING");

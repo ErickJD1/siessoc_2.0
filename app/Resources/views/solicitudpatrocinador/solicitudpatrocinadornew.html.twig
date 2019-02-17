@@ -8,7 +8,7 @@
 
     <div class="box box-primary" style="width: 100%">
 
-         <div  style="width:70%; margin-top: 2%; margin-left: 15%; background-color:#F3F3F3; border-radius:5px " class="panel panel-default"> 
+        <div  style="width:70%; margin-top: 2%; margin-left: 15%; background-color:#F3F3F3; border-radius:5px " class="panel panel-default"> 
 
             <div class="col col-md-12" align="center" > 
                 <img style="width:80px;margin-top: 2%;margin-bottom: 2%" src="{{ asset('img/document.png') }}"></img>
@@ -22,11 +22,42 @@
             <div  class="container"  style="width: 75%; margin-top: 3%; margin-bottom: 3%">
 
                 {{ form_start(form, {'action': path('solicitudpatrocinador_new'), 'method': 'POST'}) }}
-                {{ form_widget(form) }}
+                <div class="row">     
 
+                    <div class="col col-md-12" align="left">
+                        <label for="form_documento">Numero de Identidad<span style="font-size: 25;color: red" >*</span></label>
+                        {{ form_widget(form.docidentidadsolipatrocinador) }}
+                        {{ form_errors(form.docidentidadsolipatrocinador) }}   
+                    </div>
+                </div>  
+                <br>
+                <div class="row">       
+                    <div class="col col-md-12" align="left">
+                        <label for="form_documento">Telefono<span style="font-size: 25;color: red" >*</span></label>
+                        {{ form_widget(form.telefonosolipatrocinador) }}
+                        {{ form_errors(form.telefonosolipatrocinador) }}   
+                    </div> 
+                </div>
+                <br>
+                <div class="row">        
+                    <div class="col col-md-12" align="left">
+                        <label for="form_documento">Monto a Aportar<span style="font-size: 25;color: red" >*</span></label>
+                        {{ form_widget(form.montoaportarsolipatrocinador) }}
+                        {{ form_errors(form.montoaportarsolipatrocinador) }}   
+                    </div> 
+                </div>
+                <br>
+                <div class="row">        
+                    <div class="col col-md-12" align="left">
+                        <label for="form_documento">Dirección<span style="font-size: 25;color: red" >*</span></label>
+                        {{ form_widget(form.direccionsolipatrocinador) }}
+                        {{ form_errors(form.direccionsolipatrocinador) }}   
+                    </div> 
+                </div>
+                <br>
                 <div class="row">
                     <div class="col col-md-12" align="right">
-                        <a href="{{ path('solicitudpatrocinador_index') }}" class="btn btn-primary btn-xl">Cancelar</a>
+                        <a href="{{ path('solicitudpatrocinador_index') }}" class="btn btn-warning btn-xl">Cancelar</a>
                         <input  class="btn btn-success btn-xl" type="submit"  value="Guardar" />
 
 

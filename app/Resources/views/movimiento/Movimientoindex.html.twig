@@ -9,7 +9,7 @@
         <div style="width:90%; margin-left:5%; margin-top: 2% ">
 
             <div align="left">
-                <a style="font-size: 15px" href="{{ path('movimiento_new') }}" class="btn btn-success btn-sm"><i style="font-size: 20px" class="fa fa-plus-circle"></i> Registrar Movimiento</a>
+                <a style="font-size: 15px" href="{{ path('movimiento_new') }}" class="btn btn-success btn-sm"><i style="font-size: 20px" class="fa fa-plus-circle"></i> Movimiento</a>
             </div>
             <br>
 
@@ -23,7 +23,7 @@
                 <th><center>Tipo</center></th>
                 <th><center>Usuario</center></th>
                 <th><center>Fecha</center></th>
-                <th><center>Accion</center></th>
+                <th><center>Acciones</center></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -50,7 +50,7 @@
                                 </div>
                             {% endif %}
 
-                            <div class="col col-md-4"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#VerMovi{{ movimiento.idmov }}"><i class="fa fa-eye" style="font-size: 20px; color: deepskyblue"></i>{% if((movimiento.estadomov == 0) and app.user.hasRole('ROLE_ADMIN') or app.user.hasRole('ROLE_COORDINADOR') or app.user.hasRole('ROLE_FINANCIERO') ) %}<span class="label label-danger" style="border-radius: 18px; position: absolute; margin-top: -15%;margin-left: -25%">1</span>{% elseif movimiento.estadomov==2 and app.user.hasRole('ROLE_STAFF')  %}<span class="label label-danger" style="border-radius: 18px; position: absolute; margin-left: -0.8em; top:-0.3em">1</span>{% endif %}</button>          
+                            <div class="col col-md-4"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#VerMovi{{ movimiento.idmov }}"><i class="fa fa-eye" style="font-size: 20px; color: deepskyblue"></i>{% if((movimiento.estadomov == 0) and app.user.hasRole('ROLE_ADMIN') or app.user.hasRole('ROLE_COORDINADOR') or app.user.hasRole('ROLE_FINANCIERO') ) %}<span class="label label-danger" style="border-radius: 18px; position: absolute; margin-top: -15%;margin-left: -25%">1</span>{% elseif movimiento.estadomov==2 and app.user.hasRole('ROLE_STAFF')  %}<span class="label label-danger" style="border-radius: 18px; position: absolute; margin-left: -0.8em; top:-0.3em">1</span>{% endif %}</button>
                                         {{ render(controller('AppBundle:Movimiento:show', { 'id' : movimiento.idmov } )) }}
                             </div>
                         </div>

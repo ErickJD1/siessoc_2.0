@@ -82,18 +82,18 @@ class SidebarListener {
             $rootItems = array(
                 $inicio = new MenuItemModel('inicio', 'Inicio', 'homepage', $earg, 'fa fa-home'),
                 $dash = new MenuItemModel('site', 'WebSite', 'web_index', $earg, 'fa fa-globe'),
-                $expediente = new MenuItemModel('expediente', 'Expedientes', '', $earg, 'fa fa-address-card'),
+                $expediente = new MenuItemModel('expediente', 'Expedientes', 'menu_expediente', $earg, 'fa fa-address-card'),
                 $actividad = new MenuItemModel('actividad', 'Actividades', '', $earg, 'fa fa-calendar'),
                 $academico = new MenuItemModel('seguimiento', 'Seguimiento Academico', 'homepage', $earg, 'fa fa-book'),
                 $publicacion = new MenuItemModel('publicar', 'Publicaciones', 'homepage', $earg, 'fa fa-globe'),
                 $ssocial = new MenuItemModel('social', 'Servicio Social', 'homepage', $earg, 'fa fa-signing'),
                 $fondos = new MenuItemModel('fondos', 'Fondos', 'menu_fondos', $earg, 'fa fa-money'),
-                $colaboracion = new MenuItemModel('colaboracion', 'Colaboracion Monetaria', 'homepage', $earg, 'fa fa-dollar'),
+                $colaboracion = new MenuItemModel('colaboracion', 'Colaboracion Monetaria', 'menu_colaboracion', $earg, 'fa fa-dollar'),
                 $insumos = new MenuItemModel('insumos', 'Insumos Academicos', 'homepage', $earg, 'fa fa-cubes'),
                 $reportes = new MenuItemModel('reportes', 'Reportes', 'homepage', $earg, 'fa fa-line-chart'),
             );
 
-            $expediente->addChild(new MenuItemModel('consulta_expediente', 'Consultar Expedientes', 'avanzu_admin_ui_gen_demo', $earg));
+//            $expediente->addChild(new MenuItemModel('consulta_expediente', 'Consultar Expedientes', 'avanzu_admin_ui_gen_demo', $earg));
 
             $insumos->addChild(new MenuItemModel('Soli_patrocina', 'Solicitudes Patrocinadores', 'movimientoinventario_index', $earg));
 
@@ -115,13 +115,13 @@ class SidebarListener {
             $rootItems = array(
                 $inicio = new MenuItemModel('inicio', 'Inicio', 'homepage', $earg, 'fa fa-home'),
                 $dash = new MenuItemModel('site', 'WebSite', 'web_index', $earg, 'fa fa-globe'),
-                $expediente = new MenuItemModel('expediente', 'Expedientes', '', $earg, 'fa fa-address-card'),
+                $expediente = new MenuItemModel('expediente', 'Expedientes', 'menu_expediente', $earg, 'fa fa-address-card'),
                 $actividad = new MenuItemModel('actividad', 'Actividades', '', $earg, 'fa fa-calendar'),
                 $academico = new MenuItemModel('seguimiento', 'Seguimiento Academico', 'homepage', $earg, 'fa fa-book'),
                 $publicacion = new MenuItemModel('publicar', 'Publicaciones', 'homepage', $earg, 'fa fa-globe'),
                 $ssocial = new MenuItemModel('social', 'Servicio Social', 'homepage', $earg, 'fa fa-signing'),
                 $fondos = new MenuItemModel('fondos', 'Fondos', 'menu_fondos', $earg, 'fa fa-money'),
-                $colaboracion = new MenuItemModel('colaboracion', 'Colaboracion Monetaria', 'homepage', $earg, 'fa fa-dollar'),
+                $colaboracion = new MenuItemModel('colaboracion', 'Colaboracion Monetaria', 'menu_colaboracion', $earg, 'fa fa-dollar'),
                 $insumos = new MenuItemModel('insumos', 'Insumos Academicos', 'homepage', $earg, 'fa fa-cubes'),
                 $catalogos = new MenuItemModel('catalogos', 'Catalogos', 'menu_catalogos', $earg, 'fa fa-list'),
                 $reportes = new MenuItemModel('reportes', 'Reportes', 'homepage', $earg, 'fa fa-line-chart'),
@@ -131,7 +131,7 @@ class SidebarListener {
             
             
            
-            $expediente->addChild(new MenuItemModel('consulta_expediente', 'Consultar Expedientes', 'avanzu_admin_ui_gen_demo', $earg));
+//            $expediente->addChild(new MenuItemModel('consulta_expediente', 'Consultar Expedientes', 'avanzu_admin_ui_gen_demo', $earg));
             $insumos->addChild(new MenuItemModel('Soli_patrocina', 'Solicitudes Patrocinadores', 'movimientoinventario_index', $earg));
 
 //           $fondos->addChild(new MenuItemModel('consultar_cuentas', 'Administrar Cuentas', 'cuenta_index', $earg));
@@ -158,13 +158,13 @@ class SidebarListener {
                 $dash = new MenuItemModel('site', 'WebSite', 'web_index', $earg, 'fa fa-globe'),
                 $solicitudes = new MenuItemModel('solicitud', 'Solicitudes', 'menu_solicitud', $earg, 'fa fa-window-restore'),
                 $usuario = new MenuItemModel('usuario', 'Usuarios', '', $earg, 'fa fa-user'),
-                $expediente = new MenuItemModel('expediente', 'Expedientes', '', $earg, 'fa fa-address-card'),
+                $expediente = new MenuItemModel('expediente', 'Expedientes', 'menu_expediente', $earg, 'fa fa-address-card'),
                 $actividad = new MenuItemModel('actividad', 'Actividades', '', $earg, 'fa fa-calendar'),
                 $academico = new MenuItemModel('seguimiento', 'Seguimiento Academico', 'homepage', $earg, 'fa fa-book'),
                 $publicacion = new MenuItemModel('publicar', 'Publicaciones', 'menu_solicitud', $earg, 'fa fa-globe'),
                 $ssocial = new MenuItemModel('social', 'Servicio Social', 'homepage', $earg, 'fa fa-signing'),
                 $fondos = new MenuItemModel('fondos', 'Fondos', 'menu_fondos', $earg, 'fa fa-money'),
-                $colaboracion = new MenuItemModel('colaboracion', 'Colaboracion Monetaria', 'homepage', $earg, 'fa fa-dollar'),
+                $colaboracion = new MenuItemModel('colaboracion', 'Colaboracion Monetaria', 'menu_colaboracion', $earg, 'fa fa-dollar'),
                 $insumos = new MenuItemModel('insumos', 'Insumos Academicos', 'homepage', $earg, 'fa fa-cubes'),
                 $catalogos = new MenuItemModel('catalogos', 'Catalogos', 'menu_catalogos', $earg, 'fa fa-list'),
                 $reportes = new MenuItemModel('reportes', 'Reportes', 'homepage', $earg, 'fa fa-line-chart'),
@@ -173,7 +173,7 @@ class SidebarListener {
 
 
             $usuario->addChild($icons = new MenuItemModel('gestionar_usuario', 'Administrar Usuarios', 'user_index', $earg));
-            $expediente->addChild(new MenuItemModel('consulta_expediente', 'Consultar Expedientes', 'avanzu_admin_ui_gen_demo', $earg));
+//            $expediente->addChild(new MenuItemModel('consulta_expediente', 'Consultar Expedientes', 'avanzu_admin_ui_gen_demo', $earg));
 
 //            $solicitudes->addChild(new MenuItemModel('soli_becarios', 'Solicitudes Becarios', 'solicitudbecario_index', $earg));
 //            $solicitudes->addChild(new MenuItemModel('Soli_patrocina', 'Solicitudes Patrocinadores', 'solicitudbecario_index', $earg));

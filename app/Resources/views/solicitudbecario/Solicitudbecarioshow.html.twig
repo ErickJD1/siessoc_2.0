@@ -278,12 +278,12 @@
             <div class="modal-footer">
                 {% if ((app.user.hasRole('ROLE_ADMIN') or app.user.hasRole('ROLE_COORDINADOR')) and solicitudbecario.estadosolibecario==0)  %}
                     <div style="float:right; margin-left: 1px">
-                        <form style="" action="{{path('solicitud_aprobacion',{'id':solicitudbecario.idsolibecario,'val':1})}}" method="POST"> 
+                        <form style="" action="{{path('solicitudbecario_aprobacion',{'id':solicitudbecario.idsolibecario,'val':1})}}" method="POST"> 
 
                             <button type="submit" class="btn btn-success" >Aprobar</button>
                         </form></div>
                     <div style="float:right; margin-left: 1px"> 
-                        <form action="{{path('solicitud_aprobacion',{'id':solicitudbecario.idsolibecario,'val':2})}}" method="POST"> 
+                        <form action="{{path('solicitudbecario_aprobacion',{'id':solicitudbecario.idsolibecario,'val':2})}}" method="POST"> 
                             <div class="modal fade" id="recha{{  solicitudbecario.idsolibecario }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div style="width:50%; margin-left: 25%;" class="modal-dialog">
                                     <div class="modal-content"  style="border-radius: 10px">

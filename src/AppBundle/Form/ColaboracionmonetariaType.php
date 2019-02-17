@@ -16,7 +16,7 @@ class ColaboracionmonetariaType extends AbstractType
     {
         $builder->add('montomescolaboracion',null, array('label'=>'Monto Colaboracion','invalid_message'=>'Valor Incorrecto, Campo Numerico, maximo %num% de numero', 'invalid_message_parameters' => array('%num%' => 9)))
                 ->add('descripcioncolaboracion', null, array('label'=>'Tipo Colaboracion'))
-                ->add('saldocolaboracion',null, array('label'=>'Saldo','invalid_message'=>'Valor Incorrecto, Campo Numerico, maximo %num% de numero', 'invalid_message_parameters' => array('%num%' => 9)))
+              //  ->add('saldocolaboracion',null, array('label'=>'Saldo','invalid_message'=>'Valor Incorrecto, Campo Numerico, maximo %num% de numero', 'invalid_message_parameters' => array('%num%' => 9)))
                 ->add('estadocolaboracion', CheckboxType::class, array('label'=>'Activar', 'required'=>false));
     }
     

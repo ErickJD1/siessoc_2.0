@@ -55,19 +55,19 @@
                                 <p class="form-group"><strong>{% if solicitudpatrocinador.estadosolipatrocinador == 0 %}En Espera{% elseif  solicitudpatrocinador.estadosolipatrocinador == 1 %}Aprobado{% elseif  solicitudpatrocinador.estadosolipatrocinador == 2 %}Denegado{% endif %}</strong></p>
 
                             </div>
-                                <div class="col col-md-6">
-                                <h4><i class="fa fa-alert"></i> Observaciones</h4>
-                                <p class="form-group"><strong>{% if solicitudpatrocinador.observacionpatrocinador == 0 %}En Espera{% elseif  solicitudpatrocinador.estadosolipatrocinador == 1 %}Aprobado{% elseif  solicitudpatrocinador.estadosolipatrocinador == 2 %}Denegado{% endif %}</strong></p>
+                            <div class="col col-md-6">
+                                <h4><i class="fa fa-warning "></i> Observaciones</h4>
+                                <p class="form-group"><strong>{% if solicitudpatrocinador.estadosolipatrocinador == 0 %}{% elseif  solicitudpatrocinador.estadosolipatrocinador == 1 %}<p style="color: forestgreen">Tu solicitud ha sido aprobada!</p>{% elseif  solicitudpatrocinador.estadosolipatrocinador == 2 %}<p style="color: crimson">{{solicitudpatrocinador.observacionpatrocinador}}</p>{% endif %}</strong></p>
 
                             </div>
                         </div>
                     </div>
-
+                    <br>
                 </div>
 
             </div>
 
-             <div class="modal-footer">
+            <div class="modal-footer">
                 {% if ((app.user.hasRole('ROLE_ADMIN') or app.user.hasRole('ROLE_COORDINADOR')) and solicitudpatrocinador.estadosolipatrocinador==0)  %}
                     <div style="float:right; margin-left: 1px">
                         <form style="" action="{{path('solicitud_aprobacion',{'id':solicitudpatrocinador.idsolipatrocinador,'val':1})}}" method="POST"> 

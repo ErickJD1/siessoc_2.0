@@ -56,7 +56,11 @@
         <join-column name="idusuario" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
-    
+     <field name="idcolaboracion" type="integer" column="IDCOLABORACION">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
   </entity>
 </doctrine-mapping>
 

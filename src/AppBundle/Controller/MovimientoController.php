@@ -75,14 +75,27 @@ class MovimientoController extends Controller {
             $cuenta = new Cuenta();
             $cuenta = $em->getRepository('AppBundle:Cuenta')->findOneBy(array('idcuenta' => $movimiento->getIdCuenta()));
 
-            if (($movimiento->getMonto()) <= $cuenta->getSaldoactual()) {
+            if (($movimiento->getMonto()) <= $cuenta->getSaldoactual() && $movimiento->getIdmov() == 0) {
+                $em->persist($movimiento);
+                $em->flush($movimiento);
+                $this->addFlash('success', 'Movimiento Ingresado Correctamente!');
+            } elseif ($movimiento->getIdmov() == 1) {
                 $em->persist($movimiento);
                 $em->flush($movimiento);
                 $this->addFlash('success', 'Movimiento Ingresado Correctamente!');
             } else {
                 $this->addFlash('error', 'Monto del movimiento incorrectos!');
             }
-
+            $saldoActual =0;
+            $movimientos = $em->getRepository('AppBundle:Movimiento')->findMovimiento($cuenta->getIdcuenta());
+            $saldoActual = $cuenta->getSaldocuenta();
+            foreach ($movimientos as $moviento) {
+               $saldoActual =  $saldoActual+ $moviento->getMonto();
+            }
+            $cuenta->setSaldoactual($saldoActual);
+            $em->persist($cuenta);
+            $em->flush($cuenta);
+            
             return $this->redirectToRoute('movimiento_index');
         }
 
@@ -160,7 +173,7 @@ class MovimientoController extends Controller {
      * @Method({"GET", "POST"})
      */
     public function aprobacionAction(Request $request, Movimiento $movimiento, $val) {
-         $descripcion=$request->get("descripcion");
+        $descripcion = $request->get("descripcion");
 
         $movimiento->setUpdateAt(new \DateTime());
         if ($val == 1) {

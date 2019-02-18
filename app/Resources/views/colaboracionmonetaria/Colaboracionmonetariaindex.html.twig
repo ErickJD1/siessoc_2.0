@@ -30,7 +30,7 @@
                 <td>{{ colaboracionmonetaria.idusuario }}</td>
                 <td>
                     <div style="float:left;"><a class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#VerAlumnos{{ colaboracionmonetaria.idcolaboracion }}">{{ colaboracionmonetaria.descripcioncolaboracion }}</a>
-                          {{ render(controller('AppBundle:Pagocolaboracion:index', { 'id': colaboracionmonetaria.idcolaboracion } )) }}
+                        <div id="Pagos{{colaboracionmonetaria.idcolaboracion}}}}"> {{ render(controller('AppBundle:Pagocolaboracion:index', { 'id': colaboracionmonetaria.idcolaboracion } )) }} </div>
                   </div>
                 </td>
                 

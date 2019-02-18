@@ -5,7 +5,6 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use AppBundle\Entity\Colaboracionmonetaria;
 
 /**
  * Colaboracionmonetaria
@@ -105,6 +104,15 @@ class Pagocolaboracion
      * })
      */
     private $idusuario;
+    
+    
+       /**
+     * @var integer
+     *
+     * @ORM\Column(name="idcolaboracion", type="integer", nullable=false)
+     * @ORM\Id
+     */
+    private $idcolaboracion;
     
     
       /**
@@ -216,6 +224,12 @@ class Pagocolaboracion
         $this->pagorealizado = $pagorealizado;
     }
 
+    function getIdcolaboracion() {
+        return $this->idcolaboracion;
+    }
 
+    function setIdcolaboracion($idcolaboracion) {
+        $this->idcolaboracion = $idcolaboracion;
+    }
 
 }

@@ -86,7 +86,7 @@
                     </ul>
                     <div class="tab-content">
 
- 
+
 
                         <div class="active tab-pane" id="datosPersonales" style="width:90%; margin-left: 5%">
                             <div class="row">
@@ -95,7 +95,7 @@
                                     <p align="right"><strong>Aspirante:</strong><u> {{app.user.getFirstName()~" "~app.user.getLastName()}}</u></p>
                                 </div>
                             </div>
-                                <hr>
+                            <hr>
                             <div class="row">     
 
                                 <div class="col col-md-4" align="left">
@@ -142,7 +142,7 @@
                                     {{ form_errors(edit_form.direccionexpbecario) }}   
                                 </div> 
                             </div>
-                                <br>
+                            <br>
                             <div class="row">  
                                 <div class="col col-md-12" align="left">
                                     <label for="form_antecedentes">Descripción Personal</label>
@@ -349,16 +349,16 @@
 {%block javascripts_inline %}
     <script>
         {{parent()}}
-        $(document).ready(function(){
-            var isChecked = document.getElementById('appbundle_expedientebecario_otrasbecas').checked;
+            $(document).ready(function () {
+                var isChecked = document.getElementById('appbundle_expedientebecario_otrasbecas').checked;
                 if (isChecked) {
                     document.getElementById('appbundle_expedientebecario_montootrasbecas').removeAttribute('disabled');
                 } else {
 
                     document.getElementById('appbundle_expedientebecario_montootrasbecas').setAttribute('disabled', true);
                 }
-        });
-        
+            });
+
             function montoOB() {
                 var isChecked = document.getElementById('appbundle_expedientebecario_otrasbecas').checked;
                 if (isChecked) {
@@ -371,16 +371,16 @@
             ;
 
 
-    </script>
 
-{% endblock %}    
-{% javascripts 
-
-{% block javascripts_inline %}
-    <script>
+        
         $(document).ready(function(){
-           $("#idcuenta").val($('#appbundle_cuenta_idtipocuenta option:selected').text()); 
-           $("#idbanco").val($('#appbundle_cuenta_idbanco option:selected').text());
-        });
-    </script>
+                    $("#appbundle_expedientebecario_docexpidentidadbecario").removeAttr("name");
+                    $("#appbundle_expedientebecario_docexpidentidadbecario").removeAttr("id");
+            });
+          
+
+
+</script>
+
 {% endblock %}    
+

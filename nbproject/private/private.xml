@@ -12,12 +12,27 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/siessoc_2.0/app/Resources/views/transaccioncolaboracion/transaccioncolaboracionedit.html.twig</file>
-            <file>file:/C:/xampp/htdocs/siessoc_2.0/app/Resources/views/transaccioncolaboracion/listabecarios.html.twig</file>
-            <file>file:/C:/xampp/htdocs/siessoc_2.0/src/AppBundle/Controller/TransaccioncolaboracionController.php</file>
-            <file>file:/C:/xampp/htdocs/siessoc_2.0/app/Resources/views/transaccioncolaboracion/transaccioncolaboracionshowdelete.html.twig</file>
-            <file>file:/C:/xampp/htdocs/siessoc_2.0/app/Resources/views/transaccioncolaboracion/transaccioncolaboracionindex.html.twig</file>
-            <file>file:/C:/xampp/htdocs/siessoc_2.0/app/Resources/views/cuenta/Cuentaedit.html.twig</file>
+            <file>file:/C:/xampp/htdocs/siessoc/src/AppBundle/Controller/PagocolaboracionController.php</file>
+            <file>file:/C:/xampp/htdocs/siessoc/src/AppBundle/Entity/Pagocolaboracion.php</file>
+            <file>file:/C:/xampp/htdocs/siessoc/src/AppBundle/Entity/Colaboracionmonetaria.php</file>
+            <file>file:/C:/xampp/htdocs/siessoc/app/Resources/views/pagocolaboracion/pagocolaboracionedit.html.twig</file>
+            <file>file:/C:/xampp/htdocs/siessoc/app/Resources/views/colaboracionmonetaria/Colaboracionmonetariaindex.html.twig</file>
+            <file>file:/C:/xampp/htdocs/siessoc/app/Resources/views/movimiento/Movimientonew.html.twig</file>
+            <file>file:/C:/xampp/htdocs/siessoc/src/AppBundle/Controller/SolicitudpatrocinadorController.php</file>
+            <file>file:/C:/xampp/htdocs/siessoc/src/AppBundle/Form/ExpedientebecarioType.php</file>
+            <file>file:/C:/xampp/htdocs/siessoc/src/AppBundle/Controller/ExpedientebecarioController.php</file>
+            <file>file:/C:/xampp/htdocs/siessoc/src/AppBundle/Controller/SolicitudbecarioController.php</file>
+            <file>file:/C:/xampp/htdocs/siessoc/app/Resources/views/solicitudbecario/Solicitudbecarioshow.html.twig</file>
+            <file>file:/C:/xampp/htdocs/siessoc/src/AppBundle/Entity/Pagocolaboracion.php</file>
+            <file>file:/C:/xampp/htdocs/siessoc/app/Resources/views/expedientebecario/index.html.twig</file>
+            <file>file:/C:/xampp/htdocs/siessoc/src/AppBundle/Controller/MovimientoController.php</file>
+            <file>file:/C:/xampp/htdocs/siessoc/app/Resources/views/solicitudss/edit.html.twig</file>
+            <file>file:/C:/xampp/htdocs/siessoc/app/Resources/views/solicitudpatrocinador/solicitudpatrocinadornew.html.twig</file>
+            <file>file:/C:/xampp/htdocs/siessoc/app/Resources/views/solicitudbecario/Solicitudbecarioindex.html.twig</file>
+            <file>file:/C:/xampp/htdocs/siessoc/src/AppBundle/Form/SolicitudpatrocinadorType.php</file>
+            <file>file:/C:/xampp/htdocs/siessoc/app/Resources/views/expedientebecario/edit.html.twig</file>
+            <file>file:/C:/xampp/htdocs/siessoc/app/Resources/views/cuenta/Cuentaedit.html.twig</file>
+            <file>file:/C:/xampp/htdocs/siessoc/app/Resources/views/cuenta/Cuentaindex.html.twig</file>
         </group>
     </open-files>
 </project-private>

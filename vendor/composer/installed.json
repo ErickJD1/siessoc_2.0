@@ -1062,12 +1062,12 @@
         "version_normalized": "2.5.5.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/doctrine/doctrine2.git",
+            "url": "https://github.com/doctrine/orm.git",
             "reference": "73e4be7c7b3ba26f96b781a40b33feba4dfa6d45"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/73e4be7c7b3ba26f96b781a40b33feba4dfa6d45",
+            "url": "https://api.github.com/repos/doctrine/orm/zipball/73e4be7c7b3ba26f96b781a40b33feba4dfa6d45",
             "reference": "73e4be7c7b3ba26f96b781a40b33feba4dfa6d45",
             "shasum": ""
         },
@@ -3393,7 +3393,8 @@
             "assets",
             "compression",
             "minification"
-        ]
+        ],
+        "abandoned": "symfony/webpack-encore-pack"
     },
     {
         "name": "symfony/monolog-bundle",

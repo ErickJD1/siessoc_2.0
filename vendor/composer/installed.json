@@ -1750,6 +1750,48 @@
         ]
     },
     {
+        "name": "it/input-mask-bundle",
+        "version": "1.1.2",
+        "version_normalized": "1.1.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/IntuitivTechnology/InputMaskBundle.git",
+            "reference": "46ab581508b7c5139906b1664f64dd4c7e5e3861"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/IntuitivTechnology/InputMaskBundle/zipball/46ab581508b7c5139906b1664f64dd4c7e5e3861",
+            "reference": "46ab581508b7c5139906b1664f64dd4c7e5e3861",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.5",
+            "symfony/framework-bundle": "2.8.*|3.*",
+            "twig/twig": "*"
+        },
+        "time": "2017-10-31T10:15:54+00:00",
+        "type": "symfony-bundle",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "IT\\InputMaskBundle\\": "IT/InputMaskBundle"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Pierre Vassoilles",
+                "email": "pvassoilles@intuitiv.fr",
+                "homepage": "https://github.com/pierre-vassoilles",
+                "role": "Developer"
+            }
+        ],
+        "description": "A simple Symfony bundle that implements Form classes for RobinHerbots/Inputmask jQuery plugin "
+    },
+    {
         "name": "jdorn/sql-formatter",
         "version": "v1.2.17",
         "version_normalized": "1.2.17.0",

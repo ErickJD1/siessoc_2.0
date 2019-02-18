@@ -72,6 +72,29 @@ class ExpedientebecarioController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+    
+    
+    /**
+     * Finds and displays a expedientebecario entity.
+     *
+     * @Route("/miexpediente", name="miexpedientebecario_show")
+     * @Method("GET")
+     */
+    public function miExpAction()
+    {
+        $expedientebecario = new Expedientebecario();
+        
+        $em = $this->getDoctrine()->getManager();
+
+        $expedientebecario = $em->getRepository('AppBundle:Expedientebecario')->findByIdusuario(38);
+        
+        $deleteForm = $this->createDeleteForm($expedientebecario);
+        
+        return $this->render('expedientebecario/miexpshow.html.twig', array(
+            'expedientebecario' => $expedientebecario,
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
 
     /**
      * Displays a form to edit an existing expedientebecario entity.

@@ -58,9 +58,7 @@
 
 {% block page_content %}
 
-    <div class="box box-primary" style="width: 100%;">
-
-        <div  style="width:90%; margin-top: 5%; margin-left: 5%; background-color:#F3F3F3; border-radius:5px " class="panel panel-default">
+     <div  style="width:90%; margin-top: 5%; margin-left: 5%; background-color:#F3F3F3; border-radius:5px " class="panel panel-default">
             <div class="row">
                 <div class="col col-md-12" align="center" >
                     <img style="width:80px;margin-top: 2%;" src="{{ asset('img/document.png') }}"></img>
@@ -72,46 +70,47 @@
                     <h4 class="col col-md-12" style="color:grey; font-family: palatino body; margin-top: -3px;">Complete los campos requeridos:<span style="font-size: 25;color: red" >*</span></h4>
                 </div>
             </div>    
+    </div>
 
-            <div  class="container"  style="width: 90%;  margin-bottom: 3%">
-                <hr>
-                <br>
-                {{ form_start(form) }}
+{{ form_start(form) }}
 
-                <div class="nav-tabs-custom" style="width:95%;margin-left: 2.5%;">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#datosPersonales" role="tab" aria-controls="nav-profile" aria-selected="false">Datos Personales</a></li>
-                        <li><a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#datosAcademicos" role="tab" aria-controls="nav-profile" aria-selected="false">Datos Academicos</a></li>
-                        <li><a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#datosFamiliares" role="tab" aria-controls="nav-contact" aria-selected="false">Datos Familiares</a></li>
-                    </ul>
-                    <div class="tab-content">
+<div class="container tabs-wrap" style="width: 90%;  margin-bottom: 3%">
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="active" role="presentation">
+      <a role="tab" aria-expanded="true" aria-controls="datospersonales" href="#datospersonales" data-toggle="tab">Datos Personales</a>
+    </li>
+    <li>
+      <a role="tab" aria-expanded="false" aria-controls="datosacademicos" href="#datosacademicos" data-toggle="tab">Datos Académicos</a>
+    </li>
+    <li>
+      <a role="tab" aria-expanded="false" aria-controls="datosfamiliares" href="#datosfamiliares" data-toggle="tab">Datos Familiares</a>
+    </li>
+  </ul>
 
- 
+<div class="tab-content">
 
-                        <div class="active tab-pane" id="datosPersonales" style="width:90%; margin-left: 5%">
-                            <div class="row">
-                                <div class="col col-md-6"><h3>Datos Personales</h3></div>
-                                <div class="col col-md-6">
-                                    <p align="right"><strong>Aspirante:</strong><u> {{app.user.getFirstName()~" "~app.user.getLastName()}}</u></p>
-                                </div>
+  <div class="tab-pane active" id="datospersonales" role="tabpanel" style="width:90%; margin-left: 5%">
+
+  <div class="row">
+                            <div class="col col-md-6"><h3>Datos Personales</h3></div>
                             </div>
                                 <hr>
                             <div class="row">     
 
                                 <div class="col col-md-4" align="left">
-                                    <label for="form_documento">Numero de documento<span style="font-size: 25;color: red" >*</span></label>
+                                    <label for="form_documento">Documento<span style="font-size: 25;color: red" >*</span></label>
                                     {{ form_widget(form.docsoliidentidadbecario) }}
                                     {{ form_errors(form.docsoliidentidadbecario) }}   
                                 </div> 
 
                                 <div class="col col-md-4" align="left">
-                                    <label for="form_cdirecto">Numero de contacto directo<span style="font-size: 25;color: red" >*</span></label>
+                                    <label for="form_cdirecto">Teléfono<span style="font-size: 25;color: red" >*</span></label>
                                     {{ form_widget(form.telsolipersonalbecario) }}
                                     {{ form_errors(form.telsolipersonalbecario) }}   
                                 </div> 
 
                                 <div class="col col-md-4" align="left">
-                                    <label for="form_telefono">Otro Telefono<span style="font-size: 25;color: red" >*</span></label>
+                                    <label for="form_telefono">Otro Teléfono<span style="font-size: 25;color: red" >*</span></label>
                                     {{ form_widget(form.telefonosolibecario) }}
                                     {{ form_errors(form.telefonosolibecario) }}   
                                 </div> 
@@ -119,17 +118,23 @@
                             <br>
                             <div class="row" >
 
-                                <div class="col col-md-6" align="left">
+                                <div class="col col-md-4" align="left">
                                     <label for="form_edad">Fecha Nacimiento<span style="font-size: 25;color: red" >*</span></label>
                                     {{ form_widget(form.fechaNacimiento) }}
                                     {{ form_errors(form.fechaNacimiento) }}   
                                 </div>
 
-                                <div class="col col-md-6" align="left">
+                                <div class="col col-md-4" align="left">
                                     <label for="form_edad">Sexo<span style="font-size: 25;color: red" >*</span></label>
                                     {{ form_widget(form.sexo) }}
                                     {{ form_errors(form.sexo) }}   
                                 </div>
+
+                                <div class="col col-md-4" align="left">
+                                    <label for="form_trabajo">¿Posee Trabajo?</label>
+                                    {{ form_widget(form.trabajosolibecario) }}
+                                    {{ form_errors(form.trabajosolibecario) }}   
+                                </div> 
 
 
                             </div>
@@ -153,29 +158,30 @@
                             <br>
                             <div class="row">  
                                 <div class="col col-md-12" align="left">
-                                    <label for="form_religion">Religion que pertenece</label>
+                                    <label for="form_religion">Religión</label>
                                     {{ form_widget(form.religion) }}
                                     {{ form_errors(form.religion) }}   
                                 </div>
-
+                      
                             </div>
-                            <br> 
-                            <div class="row">
-                                <div class="col col-md-4" align="LEFT">
-                                    <label for="form_trabajo">Posee trabajo</label>
-                                    {{ form_widget(form.trabajosolibecario) }}
-                                    {{ form_errors(form.trabajosolibecario) }}   
-                                </div> 
+                            <br>
+                            <div class="row">  
+                             <div class="col col-md-12" align="right">                            
+                                <a class="btn btn-primary continue">Continuar</a>
+                                <a href="{{ path('solicitudbecario_index') }}" class="btn btn-danger btn-xl">Cancelar</a>
+                             </div>
                             </div>
-                        </div><!-- /.tab-pane -->
+                        
+  </div>
 
-                        <div class="tab-pane" id="datosAcademicos" style="width:90%; margin-left: 5%">
-                            <h3>Datos Academicos</h3>
+  <div class="tab-pane" id="datosacademicos" role="tabpanel"  style="width:90%; margin-left: 5%">
+
+  <h3>Datos Académicos</h3>
                             <hr>
                             <div class="row">  
 
                                 <div class="col col-md-6" align="left">
-                                    <label for="form_carrera">Carrera<span style="font-size: 25;color: red" >*</span></label>
+                                    <label for="form_carrera">Carrera Universitaria<span style="font-size: 25;color: red" >*</span></label>
                                     {{ form_widget(form.carrerasoliestudiarbecario) }}
                                     {{ form_errors(form.carrerasoliestudiarbecario) }}   
                                 </div> 
@@ -191,13 +197,13 @@
 
                             <div class="row">
                                 <div class="col col-md-6" align="left" id='datetimepicker1'>
-                                    <label for="form_anioinicio">Fecha Ingreso Universidad<span style="font-size: 25;color: red" >*</span></label>
+                                    <label for="form_anioinicio">Fecha Estimada de Ingreso en la Universidad<span style="font-size: 25;color: red" >*</span></label>
                                     {{ form_widget(form.aniosoliingresobecario) }}
                                     {{ form_errors(form.aniosoliingresobecario) }}   
                                 </div>
 
                                 <div class="col col-md-6" align="left" id='datetimepicker2'>
-                                    <label for="form_aniofin">Fecha Egreso Universidad<span style="font-size: 25;color: red" >*</span></label>
+                                    <label for="form_aniofin">Fecha Estimada de Egreso en la Universidad<span style="font-size: 25;color: red" >*</span></label>
                                     {{ form_widget(form.aniosolifinalizacionbecario) }}
                                     {{ form_errors(form.aniosolifinalizacionbecario) }}   
                                 </div>
@@ -224,7 +230,7 @@
                                 </div>
 
                                 <div class="col col-md-3" align="left">
-                                    <label for="form_duracion">Duracion Carrera<span style="font-size: 25;color: red" >*</span></label>
+                                    <label for="form_duracion">Duración de Carrera<span style="font-size: 25;color: red" >*</span></label>
                                     {{ form_widget(form.duracionsolicarrerabecario,{'attr':{'placeholder':'Numero de años'}}) }}
                                     {{ form_errors(form.duracionsolicarrerabecario) }}   
                                 </div>
@@ -232,7 +238,7 @@
                             <br>
                             <div class="row">
                                 <div class="col col-md-3" align="left">
-                                    <label for="form_otrasbecas">Posee otras becas</label>
+                                    <label for="form_otrasbecas">¿Posee Otras Becas?</label>
                                     {{ form_widget(form.otrasbecas,{'attr':{'onchange':'montoOB()'}}) }}
                                     {{ form_errors(form.otrasbecas) }}   
                                 </div> 
@@ -249,10 +255,20 @@
                                     {{ form_errors(form.comprobante_file) }}   
                                 </div>
                             </div>
-                        </div><!-- /.tab-pane -->
 
-                        <div class="tab-pane" id="datosFamiliares" style="width:90%; margin-left: 5%">
-                            <h3>Datos Famiiares</h3>
+                            <br>
+                            <div class="row">  
+                             <div class="col col-md-12" align="right">                            
+                                <a class="btn btn-primary back">Regresar</a>
+                                <a class="btn btn-primary continue">Continuar</a>
+                                <a href="{{ path('solicitudbecario_index') }}" class="btn btn-danger btn-xl">Cancelar</a>
+                             </div>
+                            </div>
+  </div>
+
+  <div class="tab-pane" id="datosfamiliares" role="tabpanel" style="width:90%; margin-left: 5%">
+
+  <h3>Datos Familiares</h3>
                             <hr>
                             <div class="row">
 
@@ -263,13 +279,13 @@
                                 </div>
 
                                 <div class="col col-md-3" align="left">
-                                    <label for="form_miembros">Miembros familiares<span style="font-size: 25;color: red" >*</span></label>
-                                    {{ form_widget(form.miembrossolifamiliabecario) }}
+                                    <label for="form_miembros">Miembros Familiares<span style="font-size: 25;color: red" >*</span></label>
+                                    {{ form_widget(form.miembrossolifamiliabecario,{'attr':{'placeholder':'Número de miembros'}}) }}
                                     {{ form_errors(form.miembrossolifamiliabecario) }}   
                                 </div>
 
                                 <div class="col col-md-3" align="left">
-                                    <label for="form_hermanos">Cantidad de hermanos</label>
+                                    <label for="form_hermanos">Cantidad de Hermanos</label>
                                     {{ form_widget(form.cantsolihermanosbecario) }}
                                     {{ form_errors(form.cantsolihermanosbecario) }}   
                                 </div>
@@ -286,13 +302,13 @@
                             <div class="row">
 
                                 <div class="col col-md-6" align="left">
-                                    <label for="form_nompadre">Nombre del padre<span style="font-size: 25;color: red" >*</span></label>
+                                    <label for="form_nompadre">Nombre del Padre<span style="font-size: 25;color: red" >*</span></label>
                                     {{ form_widget(form.nomsolipadrebecario) }}
                                     {{ form_errors(form.nomsolipadrebecario) }}   
                                 </div> 
 
                                 <div class="col col-md-6" align="left">
-                                    <label for="form_nommadre">Nombre de la madre<span style="font-size: 25;color: red" >*</span></label>
+                                    <label for="form_nommadre">Nombre de la Madre<span style="font-size: 25;color: red" >*</span></label>
                                     {{ form_widget(form.nomsolimadrebecario) }}
                                     {{ form_errors(form.nomsolimadrebecario) }}   
                                 </div> 
@@ -302,7 +318,7 @@
                             <div class="row">
 
                                 <div class="col col-md-12" align="left">
-                                    <label for="form_ocupacionp">Ocupacion del padre<span style="font-size: 25;color: red" >*</span></label>
+                                    <label for="form_ocupacionp">Ocupación del Padre<span style="font-size: 25;color: red" >*</span></label>
                                     {{ form_widget(form.ocupacionpadre) }}
                                     {{ form_errors(form.ocupacionpadre) }}   
                                 </div>
@@ -311,44 +327,24 @@
                             <div class="row">
 
                                 <div class="col col-md-12" align="left">
-                                    <label for="form_ocupacionm">Ocupacion de la madre<span style="font-size: 25;color: red" >*</span></label>
+                                    <label for="form_ocupacionm">Ocupación de la Madre<span style="font-size: 25;color: red" >*</span></label>
                                     {{ form_widget(form.ocupacionmadre) }}
                                     {{ form_errors(form.ocupacionmadre) }}   
                                 </div>
                             </div>
-                            <br>
-
-                            <div class="row">
-                                <div class="col col-md-12" align="right">
-                                    <a href="{{ path('solicitudbecario_index') }}" class="btn btn-primary btn-xl">Cancelar</a>
-                                    <input  class="btn btn-success btn-xl" type="submit"  value="Guardar" />
-
-
-                                </div>
+                           <br>
+                            <div class="row">  
+                             <div class="col col-md-12" align="right">                            
+                                <a class="btn btn-primary back">Regresar</a>
+                                <a href="{{ path('solicitudbecario_index') }}" class="btn btn-danger btn-xl">Cancelar</a>
+                                <input  class="btn btn-success btn-xl" type="submit"  value="Guardar" />
+                             </div>
                             </div>
 
                         </div>
-                    </div><!-- /.tab-pane -->
-
-                    {#<div class="tab-pane" id="change-password{{user.id}}">
-                        <p class="text-aqua">Please click the link below to change your current password</p>
-                        <div><a href="{{ path('fos_user_change_password') }}" class="btn btn-default"><i class="fa fa-fw fa-lock"></i>Change Password</a></div>
-                    </div>#}
-
-                </div><!-- /.tab-content -->
-            </div><!-- /.nav-tabs-custom -->
-
-
-            {{ form_end(form) }}
-            <br>
-
-        </div>
-        <br>
-    </div>
-    <br>
-    <br>
-</div>
-
+  </div>
+</div></div>
+{{ form_end(form) }}
 
 {% endblock %}
 {%block javascripts_inline %}
@@ -364,6 +360,15 @@
                 }
             }
             ;
+
+        $('.continue').click(function(){
+              $('.nav-tabs > .active').next('li').find('a').trigger('click');
+        });
+        $('.back').click(function(){
+          $('.nav-tabs > .active').prev('li').find('a').trigger('click');
+         });
+
+         
 
 
     </script>

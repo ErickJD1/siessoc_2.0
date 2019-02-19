@@ -159,4 +159,8 @@ class Insumo
     {
         return $this->idtipoinsumo;
     }
+    
+    public function __toString() {
+        return $this->getNombreinsumo();
+    }
 }

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Inventario
  *
- * @ORM\Table(name="inventario", indexes={@ORM\Index(name="FK_RELATIONSHIP_42", columns={"IDMOVINV"}), @ORM\Index(name="FK_RELATIONSHIP_44", columns={"IDINSUMO"})})
+ * @ORM\Table(name="inventario", indexes={@ORM\Index(name="FK_RELATIONSHIP_44", columns={"IDINSUMO"})})
  * @ORM\Entity
  */
 class Inventario
@@ -24,13 +24,6 @@ class Inventario
     /**
      * @var integer
      *
-     * @ORM\Column(name="IDEXPBECARIO", type="integer", nullable=true)
-     */
-    private $idexpbecario;
-
-    /**
-     * @var integer
-     *
      * @ORM\Column(name="CANTIDADINVENTARIO", type="integer", nullable=true)
      */
     private $cantidadinventario;
@@ -42,15 +35,6 @@ class Inventario
      */
     private $fechainventario;
 
-    /**
-     * @var \Movimientoinventario
-     *
-     * @ORM\ManyToOne(targetEntity="Movimientoinventario")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="IDMOVINV", referencedColumnName="IDMOVINV")
-     * })
-     */
-    private $idmovinv;
 
     /**
      * @var \Insumo
@@ -61,32 +45,6 @@ class Inventario
      * })
      */
     private $idinsumo;
-
-
-
-    /**
-     * Set idexpbecario
-     *
-     * @param integer $idexpbecario
-     *
-     * @return Inventario
-     */
-    public function setIdexpbecario($idexpbecario)
-    {
-        $this->idexpbecario = $idexpbecario;
-
-        return $this;
-    }
-
-    /**
-     * Get idexpbecario
-     *
-     * @return integer
-     */
-    public function getIdexpbecario()
-    {
-        return $this->idexpbecario;
-    }
 
     /**
      * Set cantidadinventario
@@ -168,29 +126,5 @@ class Inventario
     public function getIdinsumo()
     {
         return $this->idinsumo;
-    }
-
-    /**
-     * Set idmovinv
-     *
-     * @param \AppBundle\Entity\Movimientoinventario $idmovinv
-     *
-     * @return Inventario
-     */
-    public function setIdmovinv(\AppBundle\Entity\Movimientoinventario $idmovinv = null)
-    {
-        $this->idmovinv = $idmovinv;
-
-        return $this;
-    }
-
-    /**
-     * Get idmovinv
-     *
-     * @return \AppBundle\Entity\Movimientoinventario
-     */
-    public function getIdmovinv()
-    {
-        return $this->idmovinv;
-    }
+    }  
 }

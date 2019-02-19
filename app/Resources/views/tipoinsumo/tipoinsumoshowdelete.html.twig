@@ -1,1 +1,46 @@
+<div class="modal fade" id="deleteinsumo{{ tipoinsumo.Idtipoinsumo }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="border-radius: 40px">
 
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 align="center"><strong><strong> Tipo De Insumo N:{{  tipoinsumo.Idtipoinsumo }}</strong></strong></h3>
+            </div>
+            <div class="modal-body">
+
+                <div class="list-group">
+                    <!--modal-->
+                    
+                      <div class="row" style="margin-left:5%" align="left">
+                        <!--modal-->
+                        <div class="col col-md-7">
+                            
+                <h4><i class="fa fa-list"></i> Tipo De Insumo</h4>
+                <p class="form-group"><strong>{{ tipoinsumo.tipoinsumo }}</strong></p>
+                <hr>
+                <h4><i class="fa fa-check"></i> Estado</h4>
+                <p class="form-group"><strong>{% if tipoinsumo.estadotipoinsumo==1 %}ALTA{% else %}BAJA{% endif %}</strong></p>        
+
+                </div>
+                        <div class="col col-md-5">
+
+                            <img style="width:75%;margin-top: 10%;margin-bottom: 2%" src="{{ asset('img/delete.png') }}"></img>
+                        </div>
+                    </div>
+
+
+                  <div class="modal-footer">
+                        <div style="float:right">
+                            {{ form_start(delete_form, {'action': path('tipoinsumo_delete', {'id': tipoinsumo.Idtipoinsumo}), 'Method': 'POST' }) }}
+                            <input type="submit" class="btn btn-danger" type="button" value="Eliminar">
+                            {{ form_end(delete_form) }}
+                        </div>
+                        
+                            <button type="button" class="btn btn-success" style="margin-right: 1px" data-dismiss="modal">Cerrar</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

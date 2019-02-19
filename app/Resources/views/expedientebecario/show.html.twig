@@ -33,7 +33,7 @@
              <div class="col-md-9">
               <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
-                  <li class="active"><a href="#activity" data-toggle="tab">Account Details</a></li>
+                  <li class="active"><a href="#activity" data-toggle="tab">Detalles de usuario</a></li>
 {#                  <li><a href="#roles-and-permission" data-toggle="tab">Roles and Permissions</a></li>
                   <li><a href="#change-password" data-toggle="tab">Change Password</a></li>#}
                 </ul>
@@ -58,16 +58,7 @@
                           <input type="email" class="form-control active" placeholder="{{ expedientebecario.idusuario.getEmail() }}" readonly>
                         </div>
                       </div>
-                      <div class="form-group">
-                        <label for="inputExperience" class="col-sm-2 control-label">Enabled</label>
-                        <div class="col-sm-10">
-                          {% if expedientebecario.idusuario.isEnabled() %}
-                            <p class="text-success"><i class="fa fa-check"></i></p>
-                          {% else %}
-                              <p class="text-danger"><i class="fa fa-cross">Disabled</i></p>
-                          {% endif %}
-                        </div>
-                      </div>
+                      
                       <div class="form-group">
                         <label for="inputSkills" class="col-sm-2 control-label">Start Date</label>
                         <div class="col-sm-10">
@@ -77,6 +68,17 @@
                             </div>
                             <input type="text" class="form-control pull-right active" placeholder="{{ expedientebecario.idusuario.getMemberSince()|date('Y-m-d') }}" readonly>
                           </div>
+                        </div>
+                      </div>
+                      
+                      <div class="form-group">
+                        <label for="inputExperience" class="col-sm-2 control-label">Enabled</label>
+                        <div class="col-sm-10">
+                          {% if expedientebecario.idusuario.isEnabled() %}
+                            <p class="text-success"><i class="fa fa-check"></i></p>
+                          {% else %}
+                              <p class="text-danger"><i class="fa fa-cross">Disabled</i></p>
+                          {% endif %}
                         </div>
                       </div>
               

@@ -227,20 +227,45 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                     return array (  '_controller' => 'AppBundle\\Controller\\AjaxController::indexAction',  '_route' => 'app_ajax_index',);
                 }
 
-                // ajax_posts
-                if ($pathinfo === '/ajax/posts') {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_ajax_posts;
-                    }
+                if (0 === strpos($pathinfo, '/ajax/p')) {
+                    // ajax_posts
+                    if ($pathinfo === '/ajax/posts') {
+                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'HEAD'));
+                            goto not_ajax_posts;
+                        }
 
-                    return array (  '_controller' => 'AppBundle\\Controller\\AjaxController::postsAction',  '_route' => 'ajax_posts',);
+                        return array (  '_controller' => 'AppBundle\\Controller\\AjaxController::postsAction',  '_route' => 'ajax_posts',);
+                    }
+                    not_ajax_posts:
+
+                    // pagocolaboracion_realizarp
+                    if ($pathinfo === '/ajax/pago') {
+                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                            goto not_pagocolaboracion_realizarp;
+                        }
+
+                        return array (  '_controller' => 'AppBundle\\Controller\\AjaxController::aprobarAction',  '_route' => 'pagocolaboracion_realizarp',);
+                    }
+                    not_pagocolaboracion_realizarp:
+
                 }
-                not_ajax_posts:
 
             }
 
         }
+
+        // pagocolaboracion_indexupdate
+        if (0 === strpos($pathinfo, '/update') && preg_match('#^/update/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'HEAD'));
+                goto not_pagocolaboracion_indexupdate;
+            }
+
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'pagocolaboracion_indexupdate')), array (  '_controller' => 'AppBundle\\Controller\\AjaxController::indexUpdateAction',));
+        }
+        not_pagocolaboracion_indexupdate:
 
         if (0 === strpos($pathinfo, '/banco')) {
             // banco_index
@@ -762,7 +787,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 not_pagocolaboracion_show_delete:
 
                 // pagocolaboracion_edit
-                if (preg_match('#^/pagocolaboracion/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                if (0 === strpos($pathinfo, '/pagocolaboracion/edit') && preg_match('#^/pagocolaboracion/edit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
                     if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
                         $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
                         goto not_pagocolaboracion_edit;
@@ -771,6 +796,17 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'pagocolaboracion_edit')), array (  '_controller' => 'AppBundle\\Controller\\PagocolaboracionController::editAction',));
                 }
                 not_pagocolaboracion_edit:
+
+                // pagocolaboracion_realizarpago
+                if (preg_match('#^/pagocolaboracion/(?P<id>[^/]+)\\?(?P<val>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_pagocolaboracion_realizarpago;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'pagocolaboracion_realizarpago')), array (  '_controller' => 'AppBundle\\Controller\\PagocolaboracionController::aprobarAction',));
+                }
+                not_pagocolaboracion_realizarpago:
 
                 // pagocolaboracion_delete
                 if (preg_match('#^/pagocolaboracion/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
@@ -1172,6 +1208,17 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                         return $this->mergeDefaults(array_replace($matches, array('_route' => 'solicitudbecario_show')), array (  '_controller' => 'AppBundle\\Controller\\SolicitudbecarioController::showAction',));
                     }
                     not_solicitudbecario_show:
+
+                    // solicitudbecario_aprobacion
+                    if (preg_match('#^/solicitudbecario/(?P<id>[^/]+)\\?(?P<val>[^/]++)$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                            goto not_solicitudbecario_aprobacion;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'solicitudbecario_aprobacion')), array (  '_controller' => 'AppBundle\\Controller\\SolicitudbecarioController::aprobarAction',));
+                    }
+                    not_solicitudbecario_aprobacion:
 
                     // solicitudbecario_show_delete
                     if (preg_match('#^/solicitudbecario/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
@@ -1737,6 +1784,31 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return array (  '_controller' => 'AppBundle\\Controller\\menuController::solicitudAction',  '_route' => 'menu_solicitud',);
             }
             not_menu_solicitud:
+
+            if (0 === strpos($pathinfo, '/menu/menu')) {
+                // menu_expediente
+                if ($pathinfo === '/menu/menuexpediente') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_menu_expediente;
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\menuController::expedienteAction',  '_route' => 'menu_expediente',);
+                }
+                not_menu_expediente:
+
+                // menu_colaboracion
+                if ($pathinfo === '/menu/menucolaboraion') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_menu_colaboracion;
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\menuController::colaboracionAction',  '_route' => 'menu_colaboracion',);
+                }
+                not_menu_colaboracion:
+
+            }
 
         }
 

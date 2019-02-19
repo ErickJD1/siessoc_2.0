@@ -30,6 +30,7 @@
       <parameter key="WhiteOctoberBreadcrumbsBundle">WhiteOctober\BreadcrumbsBundle\WhiteOctoberBreadcrumbsBundle</parameter>
       <parameter key="AvanzuAdminThemeBundle">Avanzu\AdminThemeBundle\AvanzuAdminThemeBundle</parameter>
       <parameter key="KnpPaginatorBundle">Knp\Bundle\PaginatorBundle\KnpPaginatorBundle</parameter>
+      <parameter key="ITInputMaskBundle">IT\InputMaskBundle\ITInputMaskBundle</parameter>
       <parameter key="DebugBundle">Symfony\Bundle\DebugBundle\DebugBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
@@ -138,6 +139,7 @@
       <parameter>AvanzuAdminThemeBundle:layout:form-theme.html.twig</parameter>
       <parameter>VichUploaderBundle:Form:fields.html.twig</parameter>
       <parameter>bootstrap_3_layout.html.twig</parameter>
+      <parameter>ITInputMaskBundle:Form:inputMaskFields.html.twig</parameter>
       <parameter>LiipImagineBundle:Form:form_div_layout.html.twig</parameter>
     </parameter>
     <parameter key="monolog.use_microseconds">true</parameter>
@@ -924,7 +926,7 @@
                   <tag name="cache.pool"/>
                   <argument>9So5vqRUWP</argument>
                   <argument>0</argument>
-                  <argument>DnGWBeTUqrS67UNfaJl8P8</argument>
+                  <argument>vPdj-g7nLL1xX+GLqBoWrL</argument>
                   <argument>/home/ubuntu/workspace/var/cache/dev/pools</argument>
                   <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                   <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -937,7 +939,7 @@
                   <tag name="cache.pool"/>
                   <argument>b1xzfWVkDL</argument>
                   <argument>0</argument>
-                  <argument>DnGWBeTUqrS67UNfaJl8P8</argument>
+                  <argument>vPdj-g7nLL1xX+GLqBoWrL</argument>
                   <argument>/home/ubuntu/workspace/var/cache/dev/pools</argument>
                   <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                   <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -1623,7 +1625,7 @@
       <tag name="cache.pool"/>
       <argument>MB4t0MztHD</argument>
       <argument>0</argument>
-      <argument>DnGWBeTUqrS67UNfaJl8P8</argument>
+      <argument>vPdj-g7nLL1xX+GLqBoWrL</argument>
       <argument>/home/ubuntu/workspace/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -1686,6 +1688,9 @@
               <argument key="Vich\UploaderBundle\Form\Type\VichFileType">vich_uploader.form.type.file</argument>
               <argument key="Vich\UploaderBundle\Form\Type\VichImageType">vich_uploader.form.type.image</argument>
               <argument key="Ivory\CKEditorBundle\Form\Type\CKEditorType">ivory_ck_editor.form.type</argument>
+              <argument key="IT\InputMaskBundle\Form\Type\DateMaskType">it.inputmask.form.type.date_mask</argument>
+              <argument key="IT\InputMaskBundle\Form\Type\TextMaskType">it.inputmask.form.type.text_mask</argument>
+              <argument key="IT\InputMaskBundle\Form\Type\UrlMaskType">it.inputmask.form.type.url_mask</argument>
             </argument>
             <argument type="collection">
               <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="collection">
@@ -2509,7 +2514,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>5c68f15385f223.14285498</argument>
+            <argument>5c6b813438fc16.86113117</argument>
           </service>
         </argument>
       </argument>
@@ -2695,13 +2700,7 @@
                     </service>
                   </argument>
                   <argument type="collection">
-                    <argument>ROLE_ADMIN</argument>
-                    <argument>ROLE_BECARIO</argument>
-                    <argument>ROLE_PATROCINADOR</argument>
-                    <argument>ROLE_FINANCIERO</argument>
-                    <argument>ROLE_ASPIRANTE_BECARIO</argument>
-                    <argument>ROLE_ASPIRANTE_PATROCINADOR</argument>
-                    <argument>ROLE_COORDINADOR</argument>
+                    <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
                   </argument>
                   <argument>null</argument>
                 </call>
@@ -2906,7 +2905,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>5c68f15385f223.14285498</argument>
+            <argument>5c6b813438fc16.86113117</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -2954,13 +2953,7 @@
                     </service>
                   </argument>
                   <argument type="collection">
-                    <argument>ROLE_ADMIN</argument>
-                    <argument>ROLE_BECARIO</argument>
-                    <argument>ROLE_PATROCINADOR</argument>
-                    <argument>ROLE_FINANCIERO</argument>
-                    <argument>ROLE_ASPIRANTE_BECARIO</argument>
-                    <argument>ROLE_ASPIRANTE_PATROCINADOR</argument>
-                    <argument>ROLE_COORDINADOR</argument>
+                    <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
                   </argument>
                   <argument>null</argument>
                 </call>
@@ -3077,6 +3070,7 @@
           <argument>AvanzuAdminThemeBundle:layout:form-theme.html.twig</argument>
           <argument>VichUploaderBundle:Form:fields.html.twig</argument>
           <argument>bootstrap_3_layout.html.twig</argument>
+          <argument>ITInputMaskBundle:Form:inputMaskFields.html.twig</argument>
         </argument>
         <argument key="date" type="collection">
           <argument key="timezone">America/El_Salvador</argument>
@@ -3209,6 +3203,7 @@
                       <argument>AvanzuAdminThemeBundle:layout:form-theme.html.twig</argument>
                       <argument>VichUploaderBundle:Form:fields.html.twig</argument>
                       <argument>bootstrap_3_layout.html.twig</argument>
+                      <argument>ITInputMaskBundle:Form:inputMaskFields.html.twig</argument>
                       <argument>LiipImagineBundle:Form:form_div_layout.html.twig</argument>
                     </argument>
                   </service>
@@ -5198,6 +5193,15 @@
       <tag name="twig.extension"/>
       <argument type="service" id="knp_paginator.helper.processor"/>
     </service>
+    <service id="it.inputmask.form.type.date_mask" class="IT\InputMaskBundle\Form\Type\DateMaskType">
+      <tag name="form.type" alias="it_date_mask"/>
+    </service>
+    <service id="it.inputmask.form.type.text_mask" class="IT\InputMaskBundle\Form\Type\TextMaskType">
+      <tag name="form.type" alias="it_text_mask"/>
+    </service>
+    <service id="it.inputmask.form.type.url_mask" class="IT\InputMaskBundle\Form\Type\UrlMaskType">
+      <tag name="form.type" alias="it_alias_mask"/>
+    </service>
     <service id="data_collector.dump" class="Symfony\Component\HttpKernel\DataCollector\DumpDataCollector">
       <tag name="data_collector" id="dump" template="@Debug/Profiler/dump.html.twig" priority="240"/>
       <argument type="service" id="debug.stopwatch" on-invalid="ignore"/>
@@ -5556,6 +5560,10 @@
         <argument>KnpPaginator</argument>
       </call>
       <call method="addPath">
+        <argument>/home/ubuntu/workspace/vendor/it/input-mask-bundle/IT/InputMaskBundle/Resources/views</argument>
+        <argument>ITInputMask</argument>
+      </call>
+      <call method="addPath">
         <argument>/home/ubuntu/workspace/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/views</argument>
         <argument>Debug</argument>
       </call>
@@ -5745,6 +5753,7 @@
                       <argument key="WhiteOctober\BreadcrumbsBundle">/home/ubuntu/workspace/vendor/whiteoctober/breadcrumbs-bundle/WhiteOctober/BreadcrumbsBundle/Resources/config/serializer</argument>
                       <argument key="Avanzu\AdminThemeBundle">/home/ubuntu/workspace/vendor/avanzu/admin-theme-bundle/Resources/config/serializer</argument>
                       <argument key="Knp\Bundle\PaginatorBundle">/home/ubuntu/workspace/vendor/knplabs/knp-paginator-bundle/Resources/config/serializer</argument>
+                      <argument key="IT\InputMaskBundle">/home/ubuntu/workspace/vendor/it/input-mask-bundle/IT/InputMaskBundle/Resources/config/serializer</argument>
                       <argument key="Symfony\Bundle\DebugBundle">/home/ubuntu/workspace/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/config/serializer</argument>
                       <argument key="Symfony\Bundle\WebProfilerBundle">/home/ubuntu/workspace/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/config/serializer</argument>
                       <argument key="Sensio\Bundle\DistributionBundle">/home/ubuntu/workspace/vendor/sensio/distribution-bundle/Resources/config/serializer</argument>
@@ -5782,6 +5791,7 @@
                       <argument key="WhiteOctober\BreadcrumbsBundle">/home/ubuntu/workspace/vendor/whiteoctober/breadcrumbs-bundle/WhiteOctober/BreadcrumbsBundle/Resources/config/serializer</argument>
                       <argument key="Avanzu\AdminThemeBundle">/home/ubuntu/workspace/vendor/avanzu/admin-theme-bundle/Resources/config/serializer</argument>
                       <argument key="Knp\Bundle\PaginatorBundle">/home/ubuntu/workspace/vendor/knplabs/knp-paginator-bundle/Resources/config/serializer</argument>
+                      <argument key="IT\InputMaskBundle">/home/ubuntu/workspace/vendor/it/input-mask-bundle/IT/InputMaskBundle/Resources/config/serializer</argument>
                       <argument key="Symfony\Bundle\DebugBundle">/home/ubuntu/workspace/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/config/serializer</argument>
                       <argument key="Symfony\Bundle\WebProfilerBundle">/home/ubuntu/workspace/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/config/serializer</argument>
                       <argument key="Sensio\Bundle\DistributionBundle">/home/ubuntu/workspace/vendor/sensio/distribution-bundle/Resources/config/serializer</argument>
@@ -5819,6 +5829,7 @@
                       <argument key="WhiteOctober\BreadcrumbsBundle">/home/ubuntu/workspace/vendor/whiteoctober/breadcrumbs-bundle/WhiteOctober/BreadcrumbsBundle/Resources/config/serializer</argument>
                       <argument key="Avanzu\AdminThemeBundle">/home/ubuntu/workspace/vendor/avanzu/admin-theme-bundle/Resources/config/serializer</argument>
                       <argument key="Knp\Bundle\PaginatorBundle">/home/ubuntu/workspace/vendor/knplabs/knp-paginator-bundle/Resources/config/serializer</argument>
+                      <argument key="IT\InputMaskBundle">/home/ubuntu/workspace/vendor/it/input-mask-bundle/IT/InputMaskBundle/Resources/config/serializer</argument>
                       <argument key="Symfony\Bundle\DebugBundle">/home/ubuntu/workspace/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/config/serializer</argument>
                       <argument key="Symfony\Bundle\WebProfilerBundle">/home/ubuntu/workspace/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/config/serializer</argument>
                       <argument key="Sensio\Bundle\DistributionBundle">/home/ubuntu/workspace/vendor/sensio/distribution-bundle/Resources/config/serializer</argument>

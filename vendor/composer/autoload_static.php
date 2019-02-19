@@ -85,6 +85,7 @@ class ComposerStaticInit754e6ea413495590f60903c0cefaadf5
             'Incenteev\\ParameterHandler\\' => 27,
             'Illuminate\\Support\\' => 19,
             'Illuminate\\Contracts\\' => 21,
+            'IT\\InputMaskBundle\\' => 19,
         ),
         'H' => 
         array (
@@ -263,6 +264,10 @@ class ComposerStaticInit754e6ea413495590f60903c0cefaadf5
         'Illuminate\\Contracts\\' => 
         array (
             0 => __DIR__ . '/..' . '/illuminate/contracts',
+        ),
+        'IT\\InputMaskBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/it/input-mask-bundle/IT/InputMaskBundle',
         ),
         'Hospect\\PhpVarsToJsBundle\\' => 
         array (

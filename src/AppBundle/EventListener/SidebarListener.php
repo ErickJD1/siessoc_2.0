@@ -72,7 +72,7 @@ class SidebarListener {
             $rootItems = array(
                 $inicio = new MenuItemModel('inicio', 'Inicio', 'homepage', $earg, 'fa fa-home'),
                 $dash = new MenuItemModel('site', 'WebSite', 'web_index', $earg, 'fa fa-globe'),
-                $Miexpediente = new MenuItemModel('expediente', 'Mi Expediente', '', $earg, 'fa fa-search'),
+                $Miexpediente = new MenuItemModel('expediente', 'Mi Expediente', 'miexpedientebecario_show', $earg, 'fa fa-search'),
                 $actividad = new MenuItemModel('actividad', 'Actividades', '', $earg, 'fa fa-calendar'),
             );
         }

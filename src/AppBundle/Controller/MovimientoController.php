@@ -86,13 +86,11 @@ class MovimientoController extends Controller {
             } else {
                 $this->addFlash('error', 'Monto del movimiento incorrectos!');
             }
-
-
-            $saldoActual = 0;
+            $saldoActual =0;
             $movimientos = $em->getRepository('AppBundle:Movimiento')->findMovimiento($cuenta->getIdcuenta());
             $saldoActual = $cuenta->getSaldocuenta();
             foreach ($movimientos as $moviento) {
-                $saldoActual = $saldoActual + $moviento->getMonto();
+               $saldoActual =  $saldoActual+ $moviento->getMonto();
             }
             $cuenta->setSaldoactual($saldoActual);
             $em->persist($cuenta);

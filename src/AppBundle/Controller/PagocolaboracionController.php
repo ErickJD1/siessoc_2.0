@@ -34,6 +34,7 @@ class PagocolaboracionController extends Controller {
         ));
     }
 
+
     /**
      * Creates a new pagocolaboracion entity.
      *
@@ -115,7 +116,7 @@ class PagocolaboracionController extends Controller {
     /**
      * Displays a form to edit an existing pagocolaboracion entity.
      *
-     * @Route("/{id}/edit", name="pagocolaboracion_edit")
+     * @Route("/edit/{id}", name="pagocolaboracion_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Pagocolaboracion $pagocolaboracion) {
@@ -127,17 +128,37 @@ class PagocolaboracionController extends Controller {
             $this->getDoctrine()->getManager()->flush();
 
             $this->addFlash('success', 'Registro Modificado Exitosamente!');
-            return $this->redirectToRoute('pagocolaboracion_edit');
+            return $this->render('colaboracionmonetaria_index');
         }
 
-       // $form = new ColaboracionmonetariaController();
-       // $form->getformulario();
-        
+        // $form = new ColaboracionmonetariaController();
+        // $form->getformulario();
+
         return $this->render('pagocolaboracion/pagocolaboracionedit.html.twig', array(
                     'pagocolaboracion' => $pagocolaboracion,
                     'edit_form' => $editForm->createView(),
                     'delete_form' => $deleteForm->createView(),
         ));
+    }
+
+    /**
+     * Finds and displays a solicitudbecario entity.
+     *
+     * @Route("/{id}?{val}", name="pagocolaboracion_realizarpago")
+     * @Method({"GET", "POST"})
+     */
+    public function aprobarAction(Request $request, Pagocolaboracion $pagorealizado, $val) {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $pagorealizado->setPagorealizado($val);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($pagorealizado);
+        $em->flush($pagorealizado);
+
+
+
+        return $this->redirectToRoute('colaboracionmonetaria_index');
     }
 
     /**

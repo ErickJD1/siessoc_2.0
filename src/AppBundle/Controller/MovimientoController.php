@@ -75,13 +75,28 @@ class MovimientoController extends Controller {
             $cuenta = new Cuenta();
             $cuenta = $em->getRepository('AppBundle:Cuenta')->findOneBy(array('idcuenta' => $movimiento->getIdCuenta()));
 
-            if (($movimiento->getMonto()) <= $cuenta->getSaldoactual()) {
+            if (($movimiento->getMonto()) <= $cuenta->getSaldoactual() && $movimiento->getIdmov() == 0) {
+                $em->persist($movimiento);
+                $em->flush($movimiento);
+                $this->addFlash('success', 'Movimiento Ingresado Correctamente!');
+            } elseif ($movimiento->getIdmov() == 1) {
                 $em->persist($movimiento);
                 $em->flush($movimiento);
                 $this->addFlash('success', 'Movimiento Ingresado Correctamente!');
             } else {
                 $this->addFlash('error', 'Monto del movimiento incorrectos!');
             }
+
+
+            $saldoActual = 0;
+            $movimientos = $em->getRepository('AppBundle:Movimiento')->findMovimiento($cuenta->getIdcuenta());
+            $saldoActual = $cuenta->getSaldocuenta();
+            foreach ($movimientos as $moviento) {
+                $saldoActual = $saldoActual + $moviento->getMonto();
+            }
+            $cuenta->setSaldoactual($saldoActual);
+            $em->persist($cuenta);
+            $em->flush($cuenta);
 
             return $this->redirectToRoute('movimiento_index');
         }
@@ -142,6 +157,20 @@ class MovimientoController extends Controller {
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $cuenta = new Cuenta();
+            $cuenta = $this->getDoctrine()->getManager()->getRepository('AppBundle:Cuenta')->findOneBy(array('idcuenta' => $movimiento->getIdCuenta()));
+
+
+            $saldoActual = 0;
+            $movimientos = $this->getDoctrine()->getManager()->getRepository('AppBundle:Movimiento')->findMovimiento($movimiento->getIdcuenta());
+            $saldoActual = $cuenta->getSaldocuenta();
+            foreach ($movimientos as $moviento) {
+                $saldoActual = $saldoActual + $moviento->getMonto();
+            }
+            $cuenta->setSaldoactual($saldoActual);
+            $this->getDoctrine()->getManager()->persist($cuenta);
+            $this->getDoctrine()->getManager()->flush($cuenta);
+
             $this->addFlash('success', 'El Movimiento se modifico con Exito!');
             return $this->redirectToRoute('movimiento_index', array('id' => $movimiento->getIdmov()));
         }
@@ -160,7 +189,7 @@ class MovimientoController extends Controller {
      * @Method({"GET", "POST"})
      */
     public function aprobacionAction(Request $request, Movimiento $movimiento, $val) {
-         $descripcion=$request->get("descripcion");
+        $descripcion = $request->get("descripcion");
 
         $movimiento->setUpdateAt(new \DateTime());
         if ($val == 1) {
@@ -191,6 +220,21 @@ class MovimientoController extends Controller {
             $em = $this->getDoctrine()->getManager();
             $em->remove($movimiento);
             $em->flush($movimiento);
+
+
+            $cuenta = new Cuenta();
+            $cuenta = $em->getRepository('AppBundle:Cuenta')->findOneBy(array('idcuenta' => $movimiento->getIdCuenta()));
+
+
+            $saldoActual = 0;
+            $movimientos = $em->getRepository('AppBundle:Movimiento')->findMovimiento($cuenta->getIdcuenta());
+            $saldoActual = $cuenta->getSaldocuenta();
+            foreach ($movimientos as $moviento) {
+                $saldoActual = $saldoActual + $moviento->getMonto();
+            }
+            $cuenta->setSaldoactual($saldoActual);
+            $em->persist($cuenta);
+            $em->flush($cuenta);
         }
 
         $this->addFlash('success', 'El Movimiento fue eliminada con Exito!');

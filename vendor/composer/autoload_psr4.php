@@ -43,6 +43,7 @@ return array(
     'Incenteev\\ParameterHandler\\' => array($vendorDir . '/incenteev/composer-parameter-handler'),
     'Illuminate\\Support\\' => array($vendorDir . '/illuminate/support'),
     'Illuminate\\Contracts\\' => array($vendorDir . '/illuminate/contracts'),
+    'IT\\InputMaskBundle\\' => array($vendorDir . '/it/input-mask-bundle/IT/InputMaskBundle'),
     'Hospect\\PhpVarsToJsBundle\\' => array($vendorDir . '/hospect/php-vars-to-js-bundle'),
     'FOS\\UserBundle\\' => array($vendorDir . '/friendsofsymfony/user-bundle'),
     'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src/Doctrine/Instantiator'),

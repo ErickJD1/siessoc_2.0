@@ -45,6 +45,8 @@ twig:
         # other form themes
         - 'VichUploaderBundle:Form:fields.html.twig'
         - 'bootstrap_3_layout.html.twig'
+        - 'ITInputMaskBundle:Form:inputMaskFields.html.twig'
+
     globals:
         site_name: '%site_name%'
         footer_url: '%footer_url%'
@@ -151,7 +153,7 @@ vich_uploader:
             namer: vich_uploader.namer_origname
             inject_on_load:     false
             delete_on_update:   true
-            delete_on_remove:   true       
+            delete_on_remove:   true
         document_file:
             uri_prefix:         /images/documents
             upload_destination: '%kernel.root_dir%/../web/images/documents'
@@ -159,8 +161,6 @@ vich_uploader:
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
-  
-  
 
 
 #https://github.com/whiteoctober/BreadcrumbsBundle
@@ -185,5 +185,3 @@ knp_paginator:
         pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v4_pagination.html.twig    # sliding pagination controls template
         sortable: '@KnpPaginator/Pagination/sortable_link.html.twig' # sort link template
         filtration: '@KnpPaginator/Pagination/filtration.html.twig'  # filters template
-
-

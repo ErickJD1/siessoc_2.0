@@ -95,7 +95,7 @@ class MovimientoController extends Controller {
             $cuenta->setSaldoactual($saldoActual);
             $em->persist($cuenta);
             $em->flush($cuenta);
-            
+
             return $this->redirectToRoute('movimiento_index');
         }
 
@@ -155,6 +155,20 @@ class MovimientoController extends Controller {
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $cuenta = new Cuenta();
+            $cuenta = $this->getDoctrine()->getManager()->getRepository('AppBundle:Cuenta')->findOneBy(array('idcuenta' => $movimiento->getIdCuenta()));
+
+
+            $saldoActual = 0;
+            $movimientos = $this->getDoctrine()->getManager()->getRepository('AppBundle:Movimiento')->findMovimiento($movimiento->getIdcuenta());
+            $saldoActual = $cuenta->getSaldocuenta();
+            foreach ($movimientos as $moviento) {
+                $saldoActual = $saldoActual + $moviento->getMonto();
+            }
+            $cuenta->setSaldoactual($saldoActual);
+            $this->getDoctrine()->getManager()->persist($cuenta);
+            $this->getDoctrine()->getManager()->flush($cuenta);
+
             $this->addFlash('success', 'El Movimiento se modifico con Exito!');
             return $this->redirectToRoute('movimiento_index', array('id' => $movimiento->getIdmov()));
         }
@@ -204,6 +218,21 @@ class MovimientoController extends Controller {
             $em = $this->getDoctrine()->getManager();
             $em->remove($movimiento);
             $em->flush($movimiento);
+
+
+            $cuenta = new Cuenta();
+            $cuenta = $em->getRepository('AppBundle:Cuenta')->findOneBy(array('idcuenta' => $movimiento->getIdCuenta()));
+
+
+            $saldoActual = 0;
+            $movimientos = $em->getRepository('AppBundle:Movimiento')->findMovimiento($cuenta->getIdcuenta());
+            $saldoActual = $cuenta->getSaldocuenta();
+            foreach ($movimientos as $moviento) {
+                $saldoActual = $saldoActual + $moviento->getMonto();
+            }
+            $cuenta->setSaldoactual($saldoActual);
+            $em->persist($cuenta);
+            $em->flush($cuenta);
         }
 
         $this->addFlash('success', 'El Movimiento fue eliminada con Exito!');

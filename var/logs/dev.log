@@ -1,1 +1,0 @@
-[2019-02-20 03:11:31] php.DEBUG: fsockopen(): unable to connect to 127.0.0.1:8000 (No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión. ) {"type":2,"file":"C:\\wamp64\\www\\siessoc_2.0\\vendor\\symfony\\symfony\\src\\Symfony\\Bundle\\FrameworkBundle\\Command\\ServerCommand.php","line":59,"level":28928} []

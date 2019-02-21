@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Movimientoinventario
  *
- * @ORM\Table(name="movimientoinventario")
+ * @ORM\Table(name="movimientoinventario", indexes={@ORM\Index(name="FK_RELATIONSHIP_81", columns={"IDEXPBECARIO"}), @ORM\Index(name="FK_RELATIONSHIP_80", columns={"IDINVENTARIO"})})
  * @ORM\Entity
  */
 class Movimientoinventario
@@ -35,8 +35,43 @@ class Movimientoinventario
      */
     private $estadomovinv;
 
+      /**
+     * @var integer
+     *
+     * @ORM\Column(name="IDINVENTARIO", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idinventario;
+    
+     /**
+     * @var integer
+     *
+     * @ORM\Column(name="IDEXPBECARIO", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idexpbecario;
 
+    function getIdexpbecario() {
+        return $this->idexpbecario;
+    }
 
+    function setIdexpbecario($idexpbecario) {
+        $this->idexpbecario = $idexpbecario;
+    }
+
+    
+    
+    function getIdinventario() {
+        return $this->idinventario;
+    }
+
+    function setIdinventario($idinventario) {
+        $this->idinventario = $idinventario;
+    }
+
+        
     /**
      * Set nombremovinv
      *

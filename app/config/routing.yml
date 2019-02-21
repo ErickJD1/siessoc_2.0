@@ -1,3 +1,11 @@
+app_inventario:
+    resource: "@AppBundle/Controller/InventarioController.php"
+    type:     annotation
+
+app_insumo:
+    resource: "@AppBundle/Controller/InsumoController.php"
+    type:     annotation
+
 app_tipoinsumo:
     resource: "@AppBundle/Controller/TipoinsumoController.php"
     type:     annotation

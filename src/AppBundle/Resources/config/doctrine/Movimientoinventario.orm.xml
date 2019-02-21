@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="AppBundle\Entity\Movimientoinventario" table="movimientoinventario">
-    <id name="idmovinv" type="integer" column="IDMOVINV">
+    <indexes>
+      <index name="FK_RELATIONSHIP_80" columns="IDINVENTARIO"/>
+      <index name="FK_RELATIONSHIP_81" columns="IDEXPBECARIO"/>
+    </indexes>
+      <id name="idmovinv" type="integer" column="IDMOVINV">
       <generator strategy="IDENTITY"/>
     </id>
     <field name="nombremovinv" type="string" column="NOMBREMOVINV" length="250" nullable="true">
@@ -10,5 +14,16 @@
       </options>
     </field>
     <field name="estadomovinv" type="boolean" column="ESTADOMOVINV" nullable="true"/>
+    
+     <many-to-one field="idinventario" target-entity="Inventario" fetch="LAZY">
+      <join-columns>
+        <join-column name="IDINVENTARIO" referenced-column-name="IDINVENTARIO"/>
+      </join-columns>
+    </many-to-one>
+     <many-to-one field="idexpbecario" target-entity="Expedientebecario" fetch="LAZY">
+      <join-columns>
+        <join-column name="IDEXPBECARIO" referenced-column-name="IDEXPBECARIO"/>
+      </join-columns>
+    </many-to-one>
   </entity>
 </doctrine-mapping>

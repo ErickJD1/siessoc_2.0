@@ -74,6 +74,22 @@ class TipoinsumoController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+    
+      /**
+     * Finds and displays a tipoinsumo entity.
+     *
+     * @Route("/{id}", name="tipoinsumo_show_delete")
+     * @Method("GET")
+     */
+    public function showDeleteAction(Tipoinsumo $tipoinsumo) {
+        $deleteForm = $this->createDeleteForm($tipoinsumo);
+
+        return $this->render('tipoinsumo/tipoinsumoshowdelete.html.twig', array(
+                    'tipoinsumo' => $tipoinsumo,
+                    'delete_form' => $deleteForm->createView(),
+        ));
+    }
+    
 
     /**
      * Displays a form to edit an existing tipoinsumo entity.
@@ -90,7 +106,8 @@ class TipoinsumoController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('tipoinsumo_edit', array('id' => $tipoinsumo->getIdtipoinsumo()));
+            $this->addFlash('success', 'Registro Modificado Con Exito!');
+            return $this->redirectToRoute('tipoinsumo_index');
         }
 
         return $this->render('tipoinsumo/tipoinsumoedit.html.twig', array(

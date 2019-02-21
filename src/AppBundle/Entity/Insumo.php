@@ -3,12 +3,15 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Insumo
  *
  * @ORM\Table(name="insumo", indexes={@ORM\Index(name="FK_RELATIONSHIP_45", columns={"IDTIPOINSUMO"})})
  * @ORM\Entity
+ * @UniqueEntity("nombreinsumo")
  */
 class Insumo
 {
@@ -25,6 +28,7 @@ class Insumo
      * @var string
      *
      * @ORM\Column(name="NOMBREINSUMO", type="string", length=250, nullable=true)
+     * @Assert\NotBlank()
      */
     private $nombreinsumo;
 
@@ -32,6 +36,7 @@ class Insumo
      * @var string
      *
      * @ORM\Column(name="DESCRIPCIONINSUMO", type="string", length=250, nullable=true)
+     * @Assert\NotBlank()
      */
     private $descripcioninsumo;
 
@@ -49,6 +54,7 @@ class Insumo
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="IDTIPOINSUMO", referencedColumnName="IDTIPOINSUMO")
      * })
+     * @Assert\NotBlank()
      */
     private $idtipoinsumo;
 

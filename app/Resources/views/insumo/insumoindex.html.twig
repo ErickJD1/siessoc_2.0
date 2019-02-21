@@ -27,16 +27,17 @@
             <tr>
                 <td>{{ insumo.nombreinsumo }}</td>
                 <td>{{ insumo.descripcioninsumo }}</td>
-                <td>{% if insumo.estadoinsumo %}Yes{% else %}No{% endif %}</td>
+                <td>{% if insumo.estadoinsumo==1 %}ACTIVO{% else %}BAJA{% endif %}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('insumo_show', { 'id': insumo.idinsumo }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('insumo_edit', { 'id': insumo.idinsumo }) }}">edit</a>
-                        </li>
-                    </ul>
+                  <div style="float:left;"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#Verinsu{{ insumo.idinsumo}}"><i class="fa fa-eye" style="font-size: 20px; color: deepskyblue"></i></button>
+                          {{ render(controller('AppBundle:Insumo:show', { 'id' : insumo.idinsumo } )) }}
+                  </div>
+                  <div style="float:left;" >
+                    <a href="{{ path('insumo_edit',{ 'id' : insumo.idinsumo }) }}" style="background-color: transparent; border: none;"><i class="fa fa-edit" style="font-size: 20px; color: limegreen"></i></a>
+                  </div>
+                   <div style="float:left;"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#Verinsudelete{{ insumo.idinsumo }}"><i class="fa fa-trash" style="font-size: 20px; color: crimson"></i></button>
+                          {{ render(controller('AppBundle:Insumo:showDelete', { 'id' : insumo.idinsumo } )) }}
+                  </div>
                 </td>
              </tr>
         {% endfor %}

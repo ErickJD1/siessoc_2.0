@@ -12,6 +12,7 @@
         <option name="unsigned"/>
       </options>
     </field>
+  
     <field name="fechainventario" type="datetime" column="FECHAINVENTARIO" nullable="true"/>
     <many-to-one field="idinsumo" target-entity="Insumo" fetch="LAZY">
       <join-columns>

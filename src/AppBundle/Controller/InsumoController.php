@@ -5,7 +5,8 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Insumo;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Insumo controller.
@@ -48,7 +49,8 @@ class InsumoController extends Controller
             $em->persist($insumo);
             $em->flush($insumo);
 
-            return $this->redirectToRoute('insumo_show', array('id' => $insumo->getIdinsumo()));
+             $this->addFlash('success', 'Insumo Guardado Exitosamente');
+            return $this->redirectToRoute('insumo_index');
         }
 
         return $this->render('insumo/insumonew.html.twig', array(
@@ -72,6 +74,25 @@ class InsumoController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+    
+    
+          /**
+     * Finds and displays a insumo entity.
+     *
+     * @Route("/{id}", name="insumo_show_delete")
+     * @Method("GET")
+     */
+    public function showDeleteAction(Insumo $insumo) {
+        $deleteForm = $this->createDeleteForm($insumo);
+
+        return $this->render('insumo/insumoshowdelete.html.twig', array(
+                    'insumo' => $insumo,
+                    'delete_form' => $deleteForm->createView(),
+        ));
+    }
+    
+    
+    
 
     /**
      * Displays a form to edit an existing insumo entity.
@@ -88,7 +109,7 @@ class InsumoController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('insumo_edit', array('id' => $insumo->getId()));
+            return $this->redirectToRoute('insumo_edit', array('id' => $insumo->getIdinsumo()));
         }
 
         return $this->render('insumo/insumoedit.html.twig', array(
@@ -128,7 +149,7 @@ class InsumoController extends Controller
     private function createDeleteForm(Insumo $insumo)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('insumo_delete', array('id' => $insumo->getId())))
+            ->setAction($this->generateUrl('insumo_delete', array('id' => $insumo->getIdinsumo())))
             ->setMethod('DELETE')
             ->getForm()
         ;

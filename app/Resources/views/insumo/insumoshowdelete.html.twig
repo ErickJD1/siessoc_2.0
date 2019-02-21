@@ -1,4 +1,4 @@
-<div class="modal fade" id="Verinsu{{ insumo.idinsumo}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="Verinsudelete{{ insumo.idinsumo}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content" style="border-radius: 40px">
 
@@ -26,14 +26,19 @@
              </div>
                         <div class="col col-md-5">
 
-                            <img style="width:75%;margin-top: 10%;margin-bottom: 2%" src="{{ asset('img/budget.png') }}"></img>
+                            <img style="width:75%;margin-top: 10%;margin-bottom: 2%" src="{{ asset('img/delete.png') }}"></img>
                         </div>
                     </div>
-
-
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-success" style="margin-right: 1px" data-dismiss="modal">Cerrar</button>
-                  </div>
+                        <div style="float:right">
+                            {{ form_start(delete_form, {'action': path('insumo_delete', {'id': insumo.idinsumo}), 'Method': 'POST' }) }}
+                            <input type="submit" class="btn btn-danger" type="button" value="Eliminar">
+                            {{ form_end(delete_form) }}
+                        </div>
+                        
+                            <button type="button" class="btn btn-success" style="margin-right: 1px" data-dismiss="modal">Cerrar</button>
+
+                    </div>
                 </div>
             </div>
         </div>

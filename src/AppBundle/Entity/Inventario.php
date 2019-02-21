@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Inventario
@@ -25,6 +27,7 @@ class Inventario
      * @var integer
      *
      * @ORM\Column(name="CANTIDADINVENTARIO", type="integer", nullable=true)
+     * @Assert\NotBlank()
      */
     private $cantidadinventario;
 
@@ -32,6 +35,7 @@ class Inventario
      * @var \DateTime
      *
      * @ORM\Column(name="FECHAINVENTARIO", type="datetime", nullable=true)
+     * @Assert\NotBlank()
      */
     private $fechainventario;
 
@@ -43,9 +47,12 @@ class Inventario
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="IDINSUMO", referencedColumnName="IDINSUMO")
      * })
+     * @Assert\NotBlank()
      */
     private $idinsumo;
+    
 
+        
     /**
      * Set cantidadinventario
      *

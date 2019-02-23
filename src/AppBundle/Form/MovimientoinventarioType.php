@@ -13,7 +13,10 @@ class MovimientoinventarioType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nombremovinv')->add('estadomovinv')        ;
+        $builder->add('nombremovinv')
+                ->add('estadomovinv') 
+                ->add('idexpbecario')
+                ->add('idinventario');
     }
     
     /**

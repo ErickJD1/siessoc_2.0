@@ -1,23 +1,35 @@
-{% extends 'base.html.twig' %}
+{% extends "layout/base-layout.html.twig" %}
 
-{% block body %}
-    <h1>Movimientoinventarios list</h1>
+{% block page_title %} Movimiento Inventario | {% endblock %}
+{% block page_subtitle %}Lista De Movimientos Inventario {% endblock %}
 
-    <table>
-        <thead>
+{% block page_content %}
+
+<div class="box box-primary">
+<div style="width:90%; margin-left:5%; margin-top: 2% ">
+
+<div align="left">
+     <a style="font-size: 15px" href="{{ path('movimientoinventario_new') }}" class="btn btn-success btn-sm"><i style="font-size: 20px" class="fa fa-plus-circle"></i> Registrar Nuevo Movimiento</a>
+</div>
+<br> </br>
+
+        <table class="table table-bordered table-hover table-striped table-responsive" style="width:100%" id="tabelMahasiswa">
+            <thead class="thead-light">
             <tr>
-                <th>Nombremovinv</th>
-                <th>Estadomovinv</th>
-                <th>Idmovinv</th>
+                <th>Movimiento</th>
+                <th>Becario</th>
+                <th>Articulo</th>
+                <th>Estado</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for movimientoinventario in movimientoinventarios %}
             <tr>
-                <td><a href="{{ path('movimientoinventario_show', { 'id': movimientoinventario.idmovinv }) }}">{{ movimientoinventario.nombremovinv }}</a></td>
-                <td>{% if movimientoinventario.estadomovinv %}Yes{% else %}No{% endif %}</td>
-                <td>{{ movimientoinventario.idmovinv }}</td>
+                <td>{{ movimientoinventario.nombremovinv }}</td>
+                <td>{{ movimientoinventario.idusuario.firstName }}</td>
+                <td>{{ movimientoinventario.idinventario }}</td>
+                <td>{% if movimientoinventario.estadomovinv==1 %}Concluido{% else %}Pendiente{% endif %}</td>
                 <td>
                     <ul>
                         <li>
@@ -29,13 +41,9 @@
                     </ul>
                 </td>
             </tr>
-        {% endfor %}
+       {% endfor %}
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('movimientoinventario_new') }}">Create a new movimientoinventario</a>
-        </li>
-    </ul>
+</div>
+</div>
 {% endblock %}

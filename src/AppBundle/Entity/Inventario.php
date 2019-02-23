@@ -134,4 +134,5 @@ class Inventario
     {
         return $this->idinsumo;
     }  
+    
 }

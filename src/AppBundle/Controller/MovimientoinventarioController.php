@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 /**
  * Movimientoinventario controller.
@@ -27,7 +28,7 @@ class MovimientoinventarioController extends Controller
 
         $movimientoinventarios = $em->getRepository('AppBundle:Movimientoinventario')->findAll();
 
-        return $this->render('movimientoinventario/index.html.twig', array(
+        return $this->render('movimientoinventario/movimientoinventarioindex.html.twig', array(
             'movimientoinventarios' => $movimientoinventarios,
         ));
     }
@@ -42,6 +43,20 @@ class MovimientoinventarioController extends Controller
     {
         $movimientoinventario = new Movimientoinventario();
         $form = $this->createForm('AppBundle\Form\MovimientoinventarioType', $movimientoinventario);
+         $em = $this->getDoctrine()->getManager();
+        $permissions = array();
+        $result = $em->getRepository('SalexUserBundle:User')->findAll();
+        foreach ($result as $row){
+            $permissions[$row->getId()]=$row->getId();
+        }
+        
+          $form->add('idexpbecario', ChoiceType::class, array(
+            'label'   => 'Nombre Del Becario',
+            'choices' => $permissions,
+            'multiple' => true,
+            'expanded' => true
+        ));
+        
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -52,7 +67,7 @@ class MovimientoinventarioController extends Controller
             return $this->redirectToRoute('movimientoinventario_show', array('id' => $movimientoinventario->getId()));
         }
 
-        return $this->render('movimientoinventario/new.html.twig', array(
+        return $this->render('movimientoinventario/movimientoinventarionew.html.twig', array(
             'movimientoinventario' => $movimientoinventario,
             'form' => $form->createView(),
         ));
@@ -68,7 +83,7 @@ class MovimientoinventarioController extends Controller
     {
         $deleteForm = $this->createDeleteForm($movimientoinventario);
 
-        return $this->render('movimientoinventario/show.html.twig', array(
+        return $this->render('movimientoinventario/movimientoinventarioshow.html.twig', array(
             'movimientoinventario' => $movimientoinventario,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -92,7 +107,7 @@ class MovimientoinventarioController extends Controller
             return $this->redirectToRoute('movimientoinventario_edit', array('id' => $movimientoinventario->getId()));
         }
 
-        return $this->render('movimientoinventario/edit.html.twig', array(
+        return $this->render('movimientoinventario/movimientoinventarioedit.html.twig', array(
             'movimientoinventario' => $movimientoinventario,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

@@ -91,6 +91,7 @@ class SolicitudbecarioController extends Controller {
         $solicitudbecario->setEstadosolibecario(0);
         $form->handleRequest($request);
 
+
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($solicitudbecario);
@@ -104,6 +105,8 @@ class SolicitudbecarioController extends Controller {
                     'solicitudbecario' => $solicitudbecario,
                     'form' => $form->createView(),
         ));
+
+
     }
 
     /**

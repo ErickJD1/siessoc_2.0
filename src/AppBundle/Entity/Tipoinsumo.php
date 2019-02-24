@@ -99,4 +99,8 @@ class Tipoinsumo
     {
         return $this->idtipoinsumo;
     }
+    
+    public function __toString() {
+        return $this->getTipoinsumo();
+    }
 }

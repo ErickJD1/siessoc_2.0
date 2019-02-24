@@ -1,10 +1,10 @@
-<div class="modal fade" id="deleteinsumo{{ tipoinsumo.Idtipoinsumo }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="Verinvdelete{{ inventario.idinventario }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content" style="border-radius: 40px">
 
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3 align="center"><strong><strong> Tipo De Insumo N:{{  tipoinsumo.Idtipoinsumo }}</strong></strong></h3>
+                <h3 align="center"><strong><strong>{{  inventario.idinsumo }}</strong></strong></h3>
             </div>
             <div class="modal-body">
 
@@ -15,14 +15,20 @@
                         <!--modal-->
                         <div class="col col-md-7">
                             
-                <h4><i class="fa fa-list"></i> Tipo De Insumo</h4>
-                <p class="form-group"><strong>{{ tipoinsumo.tipoinsumo }}</strong></p>
+                <h4><i class="fa fa-list"></i> Codigo Del Articulo</h4>
+                <p class="form-group"><strong>{{ inventario.idinventario }}</strong></p>
+                <hr>  
+                <h4><i class="fa fa-list"></i> Articulo</h4>
+                <p class="form-group"><strong>{{ inventario.idinsumo }}</strong></p>
                 <hr>
-                <h4><i class="fa fa-check"></i> Estado</h4>
-                <p class="form-group"><strong>{% if tipoinsumo.estadotipoinsumo==1 %}ALTA{% else %}BAJA{% endif %}</strong></p>        
+                <h4><i class="fa fa-list"></i> Cantidad</h4>
+                <p class="form-group"><strong>{{ inventario.cantidadinventario }}</strong></p>
+                <hr>
+                <h4><i class="fa fa-calendar"></i> Fecha Ingreso</h4>
+                <p class="form-group"><strong>{% if inventario.fechainventario %}{{ inventario.fechainventario|date('Y-m-d H:i:s') }}{% endif %}</strong></p>
 
-                </div>
-                        <div class="col col-md-5">
+  </div>
+                           <div class="col col-md-5">
 
                             <img style="width:75%;margin-top: 10%;margin-bottom: 2%" src="{{ asset('img/delete.png') }}"></img>
                         </div>
@@ -31,7 +37,7 @@
 
                   <div class="modal-footer">
                         <div style="float:right">
-                            {{ form_start(delete_form, {'action': path('tipoinsumo_delete', {'id': tipoinsumo.Idtipoinsumo}), 'Method': 'POST' }) }}
+                            {{ form_start(delete_form, {'action': path('inventario_delete', {'id': inventario.idinventario}), 'Method': 'POST' }) }}
                             <input type="submit" class="btn btn-danger" type="button" value="Eliminar">
                             {{ form_end(delete_form) }}
                         </div>

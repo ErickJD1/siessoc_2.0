@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Repository\SolicitudesRepository;
 
+
 /**
  * Solicitudbecario controller.
  *

@@ -7,6 +7,8 @@ use Avanzu\AdminThemeBundle\Model\MenuItemModel;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
+
+
 class SidebarListener {
 
     private $container;
@@ -47,14 +49,18 @@ class SidebarListener {
 
         //PERMISOS ASPIRANTE BECARIO
         if ($this->container->get('security.authorization_checker')->isGranted('ROLE_ASPIRANTE_BECARIO')) {
+            $em=$this->container->get('doctrine')->getManager();
+            $aprobados = $em->getRepository('AppBundle:Solicitudbecario')->findByIdusuario($this->container->get('security.token_storage')->getToken()->getUser()->getId());
+            
+            if($aprobados){$redirect='solicitudbecario_index';}else{$redirect='solicitudbecario_new';}
             $rootItems = array(
                 $dash = new MenuItemModel('site', 'WebSite', 'web_index', $earg, 'fa fa-home'),
                 $inicio = new MenuItemModel('inicio', 'Inicio', 'homepage', $earg, 'fa fa-home'),
                 $dash = new MenuItemModel('site', 'WebSite', 'web_index', $earg, 'fa fa-internet-explorer'),
-                $solicitudes = new MenuItemModel('solicitud', 'Solicitudes', 'menu_solicitud', $earg, 'fa fa-window-restore'),
+                $solicitudes = new MenuItemModel('solicitud', 'Solicitud', $redirect, $earg, 'fa fa-window-restore'),
             );
 
-            $solicitudes->addChild(new MenuItemModel('soli_becarios', 'Solicitudes Becarios', 'solicitudbecario_new', $earg));
+           // $solicitudes->addChild(new MenuItemModel('soli_becarios', 'Solicitudes Becarios', 'solicitudbecario_new', $earg));
         }
 
         //PERMISOS ASPIRANTE PATROCINADOR
@@ -62,7 +68,7 @@ class SidebarListener {
             $rootItems = array(
                 $inicio = new MenuItemModel('inicio', 'Inicio', 'homepage', $earg, 'fa fa-home'),
                 $dash = new MenuItemModel('site', 'WebSite', 'web_index', $earg, 'fa fa-internet-explorer'),
-                $solicitudes = new MenuItemModel('solicitud', 'Solicitudes', 'menu_solicitud', $earg, 'fa fa-window-restore'),
+                $solicitudes = new MenuItemModel('solicitud', 'Solicitud', 'menu_solicitud', $earg, 'fa fa-window-restore'),
             );
         }
 
@@ -127,10 +133,10 @@ class SidebarListener {
                 $reportes = new MenuItemModel('reportes', 'Reportes', 'homepage', $earg, 'fa fa-line-chart'),
             );
 
-            
-            
-            
-           
+
+
+
+
 //            $expediente->addChild(new MenuItemModel('consulta_expediente', 'Consultar Expedientes', 'avanzu_admin_ui_gen_demo', $earg));
             $insumos->addChild(new MenuItemModel('Soli_patrocina', 'Solicitudes Patrocinadores', 'movimientoinventario_index', $earg));
 
@@ -174,7 +180,6 @@ class SidebarListener {
 
             $usuario->addChild($icons = new MenuItemModel('gestionar_usuario', 'Administrar Usuarios', 'user_index', $earg));
 //            $expediente->addChild(new MenuItemModel('consulta_expediente', 'Consultar Expedientes', 'avanzu_admin_ui_gen_demo', $earg));
-
 //            $solicitudes->addChild(new MenuItemModel('soli_becarios', 'Solicitudes Becarios', 'solicitudbecario_index', $earg));
 //            $solicitudes->addChild(new MenuItemModel('Soli_patrocina', 'Solicitudes Patrocinadores', 'solicitudbecario_index', $earg));
 

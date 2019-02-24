@@ -55,7 +55,7 @@ class SidebarListener {
             if($aprobados){$redirect='solicitudbecario_index';}else{$redirect='solicitudbecario_new';}
             $rootItems = array(
                 $dash = new MenuItemModel('site', 'WebSite', 'web_index', $earg, 'fa fa-home'),
-                $inicio = new MenuItemModel('inicio', 'Inicio', 'homepage', $earg, 'fa fa-home'),
+//                $inicio = new MenuItemModel('inicio', 'Inicio', 'homepage', $earg, 'fa fa-home'),
                 $dash = new MenuItemModel('site', 'WebSite', 'web_index', $earg, 'fa fa-internet-explorer'),
                 $solicitudes = new MenuItemModel('solicitud', 'Solicitud', $redirect, $earg, 'fa fa-window-restore'),
             );

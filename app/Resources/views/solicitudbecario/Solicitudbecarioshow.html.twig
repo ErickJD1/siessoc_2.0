@@ -1,6 +1,6 @@
 <div class="modal fade" id="VerSoli{{ solicitudbecario.idsolibecario }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div style="width:70%; margin-left: 15%" class="modal-dialog">
-        <div class="modal-content" style="border-radius: 40px">
+        <div class="modal-content" style="border-radius: 25px">
 
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -9,8 +9,18 @@
                 </div>
             </div>
             <div class="modal-body" >
+                
 
-                <div style="background-color: lightgray;" > 
+  {%if (solicitudbecario.estadosolibecario==2 )%} 
+                        <div class="alert alert-warning">
+                            <strong>Solicitud Denegada:</strong> {{ solicitudbecario.observacionrechazo   }}
+                        </div>  
+                
+                    {% elseif(solicitudbecario.estadosolibecario==1) %} 
+                        <div class="alert alert-success">
+                            <strong>Solicitud Aprobada:</strong> Verifica el correo de confirmación de la beca. 
+                        </div>  
+                    {%endif%}              <div style="background-color: gainsboro;" > 
                     <br>
                     <div class="nav-tabs-custom" style="width:90%; margin-top: 2% ">
                         <ul class="nav nav-tabs">
@@ -270,39 +280,39 @@
                             </div>#}
                         </div>
                     </div><!-- /.tab-content -->
-                    {%if (solicitudbecario.estadosolibecario==2 )%} <p style="color: crimson; font-size: 20px "><i class="fa fa-warning"></i> {{ solicitudbecario.observacionrechazo   }} </p>{% elseif(solicitudbecario.estadosolibecario==1) %} <p style="color: forestgreen; font-size: 20px "><i class="fa fa-check"></i> Felicidades! Su solicitud ha sido aprobada! </p> {%endif%}
-                    <br>
-                </div><!-- /.nav-tabs-custom -->
-            </div>
+                    
+                        <br>
+                    </div><!-- /.nav-tabs-custom -->
+                </div>
 
-            <div class="modal-footer">
-                {% if ((app.user.hasRole('ROLE_ADMIN') or app.user.hasRole('ROLE_COORDINADOR')) and solicitudbecario.estadosolibecario==0)  %}
-                    <div style="float:right; margin-left: 1px">
-                        <form style="" action="{{path('solicitudbecario_aprobacion',{'id':solicitudbecario.idsolibecario,'val':1})}}" method="POST"> 
+                <div class="modal-footer">
+                    {% if ((app.user.hasRole('ROLE_ADMIN') or app.user.hasRole('ROLE_COORDINADOR')) and solicitudbecario.estadosolibecario==0)  %}
+                        <div style="float:right; margin-left: 1px">
+                            <form style="" action="{{path('solicitudbecario_aprobacion',{'id':solicitudbecario.idsolibecario,'val':1})}}" method="POST"> 
 
-                            <button type="submit" class="btn btn-success" >Aprobar</button>
-                        </form></div>
-                    <div style="float:right; margin-left: 1px"> 
-                        <form action="{{path('solicitudbecario_aprobacion',{'id':solicitudbecario.idsolibecario,'val':2})}}" method="POST"> 
-                            <div class="modal fade" id="recha{{  solicitudbecario.idsolibecario }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div style="width:50%; margin-left: 25%;" class="modal-dialog">
-                                    <div class="modal-content"  style="border-radius: 10px">
-                                        <div class="modal-body">
-                                            <textarea class="form-control" id="descripcion" name="descripcion" style="width:100%" placeholder="Observaciones" name="descripcion"></textarea>
-                                            <button type="submit" class="btn btn-success" style="margin-top:1%;widt:100%" >Guardar</button>
+                                <button type="submit" class="btn btn-success" >Aprobar</button>
+                            </form></div>
+                        <div style="float:right; margin-left: 1px"> 
+                            <form action="{{path('solicitudbecario_aprobacion',{'id':solicitudbecario.idsolibecario,'val':2})}}" method="POST"> 
+                                <div class="modal fade" id="recha{{  solicitudbecario.idsolibecario }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div style="width:50%; margin-left: 25%;" class="modal-dialog">
+                                        <div class="modal-content"  style="border-radius: 10px">
+                                            <div class="modal-body">
+                                                <textarea class="form-control" id="descripcion" name="descripcion" style="width:100%" placeholder="Observaciones" name="descripcion"></textarea>
+                                                <button type="submit" class="btn btn-success" style="margin-top:1%;widt:100%" >Guardar</button>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>   
-                            </div> 
+                                    </div>   
+                                </div> 
 
-                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#recha{{ solicitudbecario.idsolibecario }}" >Denegar</button>
-                        </form>
-                    </div>
-                {% endif %}                
+                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#recha{{ solicitudbecario.idsolibecario }}" >Denegar</button>
+                            </form>
+                        </div>
+                    {% endif %}                
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
 

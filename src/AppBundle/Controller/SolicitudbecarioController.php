@@ -225,8 +225,9 @@ class SolicitudbecarioController extends Controller {
     public function editAction(Request $request, Solicitudbecario $solicitudbecario) {
         $deleteForm = $this->createDeleteForm($solicitudbecario);
         $editForm = $this->createForm('AppBundle\Form\SolicitudbecarioType', $solicitudbecario);
+        $solicitudbecario->setEstadosolibecario(0);
         $editForm->handleRequest($request);
-
+       
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 

@@ -135,4 +135,9 @@ class Inventario
         return $this->idinsumo;
     }  
     
+    public function __toString() {
+        return (String)$this->idinsumo;
+    }
+
+    
 }

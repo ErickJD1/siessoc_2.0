@@ -75,6 +75,7 @@ class ComposerStaticInit754e6ea413495590f60903c0cefaadf5
         'K' => 
         array (
             'Knp\\Menu\\' => 9,
+            'Knp\\Bundle\\SnappyBundle\\' => 24,
             'Knp\\Bundle\\PaginatorBundle\\' => 27,
             'Knp\\Bundle\\MenuBundle\\' => 22,
         ),
@@ -237,6 +238,10 @@ class ComposerStaticInit754e6ea413495590f60903c0cefaadf5
         array (
             0 => __DIR__ . '/..' . '/knplabs/knp-menu/src/Knp/Menu',
         ),
+        'Knp\\Bundle\\SnappyBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/knplabs/knp-snappy-bundle',
+        ),
         'Knp\\Bundle\\PaginatorBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/knplabs/knp-paginator-bundle',
@@ -369,6 +374,10 @@ class ComposerStaticInit754e6ea413495590f60903c0cefaadf5
         ),
         'K' => 
         array (
+            'Knp\\Snappy' => 
+            array (
+                0 => __DIR__ . '/..' . '/knplabs/knp-snappy/src',
+            ),
             'Knp\\Component' => 
             array (
                 0 => __DIR__ . '/..' . '/knplabs/knp-components/src',
@@ -457,6 +466,10 @@ class ComposerStaticInit754e6ea413495590f60903c0cefaadf5
             'Assetic' => 
             array (
                 0 => __DIR__ . '/..' . '/kriswallsmith/assetic/src',
+            ),
+            'ACSEO\\Bundle\\FormJsValidationBundle' => 
+            array (
+                0 => __DIR__ . '/..' . '/acseo/form-js-validation-bundle',
             ),
         ),
     );

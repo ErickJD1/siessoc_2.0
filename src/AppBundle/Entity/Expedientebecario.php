@@ -902,5 +902,12 @@ class Expedientebecario
         return $this->idexpbecario;
     }
     
+    public function __toString() {
+        return (String)  $this->idexpbecario();
+    }
+
+    
+   
+    
 }
 

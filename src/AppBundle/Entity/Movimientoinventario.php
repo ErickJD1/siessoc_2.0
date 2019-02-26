@@ -129,4 +129,5 @@ class Movimientoinventario
     {
         return $this->idmovinv;
     }
+    
 }

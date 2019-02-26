@@ -162,6 +162,18 @@ vich_uploader:
             delete_on_update:   true
             delete_on_remove:   true
 
+#knp_snappy
+
+knp_snappy:
+    pdf:
+        enabled:    true
+        binary:     "\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\""
+        options:    []
+    image:
+        enabled:    true
+        binary:     "\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltoimage.exe\""
+        options:    []
+
 
 #https://github.com/whiteoctober/BreadcrumbsBundle
 white_october_breadcrumbs:

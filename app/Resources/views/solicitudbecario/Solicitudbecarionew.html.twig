@@ -2,6 +2,273 @@
 {% block stylesheets%}
     {{parent()}}
     <style>
+
+        input.error {
+            border-color: #f00 !important;
+        }
+
+        small.required {
+            color:#f00;
+        }
+
+        .wizard {
+            margin: 20px auto;
+            background: #fff;
+        }
+
+        .wizard .nav-tabs {
+            position: relative;
+            margin: 40px auto;
+            margin-bottom: 0;
+            border-bottom-color: #e0e0e0;
+        }
+
+        .wizard > div.wizard-inner {
+            position: relative;
+        }
+
+        .connecting-line {
+            height: 2px;
+            background: #e0e0e0;
+            position: absolute;
+            width: 66%;
+            margin: 0 auto;
+            left: 0;
+            right: 0;
+            top: 50%;
+            z-index: 1;
+        }
+
+        .wizard .nav-tabs > li.active > a, .wizard .nav-tabs > li.active > a:hover, .wizard .nav-tabs > li.active > a:focus {
+            color: #555555;
+            cursor: default;
+            border: 0;
+            border-bottom-color: transparent;
+        }
+
+        span.round-tab {
+            width: 70px;
+            height: 70px;
+            line-height: 70px;
+            display: inline-block;
+            border-radius: 100px;
+            background: #fff;
+            border: 2px solid #e0e0e0;
+            z-index: 2;
+            position: absolute;
+            left: 0;
+            text-align: center;
+            font-size: 25px;
+        }
+        span.round-tab i{
+            color:#555555;
+        }
+        .wizard li.active span.round-tab {
+            background: #fff;
+            border: 2px solid #5bc0de;
+
+        }
+        .wizard li.active span.round-tab i{
+            color: #5bc0de;
+        }
+
+        span.round-tab:hover {
+            color: #333;
+            border: 2px solid #333;
+        }
+
+        .wizard .nav-tabs > li {
+            width: 33%;
+        }
+
+        .wizard li:after {
+            content: " ";
+            position: absolute;
+            left: 46%;
+            opacity: 0;
+            margin: 0 auto;
+            bottom: 0px;
+            border: 5px solid transparent;
+            border-bottom-color: #5bc0de;
+            transition: 0.1s ease-in-out;
+        }
+
+        .wizard li.active:after {
+            content: " ";
+            position: absolute;
+            left: 46%;
+            opacity: 1;
+            margin: 0 auto;
+            bottom: 0px;
+            border: 10px solid transparent;
+            border-bottom-color: #5bc0de;
+        }
+
+        .wizard .nav-tabs > li a {
+            width: 70px;
+            height: 70px;
+            margin: 20px auto;
+            border-radius: 100%;
+            padding: 0;
+        }
+
+        .wizard .nav-tabs > li a:hover {
+            background: transparent;
+        }
+
+        .wizard .tab-pane {
+            position: relative;
+            padding-top: 50px;
+        }
+
+        .wizard h3 {
+            margin-top: 0;
+        }
+        .step1 .row {
+            margin-bottom:10px;
+        }
+        .step_21 {
+            border :1px solid #eee;
+            border-radius:5px;
+            padding:10px;
+        }
+        .step33 {
+            border:1px solid #ccc;
+            border-radius:5px;
+            padding-left:10px;
+            margin-bottom:10px;
+        }
+        .dropselectsec {
+            width: 68%;
+            padding: 6px 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            color: #333;
+            margin-left: 10px;
+            outline: none;
+            font-weight: normal;
+        }
+        .dropselectsec1 {
+            width: 74%;
+            padding: 6px 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            color: #333;
+            margin-left: 10px;
+            outline: none;
+            font-weight: normal;
+        }
+        .mar_ned {
+            margin-bottom:10px;
+        }
+        .wdth {
+            width:25%;
+        }
+        .birthdrop {
+            padding: 6px 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            color: #333;
+            margin-left: 10px;
+            width: 16%;
+            outline: 0;
+            font-weight: normal;
+        }
+
+
+        /* according menu */
+        #accordion-container {
+            font-size:13px
+        }
+        .accordion-header {
+            font-size:13px;
+            background:#ebebeb;
+            margin:5px 0 0;
+            padding:7px 20px;
+            cursor:pointer;
+            color:#fff;
+            font-weight:400;
+            -moz-border-radius:5px;
+            -webkit-border-radius:5px;
+            border-radius:5px
+        }
+        .unselect_img{
+            width:18px;
+            -webkit-user-select: none;  
+            -moz-user-select: none;     
+            -ms-user-select: none;      
+            user-select: none; 
+        }
+        .active-header {
+            -moz-border-radius:5px 5px 0 0;
+            -webkit-border-radius:5px 5px 0 0;
+            border-radius:5px 5px 0 0;
+            background:#F53B27;
+        }
+        .active-header:after {
+            content:"\f068";
+            font-family:'FontAwesome';
+            float:right;
+            margin:5px;
+            font-weight:400
+        }
+        .inactive-header {
+            background:#333;
+        }
+        .inactive-header:after {
+            content:"\f067";
+            font-family:'FontAwesome';
+            float:right;
+            margin:4px 5px;
+            font-weight:400
+        }
+        .accordion-content {
+            display:none;
+            padding:20px;
+            background:#fff;
+            border:1px solid #ccc;
+            border-top:0;
+            -moz-border-radius:0 0 5px 5px;
+            -webkit-border-radius:0 0 5px 5px;
+            border-radius:0 0 5px 5px
+        }
+        .accordion-content a{
+            text-decoration:none;
+            color:#333;
+        }
+        .accordion-content td{
+            border-bottom:1px solid #dcdcdc;
+        }
+
+
+
+        @media( max-width : 585px ) {
+
+            .wizard {
+                width: 90%;
+                height: auto !important;
+            }
+
+            span.round-tab {
+                font-size: 16px;
+                width: 50px;
+                height: 50px;
+                line-height: 50px;
+            }
+
+            .wizard .nav-tabs > li a {
+                width: 50px;
+                height: 50px;
+                line-height: 50px;
+            }
+
+            .wizard li.active:after {
+                content: " ";
+                position: absolute;
+                left: 35%;
+            }
+        }
+
         nav > .nav.nav-tabs{
 
             border: none;
@@ -52,65 +319,82 @@
     </style>
 {% endblock stylesheets %}
 
-
 {% block page_title %} Solicitud | {% endblock %}
 {% block page_subtitle %}Registro De Solicitud {% endblock %}
 
 {% block page_content %}
 
-     <div  style="width:90%; margin-top: 5%; margin-left: 5%; background-color:white; border-radius:5px " class="panel panel-default">
-            <div class="row">
-                <div class="col col-md-12" align="center" >
-                    <img style="width:80px;margin-top: 2%;" src="{{ asset('img/document.png') }}"></img>
+
+    <div class="container">
+        <div class="row">
+            <section>
+
+                <div  style="width:100%; background-color:#F3F3F3; " class="panel panel-default">
+
+                    <div class="row">
+                        <div class="col col-md-12" align="center" >
+                            <img style="width:80px;margin-top:2%;" src="{{ asset('img/document.png') }}"></img>
+                        </div>
+                    </div>
+                    <div class="row">    
+                        <div class="col col-md-12 " align="center" style="margin-top:-15px">
+                            <h2 class="col col-md-12" style="font-family:palatino header" >Registrar Solicitud</h2>
+                            <h4 class="col col-md-12" style="color:grey; font-family:palatino body; margin-top:-3px;">Complete los campos requeridos:<span style="font-size:25;color:red" >*</span></h4>
+                        </div>
+                    </div>    
                 </div>
-            </div>
-            <div class="row">    
-                <div class="col col-md-12 " align="center" style="margin-top:-15px">
-                    <h2 class="col col-md-12" style="font-family: palatino header" >Registrar Solicitud</h2>
-                    <h4 class="col col-md-12" style="color:grey; font-family: palatino body; margin-top: -3px;">Complete los campos requeridos:<span style="font-size: 25;color: red" >*</span></h4>
-                </div>
-            </div>    
-    </div>
+                <div class="wizard">
+                    <div class="wizard-inner">
+                        <div class="connecting-line"></div>
+                        <ul class="nav nav-tabs" role="tablist">
 
-{{ form_start(form) }}
+                            <li role="presentation" class="active">
+                                <a href="#datospersonales" data-toggle="tab" aria-controls="datospersonales" role="tab" title="Datos Personales">
+                                    <span class="round-tab" id="reqdatospersonales">
+                                        <i class="glyphicon glyphicon-user"></i>
+                                    </span>
+                                </a>
+                            </li>
 
-<div class="container tabs-wrap" style="width: 90%;  margin-bottom: 3%">
-  <ul class="nav nav-tabs" role="tablist">
-    <li class="active" role="presentation">
-      <a role="tab" aria-expanded="true" aria-controls="datospersonales" href="#datospersonales" data-toggle="tab">Datos Personales</a>
-    </li>
-    <li>
-      <a role="tab" aria-expanded="false" aria-controls="datosacademicos" href="#datosacademicos" data-toggle="tab">Datos Académicos</a>
-    </li>
-    <li>
-      <a role="tab" aria-expanded="false" aria-controls="datosfamiliares" href="#datosfamiliares" data-toggle="tab">Datos Familiares</a>
-    </li>
-  </ul>
+                            <li role="presentation" class="disabled">
+                                <a href="#datosacademicos" data-toggle="tab" aria-controls="datosacademicos" role="tab" title="Datos Académicos">
 
-<div class="tab-content">
+                                    <span class="round-tab" id="reqdatosacademicos">
+                                        <i class="glyphicon glyphicon-pencil"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li role="presentation" class="disabled">
+                                <a href="#datosfamiliares" data-toggle="tab" aria-controls="datosfamiliares" role="tab" title="Datos Familiares">
+                                    <span class="round-tab" id="reqdatosfamiliares" >
+                                        <i class="  glyphicon glyphicon-home"></i>
+                                    </span>
+                                </a>
+                            </li>
 
-  <div class="tab-pane active" id="datospersonales" role="tabpanel" style="width:90%; margin-left: 5%">
+                        </ul>
+                    </div>
+                    <div id="alerta"></div>
+                    {{ form_start(form) }}
+                    <div class="tab-content">
+                        <div class="tab-pane active" role="tabpanel" id="datospersonales" style="width:90%; margin-left:5%">
 
-  <div class="row">
-                            <div class="col col-md-6"><h3>Datos Personales</h3></div>
-                            </div>
-                                <hr>
                             <div class="row">     
 
                                 <div class="col col-md-4" align="left">
-                                    <label for="form_documento">Documento<span style="font-size: 25;color: red" >*</span></label>
+                                    <label for="form_documento">Documento<span style="font-size:25;color:red" >*</span></label>
                                     {{ form_widget(form.docsoliidentidadbecario) }}
                                     {{ form_errors(form.docsoliidentidadbecario) }}   
                                 </div> 
 
                                 <div class="col col-md-4" align="left">
-                                    <label for="form_cdirecto">Teléfono<span style="font-size: 25;color: red" >*</span></label>
+                                    <label for="form_cdirecto">Teléfono<span style="font-size:25;color:red" >*</span></label>
                                     {{ form_widget(form.telsolipersonalbecario) }}
                                     {{ form_errors(form.telsolipersonalbecario) }}   
                                 </div> 
 
                                 <div class="col col-md-4" align="left">
-                                    <label for="form_telefono">Otro Teléfono<span style="font-size: 25;color: red" >*</span></label>
+                                    <label for="form_telefono">Otro Teléfono<span style="font-size:25;color:red" >*</span></label>
                                     {{ form_widget(form.telefonosolibecario) }}
                                     {{ form_errors(form.telefonosolibecario) }}   
                                 </div> 
@@ -119,13 +403,13 @@
                             <div class="row" >
 
                                 <div class="col col-md-4" align="left">
-                                    <label for="form_edad">Fecha Nacimiento<span style="font-size: 25;color: red" >*</span></label>
+                                    <label for="form_edad">Fecha Nacimiento<span style="font-size:25;color:red" >*</span></label>
                                     {{ form_widget(form.fechaNacimiento) }}
                                     {{ form_errors(form.fechaNacimiento) }}   
                                 </div>
 
                                 <div class="col col-md-4" align="left">
-                                    <label for="form_edad">Sexo<span style="font-size: 25;color: red" >*</span></label>
+                                    <label for="form_edad">Sexo<span style="font-size:25;color:red" >*</span></label>
                                     {{ form_widget(form.sexo) }}
                                     {{ form_errors(form.sexo) }}   
                                 </div>
@@ -142,12 +426,12 @@
 
                             <div class="row">  
                                 <div class="col col-md-12" align="left">
-                                    <label for="form_direccion">Dirección<span style="font-size: 25;color: red" >*</span></label>
+                                    <label for="form_direccion">Dirección<span style="font-size:25;color:red" >*</span></label>
                                     {{ form_widget(form.direccionsolibecario) }}
                                     {{ form_errors(form.direccionsolibecario) }}   
                                 </div> 
                             </div>
-                                <br>
+                            <br>
                             <div class="row">  
                                 <div class="col col-md-12" align="left">
                                     <label for="form_antecedentes">Descripción Personal</label>
@@ -162,32 +446,25 @@
                                     {{ form_widget(form.religion) }}
                                     {{ form_errors(form.religion) }}   
                                 </div>
-                      
+
                             </div>
                             <br>
+
+                            <ul class="list-inline pull-right">
+                                <li><button type="button" class="btn btn-primary next-step">Siguiente</button></li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane" role="tabpanel" id="datosacademicos" style="width:90%; margin-left:5%">
+
                             <div class="row">  
-                             <div class="col col-md-12" align="right">                            
-                                <a class="btn btn-primary continue">Continuar</a>
-                                <a href="{{ path('solicitudbecario_index') }}" class="btn btn-danger btn-xl">Cancelar</a>
-                             </div>
-                            </div>
-                        
-  </div>
-
-  <div class="tab-pane" id="datosacademicos" role="tabpanel"  style="width:90%; margin-left: 5%">
-
-  <h3>Datos Académicos</h3>
-                            <hr>
-                            <div class="row">  
-
                                 <div class="col col-md-6" align="left">
-                                    <label for="form_carrera">Carrera Universitaria<span style="font-size: 25;color: red" >*</span></label>
+                                    <label for="form_carrera">Carrera Universitaria<span style="font-size:25;color:red" >*</span></label>
                                     {{ form_widget(form.carrerasoliestudiarbecario) }}
                                     {{ form_errors(form.carrerasoliestudiarbecario) }}   
                                 </div> 
 
                                 <div class="col col-md-6" align="left">
-                                    <label for="form_universidad">Universidad<span style="font-size: 25;color: red" >*</span></label>
+                                    <label for="form_universidad">Universidad<span style="font-size:25;color:red" >*</span></label>
                                     {{ form_widget(form.universidadsolibecario) }}
                                     {{ form_errors(form.universidadsolibecario) }}   
                                 </div>
@@ -197,13 +474,13 @@
 
                             <div class="row">
                                 <div class="col col-md-6" align="left" id='datetimepicker1'>
-                                    <label for="form_anioinicio">Fecha Estimada de Ingreso en la Universidad<span style="font-size: 25;color: red" >*</span></label>
+                                    <label for="form_anioinicio">Fecha Estimada de Ingreso en la Universidad<span style="font-size:25;color:red" >*</span></label>
                                     {{ form_widget(form.aniosoliingresobecario) }}
                                     {{ form_errors(form.aniosoliingresobecario) }}   
                                 </div>
 
                                 <div class="col col-md-6" align="left" id='datetimepicker2'>
-                                    <label for="form_aniofin">Fecha Estimada de Egreso en la Universidad<span style="font-size: 25;color: red" >*</span></label>
+                                    <label for="form_aniofin">Fecha Estimada de Egreso en la Universidad<span style="font-size:25;color:red" >*</span></label>
                                     {{ form_widget(form.aniosolifinalizacionbecario) }}
                                     {{ form_errors(form.aniosolifinalizacionbecario) }}   
                                 </div>
@@ -212,25 +489,25 @@
 
                             <div class="row">
                                 <div class="col col-md-3" align="left">
-                                    <label for="form_paes">Nota Paes<span style="font-size: 25;color: red" >*</span></label>
+                                    <label for="form_paes">Nota Paes<span style="font-size:25;color:red" >*</span></label>
                                     {{ form_widget(form.paes) }}
                                     {{ form_errors(form.paes) }}   
                                 </div>
 
                                 <div class="col col-md-3" align="left">
-                                    <label for="form_matricula">Monto Matricula<span style="font-size: 25;color: red" >*</span></label>
+                                    <label for="form_matricula">Monto Matricula<span style="font-size:25;color:red" >*</span></label>
                                     {{ form_widget(form.montosolimatriculabecario) }}
                                     {{ form_errors(form.montosolimatriculabecario) }}   
                                 </div>
 
                                 <div class="col col-md-3" align="left">
-                                    <label for="form_cuotaM">Cuota Mensual<span style="font-size: 25;color: red" >*</span></label>
+                                    <label for="form_cuotaM">Cuota Mensual<span style="font-size:25;color:red" >*</span></label>
                                     {{ form_widget(form.cuotasolimensualbecario) }}
                                     {{ form_errors(form.cuotasolimensualbecario) }}   
                                 </div>
 
                                 <div class="col col-md-3" align="left">
-                                    <label for="form_duracion">Duración de Carrera<span style="font-size: 25;color: red" >*</span></label>
+                                    <label for="form_duracion">Duración de Carrera<span style="font-size:25;color:red" >*</span></label>
                                     {{ form_widget(form.duracionsolicarrerabecario,{'attr':{'placeholder':'Numero de años'}}) }}
                                     {{ form_errors(form.duracionsolicarrerabecario) }}   
                                 </div>
@@ -250,26 +527,22 @@
                                 </div>
 
                                 <div class="col col-md-6" align="left">
-                                    <label for="form_comprobante">Comprobante<span style="font-size: 25;color: red" >*</span></label>
+                                    <label for="form_comprobante">Comprobante</label>
                                     {{ form_widget(form.comprobante_file) }}
                                     {{ form_errors(form.comprobante_file) }}   
                                 </div>
                             </div>
 
                             <br>
-                            <div class="row">  
-                             <div class="col col-md-12" align="right">                            
-                                <a class="btn btn-primary back">Regresar</a>
-                                <a class="btn btn-primary continue">Continuar</a>
-                                <a href="{{ path('solicitudbecario_index') }}" class="btn btn-danger btn-xl">Cancelar</a>
-                             </div>
-                            </div>
-  </div>
 
-  <div class="tab-pane" id="datosfamiliares" role="tabpanel" style="width:90%; margin-left: 5%">
 
-  <h3>Datos Familiares</h3>
-                            <hr>
+                            <ul class="list-inline pull-right">
+                                <li><button type="button" class="btn btn-default prev-step">Anterior</button></li>
+                                <li><button type="button" class="btn btn-primary next-step">Siguiente</button></li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane" role="tabpanel" id="datosfamiliares" style="width:90%; margin-left:5%">
+
                             <div class="row">
 
                                 <div class="col col-md-3" align="left">
@@ -279,7 +552,7 @@
                                 </div>
 
                                 <div class="col col-md-3" align="left">
-                                    <label for="form_miembros">Miembros Familiares<span style="font-size: 25;color: red" >*</span></label>
+                                    <label for="form_miembros">Miembros Familiares<span style="font-size:25;color:red" >*</span></label>
                                     {{ form_widget(form.miembrossolifamiliabecario,{'attr':{'placeholder':'Número de miembros'}}) }}
                                     {{ form_errors(form.miembrossolifamiliabecario) }}   
                                 </div>
@@ -291,7 +564,7 @@
                                 </div>
 
                                 <div class="col col-md-3" align="left">
-                                    <label for="form_Temergencia">Tel. Emergencia<span style="font-size: 25;color: red" >*</span></label>
+                                    <label for="form_Temergencia">Tel. Emergencia<span style="font-size:25;color:red" >*</span></label>
                                     {{ form_widget(form.telsoliemergenciabecario) }}
                                     {{ form_errors(form.telsoliemergenciabecario) }}   
                                 </div>
@@ -302,13 +575,13 @@
                             <div class="row">
 
                                 <div class="col col-md-6" align="left">
-                                    <label for="form_nompadre">Nombre del Padre<span style="font-size: 25;color: red" >*</span></label>
+                                    <label for="form_nompadre">Nombre del Padre<span style="font-size:25;color:red" >*</span></label>
                                     {{ form_widget(form.nomsolipadrebecario) }}
                                     {{ form_errors(form.nomsolipadrebecario) }}   
                                 </div> 
 
                                 <div class="col col-md-6" align="left">
-                                    <label for="form_nommadre">Nombre de la Madre<span style="font-size: 25;color: red" >*</span></label>
+                                    <label for="form_nommadre">Nombre de la Madre<span style="font-size:25;color:red" >*</span></label>
                                     {{ form_widget(form.nomsolimadrebecario) }}
                                     {{ form_errors(form.nomsolimadrebecario) }}   
                                 </div> 
@@ -318,7 +591,7 @@
                             <div class="row">
 
                                 <div class="col col-md-12" align="left">
-                                    <label for="form_ocupacionp">Ocupación del Padre<span style="font-size: 25;color: red" >*</span></label>
+                                    <label for="form_ocupacionp">Ocupación del Padre<span style="font-size:25;color:red" >*</span></label>
                                     {{ form_widget(form.ocupacionpadre) }}
                                     {{ form_errors(form.ocupacionpadre) }}   
                                 </div>
@@ -327,24 +600,25 @@
                             <div class="row">
 
                                 <div class="col col-md-12" align="left">
-                                    <label for="form_ocupacionm">Ocupación de la Madre<span style="font-size: 25;color: red" >*</span></label>
+                                    <label for="form_ocupacionm">Ocupación de la Madre<span style="font-size:25;color:red" >*</span></label>
                                     {{ form_widget(form.ocupacionmadre) }}
                                     {{ form_errors(form.ocupacionmadre) }}   
                                 </div>
                             </div>
-                           <br>
-                            <div class="row">  
-                             <div class="col col-md-12" align="right">                            
-                                <a class="btn btn-primary back">Regresar</a>
-                                <a href="{{ path('solicitudbecario_index') }}" class="btn btn-danger btn-xl">Cancelar</a>
-                                <input  class="btn btn-success btn-xl" type="submit"  value="Guardar" />
-                             </div>
-                            </div>
+                            <br>
 
+                            <ul class="list-inline pull-right">
+                                <li><button type="button" class="btn btn-default prev-step">Anterior</button></li>
+                                <input  class="btn btn-success btn-xl" type="submit"  value="Guardar" />
+                            </ul>
                         </div>
-  </div>
-</div></div>
-{{ form_end(form) }}
+                        <div class="clearfix"></div>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </section>
+        </div>
+    </div>
 
 {% endblock %}
 {%block javascripts_inline %}
@@ -360,16 +634,116 @@
                 }
             }
             ;
+            $(document).ready(function () {
+                //Initialize tooltips
+                $('.nav-tabs > li a[title]').tooltip();
+                //Wizard
+                $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
 
-        $('.continue').click(function(){
-              $('.nav-tabs > .active').next('li').find('a').trigger('click');
-        });
-        $('.back').click(function(){
-          $('.nav-tabs > .active').prev('li').find('a').trigger('click');
-         });
+                    var $target = $(e.target);
+                    if ($target.parent().hasClass('disabled')) {
+                        return false;
+                    }
+                });
+                $(".next-step").click(function (e) {
 
-         
+                    var $active = $('.wizard .nav-tabs li.active');
+                    $active.next().removeClass('disabled');
+                    nextTab($active);
+                });
+                $(".prev-step").click(function (e) {
 
+                    var $active = $('.wizard .nav-tabs li.active');
+                    prevTab($active);
+                });
+            });
+            function nextTab(elem) {
+                $(elem).next().find('a[data-toggle="tab"]').click();
+            }
+            function prevTab(elem) {
+                $(elem).prev().find('a[data-toggle="tab"]').click();
+            }
+
+
+//according menu
+
+            $(document).ready(function ()
+            {
+                //Add Inactive Class To All Accordion Headers
+                $('.accordion-header').toggleClass('inactive-header');
+                //Set The Accordion Content Width
+                var contentwidth = $('.accordion-header').width();
+                $('.accordion-content').css({});
+                //Open The First Accordion Section When Page Loads
+                $('.accordion-header').first().toggleClass('active-header').toggleClass('inactive-header');
+                $('.accordion-content').first().slideDown().toggleClass('open-content');
+                // The Accordion Effect
+                $('.accordion-header').click(function () {
+                    if ($(this).is('.inactive-header')) {
+                        $('.active-header').toggleClass('active-header').toggleClass('inactive-header').next().slideToggle().toggleClass('open-content');
+                        $(this).toggleClass('active-header').toggleClass('inactive-header');
+                        $(this).next().slideToggle().toggleClass('open-content');
+                    } else {
+                        $(this).toggleClass('active-header').toggleClass('inactive-header');
+                        $(this).next().slideToggle().toggleClass('open-content');
+                    }
+                });
+                return false;
+            });
+            $(function () {
+
+                $('#validate').validate({
+                    ignore: [],
+                    errorPlacement: function () {},
+                    submitHandler: function () {
+                        document.myform.submit();
+                    },
+                    invalidHandler: function () {
+                        $("#alerta").html(`<div class="alert alert-warning"><h4>
+            <strong>Advertencia!</strong> Complete los campos requeridos.
+            </h4></div>
+            `);
+
+                        setTimeout(function () {
+                            $('.nav-tabs a small.required').remove();
+                            $("#reqdatospersonales").removeAttr('style', 'border-color:red');
+                            $("#reqdatosacademicos").removeAttr('style', 'border-color:red');
+                            $("#reqdatosfamiliares").removeAttr('style', 'border-color:red');
+                            var validatePane = $('.tab-content .tab-pane:has(input.error)').each(function () {
+                                var id = $(this).attr('id');
+                                //alert(id);
+                                //$('.nav-tabs').find('a[href^="#' + id + '"]').append(`<span class="label label-danger" style="border-radius: 18px; position: relative; margin-left: -0.8em; top:-0.3em; font-size:0.8em">*</span>`);
+
+                                if (id) {
+                                    $("#req" + id + "").attr('style', 'border-color:red');
+                                }
+                            });
+                        });
+                    },
+                    rules: {
+                        'appbundle_solicitudbecario[carrerasoliestudiarbecario]': "required",
+                        'appbundle_solicitudbecario[universidadsolibecario]': "required",
+                        'appbundle_solicitudbecario[docsoliidentidadbecario]': "required",
+                        'appbundle_solicitudbecario[telsolipersonalbecario]': "required",
+                        'appbundle_solicitudbecario[telefonosolibecario]': "required",
+                        'appbundle_solicitudbecario[sexo]': "required",
+                        'appbundle_solicitudbecario[trabajosolibecario]': "required",
+                        'appbundle_solicitudbecario[direccionsolibecario]': "required",
+                        'appbundle_solicitudbecario[paes]': "required",
+                        'appbundle_solicitudbecario[montosolimatriculabecario]': "required",
+                        'appbundle_solicitudbecario[cuotasolimensualbecario]': "required",
+                        'appbundle_solicitudbecario[universidadsolibecario]': "required",
+                        'appbundle_solicitudbecario[duracionsolicarrerabecario]': "required",
+                        'appbundle_solicitudbecario[miembrossolifamiliabecario]': "required",
+                        'appbundle_solicitudbecario[telsoliemergenciabecario]': "required",
+                        'appbundle_solicitudbecario[nomsolipadrebecario]': "required",
+                        'appbundle_solicitudbecario[nomsolimadrebecario]': "required",
+                        'appbundle_solicitudbecario[ocupacionpadre]': "required",
+                        'appbundle_solicitudbecario[ocupacionmadre]': "required"
+                    }
+                });
+
+            });
 
     </script>
 

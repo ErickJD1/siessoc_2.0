@@ -8,10 +8,10 @@
     <div class="box box-primary">
         <div style="width:90%; margin-left:5%; margin-top: 2% ">
 
-         {#   <div align="left">
-                <a style="font-size: 20px" href="{{ path('solicitudbecario_new') }}" class="btn btn-success btn-sm"><i style="font-size: 20px" class="fa fa-plus-circle"></i> Registrar Solicitud</a>
-            </div>
-            <br> #}
+            {#   <div align="left">
+                   <a style="font-size: 20px" href="{{ path('solicitudbecario_new') }}" class="btn btn-success btn-sm"><i style="font-size: 20px" class="fa fa-plus-circle"></i> Registrar Solicitud</a>
+               </div>
+               <br> #}
 
             <table class="table table-bordered table-hover table-striped table-responsive" style="width:100%" id="tabelMahasiswa">
                 <thead class="thead-light">
@@ -35,21 +35,26 @@
                             <td>{% if solicitudbecario.estadosolibecario == 0 %}En Espera{% elseif  solicitudbecario.estadosolibecario == 1 %}Aprobado{% elseif  solicitudbecario.estadosolibecario == 2 %}Denegado{% endif %}</td>
                             <td>
                                 <div class="row" align="center">
-                                    {#<div class="col col-md-6">
-                                        <a title="Editar Solicitud" href="{{path('solicitudbecario_edit',{ 'id' : solicitudbecario.idsolibecario })}}" style="background-color: transparent; border: none;"><i class="fa fa-edit" style="font-size: 20px; color: limegreen"></i></a>
-                                    </div>#}
-
-                                    <div class="col col-md-12" align="center"><button title="Ver Solicitud" class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#VerSoli{{ solicitudbecario.idsolibecario }}"><i style="font-size: 20px; "></i><i class="fa fa-eye" style="font-size: 20px; color: deepskyblue"></i>{% if((solicitudbecario.estadosolibecario == 0) and app.user.hasRole('ROLE_ADMIN') or app.user.hasRole('ROLE_COORDINADOR') ) %}<span class="label label-danger" style="border-radius: 18px; position: absolute; margin-left: -0.8em; top:-0.3em">1</span>{% elseif solicitudbecario.estadosolibecario==2 and app.user.hasRole('ROLE_ASPIRANTE_BECARIO')   %}<span class="label label-danger" style="border-radius: 18px; position: absolute; margin-left: -0.8em; top:-0.3em">1</span>{% elseif solicitudbecario.estadosolibecario==1 %}{% endif %}</button>
-                                                {{ render(controller('AppBundle:Solicitudbecario:show', { 'id' : solicitudbecario.idsolibecario } )) }}
+                                    {% if solicitudbecario.estadosolibecario==2 and app.user.hasRole('ROLE_ASPIRANTE_BECARIO')   %}
+                                        <div class="col col-md-6">
+                                            <a title="Editar Solicitud" href="{{path('solicitudbecario_edit',{ 'id' : solicitudbecario.idsolibecario })}}" style="background-color: transparent; border: none;"><i class="fa fa-edit" style="font-size: 20px; color: limegreen"></i></a>
+                                        </div>
+                                    {% endif %}
+                                        <div class="col col-md-6" align="center"><button title="Ver Solicitud" class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#VerSoli{{ solicitudbecario.idsolibecario }}"><i style="font-size: 20px; "></i><i class="fa fa-eye" style="font-size: 20px; color: deepskyblue"></i>
+                                                {% if((solicitudbecario.estadosolibecario == 0) and app.user.hasRole('ROLE_ADMIN') or app.user.hasRole('ROLE_COORDINADOR') ) %}<span class="label label-danger" style="border-radius: 18px; position: absolute; margin-left: -0.8em; top:-0.3em">1</span>
+                                                {% elseif solicitudbecario.estadosolibecario==2 and app.user.hasRole('ROLE_ASPIRANTE_BECARIO')   %}
+                                                    <span class="label label-danger" style="border-radius: 18px; position: absolute; margin-left: -0.8em; top:-0.3em">1</span>
+                                            {% elseif solicitudbecario.estadosolibecario==1 %}{% endif %}</button>
+                                            {{ render(controller('AppBundle:Solicitudbecario:show', { 'id' : solicitudbecario.idsolibecario } )) }}
                                     </div>
                                 </div>
                             </td>
                         </tr>
 
                         </div>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    </div>
-{% endblock %}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {% endblock %}

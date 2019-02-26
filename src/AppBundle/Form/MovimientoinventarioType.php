@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 class MovimientoinventarioType extends AbstractType {
 
@@ -13,10 +15,12 @@ class MovimientoinventarioType extends AbstractType {
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
-        $builder->add('nombremovinv')
-        ->add('estadomovinv')
+        $builder
+        ->add('nombremovinv',TextareaType::class,array('label'=>'Movimiento', 'required' => false))
+        ->add('estadomovinv', CheckboxType::class, array('label'=>'Entregado', 'required' => false))
         ->add('idexpbecario')
-        ->add('idinventario');
+        ->add('idinventario')
+        ->add('cantidadentrega');
     }
 
     /**

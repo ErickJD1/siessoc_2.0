@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Movimientoinventario
@@ -52,8 +54,24 @@ class Movimientoinventario
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idexpbecario;
+    
+     /**
+     * @var integer
+     *
+     * @ORM\Column(name="CANTIDADENTREGA", type="integer", nullable=true)
+     * @Assert\NotBlank()
+     */
+    private $cantidadentrega;
+    
+    function getCantidadentrega() {
+        return $this->cantidadentrega;
+    }
 
-    function getIdexpbecario() {
+    function setCantidadentrega($cantidadentrega) {
+        $this->cantidadentrega = $cantidadentrega;
+    }
+
+        function getIdexpbecario() {
         return $this->idexpbecario;
     }
 
@@ -128,6 +146,10 @@ class Movimientoinventario
     public function getIdmovinv()
     {
         return $this->idmovinv;
+    }
+    
+      public function __toString() {
+        return $this->getNombremovinv();
     }
     
 }

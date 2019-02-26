@@ -39,7 +39,7 @@ monolog:
 swiftmailer:
     host: smt.gmail.com
     username: erick.jdominguez@gmail.com
-    password: cafetigo..1205
+    password: Cafetigo..1205
     auth_mode: login
     port: 465
     

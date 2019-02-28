@@ -55,6 +55,11 @@
         <option name="fixed"/>
       </options>
     </field>
+    <field name="nombrebecario" type="string" column="NOMBREBECARIO" length="300" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
     <field name="nomexpmadrebecario" type="string" column="NOMEXPMADREBECARIO" length="300" nullable="true">
       <options>
         <option name="fixed"/>

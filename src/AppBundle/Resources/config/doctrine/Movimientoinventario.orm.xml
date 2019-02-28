@@ -25,5 +25,11 @@
         <join-column name="IDEXPBECARIO" referenced-column-name="IDEXPBECARIO"/>
       </join-columns>
     </many-to-one>
+       <field name="cantidadentrega" type="integer" column="CANTIDADENTREGA" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+  
   </entity>
 </doctrine-mapping>

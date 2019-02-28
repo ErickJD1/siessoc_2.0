@@ -44,14 +44,13 @@ class ExpedientebecarioController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         
-        $expedientebecarios = new Expedientebecario();
+        $expedientebecario = new Expedientebecario();
 
-        $result = $em->getRepository('AppBundle:Expedientebecario')->findByIdusuario($this->getUser()->getId());
-        
-        $expedientebecarios = new Expedientebecario($result);
+        $expedientebecario =  $em->getRepository('AppBundle:Expedientebecario')->findOneByIdusuario($this->getUser());
+       
 
         return $this->render('expedientebecario/miexpshow.html.twig', array(
-            'expedientebecario' => $expedientebecarios,
+            'expedientebecario' => $expedientebecario,
         ));
     }
 

@@ -4,389 +4,389 @@
 
 {% block page_content %}
 
-                
-      <div class="row">
-            <div class="col-md-3">
 
-              <!-- Profile Image -->
-              <div class="box box-primary">
+    <div class="row" style="width:95%; margin-left: 2.5%">
+        <div class="col-md-3">
+
+            <!-- Profile Image -->
+            <div class="box box-primary" style="height:305px">
                 <div class="box-body box-profile">
-                  {% set profile_picture_path = false %}
-                  {% if app.getUser().getProfilePicture() is not empty %}
-                    {% set profile_picture_path = 'images/profile/'~ app.getUser().getProfilePicture() %}
-                  {% endif %}
+                    {% set profile_picture_path = false %}
+                    {% if expedientebecario.idusuario.getProfilePicture() is not empty %}
+                        {% set profile_picture_path = 'images/profile/'~ expedientebecario.idusuario.getProfilePicture() %}
+                    {% endif %}
 
-                  {{ macro.avatar(profile_picture_path, app.getUser().getUsername(), 'profile-user-img img-responsive img-circle') }}
-                  <h3 class="profile-username text-center"> {{ app.getUser().getUsername() }}</h3>
-                  <p class="text-muted text-center"><b>Last login </b>{{ app.getUser().getLastLogin(true) }}</p>
+                    {{ macro.avatar(profile_picture_path, expedientebecario.idusuario.getUsername(), 'profile-user-img img-responsive img-circle') }}
+                    <h3 class="profile-username text-center"> {{ expedientebecario.idusuario.getUsername() }}</h3>
+                    <p class="text-muted text-center"><b>Last login </b>{{ expedientebecario.idusuario.getLastLogin(true) }}</p>
                 </div><!-- /.box-body -->
-              </div><!-- /.box -->
+            </div><!-- /.box -->
 
-            </div><!-- /.col -->
+        </div><!-- /.col -->
 
 
-             <div class="col-md-9">
-              <div class="nav-tabs-custom">
+        <div class="col-md-9">
+            <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
-                  <li class="active"><a href="#activity" data-toggle="tab">Detalles de usuario</a></li>
-{#                  <li><a href="#roles-and-permission" data-toggle="tab">Roles and Permissions</a></li>
-                  <li><a href="#change-password" data-toggle="tab">Change Password</a></li>#}
+                    <li class="active"><a href="#activity" data-toggle="tab">Detalles de usuario</a></li>
+                        {#                  <li><a href="#roles-and-permission" data-toggle="tab">Roles and Permissions</a></li>#}
+                                          <li><a href="#change-password" data-toggle="tab">Change Password</a></li>
                 </ul>
                 <div class="tab-content">
-                  <div class="active tab-pane" id="activity">
-                    <div class="form-horizontal">
-                      <div class="form-group">
-                        <label for="inputName" class="col-sm-2 control-label">Username</label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control active" placeholder="{{ app.getUser().getUsername() }}" readonly>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="inputName" class="col-sm-2 control-label">Name</label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control active" placeholder="{{ app.getUser().getFirstName()~' '~app.getUser().getLastName() }}" readonly>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="inputEmail" class="col-sm-2 control-label">Email</label>
-                        <div class="col-sm-10">
-                          <input type="email" class="form-control active" placeholder="{{ app.getUser().getEmail() }}" readonly>
-                        </div>
-                      </div>
-                      
-                      <div class="form-group">
-                        <label for="inputSkills" class="col-sm-2 control-label">Start Date</label>
-                        <div class="col-sm-10">
-                          <div class="input-group">
-                            <div class="input-group-addon">
-                              <i class="fa fa-calendar"></i>
+                    <div class="active tab-pane" id="activity">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label for="inputName" class="col-sm-2 control-label">Username</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control active" placeholder="{{ expedientebecario.idusuario.getUsername() }}" readonly>
+                                </div>
                             </div>
-                            <input type="text" class="form-control pull-right active" placeholder="{{app.getUser().getMemberSince()|date('Y-m-d') }}" readonly>
-                          </div>
+                            <div class="form-group">
+                                <label for="inputName" class="col-sm-2 control-label">Name</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control active" placeholder="{{ expedientebecario.idusuario.getFirstName()~' '~expedientebecario.idusuario.getLastName() }}" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control active" placeholder="{{ expedientebecario.idusuario.getEmail() }}" readonly>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputSkills" class="col-sm-2 control-label">Start Date</label>
+                                <div class="col-sm-10">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input type="text" class="form-control pull-right active" placeholder="{{expedientebecario.idusuario.getMemberSince()|date('Y-m-d') }}" readonly>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputExperience" class="col-sm-2 control-label">Enabled</label>
+                                <div class="col-sm-10">
+                                    {% if expedientebecario.idusuario.isEnabled() %}
+                                        <p class="text-success"><i class="fa fa-check"></i></p>
+                                        {% else %}
+                                        <p class="text-danger"><i class="fa fa-cross">Disabled</i></p>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            {#                      <div class="form-group">
+                                                    <div class="col-sm-offset-2 col-sm-10">
+                                                      <a class="btn btn-primary" href="{{ path('fos_user_profile_edit') }}"><i class="fa fa-fw fa-edit"></i>Edit</a>
+                                                    </div>
+                                                  </div>#}
+
                         </div>
-                      </div>
-                      
-                      <div class="form-group">
-                        <label for="inputExperience" class="col-sm-2 control-label">Enabled</label>
-                        <div class="col-sm-10">
-                          {% if app.getUser().isEnabled() %}
-                            <p class="text-success"><i class="fa fa-check"></i></p>
-                          {% else %}
-                              <p class="text-danger"><i class="fa fa-cross">Disabled</i></p>
+                    </div><!-- /.tab-pane -->
+
+                    {#  <div class="tab-pane" id="roles-and-permission">
+                          {% if expedientebecario.idusuario.getRoles() is not empty %}
+                          <table class="table table-bordered">
+                            <tbody>
+                              <tr>
+                                <th>Role</th>
+                                <th>Enabled</th>
+                              </tr>
+                              {% for role in expedientebecario.idusuario.getRoles() %}
+                                <tr>
+                                  <td>{{ role|upper }}</td>
+                                  <td><span class="badge bg-green">Enabled</span></td>
+                                </tr>
+                              {% endfor %}
+                            </tbody>
+                          </table>
                           {% endif %}
-                        </div>
                       </div>
-              
-{#                      <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                          <a class="btn btn-primary" href="{{ path('fos_user_profile_edit') }}"><i class="fa fa-fw fa-edit"></i>Edit</a>
-                        </div>
-                      </div>#}
+    </div><!-- /.tab-content -->#}
+                       <div class="tab-pane" id="change-password">
+                          <p class="text-aqua">Please click the link below to change your current password</p>
+                         <div><a href="{{ path('fos_user_change_password') }}" class="btn btn-default"><i class="fa fa-fw fa-lock"></i>Change Password</a></div>
+                      </div>
+                  
+                    
+                </div><!-- /.nav-tabs-custom -->
+            </div><!-- /.col -->
+
+        </div><!-- /.row -->
+
+
+        {#                <ul>
+                            <li>
+                                <a href="{{ path('expedientebecario_index') }}">Back to the list</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('expedientebecario_edit', { 'id': expedientebecario.idexpbecario }) }}">Edit</a>
+                            </li>
+                            <li>
+                                {{ form_start(delete_form) }}
+                                <input type="submit" value="Delete">
+                                {{ form_end(delete_form) }}
+                            </li>
+                        </ul>#}
+    </div>
+    <div class="row" > 
+        <br>
+        <div class="nav-tabs-custom" style="width:90%; margin-left: 5%; margin-top: 2px ">
+            <ul class="nav nav-tabs">
+                <li class="active"><a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#datosPersonales{{expedientebecario.idexpbecario}}" role="tab" aria-controls="nav-profile" aria-selected="false">Datos Personales</a></li>
+                <li><a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#datosAcademicos{{expedientebecario.idexpbecario}}" role="tab" aria-controls="nav-profile" aria-selected="false">Datos Academicos</a></li>
+                <li><a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#datosFamiliares{{expedientebecario.idexpbecario}}" role="tab" aria-controls="nav-contact" aria-selected="false">Datos Familiares</a></li>
+            </ul>
+            <div class="tab-content">
+
+
+                <div class="active tab-pane" id="datosPersonales{{expedientebecario.idexpbecario}}" style="width:90%; margin-left: 5%">
+                    <div class="row">
+                        <div class="col col-md-6" align="left"><h3>Datos Personales</h3></div>
 
                     </div>
-                  </div><!-- /.tab-pane -->
+                    <hr>
+                    <div class="row">
 
-                {#  <div class="tab-pane" id="roles-and-permission">
-                      {% if expedientebecario.idusuario.getRoles() is not empty %}
-                      <table class="table table-bordered">
-                        <tbody>
-                          <tr>
-                            <th>Role</th>
-                            <th>Enabled</th>
-                          </tr>
-                          {% for role in expedientebecario.idusuario.getRoles() %}
-                            <tr>
-                              <td>{{ role|upper }}</td>
-                              <td><span class="badge bg-green">Enabled</span></td>
-                            </tr>
-                          {% endfor %}
-                        </tbody>
-                      </table>
-                      {% endif %}
-                  </div>
+                        <div class="col col-md-6" align="left">
+                            <label for="form_documento"><i class="fa fa-id-card"></i> Documento Identidad: </label>
+                            {{ expedientebecario.docexpidentidadbecario   }}
 
-                   <div class="tab-pane" id="change-password">
-                      <p class="text-aqua">Please click the link below to change your current password</p>
-                     <div><a href="{{ path('fos_user_change_password') }}" class="btn btn-default"><i class="fa fa-fw fa-lock"></i>Change Password</a></div>
-                  </div>
-              
-                </div><!-- /.tab-content -->#}
-              </div><!-- /.nav-tabs-custom -->
-            </div><!-- /.col -->
-            
-          </div><!-- /.row -->
+                        </div> 
 
-                   
-{#                <ul>
-                    <li>
-                        <a href="{{ path('expedientebecario_index') }}">Back to the list</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('expedientebecario_edit', { 'id': expedientebecario.idexpbecario }) }}">Edit</a>
-                    </li>
-                    <li>
-                        {{ form_start(delete_form) }}
-                        <input type="submit" value="Delete">
-                        {{ form_end(delete_form) }}
-                    </li>
-                </ul>#}
-            </div>
-            <div style="background-color: lightgray;" class="row" > 
+                        <div class="col col-md-6" align="left">
+                            <label for="form_cdirecto"> <i class="fa fa-phone"></i> Numero de contacto: </label>
+                            {{ expedientebecario.telexppersonalbecario   }}
+
+                        </div> 
+                    </div>
                     <br>
-                    <div class="nav-tabs-custom" style="width:90%; margin-left: 5%; margin-top: 2px ">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#datosPersonales{{expedientebecario.idexpbecario}}" role="tab" aria-controls="nav-profile" aria-selected="false">Datos Personales</a></li>
-                            <li><a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#datosAcademicos{{expedientebecario.idexpbecario}}" role="tab" aria-controls="nav-profile" aria-selected="false">Datos Academicos</a></li>
-                            <li><a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#datosFamiliares{{expedientebecario.idexpbecario}}" role="tab" aria-controls="nav-contact" aria-selected="false">Datos Familiares</a></li>
-                        </ul>
-                        <div class="tab-content">
+                    <div class="row">
+                        <div class="col col-md-6" align="left">
+                            <label for="form_telefono"><i class="fa fa-phone"></i> Otro Contacto: </label>
+                            {{ expedientebecario.telefonoexpbecario   }}
 
-                 
-                            <div class="active tab-pane" id="datosPersonales{{expedientebecario.idexpbecario}}" style="width:90%; margin-left: 5%">
-                                <div class="row">
-                                    <div class="col col-md-6" align="left"><h3>Datos Personales</h3></div>
+                        </div> 
 
-                                </div>
-                                <hr>
-                                <div class="row">
+                        <div class="col col-md-6" align="left">
+                            <label for="form_edad"><i class="fa fa-calendar"></i> Fecha Nacimiento: </label>
+                            <strong>{% if expedientebecario.fechaNacimiento %}{{ expedientebecario.fechaNacimiento|date('Y-m-d') }}{% endif %}</strong>
 
-                                    <div class="col col-md-6" align="left">
-                                        <label for="form_documento"><i class="fa fa-id-card"></i> Documento Identidad: </label>
-                                        {{ expedientebecario.docexpidentidadbecario   }}
-
-                                    </div> 
-
-                                    <div class="col col-md-6" align="left">
-                                        <label for="form_cdirecto"> <i class="fa fa-phone"></i> Numero de contacto: </label>
-                                        {{ expedientebecario.telexppersonalbecario   }}
-
-                                    </div> 
-                                </div>
-                                <br>
-                                <div class="row">
-                                    <div class="col col-md-6" align="left">
-                                        <label for="form_telefono"><i class="fa fa-phone"></i> Otro Contacto: </label>
-                                        {{ expedientebecario.telefonoexpbecario   }}
-
-                                    </div> 
-
-                                    <div class="col col-md-6" align="left">
-                                        <label for="form_edad"><i class="fa fa-calendar"></i> Fecha Nacimiento: </label>
-                                        <strong>{% if expedientebecario.fechaNacimiento %}{{ expedientebecario.fechaNacimiento|date('Y-m-d') }}{% endif %}</strong>
-
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="row">
-
-                                    <div class="col col-md-6" align="left">
-                                        <label for="form_edad"><i class="fa fa-venus-mars"></i> Sexo: </label>
-                                        {{ expedientebecario.sexo   }}
-
-                                    </div>
-
-                                    <div class="col col-md-6" align="LEFT">
-                                        <label for="form_trabajo"><i class="fa fa-briefcase"></i> Posee trabajo</label>
-                                        {% if expedientebecario.trabajoexpbecario==1  %}SI{%else%}NO{%endif%}
-
-                                    </div> 
-
-                                </div>
-                                <br>
-
-                                <div class="row">  
-                                    <div class="col col-md-6" align="left">
-                                        <label for="form_religion"><i class="fa fa-child"></i> Religion:</label>
-                                        {{ expedientebecario.religion   }}
-
-                                    </div>
-                                    <div class="col col-md-6" align="left">
-                                        <label for="form_antecedentes"><i class="fa fa-user"></i> Descripción Personal:</label>
-                                        {{ expedientebecario.antecedentes   }}
-
-                                    </div>   
-
-                                </div>
-                                <br>
-                                <div class="row">  
-                                    <div class="col col-md-12" align="left">
-                                        <label for="form_direccion"><i class="fa fa-street-view"></i> Dirección: </label>
-                                        {{ expedientebecario.direccionexpbecario   }}
-
-                                    </div> 
-
-                                </div>
-                                <br>
-                            </div><!-- /.tab-pane -->
-
-                            <div class="tab-pane" id="datosAcademicos{{expedientebecario.idexpbecario}}" style="width:90%; margin-left: 5%">
-                                <div class="row">
-                                    <div class="col col-md-6" align="left"><h3>Datos Academicos</h3></div>
-                                    
-                                </div>
-                                <hr>
-                                <div class="row">  
-
-                                    <div class="col col-md-6" align="left">
-                                        <label for="form_carrera"><i class="fa fa-graduation-cap"></i> Carrera: </label>
-                                        {{ expedientebecario.carreraexpestudiarbecario   }}
-
-                                    </div> 
-
-                                    <div class="col col-md-6" align="left">
-                                        <label for="form_universidad"><i class="fa fa-university"></i> Universidad: </label>
-                                        {{ expedientebecario.universidadexpbecario   }}
-
-                                    </div>
-                                </div>
-
-                                <br>
-
-                                <div class="row">
-                                    <div class="col col-md-6" align="left" id='datetimepicker1'>
-                                        <label for="form_anioinicio"><i class="fa fa-calendar"></i> Fecha Ingreso Universidad: </label>
-                                        <strong>{% if expedientebecario.anioexpingresobecario %}{{ expedientebecario.anioexpingresobecario|date('Y-m-d') }}{% endif %}</strong>
-
-                                    </div>
-
-                                    <div class="col col-md-6" align="left" id='datetimepicker2'>
-                                        <label for="form_aniofin"><i class="fa fa-calendar"></i> Fecha Egreso Universidad: </label>
-
-                                        <strong>{% if expedientebecario.anioexpfinalizacionbecario %}{{ expedientebecario.anioexpfinalizacionbecario|date('Y-m-d') }}{% endif %}</strong>
-                                    </div>
-                                </div>
-                                <br>
-
-                                <div class="row">
-                                    <div class="col col-md-6" align="left">
-                                        <label for="form_paes"><i class="fa fa-list-alt"></i> Nota Paes: </label>
-                                        {{ expedientebecario.paes   }}
-
-                                    </div>
-
-                                    <div class="col col-md-6" align="left">
-                                        <label for="form_matricula"><i class="fa fa-usd"></i> Monto Matricula: </label>
-                                        ${{ expedientebecario.montoexpmatriculabecario   }}
-
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="row">
-                                    <div class="col col-md-6" align="left">
-                                        <label for="form_cuotaM"><i class="fa fa-usd"></i> Cuota Mensual: </label>
-                                        ${{ expedientebecario.cuotaexpmensualbecario   }}
-
-                                    </div>
-
-                                    <div class="col col-md-6" align="left">
-                                        <label for="form_duracion"><i class="fa fa-history"></i> Duracion Carrera: </label>
-                                        {{ expedientebecario.duracionexpcarrerabecario }} 
-
-                                    </div>
-                                </div>
-                                <br>
-
-                                <div class="row">
-                                    <div class="col col-md-3" align="left">
-                                        <label for="form_otrasbecas"><i class="fa fa-handshake-o"></i> Posee otras becas</label>
-                                        {{ expedientebecario.otrasbecas }}
-
-                                    </div> 
-
-                                    <div class="col col-md-3" align="left">
-                                        <label for="form_Motrasbecas"><i class="fa fa-usd"></i> Monto otras becas</label>
-                                        ${{ expedientebecario.montootrasbecas }}
-
-                                    </div>
-
-                                    <div class="col col-md-6" align="left">
-                                        <label for="form_comprobante"><i class="fa fa-paperclip"></i> Comprobante: </label>
-                                        <a href="{{ asset('images/profile/'~expedientebecario.getComprobante() )  }}">Descargar Comprobante</a>
-
-                                    </div>
-                                </div>
-                            </div><!-- /.tab-pane -->
-
-                            <div class="tab-pane" id="datosFamiliares{{expedientebecario.idexpbecario}}" style="width:90%; margin-left: 5%">
-                                <div class="row">
-                                    <div class="col col-md-6" align="left"><h3>Datos Familiares</h3></div>
-                                    
-                                </div>
-                                <hr>
-                                <div class="row">
-
-                                    <div class="col col-md-6" align="left">
-                                        <label for="form_ingresos"><i class="fa fa-usd"></i> Ingresos Familiares</label>
-                                        ${{ expedientebecario.ingresosexpfamiliabecario   }}
-
-                                    </div>
-
-                                    <div class="col col-md-6" align="left">
-                                        <label for="form_miembros"><i class="fa fa-users"></i> Miembros familia: </label>
-                                        {{ expedientebecario.miembrosexpfamiliabecario   }}
-
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="row">
-                                    <div class="col col-md-6" align="left">
-                                        <label for="form_hermanos"><i class="fa fa-users"></i> Cantidad de hermanos</label>
-                                        {{ expedientebecario.cantexphermanosbecario   }}
-
-                                    </div>
-
-                                    <div class="col col-md-6" align="left">
-                                        <label for="form_Temergencia"><i class="fa fa-phone"></i> Tel. Emergencia: </label>
-                                        {{ expedientebecario.telexpemergenciabecario   }}
-
-                                    </div>
-
-                                </div>
-                                <br>
-
-                                <div class="row">
-
-                                    <div class="col col-md-6" align="left">
-                                        <label for="form_nompadre"><i class="fa fa-male"></i> Nombre del padre: </label>
-                                        {{ expedientebecario.nomexppadrebecario   }}
-
-                                    </div> 
-
-                                    <div class="col col-md-6" align="left">
-                                        <label for="form_nommadre"><i class="fa fa-female"></i> Nombre de la madre: </label>
-                                        {{ expedientebecario.nomexpmadrebecario   }}
-
-                                    </div> 
-                                </div>
-
-                                <br>
-                                <div class="row">
-
-                                    <div class="col col-md-6" align="left">
-                                        <label for="form_ocupacionp"><i class="fa fa-user-md"></i> Ocupacion del padre: </label>
-                                        {{ expedientebecario.ocupacionpadre   }}
-
-                                    </div>
-
-
-                                    <div class="col col-md-6" align="left">
-                                        <label for="form_ocupacionm"><i class="fa fa-user-md"></i> Ocupacion de la madre: </label>
-                                        {{ expedientebecario.ocupacionmadre   }}
-
-                                    </div>
-                                </div>
-                                <br>
-
-                            </div><!-- /.tab-pane -->
-
-                            {#<div class="tab-pane" id="change-password{{user.id}}">
-                                <p class="text-aqua">Please click the link below to change your current password</p>
-                                <div><a href="{{ path('fos_user_change_password'   }}" class="btn btn-default"><i class="fa fa-fw fa-lock"></i>Change Password</a></div>
-                            </div>#}
                         </div>
-                    </div><!-- /.tab-content -->
+                    </div>
                     <br>
-                </div><!-- /.nav-tabs-custom -->
+                    <div class="row">
+
+                        <div class="col col-md-6" align="left">
+                            <label for="form_edad"><i class="fa fa-venus-mars"></i> Sexo: </label>
+                            {{ expedientebecario.sexo   }}
+
+                        </div>
+
+                        <div class="col col-md-6" align="LEFT">
+                            <label for="form_trabajo"><i class="fa fa-briefcase"></i> Posee trabajo</label>
+                            {% if expedientebecario.trabajoexpbecario==1  %}SI{%else%}NO{%endif%}
+
+                        </div> 
+
+                    </div>
+                    <br>
+
+                    <div class="row">  
+                        <div class="col col-md-6" align="left">
+                            <label for="form_religion"><i class="fa fa-child"></i> Religion:</label>
+                            {{ expedientebecario.religion   }}
+
+                        </div>
+                        <div class="col col-md-6" align="left">
+                            <label for="form_antecedentes"><i class="fa fa-user"></i> Descripción Personal:</label>
+                            {{ expedientebecario.antecedentes   }}
+
+                        </div>   
+
+                    </div>
+                    <br>
+                    <div class="row">  
+                        <div class="col col-md-12" align="left">
+                            <label for="form_direccion"><i class="fa fa-street-view"></i> Dirección: </label>
+                            {{ expedientebecario.direccionexpbecario   }}
+
+                        </div> 
+
+                    </div>
+                    <br>
+                </div><!-- /.tab-pane -->
+
+                <div class="tab-pane" id="datosAcademicos{{expedientebecario.idexpbecario}}" style="width:90%; margin-left: 5%">
+                    <div class="row">
+                        <div class="col col-md-6" align="left"><h3>Datos Academicos</h3></div>
+
+                    </div>
+                    <hr>
+                    <div class="row">  
+
+                        <div class="col col-md-6" align="left">
+                            <label for="form_carrera"><i class="fa fa-graduation-cap"></i> Carrera: </label>
+                            {{ expedientebecario.carreraexpestudiarbecario   }}
+
+                        </div> 
+
+                        <div class="col col-md-6" align="left">
+                            <label for="form_universidad"><i class="fa fa-university"></i> Universidad: </label>
+                            {{ expedientebecario.universidadexpbecario   }}
+
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <div class="row">
+                        <div class="col col-md-6" align="left" id='datetimepicker1'>
+                            <label for="form_anioinicio"><i class="fa fa-calendar"></i> Fecha Ingreso Universidad: </label>
+                            <strong>{% if expedientebecario.anioexpingresobecario %}{{ expedientebecario.anioexpingresobecario|date('Y-m-d') }}{% endif %}</strong>
+
+                        </div>
+
+                        <div class="col col-md-6" align="left" id='datetimepicker2'>
+                            <label for="form_aniofin"><i class="fa fa-calendar"></i> Fecha Egreso Universidad: </label>
+
+                            <strong>{% if expedientebecario.anioexpfinalizacionbecario %}{{ expedientebecario.anioexpfinalizacionbecario|date('Y-m-d') }}{% endif %}</strong>
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="row">
+                        <div class="col col-md-6" align="left">
+                            <label for="form_paes"><i class="fa fa-list-alt"></i> Nota Paes: </label>
+                            {{ expedientebecario.paes   }}
+
+                        </div>
+
+                        <div class="col col-md-6" align="left">
+                            <label for="form_matricula"><i class="fa fa-usd"></i> Monto Matricula: </label>
+                            ${{ expedientebecario.montoexpmatriculabecario   }}
+
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col col-md-6" align="left">
+                            <label for="form_cuotaM"><i class="fa fa-usd"></i> Cuota Mensual: </label>
+                            ${{ expedientebecario.cuotaexpmensualbecario   }}
+
+                        </div>
+
+                        <div class="col col-md-6" align="left">
+                            <label for="form_duracion"><i class="fa fa-history"></i> Duracion Carrera: </label>
+                            {{ expedientebecario.duracionexpcarrerabecario }} 
+
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="row">
+                        <div class="col col-md-3" align="left">
+                            <label for="form_otrasbecas"><i class="fa fa-handshake-o"></i> Posee otras becas</label>
+                            {{ expedientebecario.otrasbecas }}
+
+                        </div> 
+
+                        <div class="col col-md-3" align="left">
+                            <label for="form_Motrasbecas"><i class="fa fa-usd"></i> Monto otras becas</label>
+                            ${{ expedientebecario.montootrasbecas }}
+
+                        </div>
+
+                        <div class="col col-md-6" align="left">
+                            <label for="form_comprobante"><i class="fa fa-paperclip"></i> Comprobante: </label>
+                            <a href="{{ asset('images/profile/'~expedientebecario.getComprobante() )  }}">Descargar Comprobante</a>
+
+                        </div>
+                    </div>
+                </div><!-- /.tab-pane -->
+
+                <div class="tab-pane" id="datosFamiliares{{expedientebecario.idexpbecario}}" style="width:90%; margin-left: 5%">
+                    <div class="row">
+                        <div class="col col-md-6" align="left"><h3>Datos Familiares</h3></div>
+
+                    </div>
+                    <hr>
+                    <div class="row">
+
+                        <div class="col col-md-6" align="left">
+                            <label for="form_ingresos"><i class="fa fa-usd"></i> Ingresos Familiares</label>
+                            ${{ expedientebecario.ingresosexpfamiliabecario   }}
+
+                        </div>
+
+                        <div class="col col-md-6" align="left">
+                            <label for="form_miembros"><i class="fa fa-users"></i> Miembros familia: </label>
+                            {{ expedientebecario.miembrosexpfamiliabecario   }}
+
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col col-md-6" align="left">
+                            <label for="form_hermanos"><i class="fa fa-users"></i> Cantidad de hermanos</label>
+                            {{ expedientebecario.cantexphermanosbecario   }}
+
+                        </div>
+
+                        <div class="col col-md-6" align="left">
+                            <label for="form_Temergencia"><i class="fa fa-phone"></i> Tel. Emergencia: </label>
+                            {{ expedientebecario.telexpemergenciabecario   }}
+
+                        </div>
+
+                    </div>
+                    <br>
+
+                    <div class="row">
+
+                        <div class="col col-md-6" align="left">
+                            <label for="form_nompadre"><i class="fa fa-male"></i> Nombre del padre: </label>
+                            {{ expedientebecario.nomexppadrebecario   }}
+
+                        </div> 
+
+                        <div class="col col-md-6" align="left">
+                            <label for="form_nommadre"><i class="fa fa-female"></i> Nombre de la madre: </label>
+                            {{ expedientebecario.nomexpmadrebecario   }}
+
+                        </div> 
+                    </div>
+
+                    <br>
+                    <div class="row">
+
+                        <div class="col col-md-6" align="left">
+                            <label for="form_ocupacionp"><i class="fa fa-user-md"></i> Ocupacion del padre: </label>
+                            {{ expedientebecario.ocupacionpadre   }}
+
+                        </div>
+
+
+                        <div class="col col-md-6" align="left">
+                            <label for="form_ocupacionm"><i class="fa fa-user-md"></i> Ocupacion de la madre: </label>
+                            {{ expedientebecario.ocupacionmadre   }}
+
+                        </div>
+                    </div>
+                    <br>
+
+                </div><!-- /.tab-pane -->
+
+                {#<div class="tab-pane" id="change-password{{user.id}}">
+                    <p class="text-aqua">Please click the link below to change your current password</p>
+                    <div><a href="{{ path('fos_user_change_password'   }}" class="btn btn-default"><i class="fa fa-fw fa-lock"></i>Change Password</a></div>
+                </div>#}
             </div>
-        
-     {% endblock %}
+        </div><!-- /.tab-content -->
+        <br>
+    </div><!-- /.nav-tabs-custom -->
+</div>
+
+{% endblock %}

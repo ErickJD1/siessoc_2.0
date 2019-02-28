@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Repository\SolicitudesRepository;
+use SalexUserBundle\Entity\User;
 
 
 /**
@@ -174,6 +175,11 @@ class SolicitudbecarioController extends Controller {
             $expediente->setEstadoExpbecario(1);
             $solicitudbecario->setEstadosolibecario(1);
             $em = $this->getDoctrine()->getManager();
+           
+            $usuario = new User();
+            $usuario = $em->getRepository('SalexUserBundle:User')->findOneById($expediente->getIdusuario());
+            $expediente->setNombrebecario($usuario->getFirstName(). ' '. $usuario->getLastName());
+            
             $em->persist($expediente);
             $em->flush($expediente);
             $em->persist($solicitudbecario);
@@ -183,9 +189,9 @@ class SolicitudbecarioController extends Controller {
             $em->persist($user);
             $em->flush($user);
             
+           
             
-            
-            $msj = "Movimiento aprobado con exito!";
+            $msj = "Solicitud aprobada con exito!";
             $this->addFlash('success', $msj);
         return $this->redirectToRoute('solicitudbecario_index');
         } elseif ($val == 2) {

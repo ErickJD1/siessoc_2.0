@@ -274,6 +274,14 @@ class Expedientebecario
      */
     
     
+       /**
+     * @var string
+     *
+     * @ORM\Column(name="NOMBREBECARIO", type="string", length=300, nullable=true)
+     */
+    private $nombrebecario;
+    
+    
      /**
      * Gets the value of comprobante_file.
      *
@@ -422,6 +430,16 @@ class Expedientebecario
         $this->antecedentes = $antecedentes;
     }
 
+    
+    function getNombrebecario() {
+        return $this->nombrebecario;
+    }
+
+    function setNombrebecario($nombrebecario) {
+        $this->nombrebecario = $nombrebecario;
+    }
+    
+    
         /**
      * Get telefonoexpbecario
      *
@@ -892,6 +910,8 @@ class Expedientebecario
         return $this->estadoexpbecario;
     }
 
+    
+    
     /**
      * Get idexpbecario
      *
@@ -903,7 +923,7 @@ class Expedientebecario
     }
     
     public function __toString() {
-        return (String)  $this->idexpbecario();
+        return (String) $this->getNombrebecario();
     }
 
     

@@ -16,7 +16,7 @@
         <table class="table table-bordered table-hover table-striped table-responsive" style="width:100%" id="tabelMahasiswa">
             <thead class="thead-light">
             <tr>
-                <th>Cantidad</th>
+                <th>Cantidad Disponible</th>
                 <th>Insumo</th>
                 <th>Fecha Ingreso</th>
                 <th>Actions</th>
@@ -26,7 +26,7 @@
         {% for inventario in inventarios %}
             <tr>
                 <td>{{ inventario.cantidadinventario }}</td>
-                <td>{{ inventario.idinsumo }}</td>
+                <td><a href="{{ path('movimientoinventario_new',{ 'id' : inventario.idinventario }) }}" style="background-color: transparent; border: none;">{{ inventario.idinsumo }}</a></td>
                 <td>{% if inventario.fechainventario %}{{ inventario.fechainventario|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
                   <div style="float:left;"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#Verinv{{ inventario.idinventario }}"><i class="fa fa-eye" style="font-size: 20px; color: deepskyblue"></i></button>

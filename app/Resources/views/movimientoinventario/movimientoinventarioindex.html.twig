@@ -9,9 +9,9 @@
 <div style="width:90%; margin-left:5%; margin-top: 2% ">
 
 <div align="left">
-     <a style="font-size: 15px" href="{{ path('movimientoinventario_new') }}" class="btn btn-success btn-sm"><i style="font-size: 20px" class="fa fa-plus-circle"></i> Registrar Nuevo Movimiento</a>
+     <a style="font-size: 15px" href="{{ path('inventario_index') }}" class="btn btn-success btn-sm"><i style="font-size: 20px" class="fa fa-plus-back"></i> Regresar</a>
 </div>
-<br> </br>
+<br>
 
         <table class="table table-bordered table-hover table-striped table-responsive" style="width:100%" id="tabelMahasiswa">
             <thead class="thead-light">
@@ -19,6 +19,7 @@
                 <th>Movimiento</th>
                 <th>Becario</th>
                 <th>Articulo</th>
+                <th>Cantidad Entregada</th>
                 <th>Estado</th>
                 <th>Actions</th>
             </tr>
@@ -27,8 +28,9 @@
         {% for movimientoinventario in movimientoinventarios %}
             <tr>
                 <td>{{ movimientoinventario.nombremovinv }}</td>
-                <td>{{ movimientoinventario.idusuario.firstName }}</td>
+                <td>{{ movimientoinventario.idexpbecario }}</td>
                 <td>{{ movimientoinventario.idinventario }}</td>
+                <td>{{ movimientoinventario.cantidadentrega }}</td>
                 <td>{% if movimientoinventario.estadomovinv==1 %}Concluido{% else %}Pendiente{% endif %}</td>
                 <td>
                     <ul>

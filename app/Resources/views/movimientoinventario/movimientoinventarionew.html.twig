@@ -19,59 +19,90 @@
             </div>
             <hr>
             <div  class="container"  style="width: 80%; margin-top: 3%; margin-bottom: 3%">
-{{inventario}}
-    {{ form_start(form) }}
-      <div class="row">
-        <div class="col col-md-8">
-            <label for="form_Movimiente">Movimiento<span style="font-siez: 25; color: red">*</span></label>
-              {{ form_widget(form.nombremovinv) }}
-              {{ form_errors(form.nombremovinv) }}
-        </div>
-        </div>
-        <br>
-        <div class="row">
-        <div class="col col-md-8">
-            <label for="form_Becario">Becario<span style="font-siez: 25; color: red">*</span></label>
-              {{ form_widget(form.idexpbecario) }}
-              {{ form_errors(form.idexpbecario) }}
-        </div>
-        </div>
-        <br>
-        <div class="row">
-        <div class="col col-md-8">
-            <label for="form_Art">Articulo<span style="font-siez: 25; color: red">*</span></label>
-              {{ form_widget(form.idinventario) }}
-              {{ form_errors(form.idinventario) }}
-        </div>
-        </div>
-        <br>
-          <div class="row">
-        <div class="col col-md-8">
-            <label for="form_Estadon">Cantidad A Entregar<span style="font-siez: 25; color: red">*</span></label>
-              {{ form_widget(form.cantidadentrega) }}
-              {{ form_errors(form.cantidadentrega) }}
-        </div>
-        </div>
-        <br>
-        <div class="row">
-        <div class="col col-md-8">
-            <label for="form_Estadon">Estado<span style="font-siez: 25; color: red">*</span></label>
-              {{ form_widget(form.estadomovinv) }}
-              {{ form_errors(form.estadomovinv) }}
-        </div>
-        </div>
-        <br>
-         <div class="row">
-            <div class="col col-md-12" align="right">
-                <a href="{{ path('movimientoinventario_index') }}" class="btn btn-primary btn-xl">Cancelar</a>
-                  <input  class="btn btn-success btn-xl" type="submit"  value="Guardar" />
-             </div>
-         </div>
-     
-    {{ form_end(form) }}
+
+                {{ form_start(form) }}
+                <div class="row">
+                    <div class="col col-md-8">
+                        <label for="form_Movimiente">Movimiento<span style="font-siez: 25; color: red">*</span></label>
+                        {{ form_widget(form.nombremovinv) }}
+                        {{ form_errors(form.nombremovinv) }}
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col col-md-8">
+                        <label for="form_Becario">Becario<span style="font-siez: 25; color: red">*</span></label>
+                        {{ form_widget(form.idexpbecario) }}
+                        {{ form_errors(form.idexpbecario) }}
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col col-md-8 hidden">
+                        <label for="form_Art">Articulo<span style="font-siez: 25; color: red">*</span></label>
+                        {{ form_widget(form.idinventario) }}
+                        {{ form_errors(form.idinventario) }}
+                    </div>
+                    <div class="col col-md-8">
+                        <label for="form_Art">Articulo<span style="font-siez: 25; color: red">*</span></label>
+                        <input type="text" value="{{idinsumo.nombreinsumo}}" class="form-control" readonly="readonly"/>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col col-md-8">
+                        <label for="form_Estadon">Cantidad A Entregar<span style="font-siez: 25; color: red">*</span></label>
+                        {{ form_widget(form.cantidadentrega,{'attr':{'onchange':'cargarData()'}}) }}
+                        {{ form_errors(form.cantidadentrega) }}
+                        <span class="help-block" id="montoerror">
+
+                        </span>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col col-md-8">
+                        <label for="form_Estadon">Estado<span style="font-siez: 25; color: red">*</span></label>
+                        {{ form_widget(form.estadomovinv) }}
+                        {{ form_errors(form.estadomovinv) }}
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col col-md-12" align="right">
+                        <a href="{{ path('movimientoinventario_index') }}" class="btn btn-primary btn-xl">Cancelar</a>
+                        <input  class="btn btn-success btn-xl" type="submit" id="enviar"  value="Guardar" />
+                    </div>
+                </div>
+
+                {{ form_end(form) }}
             </div>
         </div>
     </div>
 
- {% endblock %}
+{% endblock %}
+
+{% block javascripts_inline %}
+    <script>
+        function cargarData()
+        {
+
+            if ((($('#appbundle_movimientoinventario_cantidadentrega').val() > {{inventario}}) || $('#appbundle_movimientoinventario_cantidadentrega').val() == '' || $('#appbundle_movimientoinventario_cantidadentrega').val() == ' ') || $('#appbundle_movimientoinventario_cantidadentrega option:selected').val() === 0)
+            {
+                $('#montoerror').html(`<ul class="list-unstyled"><li><span class="glyphicon glyphicon-exclamation-sign">
+                                </span>Cantidad disponible: ` +   {{inventario}} +`</li></ul>`);
+                $("#enviar").attr("disabled", "disabled");
+
+            } else {
+                $('#montoerror').html(`<ul style="color:green" class="list-unstyled"><li><span class="fa fa-check" style="color:green">
+                                </span>Cantidad Valida!</li></ul>`);
+                $("#enviar").removeAttr("disabled", "disabled");
+
+            }
+
+
+        }
+        ;
+    </script>
+{% endblock %}
 

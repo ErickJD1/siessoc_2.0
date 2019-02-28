@@ -185,7 +185,7 @@ class SolicitudbecarioController extends Controller {
             
             
             
-            $msj = "Movimiento aprobado con exito!";
+            $msj = "Solicitud aprobada con exito!";
             $this->addFlash('success', $msj);
         return $this->redirectToRoute('solicitudbecario_index');
         } elseif ($val == 2) {

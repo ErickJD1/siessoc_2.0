@@ -63,12 +63,12 @@
         <div  style="width:90%; margin-top: 5%; margin-left: 5%; background-color:#F3F3F3; border-radius:5px " class="panel panel-default">
             <div class="row">
                 <div class="col col-md-12" align="center" >
-                    <img style="width:80px;margin-top: 2%;" src="{{ asset('img/Banco.png') }}"></img>
+                    <img style="width:80px;margin-top: 2%;" src="{{ asset('img/user.png') }}"></img>
                 </div>
             </div>
             <div class="row">    
                 <div class="col col-md-12 " align="center" style="margin-top:-15px">
-                    <h2 class="col col-md-12" style="font-family: palatino header" >Registrar Solicitud</h2>
+                    <h2 class="col col-md-12" style="font-family: palatino header" >Editar Expediente</h2>
                     <h4 class="col col-md-12" style="color:grey; font-family: palatino body; margin-top: -3px;">Complete los campos requeridos:<span style="font-size: 25;color: red" >*</span></h4>
                 </div>
             </div>    
@@ -98,19 +98,19 @@
                             <hr>
                             <div class="row">     
 
-                                <div class="col col-md-4" align="left">
+                                <div class="col col-md-4 hidden" align="left">
                                     <label for="form_documento">Numero de documento<span style="font-size: 25;color: red" >*</span></label>
-                                    {{ form_widget(edit_form.docexpidentidadbecario,{'attr':{'readonly':'true'}}) }}
+                                    {{ form_widget(edit_form.docexpidentidadbecario) }}
                                     {{ form_errors(edit_form.docexpidentidadbecario) }}   
                                 </div> 
 
-                                <div class="col col-md-4" align="left">
+                                <div class="col col-md-6" align="left">
                                     <label for="form_cdirecto">Numero de contacto directo<span style="font-size: 25;color: red" >*</span></label>
                                     {{ form_widget(edit_form.telexppersonalbecario) }}
                                     {{ form_errors(edit_form.telexppersonalbecario) }}   
                                 </div> 
 
-                                <div class="col col-md-4" align="left">
+                                <div class="col col-md-6" align="left">
                                     <label for="form_telefono">Otro Telefono<span style="font-size: 25;color: red" >*</span></label>
                                     {{ form_widget(edit_form.telefonoexpbecario) }}
                                     {{ form_errors(edit_form.telefonoexpbecario) }}   

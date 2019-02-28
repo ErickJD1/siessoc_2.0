@@ -79,8 +79,12 @@ class SidebarListener {
                 $inicio = new MenuItemModel('inicio', 'Inicio', 'homepage', $earg, 'fa fa-home'),
                 $dash = new MenuItemModel('site', 'WebSite', 'web_index', $earg, 'fa fa-globe'),
                 $Miexpediente = new MenuItemModel('expediente', 'Mi Expediente', 'expedientebecario_mi', $earg, 'fa fa-search'),
-               // $actividad = new MenuItemModel('actividad', 'Actividades', '', $earg, 'fa fa-calendar'),
+                $configuraciones = new MenuItemModel('config', 'Configuración', '', $earg, 'fa fa-cogs'),
             );
+            
+            $configuraciones->addChild(new MenuItemModel('resetPassword', 'Cambiar Contraseña', 'fos_user_change_password', $earg));
+            $configuraciones->addChild(new MenuItemModel('editPerfil', 'Editar Perfil', 'fos_user_profile_edit', $earg));
+
         }
 
         //PERMISOS STAFF
@@ -171,7 +175,7 @@ class SidebarListener {
                 $ssocial = new MenuItemModel('social', 'Servicio Social', 'homepage', $earg, 'fa fa-signing'),
                 $fondos = new MenuItemModel('fondos', 'Fondos', 'menu_fondos', $earg, 'fa fa-money'),
                 $colaboracion = new MenuItemModel('colaboracion', 'Colaboracion Monetaria', 'menu_colaboracion', $earg, 'fa fa-dollar'),
-                $insumos = new MenuItemModel('insumos', 'Insumos Academicos', 'homepage', $earg, 'fa fa-cubes'),
+                $insumos = new MenuItemModel('insumos', 'Insumos Academicos', 'menu_insumos', $earg, 'fa fa-cubes'),
                 $catalogos = new MenuItemModel('catalogos', 'Catalogos', 'menu_catalogos', $earg, 'fa fa-list'),
                 $reportes = new MenuItemModel('reportes', 'Reportes', 'homepage', $earg, 'fa fa-line-chart'),
             );
@@ -183,7 +187,7 @@ class SidebarListener {
 //            $solicitudes->addChild(new MenuItemModel('soli_becarios', 'Solicitudes Becarios', 'solicitudbecario_index', $earg));
 //            $solicitudes->addChild(new MenuItemModel('Soli_patrocina', 'Solicitudes Patrocinadores', 'solicitudbecario_index', $earg));
 
-            $insumos->addChild(new MenuItemModel('Soli_patrocina', 'Solicitudes Patrocinadores', 'movimientoinventario_index', $earg));
+//            $insumos->addChild(new MenuItemModel('Soli_patrocina', 'Solicitudes Patrocinadores', 'movimientoinventario_index', $earg));
 
 //            $fondos->addChild(new MenuItemModel('consultar_cuentas', 'Administrar Cuentas', 'cuenta_index', $earg));
 //            $fondos->addChild(new MenuItemModel('Consultar', 'Administrar Movimientos', 'movimiento_index', $earg));

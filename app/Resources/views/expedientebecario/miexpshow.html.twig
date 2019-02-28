@@ -30,8 +30,8 @@
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#activity" data-toggle="tab">Detalles de usuario</a></li>
                         {#                  <li><a href="#roles-and-permission" data-toggle="tab">Roles and Permissions</a></li>#}
-                                          <li><a href="#change-password" data-toggle="tab">Change Password</a></li>
-                </ul>
+                        {#                                          <li><a href="#change-password" data-toggle="tab">Change Password</a></li>
+                        #}                </ul>
                 <div class="tab-content">
                     <div class="active tab-pane" id="activity">
                         <div class="form-horizontal">
@@ -105,12 +105,12 @@
                           {% endif %}
                       </div>
     </div><!-- /.tab-content -->#}
-                       <div class="tab-pane" id="change-password">
-                          <p class="text-aqua">Please click the link below to change your current password</p>
-                         <div><a href="{{ path('fos_user_change_password') }}" class="btn btn-default"><i class="fa fa-fw fa-lock"></i>Change Password</a></div>
-                      </div>
-                  
-                    
+                    {#<div class="tab-pane" id="change-password">
+                       <p class="text-aqua">Please click the link below to change your current password</p>
+                      <div><a href="{{ path('fos_user_change_password') }}" class="btn btn-default"><i class="fa fa-fw fa-lock"></i>Change Password</a></div>
+                   </div>#}
+
+
                 </div><!-- /.nav-tabs-custom -->
             </div><!-- /.col -->
 
@@ -131,6 +131,14 @@
                             </li>
                         </ul>#}
     </div>
+    <div class="row">
+    <div class="col-md-12" align="right" style="width:95%;margin-left: 2.5%;">
+        <div class="col-sm-offset-2 col-sm-10">
+            <a class="btn btn-primary" href="{{ path('expedientebecario_edit',{'id':expedientebecario.idexpbecario}) }}"><i class="fa fa-fw fa-edit"></i>Editar</a>
+        </div>
+    </div>
+    </div>
+
     <div class="row" > 
         <br>
         <div class="nav-tabs-custom" style="width:90%; margin-left: 5%; margin-top: 2px ">
@@ -138,6 +146,8 @@
                 <li class="active"><a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#datosPersonales{{expedientebecario.idexpbecario}}" role="tab" aria-controls="nav-profile" aria-selected="false">Datos Personales</a></li>
                 <li><a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#datosAcademicos{{expedientebecario.idexpbecario}}" role="tab" aria-controls="nav-profile" aria-selected="false">Datos Academicos</a></li>
                 <li><a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#datosFamiliares{{expedientebecario.idexpbecario}}" role="tab" aria-controls="nav-contact" aria-selected="false">Datos Familiares</a></li>
+
+
             </ul>
             <div class="tab-content">
 

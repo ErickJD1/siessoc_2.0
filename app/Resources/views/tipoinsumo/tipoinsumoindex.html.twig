@@ -25,7 +25,7 @@
         {% for tipoinsumo in tipoinsumo %}
             <tr>
                 <td>{{ tipoinsumo.tipoinsumo }}</td>
-                <td>{% if tipoinsumo.estadotipoinsumo==1 %}ALTA{% else %}BAJA{% endif %}</td>
+                <td>{% if tipoinsumo.estadotipoinsumo==1 %}Activo{% else %}Inactivo{% endif %}</td>
                 <td>
                   <div style="float:left;"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#VerInsumo{{ tipoinsumo.Idtipoinsumo }}"><i class="fa fa-eye" style="font-size: 20px; color: deepskyblue"></i></button>
                           {{ render(controller('AppBundle:Tipoinsumo:show', { 'id' : tipoinsumo.Idtipoinsumo } )) }}

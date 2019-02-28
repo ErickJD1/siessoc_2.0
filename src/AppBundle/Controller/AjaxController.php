@@ -109,5 +109,29 @@ class AjaxController extends Controller {
 
     }
 
+    
+    
+    /**
+     * @Route("/ajax/postscantidad", name="ajax_postscantidad")
+     * @Method({"GET"})
+     */
+    public function cantidadAction(Request $request) {
+        if ($request->isXmlHttpRequest()) {
+            $encoders = array(new JsonEncoder());
+            $normalizers = array(new ObjectNormalizer());
+
+            $serializer = new Serializer($normalizers, $encoders);
+            $idinventario = $request->query->get("idinventario");
+            $em = $this->getDoctrine()->getManager();
+            $posts = $em->getRepository('AppBundle:Inventario')->findBy(array('idinventario' => $idinventario));
+            $response = new JsonResponse();
+            $response->setStatusCode(200);
+            $response->setData(array(
+                'response' => 'success',
+                'posts' => $serializer->serialize($posts, 'json')
+            ));
+            return $response;
+        }
+    }
 
 }

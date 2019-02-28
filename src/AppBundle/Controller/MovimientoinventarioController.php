@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 
 /**
  * Movimientoinventario controller.
@@ -39,19 +39,24 @@ class MovimientoinventarioController extends Controller {
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request) {
-        $movimientoinventario = new Movimientoinventario();
-        $form = $this->createForm('AppBundle\Form\MovimientoinventarioType', $movimientoinventario);
-        $em = $this->getDoctrine()->getManager();
-        $form->handleRequest($request);
-
-        $inventario = New \AppBundle\Entity\Inventario();
+       $movimientoinventario = new Movimientoinventario();
+         $inventario = New \AppBundle\Entity\Inventario();
         $em = $this->getDoctrine()->getManager();
         $inventario = $em->getRepository('AppBundle:Inventario')->findOneByIdinventario($request->get("id"));
+        $movimientoinventario->setIdinventario($inventario->getIdinventario());
+        
+        
+        $form = $this->createForm('AppBundle\Form\MovimientoinventarioType', $movimientoinventario);
+        $em = $this->getDoctrine()->getManager();
+        $form->add('idinventario');
+        $form->handleRequest($request);
+
+       
 
         if ($form->isSubmitted() && $form->isValid()) {
-          //  $inventario = New \AppBundle\Entity\Inventario();
-          //  $em = $this->getDoctrine()->getManager();
-          //  $inventario = $em->getRepository('AppBundle:Inventario')->findOneByIdinventario($movimientoinventario->getIdinventario());
+            //  $inventario = New \AppBundle\Entity\Inventario();
+            //  $em = $this->getDoctrine()->getManager();
+            //  $inventario = $em->getRepository('AppBundle:Inventario')->findOneByIdinventario($movimientoinventario->getIdinventario());
 
             $em->persist($movimientoinventario);
             $em->flush($movimientoinventario);
@@ -72,7 +77,9 @@ class MovimientoinventarioController extends Controller {
         }
 
         return $this->render('movimientoinventario/movimientoinventarionew.html.twig', array(
-                    'movimientoinventario' => $movimientoinventario, 'inventario' => $inventario->getCantidadinventario(),
+                    'movimientoinventario' => $movimientoinventario,
+                    'inventario' => $inventario->getCantidadinventario(),
+                    'idinsumo'=>$inventario->getIdinsumo(),
                     'form' => $form->createView(),
         ));
     }

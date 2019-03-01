@@ -23,9 +23,10 @@
         </thead>
         <tbody>
         {% for tipoinsumo in tipoinsumo %}
-            <tr align="left">
-                <td width="50%">{{ tipoinsumo.tipoinsumo }}</td>
-                <td width="35%">{% if tipoinsumo.estadotipoinsumo==1 %}Activo{% else %}No Activo{% endif %}</td>
+
+            <tr>
+                <td>{{ tipoinsumo.tipoinsumo }}</td>
+                <td>{% if tipoinsumo.estadotipoinsumo==1 %}Activo{% else %}Inactivo{% endif %}</td>
                 <td>
                 
                   <div style="float:left;"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#VerInsumo{{ tipoinsumo.Idtipoinsumo }}"><i class="fa fa-eye no-margin" style="font-size: 20px; color: deepskyblue"></i></button>

@@ -8,5 +8,5 @@ parameters:
     mailer_transport: smtp
     mailer_host: smtp.gmail.com
     mailer_user: erick.jdominguez@gmail.com
-    mailer_password: cafetigo..1205
+    mailer_password: Cafetigo..1205
     secret: ThisTokenIsNotSoSecretChangeIt

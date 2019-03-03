@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Carrera
  *
- * @ORM\Table(name="carrera", indexes={@ORM\Index(name="FK_RELATIONSHIP_29", columns={"IDMATERIA"}), @ORM\Index(name="FK_RELATIONSHIP_38", columns={"IDUNIVERSIDAD"})})
+ * @ORM\Index(name="FK_RELATIONSHIP_38", columns={"IDUNIVERSIDAD"})})
  * @ORM\Entity
  */
 class Carrera
@@ -43,14 +43,20 @@ class Carrera
     private $estadocarrera;
 
     /**
-     * @var \Materia
-     *
-     * @ORM\ManyToOne(targetEntity="Materia")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="IDMATERIA", referencedColumnName="IDMATERIA")
-     * })
+     * @Assert\Image(
+     *     maxSize="5M",
+     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg","application/pdf","application/xls","application/docx","application/txt",}   
+     * )
+     * @Vich\UploadableField(mapping="document_file", fileNameProperty="comprobante")
+     * @var [type]
      */
-    private $idmateria;
+    private $comprobante_file;
+
+    /**
+     * @ORM\Column(name="comprobante", type="string", nullable=true)
+     * @var string
+     */
+    private $comprobante;
 
     /**
      * @var \Universidad
@@ -63,6 +69,33 @@ class Carrera
     private $iduniversidad;
 
 
+     /**
+     * Gets the value of comprobante_file.
+     *
+     * @return string
+     */
+    public function getComprobanteFile() {
+        return $this->comprobante_file;
+    }
+
+    /**
+     * Sets the value of comprobante_file.
+     *
+     * @param File $comprobante_file
+     *
+     * @return self
+     */
+    public function setComprobanteFile(File $comprobante_file) {
+        $this->comprobante_file = $comprobante_file;
+
+        // Only change the updated af if the file is really uploaded to avoid database updates.
+        // This is needed when the file should be set when loading the entity.
+//        if ($this->comprobante_file instanceof UploadedFile) {
+//            $this->setUpdateAt(new Carbon());
+//        }
+
+        return $this;
+    }
 
     /**
      * Set nomcarrera
@@ -170,27 +203,5 @@ class Carrera
         return $this->iduniversidad;
     }
 
-    /**
-     * Set idmateria
-     *
-     * @param \AppBundle\Entity\Materia $idmateria
-     *
-     * @return Carrera
-     */
-    public function setIdmateria(\AppBundle\Entity\Materia $idmateria = null)
-    {
-        $this->idmateria = $idmateria;
-
-        return $this;
-    }
-
-    /**
-     * Get idmateria
-     *
-     * @return \AppBundle\Entity\Materia
-     */
-    public function getIdmateria()
-    {
-        return $this->idmateria;
-    }
+ 
 }

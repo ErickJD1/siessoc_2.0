@@ -2,7 +2,6 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="AppBundle\Entity\Carrera" table="carrera">
     <indexes>
-      <index name="FK_RELATIONSHIP_29" columns="IDMATERIA"/>
       <index name="FK_RELATIONSHIP_38" columns="IDUNIVERSIDAD"/>
     </indexes>
     <id name="idcarrera" type="integer" column="IDCARRERA">
@@ -24,10 +23,10 @@
         <join-column name="IDUNIVERSIDAD" referenced-column-name="IDUNIVERSIDAD"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="idmateria" target-entity="Materia" fetch="LAZY">
-      <join-columns>
-        <join-column name="IDMATERIA" referenced-column-name="IDMATERIA"/>
-      </join-columns>
-    </many-to-one>
+    <field name="comprobante" type="string" column="COMPROBANTE" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
   </entity>
 </doctrine-mapping>

@@ -4,7 +4,7 @@
 
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3 align="center"><strong><strong>{{  insumo.nombreinsumo }}</strong></strong></h3>
+                <h3 align="center"><strong><strong>¿Desea eliminar el Insumo?</strong></strong></h3>
             </div>
             <div class="modal-body">
 
@@ -18,11 +18,11 @@
                 <h4><i class="fa fa-list"></i> Insumo</h4>
                 <p class="form-group"><strong>{{ insumo.nombreinsumo }}</strong></p>
                 <hr>
-                <h4><i class="fa fa-list"></i> Descripcioninsumo</h4>
+                <h4><i class="fa fa-list"></i> Descripción</h4>
                 <p class="form-group"><strong>{{ insumo.descripcioninsumo }}</strong></p>
                 <hr>
-                <h4><i class="fa fa-check"></i> Estadoinsumo</h4>
-                <p class="form-group"><strong>{% if insumo.estadoinsumo==1 %}ACTIVO{% else %}BAJA{% endif %}</strong></p>
+                <h4><i class="fa fa-check"></i> Estado</h4>
+                <p class="form-group"><strong>{% if insumo.estadoinsumo==1 %}Activo{% else %}Inactivo{% endif %}</strong></p>
              </div>
                         <div class="col col-md-5">
 
@@ -36,7 +36,7 @@
                             {{ form_end(delete_form) }}
                         </div>
                         
-                            <button type="button" class="btn btn-success" style="margin-right: 1px" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary" style="margin-right: 1px" data-dismiss="modal">Cerrar</button>
 
                     </div>
                 </div>

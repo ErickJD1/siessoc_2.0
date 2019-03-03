@@ -1,7 +1,6 @@
 {% extends "layout/base-layout.html.twig" %}
 
-{% block page_title %}Insumos{% endblock %}
-{% block page_subtitle %}Lista De Insumos{% endblock %}
+{% block page_title %}Insumo {% endblock %}
 
 {% block page_content %}
 
@@ -16,10 +15,10 @@
             <table class="table table-bordered table-hover table-striped table-responsive" style="width:100%" id="tabelMahasiswa">
                 <thead class="thead-light">
             <tr>
-                <th>Insumo</th>
-                <th>Descripcion</th>
-                <th>Estado</th>
-                <th>Accion</th>
+                <th width="25%">Insumo</th>
+                <th width="50%">Descripción</th>
+                <th width="10%">Estado</th>
+                <th width="15%"><center>Opciones</center></th>
             </tr>
         </thead>
         <tbody>
@@ -27,15 +26,14 @@
             <tr>
                 <td>{{ insumo.nombreinsumo }}</td>
                 <td>{{ insumo.descripcioninsumo }}</td>
-                <td>{% if insumo.estadoinsumo==1 %}Activo{% else %}Inactivo{% endif %}</td>
-                <td>
-                  <div style="float:left;"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#Verinsu{{ insumo.idinsumo}}"><i class="fa fa-eye" style="font-size: 20px; color: deepskyblue"></i></button>
+                <td align="left">{% if insumo.estadoinsumo==1 %}Activo{% else %}Inactivo{% endif %}</td>
+                <td align="center">
+                <div class="btn-group" style="width:100%">
+                  <button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#Verinsu{{ insumo.idinsumo}}"><i class="fa fa-eye" style="font-size: 20px; color: deepskyblue"></i></button>
                           {{ render(controller('AppBundle:Insumo:show', { 'id' : insumo.idinsumo } )) }}
-                  </div>
-                  <div style="float:left;" >
+
                     <a href="{{ path('insumo_edit',{ 'id' : insumo.idinsumo }) }}" style="background-color: transparent; border: none;"><i class="fa fa-edit" style="font-size: 20px; color: limegreen"></i></a>
-                  </div>
-                   <div style="float:left;"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#Verinsudelete{{ insumo.idinsumo }}"><i class="fa fa-trash" style="font-size: 20px; color: crimson"></i></button>
+                   <button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#Verinsudelete{{ insumo.idinsumo }}"><i class="fa fa-trash" style="font-size: 20px; color: crimson"></i></button>
                           {{ render(controller('AppBundle:Insumo:showDelete', { 'id' : insumo.idinsumo } )) }}
                   </div>
                 </td>

@@ -1,7 +1,6 @@
 {% extends "layout/base-layout.html.twig" %}
 
-{% block page_title %} Fondos {% endblock %}
-{% block page_subtitle %}Cuentas{% endblock %}
+{% block page_title %} Cuentas {% endblock %}
 
 {% block avanzu_breadcrumb %}
     {{ render(controller('AppBundle:Breadcrumb:breadcrumb', {'request':app.request, 'title' : block('page_title')})) }}
@@ -19,15 +18,15 @@
             <table class="table table-bordered table-hover table-striped table-responsive" style="width:100%" id="tabelMahasiswa">
                 <thead class="thead-light">
                     <tr>
-                        <th><center>No Cuenta</center></th>
-                <th><center>Cuenta</center></th>
-                <th><center>Banco</center></th>
-                <th><center>Fecha Apertura</center></th>
-                    {#<th><center>Saldo Inicial</center></th>
+                <th width="15%">No Cuenta</th>
+                <th width="15%">Cuenta</th>
+                <th width="25%">Banco</th>
+                <th width="15%">Fecha Apertura</th>
+                   {#<th><center>Saldo Inicial</center></th>
                     <th><center>Saldo Actual</center></th>#}
-                <th><center>Estado</center></th>
-                <th><center>Usuario</center></th>
-                <th><center>Acciones</center></th>
+                <th width="10%">Estado</th>
+                <th width="10%">Usuario</th>
+                <th width="10%"><center>Opciones</center></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -38,27 +37,24 @@
                                 {{ render(controller('AppBundle:Movimiento:cuenFind',{'id':cuentum.idcuenta} )) }}
 
                             </td>
-                            <td><center>{{ cuentum.nomcuenta }}</center></td>
-                    <td><center>{{ cuentum.idbanco }}</center></td>
-                    <td><center>{% if cuentum.fechaapertura %}{{ cuentum.fechaapertura|date('Y-m-d H:i:s') }}{% endif %}</center></td>
-                        {#  <td><center>{{ "$"~cuentum.saldocuenta }}</center></td>
-                          <td><center>{{ "$"~cuentum.saldoactual }}</center></td>#}
-                    <td><center>{% if cuentum.estadocuenta %}Activa{% else %}Inactiva{% endif %}</center></td>
-                    <td><center>{{ cuentum.idusuario }}</center></td>
-                    <td class="row">
+                            <td>{{ cuentum.nomcuenta }}</td>
+                    <td>{{ cuentum.idbanco }}</td>
+                    <td>{% if cuentum.fechaapertura %}{{ cuentum.fechaapertura|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        {#  <td>{{ "$"~cuentum.saldocuenta }}</td>
+                          <td>{{ "$"~cuentum.saldoactual }}</td>#}
+                    <td>{% if cuentum.estadocuenta %}Activa{% else %}Inactiva{% endif %}</td>
+                    <td>{{ cuentum.idusuario }}</td>
+                    <td align="center">
 
-                        <div >
+                      <div class="btn-group" style="width:100%">
 
-                            <div class="col col-sm-4"><button title="Eliminar Cuenta" class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#deleteCuenta{{ cuentum.idcuenta }}"><i class="fa fa-trash" style="font-size: 15px; color: crimson"></i></button>
-                                    {{ render(controller('AppBundle:Cuenta:showDelete', { 'id' : cuentum.idcuenta } )) }}
-                            </div>
-                            <div class="col col-sm-4" >
-                                <a title="Editar Cuenta" href="{{ path('cuenta_edit',{ 'id' : cuentum.idcuenta }) }}" style="background-color: transparent; border: none;"><i class="fa fa-edit" style="font-size: 15px; color: limegreen"></i></a>
-                            </div>
-
-                            <div class="col col-sm-4"><button title="Ver Cuenta" class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#VerCuenta{{ cuentum.idcuenta }}"><i class="fa fa-eye" style="font-size: 15px; color: deepskyblue"></i></button>
+                            <button title="Ver Cuenta" class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#VerCuenta{{ cuentum.idcuenta }}"><i class="fa fa-eye" style="font-size: 15px; color: deepskyblue"></i></button>
                                     {{ render(controller('AppBundle:Cuenta:show', { 'id' : cuentum.idcuenta } )) }}
-                            </div>
+
+                            <a title="Editar Cuenta" href="{{ path('cuenta_edit',{ 'id' : cuentum.idcuenta }) }}" style="background-color: transparent; border: none;"><i class="fa fa-edit" style="font-size: 15px; color: limegreen"></i></a>
+
+                            <button title="Eliminar Cuenta" class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#deleteCuenta{{ cuentum.idcuenta }}"><i class="fa fa-trash" style="font-size: 15px; color: crimson"></i></button>
+                                    {{ render(controller('AppBundle:Cuenta:showDelete', { 'id' : cuentum.idcuenta } )) }}
 
                         </div>
                     </td>

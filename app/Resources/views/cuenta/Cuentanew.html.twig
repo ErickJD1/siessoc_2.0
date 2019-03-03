@@ -1,7 +1,7 @@
 {% extends "layout/base-layout.html.twig" %}
 
 {% block page_title %} Cuentas | {% endblock %}
-{% block page_subtitle %}Registrar Cuenta {% endblock %}
+{% block page_subtitle %}Registrar{% endblock %}
 
 {% block page_content %}
 
@@ -10,7 +10,7 @@
         <div  style="width:90%; margin-top: 5%; margin-left: 5%; background-color:#F3F3F3; border-radius:5px " class="panel panel-default">
 
             <div class="col col-md-12" align="center" >
-                <img style="width:80px;margin-top: 2%;margin-bottom: 2%" src="{{ asset('img/Banco.png') }}"></img>
+                <img style="width:80px;margin-top: 2%;margin-bottom: 2%" src="{{ asset('img/icons/account.png') }}"></img>
             </div>
             <div class="col col-md-12 " align="center" style="margin-top:-15px">
                 <h2 class="col col-md-12" style="font-family: palatino header" >Registrar Cuenta</h2>
@@ -52,8 +52,8 @@
                 <div class="row">
                     <div class="col col-md-4" align='left'>
                         <label for="form_saldo">Saldo Inicial<span style="font-size: 25;color: red" >*</span></label>
-                        {{ form_errors(form.saldocuenta) }}
-                        {{ form_widget(form.saldocuenta) }}
+                        {{ form_errors(form.saldocuenta)}}
+                        {{ form_widget(form.saldocuenta, {'attr': {'onkeypress': 'return isNumberKey(event)'}})}}
                     </div>
                     <div class="col col-md-4" align='left'>
                         <label for="form_banco">Banco<span style="font-size: 25;color: red" >*</span></label>
@@ -75,7 +75,7 @@
                         <input  class="btn btn-success btn-xl" type="submit"  value="Guardar" />
                     </div>
                 </div>
-                                <br>
+                <br>
 
                 {{ form_end(form) }}
             </div>
@@ -86,3 +86,25 @@
 
 
 {% endblock %}
+
+
+ {%block javascripts_inline %}
+    <script>
+        {{parent()}}
+  
+      function isNumberKey(evt)
+      {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode == 8 || charCode == 37) {
+         return true;
+        } else if (charCode == 46 && $(this).val().indexOf('.') != -1) {
+         return false;
+        } else if (charCode > 31 && charCode != 46 && (charCode < 48 || charCode > 57)) {
+           return false;
+        }
+            return true;
+      }
+    </script>
+
+{% endblock %}   
+

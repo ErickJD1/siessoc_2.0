@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 
 
 class CuentaType extends AbstractType
@@ -20,10 +21,10 @@ class CuentaType extends AbstractType
                 ->add('nomcuenta',null,array('label'=>'Cuenta'))
                 ->add('descripcioncuenta',TextareaType::class,array('label'=>'Descripción'))
               //  ->add('fechaapertura')
-                ->add('saldocuenta',NumberType::class,array('label'=>'Saldo Inicial','invalid_message' => 'Se requiere un saldo inicial mayor a cero','invalid_message_parameters' => array('%num%' => 6)))
+                ->add('saldocuenta',MoneyType::class,array('label'=>'Saldo Inicial','invalid_message' => 'Se requiere un saldo inicial mayor a cero','invalid_message_parameters' => array('%num%' => 6)))
                 ->add('estadocuenta',null,array('label'=>'Activa'))
                 ->add('idbanco',null,array('label'=>'Banco', 'placeholder'=> ''))
-                ->add('idtipocuenta',null,array('label'=>'Tipo de Cuenta', 'placeholder' => ''));
+                ->add('idtipocuenta',null,array('label'=>'Tipo de Cuenta', 'placeholder' => '', 'required' => true));
     }
 
     /**

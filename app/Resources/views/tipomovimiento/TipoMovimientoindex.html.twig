@@ -1,7 +1,6 @@
 {% extends "layout/base-layout.html.twig" %}
 
-{% block page_title %} Catálogos {% endblock %}
-{% block page_subtitle %}Tipo Movimiento{% endblock %}
+{% block page_title %} Tipo de Movimiento {% endblock %}
 
 {% block page_content %}
 
@@ -9,41 +8,41 @@
         <div style="width:90%; margin-left:5%; margin-top: 2% ">
 
             <div align="left">
-                <a style="font-size: 15px" href="{{ path('tipomovimiento_new') }}" class="btn btn-success btn-sm"><i style="font-size: 20px" class="fa fa-plus-circle"></i> Tipo Movimiento</a>
+                <a style="font-size: 15px" href="{{ path('tipomovimiento_new') }}" class="btn btn-success btn-sm"><i style="font-size: 20px" class="fa fa-plus-circle"></i> Tipo de Movimiento</a>
             </div>
             <br> <br>
 
             <table class="table table-bordered table-hover table-striped table-responsive" style="width:100%" id="tabelMahasiswa">
                 <thead class="thead-light">
-                    <tr>
-                <th><center>Movimiento</center></th>
-                <th><center>Descripción</center></th>
-                <th><center>Clasificación</center></th>
-                <th><center>Estado</center></th>
-                <th><center>Acciones</center></th>
+                <tr>
+                <th width="18%">Movimiento</th>
+                <th width="37%">Descripción</th>
+                <th width="15%">Clasificación</th>
+                <th width="15%">Estado</th>
+                <th width="15%"><center>Opciones</center></th>
                 </tr>
                 </thead>
                 <tbody>
                     {% for tipomovimiento in tipomovimientos %}
-                        <tr>
-                            <td>{{ tipomovimiento.nombretipo }}</td>
-                            <td>{{ tipomovimiento.descripciontipomov }}</td>
-                            <td><center>{% if tipomovimiento.clasificacion %}Ingreso{% else %}Gasto{% endif %}</center></td>
-                    <td><center>{% if tipomovimiento.estadotipomov %}Activo{% else %}Inactivo{% endif %}</center></td>
+                    <tr>
+                        <td align="left">{{ tipomovimiento.nombretipo }}</td>
+                        <td align="left">{{ tipomovimiento.descripciontipomov }}</td>
+                        <td><left>{% if tipomovimiento.clasificacion %}Ingreso{% else %}Gasto{% endif %}</left></td>
+                    <td><left>{% if tipomovimiento.estadotipomov %}Activo{% else %}Inactivo{% endif %}</left></td>
                     <td>
                     <center>
-                        <div class="row">
+                    <div class="btn-group" style="width:100%">
 
-                            <div align="center" class="col col-md-4"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#miventanadelete{{ tipomovimiento.idtipomov }}"><i class="fa fa-trash" style="font-size: 20px; color: crimson"></i></button>
-                                    {{ render(controller('AppBundle:Tipomovimiento:showdelete', { 'id' : tipomovimiento.idtipomov } )) }}
-                            </div>
-
-                            <div align="center" class="col col-md-4" >
-                                <a href="{{ path('tipomovimiento_edit',{ 'id' : tipomovimiento.idtipomov }) }}" style="background-color: transparent; border: none;"><i class="fa fa-edit" style="font-size: 20px; color: limegreen"></i></a>
-                            </div>
-                            <div align="center" class="col col-md-4"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#miventana{{ tipomovimiento.idtipomov}}"><i class="fa fa-eye" style="font-size: 20px; color: deepskyblue"></i></button>
+                        <button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#miventana{{ tipomovimiento.idtipomov}}"><i class="fa fa-eye" style="font-size: 20px; color: deepskyblue"></i></button>
                                     {{ render(controller('AppBundle:Tipomovimiento:show', { 'id' : tipomovimiento.idtipomov } )) }}
-                            </div>
+
+                           
+                        <a href="{{ path('tipomovimiento_edit',{ 'id' : tipomovimiento.idtipomov }) }}" style="background-color: transparent; border: none;"><i class="fa fa-edit" style="font-size: 20px; color: limegreen"></i></a>
+
+                        <button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#miventanadelete{{ tipomovimiento.idtipomov }}"><i class="fa fa-trash" style="font-size: 20px; color: crimson"></i></button>
+                                    {{ render(controller('AppBundle:Tipomovimiento:showdelete', { 'id' : tipomovimiento.idtipomov } )) }}
+                             
+
                         </div>
                     </center>
                     </td>

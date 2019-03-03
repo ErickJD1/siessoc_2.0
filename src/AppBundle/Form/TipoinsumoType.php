@@ -14,8 +14,8 @@ class TipoinsumoType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('tipoinsumo',null,array('label'=>'Tipo De Insumo','attr'=>array('placeholder'=>'')))
-                ->add('estadotipoinsumo', CheckboxType::class, array('label'=>'Activa','required'=>false));
+        $builder->add('tipoinsumo',null,array('label'=>'Tipo de Insumo','attr'=>array('placeholder'=>'')))
+                ->add('estadotipoinsumo', CheckboxType::class, array('label'=>'Estado', 'required'=>false));
     }
     
     /**

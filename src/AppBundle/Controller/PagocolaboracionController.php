@@ -26,7 +26,7 @@ class PagocolaboracionController extends Controller {
     public function indexAction(Request $request, Colaboracionmonetaria $colaboracion) {
         $em = $this->getDoctrine()->getManager();
 
-        $pagocolaboracions = $em->getRepository('AppBundle:Pagocolaboracion')->findAll();
+        $pagocolaboracions = $em->getRepository('AppBundle:Pagocolaboracion')->findByIdcolaboracion($colaboracion->getIdColaboracion());
 
         return $this->render('pagocolaboracion/pagocolaboracionindex.html.twig', array(
                     'pagocolaboracions' => $pagocolaboracions,

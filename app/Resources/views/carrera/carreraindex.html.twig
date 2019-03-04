@@ -1,0 +1,45 @@
+{% extends 'layout/base-layout.html.twig' %}
+
+{% block page_content %}
+    <h1>Carreras list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nomcarrera</th>
+                <th>Descripcioncarrera</th>
+                <th>Estadocarrera</th>
+                <th>Comprobante</th>
+                <th>Idcarrera</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for carrera in carreras %}
+            <tr>
+                <td><a href="{{ path('carrera_show', { 'id': carrera.idcarrera }) }}">{{ carrera.nomcarrera }}</a></td>
+                <td>{{ carrera.descripcioncarrera }}</td>
+                <td>{% if carrera.estadocarrera %}Yes{% else %}No{% endif %}</td>
+                <td>{{ carrera.comprobante }}</td>
+                <td>{{ carrera.idcarrera }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('carrera_show', { 'id': carrera.idcarrera }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('carrera_edit', { 'id': carrera.idcarrera }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('carrera_new') }}">Create a new carrera</a>
+        </li>
+    </ul>
+{% endblock %}

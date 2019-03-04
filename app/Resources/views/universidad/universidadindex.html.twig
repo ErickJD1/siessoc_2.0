@@ -1,0 +1,41 @@
+{% extends 'layout/base-layout.html.twig' %}
+
+{% block page_content %}
+    <h1>Universidads list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombreuniversidad</th>
+                <th>Estadouniversidad</th>
+                <th>Iduniversidad</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for universidad in universidads %}
+            <tr>
+                <td><a href="{{ path('universidad_show', { 'id': universidad.iduniversidad }) }}">{{ universidad.nombreuniversidad }}</a></td>
+                <td>{% if universidad.estadouniversidad %}Yes{% else %}No{% endif %}</td>
+                <td>{{ universidad.iduniversidad }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('universidad_show', { 'id': universidad.iduniversidad }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('universidad_edit', { 'id': universidad.iduniversidad }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('universidad_new') }}">Create a new universidad</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -3,12 +3,19 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
+use SalexUserBundle\Entity\User;
+use Carbon\Carbon;
 
 /**
  * Carrera
  *
- * @ORM\Index(name="FK_RELATIONSHIP_38", columns={"IDUNIVERSIDAD"})})
+ * @ORM\Table(name="carrera", indexes={@ORM\Index(name="FK_RELATIONSHIP_38", columns={"IDUNIVERSIDAD"})})
  * @ORM\Entity
+ * @Vich\Uploadable
  */
 class Carrera
 {
@@ -204,4 +211,28 @@ class Carrera
     }
 
  
+
+    /**
+     * Set comprobante
+     *
+     * @param string $comprobante
+     *
+     * @return Carrera
+     */
+    public function setComprobante($comprobante)
+    {
+        $this->comprobante = $comprobante;
+
+        return $this;
+    }
+
+    /**
+     * Get comprobante
+     *
+     * @return string
+     */
+    public function getComprobante()
+    {
+        return $this->comprobante;
+    }
 }

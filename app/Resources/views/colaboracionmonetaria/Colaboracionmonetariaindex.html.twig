@@ -13,6 +13,8 @@
 </div>
 <br> </br>
 
+<input type="text" id="colaboracion2" name="colaboracion2">
+
         <table class="table table-bordered table-hover table-striped table-responsive" style="width:100%" id="tabelMahasiswa">
             <thead class="thead-light">
             <tr>
@@ -29,7 +31,7 @@
             <tr>
                 <td>{{ colaboracionmonetaria.idusuario }}</td>
                 <td>
-                    <div style="float:left;"><a class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#VerAlumnos{{ colaboracionmonetaria.idcolaboracion }}">{{ colaboracionmonetaria.descripcioncolaboracion }}</a>
+                    <div style="float:left;"><a style="background-color: transparent; border: none;" data-colaboracion="{{ colaboracionmonetaria.idcolaboracion }}" onclick="getDataTarget(this);" data-toggle="modal"  data-target="#VerAlumnos{{ colaboracionmonetaria.idcolaboracion }}">{{ colaboracionmonetaria.descripcioncolaboracion }}</a>
                         <div id="Pagos{{colaboracionmonetaria.idcolaboracion}}}}"> {{ render(controller('AppBundle:Pagocolaboracion:index', { 'id': colaboracionmonetaria.idcolaboracion } )) }} </div>
                   </div>
                 </td>
@@ -59,3 +61,39 @@
 </div>
 </div>
 {% endblock %}
+
+ {%block javascripts_inline %}
+  <script>
+
+  var dTarget;
+
+  function getDataTarget(d){
+        dTarget = d.getAttribute("data-colaboracion"); 
+        $("input[name='colaboracion2'").val(dTarget);  
+        alert(dTarget);
+        }
+
+
+ $('#VerAlumnos'+dTarget).on('hidden.bs.modal', function () { 
+   alert(document.getElementById("colaboracion2").value);
+ });
+
+
+/*
+ $('#VerAlumnos'+dTarget).on('show.bs.modal', function (e) {
+    var number = dTarget;
+    $('#Name').html(number);
+});
+
+var modal = $('#VerAlumnos'+dTarget);
+modal.on('click', '#test', function(e) { 
+    var wysiwyg = $('#col', modal);
+    $("input[name='colaboracion2'").val(document.getElementById("col").value); 
+}); */
+
+    </script>
+
+
+
+{% endblock %}   
+

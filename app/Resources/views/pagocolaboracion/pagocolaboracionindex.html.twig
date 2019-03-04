@@ -11,6 +11,11 @@
                 <div class="list-group">
                     <!--modal-->
 
+                    <input type="text" id="col" name="col" value="100">
+
+                    <label>Name:  <span id="Name"></span></label>
+
+
                     <table class="table table-bordered table-hover table-striped table-responsive" style="width:100%" id="tabelMahasiswa{{colaboracion.idcolaboracion}}">
                         <thead class="thead-light">
                             <tr>
@@ -22,6 +27,7 @@
                                 <th>Realizo Pago</th>
                                 <th>Fecha</th>
                                 <th>Accion</th>
+                                <th>ID</th>
 
                             </tr>
                         </thead>
@@ -46,6 +52,7 @@
                                             {% endif %}
                                         </div>
                                     </td>
+                                    <td>{{ pagocolaboracion.idcolaboracion }}</td>
                                 </tr>
 
 
@@ -54,7 +61,7 @@
                     </table>
                     <div class="modal-footer">
                         <div style="float:right">
-                            <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+                            <button type="button" id="test" class="btn btn-success" data-dismiss="modal">Cerrar</button>
 
                         </div>
 
@@ -149,8 +156,8 @@
                 success: function (data) {
                     // En caso de que se ejecute
                     //$('#tabelMahasiswa{{colaboracion.idcolaboracion}} > tbody').html(data);
-        {# var myTable = $('#tabelMahasiswa{{colaboracion.idcolaboracion}}').DataTable();
-         myTable.ajax.reload();#}
+                      {# var myTable = $('#tabelMahasiswa{{colaboracion.idcolaboracion}}').DataTable();
+                       myTable.ajax.reload();#}
 
                          var table = $('#tabelMahasiswa{{colaboracion.idcolaboracion}}').DataTable();
                          table.clear();
@@ -168,3 +175,4 @@
     </script>
 
 {%endblock%}
+

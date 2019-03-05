@@ -18,8 +18,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @Vich\Uploadable
  * @UniqueEntity("docsoliidentidadbecario")
  */
-class Solicitudbecario
-{
+class Solicitudbecario {
+
     /**
      * @var integer
      *
@@ -93,7 +93,7 @@ class Solicitudbecario
 
     /**
      * @var boolean
-     
+
      * @ORM\Column(name="TRABAJOSOLIBECARIO", type="boolean", nullable=true)
      */
     private $trabajosolibecario;
@@ -126,7 +126,7 @@ class Solicitudbecario
      */
     private $cantsolihermanosbecario;
 
-        /**
+    /**
      * @var string
      *
      * @ORM\Column(name="NOMSOLIPADREBECARIO", type="string", length=300, nullable=true)
@@ -175,21 +175,21 @@ class Solicitudbecario
      */
     private $estadosolibecario;
 
- /**
+    /**
      * @var string
      *
      * @ORM\Column(name="RELIGION", type="string", length=250, nullable=true)
      */
     private $religion;
-    
-     /**
+
+    /**
      * @var integer
      * @Assert\NotBlank()
      * @ORM\Column(name="FECHANACIMIENTO", type="date", nullable=true)
      */
     private $fechaNacimiento;
-    
-     /**
+
+    /**
      * @var string
      * @Assert\NotBlank()
      * @ORM\Column(name="SEXO", type="string", length=10, nullable=true)
@@ -202,44 +202,50 @@ class Solicitudbecario
      * @ORM\Column(name="PAES", type="float", precision=10, scale=0, nullable=true)
      */
     private $paes;
-    
+
     /**
      * @var string
      *
      * @ORM\Column(name="OCUPACIONPADRE", type="string", length=250, nullable=true)
      */
     private $ocupacionpadre;
-    
-      /**
+
+    /**
      * @var string
      *
      * @ORM\Column(name="OCUPACIONMADRE", type="string", length=250, nullable=true)
      */
     private $ocupacionmadre;
-    
-     /**
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="OTRASBECAS", type="boolean", nullable=true)
      */
     private $otrasbecas;
-    
-     /**
+
+    /**
      * @var float
      *
      * @ORM\Column(name="MONTOOTRASBECAS", type="decimal", precision=10, scale=0, nullable=true)
      */
     private $montootrasbecas;
-    
+
     /**
      * @var string
      *
      * @ORM\Column(name="ANTECEDENTES", type="string", length=250, nullable=true)
      */
     private $antecedentes;
-   
-    
-      /**
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="OBSERVACIONRECHAZO", type="string", length=500, nullable=true)
+     */
+    private $observacionrechazo;
+
+    /**
      * @var \idusuario
      *
      * @ORM\ManyToOne(targetEntity="User")
@@ -248,7 +254,7 @@ class Solicitudbecario
      * })
      */
     private $idusuario;
-    
+
     /**
      * @Assert\Image(
      *     maxSize="5M",
@@ -264,7 +270,7 @@ class Solicitudbecario
      * @var string
      */
     private $comprobante;
-    
+
     /**
      * Set telefonosolibecario
      *
@@ -272,9 +278,8 @@ class Solicitudbecario
      *
      * @return Solicitudbecario
      */
-    
-    
-     /**
+
+    /**
      * Gets the value of comprobante_file.
      *
      * @return string
@@ -307,14 +312,12 @@ class Solicitudbecario
     function getComprobante() {
         return $this->comprobante;
     }
-    
+
     function setComprobante($comprobante) {
         $this->comprobante = $comprobante;
     }
 
-        
-    
-      /**
+    /**
      * Get idusuario
      *
      * @return integer
@@ -330,12 +333,11 @@ class Solicitudbecario
      *
      * @return Movimiento
      */
-    public function setIdusuario(\SalexUserBundle\Entity\User $idusuario=null) {
+    public function setIdusuario(\SalexUserBundle\Entity\User $idusuario = null) {
         $this->idusuario = $idusuario;
     }
-    
-    public function setTelefonosolibecario($telefonosolibecario)
-    {
+
+    public function setTelefonosolibecario($telefonosolibecario) {
         $this->telefonosolibecario = $telefonosolibecario;
 
         return $this;
@@ -421,13 +423,12 @@ class Solicitudbecario
         $this->antecedentes = $antecedentes;
     }
 
-        /**
+    /**
      * Get telefonosolibecario
      *
      * @return string
      */
-    public function getTelefonosolibecario()
-    {
+    public function getTelefonosolibecario() {
         return $this->telefonosolibecario;
     }
 
@@ -438,8 +439,7 @@ class Solicitudbecario
      *
      * @return Solicitudbecario
      */
-    public function setIngresossolifamiliabecario($ingresossolifamiliabecario)
-    {
+    public function setIngresossolifamiliabecario($ingresossolifamiliabecario) {
         $this->ingresossolifamiliabecario = $ingresossolifamiliabecario;
 
         return $this;
@@ -450,8 +450,7 @@ class Solicitudbecario
      *
      * @return string
      */
-    public function getIngresossolifamiliabecario()
-    {
+    public function getIngresossolifamiliabecario() {
         return $this->ingresossolifamiliabecario;
     }
 
@@ -462,8 +461,7 @@ class Solicitudbecario
      *
      * @return Solicitudbecario
      */
-    public function setMiembrossolifamiliabecario($miembrossolifamiliabecario)
-    {
+    public function setMiembrossolifamiliabecario($miembrossolifamiliabecario) {
         $this->miembrossolifamiliabecario = $miembrossolifamiliabecario;
 
         return $this;
@@ -474,8 +472,7 @@ class Solicitudbecario
      *
      * @return integer
      */
-    public function getMiembrossolifamiliabecario()
-    {
+    public function getMiembrossolifamiliabecario() {
         return $this->miembrossolifamiliabecario;
     }
 
@@ -486,8 +483,7 @@ class Solicitudbecario
      *
      * @return Solicitudbecario
      */
-    public function setTiposolicasabecario($tiposolicasabecario)
-    {
+    public function setTiposolicasabecario($tiposolicasabecario) {
         $this->tiposolicasabecario = $tiposolicasabecario;
 
         return $this;
@@ -498,8 +494,7 @@ class Solicitudbecario
      *
      * @return string
      */
-    public function getTiposolicasabecario()
-    {
+    public function getTiposolicasabecario() {
         return $this->tiposolicasabecario;
     }
 
@@ -510,8 +505,7 @@ class Solicitudbecario
      *
      * @return Solicitudbecario
      */
-    public function setCarrerasoliestudiarbecario($carrerasoliestudiarbecario)
-    {
+    public function setCarrerasoliestudiarbecario($carrerasoliestudiarbecario) {
         $this->carrerasoliestudiarbecario = $carrerasoliestudiarbecario;
 
         return $this;
@@ -522,8 +516,7 @@ class Solicitudbecario
      *
      * @return string
      */
-    public function getCarrerasoliestudiarbecario()
-    {
+    public function getCarrerasoliestudiarbecario() {
         return $this->carrerasoliestudiarbecario;
     }
 
@@ -534,8 +527,7 @@ class Solicitudbecario
      *
      * @return Solicitudbecario
      */
-    public function setUniversidadsolibecario($universidadsolibecario)
-    {
+    public function setUniversidadsolibecario($universidadsolibecario) {
         $this->universidadsolibecario = $universidadsolibecario;
 
         return $this;
@@ -546,8 +538,7 @@ class Solicitudbecario
      *
      * @return string
      */
-    public function getUniversidadsolibecario()
-    {
+    public function getUniversidadsolibecario() {
         return $this->universidadsolibecario;
     }
 
@@ -558,8 +549,7 @@ class Solicitudbecario
      *
      * @return Solicitudbecario
      */
-    public function setMontosolimatriculabecario($montosolimatriculabecario)
-    {
+    public function setMontosolimatriculabecario($montosolimatriculabecario) {
         $this->montosolimatriculabecario = $montosolimatriculabecario;
 
         return $this;
@@ -570,8 +560,7 @@ class Solicitudbecario
      *
      * @return string
      */
-    public function getMontosolimatriculabecario()
-    {
+    public function getMontosolimatriculabecario() {
         return $this->montosolimatriculabecario;
     }
 
@@ -582,8 +571,7 @@ class Solicitudbecario
      *
      * @return Solicitudbecario
      */
-    public function setCuotasolimensualbecario($cuotasolimensualbecario)
-    {
+    public function setCuotasolimensualbecario($cuotasolimensualbecario) {
         $this->cuotasolimensualbecario = $cuotasolimensualbecario;
 
         return $this;
@@ -594,8 +582,7 @@ class Solicitudbecario
      *
      * @return string
      */
-    public function getCuotasolimensualbecario()
-    {
+    public function getCuotasolimensualbecario() {
         return $this->cuotasolimensualbecario;
     }
 
@@ -606,8 +593,7 @@ class Solicitudbecario
      *
      * @return Solicitudbecario
      */
-    public function setDuracionsolicarrerabecario($duracionsolicarrerabecario)
-    {
+    public function setDuracionsolicarrerabecario($duracionsolicarrerabecario) {
         $this->duracionsolicarrerabecario = $duracionsolicarrerabecario;
 
         return $this;
@@ -618,8 +604,7 @@ class Solicitudbecario
      *
      * @return integer
      */
-    public function getDuracionsolicarrerabecario()
-    {
+    public function getDuracionsolicarrerabecario() {
         return $this->duracionsolicarrerabecario;
     }
 
@@ -630,8 +615,7 @@ class Solicitudbecario
      *
      * @return Solicitudbecario
      */
-    public function setTrabajosolibecario($trabajosolibecario)
-    {
+    public function setTrabajosolibecario($trabajosolibecario) {
         $this->trabajosolibecario = $trabajosolibecario;
 
         return $this;
@@ -642,8 +626,7 @@ class Solicitudbecario
      *
      * @return boolean
      */
-    public function getTrabajosolibecario()
-    {
+    public function getTrabajosolibecario() {
         return $this->trabajosolibecario;
     }
 
@@ -654,8 +637,7 @@ class Solicitudbecario
      *
      * @return Solicitudbecario
      */
-    public function setDocsoliidentidadbecario($docsoliidentidadbecario)
-    {
+    public function setDocsoliidentidadbecario($docsoliidentidadbecario) {
         $this->docsoliidentidadbecario = $docsoliidentidadbecario;
 
         return $this;
@@ -666,8 +648,7 @@ class Solicitudbecario
      *
      * @return string
      */
-    public function getDocsoliidentidadbecario()
-    {
+    public function getDocsoliidentidadbecario() {
         return $this->docsoliidentidadbecario;
     }
 
@@ -678,8 +659,7 @@ class Solicitudbecario
      *
      * @return Solicitudbecario
      */
-    public function setAniosoliingresobecario($aniosoliingresobecario)
-    {
+    public function setAniosoliingresobecario($aniosoliingresobecario) {
         $this->aniosoliingresobecario = $aniosoliingresobecario;
 
         return $this;
@@ -690,8 +670,7 @@ class Solicitudbecario
      *
      * @return \DateTime
      */
-    public function getAniosoliingresobecario()
-    {
+    public function getAniosoliingresobecario() {
         return $this->aniosoliingresobecario;
     }
 
@@ -702,8 +681,7 @@ class Solicitudbecario
      *
      * @return Solicitudbecario
      */
-    public function setAniosolifinalizacionbecario($aniosolifinalizacionbecario)
-    {
+    public function setAniosolifinalizacionbecario($aniosolifinalizacionbecario) {
         $this->aniosolifinalizacionbecario = $aniosolifinalizacionbecario;
 
         return $this;
@@ -714,8 +692,7 @@ class Solicitudbecario
      *
      * @return \DateTime
      */
-    public function getAniosolifinalizacionbecario()
-    {
+    public function getAniosolifinalizacionbecario() {
         return $this->aniosolifinalizacionbecario;
     }
 
@@ -726,8 +703,7 @@ class Solicitudbecario
      *
      * @return Solicitudbecario
      */
-    public function setCantsolihermanosbecario($cantsolihermanosbecario)
-    {
+    public function setCantsolihermanosbecario($cantsolihermanosbecario) {
         $this->cantsolihermanosbecario = $cantsolihermanosbecario;
 
         return $this;
@@ -738,8 +714,7 @@ class Solicitudbecario
      *
      * @return integer
      */
-    public function getCantsolihermanosbecario()
-    {
+    public function getCantsolihermanosbecario() {
         return $this->cantsolihermanosbecario;
     }
 
@@ -750,26 +725,20 @@ class Solicitudbecario
      *
      * @return Solicitudbecario
      */
-    public function setNomsolipadrebecario($nomsolipadrebecario)
-    {
+    public function setNomsolipadrebecario($nomsolipadrebecario) {
         $this->nomsolipadrebecario = $nomsolipadrebecario;
 
         return $this;
     }
 
-   
     /**
      * Get nomsolipadrebecario
      *
      * @return string
      */
-    public function getNomsolipadrebecario()
-    {
+    public function getNomsolipadrebecario() {
         return $this->nomsolipadrebecario;
     }
-    
-    
-    
 
     /**
      * Set nomsolimadrebecario
@@ -778,8 +747,7 @@ class Solicitudbecario
      *
      * @return Solicitudbecario
      */
-    public function setNomsolimadrebecario($nomsolimadrebecario)
-    {
+    public function setNomsolimadrebecario($nomsolimadrebecario) {
         $this->nomsolimadrebecario = $nomsolimadrebecario;
 
         return $this;
@@ -790,8 +758,7 @@ class Solicitudbecario
      *
      * @return string
      */
-    public function getNomsolimadrebecario()
-    {
+    public function getNomsolimadrebecario() {
         return $this->nomsolimadrebecario;
     }
 
@@ -802,8 +769,7 @@ class Solicitudbecario
      *
      * @return Solicitudbecario
      */
-    public function setTelsoliemergenciabecario($telsoliemergenciabecario)
-    {
+    public function setTelsoliemergenciabecario($telsoliemergenciabecario) {
         $this->telsoliemergenciabecario = $telsoliemergenciabecario;
 
         return $this;
@@ -814,8 +780,7 @@ class Solicitudbecario
      *
      * @return string
      */
-    public function getTelsoliemergenciabecario()
-    {
+    public function getTelsoliemergenciabecario() {
         return $this->telsoliemergenciabecario;
     }
 
@@ -826,8 +791,7 @@ class Solicitudbecario
      *
      * @return Solicitudbecario
      */
-    public function setTelsolipersonalbecario($telsolipersonalbecario)
-    {
+    public function setTelsolipersonalbecario($telsolipersonalbecario) {
         $this->telsolipersonalbecario = $telsolipersonalbecario;
 
         return $this;
@@ -838,8 +802,7 @@ class Solicitudbecario
      *
      * @return string
      */
-    public function getTelsolipersonalbecario()
-    {
+    public function getTelsolipersonalbecario() {
         return $this->telsolipersonalbecario;
     }
 
@@ -850,8 +813,7 @@ class Solicitudbecario
      *
      * @return Solicitudbecario
      */
-    public function setDireccionsolibecario($direccionsolibecario)
-    {
+    public function setDireccionsolibecario($direccionsolibecario) {
         $this->direccionsolibecario = $direccionsolibecario;
 
         return $this;
@@ -862,8 +824,7 @@ class Solicitudbecario
      *
      * @return string
      */
-    public function getDireccionsolibecario()
-    {
+    public function getDireccionsolibecario() {
         return $this->direccionsolibecario;
     }
 
@@ -874,8 +835,7 @@ class Solicitudbecario
      *
      * @return Solicitudbecario
      */
-    public function setEstadosolibecario($estadosolibecario)
-    {
+    public function setEstadosolibecario($estadosolibecario) {
         $this->estadosolibecario = $estadosolibecario;
 
         return $this;
@@ -886,8 +846,7 @@ class Solicitudbecario
      *
      * @return integer
      */
-    public function getEstadosolibecario()
-    {
+    public function getEstadosolibecario() {
         return $this->estadosolibecario;
     }
 
@@ -896,9 +855,16 @@ class Solicitudbecario
      *
      * @return integer
      */
-    public function getIdsolibecario()
-    {
+    public function getIdsolibecario() {
         return $this->idsolibecario;
     }
-    
+
+    function getObservacionrechazo() {
+        return $this->observacionrechazo;
+    }
+
+    function setObservacionrechazo($observacionrechazo) {
+        $this->observacionrechazo = $observacionrechazo;
+    }
+
 }

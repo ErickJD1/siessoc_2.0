@@ -73,3 +73,89 @@
 
 
 {% endblock %}
+{% block javascripts_inline %}
+
+    <script>
+        function cargarData()
+        {
+            var id1 = document.getElementById('appbundle_movimiento_idcuenta');
+            var id2 = id1.options[id1.selectedIndex].value;
+
+            $.ajax({
+                method: "GET",
+                url: "{{ url('ajax_posts') }}",
+                data: "idcuenta=" + id2,
+                dataType: 'json',
+                success: function (data)
+                {
+                    if (data.hasOwnProperty("response") && data.response === "success")
+                    {
+                        if (data.hasOwnProperty("posts"))
+                        {
+                            //http://stackoverflow.com/questions/3710204/how-to-check-if-a-string-is-a-valid-json-string-in-javascript-without-using-try/3710226
+                            if (/^[\],:{}\s]*$/.test(data.posts.replace(/\\["\\\/bfnrtu]/g, '@').
+                                    replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']').
+                                    replace(/(?:^|:|,)(?:\s*\[)+/g, '')))
+                            {
+                                var posts = JSON.parse(data.posts);
+                                if (posts.length > 0)
+                                {
+                                    var saldoActual = 0;
+                                    for (d in posts)
+                                    {
+                                        saldoActual = posts[d]["saldoactual"];
+                                    }
+                                }
+                                $('#error').val(saldoActual);
+                                var seleccion = $("#idcuenta").val($('#appbundle_cuenta_idtipocuenta option:selected').text()); 
+                                if ((($('#appbundle_movimiento_monto').val() > saldoActual) 
+                                || $('#appbundle_movimiento_monto').val()=='' 
+                                || $('#appbundle_movimiento_monto').val()==' ') 
+                                || $('#appbundle_movimiento_idtipomov option:selected').val()==0 ) 
+                                {
+                                    $('#montoerror').html(`<ul class="list-unstyled"><li><span class="glyphicon glyphicon-exclamation-sign">
+                                </span>Monto disponible $` + saldoActual + `</li></ul>`);
+                                    $("#enviar").attr("disabled","disabled");
+
+                                } else {
+                                    $('#montoerror').html(`<ul style="color:green" class="list-unstyled"><li><span class="fa fa-check" style="color:green">
+                                </span>Monto Valido!</li></ul>`);
+                                $("#enviar").removeAttr("disabled","disabled");
+
+                                }
+
+                            } else
+                            {
+                                console.log("INVALID JSON STRING");
+                            }
+                        } else
+                        {
+                            console.log("POSTS NOT FOUND");
+                        }
+                    }
+                },
+                error: function (jqXHR, exception)
+                {
+                    if (jqXHR.status === 405)
+                    {
+                        console.error("METHOD NOT ALLOWED!");
+                    }
+                }
+            });
+        }
+        ;
+
+     function isNumberKey(evt)
+      {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode == 8 || charCode == 37) {
+         return true;
+        } else if (charCode == 46 && $(this).val().indexOf('.') != -1) {
+         return false;
+        } else if (charCode > 31 && charCode != 46 && (charCode < 48 || charCode > 57)) {
+           return false;
+        }
+            return true;
+      }
+    </script>
+{% endblock %}

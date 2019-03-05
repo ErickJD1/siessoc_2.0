@@ -6,14 +6,15 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use SalexUserBundle\Entity\User;
+
 /**
  * Cuenta
  * @UniqueEntity("numcuenta")
  * @ORM\Table(name="cuenta", indexes={@ORM\Index(name="FK_RELATIONSHIP_14", columns={"IDTIPOCUENTA"}), @ORM\Index(name="FK_RELATIONSHIP_33", columns={"IDBANCO"})})
  * @ORM\Entity
  */
-class Cuenta
-{
+class Cuenta {
+
     /**
      * @var integer
      * @ORM\Column(name="IDCUENTA", type="integer", nullable=false)
@@ -81,8 +82,8 @@ class Cuenta
      * })
      */
     private $idbanco;
-    
-      /**
+
+    /**
      * @var \idusuario
      *
      * @ORM\ManyToOne(targetEntity="User")
@@ -91,15 +92,23 @@ class Cuenta
      * })
      */
     private $idusuario;
-    
-       /**
+
+    /**
      * @var float
      * @ORM\Column(name="SALDOACTUAL", type="float", precision=10, scale=0, nullable=true)
      */
     private $saldoactual;
-    
-    
+
     function getSaldoactual() {
+    /*   
+        $em = $this->getDoctrine()->getManager();
+        $saldoActual=0;
+        $movimientos = $em->getRepository('AppBundle:Movimiento')->findMovimiento($this->getIdcuenta());
+        $saldoActual = $this->getSaldocuenta();
+        foreach ($movimientos as $moviento) {
+            $saldoActual = $saldoActual + $moviento->getMonto();
+        }*/
+       
         return $this->saldoactual;
     }
 
@@ -107,8 +116,7 @@ class Cuenta
         $this->saldoactual = $saldoactual;
     }
 
-    
-      /**
+    /**
      * Get idusuario
      *
      * @return integer
@@ -124,13 +132,12 @@ class Cuenta
      *
      * @return Movimiento
      */
-    public function setIdusuario(\SalexUserBundle\Entity\User $idusuario=null) {
+    public function setIdusuario(\SalexUserBundle\Entity\User $idusuario = null) {
         $this->idusuario = $idusuario;
     }
-    
-    
-    public function __construct(){
-    $this->fechaapertura= new \DateTime("now");
+
+    public function __construct() {
+        $this->fechaapertura = new \DateTime("now");
     }
 
     /**
@@ -140,8 +147,7 @@ class Cuenta
      *
      * @return Cuenta
      */
-    public function setNumcuenta($numcuenta)
-    {
+    public function setNumcuenta($numcuenta) {
         $this->numcuenta = $numcuenta;
 
         return $this;
@@ -152,8 +158,7 @@ class Cuenta
      *
      * @return string
      */
-    public function getNumcuenta()
-    {
+    public function getNumcuenta() {
         return $this->numcuenta;
     }
 
@@ -164,8 +169,7 @@ class Cuenta
      *
      * @return Cuenta
      */
-    public function setNomcuenta($nomcuenta)
-    {
+    public function setNomcuenta($nomcuenta) {
         $this->nomcuenta = $nomcuenta;
 
         return $this;
@@ -176,8 +180,7 @@ class Cuenta
      *
      * @return string
      */
-    public function getNomcuenta()
-    {
+    public function getNomcuenta() {
         return $this->nomcuenta;
     }
 
@@ -188,8 +191,7 @@ class Cuenta
      *
      * @return Cuenta
      */
-    public function setDescripcioncuenta($descripcioncuenta)
-    {
+    public function setDescripcioncuenta($descripcioncuenta) {
         $this->descripcioncuenta = $descripcioncuenta;
 
         return $this;
@@ -200,8 +202,7 @@ class Cuenta
      *
      * @return string
      */
-    public function getDescripcioncuenta()
-    {
+    public function getDescripcioncuenta() {
         return $this->descripcioncuenta;
     }
 
@@ -212,8 +213,7 @@ class Cuenta
      *
      * @return Cuenta
      */
-    public function setFechaapertura($fechaapertura)
-    {
+    public function setFechaapertura($fechaapertura) {
         $this->fechaapertura = $fechaapertura;
 
         return $this;
@@ -224,8 +224,7 @@ class Cuenta
      *
      * @return \DateTime
      */
-    public function getFechaapertura()
-    {
+    public function getFechaapertura() {
         return $this->fechaapertura;
     }
 
@@ -236,8 +235,7 @@ class Cuenta
      *
      * @return Cuenta
      */
-    public function setSaldocuenta($saldocuenta)
-    {
+    public function setSaldocuenta($saldocuenta) {
         $this->saldocuenta = $saldocuenta;
 
         return $this;
@@ -248,8 +246,7 @@ class Cuenta
      *
      * @return float
      */
-    public function getSaldocuenta()
-    {
+    public function getSaldocuenta() {
         return $this->saldocuenta;
     }
 
@@ -260,8 +257,7 @@ class Cuenta
      *
      * @return Cuenta
      */
-    public function setEstadocuenta($estadocuenta)
-    {
+    public function setEstadocuenta($estadocuenta) {
         $this->estadocuenta = $estadocuenta;
 
         return $this;
@@ -272,8 +268,7 @@ class Cuenta
      *
      * @return boolean
      */
-    public function getEstadocuenta()
-    {
+    public function getEstadocuenta() {
         return $this->estadocuenta;
     }
 
@@ -282,8 +277,7 @@ class Cuenta
      *
      * @return integer
      */
-    public function getIdcuenta()
-    {
+    public function getIdcuenta() {
         return $this->idcuenta;
     }
 
@@ -294,8 +288,7 @@ class Cuenta
      *
      * @return Cuenta
      */
-    public function setIdbanco(\AppBundle\Entity\Banco $idbanco = null)
-    {
+    public function setIdbanco(\AppBundle\Entity\Banco $idbanco = null) {
         $this->idbanco = $idbanco;
 
         return $this;
@@ -306,8 +299,7 @@ class Cuenta
      *
      * @return \AppBundle\Entity\Banco
      */
-    public function getIdbanco()
-    {
+    public function getIdbanco() {
         return $this->idbanco;
     }
 
@@ -318,8 +310,7 @@ class Cuenta
      *
      * @return Cuenta
      */
-    public function setIdtipocuenta(\AppBundle\Entity\Tipocuenta $idtipocuenta = null)
-    {
+    public function setIdtipocuenta(\AppBundle\Entity\Tipocuenta $idtipocuenta = null) {
         $this->idtipocuenta = $idtipocuenta;
 
         return $this;
@@ -330,13 +321,12 @@ class Cuenta
      *
      * @return \AppBundle\Entity\Tipocuenta
      */
-    public function getIdtipocuenta()
-    {
+    public function getIdtipocuenta() {
         return $this->idtipocuenta;
     }
 
-    public function __toString(){
-          return $this->getNomcuenta();
+    public function __toString() {
+        return $this->getNomcuenta();
     }
 
 }

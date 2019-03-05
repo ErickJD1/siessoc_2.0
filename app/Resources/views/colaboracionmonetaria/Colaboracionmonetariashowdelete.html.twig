@@ -4,7 +4,7 @@
 
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3 align="center"><strong><strong>{{  colaboracionmonetaria.descripcioncolaboracion }}</strong></strong></h3>
+                <h3 align="center"><strong><strong>¿Desea eliminar el registro?</strong></strong></h3>
             </div>
             <div class="modal-body">
 
@@ -15,16 +15,16 @@
                         <!--modal-->
                         <div class="col col-md-7">
 
-                 <h4><i class="fa fa-list"></i> Descripcioncolaboracion</h4>
+                 <h4><i class="fa fa-list"></i> Tipo de Colaboración</h4>
                 <p class="form-group"><strong>{{ colaboracionmonetaria.descripcioncolaboracion }}</strong></p>
                 <hr>
-                <h4><i class="fa fa-money"></i> Montomescolaboracion</h4>
+                <h4><i class="fa fa-money"></i> Monto de Colaboración</h4>
                 <p class="form-group"><strong>{{ "$"~colaboracionmonetaria.montomescolaboracion }}</strong></p>
                 <hr>
-                <h4><i class="fa fa-money"></i> Saldocolaboracion</h4>
+                <h4><i class="fa fa-money"></i> Saldo</h4>
                 <p class="form-group"><strong>{{ "$"~colaboracionmonetaria.saldocolaboracion }}</strong></p>
                 <hr>
-                <h4><i class="fa fa-check"></i> Estadocolaboracion</h4>
+                <h4><i class="fa fa-check"></i> Estado</h4>
                 <p class="form-group"><strong>{% if colaboracionmonetaria.estadocolaboracion %}Activa{% else %}Baja{% endif %}</strong></p>
   </div>
                         <div class="col col-md-5">
@@ -41,7 +41,7 @@
                             {{ form_end(delete_form) }}
                         </div>
                         
-                            <button type="button" class="btn btn-success" style="margin-right: 1px" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary" style="margin-right: 1px" data-dismiss="modal">Cerrar</button>
 
                     </div>
                 </div>

@@ -4,16 +4,12 @@
 
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3 align="center"><strong><strong>Tipo De Colaboracion</strong></strong></h3>
+                <h3 align="center"><strong><strong>Tipo de Colaboración Monetaria</strong></strong></h3>
             </div>
             <div class="modal-body">
 
                 <div class="list-group">
                     <!--modal-->
-
-                    <input type="text" id="col" name="col" value="100">
-
-                    <label>Name:  <span id="Name"></span></label>
 
 
                     <table class="table table-bordered table-hover table-striped table-responsive" style="width:100%" id="tabelMahasiswa{{colaboracion.idcolaboracion}}">
@@ -21,13 +17,12 @@
                             <tr>
                                 <th>Nombre</th>
                                 <th>Apellido</th>
-                                <th>Telefono</th>
+                                <th>Teléfono</th>
                                 <th>Monto</th>
-                                <th>Tipo Colaboracion</th>
-                                <th>Realizo Pago</th>
+                                <th>Tipo Colaboración</th>
+                                <th>Realizó Pago</th>
                                 <th>Fecha</th>
-                                <th>Accion</th>
-                                <th>ID</th>
+                                <th>Acción</th>
 
                             </tr>
                         </thead>
@@ -52,7 +47,6 @@
                                             {% endif %}
                                         </div>
                                     </td>
-                                    <td>{{ pagocolaboracion.idcolaboracion }}</td>
                                 </tr>
 
 
@@ -61,7 +55,7 @@
                     </table>
                     <div class="modal-footer">
                         <div style="float:right">
-                            <button type="button" id="test" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+                            <button type="button" id="test" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
 
                         </div>
 
@@ -80,12 +74,12 @@
                 language: {
                     "decimal": "",
                     "emptyTable": "No hay información",
-                    "info": "Lista De Becarios",
+                    "info": "",
                     "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
                     "infoFiltered": "(Filtrado de MAX total entradas)",
                     "infoPostFix": "",
                     "thousands": ",",
-                    "lengthMenu": "Mostrar MENU Entradas",
+                    "lengthMenu": "Lista de Becarios",
                     "loadingRecords": "Cargando...",
                     "processing": "Procesando...",
                     "search": "Buscar:",

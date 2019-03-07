@@ -1,23 +1,32 @@
-{% extends 'layout/base-layout.html.twig' %}
+{% extends "layout/base-layout.html.twig" %}
+
+{% block page_title %}Universidad{% endblock %}
 
 {% block page_content %}
-    <h1>Universidads list</h1>
 
-    <table>
-        <thead>
+    <div class="box box-primary">
+        <div style="width:90%; margin-left:5%; margin-top: 2% ">
+
+            <div align="left">
+                <a style="font-size: 15px" href="{{ path('movimiento_new') }}" class="btn btn-success btn-sm"><i style="font-size: 20px" class="fa fa-plus-circle"></i> Movimiento</a>
+            </div>
+            <br>
+
+            <table class="table table-bordered table-hover table-striped table-responsive" style="width:100%" id="tabelMahasiswa">
+                <thead class="thead-light">
             <tr>
-                <th>Nombreuniversidad</th>
-                <th>Estadouniversidad</th>
-                <th>Iduniversidad</th>
-                <th>Actions</th>
+                <th>Nombre</th>
+                <th>Siglas</th>
+                <th>Estado</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
         {% for universidad in universidads %}
             <tr>
                 <td><a href="{{ path('universidad_show', { 'id': universidad.iduniversidad }) }}">{{ universidad.nombreuniversidad }}</a></td>
-                <td>{% if universidad.estadouniversidad %}Yes{% else %}No{% endif %}</td>
-                <td>{{ universidad.iduniversidad }}</td>
+                <td>{{universidad.siglas}}</td>
+                <td>{% if universidad.estadouniversidad %}Activo{% else %}Inactiv{% endif %}</td>
                 <td>
                     <ul>
                         <li>
@@ -33,9 +42,6 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('universidad_new') }}">Create a new universidad</a>
-        </li>
-    </ul>
+        </div>
+        </div>
 {% endblock %}

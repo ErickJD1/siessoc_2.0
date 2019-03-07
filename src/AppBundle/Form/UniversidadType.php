@@ -13,7 +13,9 @@ class UniversidadType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nombreuniversidad')->add('estadouniversidad')->add('siglas')        ;
+        $builder->add('nombreuniversidad')
+                ->add('estadouniversidad',null,array('label'=>'Activo'))
+                ->add('siglas')        ;
     }
     
     /**

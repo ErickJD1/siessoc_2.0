@@ -457,17 +457,26 @@
                         <div class="tab-pane" role="tabpanel" id="datosacademicos" style="width:90%; margin-left:5%">
 
                             <div class="row">  
-                                <div class="col col-md-6" align="left">
-                                    <label for="form_carrera">Carrera Universitaria<span style="font-size:25;color:red" >*</span></label>
+                                <div class="col col-md-4" align="left">
+                                    <label for="form_carrera">Carrera<span style="font-size:25;color:red" >*</span></label>
                                     {{ form_widget(form.carrerasoliestudiarbecario) }}
                                     {{ form_errors(form.carrerasoliestudiarbecario) }}   
+
+                                </div>
+                                <div class="col col-md-2" align="center" style='margin-top: 2.8%'>
+                                    <i class='fa fa-plus-circle' style='font-size: 30px'></i>
                                 </div> 
 
-                                <div class="col col-md-6" align="left">
+                                <div class="col col-md-4" align="left">
                                     <label for="form_universidad">Universidad<span style="font-size:25;color:red" >*</span></label>
                                     {{ form_widget(form.universidadsolibecario) }}
                                     {{ form_errors(form.universidadsolibecario) }}   
                                 </div>
+
+                                <div class="col col-md-2" align="center" style='margin-top: 2.8%'>
+                                    <button class="" type="button" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#newUniversidad"> <i class='fa fa-plus-circle' style='font-size: 30px'></i></button>
+
+                                </div> 
                             </div>
 
                             <br>
@@ -527,7 +536,7 @@
                                 </div>
 
                                 <div class="col col-md-6" align="left">
-                                    <label for="form_comprobante">Comprobante</label>
+                                    <label for="form_comprobante">Pensum Carrera</label>
                                     {{ form_widget(form.comprobante_file) }}
                                     {{ form_errors(form.comprobante_file) }}   
                                 </div>
@@ -619,6 +628,7 @@
             </section>
         </div>
     </div>
+                                        {{ render(controller('AppBundle:Universidad:newmodal')) }}
 
 {% endblock %}
 {%block javascripts_inline %}

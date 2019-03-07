@@ -56,6 +56,39 @@ class UniversidadController extends Controller
             'form' => $form->createView(),
         ));
     }
+    
+    
+    
+    
+    
+    
+    
+        /**
+     * Creates a new universidad entity.
+     *
+     * @Route("/newmodal", name="universidad_newmodal")
+     * @Method({"GET", "POST"})
+     */
+    public function newmodalAction(Request $request)
+    {
+        $universidad = new Universidad();
+        $form = $this->createForm('AppBundle\Form\UniversidadType', $universidad);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($universidad);
+            $em->flush($universidad);
+
+            return $this->redirectToRoute('solicitudbecario_new', array('id' => $universidad->getIduniversidad()));
+        }
+
+        return $this->render('universidad/universidadnewmodal.html.twig', array(
+            'universidad' => $universidad,
+            'form' => $form->createView(),
+        ));
+    }
+
 
     /**
      * Finds and displays a universidad entity.

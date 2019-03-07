@@ -48,7 +48,7 @@ class CarreraController extends Controller
             $em->persist($carrera);
             $em->flush($carrera);
 
-            return $this->redirectToRoute('carrera_show', array('id' => $carrera->getId()));
+            return $this->redirectToRoute('carrera_index', array('id' => $carrera->getIdcarrera()));
         }
 
         return $this->render('carrera/carreranew.html.twig', array(
@@ -88,7 +88,7 @@ class CarreraController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('carrera_edit', array('id' => $carrera->getId()));
+            return $this->redirectToRoute('carrera_index', array('id' => $carrera->getIdcarrera()));
         }
 
         return $this->render('carrera/carreraedit.html.twig', array(
@@ -128,7 +128,7 @@ class CarreraController extends Controller
     private function createDeleteForm(Carrera $carrera)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('carrera_delete', array('id' => $carrera->getId())))
+            ->setAction($this->generateUrl('carrera_delete', array('id' => $carrera->getIdcarrera())))
             ->setMethod('DELETE')
             ->getForm()
         ;

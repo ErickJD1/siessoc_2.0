@@ -369,7 +369,7 @@ class User extends BaseUser implements ThemeUser
     }
     
     public function __toString() {
-        return $this->firstName;
+        return (String) $this->firstName;
     }
 
     

@@ -28,13 +28,34 @@
                 <td>{{ insumo.descripcioninsumo }}</td>
                 <td align="left">{% if insumo.estadoinsumo==1 %}Activo{% else %}Inactivo{% endif %}</td>
                 <td align="center">
-                <div class="btn-group" style="width:100%">
-                  <button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#Verinsu{{ insumo.idinsumo}}"><i class="fa fa-eye" style="font-size: 20px; color: deepskyblue"></i></button>
-                          {{ render(controller('AppBundle:Insumo:show', { 'id' : insumo.idinsumo } )) }}
+                 <div class="options btn-group btn-group-sm">
+                  <a class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-caret-down no-margin"></i> Opciones
+                  </a>
+                  <ul class="dropdown-menu">
 
-                    <a href="{{ path('insumo_edit',{ 'id' : insumo.idinsumo }) }}" style="background-color: transparent; border: none;"><i class="fa fa-edit" style="font-size: 20px; color: limegreen"></i></a>
-                   <button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#Verinsudelete{{ insumo.idinsumo }}"><i class="fa fa-trash" style="font-size: 20px; color: crimson"></i></button>
-                          {{ render(controller('AppBundle:Insumo:showDelete', { 'id' : insumo.idinsumo } )) }}
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#Verinsu{{ insumo.idinsumo}}">
+                            <i class="fa fa-eye fa-margin"></i> Mostrar
+                        </a>
+                    </li>
+
+                     <li>
+                        <a href="{{ path('insumo_edit',{ 'id' : insumo.idinsumo }) }}" >
+                            <i class="fa fa-edit fa-margin"></i> Editar
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#Verinsudelete{{ insumo.idinsumo }}">
+                            <i class="fa fa-trash-o fa-margin"></i> Eliminar
+                        </a>
+                    </li>
+                    
+                    </ul>
+
+                   {{ render(controller('AppBundle:Insumo:show', { 'id' : insumo.idinsumo } )) }}
+                   {{ render(controller('AppBundle:Insumo:showDelete', { 'id' : insumo.idinsumo } )) }}
                   </div>
                 </td>
              </tr>

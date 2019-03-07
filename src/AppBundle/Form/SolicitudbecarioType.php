@@ -35,9 +35,7 @@ class SolicitudbecarioType extends AbstractType
                 ->add('cuotasolimensualbecario',MoneyType::class, array('label'=>'Cuota Mensual','invalid_message'=>'Se requiere un valor númerico', 'required' => false, 'invalid_message_parameters' => array('%num%' => 9)))
                 ->add('duracionsolicarrerabecario',TextMaskType::class, array('label'=>'Duracion de la carrera', 'mask' => '9', 'required' => false))
                 ->add('trabajosolibecario', ChoiceType::class, array('label'=>'¿Posee Trabajo?','choices'=>array('SI'=>'1', 'NO'=>'0'),'placeholder'=>'', 'required' => false))
-                ->add('docsoliidentidadbecario', TextMaskType::class, array('label' => 'Documento', 'mask' => '99999999-9', 'invalid_message'=>'Se requiere un valor númerico', 'required' => false))
-         
-               // ->add('docsoliidentidadbecario',  null, array('label'=>'Numero de documento','invalid_message'=>'Dui Incorrecto, Campo Numerico, maximo %num% de numero', 'invalid_message_parameters' => array('%num%' => 9)))
+                ->add('docsoliidentidadbecario', TextMaskType::class, array('label' => 'Documento', 'mask' => '9999-999999-999-9', 'invalid_message'=>'Se requiere un valor númerico', 'required' => false))
                 ->add('aniosoliingresobecario', DateType::class, array('label'=>'Fecha De Ingreso','data' =>( new \DateTime()),'widget'=>'single_text','format' => 'yyyy-MM-dd', 'required' => false))
                 ->add('aniosolifinalizacionbecario', DateType::class, array('label'=>'Fecha De Finalizacion','data' =>( new \DateTime()),'widget'=>'single_text', 'required' => false))
                 ->add('cantsolihermanosbecario',null, array('label'=>'Cantidad de Hermanos','invalid_message'=>'Se requiere un valor númerico','required' => false, 'invalid_message_parameters' => array('%num%' => 2)))

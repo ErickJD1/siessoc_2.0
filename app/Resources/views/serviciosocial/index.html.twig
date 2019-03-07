@@ -8,42 +8,34 @@
 <div style="width:90%; margin-left:5%; margin-top: 2% ">
 
 <div align="left">
-    <button class="btn btn-primary" data-toggle="modal" data-target="#crearSS"> +Servicio Social</button>
-     {{ render(controller('AppBundle:Serviciosocial:new' )) }}
+     <a style="font-size: 15px" href="{{ path('serviciosocial_new') }}" class="btn btn-success btn-sm"><i style="font-size: 20px" class="fa fa-plus-circle"></i>  Registrar Servicio Social</a>
 </div>
-<br> </br>
+<br>
 
     <table class="table table-bordered table-hover table-striped table-responsive" style="width:100%" id="tabelMahasiswa">
        
         <thead>
             <tr>
-                <th>Idexpbecario</th>
-                <th>Fechaaprovacionservicio</th>
-                <th>Fechainicioservicio</th>
-                <th>Fechafinservicio</th>
-                <th>Estadoservicio</th>
-                <th>Idserviciosocial</th>
+                <th>Becario</th>
+                <th>Fecha Aprobacion</th>
+                <th>Fecha De Inicio Del Proyecto</th>
+                <th>Fecha Fin Del Proyecto</th>
+                <th>Estado</th>
+                <th>Servicio Social</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for serviciosocial in serviciosocials %}
             <tr>
-                <td><a href="{{ path('serviciosocial_show', { 'id': serviciosocial.idserviciosocial }) }}">{{ serviciosocial.idexpbecario }}</a></td>
+                <td>{{ serviciosocial.idexpbecario }}</td>
                 <td>{% if serviciosocial.fechaaprovacionservicio %}{{ serviciosocial.fechaaprovacionservicio|date('Y-m-d') }}{% endif %}</td>
                 <td>{% if serviciosocial.fechainicioservicio %}{{ serviciosocial.fechainicioservicio|date('Y-m-d') }}{% endif %}</td>
                 <td>{% if serviciosocial.fechafinservicio %}{{ serviciosocial.fechafinservicio|date('Y-m-d') }}{% endif %}</td>
-                <td>{{ serviciosocial.estadoservicio }}</td>
+                <td>{% if serviciosocial.estadoservicio==0 %}Inactivo{% else %}Activo{% endif %}</td>
                 <td>{{ serviciosocial.idproyectservisocial }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('serviciosocial_show', { 'id': serviciosocial.idserviciosocial }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('serviciosocial_edit', { 'id': serviciosocial.idserviciosocial }) }}">edit</a>
-                        </li>
-                    </ul>
+                  
                 </td>
             </tr>
         {% endfor %}

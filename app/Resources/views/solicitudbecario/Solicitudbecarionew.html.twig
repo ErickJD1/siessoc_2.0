@@ -382,7 +382,7 @@
                             <div class="row">     
 
                                 <div class="col col-md-4" align="left">
-                                    <label for="form_documento">Documento<span style="font-size:25;color:red" >*</span></label>
+                                    <label for="form_documento">NIT<span style="font-size:25;color:red" >*</span></label>
                                     {{ form_widget(form.docsoliidentidadbecario) }}
                                     {{ form_errors(form.docsoliidentidadbecario) }}   
                                 </div> 
@@ -499,7 +499,7 @@
                             <div class="row">
                                 <div class="col col-md-3" align="left">
                                     <label for="form_paes">Nota Paes<span style="font-size:25;color:red" >*</span></label>
-                                    {{ form_widget(form.paes) }}
+                                    {{ form_widget(form.paes)}}
                                     {{ form_errors(form.paes) }}   
                                 </div>
 
@@ -517,7 +517,7 @@
 
                                 <div class="col col-md-3" align="left">
                                     <label for="form_duracion">Duración de Carrera<span style="font-size:25;color:red" >*</span></label>
-                                    {{ form_widget(form.duracionsolicarrerabecario,{'attr':{'placeholder':'Numero de años'}}) }}
+                                    {{ form_widget(form.duracionsolicarrerabecario)}}
                                     {{ form_errors(form.duracionsolicarrerabecario) }}   
                                 </div>
                             </div>
@@ -525,7 +525,7 @@
                             <div class="row">
                                 <div class="col col-md-3" align="left">
                                     <label for="form_otrasbecas">¿Posee Otras Becas?</label>
-                                    {{ form_widget(form.otrasbecas,{'attr':{'onchange':'montoOB()'}}) }}
+                                    {{ form_widget(form.otrasbecas,{'attr':{'onchange':'montoOB()'}})}}
                                     {{ form_errors(form.otrasbecas) }}   
                                 </div> 
 
@@ -562,7 +562,7 @@
 
                                 <div class="col col-md-3" align="left">
                                     <label for="form_miembros">Miembros Familiares<span style="font-size:25;color:red" >*</span></label>
-                                    {{ form_widget(form.miembrossolifamiliabecario,{'attr':{'placeholder':'Número de miembros'}}) }}
+                                    {{ form_widget(form.miembrossolifamiliabecario,{'attr':{'placeholder':'Número de miembros'}})}}
                                     {{ form_errors(form.miembrossolifamiliabecario) }}   
                                 </div>
 
@@ -754,6 +754,19 @@
                 });
 
             });
+
+      function isNumberKey(evt)
+      {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode == 8 || charCode == 37) {
+         return true;
+        } else if (charCode == 46 && $(this).val().indexOf('.') != -1) {
+         return false;
+        } else if (charCode > 31 && charCode != 46 && (charCode < 48 || charCode > 57)) {
+           return false;
+        }
+            return true;
+      };
 
     </script>
 

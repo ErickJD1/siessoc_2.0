@@ -32,6 +32,9 @@ class CuentaController extends Controller
         ));
     }
 
+
+
+
     /**
      * Creates a new cuenta entity.
      *

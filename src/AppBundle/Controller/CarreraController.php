@@ -56,6 +56,33 @@ class CarreraController extends Controller
             'form' => $form->createView(),
         ));
     }
+    
+    
+    /**
+     * Creates a new carrera entity.
+     *
+     * @Route("/newmodal", name="carrera_newmodal")
+     * @Method({"GET", "POST"})
+     */
+    public function newmodalcAction(Request $request)
+    {
+        $carrera = new Carrera();
+        $form = $this->createForm('AppBundle\Form\CarreraType', $carrera);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($carrera);
+            $em->flush($carrera);
+
+            return $this->redirectToRoute('solicitudbecario_new');
+        }
+
+        return $this->render('carrera/carreranewmodal.html.twig', array(
+            'carrera' => $carrera,
+            'form' => $form->createView(),
+        ));
+    }
 
     /**
      * Finds and displays a carrera entity.

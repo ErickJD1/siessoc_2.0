@@ -133,5 +133,31 @@ class AjaxController extends Controller {
             return $response;
         }
     }
+    
+    
+    
+        /**
+     * Creates a new carrera entity.
+     *
+     * @Route("/newcarrera", name="ajax_newcarrera")
+     * @Method({"GET", "POST"})
+     */
+    public function newCarreraAction(Request $request)
+    {
+        
+        $nombreCarrera = $request->query->get("nombre");
+        $descripcionCarrera = $request->query->get("descripcion");
+        $estadoCarrera = $request->query->get("estado");
+        $carrera = new Carrera();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($carrera);
+            $em->flush($carrera);
+
+        return $this->render('carrera/carreranewmodal.html.twig', array(
+            'carrera' => $carrera,
+            'form' => $form->createView(),
+        ));
+    }
 
 }

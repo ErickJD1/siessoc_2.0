@@ -499,7 +499,7 @@
                             <div class="row">
                                 <div class="col col-md-3" align="left">
                                     <label for="form_paes">Nota Paes<span style="font-size:25;color:red" >*</span></label>
-                                    {{ form_widget(form.paes)}}
+                                    {{ form_widget(form.paes, {'attr': {'onkeypress': 'return isNumberKey(event)'}})}}
                                     {{ form_errors(form.paes) }}   
                                 </div>
 
@@ -755,7 +755,7 @@
 
             });
 
-      function isNumberKey(evt)
+     function isNumberKey(evt)
       {
         var charCode = (evt.which) ? evt.which : evt.keyCode;
         if (charCode == 8 || charCode == 37) {

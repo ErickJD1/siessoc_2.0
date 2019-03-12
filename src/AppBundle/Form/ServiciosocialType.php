@@ -18,7 +18,8 @@ class ServiciosocialType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-                ->add('idexpbecario',EntityType::class,array('label'=>'Becario','class'=>'AppBundle:Expedientebecario'))
+                ->add('nombrebecario',EntityType::class,array('label'=>'Becario','class'=>'AppBundle:Expedientebecario', 'placeholder' => 'Seleccione un becario'))
+                ->add('idexpbecario')
                 ->add('fechaaprovacionservicio', DateType::class, array('widget' => 'single_text','label'=>'Fecha Aprobacion','data' =>( new \DateTime())))
                 ->add('fechainicioservicio', DateType::class, array('widget' => 'single_text','label'=>'Fecha Inicio','data' =>( new \DateTime())))
                 ->add('fechafinservicio', DateType::class, array('widget' => 'single_text','label'=>'Fecha Finalizacion','data' =>( new \DateTime())))

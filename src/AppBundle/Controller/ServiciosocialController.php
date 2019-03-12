@@ -44,6 +44,7 @@ class ServiciosocialController extends Controller
         $serviciosocial = new Serviciosocial();
         $form = $this->createForm('AppBundle\Form\ServiciosocialType', $serviciosocial);
         $serviciosocial->setIdusuario($this->getUser());
+        
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

@@ -22,11 +22,19 @@
     <div  class="container"  style="width: 60%; margin-top: 3%; margin-bottom: 3%">
         
      {{ form_start(form) }}
+      <div class="row">
+         <div class="col col-md-12 hidden">
+             <label for="form_Becario">ID<span style="font-siez: 25; color: red">*</span></label>
+              {{ form_widget(form.idexpbecario) }}
+              {{ form_errors(form.idexpbecario) }}
+         </div>
+        </div>
+         <br>
         <div class="row">
          <div class="col col-md-12">
              <label for="form_Becario">Becario<span style="font-siez: 25; color: red">*</span></label>
-              {{ form_widget(form.idexpbecario) }}
-              {{ form_errors(form.idexpbecario) }}
+              {{ form_widget(form.nombrebecario ,{'attr':{'onchange':'changeFunc();'}})}}
+              {{ form_errors(form.nombrebecario) }}
          </div>
         </div>
          <br>
@@ -93,3 +101,15 @@
     </div>
 
  {% endblock %}
+  {%block javascripts_inline %}
+    <script>
+        {{parent()}}
+  
+    function changeFunc() {
+    var selectBox = document.getElementById("appbundle_serviciosocial_nombrebecario");
+    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+    $('#appbundle_serviciosocial_idexpbecario').val(selectedValue);
+   }
+    </script>
+
+{% endblock %}  

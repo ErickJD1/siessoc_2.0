@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Serviciosocial
  *
- * @ORM\Table(name="serviciosocial", indexes={@ORM\Index(name="FK_RELATIONSHIP_35", columns={"IDPROYECTSERVISOCIAL"})})
+ * @ORM\Table(name="serviciosocial", indexes={@ORM\Index(name="FK_RELATIONSHIP_35", columns={"IDPROYECTSERVISOCIAL"}), @ORM\Index(name="FK_RELATIONSHIP_aa", columns={"IDEXPBECARIO"})})
  * @ORM\Entity
  */
 class Serviciosocial
@@ -287,5 +287,7 @@ class Serviciosocial
         $this->estadoproyecto = $estadoproyecto;
     }
 
-
+          public function __toString() {
+        return (String) $this->getNombrebecario();
+    }
 }

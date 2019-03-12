@@ -60,6 +60,7 @@ class TipocuentaController extends Controller
         ));
     }
 
+
     /**
      * Finds and displays a tipocuenta entity.
      *

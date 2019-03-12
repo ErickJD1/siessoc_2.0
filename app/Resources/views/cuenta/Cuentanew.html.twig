@@ -19,9 +19,9 @@
             </div>
 
             <div  class="container"  style="width: 80%; margin-top: 3%; margin-bottom: 3%">
-                <hr>
+                <br>
                 {{ form_start(form) }}
-                <div class="row">
+                   <div class="row">
                     <div class="col col-md-6" align="left">
                         <label for="form_ncuenta">Número de Cuenta<span style="font-size: 25;color: red" >*</span></label>
                         {{ form_widget(form.numcuenta) }}
@@ -66,9 +66,9 @@
                         {{ form_widget(form.idtipocuenta) }}
                     </div>
 
+                  </div>
                 </div>
-            </div>
-                <hr>
+                <br>
                 <div class="row" style="width: 90%">
                     <div class="col col-md-12" align="right">
                         <a href="{{ path('cuenta_index') }}" class="btn btn-danger btn-xl">Cancelar</a>

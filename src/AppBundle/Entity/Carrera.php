@@ -3,15 +3,22 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
+use SalexUserBundle\Entity\User;
+use Carbon\Carbon;
 
 /**
  * Carrera
  *
- * @ORM\Index(name="FK_RELATIONSHIP_38", columns={"IDUNIVERSIDAD"})})
+ * @ORM\Table(name="carrera")
  * @ORM\Entity
+ * @Vich\Uploadable
  */
-class Carrera
-{
+class Carrera {
+
     /**
      * @var integer
      *
@@ -43,69 +50,13 @@ class Carrera
     private $estadocarrera;
 
     /**
-     * @Assert\Image(
-     *     maxSize="5M",
-     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg","application/pdf","application/xls","application/docx","application/txt",}   
-     * )
-     * @Vich\UploadableField(mapping="document_file", fileNameProperty="comprobante")
-     * @var [type]
-     */
-    private $comprobante_file;
-
-    /**
-     * @ORM\Column(name="comprobante", type="string", nullable=true)
-     * @var string
-     */
-    private $comprobante;
-
-    /**
-     * @var \Universidad
-     *
-     * @ORM\ManyToOne(targetEntity="Universidad")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="IDUNIVERSIDAD", referencedColumnName="IDUNIVERSIDAD")
-     * })
-     */
-    private $iduniversidad;
-
-
-     /**
-     * Gets the value of comprobante_file.
-     *
-     * @return string
-     */
-    public function getComprobanteFile() {
-        return $this->comprobante_file;
-    }
-
-    /**
-     * Sets the value of comprobante_file.
-     *
-     * @param File $comprobante_file
-     *
-     * @return self
-     */
-    public function setComprobanteFile(File $comprobante_file) {
-        $this->comprobante_file = $comprobante_file;
-
-        // Only change the updated af if the file is really uploaded to avoid database updates.
-        // This is needed when the file should be set when loading the entity.
-//        if ($this->comprobante_file instanceof UploadedFile) {
-//            $this->setUpdateAt(new Carbon());
-//        }
-
-        return $this;
-    }
-
-    /**
      * Set nomcarrera
      *
      * @param string $nomcarrera
      *
      * @return Carrera
      */
-    public function setNomcarrera($nomcarrera)
-    {
+    public function setNomcarrera($nomcarrera) {
         $this->nomcarrera = $nomcarrera;
 
         return $this;
@@ -116,8 +67,7 @@ class Carrera
      *
      * @return string
      */
-    public function getNomcarrera()
-    {
+    public function getNomcarrera() {
         return $this->nomcarrera;
     }
 
@@ -128,8 +78,7 @@ class Carrera
      *
      * @return Carrera
      */
-    public function setDescripcioncarrera($descripcioncarrera)
-    {
+    public function setDescripcioncarrera($descripcioncarrera) {
         $this->descripcioncarrera = $descripcioncarrera;
 
         return $this;
@@ -140,8 +89,7 @@ class Carrera
      *
      * @return string
      */
-    public function getDescripcioncarrera()
-    {
+    public function getDescripcioncarrera() {
         return $this->descripcioncarrera;
     }
 
@@ -152,8 +100,7 @@ class Carrera
      *
      * @return Carrera
      */
-    public function setEstadocarrera($estadocarrera)
-    {
+    public function setEstadocarrera($estadocarrera) {
         $this->estadocarrera = $estadocarrera;
 
         return $this;
@@ -164,8 +111,7 @@ class Carrera
      *
      * @return boolean
      */
-    public function getEstadocarrera()
-    {
+    public function getEstadocarrera() {
         return $this->estadocarrera;
     }
 
@@ -174,34 +120,14 @@ class Carrera
      *
      * @return integer
      */
-    public function getIdcarrera()
-    {
+    public function getIdcarrera() {
         return $this->idcarrera;
     }
 
-    /**
-     * Set iduniversidad
-     *
-     * @param \AppBundle\Entity\Universidad $iduniversidad
-     *
-     * @return Carrera
-     */
-    public function setIduniversidad(\AppBundle\Entity\Universidad $iduniversidad = null)
-    {
-        $this->iduniversidad = $iduniversidad;
+    public function __toString() {
+                return $this->nomcarrera;
 
-        return $this;
+        
     }
 
-    /**
-     * Get iduniversidad
-     *
-     * @return \AppBundle\Entity\Universidad
-     */
-    public function getIduniversidad()
-    {
-        return $this->iduniversidad;
-    }
-
- 
 }

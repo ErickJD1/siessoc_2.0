@@ -1,0 +1,41 @@
+{% extends 'layout/base-layout.html.twig' %}
+
+{% block page_content %}
+    <h1>Carrera</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Nomcarrera</th>
+                <td>{{ carrera.nomcarrera }}</td>
+            </tr>
+            <tr>
+                <th>Descripcioncarrera</th>
+                <td>{{ carrera.descripcioncarrera }}</td>
+            </tr>
+            <tr>
+                <th>Estadocarrera</th>
+                <td>{% if carrera.estadocarrera %}Yes{% else %}No{% endif %}</td>
+            </tr>
+
+            <tr>
+                <th>Idcarrera</th>
+                <td>{{ carrera.idcarrera }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('carrera_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('carrera_edit', { 'id': carrera.idcarrera }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

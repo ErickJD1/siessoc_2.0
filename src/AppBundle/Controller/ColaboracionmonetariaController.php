@@ -50,7 +50,7 @@ class ColaboracionmonetariaController extends Controller
             $em->persist($colaboracionmonetaria);
             $em->flush($colaboracionmonetaria);
 
-           $this->addFlash('success', 'Se creo correctamente el tipo de cuenta');
+           $this->addFlash('success', 'Tipo de Colaboración Monetaria creada correctamente');
             return $this->redirectToRoute('colaboracionmonetaria_index');
         }
 
@@ -108,7 +108,7 @@ class ColaboracionmonetariaController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            $this->addFlash('success', 'Tipo colaboracion modificada exitosamente!');
+            $this->addFlash('success', 'Tipo de Colaboración Monetaria editada correctamente');
              return $this->redirectToRoute('colaboracionmonetaria_index');
         }
 

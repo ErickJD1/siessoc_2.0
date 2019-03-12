@@ -1,0 +1,36 @@
+{% extends 'layout/base-layout.html.twig' %}
+
+{% block page_content %}
+    <h1>Universidad</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Nombreuniversidad</th>
+                <td>{{ universidad.nombreuniversidad }}</td>
+            </tr>
+            <tr>
+                <th>Estadouniversidad</th>
+                <td>{% if universidad.estadouniversidad %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Iduniversidad</th>
+                <td>{{ universidad.iduniversidad }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('universidad_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('universidad_edit', { 'id': universidad.iduniversidad }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

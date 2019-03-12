@@ -3,12 +3,16 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Tipoinsumo
  *
  * @ORM\Table(name="tipoinsumo")
  * @ORM\Entity
+ * @UniqueEntity("tipoinsumo")
  */
 class Tipoinsumo
 {
@@ -25,6 +29,7 @@ class Tipoinsumo
      * @var string
      *
      * @ORM\Column(name="TIPOINSUMO", type="string", length=200, nullable=true)
+     * @Assert\NotBlank()
      */
     private $tipoinsumo;
 
@@ -93,5 +98,9 @@ class Tipoinsumo
     public function getIdtipoinsumo()
     {
         return $this->idtipoinsumo;
+    }
+    
+    public function __toString() {
+        return $this->getTipoinsumo();
     }
 }

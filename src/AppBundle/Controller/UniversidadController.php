@@ -5,7 +5,13 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Universidad;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 
 /**
  * Universidad controller.
@@ -60,9 +66,6 @@ class UniversidadController extends Controller
     
     
     
-    
-    
-    
         /**
      * Creates a new universidad entity.
      *
@@ -71,22 +74,34 @@ class UniversidadController extends Controller
      */
     public function newmodalAction(Request $request)
     {
+
         $universidad = new Universidad();
         $form = $this->createForm('AppBundle\Form\UniversidadType', $universidad);
         $form->handleRequest($request);
+        $status = "error";
+        $message = "";
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($universidad);
-            $em->flush($universidad);
-
-            return $this->redirectToRoute('solicitudbecario_new', array('id' => $universidad->getIduniversidad()));
+            try {
+                $em->flush();
+                $status = "success";
+                $message = "new department saved";
+            } catch (\Exception $e) {
+                    $message = $e->getMessage();
+            }    
+        }else{
+            $message = "invalid form data";
         }
 
-        return $this->render('universidad/universidadnewmodal.html.twig', array(
-            'universidad' => $universidad,
-            'form' => $form->createView(),
-        ));
+        $response = array(
+            'status' => $status,
+            'message' => $message
+        );
+
+        return new JsonResponse($response);
+
     }
 
 

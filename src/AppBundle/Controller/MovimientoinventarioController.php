@@ -39,34 +39,23 @@ class MovimientoinventarioController extends Controller {
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request) {
-       $movimientoinventario = new Movimientoinventario();
-         $inventario = New \AppBundle\Entity\Inventario();
+        $movimientoinventario = new Movimientoinventario();
+        $inventario = New \AppBundle\Entity\Inventario();
         $em = $this->getDoctrine()->getManager();
         $inventario = $em->getRepository('AppBundle:Inventario')->findOneByIdinventario($request->get("id"));
-        $movimientoinventario->setIdinventario($inventario->getIdinventario());
-        
+        $movimientoinventario->setIdinventario($inventario);
         
         $form = $this->createForm('AppBundle\Form\MovimientoinventarioType', $movimientoinventario);
         $em = $this->getDoctrine()->getManager();
-        $form->add('idinventario');
         $form->handleRequest($request);
 
        
 
         if ($form->isSubmitted() && $form->isValid()) {
-            //  $inventario = New \AppBundle\Entity\Inventario();
-            //  $em = $this->getDoctrine()->getManager();
-            //  $inventario = $em->getRepository('AppBundle:Inventario')->findOneByIdinventario($movimientoinventario->getIdinventario());
-
+            $cantidadactual = $inventario->getCantidadinventario() - $form->get('cantidadentrega')->getData();
             $em->persist($movimientoinventario);
             $em->flush($movimientoinventario);
 
-            $cantidadactual = 0;
-            $movimientos = $this->getDoctrine()->getManager()->getRepository('AppBundle:Movimientoinventario')->findByIdinventario($movimientoinventario->getIdinventario());
-            $cantidadactual = $inventario->getCantidadinventario();
-            foreach ($movimientos as $movimientoinventario) {
-                $cantidadactual = $cantidadactual - $movimientoinventario->getCantidadentrega();
-            }
             $inventario->setCantidadinventario($cantidadactual);
 
             $em->persist($inventario);

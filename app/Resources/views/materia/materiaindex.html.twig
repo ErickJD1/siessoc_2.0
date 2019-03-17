@@ -1,0 +1,43 @@
+{% extends "layout/base-layout.html.twig" %}
+
+{% block page_content %}
+    <h1>Materias list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombremateria</th>
+                <th>Unidadesvalorativasmateria</th>
+                <th>Estadomateria</th>
+                <th>Idmateria</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for materium in materias %}
+            <tr>
+                <td><a href="{{ path('materia_show', { 'id': materium.idmateria }) }}">{{ materium.nombremateria }}</a></td>
+                <td>{{ materium.unidadesvalorativasmateria }}</td>
+                <td>{{ materium.estadomateria }}</td>
+                <td>{{ materium.idmateria }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('materia_show', { 'id': materium.idmateria }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('materia_edit', { 'id': materium.idmateria }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('materia_new') }}">Create a new materium</a>
+        </li>
+    </ul>
+{% endblock %}

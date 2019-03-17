@@ -115,8 +115,6 @@ app_tipocuenta:
     resource: "@AppBundle/Controller/TipocuentaController.php"
     type:     annotation
 
-
-
 app_solicitudss:
     resource: "@AppBundle/Controller/SolicitudssController.php"
     type:     annotation

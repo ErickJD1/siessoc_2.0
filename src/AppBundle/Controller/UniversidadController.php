@@ -70,40 +70,29 @@ class UniversidadController extends Controller
      * Creates a new universidad entity.
      *
      * @Route("/newmodal", name="universidad_newmodal")
-     * @Method({"GET", "POST"})
-     */
-    public function newmodalAction(Request $request)
-    {
-
+     * @Method({ "POST"})
+    */
+   public function newmodalAction(Request $request)
+   {
         $universidad = new Universidad();
         $form = $this->createForm('AppBundle\Form\UniversidadType', $universidad);
         $form->handleRequest($request);
-        $status = "error";
-        $message = "";
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($universidad);
-            try {
-                $em->flush();
-                $status = "success";
-                $message = "new department saved";
-            } catch (\Exception $e) {
-                    $message = $e->getMessage();
-            }    
-        }else{
-            $message = "invalid form data";
+            $em->flush($universidad);
+
+            return $this->redirectToRoute('solicitudbecario_new');
         }
 
-        $response = array(
-            'status' => $status,
-            'message' => $message
-        );
+        return $this->render('universidad/universidadnewmodal.html.twig', array(
+            'universidad' => $universidad,
+            'form' => $form->createView(),
+        ));
 
-        return new JsonResponse($response);
 
-    }
-
+   }
 
     /**
      * Finds and displays a universidad entity.

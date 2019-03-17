@@ -20,7 +20,7 @@
                     </div>
                     <hr>
                     <div  class="container"  style="width: 80%; margin-top: 3%; margin-bottom: 3%">
-                        {{ form_start(form,{'attr':{'action':path('universidad_newmodal'), 'method':'POST', 'id':'test'}}) }}
+                        {{ form_start(form,{'attr':{'action':path('universidad_newmodal'), 'method':'POST'}}) }}
                         <div class="row">
                             <div class="col col-md-12">
                                 <label for="form_lastname">Nombre<span style="font-size: 25;color: red" >*</span></label>
@@ -47,9 +47,7 @@
 
                         <div class="row">
                             <div class="col col-md-12" align="right">
-                            <button type="button" id="#mySubmitButton" class"btn btn-default" > Save </button>
-                            <button type="submit" id="#myHIDDENSubmitButton" style="display:none;"></button>
-
+                              <input class="btn btn-success" type="submit" value="Guardar" />
                             </div>
                         </div>
                         {{ form_end(form) }}
@@ -63,79 +61,3 @@
     </div>
 </div>
 
-
-{% block javascripts %}
-<script>
-
-$.fn.serializeObject = function()
-{
-    var o = {};
-    var a = this.serializeArray();
-    $.each(a, function() {
-        if (o[this.name] !== undefined) {
-            if (!o[this.name].push) {
-                o[this.name] = [o[this.name]];
-            }
-            o[this.name].push(this.value || '');
-        } else {
-            o[this.name] = this.value || '';
-        }
-    });
-    return o;
-};
-
-$(document).on("submit", "#test", function(e){
-    e.preventDefault();
-    return  false;
-});
-
-$(document).on("click", "#mySubmitButton", function(e){
-  e.preventDefault();
-  var form = $("#test");
-
-  // you could make use of html5 form validation
-  if(!form.checkValidity()){
-
-    // To show the native error hints you can fake a click() on the actual submit button
-    // which must not be the button #mySubmitButton and shall be hidden with display:none;
-    //  example:
-    //  <button type="button" id="#mySubmitButton" class"btn btn-default" > Save </button>
-    //  <button type="submit" id="#myHIDDENSubmitButton" style="display:none;"></button>
-    //
-    $("#myHIDDENSubmitButton").click();
-    return false;
-  }
-
-  // get the properties and values from the form
-  var form_data = form.serializeObject();
-
-  // always makes sense to signal user that something is happening
-  $('#loadingSpinner').show();
-
-  // simple approach avoid submitting multiple times
-  $('#mySubmitButton').attr("disabled",true);
-
-  // the actual request to your newAction
-  $.ajax({
-    url: "{{ path('universidad_newmodal') }}",
-    type: 'POST',
-    dataType: 'json',
-    data: form_data,
-    success:function(data){
-
-      // handling the response data from the controller
-      if(data.status == 'error'){
-        console.log("[API] ERROR: "+data.message);
-      }
-      if(data.status == 'success'){
-        console.log("[API] SUCCESS: "+data.message);
-      }
-
-      // signal to user the action is done
-      $('#loadingSpinner').hide();
-      $('#mySubmitButton').attr("disabled",false);
-    }
-  });
-});
-</script>
-{% endblock %}

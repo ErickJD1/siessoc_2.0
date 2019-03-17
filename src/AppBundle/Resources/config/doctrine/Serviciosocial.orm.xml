@@ -3,7 +3,7 @@
   <entity name="AppBundle\Entity\Serviciosocial" table="serviciosocial">
     <indexes>
       <index name="FK_RELATIONSHIP_35" columns="IDPROYECTSERVISOCIAL"/>
-      <index name="FK_RELATIONSHIP_ex" columns="IDEXPBECARIO"/>
+      <index name="FK_RELATIONSHIP_aa" columns="IDEXPBECARIO"/>
     </indexes>
     <id name="idserviciosocial" type="integer" column="IDSERVICIOSOCIAL">
       <generator strategy="IDENTITY"/>

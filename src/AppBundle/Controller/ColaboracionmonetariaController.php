@@ -76,7 +76,7 @@ class ColaboracionmonetariaController extends Controller
         ));
     }
 
-    
+
      /**
      * Finds and displays a colaboracionmonetaria entity.
      *

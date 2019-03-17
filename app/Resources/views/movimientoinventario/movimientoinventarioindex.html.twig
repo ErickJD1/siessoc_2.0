@@ -33,14 +33,14 @@
                 <td>{{ movimientoinventario.cantidadentrega }}</td>
                 <td>{% if movimientoinventario.estadomovinv==1 %}Concluido{% else %}Pendiente{% endif %}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('movimientoinventario_show', { 'id': movimientoinventario.idmovinv }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('movimientoinventario_edit', { 'id': movimientoinventario.idmovinv }) }}">edit</a>
-                        </li>
-                    </ul>
+                  <div style="float:left;"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#VermovInv{{ movimientoinventario.idmovinv }}"><i class="fa fa-eye" style="font-size: 20px; color: deepskyblue"></i></button>
+                          {{ render(controller('AppBundle:Movimientoinventario:show', { 'id' : movimientoinventario.idmovinv } )) }}
+                  </div>  
+                  
+                  <div style="float:left;"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#DeleteMov{{ movimientoinventario.idmovinv }}"><i class="fa fa-trash" style="font-size: 20px; color: crimson"></i></button>
+                          {{ render(controller('AppBundle:Movimientoinventario:showdelete', { 'id' : movimientoinventario.idmovinv } )) }}
+                  </div>
+                  
                 </td>
             </tr>
        {% endfor %}

@@ -28,7 +28,7 @@
         <tbody>
         {% for serviciosocial in serviciosocials %}
             <tr>
-                <td>{{ serviciosocial.idexpbecario }}</td>
+                <td>{{ serviciosocial.nombrebecario }}</td>
                 <td>{% if serviciosocial.fechaaprovacionservicio %}{{ serviciosocial.fechaaprovacionservicio|date('Y-m-d') }}{% endif %}</td>
                 <td>{% if serviciosocial.fechainicioservicio %}{{ serviciosocial.fechainicioservicio|date('Y-m-d') }}{% endif %}</td>
                 <td>{% if serviciosocial.fechafinservicio %}{{ serviciosocial.fechafinservicio|date('Y-m-d') }}{% endif %}</td>

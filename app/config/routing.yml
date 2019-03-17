@@ -1,3 +1,11 @@
+app_inscripcion:
+    resource: "@AppBundle/Controller/InscripcionController.php"
+    type:     annotation
+
+app_materia:
+    resource: "@AppBundle/Controller/MateriaController.php"
+    type:     annotation
+
 app_universidad:
     resource: "@AppBundle/Controller/UniversidadController.php"
     type:     annotation
@@ -114,8 +122,6 @@ app_banco:
 app_tipocuenta:
     resource: "@AppBundle/Controller/TipocuentaController.php"
     type:     annotation
-
-
 
 app_solicitudss:
     resource: "@AppBundle/Controller/SolicitudssController.php"

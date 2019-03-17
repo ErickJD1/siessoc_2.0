@@ -1,0 +1,99 @@
+<div class="modal fade" id="newCarrera" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div style="width:70%; margin-left: 15%" class="modal-dialog">
+        <div class="modal-content"  style="border-radius: 40px">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 align="center"><strong>Carrera</strong></h3>
+            </div>
+            <div class="modal-body">
+
+
+        <div  style="width:90%; margin-top: 2%; margin-left: 5%; background-color:#F3F3F3; border-radius:5px " class="panel panel-default">
+
+            <div class="col col-md-12" align="center" >
+                <img style="width:80px;margin-top: 2%;margin-bottom: 2%" src="{{ asset('img/icons/carrera.png') }}"></img>
+            </div>
+            <div class="col col-md-12 " align="center" style="margin-top:-15px">
+                <h2 class="col col-md-12" style="font-family: palatino header" >Ingresar Carrera</h2>
+                <h4 class="col col-md-12" style="color:grey; font-family: palatino body; margin-top: -3px;">Complete los campos requeridos:<span style="font-size: 25;color: red" >*</span></h4>
+
+            </div>
+            <hr>
+            <div  class="container"  style="width: 80%; margin-top: 3%; margin-bottom: 3%">
+                        {{ form_start(form,{'attr':{'action':path('carrera_newmodal'), 'method':'POST'}}) }}
+                <div class="row">
+                    <div class="col col-md-12">
+                        <label for="form_lastname">Nombre<span style="font-size: 25;color: red" >*</span></label>
+                        {{ form_widget(form.nomcarrera) }}
+                        {{ form_errors(form.nomcarrera) }}
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col col-md-12">
+                        <label for="form_lastname">Descripción<span style="font-size: 25;color: red" >*</span></label>
+                        {{ form_widget(form.descripcioncarrera) }}
+                        {{ form_errors(form.descripcioncarrera) }}
+                    </div>
+                </div>
+                    <br>
+                <div class="row">
+                    <div class="col col-md-12">
+                        <label for="form_lastname">Estado</label>
+                        {{ form_widget(form.estadocarrera) }}
+                        {{ form_errors(form.estadocarrera) }}
+                    </div>
+                </div>
+
+  
+                <br>
+                <div align="right">
+                    <input class="btn btn-success" onClick="cargarData()" value="Guardar" />
+                    {{ form_end(form) }}
+                </div>
+                <br>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+    </div>
+
+
+
+        </div>
+    </div>
+</div>
+                
+                {% block javascripts_inline %}
+
+    <script>
+        function cargarData()
+        {
+            var nombre = document.getElementById('appbundle_carrera_nomcarrera');
+            var descripcion = document.getElementById('appbundle_carrera_descripcioncarrera');
+            var estado = document.getElementById('appbundle_carrera_estadocarrera');
+
+
+        map.on('zoomend', function(e) {
+        // use callback e variable
+    console.log('zoom: ' + e.target.getZoom());
+
+    $.ajax({
+        type: "POST",
+        url: "/carrera/newmodal",
+        data: {
+           zoom: e.target.getZoom()
+        },
+        dataType: "json",
+        success: function(response) {
+            console.log(response);
+        }
+    });
+
+});
+        }
+
+    </script>
+{% endblock %}

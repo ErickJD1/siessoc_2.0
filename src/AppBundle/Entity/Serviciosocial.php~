@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Serviciosocial
@@ -65,9 +66,65 @@ class Serviciosocial
      * })
      */
     private $idproyectservisocial;
+  
+ 
+    /**
+     * @var \idusuario
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     * @ORM\JoinColumn(name="idusuario", referencedColumnName="id")
+     * })
+     */
+    private $idusuario;
+    
+    
+        /**
+     * @var string
+     * @Assert\NotBlank()
+     * @ORM\Column(name="ESTADOPROYECTO", type="string", length=10, nullable=true)
+     */
+    private $estadoproyecto;
+    
+         /**
+     * @var string
+     *
+     * @ORM\Column(name="NOMBREBECARIO", type="string", length=300, nullable=true)
+     */
+    private $nombrebecario;
+    
+    
+    function getNombrebecario() {
+        return $this->nombrebecario;
+    }
 
+    function setNombrebecario($nombrebecario) {
+        $this->nombrebecario = $nombrebecario;
+    }
+    
+    
+      /**
+     * Get idusuario
+     *
+     * @return integer
+     */
+    public function getIdusuario() {
+        return $this->idusuario;
+    }
 
-
+    
+    /**
+     * Set idusuario
+     *
+     * @param \SalexUserBundle\Entity\User $idusuario
+     *
+     * @return Movimiento
+     */
+    public function setIdusuario(\SalexUserBundle\Entity\User $idusuario = null) {
+        $this->idusuario = $idusuario;
+    }
+    
+    
     /**
      * Set idexpbecario
      *
@@ -221,4 +278,14 @@ class Serviciosocial
     {
         return $this->idproyectservisocial;
     }
+    
+    function getEstadoproyecto() {
+        return $this->estadoproyecto;
+    }
+
+    function setEstadoproyecto($estadoproyecto) {
+        $this->estadoproyecto = $estadoproyecto;
+    }
+
+
 }

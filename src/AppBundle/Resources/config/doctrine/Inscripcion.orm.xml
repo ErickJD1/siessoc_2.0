@@ -1,22 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="AppBundle\Entity\Inscripcion" table="inscripcion">
-    <id name="idinscripcion" type="integer" column="IDINSCRIPCION">
-      <generator strategy="IDENTITY"/>
-    </id>
-    <field name="idexpbecario" type="integer" column="IDEXPBECARIO" nullable="true">
-      <options>
-        <option name="unsigned"/>
-      </options>
-    </field>
-    <field name="anioinscripcion" type="date" column="ANIOINSCRIPCION" nullable="true"/>
-    <field name="numcicloinscripcion" type="integer" column="NUMCICLOINSCRIPCION" nullable="true">
-      <options>
-        <option name="unsigned"/>
-      </options>
-    </field>
-    <field name="montomatriculainscripcion" type="decimal" column="MONTOMATRICULAINSCRIPCION" precision="5" scale="0" nullable="true"/>
-    <field name="montomensualidad" type="decimal" column="MONTOMENSUALIDAD" precision="5" scale="0" nullable="true"/>
-    <field name="estadoinscripcion" type="boolean" column="ESTADOINSCRIPCION" nullable="true"/>
-  </entity>
+    <entity name="AppBundle\Entity\Inscripcion" table="inscripcion">
+        <indexes>
+            <index name="FK_RELATIONSHIP_XB" columns="IDEXPBECARIO"/>
+        </indexes>
+        <id name="idinscripcion" type="integer" column="IDINSCRIPCION">
+            <generator strategy="IDENTITY"/>
+        </id>
+         <many-to-one field="idexpbecario" target-entity="Expedientebecario" fetch="LAZY">
+            <join-columns>
+                <join-column name="IDEXPBECARIO" referenced-column-name="IDEXPBECARIO"/>
+            </join-columns>
+        </many-to-one>
+        <field name="comprobante" type="string" column="COMPROBANTE" length="250" nullable="true">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="comprobantenotas" type="string" column="COMPROBANTENOTAS" length="250" nullable="true">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="numcicloinscripcion" type="integer" column="NUMCICLOINSCRIPCION" nullable="true">
+            <options>
+                <option name="unsigned"/>
+            </options>
+        </field>
+        <field name="estadoinscripcion" type="boolean" column="ESTADOINSCRIPCION" nullable="true"/>
+    </entity>
 </doctrine-mapping>

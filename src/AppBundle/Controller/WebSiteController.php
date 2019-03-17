@@ -3,10 +3,12 @@
 namespace AppBundle\Controller;
 
 use SalexUserBundle\Entity\User;
+use AppBundle\Entity\Contacto;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+
 
 /**
  * User controller.
@@ -30,16 +32,32 @@ class WebSiteController extends Controller {
 
     
     /**
-     *
+     * 
      *
      * @Route("/contacto", name="web_contacto")
-     * @Method("GET")
+     * @Method({"GET", "POST"})
      */
-    public function contactoAction() {
+    public function contactoAction(Request $request)
+    {
+        $contacto = new Contacto();
+        $form = $this->createForm('AppBundle\Form\ContactoType', $contacto);
+        $form->handleRequest($request);
 
-        return $this->render(
-                        'webSite/contacto.html.twig'
-        );
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $time = new \DateTime();
+            $contacto->setFecha($time);
+            $em->persist($contacto);
+            $em->flush($contacto);
+
+            $this->addFlash('success', '¡Consulta enviada exitosamente!');
+            return $this->redirectToRoute('web_contacto');
+        }
+
+        return $this->render('webSite/contacto.html.twig', array(
+            'contacto' => $contacto,
+            'form' => $form->createView(),
+        ));
     }
     
     

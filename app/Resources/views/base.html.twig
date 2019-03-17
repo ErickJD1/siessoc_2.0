@@ -7,14 +7,15 @@
         <meta name="author" content="siessoc">
         <title>{% block title %}{{ site_name }}{% endblock %}</title>
         <!-- Bootstrap core CSS -->
+
         <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
         <link href="{{ asset('bootstrap/css/bootstrap.css') }}" rel="stylesheet">
         <link href="{{ asset('bootstrap/css/bootstrap-theme.min.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('bundles/avanzuadmintheme/static/'~ app.environment ~'/styles/admin-lte-all.css') }}" />
+
         <!-- Custom styles for this template -->
         <link rel="stylesheet" href="{{asset('css/fonts/font-awesome.css')}}">
         <link href="{{ asset('bootstrap/css/modern-business.css') }}" rel="stylesheet">
-        <link rel="stylesheet" href="{{ asset('bundles/avanzuadmintheme/static/'~ app.environment ~'/styles/admin-lte-calendar.css') }}" />
-
 
 
         <style>
@@ -78,20 +79,20 @@
             <div class="collapse navbar-collapse" style="font-family: Palatino Header !important" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{path('web_index')}}">INICIO</a>
+                        <a class="nav-link" href="{{path('web_index')}}">Inicio</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{path('web_nosotros')}}">NOSOTROS</a>
+                        <a class="nav-link" href="{{path('web_nosotros')}}">Nosotros</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{path('web_history')}}">HISTORIA</a>
+                        <a class="nav-link" href="{{path('web_history')}}">Historia</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{path('web_contacto')}}">CONTACTOS</a>
+                        <a class="nav-link" href="{{path('web_contacto')}}">Contáctanos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{path('web_calendar')}}">ACTIVIDADES</a>
+                        <a class="nav-link" href="{{path('web_calendar')}}">Actividades</a>
                     </li>
 
                     {% if is_granted('ROLE_PATROCINADOR')  %}
@@ -119,7 +120,7 @@
                     {% else %}
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                REGISTRATE
+                                Registrate
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
                                 <a class="dropdown-item" href="{{path('fos_user_registration_register')}}">Aspirante Becario</a>
@@ -128,7 +129,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{path('fos_user_security_login')}}">INICIAR SESION</a>
+                            <a class="nav-link" href="{{path('fos_user_security_login')}}">Iniciar Sesión</a>
                         </li> 
                     {% endif %}
                 </ul>

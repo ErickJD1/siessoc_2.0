@@ -5,7 +5,13 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Universidad;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 
 /**
  * Universidad controller.
@@ -60,17 +66,14 @@ class UniversidadController extends Controller
     
     
     
-    
-    
-    
         /**
      * Creates a new universidad entity.
      *
      * @Route("/newmodal", name="universidad_newmodal")
-     * @Method({"GET", "POST"})
-     */
-    public function newmodalAction(Request $request)
-    {
+     * @Method({ "POST"})
+    */
+   public function newmodalAction(Request $request)
+   {
         $universidad = new Universidad();
         $form = $this->createForm('AppBundle\Form\UniversidadType', $universidad);
         $form->handleRequest($request);
@@ -80,15 +83,16 @@ class UniversidadController extends Controller
             $em->persist($universidad);
             $em->flush($universidad);
 
-            return $this->redirectToRoute('solicitudbecario_new', array('id' => $universidad->getIduniversidad()));
+            return $this->redirectToRoute('solicitudbecario_new');
         }
 
         return $this->render('universidad/universidadnewmodal.html.twig', array(
             'universidad' => $universidad,
             'form' => $form->createView(),
         ));
-    }
 
+
+   }
 
     /**
      * Finds and displays a universidad entity.

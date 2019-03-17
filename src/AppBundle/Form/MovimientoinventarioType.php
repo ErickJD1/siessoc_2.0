@@ -19,7 +19,6 @@ class MovimientoinventarioType extends AbstractType {
         ->add('nombremovinv',TextareaType::class,array('label'=>'Movimiento', 'required' => false))
         ->add('estadomovinv', CheckboxType::class, array('label'=>'Entregado', 'required' => false))
         ->add('idexpbecario')
-        ->add('idinventario')
         ->add('cantidadentrega');
     }
 

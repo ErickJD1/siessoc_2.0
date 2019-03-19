@@ -43,12 +43,12 @@ class MovimientoinventarioController extends Controller {
          $inventario = New \AppBundle\Entity\Inventario();
         $em = $this->getDoctrine()->getManager();
         $inventario = $em->getRepository('AppBundle:Inventario')->findOneByIdinventario($request->get("id"));
-        $movimientoinventario->setIdinventario($inventario->getIdinventario());
+//        $movimientoinventario->setIdinventario($inventario->getIdinventario());
         
         
         $form = $this->createForm('AppBundle\Form\MovimientoinventarioType', $movimientoinventario);
         $em = $this->getDoctrine()->getManager();
-        $form->add('idinventario');
+        //$form->add('idinventario');
         $form->handleRequest($request);
 
        
@@ -57,6 +57,7 @@ class MovimientoinventarioController extends Controller {
             //  $inventario = New \AppBundle\Entity\Inventario();
             //  $em = $this->getDoctrine()->getManager();
             //  $inventario = $em->getRepository('AppBundle:Inventario')->findOneByIdinventario($movimientoinventario->getIdinventario());
+         $movimientoinventario->setIdinventario($inventario->getIdinventario());
 
             $em->persist($movimientoinventario);
             $em->flush($movimientoinventario);

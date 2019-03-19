@@ -1,0 +1,46 @@
+
+{% extends "layout/base-layout.html.twig" %}
+
+{% block page_content %}
+    <h1>Inscripcions list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idexpbecario</th>
+                <th>Comprobante</th>
+                <th>Numcicloinscripcion</th>
+                <th>Estadoinscripcion</th>
+                <th>Idinscripcion</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for inscripcion in inscripcions %}
+            <tr>
+                <td><a href="{{ path('inscripcion_show', { 'id': inscripcion.idinscripcion }) }}">{{ inscripcion.idexpbecario }}</a></td>
+                <td>{{ inscripcion.comprobante }}</td>
+                <td>{{ inscripcion.numcicloinscripcion }}</td>
+                <td>{% if inscripcion.estadoinscripcion %}Yes{% else %}No{% endif %}</td>
+                <td>{{ inscripcion.idinscripcion }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('inscripcion_show', { 'id': inscripcion.idinscripcion }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('inscripcion_edit', { 'id': inscripcion.idinscripcion }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('inscripcion_new') }}">Create a new inscripcion</a>
+        </li>
+    </ul>
+{% endblock %}

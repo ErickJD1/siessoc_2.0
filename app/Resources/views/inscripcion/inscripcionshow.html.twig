@@ -1,0 +1,45 @@
+
+{% extends "layout/base-layout.html.twig" %}
+
+{% block page_content %}
+    <h1>Inscripcion</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idexpbecario</th>
+                <td>{{ inscripcion.idexpbecario }}</td>
+            </tr>
+            <tr>
+                <th>Comprobante</th>
+                <td>{{ inscripcion.comprobante }}</td>
+            </tr>
+            <tr>
+                <th>Numcicloinscripcion</th>
+                <td>{{ inscripcion.numcicloinscripcion }}</td>
+            </tr>
+            <tr>
+                <th>Estadoinscripcion</th>
+                <td>{% if inscripcion.estadoinscripcion %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Idinscripcion</th>
+                <td>{{ inscripcion.idinscripcion }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('inscripcion_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('inscripcion_edit', { 'id': inscripcion.idinscripcion }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

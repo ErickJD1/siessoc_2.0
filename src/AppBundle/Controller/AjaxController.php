@@ -12,6 +12,8 @@ use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use AppBundle\Repository\MovimientoRepository;
+use AppBundle\Repository\UniversidadRepository;
+
 
 class AjaxController extends Controller {
 
@@ -132,6 +134,32 @@ class AjaxController extends Controller {
             ));
             return $response;
         }
+    }
+    
+    
+    
+        /**
+     * Creates a new carrera entity.
+     *
+     * @Route("/newcarrera", name="ajax_newcarrera")
+     * @Method({"GET", "POST"})
+     */
+    public function newCarreraAction(Request $request)
+    {
+        
+        $nombreCarrera = $request->query->get("nombre");
+        $descripcionCarrera = $request->query->get("descripcion");
+        $estadoCarrera = $request->query->get("estado");
+        $carrera = new Carrera();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($carrera);
+            $em->flush($carrera);
+
+        return $this->render('carrera/carreranewmodal.html.twig', array(
+            'carrera' => $carrera,
+            'form' => $form->createView(),
+        ));
     }
 
 }

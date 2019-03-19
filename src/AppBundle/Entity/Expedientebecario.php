@@ -30,6 +30,7 @@ class Expedientebecario
     private $idexpbecario;
 
     /**
+     *
      * @var string
      * @Assert\NotBlank()
      * @ORM\Column(name="TELEFONOEXPBECARIO", type="string", length=10, nullable=true)
@@ -921,6 +922,8 @@ class Expedientebecario
     {
         return $this->idexpbecario;
     }
+    
+
     
     public function __toString() {
         return (String) $this->getNombrebecario();

@@ -26,6 +26,7 @@
             <tr>
                 <td>{{ inventario.cantidadinventario }}</td>
                 <td>{% if inventario.cantidadinventario>0  %}<a href="{{ path('movimientoinventario_new',{ 'id' : inventario.idinventario }) }}" style="background-color: transparent; border: none;">{{ inventario.idinsumo }}</a>{% else %}No Disponible{% endif %}</td>
+                
                 <td>{% if inventario.fechainventario %}{{ inventario.fechainventario|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td align="center">
 

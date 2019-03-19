@@ -38,14 +38,9 @@
                 </div >
                 <br>
                 <div class="row"style="width:80%; margin-left: 10%">
-                    <div class="col col-md-12 hidden">
-                        <label for="form_Art">Articulo<span style="font-siez: 25; color: red">*</span></label>
-                        {{ form_widget(form.idinventario) }}
-                        {{ form_errors(form.idinventario) }}
-                    </div>
                     <div class="col col-md-12" >
                         <label for="form_Art">Articulo<span style="font-siez: 25; color: red">*</span></label>
-                        <input type="text" value="{{idinsumo.nombreinsumo}}" class="form-control" readonly="readonly"/>
+                        <input type="text" value="{{idinsumo.nombreinsumo}}" id="insumo" class="form-control" readonly="readonly"/>
                     </div>
                 </div>
                 <br>

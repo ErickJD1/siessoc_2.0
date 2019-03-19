@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity repository-class="AppBundle\Repository\ContactoRepository" name="AppBundle\Entity\Contacto">
+    <id name="id" type="integer" column="id">
+      <generator strategy="AUTO"/>
+    </id>
+    <field name="nombre" type="string" column="nombre" length="100"/>
+    <field name="correo" type="string" column="correo" length="100"/>
+    <field name="asunto" type="string" column="asunto" length="100"/>
+    <field name="mensaje" type="string" column="mensaje" length="255"/>
+    <field name="fecha" type="date" column="fecha"/>
+  </entity>
+</doctrine-mapping>

@@ -464,8 +464,7 @@
 
                                 </div>
                                 <div class="col col-md-2" align="center" style='margin-top: 2.8%'>
-                                    <i class='fa fa-plus-circle' style='font-size: 30px'></i>
-                                </div> 
+<button class="" type="button" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#newCarrera"> <i class='fa fa-plus-circle' style='font-size: 30px'></i></button>                                </div> 
 
                                 <div class="col col-md-4" align="left">
                                     <label for="form_universidad">Universidad<span style="font-size:25;color:red" >*</span></label>
@@ -499,7 +498,7 @@
                             <div class="row">
                                 <div class="col col-md-3" align="left">
                                     <label for="form_paes">Nota Paes<span style="font-size:25;color:red" >*</span></label>
-                                    {{ form_widget(form.paes)}}
+                                    {{ form_widget(form.paes, {'attr': {'onkeypress': 'return isNumberKey(event)'}})}}
                                     {{ form_errors(form.paes) }}   
                                 </div>
 
@@ -628,7 +627,9 @@
             </section>
         </div>
     </div>
-                                        {{ render(controller('AppBundle:Universidad:newmodal')) }}
+    {{ render(controller('AppBundle:Universidad:newmodal')) }}
+    {{ render(controller('AppBundle:Carrera:newmodalc')) }}
+
 
 {% endblock %}
 {%block javascripts_inline %}
@@ -755,18 +756,19 @@
 
             });
 
-      function isNumberKey(evt)
-      {
-        var charCode = (evt.which) ? evt.which : evt.keyCode;
-        if (charCode == 8 || charCode == 37) {
-         return true;
-        } else if (charCode == 46 && $(this).val().indexOf('.') != -1) {
-         return false;
-        } else if (charCode > 31 && charCode != 46 && (charCode < 48 || charCode > 57)) {
-           return false;
-        }
-            return true;
-      };
+            function isNumberKey(evt)
+            {
+                var charCode = (evt.which) ? evt.which : evt.keyCode;
+                if (charCode == 8 || charCode == 37) {
+                    return true;
+                } else if (charCode == 46 && $(this).val().indexOf('.') != -1) {
+                    return false;
+                } else if (charCode > 31 && charCode != 46 && (charCode < 48 || charCode > 57)) {
+                    return false;
+                }
+                return true;
+            }
+            ;
 
     </script>
 

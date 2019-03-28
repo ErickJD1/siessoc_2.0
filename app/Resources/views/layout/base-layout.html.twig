@@ -57,10 +57,11 @@
             <!--[if lt IE 9]>
 
             <![endif]-->
+            <!-- Ventana modal ShadowBox tubetrucos.com--> 
+
             <script src="{{ asset('js/jquery.js') }}"></script>
             <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
             <script src="{{ asset('js/jquery.inputmask.bundle.min.js') }}"></script>
-
 
         {% endblock %}
 
@@ -69,22 +70,21 @@
     <!--Apply one or more of the following classes to get the
 
 
-    desired effect
-    |---------------------------------------------------------|
-    | SKINS         | skin-blue                               |
-    |               | skin-black                              |
-    |               | skin-purple                             |
-    |               | skin-yellow                             |
-    |               | skin-red                                |
-    |               | skin-green                              |
-    |---------------------------------------------------------|
-    |LAYOUT OPTIONS | fixed                                   |
-    |               | layout-boxed                            |
-    |               | layout-top-nav                          |
-    |               | sidebar-collapse                        |
-    |               | sidebar-mini                            |
-    |---------------------------------------------------------|
-    -->
+desired effect
+|---------------------------------------------------------|
+| SKINS         | skin-blue                               |
+|               | skin-black                              |
+|               | skin-purple                             |
+|               | skin-yellow                             |
+|               | skin-red                                |
+|               | skin-green                              |
+|---------------------------------------------------------|
+|LAYOUT OPTIONS | fixed                                   |
+|               | layout-boxed                            |
+|               | layout-top-nav                          |
+|               | sidebar-collapse                        |
+|               | sidebar-mini                            |
+|---------------------------------------------------------|-->
 
     <body class="{{ admin_skin|default('skin-blue')}} fixed sidebar-mini">
 
@@ -153,11 +153,11 @@
                 </section>
                 {% set msj="" %}
                 {% set txt="" %}
-                <!-- Alert Boxes -->
+                <!--Alert Boxes -->
                 {% if app.session.flashBag.has('success')
-                        or app.session.flashBag.has('error')
-                        or app.session.flashBag.has('notice')
-                        or app.session.flashBag.has('warning')
+                                    or app.session.flashBag.has('error')
+                                    or app.session.flashBag.has('notice')
+                                    or app.session.flashBag.has('warning')
                 %}
                 <section class="flash-messages content-header">
                     <div class="row">
@@ -167,22 +167,22 @@
                                 {% set txt=(app.session.flashBag.get('success')|join(', ')) %}
 
                                 {#  <div class="alert alert-success alert-dismissible">
-                                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                      <h4><i class="icon fa fa-check"></i> Success!</h4>
-                                      {% for msg in app.session.flashBag.get('success') %}
-                                          {{ msg }}
-                                      {% endfor %}
-
-                                  </div> #}
+                                                          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                          <h4><i class="icon fa fa-check"></i> Success!</h4>
+                                                          {% for msg in app.session.flashBag.get('success') %}
+                                                              {{ msg }}
+                                                          {% endfor %}
+                    
+                                                      </div> #}
 
                                 {#  <div class="alert alert-success alert-dismissible">
-                                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                      <h4><i class="icon fa fa-check"></i> Success!</h4>
-                                      {% for msg in app.session.flashBag.get('success') %}
-                                          {{ msg }}
-                                      {% endfor %}
-
-                                  </div> #}
+                                                          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                          <h4><i class="icon fa fa-check"></i> Success!</h4>
+                                                          {% for msg in app.session.flashBag.get('success') %}
+                                                              {{ msg }}
+                                                          {% endfor %}
+                    
+                                                      </div> #}
 
                             {% endif %}
 
@@ -190,42 +190,42 @@
                                 {% set msj=2 %}
                                 {% set txt=(app.session.flashBag.get('error')|join(', ')) %}
                                 {#  <div class="alert alert-danger alert-dismissible">
-                                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                      <h4><i class="icon fa fa-ban"></i> Error!</h4>
-                                      {% for msg in app.session.flashBag.get('error') %}
-                                          {{ msg }}
-                                      {% endfor %}
-
-                                  </div> #}            
+                                                          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                          <h4><i class="icon fa fa-ban"></i> Error!</h4>
+                                                          {% for msg in app.session.flashBag.get('error') %}
+                                                              {{ msg }}
+                                                          {% endfor %}
+                    
+                                                      </div> #}            
                                 {#  <div class="alert alert-danger alert-dismissible">
-                                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                      <h4><i class="icon fa fa-ban"></i> Error!</h4>
-                                      {% for msg in app.session.flashBag.get('error') %}
-                                          {{ msg }}
-                                      {% endfor %}
-                                  </div> #}
+                                                          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                          <h4><i class="icon fa fa-ban"></i> Error!</h4>
+                                                          {% for msg in app.session.flashBag.get('error') %}
+                                                              {{ msg }}
+                                                          {% endfor %}
+                                                      </div> #}
                             {% endif %}
 
                             {% if app.session.flashBag.has('notice') %}
                                 {# <div class="alert alert-info alert-dismissible">
-                                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                     <h4><i class="icon fa fa-info"></i> Notice!</h4>
-                                     {% for msg in app.session.flashBag.get('notice') %}
-                                         {{ msg }}
-                                     {% endfor %}
-                                 </div> #}
+                                                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                         <h4><i class="icon fa fa-info"></i> Notice!</h4>
+                                                         {% for msg in app.session.flashBag.get('notice') %}
+                                                             {{ msg }}
+                                                         {% endfor %}
+                                                     </div> #}
                             {% endif %}
 
                             {% if app.session.flashBag.has('warning') %}
                                 {% set msj=3 %}
                                 {% set txt=(app.session.flashBag.get('warning')|join(', ')) %}
                                 {# <div class="alert alert-info alert-dismissible">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                    <h4><i class="icon fa fa-warning"></i> Warning!</h4>
-                                    {% for msg in app.session.flashBag.get('warning') %}
-                                        {{ msg }}
-                                    {% endfor %}
-                                </div> #}
+                                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                        <h4><i class="icon fa fa-warning"></i> Warning!</h4>
+                                                        {% for msg in app.session.flashBag.get('warning') %}
+                                                            {{ msg }}
+                                                        {% endfor %}
+                                                    </div> #}
                             {% endif %}
                         </div>
                     </div>
@@ -240,9 +240,9 @@
                     </section>
                     <!-- /.content -->
                 </div>
-                <!-- /.content-wrapper -->
+                <!-- /.conte            nt-wrapper -->
 
-                {% block avanzu_admin_footer %}
+                {% block avnzu_admin_footer %}
                     <footer class="main-footer">
                         <strong>Copyright &copy; {{ "now"|date("Y") }} <a href="http://{{ footer_url }}" target="_blank">{{ site_name }}
                                 </footer>
@@ -256,80 +256,80 @@
 
                                 <script src="{{ asset('bundles/avanzuadmintheme/static/'~app.environment~'/scripts/admin-lte-all.js') }}"></script>
                                 <script>
-                                    $(document).ready(function () {
-                                        if ("{{msj}}" != "") {
-                                            var suc = "{{msj}}";
-                                            var texto = '{{txt}}';
-                                            if (suc === "1") {
-                                                swal('EXITO', texto, 'success');
-                                                suc = 0;
-                                            } else {
+    $(document).ready(function () {
+        if ("{{msj}}" != "") {
+            var suc = "{{msj}}";
+            var texto = '{{txt}}';
+            if (suc === "1") {
+                swal('EXITO', texto, 'success');
+                suc = 0;
+            } else {
 
-                                                if (suc === "2") {
-                                                    swal('Error', texto, 'error');
-                                                    suc = 0;
-                                                } else {
-                                                    if (suc === "3") {
-                                                        swal('Warning', texto, 'warning');
-                                                        suc = 0;
-                                                    } else {
+                if (suc === "2") {
+                    swal('Error', texto, 'error');
+                    suc = 0;
+                } else {
+                    if (suc === "3") {
+                        swal('Warning', texto, 'warning');
+                        suc = 0;
+                    } else {
 
-                                                    }
+                    }
 
-                                                }
-                                            }
-                                        }
-                                        $('#tabelMahasiswa').DataTable({
-                                            "scrollY": "300px",
-                                            "scrollX": "100%",
-                                            language: {
-                                                "decimal": "",
-                                                "emptyTable": "No hay información",
-                                                "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
-                                                "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
-                                                "infoFiltered": "(Filtrado de _MAX_ total entradas)",
-                                                "infoPostFix": "",
-                                                "thousands": ",",
-                                                "lengthMenu": "Mostrar _MENU_ Entradas",
-                                                "loadingRecords": "Cargando...",
-                                                "processing": "Procesando...",
-                                                "search": "Buscar:",
-                                                "zeroRecords": "Sin resultados encontrados",
-                                                "paginate": {
-                                                    "first": "Primero",
-                                                    "last": "Ultimo",
-                                                    "next": "Siguiente",
-                                                    "previous": "Anterior"
-                                                }
-                                            },
-                                        });
-                                        $('a.toggle-vis').on('click', function (e) {
-                                            e.preventDefault();
-                                            // Get the column API object
-                                            var column = table.column($(this).attr('data-column'));
-                                            // Toggle the visibility
-                                            column.visible(!column.visible());
-                                        });
+                }
+            }
+        }
+        $('#tabelMahasiswa').DataTable({
+            "scrollY": "300px",
+            "scrollX": "100%",
+            language: {
+                "decimal": "",
+                "emptyTable": "No hay información",
+                "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "Mostrar _MENU_ Entradas",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "search": "Buscar:",
+                "zeroRecords": "Sin resultados encontrados",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Ultimo",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            },
+        });
+        $('a.toggle-vis').on('click', function (e) {
+            e.preventDefault();
+// Get the column API object
+            var column = table.column($(this).attr('data-column'));
+// Toggle the visibility
+            column.visible(!column.visible());
+        });
 
-                                    });
+    });
 
-                                    // Preview image thumbnail on upload for vich
-                                    $.fn.previewImage = function () {
-                                        $(this).change(function (e) {
-                                            var url = URL.createObjectURL(e.target.files[0]);
-                                            $(this).parents('.vich-image').children('img').remove();
-                                            $(this).parents('.vich-image').prepend('<img class="preview_image" src="' + url + '"/>');
-                                        })
-                                    }
-                                    $('#profile_avatarImage_file').previewImage();
-                                    $('#profile_logo_file').previewImage();
+// Preview image thumbnail on upload for vich
+    $.fn.previewImage = function () {
+        $(this).change(function (e) {
+            var url = URL.createObjectURL(e.target.files[0]);
+            $(this).parents('.vich-image').children('img').remove();
+            $(this).parents('.vich-image').prepend('<img class="preview_image" src="' + url + '"/>');
+        })
+    }
+    $('#profile_avatarImage_file').previewImage();
+    $('#profile_logo_file').previewImage();
                                 </script>
 
                                 <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
                                 <script src="{{ asset('js/jquery.steps.min.js') }}"></script>
                                 <script src="{{ asset('js/sweetalert.min.js') }}"></script>
 
-                               
+
 
                             {% endblock %}
 

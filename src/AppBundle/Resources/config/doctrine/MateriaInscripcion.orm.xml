@@ -30,5 +30,11 @@
                 <option name="NOMBREMATERIA" referenced-column-name="NOMBREMATERIA"/>
             </options>
         </field>
+        
+        <field name="numinscripcion" type="integer" column="NUMINSCRIPCION"  nullable="true">
+            <options>
+                <option name="NUMINSCRIPCION" referenced-column-name="NUMINSCRIPCION"/>
+            </options>
+        </field>
     </entity>
 </doctrine-mapping>

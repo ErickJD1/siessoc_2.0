@@ -22,11 +22,16 @@
                 <option name="fixed"/>
             </options>
         </field>
-        <field name="numcicloinscripcion" type="integer" column="NUMCICLOINSCRIPCION" nullable="true">
+        <field name="updateAt" type="datetime" column="UPDATE_AT" nullable="true"/>
+        <field name="observaciones" type="string" column="OBSERVACIONES" length="400" nullable="true">
             <options>
-                <option name="unsigned"/>
+                <option name="fixed"/>
             </options>
         </field>
-        <field name="estadoinscripcion" type="boolean" column="ESTADOINSCRIPCION" nullable="true"/>
+        <field name="numcicloinscripcion" type="integer" column="NUMCICLOINSCRIPCION" nullable="true">
+
+        </field>
+        <field name="anioinscripcion" type="integer" column="ANIOINSCRIPCION" nullable="true"/>
+        <field name="estadoinscripcion" type="integer" column="ESTADOINSCRIPCION" nullable="true"/>
     </entity>
 </doctrine-mapping>

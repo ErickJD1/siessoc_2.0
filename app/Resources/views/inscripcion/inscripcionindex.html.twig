@@ -1,46 +1,60 @@
-
 {% extends "layout/base-layout.html.twig" %}
 
+{% block page_title %}Seguimiento Académico{% endblock %}
+{% block page_subtitle %}Inscipciones{% endblock %}
+
 {% block page_content %}
-    <h1>Inscripcions list</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Idexpbecario</th>
-                <th>Comprobante</th>
-                <th>Numcicloinscripcion</th>
-                <th>Estadoinscripcion</th>
-                <th>Idinscripcion</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for inscripcion in inscripcions %}
-            <tr>
-                <td><a href="{{ path('inscripcion_show', { 'id': inscripcion.idinscripcion }) }}">{{ inscripcion.idexpbecario }}</a></td>
-                <td>{{ inscripcion.comprobante }}</td>
-                <td>{{ inscripcion.numcicloinscripcion }}</td>
-                <td>{% if inscripcion.estadoinscripcion %}Yes{% else %}No{% endif %}</td>
-                <td>{{ inscripcion.idinscripcion }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('inscripcion_show', { 'id': inscripcion.idinscripcion }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('inscripcion_edit', { 'id': inscripcion.idinscripcion }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="box box-primary">
+        <div style="width:90%; margin-left:5%; margin-top: 2% ">
 
-    <ul>
-        <li>
-            <a href="{{ path('inscripcion_new') }}">Create a new inscripcion</a>
-        </li>
-    </ul>
-{% endblock %}
+            {# <div align="left">
+                 <a style="font-size: 15px" href="{{ path('movimiento_new') }}" class="btn btn-success btn-sm"><i style="font-size: 20px" class="fa fa-plus-circle"></i> Registrar Movimiento</a>
+             </div>#}
+            <br> 
+
+            <table class="table table-bordered table-hover table-striped table-responsive" style="width:100%" id="tabelMahasiswa">
+                <thead class="thead-light">
+                    <tr>
+                        <th  style="text-align:center">Becario</th>
+                        <th  style="text-align:center">Comprobantes</th>
+                        <th style="text-align:center">Ciclo</th>
+                        <th style="text-align:center">Estado</th>
+                        <th style="text-align:center">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for inscripcion in inscripcions %}
+                        <tr>
+                            <td style="text-align:center">{{ inscripcion.idexpbecario }}</a></td>
+                            <td style="text-align:center">
+                                <ul>
+                                {% if inscripcion.comprobante=="" %} {% else %}<a href="{{ asset('images/documents/'~inscripcion.comprobante) }}" rel="shadowbox[{{inscripcion.idinscripcion}}]" target='blank'><li>Comprobante Inscripción</li></a>{% endif %}
+                                {% if inscripcion.comprobante=="" %} {% else %}<a href="{{ asset('images/documents/'~inscripcion.comprobantenotas) }}" rel="shadowbox[{{inscripcion.idinscripcion}}]" target='blank'><li>Comprobante Notas</li></a>{% endif %}
+                                </ul>                          
+                                </td>
+                            <td style="text-align:center">{{ 'Ciclo '~inscripcion.numcicloinscripcion }}</td>
+                            <td style="text-align:center">{% if inscripcion.estadoinscripcion==1 %}En curso{% elseif inscripcion.estadoinscripcion==2 %}Rechazada{% elseif inscripcion.estadoinscripcion==0 %}Pendiente{% else %}Finalizada{% endif %}</td>
+                            <td style="text-align:center"><div class="col col-md-2"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#VerIns{{ inscripcion.idinscripcion }}"><i class="fa fa-eye" style="font-size: 20px; color: deepskyblue">
+                                        </i>{% if((inscripcion.estadoinscripcion == 0) and app.user.hasRole('ROLE_ADMIN') or app.user.hasRole('ROLE_COORDINADOR')  ) %}<span class="label label-danger" style="border-radius: 18px; position: absolute; margin-top: -15%;margin-left: -25%">1</span>
+                                        {% elseif inscripcion.estadoinscripcion==2 and app.user.hasRole('ROLE_STAFF')  %}<span class="label label-danger" style="border-radius: 18px; position: absolute; margin-left: -0.8em; top:-0.3em">1</span>{% endif %}</button>
+                                                {{ render(controller('AppBundle:Inscripcion:show', { 'id' : inscripcion.idinscripcion} )) }}
+                                        </div>
+
+                                        {#<ul>
+                                            <li>
+                                                <a href="{{ path('inscripcion_show', { 'id': inscripcion.idinscripcion }) }}">show</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ path('inscripcion_edit', { 'id': inscripcion.idinscripcion }) }}">edit</a>
+                                            </li>
+                                        </ul>#}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    {% endblock %}

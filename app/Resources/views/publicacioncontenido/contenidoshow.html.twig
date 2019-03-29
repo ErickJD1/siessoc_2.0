@@ -1,10 +1,10 @@
-<div  class="modal fade" id="showContenido{{ publicacioncontenido.idcontenido }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div  class="modal fade" id="showDelete{{ publicacioncontenido.idcontenido }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog" >
 			<div class="modal-content" style="border-radius: 40px">
 
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h3 align="center"><strong>¿Eliminar Contenido?</strong></h3>
+					<h3 align="center"><strong>¿Desea eliminar el registro?</strong></h3>
 				</div>
                             
 				<div class="modal-body">
@@ -21,7 +21,7 @@
                <h4>Descripcion</h4>
                <p class="form-group"><strong>{{ publicacioncontenido.descripcioncontenido }}</strong></p>
                <h4>Fecha Contenido</h4>
-               <p class="form-group"><strong>{% if publicacioncontenido.fechacontenido %}{{ publicacioncontenido.fechacontenido|date('Y-m-d H:i:s') }}{% endif %}</strong></p>
+               <p class="form-group"><strong>{% if publicacioncontenido.fechacontenido %}{{ publicacioncontenido.fechacontenido|date('Y-m-d') }}{% endif %}</strong></p>
                <h4>Estado</h4>
                <p class="form-group"><strong>{% if publicacioncontenido.estadocontenido==1 %}Publicado{% else %}Pendiente{% endif %}</strong></p>
                
@@ -39,7 +39,7 @@
                         <input type="submit" class="btn btn-danger" style="margin-left:1px" value="Delete">
                         {{ form_end(delete_form) }}
                     </div>
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
                 </div>
             </div>
         </div>

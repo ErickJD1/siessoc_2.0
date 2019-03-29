@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the `liip/LiipImagineBundle` project.
+ *
+ * (c) https://github.com/liip/LiipImagineBundle/graphs/contributors
+ *
+ * For the full copyright and license information, please view the LICENSE.md
+ * file that was distributed with this source code.
+ */
+
 namespace Liip\ImagineBundle\DependencyInjection\Factory\Resolver;
 
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
@@ -18,6 +27,7 @@ class FlysystemResolverFactory implements ResolverFactoryInterface
         $resolverDefinition->replaceArgument(0, new Reference($config['filesystem_service']));
         $resolverDefinition->replaceArgument(2, $config['root_url']);
         $resolverDefinition->replaceArgument(3, $config['cache_prefix']);
+        $resolverDefinition->replaceArgument(4, $config['visibility']);
         $resolverDefinition->addTag('liip_imagine.cache.resolver', array(
             'resolver' => $resolverName,
         ));
@@ -46,6 +56,7 @@ class FlysystemResolverFactory implements ResolverFactoryInterface
                 ->scalarNode('filesystem_service')->isRequired()->cannotBeEmpty()->end()
                 ->scalarNode('cache_prefix')->defaultValue(null)->end()
                 ->scalarNode('root_url')->isRequired()->cannotBeEmpty()->end()
+                ->enumNode('visibility')->values(array('public', 'private'))->defaultValue('public')->end()
             ->end()
         ;
     }

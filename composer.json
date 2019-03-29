@@ -30,7 +30,7 @@
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "symfony/assetic-bundle": "^2.7",
         "doctrine/doctrine-migrations-bundle": "^1.0",
-        "liip/imagine-bundle": "^1.5",
+        "liip/imagine-bundle": "^2.0@dev",
         "friendsofsymfony/rest-bundle": "^1.7",
         "jms/serializer-bundle": "^1.1",
         "knplabs/knp-menu-bundle": "^2.0",

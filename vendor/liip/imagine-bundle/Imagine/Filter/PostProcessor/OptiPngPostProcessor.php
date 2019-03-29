@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the `liip/LiipImagineBundle` project.
+ *
+ * (c) https://github.com/liip/LiipImagineBundle/graphs/contributors
+ *
+ * For the full copyright and license information, please view the LICENSE.md
+ * file that was distributed with this source code.
+ */
+
 namespace Liip\ImagineBundle\Imagine\Filter\PostProcessor;
 
 use Liip\ImagineBundle\Binary\BinaryInterface;
@@ -8,7 +17,7 @@ use Liip\ImagineBundle\Model\Binary;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\ProcessBuilder;
 
-class OptiPngPostProcessor implements PostProcessorInterface
+class OptiPngPostProcessor implements PostProcessorInterface, ConfigurablePostProcessorInterface
 {
     /**
      * @var string Path to optipng binary
@@ -30,17 +39,26 @@ class OptiPngPostProcessor implements PostProcessorInterface
     protected $stripAll;
 
     /**
+     * Directory where temporary file will be written.
+     *
+     * @var string
+     */
+    protected $tempDir;
+
+    /**
      * Constructor.
      *
      * @param string $optipngBin Path to the optipng binary
      * @param int    $level      Optimization level
      * @param bool   $stripAll   Strip metadata objects
+     * @param string $tempDir    Directory where temporary file will be written
      */
-    public function __construct($optipngBin = '/usr/bin/optipng', $level = 7, $stripAll = true)
+    public function __construct($optipngBin = '/usr/bin/optipng', $level = 7, $stripAll = true, $tempDir = '')
     {
         $this->optipngBin = $optipngBin;
         $this->level = $level;
         $this->stripAll = $stripAll;
+        $this->tempDir = $tempDir ?: sys_get_temp_dir();
     }
 
     /**
@@ -49,27 +67,41 @@ class OptiPngPostProcessor implements PostProcessorInterface
      * @throws ProcessFailedException
      *
      * @return BinaryInterface
-     *
-     * @see      Implementation taken from Assetic\Filter\optipngFilter
      */
     public function process(BinaryInterface $binary)
+    {
+        return $this->processWithConfiguration($binary, array());
+    }
+
+    /**
+     * @param BinaryInterface $binary
+     * @param array           $options
+     *
+     * @throws ProcessFailedException
+     *
+     * @return BinaryInterface|Binary
+     */
+    public function processWithConfiguration(BinaryInterface $binary, array $options)
     {
         $type = strtolower($binary->getMimeType());
         if (!in_array($type, array('image/png'))) {
             return $binary;
         }
 
-        if (false === $input = tempnam(sys_get_temp_dir(), 'imagine_optipng')) {
-            throw new \RuntimeException(sprintf('Temp file can not be created in "%s".', sys_get_temp_dir()));
+        $tempDir = array_key_exists('temp_dir', $options) ? $options['temp_dir'] : $this->tempDir;
+        if (false === $input = tempnam($tempDir, 'imagine_optipng')) {
+            throw new \RuntimeException(sprintf('Temp file can not be created in "%s".', $tempDir));
         }
 
         $pb = new ProcessBuilder(array($this->optipngBin));
 
-        if ($this->level !== null) {
-            $pb->add(sprintf('--o%d', $this->level));
+        $level = array_key_exists('level', $options) ? $options['level'] : $this->level;
+        if ($level !== null) {
+            $pb->add(sprintf('--o%d', $level));
         }
 
-        if ($this->stripAll) {
+        $stripAll = array_key_exists('strip_all', $options) ? $options['strip_all'] : $this->stripAll;
+        if ($stripAll) {
             $pb->add('--strip=all');
         }
 

@@ -18,12 +18,12 @@ class PublicacioncontenidoType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('titulo')
+        $builder->add('titulo',null,array('required' => true))
                 ->add('subtitulo')
-                ->add('descripcioncontenido',TextareaType::class, array('label'=>'Descripcion'))
+                ->add('descripcioncontenido',TextareaType::class, array('required' => true))
                 ->add('fechacontenido', DateType::class, array('label'=>'Fecha De Publicacion Del Contenido','data' =>( new \DateTime()),'widget'=>'single_text'))
                 ->add('contenido_picture_file', VichImageType::class, array('required' => false,'label' => 'Contenido','allow_delete' => true,'download_link' => true,))
-                ->add('estadocontenido', CheckboxType::class, array('label'=>'Activado'));
+                ->add('estadocontenido', CheckboxType::class, array('label'=>'Sí', 'required' => false));
     }
     
     /**

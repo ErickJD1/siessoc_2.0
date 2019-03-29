@@ -24,9 +24,11 @@
 {% endblock %}
 {% block body %}
 
+
+
     <div class="container">
         <h1 class="mt-4 mb-3">ESSOC
-            <small>Contactanos</small>
+            <small>Contáctanos</small>
         </h1>   
         <hr>
         <div class="row">
@@ -37,12 +39,12 @@
 
                         <div class="col-md-6" style="margin-top:3%">
                             <div class="form-group">
-                                <label for="form_contacto">Nombre<span style="font-size: 25;color: red" >*</span></label>
+                                <label for="form_contacto">Nombre</label>
                                 {{ form_widget(form.nombre) }}
                                 {{ form_errors(form.nombre) }}
                             </div>
                             <div class="form-group">
-                                <label for="form_contacto">Correo Electrónico<span style="font-size: 25;color: red" >*</span></label>
+                                <label for="form_contacto">Correo Electrónico</label>
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fa fa-envelope"></i></span>
                                         {{ form_widget(form.correo) }}
@@ -50,21 +52,21 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="form_contacto">Asunto<span style="font-size: 25;color: red" >*</span></label>
+                                <label for="form_contacto">Asunto</label>
                                 {{ form_widget(form.asunto) }}
                                 {{ form_errors(form.asunto) }}
                             </div>
                         </div>
                         <div class="col-md-6" style="margin-top:3%">
                             <div class="form-group">
-                                <label for="form_contacto">Mensaje<span style="font-size: 25;color: red" >*</span></label>
+                                <label for="form_contacto">Mensaje</label>
                                 {{ form_widget(form.mensaje,{'attr':{'class':'form-control', 'rows':'9', 'cols':'25' }})}}
                                 {{ form_errors(form.mensaje) }}
                             </div>
                         </div>
 
                         <div class="col-md-12" style="margin-bottom:3%">
-                            <button type="submit" class="btn btn-primary pull-right">Guardar</button>
+                            <button type="submit" class="btn btn-success pull-right">Enviar</button>
                         </div>
 
                     </div>
@@ -76,3 +78,5 @@
 
 
 {% endblock %}
+
+

@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 
 class ContactoType extends AbstractType
 {
@@ -16,7 +17,7 @@ class ContactoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('nombre', NULL, array('label'=>'Nombre', 'required' => true))
-                ->add('correo', NULL, array('label'=>'Correo', 'required' => true))
+                ->add('correo', EmailType::class, array('label'=>'Correo', 'required' => true))
                 ->add('asunto', ChoiceType::class, [
                       'choices'  => [
                       'Quiero ser patrocinador' => 'Quiero ser patrocinador',

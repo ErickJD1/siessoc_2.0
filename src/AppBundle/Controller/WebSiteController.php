@@ -4,10 +4,12 @@ namespace AppBundle\Controller;
 
 use SalexUserBundle\Entity\User;
 use AppBundle\Entity\Contacto;
+use AppBundle\Entity\Publicacioncontenido;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use FOS\UserBundle\Mailer\Mailer;
 
 
 /**
@@ -44,13 +46,34 @@ class WebSiteController extends Controller {
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $em = $this->getDoctrine()->getManager();
             $time = new \DateTime();
             $contacto->setFecha($time);
             $em->persist($contacto);
             $em->flush($contacto);
+        /*    $adminusers = $em->getRepository('SalexUserBundle:User')->findAdminTeam();
 
-            $this->addFlash('success', '¡Consulta enviada exitosamente!');
+           foreach($adminusers as $e)
+             {
+              $correo = $e->getEmail();
+
+                    $message = \Swift_Message::newInstance()
+                        ->setSubject('¡Nueva consulta, proyecto de becas ESSOC!')
+                        ->setFrom('test@mail.com')
+                        ->setTo($correo)
+                        ->setBody(
+                        $this->renderView(
+                                'Emails/nuevoContacto.html.twig',['nombre' => $form->get('nombre')->getData() , 'correo' => $form->get('correo')->getData() , 'asunto' => $form->get('asunto')->getData(), 'mensaje' => $form->get('mensaje')->getData()]
+                        ), 'text/html'
+                );
+                $this->get('mailer')->send($message);
+             } */
+  
+        $this->get('ras_flash_alert.alert_reporter')->addError("Access denied");
+
+        //    $this->addFlash('success', '¡Consulta enviada exitosamente!');
+            
             return $this->redirectToRoute('web_contacto');
         }
 
@@ -73,6 +96,32 @@ class WebSiteController extends Controller {
 
         $pagination = $em->getRepository('SalexUserBundle:User')->findAllTeam();
         return $this->render('webSite/nosotros.html.twig', array('user' => $pagination));
+    }
+    
+    
+     /**
+     * Lists all user entities.
+     *
+     * @Route("/publicaciones", name="web_publicaciones")
+     * @Method("GET")
+     */
+    public function publicacionesAction(Request $request) {
+        $entityManager = $this->getDoctrine()->getManager();
+                
+        $query = $entityManager->createQuery(
+         'SELECT pc
+           FROM AppBundle:Publicacioncontenido pc where pc.estadocontenido = 1
+           order by pc.fechacontenido desc');
+        
+        $publicaciones= $query->getResult();
+        
+        $query1= $entityManager->createQuery(
+         'SELECT pc
+           FROM AppBundle:Publicacioncontenido pc where pc.estadocontenido = 1
+           order by pc.fechacontenido desc');
+         $query1->setMaxResults(1);
+         $first_id= $query1->getResult();
+        return $this->render('webSite/publicaciones.html.twig', array('publicaciones' => $publicaciones, 'first_id' => $first_id));
     }
 
     /**

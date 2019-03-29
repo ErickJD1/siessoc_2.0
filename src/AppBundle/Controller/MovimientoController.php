@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Repository\MovimientoRepository;
 
 /**
@@ -95,6 +96,7 @@ class MovimientoController extends Controller {
             $cuenta->setSaldoactual($saldoActual);
             $em->persist($cuenta);
             $em->flush($cuenta);
+           
 
             return $this->redirectToRoute('movimiento_index');
         }
@@ -102,6 +104,48 @@ class MovimientoController extends Controller {
         return $this->render('movimiento/Movimientonew.html.twig', array(
                     'movimiento' => $movimiento,
                     'form' => $form->createView(),
+        ));
+    }
+
+    
+ /**
+     * Creates a new publicacioncontenido entity.
+     *
+     * @Route("/reporte", name="movimiento_reportes")
+     * @Method({"GET", "POST"})
+     */
+    public function reporteAction(Request $request)
+    {
+        $movimientos = new Movimiento();
+        $form = $this->createForm('AppBundle\Form\MovimientoReporteType', $movimientos);
+        
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $query = $entityManager->createQuery(
+                'SELECT c.numcuenta, c.nomcuenta, m.descripcionmov, m.monto, m.estadomov
+                  FROM AppBundle:Cuenta c inner join AppBundle:Movimiento m with c.idcuenta = m.idcuenta');
+                  $movimientos= $query->getResult();
+                  $snappy = $this->get('knp_snappy.pdf');
+                  $em = $this->getDoctrine()->getManager();
+                  $html = $this->renderView('movimiento/Movimientopdf.html.twig', array(
+                'movimientos' => $movimientos,
+            ));
+            $filename = 'reporteMovimientosCuenta';
+            return new Response (
+                $snappy->getOutputFromHtml($html),
+                200,
+                array(
+                    'Content-Type'          => 'application/pdf',
+                    'Content-Disposition'   => 'inline; filename="'.$filename.'.pdf"'
+                )
+            );
+
+        }
+
+        return $this->render('movimiento/movimientocuentas.html.twig', array(
+            'form' => $form->createView(),
         ));
     }
 

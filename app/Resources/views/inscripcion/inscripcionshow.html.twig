@@ -1,45 +1,89 @@
+<div class="modal fade" id="VerIns{{ inscripcion.idinscripcion }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div style="width:70%; margin-left: 15%" class="modal-dialog">
+        <div class="modal-content" style="border-radius: 25px">
 
-{% extends "layout/base-layout.html.twig" %}
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <div class="row">	
+                    <h3 class="col col-md-12" align="center"><strong>Inscripción Ciclo {{inscripcion.getNumcicloinscripcion()}} - {{inscripcion.getAnioinscripcion()}}</strong></h3>
+                </div>
+            </div>
+            {% if inscripcion.observaciones %}
+                <div class="alert alert-warning">
+                    <strong>Inscripción Rechazada:</strong> {{ inscripcion.observaciones  }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div> 
+            {% else %}
+                
+            <div class="alert alert-success">
+                    <strong>Inscripción Aprobada:</strong> Inscripción en curso.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            
+            {% endif %}   
+                <div class="modal-body" style="width:90%; margin-left: 5%;">  
 
-{% block page_content %}
-    <h1>Inscripcion</h1>
+                    <table class="table table-striped" style="background-color:white">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="text-align:center">Materia</th>
+                                <th scope="col" style="text-align:center">Inscripción</th>
+                                <th scope="col" style="text-align:center">Estado</th>
+                                <th scope="col" style="text-align:center">Nota</th>
+                            </tr>
+                        </thead>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Idexpbecario</th>
-                <td>{{ inscripcion.idexpbecario }}</td>
-            </tr>
-            <tr>
-                <th>Comprobante</th>
-                <td>{{ inscripcion.comprobante }}</td>
-            </tr>
-            <tr>
-                <th>Numcicloinscripcion</th>
-                <td>{{ inscripcion.numcicloinscripcion }}</td>
-            </tr>
-            <tr>
-                <th>Estadoinscripcion</th>
-                <td>{% if inscripcion.estadoinscripcion %}Yes{% else %}No{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Idinscripcion</th>
-                <td>{{ inscripcion.idinscripcion }}</td>
-            </tr>
-        </tbody>
-    </table>
+                        <tbody>
+                            {% for materias in materiainscripcion  %}
 
-    <ul>
-        <li>
-            <a href="{{ path('inscripcion_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('inscripcion_edit', { 'id': inscripcion.idinscripcion }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
-{% endblock %}
+                                <tr>
+                                    <td>{{ materias.getNombremateria() }}</td>
+                                    <td>{{ materias.getNuminscripcion() }}</td>
+                                    <td>{% if materias.getEstado()==0%}En Proceso{%elseif materias.getEstado()==1%}Aprobada{% else %}Reprobada{% endif %}</td>
+                                    <td>{% if materias.getNota() is null  %}--{% else %}{{ materias.getNota() }} {% endif %}</td>
+                                </tr>
+
+
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <br>
+                    <br>    
+                    <br>
+                </div>
+                <div class="modal-footer">
+                    <div align="right">
+                        <div style="float:right;margin-left: 1px"><button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button></div>
+                        {% if (app.user.hasRole('ROLE_ADMIN') or app.user.hasRole('ROLE_COORDINADOR')) and inscripcion.estadoinscripcion == 0 %}
+                            <div style="float:right;margin-left: 1px">
+                                <form style="" action="{{path('inscripcion_aprobacion',{'id':inscripcion.idinscripcion,'val':1})}}" method="POST">
+
+                                    <button type="submit" class="btn btn-success" >Aprobar</button>
+                                </form></div>
+                            <div style="float:right;margin-left: 1px">
+                                <form action="{{path('inscripcion_aprobacion',{'id':inscripcion.idinscripcion,'val':2})}}" method="POST">
+                                    <div class="modal fade" id="recha{{  inscripcion.idinscripcion }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div style="width:50%; margin-left: 25%;" class="modal-dialog">
+                                            <div class="modal-content"  style="border-radius: 10px">
+                                                <div class="modal-body">
+                                                    <textarea class="form-control" id="descripcion" name="descripcion" style="width:100%" placeholder="Observaciones del rechazo" name="descripcion"></textarea>
+                                                    <button type="submit" class="btn btn-success" style="margin-top:1%;widt:100%" >Guardar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#recha{{ inscripcion.idinscripcion }}" >Rechazar</button>
+                                </form>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+

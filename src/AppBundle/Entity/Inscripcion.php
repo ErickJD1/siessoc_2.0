@@ -19,8 +19,8 @@ use Carbon\Carbon;
  * @Vich\Uploadable
  * 
  */
-class Inscripcion
-{
+class Inscripcion {
+
     /**
      * @var integer
      *
@@ -40,11 +40,10 @@ class Inscripcion
      */
     private $idexpbecario;
 
-    
     /**
-     * @var \DateTime
+     * @var \Integer
      *
-     * @ORM\Column(name="ANIOINSCRIPCION", type="date", nullable=true)
+     * @ORM\Column(name="ANIOINSCRIPCION", type="integer", nullable=true)
      */
     private $anioinscripcion;
 
@@ -55,11 +54,10 @@ class Inscripcion
      */
     private $numcicloinscripcion;
 
-
     /**
      * @var boolean
      *
-     * @ORM\Column(name="ESTADOINSCRIPCION", type="boolean", nullable=true)
+     * @ORM\Column(name="ESTADOINSCRIPCION", type="integer", nullable=true)
      */
     private $estadoinscripcion;
 
@@ -78,8 +76,26 @@ class Inscripcion
      * @var string
      */
     private $comprobante;
+
+    /**
+     * @ORM\Column(name="observaciones", type="string", nullable=true)
+     * @var string
+     */
+    private $observaciones;
+
     
-    
+
+    /**
+     * @var datetime $updateAt
+     * 
+     * @ORM\Column(name="UPDATE_AT", type="datetime", nullable = true)
+     * @Assert\Type("\DateTime")
+     * 
+     */
+    private $updateAt;
+
+ 
+
     /**
      * @Assert\Image(
      *     maxSize="5M",
@@ -95,8 +111,7 @@ class Inscripcion
      * @var string
      */
     private $comprobantenotas;
-    
-    
+
     /**
      * Gets the value of comprobante_file.
      *
@@ -118,7 +133,7 @@ class Inscripcion
 
         // Only change the updated af if the file is really uploaded to avoid database updates.
         // This is needed when the file should be set when loading the entity.
-      if ($this->comprobante_file instanceof UploadedFile) {
+        if ($this->comprobante_file instanceof UploadedFile) {
             $this->setUpdateAt(new Carbon());
         }
 
@@ -130,11 +145,10 @@ class Inscripcion
      *
      * @return string
      */
-    function getComprobante() {
+    public function getComprobante() {
         return $this->comprobante;
     }
-    
-    
+
     /**
      * Gets the value of comprobante_file_notas.
      *
@@ -156,7 +170,7 @@ class Inscripcion
 
         // Only change the updated af if the file is really uploaded to avoid database updates.
         // This is needed when the file should be set when loading the entity.
-      if ($this->comprobante_file_notas instanceof UploadedFile) {
+        if ($this->comprobante_file_notas instanceof UploadedFile) {
             $this->setUpdateAt(new Carbon());
         }
 
@@ -168,10 +182,9 @@ class Inscripcion
      *
      * @return string
      */
-    function getComprobanteNotas() {
+    public function getComprobanteNotas() {
         return $this->comprobantenotas;
     }
-
 
     /**
      * Set idexpbecario
@@ -180,8 +193,7 @@ class Inscripcion
      *
      * @return Inscripcion
      */
-    public function setIdexpbecario($idexpbecario)
-    {
+    public function setIdexpbecario($idexpbecario) {
         $this->idexpbecario = $idexpbecario;
 
         return $this;
@@ -192,20 +204,18 @@ class Inscripcion
      *
      * @return integer
      */
-    public function getIdexpbecario()
-    {
+    public function getIdexpbecario() {
         return $this->idexpbecario;
     }
 
     /**
      * Set anioinscripcion
      *
-     * @param \DateTime $anioinscripcion
+     * @param Integer $anioinscripcion
      *
      * @return Inscripcion
      */
-    public function setAnioinscripcion($anioinscripcion)
-    {
+    public function setAnioinscripcion($anioinscripcion) {
         $this->anioinscripcion = $anioinscripcion;
 
         return $this;
@@ -214,10 +224,10 @@ class Inscripcion
     /**
      * Get anioinscripcion
      *
-     * @return \DateTime
+     * @return Integer
+     * 
      */
-    public function getAnioinscripcion()
-    {
+    public function getAnioinscripcion() {
         return $this->anioinscripcion;
     }
 
@@ -228,8 +238,7 @@ class Inscripcion
      *
      * @return Inscripcion
      */
-    public function setNumcicloinscripcion($numcicloinscripcion)
-    {
+    public function setNumcicloinscripcion($numcicloinscripcion) {
         $this->numcicloinscripcion = $numcicloinscripcion;
 
         return $this;
@@ -240,23 +249,21 @@ class Inscripcion
      *
      * @return integer
      */
-    public function getNumcicloinscripcion()
-    {
+    public function getNumcicloinscripcion() {
         return $this->numcicloinscripcion;
     }
 
     /**
-   
 
-    /**
+
+      /**
      * Set estadoinscripcion
      *
      * @param boolean $estadoinscripcion
      *
      * @return Inscripcion
      */
-    public function setEstadoinscripcion($estadoinscripcion)
-    {
+    public function setEstadoinscripcion($estadoinscripcion) {
         $this->estadoinscripcion = $estadoinscripcion;
 
         return $this;
@@ -267,8 +274,7 @@ class Inscripcion
      *
      * @return boolean
      */
-    public function getEstadoinscripcion()
-    {
+    public function getEstadoinscripcion() {
         return $this->estadoinscripcion;
     }
 
@@ -277,8 +283,7 @@ class Inscripcion
      *
      * @return integer
      */
-    public function getIdinscripcion()
-    {
+    public function getIdinscripcion() {
         return $this->idinscripcion;
     }
 
@@ -289,14 +294,44 @@ class Inscripcion
      *
      * @return Inscripcion
      */
-    public function setComprobante($comprobante)
-    {
+    public function setComprobante($comprobante) {
         $this->comprobante = $comprobante;
 
         return $this;
     }
-    
-    
+
+    function getObservaciones() {
+        return $this->observaciones;
+    }
+
+    function setObservaciones($observaciones) {
+        $this->observaciones = $observaciones;
+    }
+
+    /**
+     * Set updateAt
+     *
+     * @param \DateTime $updateAt
+     *
+     * @return User
+     */
+    public function setUpdateAt($updateAt) {
+        $this->updateAt = $updateAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updateAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdateAt() {
+        return $this->updateAt;
+    }
+
+ 
+
     /**
      * Set comprobantenotas
      *
@@ -304,10 +339,10 @@ class Inscripcion
      *
      * @return Inscripcion
      */
-    public function setComprobanteNotas($comprobantenotas)
-    {
+    public function setComprobanteNotas($comprobantenotas) {
         $this->comprobantenotas = $comprobantenotas;
 
         return $this;
     }
+
 }

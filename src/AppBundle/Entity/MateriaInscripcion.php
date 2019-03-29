@@ -39,6 +39,13 @@ class MateriaInscripcion {
      * 
      */
     private $idinscripcion;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="NUMINSCRIPCION", type="integer", nullable=false)
+     */
+    private $numinscripcion;
 
     /**
      * @var float
@@ -113,7 +120,8 @@ class MateriaInscripcion {
      *
      * @return integer
      */
-    public function setIdinscripcion() {
+    public function setIdinscripcion($id) {
+        $this->idinscripcion=$id;
         return $this->idinscripcion;
     }
 
@@ -169,4 +177,14 @@ class MateriaInscripcion {
     {
         return $this->idmateriainscripcion;
     }
+    
+    public function getNuminscripcion() {
+        return $this->numinscripcion;
+    }
+
+    public function setNuminscripcion($numinscripcion) {
+        $this->numinscripcion = $numinscripcion;
+    }
+
+
 }

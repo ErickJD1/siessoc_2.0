@@ -44,12 +44,12 @@ class MovimientoinventarioController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $inventario = $em->getRepository('AppBundle:Inventario')->findOneByIdinventario($request->get("id"));
         $movimientoinventario->setIdinventario($inventario);
-        
+
         $form = $this->createForm('AppBundle\Form\MovimientoinventarioType', $movimientoinventario);
         $em = $this->getDoctrine()->getManager();
         $form->handleRequest($request);
 
-       
+
 
         if ($form->isSubmitted() && $form->isValid()) {
             $cantidadactual = $inventario->getCantidadinventario() - $form->get('cantidadentrega')->getData();
@@ -87,8 +87,8 @@ class MovimientoinventarioController extends Controller {
                     'delete_form' => $deleteForm->createView(),
         ));
     }
-    
-    
+
+
      /**
      * Finds and displays a movimientoinventario entity.
      *
@@ -104,7 +104,7 @@ class MovimientoinventarioController extends Controller {
             'delete_form' => $deleteForm->createView(),
         ));
     }
-    
+
 
     /**
      * Displays a form to edit an existing movimientoinventario entity.
@@ -136,7 +136,7 @@ class MovimientoinventarioController extends Controller {
      * @Route("/{id}", name="movimientoinventario_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Movimientoinventario $movimientoinventario) 
+    public function deleteAction(Request $request, Movimientoinventario $movimientoinventario)
      {
         $form = $this->createDeleteForm($movimientoinventario);
         $form->handleRequest($request);

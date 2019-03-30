@@ -3,21 +3,31 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
+use SalexUserBundle\Entity\User;
+use Carbon\Carbon;
 
 /**
  * Inscripcion
  *
- * @ORM\Table(name="inscripcion")
+ * @ORM\Table(name="inscripcion", indexes={@ORM\Index(name="FK_RELATIONSHIP_XB", columns={"IDEXPBECARIO"})})
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
+ * @Vich\Uploadable
+ * 
  */
-class Inscripcion
-{
+class Inscripcion {
+
     /**
      * @var integer
      *
      * @ORM\Column(name="IDINSCRIPCION", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Vich\Uploadable
      */
     private $idinscripcion;
 
@@ -25,13 +35,15 @@ class Inscripcion
      * @var integer
      *
      * @ORM\Column(name="IDEXPBECARIO", type="integer", nullable=true)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idexpbecario;
 
     /**
-     * @var \DateTime
+     * @var \Integer
      *
-     * @ORM\Column(name="ANIOINSCRIPCION", type="date", nullable=true)
+     * @ORM\Column(name="ANIOINSCRIPCION", type="integer", nullable=true)
      */
     private $anioinscripcion;
 
@@ -43,27 +55,141 @@ class Inscripcion
     private $numcicloinscripcion;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="MONTOMATRICULAINSCRIPCION", type="decimal", precision=5, scale=0, nullable=true)
-     */
-    private $montomatriculainscripcion;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="MONTOMENSUALIDAD", type="decimal", precision=5, scale=0, nullable=true)
-     */
-    private $montomensualidad;
-
-    /**
      * @var boolean
      *
-     * @ORM\Column(name="ESTADOINSCRIPCION", type="boolean", nullable=true)
+     * @ORM\Column(name="ESTADOINSCRIPCION", type="integer", nullable=true)
      */
     private $estadoinscripcion;
 
+    /**
+     * @Assert\Image(
+     *     maxSize="5M",
+     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg","application/pdf","application/xls","application/docx","application/txt",}   
+     * )
+     * @Vich\UploadableField(mapping="document_file", fileNameProperty="comprobante")
+     * @var [type]
+     */
+    private $comprobante_file;
 
+    /**
+     * @ORM\Column(name="comprobante", type="string", nullable=true)
+     * @var string
+     */
+    private $comprobante;
+
+    /**
+     * @ORM\Column(name="observaciones", type="string", nullable=true)
+     * @var string
+     */
+    private $observaciones;
+
+    /**
+     * @var datetime $updateAt
+     * 
+     * @ORM\Column(name="UPDATEDAT", type="datetime", nullable = true)
+     * @Assert\Type("\DateTime")
+     * 
+     */
+    private $updateAt;
+
+    /**
+     * @var datetime $createdAt
+     * 
+     * @ORM\Column(name=CREATEDAT", type="datetime", nullable = true)
+     * @Assert\Type("\DateTime")
+     * 
+     */
+    private $createdAt;
+
+    /**
+     * @Assert\Image(
+     *     maxSize="5M",
+     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg","application/pdf","application/xls","application/docx","application/txt",}   
+     * )
+     * @Vich\UploadableField(mapping="document_file", fileNameProperty="comprobantenotas")
+     * @var [type]
+     */
+    private $comprobante_file_notas;
+
+    /**
+     * @ORM\Column(name="comprobantenotas", type="string", nullable=true)
+     * @var string
+     */
+    private $comprobantenotas;
+
+    /**
+     * Gets the value of comprobante_file.
+     *
+     * @return string
+     */
+    public function getComprobanteFile() {
+        return $this->comprobante_file;
+    }
+
+    /**
+     * Sets the value of comprobante_file.
+     *
+     * @param File $comprobante_file
+     *
+     * @return self
+     */
+    public function setComprobanteFile(File $comprobante_file) {
+        $this->comprobante_file = $comprobante_file;
+
+        // Only change the updated af if the file is really uploaded to avoid database updates.
+        // This is needed when the file should be set when loading the entity.
+        if ($this->comprobante_file instanceof UploadedFile) {
+            $this->setUpdateAt(new Carbon());
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get comprobante
+     *
+     * @return string
+     */
+    public function getComprobante() {
+        return $this->comprobante;
+    }
+
+    /**
+     * Gets the value of comprobante_file_notas.
+     *
+     * @return string
+     */
+    public function getComprobanteFileNotas() {
+        return $this->comprobante_file_notas;
+    }
+
+    /**
+     * Sets the value of comprobante_file_notas.
+     *
+     * @param File $comprobante_file_notas
+     *
+     * @return self
+     */
+    public function setComprobanteFileNotas(File $comprobante_file_notas) {
+        $this->comprobante_file_notas = $comprobante_file_notas;
+
+        // Only change the updated af if the file is really uploaded to avoid database updates.
+        // This is needed when the file should be set when loading the entity.
+        if ($this->comprobante_file_notas instanceof UploadedFile) {
+            $this->setUpdateAt(new Carbon());
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get comprobantenotas
+     *
+     * @return string
+     */
+    public function getComprobanteNotas() {
+        return $this->comprobantenotas;
+    }
 
     /**
      * Set idexpbecario
@@ -72,8 +198,7 @@ class Inscripcion
      *
      * @return Inscripcion
      */
-    public function setIdexpbecario($idexpbecario)
-    {
+    public function setIdexpbecario($idexpbecario) {
         $this->idexpbecario = $idexpbecario;
 
         return $this;
@@ -84,20 +209,18 @@ class Inscripcion
      *
      * @return integer
      */
-    public function getIdexpbecario()
-    {
+    public function getIdexpbecario() {
         return $this->idexpbecario;
     }
 
     /**
      * Set anioinscripcion
      *
-     * @param \DateTime $anioinscripcion
+     * @param Integer $anioinscripcion
      *
      * @return Inscripcion
      */
-    public function setAnioinscripcion($anioinscripcion)
-    {
+    public function setAnioinscripcion($anioinscripcion) {
         $this->anioinscripcion = $anioinscripcion;
 
         return $this;
@@ -106,10 +229,10 @@ class Inscripcion
     /**
      * Get anioinscripcion
      *
-     * @return \DateTime
+     * @return Integer
+     * 
      */
-    public function getAnioinscripcion()
-    {
+    public function getAnioinscripcion() {
         return $this->anioinscripcion;
     }
 
@@ -120,8 +243,7 @@ class Inscripcion
      *
      * @return Inscripcion
      */
-    public function setNumcicloinscripcion($numcicloinscripcion)
-    {
+    public function setNumcicloinscripcion($numcicloinscripcion) {
         $this->numcicloinscripcion = $numcicloinscripcion;
 
         return $this;
@@ -132,68 +254,21 @@ class Inscripcion
      *
      * @return integer
      */
-    public function getNumcicloinscripcion()
-    {
+    public function getNumcicloinscripcion() {
         return $this->numcicloinscripcion;
     }
 
     /**
-     * Set montomatriculainscripcion
-     *
-     * @param string $montomatriculainscripcion
-     *
-     * @return Inscripcion
-     */
-    public function setMontomatriculainscripcion($montomatriculainscripcion)
-    {
-        $this->montomatriculainscripcion = $montomatriculainscripcion;
 
-        return $this;
-    }
 
-    /**
-     * Get montomatriculainscripcion
-     *
-     * @return string
-     */
-    public function getMontomatriculainscripcion()
-    {
-        return $this->montomatriculainscripcion;
-    }
-
-    /**
-     * Set montomensualidad
-     *
-     * @param string $montomensualidad
-     *
-     * @return Inscripcion
-     */
-    public function setMontomensualidad($montomensualidad)
-    {
-        $this->montomensualidad = $montomensualidad;
-
-        return $this;
-    }
-
-    /**
-     * Get montomensualidad
-     *
-     * @return string
-     */
-    public function getMontomensualidad()
-    {
-        return $this->montomensualidad;
-    }
-
-    /**
+      /**
      * Set estadoinscripcion
      *
      * @param boolean $estadoinscripcion
      *
      * @return Inscripcion
      */
-    public function setEstadoinscripcion($estadoinscripcion)
-    {
+    public function setEstadoinscripcion($estadoinscripcion) {
         $this->estadoinscripcion = $estadoinscripcion;
 
         return $this;
@@ -204,8 +279,7 @@ class Inscripcion
      *
      * @return boolean
      */
-    public function getEstadoinscripcion()
-    {
+    public function getEstadoinscripcion() {
         return $this->estadoinscripcion;
     }
 
@@ -214,8 +288,86 @@ class Inscripcion
      *
      * @return integer
      */
-    public function getIdinscripcion()
-    {
+    public function getIdinscripcion() {
         return $this->idinscripcion;
     }
+
+    /**
+     * Set comprobante
+     *
+     * @param string $comprobante
+     *
+     * @return Inscripcion
+     */
+    public function setComprobante($comprobante) {
+        $this->comprobante = $comprobante;
+
+        return $this;
+    }
+
+    function getObservaciones() {
+        return $this->observaciones;
+    }
+
+    function setObservaciones($observaciones) {
+        $this->observaciones = $observaciones;
+    }
+
+    /**
+     * Set updateAt
+     *
+     * @param \DateTime $updateAt
+     *
+     * @return User
+     */
+    public function setUpdateAt($updateAt) {
+        $this->updateAt = $updateAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updateAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdateAt() {
+        return $this->updateAt;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return Inscripcion
+     */
+    public function setCreatedAt($createdAt) {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt() {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set comprobantenotas
+     *
+     * @param string $comprobantenotas
+     *
+     * @return Inscripcion
+     */
+    public function setComprobanteNotas($comprobantenotas) {
+        $this->comprobantenotas = $comprobantenotas;
+
+        return $this;
+    }
+
 }

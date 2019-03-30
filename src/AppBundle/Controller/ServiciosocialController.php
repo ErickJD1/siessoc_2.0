@@ -5,7 +5,9 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Serviciosocial;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+
 
 /**
  * Serviciosocial controller.
@@ -41,14 +43,17 @@ class ServiciosocialController extends Controller
     {
         $serviciosocial = new Serviciosocial();
         $form = $this->createForm('AppBundle\Form\ServiciosocialType', $serviciosocial);
+        $serviciosocial->setIdusuario($this->getUser());
+        
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($serviciosocial);
             $em->flush($serviciosocial);
-
-            return $this->redirectToRoute('serviciosocial_show', array('id' => $serviciosocial->getIdServiciosocial()));
+            
+            $this->addFlash('success', 'Se agrego un nuevo proyecto');
+            return $this->redirectToRoute('serviciosocial_index');
         }
 
         return $this->render('serviciosocial/new.html.twig', array(

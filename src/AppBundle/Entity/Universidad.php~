@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Universidad
  *
- * @ORM\Table(name="universidad", indexes={@ORM\Index(name="FK_RELATIONSHIP_37", columns={"IDCARRERA"}), @ORM\Index(name="FK_RELATIONSHIP_47", columns={"CAR_IDCARRERA"})})
+ * @ORM\Table(name="universidad")
  * @ORM\Entity
  */
 class Universidad
@@ -36,24 +36,11 @@ class Universidad
     private $estadouniversidad;
 
     /**
-     * @var \Carrera
+     * @var string
      *
-     * @ORM\ManyToOne(targetEntity="Carrera")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="IDCARRERA", referencedColumnName="IDCARRERA")
-     * })
+     * @ORM\Column(name="SIGLAS", type="string", length=256, nullable=true)
      */
-    private $idcarrera;
-
-    /**
-     * @var \Carrera
-     *
-     * @ORM\ManyToOne(targetEntity="Carrera")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="CAR_IDCARRERA", referencedColumnName="IDCARRERA")
-     * })
-     */
-    private $carcarrera;
+    private $siglas;
 
 
 
@@ -115,51 +102,19 @@ class Universidad
         return $this->iduniversidad;
     }
 
-    /**
-     * Set carcarrera
-     *
-     * @param \AppBundle\Entity\Carrera $carcarrera
-     *
-     * @return Universidad
-     */
-    public function setCarcarrera(\AppBundle\Entity\Carrera $carcarrera = null)
-    {
-        $this->carcarrera = $carcarrera;
-
-        return $this;
+    
+    function getSiglas() {
+        return $this->siglas;
     }
 
-    /**
-     * Get carcarrera
-     *
-     * @return \AppBundle\Entity\Carrera
-     */
-    public function getCarcarrera()
-    {
-        return $this->carcarrera;
+    function setSiglas($siglas) {
+        $this->siglas = $siglas;
     }
 
-    /**
-     * Set idcarrera
-     *
-     * @param \AppBundle\Entity\Carrera $idcarrera
-     *
-     * @return Universidad
-     */
-    public function setIdcarrera(\AppBundle\Entity\Carrera $idcarrera = null)
-    {
-        $this->idcarrera = $idcarrera;
-
-        return $this;
+    
+    public function __toString() {
+        return $this->getNombreuniversidad();
     }
 
-    /**
-     * Get idcarrera
-     *
-     * @return \AppBundle\Entity\Carrera
-     */
-    public function getIdcarrera()
-    {
-        return $this->idcarrera;
-    }
+
 }

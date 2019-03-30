@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the `liip/LiipImagineBundle` project.
+ *
+ * (c) https://github.com/liip/LiipImagineBundle/graphs/contributors
+ *
+ * For the full copyright and license information, please view the LICENSE.md
+ * file that was distributed with this source code.
+ */
+
 namespace Liip\ImagineBundle\Imagine\Filter\PostProcessor;
 
 use Liip\ImagineBundle\Binary\BinaryInterface;
@@ -35,19 +44,33 @@ class JpegOptimPostProcessor implements PostProcessorInterface, ConfigurablePost
     protected $progressive;
 
     /**
+     * Directory where temporary file will be written.
+     *
+     * @var string
+     */
+    protected $tempDir;
+
+    /**
      * Constructor.
      *
      * @param string $jpegoptimBin Path to the jpegoptim binary
      * @param bool   $stripAll     Strip all markers from output
      * @param int    $max          Set maximum image quality factor
      * @param bool   $progressive  Force output to be progressive
+     * @param string $tempDir      Directory where temporary file will be written
      */
-    public function __construct($jpegoptimBin = '/usr/bin/jpegoptim', $stripAll = true, $max = null, $progressive = true)
-    {
+    public function __construct(
+        $jpegoptimBin = '/usr/bin/jpegoptim',
+        $stripAll = true,
+        $max = null,
+        $progressive = true,
+        $tempDir = ''
+    ) {
         $this->jpegoptimBin = $jpegoptimBin;
         $this->stripAll = $stripAll;
         $this->max = $max;
         $this->progressive = $progressive;
+        $this->tempDir = $tempDir ?: sys_get_temp_dir();
     }
 
     /**
@@ -89,13 +112,9 @@ class JpegOptimPostProcessor implements PostProcessorInterface, ConfigurablePost
     /**
      * @param BinaryInterface $binary
      *
-     * @uses JpegOptimPostProcessor::processWithConfiguration
-     *
      * @throws ProcessFailedException
      *
      * @return BinaryInterface
-     *
-     * @see Implementation taken from Assetic\Filter\JpegoptimFilter
      */
     public function process(BinaryInterface $binary)
     {
@@ -109,8 +128,6 @@ class JpegOptimPostProcessor implements PostProcessorInterface, ConfigurablePost
      * @throws ProcessFailedException
      *
      * @return BinaryInterface
-     *
-     * @see Implementation taken from Assetic\Filter\JpegoptimFilter
      */
     public function processWithConfiguration(BinaryInterface $binary, array $options)
     {
@@ -119,8 +136,9 @@ class JpegOptimPostProcessor implements PostProcessorInterface, ConfigurablePost
             return $binary;
         }
 
-        if (false === $input = tempnam(sys_get_temp_dir(), 'imagine_jpegoptim')) {
-            throw new \RuntimeException(sprintf('Temp file can not be created in "%s".', sys_get_temp_dir()));
+        $tempDir = array_key_exists('temp_dir', $options) ? $options['temp_dir'] : $this->tempDir;
+        if (false === $input = tempnam($tempDir, 'imagine_jpegoptim')) {
+            throw new \RuntimeException(sprintf('Temp file can not be created in "%s".', $tempDir));
         }
 
         $pb = new ProcessBuilder(array($this->jpegoptimBin));

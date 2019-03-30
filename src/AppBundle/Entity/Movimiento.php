@@ -45,7 +45,7 @@ class Movimiento {
 
     /**
      * @var float
-     * @Assert\NotBlank()
+     * @
      * @ORM\Column(name="MONTO", type="float", precision=20, scale=0, nullable=true)
      */
     private $monto;
@@ -58,7 +58,7 @@ class Movimiento {
 
     /**
      * @var \Tipomovimiento
-     * @Assert\NotBlank()
+     * 
      * @ORM\ManyToOne(targetEntity="Tipomovimiento")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="IDTIPOMOV", referencedColumnName="IDTIPOMOV")

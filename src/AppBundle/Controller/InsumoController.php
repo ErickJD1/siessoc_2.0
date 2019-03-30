@@ -109,7 +109,8 @@ class InsumoController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('insumo_edit', array('id' => $insumo->getIdinsumo()));
+            $this->addFlash('success', 'Registro Modificado Con Exito!');
+            return $this->redirectToRoute('insumo_index');
         }
 
         return $this->render('insumo/insumoedit.html.twig', array(

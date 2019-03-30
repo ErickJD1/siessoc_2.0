@@ -12,6 +12,8 @@ use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use AppBundle\Repository\MovimientoRepository;
+use AppBundle\Repository\UniversidadRepository;
+
 
 class AjaxController extends Controller {
 
@@ -83,7 +85,80 @@ class AjaxController extends Controller {
     }
     
     
+        /**
+     * Finds and displays a solicitudbecario entity.
+     *
+     * @Route("/ajax/publicar", name="publicacioncontenido_publicar")
+     * @Method({"GET", "POST"})
+     */
+    public function publicarAction(Request $request) {
+
+        $encoders = array(new JsonEncoder());
+        $normalizers = array(new ObjectNormalizer());
+
+        $serializer = new Serializer($normalizers, $encoders);
+        $idcontenido = $request->query->get("idcontenido");
+        $em = $this->getDoctrine()->getManager();
+        $contenido = new \AppBundle\Entity\Publicacioncontenido();
+        $posts = $em->getRepository('AppBundle:Publicacioncontenido')->findBy(array('idcontenido' => $idcontenido));
+        $publicacioncontenidos = $em->getRepository('AppBundle:Publicacioncontenido')->findAll(); 
+
+   
+        foreach ($posts as $row) {
+            $contenido=$row;
+
+        }
+        $contenido->setEstadocontenido(1);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($contenido);
+        $em->flush($contenido);
+        
+        $publicacioncontenidos = $em->getRepository('AppBundle:Publicacioncontenido')->findAll(); 
+        $response = new JsonResponse();
+        $response->setStatusCode(200);
+        $response->setData(array(
+            'response' => 'success',
+            'publicacioncontenidos' => $serializer->serialize($publicacioncontenidos, 'json')
+        ));
+        return $response;
+    }
     
+    /**
+     * Finds and displays a solicitudbecario entity.
+     *
+     * @Route("/ajax/nopublicar", name="publicacioncontenido_nopublicar")
+     * @Method({"GET", "POST"})
+     */
+    public function nopublicarAction(Request $request) {
+
+        $encoders = array(new JsonEncoder());
+        $normalizers = array(new ObjectNormalizer());
+
+        $serializer = new Serializer($normalizers, $encoders);
+        $idcontenido = $request->query->get("idcontenido");
+        $em = $this->getDoctrine()->getManager();
+        $contenido = new \AppBundle\Entity\Publicacioncontenido();
+        $posts = $em->getRepository('AppBundle:Publicacioncontenido')->findBy(array('idcontenido' => $idcontenido));
+   
+        foreach ($posts as $row) {
+            $contenido=$row;
+
+        }
+        $contenido->setEstadocontenido(0);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($contenido);
+        $em->flush($contenido);
+
+        $response = new JsonResponse();
+        $response->setStatusCode(200);
+        $response->setData(array(
+            'response' => 'success',
+            'posts' => $serializer->serialize($posts, 'json')
+        ));
+        return $response;
+    }
+    
+ 
         /**
      * Lists all pagocolaboracion entities.
      *
@@ -132,6 +207,32 @@ class AjaxController extends Controller {
             ));
             return $response;
         }
+    }
+    
+    
+    
+        /**
+     * Creates a new carrera entity.
+     *
+     * @Route("/newcarrera", name="ajax_newcarrera")
+     * @Method({"GET", "POST"})
+     */
+    public function newCarreraAction(Request $request)
+    {
+        
+        $nombreCarrera = $request->query->get("nombre");
+        $descripcionCarrera = $request->query->get("descripcion");
+        $estadoCarrera = $request->query->get("estado");
+        $carrera = new Carrera();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($carrera);
+            $em->flush($carrera);
+
+        return $this->render('carrera/carreranewmodal.html.twig', array(
+            'carrera' => $carrera,
+            'form' => $form->createView(),
+        ));
     }
 
 }

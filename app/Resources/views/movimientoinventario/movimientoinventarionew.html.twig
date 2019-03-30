@@ -38,14 +38,9 @@
                 </div >
                 <br>
                 <div class="row"style="width:80%; margin-left: 10%">
-                    <div class="col col-md-12 hidden">
-                        <label for="form_Art">Articulo<span style="font-siez: 25; color: red">*</span></label>
-                        {{ form_widget(form.idinventario) }}
-                        {{ form_errors(form.idinventario) }}
-                    </div>
                     <div class="col col-md-12" >
                         <label for="form_Art">Articulo<span style="font-siez: 25; color: red">*</span></label>
-                        <input type="text" value="{{idinsumo.nombreinsumo}}" class="form-control" readonly="readonly"/>
+                        <input type="text" value="{{idinsumo.nombreinsumo}}" id="insumo" class="form-control" readonly="readonly"/>
                     </div>
                 </div>
                 <br>
@@ -87,13 +82,20 @@
         function cargarData()
         {
 
-            if ((($('#appbundle_movimientoinventario_cantidadentrega').val() > {{inventario}}) || $('#appbundle_movimientoinventario_cantidadentrega').val() == '' || $('#appbundle_movimientoinventario_cantidadentrega').val() == ' ') || $('#appbundle_movimientoinventario_cantidadentrega option:selected').val() === 0)
+            if ((($('#appbundle_movimientoinventario_cantidadentrega').val() > {{inventario}}) || $('#appbundle_movimientoinventario_cantidadentrega').val() == '' || $('#appbundle_movimientoinventario_cantidadentrega').val() == ' ') || $('#appbundle_movimientoinventario_cantidadentrega  option:selected').val() === 0)
             {
                 $('#montoerror').html(`<ul class="list-unstyled"><li><span class="glyphicon glyphicon-exclamation-sign">
                                 </span>Cantidad disponible: ` +   {{inventario}} +`</li></ul>`);
                 $("#enviar").attr("disabled", "disabled");
 
-            } else {
+            } else if ($('#appbundle_movimientoinventario_cantidadentrega').val() <= 0){
+
+                $('#montoerror').html(`<ul class="list-unstyled"><li><span class="glyphicon glyphicon-exclamation-sign">
+                                </span>La cantidad tiene que ser mayor que cero</li></ul>`);
+                $("#enviar").attr("disabled", "disabled");
+            
+            }
+            else{
                 $('#montoerror').html(`<ul style="color:green" class="list-unstyled"><li><span class="fa fa-check" style="color:green">
                                 </span>Cantidad Valida!</li></ul>`);
                 $("#enviar").removeAttr("disabled", "disabled");

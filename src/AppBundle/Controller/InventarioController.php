@@ -126,16 +126,20 @@ class InventarioController extends Controller
     {
         $form = $this->createDeleteForm($inventario);
         $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+        
+        try {
+            if($form->isSubmitted() && $form->isValid()){
             $em = $this->getDoctrine()->getManager();
             $em->remove($inventario);
             $em->flush($inventario);
-        }
-
+            }
+        } catch (\Exception $e) {
+              $this->addFlash('error', 'No Se Puede Eliminar El Movimiento, Posee Movimientos Asignaciones');
         return $this->redirectToRoute('inventario_index');
-    }
-
+     }
+      $this->addFlash('success', 'La cuenta fue eliminada con Exito!');
+        return $this->redirectToRoute('inventario_index');
+        }
     /**
      * Creates a form to delete a inventario entity.
      *

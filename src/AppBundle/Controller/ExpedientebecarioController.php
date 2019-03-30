@@ -5,52 +5,51 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Expedientebecario;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Expedientebecario controller.
  *
  * @Route("expedientebecario")
  */
-class ExpedientebecarioController extends Controller
-{
+class ExpedientebecarioController extends Controller {
+
     /**
      * Lists all expedientebecario entities.
      *
      * @Route("/", name="expedientebecario_index")
      * @Method("GET")
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $em = $this->getDoctrine()->getManager();
 
         $expedientebecarios = $em->getRepository('AppBundle:Expedientebecario')->findAll();
 
         return $this->render('expedientebecario/index.html.twig', array(
-            'expedientebecarios' => $expedientebecarios,
+                    'expedientebecarios' => $expedientebecarios,
         ));
     }
-    
-    
-    
-    
-        /**
+
+    /**
      * Lists all expedientebecario entities.
      *
      * @Route("/miExpediente", name="expedientebecario_mi")
      * @Method("GET")
      */
-    public function miExpAction()
-    {
+    public function miExpAction() {
         $em = $this->getDoctrine()->getManager();
-        
+
         $expedientebecario = new Expedientebecario();
 
-        $expedientebecario =  $em->getRepository('AppBundle:Expedientebecario')->findOneByIdusuario($this->getUser());
-       
+        $expedientebecario = $em->getRepository('AppBundle:Expedientebecario')->findOneByIdusuario($this->getUser()->getId());
+
+        $inscripcion = $em->getRepository('AppBundle:Inscripcion')->findByIdexpbecario($expedientebecario);
+
 
         return $this->render('expedientebecario/miexpshow.html.twig', array(
-            'expedientebecario' => $expedientebecario,
+                    'expedientebecario' => $expedientebecario,
+                    'inscripcion' => $inscripcion,
         ));
     }
 
@@ -60,8 +59,7 @@ class ExpedientebecarioController extends Controller
      * @Route("/new", name="expedientebecario_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
-    {
+    public function newAction(Request $request) {
         $expedientebecario = new Expedientebecario();
         $form = $this->createForm('AppBundle\Form\ExpedientebecarioType', $expedientebecario);
         $form->handleRequest($request);
@@ -75,8 +73,8 @@ class ExpedientebecarioController extends Controller
         }
 
         return $this->render('expedientebecario/new.html.twig', array(
-            'expedientebecario' => $expedientebecario,
-            'form' => $form->createView(),
+                    'expedientebecario' => $expedientebecario,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -86,26 +84,22 @@ class ExpedientebecarioController extends Controller
      * @Route("/{id}", name="expedientebecario_show")
      * @Method("GET")
      */
-    public function showAction(Expedientebecario $expedientebecario)
-    {
+    public function showAction(Expedientebecario $expedientebecario) {
         $deleteForm = $this->createDeleteForm($expedientebecario);
 
         return $this->render('expedientebecario/show.html.twig', array(
-            'expedientebecario' => $expedientebecario,
-            'delete_form' => $deleteForm->createView(),
+                    'expedientebecario' => $expedientebecario,
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
-    
-    
-    
+
     /**
      * Displays a form to edit an existing expedientebecario entity.
      *
      * @Route("/{id}/edit", name="expedientebecario_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Expedientebecario $expedientebecario)
-    {
+    public function editAction(Request $request, Expedientebecario $expedientebecario) {
         $deleteForm = $this->createDeleteForm($expedientebecario);
         $editForm = $this->createForm('AppBundle\Form\ExpedientebecarioType', $expedientebecario);
         $editForm->handleRequest($request);
@@ -117,9 +111,9 @@ class ExpedientebecarioController extends Controller
         }
 
         return $this->render('expedientebecario/edit.html.twig', array(
-            'expedientebecario' => $expedientebecario,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'expedientebecario' => $expedientebecario,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -129,8 +123,7 @@ class ExpedientebecarioController extends Controller
      * @Route("/{id}", name="expedientebecario_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Expedientebecario $expedientebecario)
-    {
+    public function deleteAction(Request $request, Expedientebecario $expedientebecario) {
         $form = $this->createDeleteForm($expedientebecario);
         $form->handleRequest($request);
 
@@ -150,12 +143,12 @@ class ExpedientebecarioController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Expedientebecario $expedientebecario)
-    {
+    private function createDeleteForm(Expedientebecario $expedientebecario) {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('expedientebecario_delete', array('id' => $expedientebecario->getIdExpbecario())))
-            ->setMethod('DELETE')
-            ->getForm()
+                        ->setAction($this->generateUrl('expedientebecario_delete', array('id' => $expedientebecario->getIdExpbecario())))
+                        ->setMethod('DELETE')
+                        ->getForm()
         ;
     }
+
 }

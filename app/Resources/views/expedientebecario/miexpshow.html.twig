@@ -132,11 +132,11 @@
                         </ul>#}
     </div>
     <div class="row">
-    <div class="col-md-12" align="right" style="width:95%;margin-left: 2.5%;">
-        <div class="col-sm-offset-2 col-sm-10">
-            <a class="btn btn-primary" href="{{ path('expedientebecario_edit',{'id':expedientebecario.idexpbecario}) }}"><i class="fa fa-fw fa-edit"></i>Editar</a>
+        <div class="col-md-12" align="right" style="width:95%;margin-left: 2.5%;">
+            <div class="col-sm-offset-2 col-sm-10">
+                <a class="btn btn-primary" href="{{ path('expedientebecario_edit',{'id':expedientebecario.idexpbecario}) }}"><i class="fa fa-fw fa-edit"></i>Editar</a>
+            </div>
         </div>
-    </div>
     </div>
 
     <div class="row" > 
@@ -396,7 +396,17 @@
             </div>
         </div><!-- /.tab-content -->
         <br>
+        {% for inscripciones in inscripcion  %}
+        <div class=" box box-success" style="width:90%; margin-left: 5%">
+            <div>  
+                <div class="col-md-6" align="left">
+                    Ciclo: {{inscripciones.getNumcicloinscripcion()}}
+                </div>
+                <div class="col-md-6" align="right">
+                    Año:  {{inscripciones.getAnioinscripcion()}}
+                </div>
+            </div>
+        </div>
     </div><!-- /.nav-tabs-custom -->
-</div>
-
+{% endfor %}
 {% endblock %}

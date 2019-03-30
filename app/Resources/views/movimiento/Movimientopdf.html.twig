@@ -1,0 +1,27 @@
+
+
+
+                        <table class="table table-bordered table-hover table-striped table-responsive"  id="tabelMahasiswa">
+                            <thead>
+                                <tr>
+                                    <th>Descripcion</th>
+                                    <th>Monto</th>
+                                    <th>Estado</th>
+                                    <th>Numero de Cuenta</th>
+                                    <th>Cuenta</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                {% for movimiento in movimientos %}
+                                    <tr>
+                                        <td class="th">{{ movimiento.descripcionmov }}</td>
+                                        <td class="th">{{ "$"~movimiento.monto }}</td>
+                                        <td class="th">{% if movimiento.estadomov %}Aprobado{% else %}Pendiente{% endif %}</td>
+                                        <td class="th">{{ movimiento.numcuenta }}</td>
+                                        <td class="th">{{ movimiento.nomcuenta }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+

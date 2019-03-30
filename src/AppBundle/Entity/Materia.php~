@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Materia
  *
- * @ORM\Table(name="materia", indexes={@ORM\Index(name="FK_RELATIONSHIP_39", columns={"IDINSCRIPCION"})})
+ * @ORM\Table(name="materia")
  * @ORM\Entity
  */
 class Materia
@@ -42,19 +42,7 @@ class Materia
      */
     private $notamateria;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="ANIOMATERIA", type="date", nullable=true)
-     */
-    private $aniomateria;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="NUMCICLOMATERIA", type="integer", nullable=true)
-     */
-    private $numciclomateria;
 
     /**
      * @var string
@@ -62,16 +50,6 @@ class Materia
      * @ORM\Column(name="ESTADOMATERIA", type="string", length=1, nullable=true)
      */
     private $estadomateria;
-
-    /**
-     * @var \Inscripcion
-     *
-     * @ORM\ManyToOne(targetEntity="Inscripcion")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="IDINSCRIPCION", referencedColumnName="IDINSCRIPCION")
-     * })
-     */
-    private $idinscripcion;
 
 
 
@@ -147,53 +125,6 @@ class Materia
         return $this->notamateria;
     }
 
-    /**
-     * Set aniomateria
-     *
-     * @param \DateTime $aniomateria
-     *
-     * @return Materia
-     */
-    public function setAniomateria($aniomateria)
-    {
-        $this->aniomateria = $aniomateria;
-
-        return $this;
-    }
-
-    /**
-     * Get aniomateria
-     *
-     * @return \DateTime
-     */
-    public function getAniomateria()
-    {
-        return $this->aniomateria;
-    }
-
-    /**
-     * Set numciclomateria
-     *
-     * @param integer $numciclomateria
-     *
-     * @return Materia
-     */
-    public function setNumciclomateria($numciclomateria)
-    {
-        $this->numciclomateria = $numciclomateria;
-
-        return $this;
-    }
-
-    /**
-     * Get numciclomateria
-     *
-     * @return integer
-     */
-    public function getNumciclomateria()
-    {
-        return $this->numciclomateria;
-    }
 
     /**
      * Set estadomateria
@@ -229,27 +160,5 @@ class Materia
         return $this->idmateria;
     }
 
-    /**
-     * Set idinscripcion
-     *
-     * @param \AppBundle\Entity\Inscripcion $idinscripcion
-     *
-     * @return Materia
-     */
-    public function setIdinscripcion(\AppBundle\Entity\Inscripcion $idinscripcion = null)
-    {
-        $this->idinscripcion = $idinscripcion;
-
-        return $this;
-    }
-
-    /**
-     * Get idinscripcion
-     *
-     * @return \AppBundle\Entity\Inscripcion
-     */
-    public function getIdinscripcion()
-    {
-        return $this->idinscripcion;
-    }
+  
 }

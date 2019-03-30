@@ -62,7 +62,6 @@
         </div>
       </nav>
 
-        {% block body %}{% endblock %}
         <!-- Footer -->
         <footer class="py-5 bg-dark">
           <div class="container">
@@ -75,6 +74,11 @@
         <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
         <!-- Custom Fonts -->
         <script src="https://use.fontawesome.com/67a564e5bf.js"></script>
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+
+        {% block body %}
+           
+
+        {% endblock %}
     </body>
 </html>

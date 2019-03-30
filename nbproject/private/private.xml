@@ -12,12 +12,11 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/siessoc_2.0/src/AppBundle/Entity/Movimientoinventario.php</file>
-            <file>file:/C:/xampp/htdocs/siessoc_2.0/app/Resources/views/movimientoinventario/movimientoinventarionew.html.twig</file>
-            <file>file:/C:/xampp/htdocs/siessoc_2.0/src/AppBundle/Controller/MovimientoinventarioController.php</file>
-            <file>file:/C:/xampp/htdocs/siessoc_2.0/src/AppBundle/Form/MovimientoinventarioType.php</file>
-            <file>file:/C:/xampp/htdocs/siessoc_2.0/src/AppBundle/Entity/Expedientebecario.php</file>
-            <file>file:/C:/xampp/htdocs/siessoc_2.0/app/Resources/views/movimientoinventario/movimientoinventarioindex.html.twig</file>
+            <file>file:/C:/wamp64/www/siessoc_2.0/app/Resources/views/publicacioncontenido/contenidoindex.html.twig</file>
+            <file>file:/C:/wamp64/www/siessoc_2.0/app/Resources/views/webSite/publicaciones.html.twig</file>
+            <file>file:/C:/wamp64/www/siessoc_2.0/app/Resources/views/webSite/history.html.twig</file>
+            <file>file:/C:/wamp64/www/siessoc_2.0/app/Resources/views/webSite/nosotros.html.twig</file>
+            <file>file:/C:/wamp64/www/siessoc_2.0/src/AppBundle/Controller/WebSiteController.php</file>
         </group>
     </open-files>
 </project-private>

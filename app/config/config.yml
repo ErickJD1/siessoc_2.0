@@ -22,7 +22,7 @@ framework:
     validation:      { enable_annotations: true }
     #serializer:      { enable_annotations: true }
     templating:
-        engines: ['twig']
+        engines: ['twig','php']
         #assets_version: SomeVersionScheme
     default_locale:  "%locale%"
     trusted_hosts:   ~
@@ -130,6 +130,15 @@ liip_imagine:
             quality: 90
             filters:
                 thumbail: { size: [100, 100], mode: outbound }
+              
+        big:
+            filters:
+                relative_resize:
+                    heighten: 800
+                    # Will allow smaller images to take 800px of height, 
+                    # width will change accordingly since aspect ration is still valid.
+                    allow_upscale: true 
+
 
 # KNP Menu configuration
 # http://symfony.com/doc/master/bundles/KnpMenuBundle/index.html
@@ -197,3 +206,5 @@ knp_paginator:
         pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v4_pagination.html.twig    # sliding pagination controls template
         sortable: '@KnpPaginator/Pagination/sortable_link.html.twig' # sort link template
         filtration: '@KnpPaginator/Pagination/filtration.html.twig'  # filters template
+        
+

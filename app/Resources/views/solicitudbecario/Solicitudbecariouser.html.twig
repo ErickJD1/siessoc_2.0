@@ -6,6 +6,8 @@
 {% block page_content %}
 
     <div class="box box-primary">
+
+
         <div style="width:90%; margin-left:5%; margin-top: 2% ">
 
             {#<div align="left">
@@ -36,28 +38,28 @@
 
 
 
-                        <td>
-                         <div class="row" align="center">
+                            <td>
+                                <div class="row" align="center">
                                     {% if solicitudbecario.estadosolibecario==2 and app.user.hasRole('ROLE_ASPIRANTE_BECARIO')   %}
                                         <div class="col col-md-6">
                                             <a title="Editar Solicitud" href="{{path('solicitudbecario_edit',{ 'id' : solicitudbecario.idsolibecario })}}" style="background-color: transparent; border: none;"><i class="fa fa-edit" style="font-size: 20px; color: limegreen"></i></a>
                                         </div>
                                     {% endif %}
                                     <div class="col col-md-6" align="center"><button title="Ver Solicitud" class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#VerSoli{{ solicitudbecario.idsolibecario }}"><i style="font-size: 20px; "></i><i class="fa fa-eye" style="font-size: 20px; color: deepskyblue"></i>
-                                                {% if((solicitudbecario.estadosolibecario == 0) and app.user.hasRole('ROLE_ADMIN') or app.user.hasRole('ROLE_COORDINADOR') ) %}<span class="label label-danger" style="border-radius: 18px; position: absolute; margin-left: -0.8em; top:-0.3em">1</span>
-                                                {% elseif solicitudbecario.estadosolibecario==2 and app.user.hasRole('ROLE_ASPIRANTE_BECARIO')   %}
-                                                    <span class="label label-danger" style="border-radius: 18px; position: absolute; margin-left: -0.8em; top:-0.3em">1</span>
-                                            {% elseif solicitudbecario.estadosolibecario==1 %}{% endif %}</button>
-                                            {{ render(controller('AppBundle:Solicitudbecario:show', { 'id' : solicitudbecario.idsolibecario } )) }}
-                                    </div>
-                         </div>
+                                            {% if((solicitudbecario.estadosolibecario == 0) and app.user.hasRole('ROLE_ADMIN') or app.user.hasRole('ROLE_COORDINADOR') ) %}<span class="label label-danger" style="border-radius: 18px; position: absolute; margin-left: -0.8em; top:-0.3em">1</span>
+                                            {% elseif solicitudbecario.estadosolibecario==2 and app.user.hasRole('ROLE_ASPIRANTE_BECARIO')   %}
+                                                <span class="label label-danger" style="border-radius: 18px; position: absolute; margin-left: -0.8em; top:-0.3em">1</span>
+                                        {% elseif solicitudbecario.estadosolibecario==1 %}{% endif %}</button>
+                                        {{ render(controller('AppBundle:Solicitudbecario:show', { 'id' : solicitudbecario.idsolibecario } )) }}
+                                </div>
+                            </div>
                         </td>
-                        </tr>
+                    </tr>
 
-                        </div>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
+                    </div>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
+</div>
 {% endblock %}

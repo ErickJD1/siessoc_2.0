@@ -67,8 +67,8 @@ class Publicacioncontenido {
      * @Assert\Image(
      *     maxSize="5M",
      *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg"},
-     *     maxWidth=700,
-     *     maxHeight=700
+     *     maxWidth=1920,
+     *     maxHeight=1080
      * )
      * @Vich\UploadableField(mapping="profile_image", fileNameProperty="contenidoPicture")
      * @var [type]
@@ -168,9 +168,9 @@ class Publicacioncontenido {
 
         // Only change the updated af if the file is really uploaded to avoid database updates.
         // This is needed when the file should be set when loading the entity.
-        if ($this->contenido_picture_file instanceof UploadedFile) {
+       /* if ($this->contenido_picture_file instanceof UploadedFile) {
             $this->setUpdateAt(new Carbon());
-        }
+        }*/
 
         return $this;
     }

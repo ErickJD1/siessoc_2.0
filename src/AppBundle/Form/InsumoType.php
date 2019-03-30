@@ -17,7 +17,7 @@ class InsumoType extends AbstractType
     {
         $builder->add('nombreinsumo')
                 ->add('descripcioninsumo',TextareaType::class,array('label'=>'Descripción'))
-                ->add('estadoinsumo', CheckboxType::class, array('label'=>'Activar', 'required'=>false))
+                ->add('estadoinsumo', CheckboxType::class, array('label'=>'Activo', 'required'=>false))
                 ->add('idtipoinsumo')        ;
     }
     

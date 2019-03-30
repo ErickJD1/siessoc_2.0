@@ -3,15 +3,22 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
+use SalexUserBundle\Entity\User;
+use Carbon\Carbon;
 
 /**
  * Carrera
  *
- * @ORM\Table(name="carrera", indexes={@ORM\Index(name="FK_RELATIONSHIP_29", columns={"IDMATERIA"}), @ORM\Index(name="FK_RELATIONSHIP_38", columns={"IDUNIVERSIDAD"})})
+ * @ORM\Table(name="carrera")
  * @ORM\Entity
+ * @Vich\Uploadable
  */
-class Carrera
-{
+class Carrera {
+
     /**
      * @var integer
      *
@@ -43,36 +50,13 @@ class Carrera
     private $estadocarrera;
 
     /**
-     * @var \Materia
-     *
-     * @ORM\ManyToOne(targetEntity="Materia")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="IDMATERIA", referencedColumnName="IDMATERIA")
-     * })
-     */
-    private $idmateria;
-
-    /**
-     * @var \Universidad
-     *
-     * @ORM\ManyToOne(targetEntity="Universidad")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="IDUNIVERSIDAD", referencedColumnName="IDUNIVERSIDAD")
-     * })
-     */
-    private $iduniversidad;
-
-
-
-    /**
      * Set nomcarrera
      *
      * @param string $nomcarrera
      *
      * @return Carrera
      */
-    public function setNomcarrera($nomcarrera)
-    {
+    public function setNomcarrera($nomcarrera) {
         $this->nomcarrera = $nomcarrera;
 
         return $this;
@@ -83,8 +67,7 @@ class Carrera
      *
      * @return string
      */
-    public function getNomcarrera()
-    {
+    public function getNomcarrera() {
         return $this->nomcarrera;
     }
 
@@ -95,8 +78,7 @@ class Carrera
      *
      * @return Carrera
      */
-    public function setDescripcioncarrera($descripcioncarrera)
-    {
+    public function setDescripcioncarrera($descripcioncarrera) {
         $this->descripcioncarrera = $descripcioncarrera;
 
         return $this;
@@ -107,8 +89,7 @@ class Carrera
      *
      * @return string
      */
-    public function getDescripcioncarrera()
-    {
+    public function getDescripcioncarrera() {
         return $this->descripcioncarrera;
     }
 
@@ -119,8 +100,7 @@ class Carrera
      *
      * @return Carrera
      */
-    public function setEstadocarrera($estadocarrera)
-    {
+    public function setEstadocarrera($estadocarrera) {
         $this->estadocarrera = $estadocarrera;
 
         return $this;
@@ -131,8 +111,7 @@ class Carrera
      *
      * @return boolean
      */
-    public function getEstadocarrera()
-    {
+    public function getEstadocarrera() {
         return $this->estadocarrera;
     }
 
@@ -141,56 +120,14 @@ class Carrera
      *
      * @return integer
      */
-    public function getIdcarrera()
-    {
+    public function getIdcarrera() {
         return $this->idcarrera;
     }
 
-    /**
-     * Set iduniversidad
-     *
-     * @param \AppBundle\Entity\Universidad $iduniversidad
-     *
-     * @return Carrera
-     */
-    public function setIduniversidad(\AppBundle\Entity\Universidad $iduniversidad = null)
-    {
-        $this->iduniversidad = $iduniversidad;
+    public function __toString() {
+                return $this->nomcarrera;
 
-        return $this;
+        
     }
 
-    /**
-     * Get iduniversidad
-     *
-     * @return \AppBundle\Entity\Universidad
-     */
-    public function getIduniversidad()
-    {
-        return $this->iduniversidad;
-    }
-
-    /**
-     * Set idmateria
-     *
-     * @param \AppBundle\Entity\Materia $idmateria
-     *
-     * @return Carrera
-     */
-    public function setIdmateria(\AppBundle\Entity\Materia $idmateria = null)
-    {
-        $this->idmateria = $idmateria;
-
-        return $this;
-    }
-
-    /**
-     * Get idmateria
-     *
-     * @return \AppBundle\Entity\Materia
-     */
-    public function getIdmateria()
-    {
-        return $this->idmateria;
-    }
 }

@@ -1,7 +1,7 @@
 {% extends "layout/base-layout.html.twig" %}
 
 {% block page_title %} Contenido | {% endblock %}
-{% block page_subtitle %}Agregar Contenido {% endblock %}
+{% block page_subtitle %}Registrar {% endblock %}
 
 {% block page_content %}
 
@@ -10,11 +10,11 @@
         <div  style="width:90%; margin-top: 2%; background-color:#F3F3F3; margin-left: 5%" class="panel panel-default"> 
 
             <div class="col col-md-12" align="center" > 
-                <img style="width:80px;margin-top: 2%;margin-bottom: 2%" src="{{ asset('img/blog.png') }}"></img>
+                <img style="width:80px;margin-top: 2%;margin-bottom: 2%" src="{{ asset('img/icons/blog.png') }}"></img>
             </div>   
             <div class="col col-md-12 " align="center" style="margin-top:-15px"> 
                 <h2 class="col col-md-12" style="font-family: palatino header" >Registrar Contenido</h2>
-                <h5 class="col col-md-12" style="color:grey; font-family: palatino body;margin-top: -4px">Complete los campos requeridos</h5>
+                 <h5 class="col col-md-12" style="color:grey; font-family: palatino body;margin-top: -4px">Complete los campos requeridos: <span style="font-size: 25;color: red" >*</span></h5>
 
             </div>
             <hr>
@@ -24,13 +24,13 @@
 
                 <div class="row">
                     <div class="col-xs-6">
-                        <label for="form_Titulo">Titulo<span style="font-size: 25;color: red" >*</span></label>
+                        <label for="form_Titulo">Título<span style="font-size: 25;color: red" >*</span></label>
                         {{ form_widget(form.titulo) }}
                         {{ form_errors(form.titulo) }}
                     </div>
 
                     <div class="col-xs-6">
-                        <label for="form_Subtitulo">SubTitulo<span style="font-size: 25;color: red" >*</span></label>
+                        <label for="form_Subtitulo">Subtítulo</label>
                         {{ form_widget(form.subtitulo) }}
                         {{ form_errors(form.subtitulo) }}
                     </div>
@@ -38,7 +38,7 @@
 <br>
                 <div class="row">
                     <div class="col-xs-12">
-                        <label for="form_Descripcion">Descripcion</label>
+                        <label for="form_Descripcion">Descripción<span style="font-size: 25;color: red" >*</span></label>
                         {{ form_widget(form.descripcioncontenido) }}
                         {{ form_errors(form.descripcioncontenido) }}
                     </div>
@@ -46,13 +46,13 @@
                     <br>
                 <div class="row">
                     <div class="col-md-6" id='datetimepicker1'>
-                        <label for="form_FechaContenido">Fecha De Publicacion</label>
+                        <label for="form_FechaContenido">Fecha</label>
                         {{ form_widget(form.fechacontenido) }}
                         {{ form_errors(form.fechacontenido) }}
                     </div>  
      
                     <div class="col-md-6">
-                        <label for="form_Contenido">Contenido</label>
+                        <label for="form_Contenido">Adjuntar Imagen</label>
                         {{ form_widget(form.contenido_picture_file) }}
                         {{ form_errors(form.contenido_picture_file) }}       
                     </div>
@@ -60,8 +60,7 @@
                     <br>
                 <div class="row">
                     <div class="col col-md-12" align="left"> 
-                        <strong>Estado</strong>
-                     
+                        <strong>Publicar Contenido</strong>
                         {{ form_widget(form.estadocontenido) }}
                         {{ form_errors(form.estadocontenido) }}   
                     </div>
@@ -71,7 +70,7 @@
 
             <div class="row">
                 <div class="col col-md-10" align="right">
-                    <a href="{{ absolute_url(asset('')) }}publicacioncontenido" class="btn btn-primary btn-xl">Cancelar</a>
+                    <a href="{{ absolute_url(asset('')) }}publicacioncontenido" class="btn btn-danger btn-xl">Cancelar</a>
                     <input  class="btn btn-success btn-xl" type="submit"  value="Guardar" />
 
 

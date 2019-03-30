@@ -7,6 +7,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 
 /**
  * Publicacioncontenido controller.
@@ -50,7 +54,7 @@ class PublicacioncontenidoController extends Controller
             $em->persist($publicacioncontenido);
             $em->flush($publicacioncontenido);
 
-            $this->addFlash('success', 'Publicacion Guardada Exitosamente!');
+            $this->addFlash('success', 'Contenido Registrado Exitosamente!');
             return $this->redirectToRoute('publicacioncontenido_index');
         }
 
@@ -84,7 +88,6 @@ class PublicacioncontenidoController extends Controller
      */
     public function editAction(Request $request, Publicacioncontenido $publicacioncontenido)
     {
-        $deleteForm = $this->createDeleteForm($publicacioncontenido);
         $editForm = $this->createForm('AppBundle\Form\PublicacioncontenidoType', $publicacioncontenido);
         $editForm->handleRequest($request);
 
@@ -99,44 +102,7 @@ class PublicacioncontenidoController extends Controller
         return $this->render('publicacioncontenido/contenidoedit.html.twig', array(
             'publicacioncontenido' => $publicacioncontenido,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         ));
     }
-
-    /**
-     * Deletes a publicacioncontenido entity.
-     *
-     * @Route("/{id}", name="publicacioncontenido_delete")
-     * @Method("DELETE")
-     */
-    public function deleteAction(Request $request, Publicacioncontenido $publicacioncontenido)
-    {
-        $form = $this->createDeleteForm($publicacioncontenido);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($publicacioncontenido);
-            $em->flush($publicacioncontenido);
-        }
-
-        $this->addFlash('success', 'Publicacion Eliminada Exitosamente!');
-         return $this->redirectToRoute('publicacioncontenido_index');
-    }
-
-    /**
-     * Creates a form to delete a publicacioncontenido entity.
-     *
-     * @param Publicacioncontenido $publicacioncontenido The publicacioncontenido entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(Publicacioncontenido $publicacioncontenido)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('publicacioncontenido_delete', array('id' => $publicacioncontenido->getIdcontenido())))
-            ->setMethod('DELETE')
-            ->getForm()
-        ;
-    }
+   
 }

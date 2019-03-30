@@ -1,7 +1,6 @@
 {% extends "layout/base-layout.html.twig" %}
 
-{% block page_title %}Catálogo{% endblock %}
-{% block page_subtitle %}Tipo Cuenta{% endblock %}
+{% block page_title %}Tipo de Cuenta {% endblock %}
 
 {% block page_content %}
 
@@ -9,49 +8,64 @@
         <div style="width:90%; margin-left:5%; margin-top: 2% ">
 
             <div align="left">
-                <a style="font-size: 15px" href="{{ path('tipocuenta_new') }}" class="btn btn-success btn-sm"><i style="font-size: 20px" class="fa fa-plus-circle"></i> Tipo Cuenta</a>
+                <a style="font-size: 15px" href="{{ path('tipocuenta_new') }}" class="btn btn-success btn-sm"><i style="font-size: 20px" class="fa fa-plus-circle"></i> Tipo de Cuenta</a>
             </div>
 
             <br> </br>
 
             <table class="table table-bordered table-hover table-striped table-responsive" style="width:100%" id="tabelMahasiswa">
                 <thead class="thead-light">
-                    <tr>
-                        <th><center>Tipo de Cuenta</center></th>
-                <th><center>Descripción</center></th>
-                <th><center>Estado</center></th>
-                <th><center>Acciones</center></th>
+                <tr>
+                <th width="20%">Tipo de Cuenta</th>
+                <th width="44%">Descripción</th>
+                <th width="18%">Estado</th>
+                <th width="18%"><center>Opciones</center></th>
                 </tr>
                 </thead>
                 <tbody>
 
                     {% for tipocuentum in tipocuentas %}
                         <tr data-id="{{ tipocuentum.idtipocuenta }}">
-                            <td>{{ tipocuentum.Nombrecuenta }}</td>
-                            <td>{{ tipocuentum.descripcion }}</td>
-                            <td><center>{% if tipocuentum.estadotipocuenta %}Activa{% else %}Inactiva{% endif %}</center></td>
-                    <td>
-                    <center>
-                        <div class="row">
-                        <div align="center" class="col col-sm-4"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#miventanadelete{{ tipocuentum.idtipocuenta }}"><i class="fa fa-trash" style="font-size: 20px; color: crimson"></i></button>
-                                {{ render(controller('AppBundle:Tipocuenta:showdelete', { 'id' : tipocuentum.idtipocuenta } )) }}
-                        </div>
+                            <td align ="left">{{ tipocuentum.Nombrecuenta }}</td>
+                            <td align = "left">{{ tipocuentum.descripcion }}</td>
+                            <td align = "left">{% if tipocuentum.estadotipocuenta %}Activa{% else %}Inactiva{% endif %}</center></td>
+                <td align ="center">   
+                  <div class="options btn-group btn-group-sm">
+                  <a class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-caret-down no-margin"></i> Opciones
+                  </a>
+                  <ul class="dropdown-menu">
 
-                        <div align="center" class="col col-sm-4" >
-                            <a href="{{ path('tipocuenta_edit',{ 'id' : tipocuentum.idtipocuenta }) }}" style="background-color: transparent; border: none;"><i class="fa fa-edit" style="font-size: 20px; color: limegreen"></i></a>
-                        </div>
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#miventana{{ tipocuentum.idtipocuenta }}">
+                            <i class="fa fa-eye fa-margin"></i> Mostrar
+                        </a>
+                    </li>
 
-                        <div align="center" class="col col-sm-4"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#miventana{{ tipocuentum.idtipocuenta }}"><i class="fa fa-eye" style="font-size: 20px; color: deepskyblue"></i></button>
-                                {{ render(controller('AppBundle:Tipocuenta:show', { 'id' : tipocuentum.idtipocuenta } )) }}
-                        </div>
-                        </div>
-                    </center>
-                    </td>
-                    </tr>
+                     <li>
+                        <a href="{{ path('tipocuenta_edit',{ 'id' : tipocuentum.idtipocuenta }) }}" >
+                            <i class="fa fa-edit fa-margin"></i> Editar
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#miventanadelete{{ tipocuentum.idtipocuenta }}">
+                            <i class="fa fa-trash-o fa-margin"></i> Eliminar
+                        </a>
+                    </li>
+                    
+                    </ul>
+                     {{ render(controller('AppBundle:Tipocuenta:showdelete', { 'id' : tipocuentum.idtipocuenta } )) }}
+                     {{ render(controller('AppBundle:Tipocuenta:show', { 'id' : tipocuentum.idtipocuenta } )) }}
+
+                  </div>
+                </td>
+             </tr>
 
         {% endfor %}
     </tbody>
 </table>
+
 </div>
 </div>
 {% endblock %}

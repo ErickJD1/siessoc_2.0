@@ -1,7 +1,17 @@
 <?php
 
+/*
+ * This file is part of the `liip/LiipImagineBundle` project.
+ *
+ * (c) https://github.com/liip/LiipImagineBundle/graphs/contributors
+ *
+ * For the full copyright and license information, please view the LICENSE.md
+ * file that was distributed with this source code.
+ */
+
 namespace Liip\ImagineBundle\Imagine\Cache\Resolver;
 
+use League\Flysystem\AdapterInterface;
 use League\Flysystem\Filesystem;
 use Liip\ImagineBundle\Binary\BinaryInterface;
 use Liip\ImagineBundle\Exception\Imagine\Cache\Resolver\NotResolvableException;
@@ -35,18 +45,29 @@ class FlysystemResolver implements ResolverInterface
     protected $cacheRoot;
 
     /**
+     * Flysystem specific visibility.
+     *
+     * @see AdapterInterface
+     *
+     * @var string
+     */
+    protected $visibility;
+
+    /**
      * FlysystemResolver constructor.
      *
      * @param Filesystem     $flysystem
      * @param RequestContext $requestContext
-     * @param $rootUrl
-     * @param string $cachePrefix
+     * @param string         $rootUrl
+     * @param string         $cachePrefix
+     * @param string         $visibility
      */
     public function __construct(
         Filesystem $flysystem,
         RequestContext $requestContext,
         $rootUrl,
-        $cachePrefix = 'media/cache'
+        $cachePrefix = 'media/cache',
+        $visibility = AdapterInterface::VISIBILITY_PUBLIC
     ) {
         $this->flysystem = $flysystem;
         $this->requestContext = $requestContext;
@@ -54,6 +75,7 @@ class FlysystemResolver implements ResolverInterface
         $this->webRoot = rtrim($rootUrl, '/');
         $this->cachePrefix = ltrim(str_replace('//', '/', $cachePrefix), '/');
         $this->cacheRoot = $this->cachePrefix;
+        $this->visibility = $visibility;
     }
 
     /**
@@ -91,12 +113,12 @@ class FlysystemResolver implements ResolverInterface
     /**
      * Resolves filtered path for rendering in the browser.
      *
-     * @param string $path   The path where the original file is expected to be.
-     * @param string $filter The name of the imagine filter in effect.
-     *
-     * @return string The absolute URL of the cached image.
+     * @param string $path   The path where the original file is expected to be
+     * @param string $filter The name of the imagine filter in effect
      *
      * @throws NotResolvableException
+     *
+     * @return string The absolute URL of the cached image
      */
     public function resolve($path, $filter)
     {
@@ -110,21 +132,22 @@ class FlysystemResolver implements ResolverInterface
     /**
      * Stores the content of the given binary.
      *
-     * @param BinaryInterface $binary The image binary to store.
-     * @param string          $path   The path where the original file is expected to be.
-     * @param string          $filter The name of the imagine filter in effect.
+     * @param BinaryInterface $binary The image binary to store
+     * @param string          $path   The path where the original file is expected to be
+     * @param string          $filter The name of the imagine filter in effect
      */
     public function store(BinaryInterface $binary, $path, $filter)
     {
         $this->flysystem->put(
             $this->getFilePath($path, $filter),
-            $binary->getContent()
+            $binary->getContent(),
+            array('visibility' => $this->visibility)
         );
     }
 
     /**
-     * @param string[] $paths   The paths where the original files are expected to be.
-     * @param string[] $filters The imagine filters in effect.
+     * @param string[] $paths   The paths where the original files are expected to be
+     * @param string[] $filters The imagine filters in effect
      */
     public function remove(array $paths, array $filters)
     {

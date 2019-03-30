@@ -39,34 +39,23 @@ class MovimientoinventarioController extends Controller {
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request) {
-       $movimientoinventario = new Movimientoinventario();
-         $inventario = New \AppBundle\Entity\Inventario();
+        $movimientoinventario = new Movimientoinventario();
+        $inventario = New \AppBundle\Entity\Inventario();
         $em = $this->getDoctrine()->getManager();
         $inventario = $em->getRepository('AppBundle:Inventario')->findOneByIdinventario($request->get("id"));
-        $movimientoinventario->setIdinventario($inventario->getIdinventario());
-        
-        
+        $movimientoinventario->setIdinventario($inventario);
+
         $form = $this->createForm('AppBundle\Form\MovimientoinventarioType', $movimientoinventario);
         $em = $this->getDoctrine()->getManager();
-        $form->add('idinventario');
         $form->handleRequest($request);
 
-       
+
 
         if ($form->isSubmitted() && $form->isValid()) {
-            //  $inventario = New \AppBundle\Entity\Inventario();
-            //  $em = $this->getDoctrine()->getManager();
-            //  $inventario = $em->getRepository('AppBundle:Inventario')->findOneByIdinventario($movimientoinventario->getIdinventario());
-
+            $cantidadactual = $inventario->getCantidadinventario() - $form->get('cantidadentrega')->getData();
             $em->persist($movimientoinventario);
             $em->flush($movimientoinventario);
 
-            $cantidadactual = 0;
-            $movimientos = $this->getDoctrine()->getManager()->getRepository('AppBundle:Movimientoinventario')->findByIdinventario($movimientoinventario->getIdinventario());
-            $cantidadactual = $inventario->getCantidadinventario();
-            foreach ($movimientos as $movimientoinventario) {
-                $cantidadactual = $cantidadactual - $movimientoinventario->getCantidadentrega();
-            }
             $inventario->setCantidadinventario($cantidadactual);
 
             $em->persist($inventario);
@@ -99,6 +88,24 @@ class MovimientoinventarioController extends Controller {
         ));
     }
 
+
+     /**
+     * Finds and displays a movimientoinventario entity.
+     *
+     * @Route("/{id}", name="movimientoinventario_show_delete")
+     * @Method("GET")
+     */
+    public function showDeleteAction(Movimientoinventario $movimientoinventario)
+    {
+        $deleteForm = $this->createDeleteForm($movimientoinventario);
+
+        return $this->render('movimientoinventario/movimientoinventarioshowdelete.html.twig', array(
+            'movimientoinventario' => $movimientoinventario,
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+
     /**
      * Displays a form to edit an existing movimientoinventario entity.
      *
@@ -129,16 +136,22 @@ class MovimientoinventarioController extends Controller {
      * @Route("/{id}", name="movimientoinventario_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Movimientoinventario $movimientoinventario) {
+    public function deleteAction(Request $request, Movimientoinventario $movimientoinventario)
+     {
         $form = $this->createDeleteForm($movimientoinventario);
         $form->handleRequest($request);
 
+     try{
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($movimientoinventario);
             $em->flush($movimientoinventario);
         }
-
+     }catch(\Exception $e){
+        $this->addFlash('error', 'El Movimiento Tiene Asignaciones!');
+        return $this->redirectToRoute('movimientoinventario_index');
+     }
+      $this->addFlash('success', 'El Movimiento Fue Elinimano Exitosamente!');
         return $this->redirectToRoute('movimientoinventario_index');
     }
 
@@ -151,7 +164,7 @@ class MovimientoinventarioController extends Controller {
      */
     private function createDeleteForm(Movimientoinventario $movimientoinventario) {
         return $this->createFormBuilder()
-                        ->setAction($this->generateUrl('movimientoinventario_delete', array('id' => $movimientoinventario->getId())))
+                        ->setAction($this->generateUrl('movimientoinventario_delete', array('id' => $movimientoinventario->getIdmovinv())))
                         ->setMethod('DELETE')
                         ->getForm()
         ;

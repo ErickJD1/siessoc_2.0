@@ -1,61 +1,201 @@
 {% extends "layout/base-layout.html.twig" %}
 
-{% block page_title %} Publicaciones | {% endblock %}
-{% block page_subtitle %}Lista De Publicaciones {% endblock %}
+{% block page_title %} Publicaciones{% endblock %}
 
 {% block page_content %}
 
-<div class="box box-primary">
-<div style="width:90%; margin-left:5%; margin-top: 2% ">
+    <div class="box box-primary">
+        <div style="width:90%; margin-left:5%; margin-top: 2% ">
 
-<div align="left">
-    <a href="{{ absolute_url(asset('')) }}publicacioncontenido/new" class="btn btn-primary btn-sm">+ Agregar Contenido</a>
-</div>
-<br>
+            <div align="left">
+                <a style="font-size: 15px" href="{{ path('publicacioncontenido_new') }}" class="btn btn-success btn-sm"><i style="font-size: 20px" class="fa fa-plus-circle"></i> Contenido</a>
+            </div>
+            <br>
+            <br>
 
-    <table class="table table-bordered table-hover table-striped table-responsive" style="width:100%" id="tabelMahasiswa">
-          <thead class="thead-light">
-            <tr>
-                <th>Id</th>
-                <th>Titulo</th>
-                <th>Subtitulo</th>
-                <th>Descripcion</th>
-                <th>Fecha</th>
-                <th>Imagen Contenido</th>
-                <th>Estado</th>
-                <th>Usuario</th>
-                <th>Accion</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for publicacioncontenido in publicacioncontenidos %}
-            <tr>
-                <td>{{ publicacioncontenido.idcontenido }}</td>
-                <td>{{ publicacioncontenido.titulo }}</td>
-                <td>{{ publicacioncontenido.subtitulo }}</td>
-                <td>{{ publicacioncontenido.descripcioncontenido }}</td>
-                <td>{% if publicacioncontenido.fechacontenido %}{{ publicacioncontenido.fechacontenido|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ publicacioncontenido.ContenidoPicture }}</td>
-                <td>{% if publicacioncontenido.estadocontenido %}Publicado{% else %}Pendiente{% endif %}</td>
-                 <td>{{ publicacioncontenido.idusuario }}</td>
-                <td>
-                  
-                <div style="float:left;"><button class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#showContenido{{ publicacioncontenido.idcontenido }}"><i class="fa fa-eye" style="font-size: 20px"></i></button>
-                        {{ render(controller('AppBundle:Publicacioncontenido:show', { 'id' : publicacioncontenido.idcontenido } )) }}
-                </div>
-                
-                <div style="float:left;" >
-                <a href="{{ absolute_url(asset('')) }}publicacioncontenido/edit/{{ publicacioncontenido.idcontenido }}" style="background-color: transparent; border: none;"><i class="fa fa-edit" style="font-size: 20px"></i></a>
-                </div>
-               
-              </td>
+            <table class="table table-bordered table-hover table-striped table-responsive" style="width:100%" id="tabelMahasiswa">
+                <thead class="thead-light">
+                    <tr>
+                        <th style="display:none;" width="10%">test</th>
+                        <th width="15%">Título</th>
+                        <th width="15%">Subtítulo</th>
+                        <th width="30%">Descripción</th>
+                        <th width="10%">Fecha</th>
+                        <th width="10%">Usuario</th>
+                        <th width="10%"><center>Acción</center></th>
+                <th width="10%"><center>Opciones</center></th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for publicacioncontenido in publicacioncontenidos %}
+                        <tr>
+                            <td style="display:none;">{{ publicacioncontenido.idcontenido }}</td>
+                            <td>{{ publicacioncontenido.titulo }}</td>
+                            <td>{{ publicacioncontenido.subtitulo }}</td>
+                            <td>{{ publicacioncontenido.descripcioncontenido }}</td>
+                            <td>{% if publicacioncontenido.fechacontenido %}{{ publicacioncontenido.fechacontenido|date('Y-m-d') }}{% endif %}</td>
+                            <td>{{ publicacioncontenido.idusuario }}</td>
+                            <td align="center">
+                                {% if( publicacioncontenido.estadocontenido==0) %}
 
-          </tr>
+                                    <form id="formPublicar" action="{{path('publicacioncontenido_publicar',{'id':publicacioncontenido.idcontenido,'val':1})}}" method="POST"> 
+                                        <input class="hidden" type="text" id="idc" value="{{publicacioncontenido.idcontenido}}">
+                                        <button type="button" onClick="publicarContenido(this)" class="btn btn-success btn-sm" style="width:75px">Publicar</button>
+                                    </form> 
 
+                                {%else%}
+
+                                    <form id="formNoPublicar" action="{{path('publicacioncontenido_nopublicar',{'id':publicacioncontenido.idcontenido,'val':0})}}" method="POST"> 
+                                        <input class="hidden" type="text" id="idnc" value="{{publicacioncontenido.idcontenido}}">
+                                        <button type="button" onClick="noPublicarContenido(this)" class="btn btn-danger btn-sm" style="width:75px">No Publicar</button>
+                                    </form> 
+
+                                {% endif %}
+                            </td>
+                            <td align="center">
+
+                                <div class="options btn-group btn-group-sm">
+                                    <a class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" href="#">
+                                        <i class="fa fa-caret-down no-margin"></i> Opciones
+                                    </a>
+                                    <ul class="dropdown-menu">
+
+                                        <li>
+                                            <a href="{{ path('publicacioncontenido_edit',{ 'id' : publicacioncontenido.idcontenido }) }}" >
+                                                <i class="fa fa-edit fa-margin"></i> Editar
+                                            </a>
+                                        </li>
+
+
+                                    </ul>
+
+                                </div>
+                            </td>
+
+                        </tr>
+
+                        </div>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
-      {% endfor %}
-      </tbody>
-  </table>
-  </div>
-  </div>
+    </div>
 {% endblock %}
+
+{% block javascripts_inline %}
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
+ 
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
+
+
+    <script language="JavaScript" type="text/javascript">
+        
+
+    
+ 
+
+
+
+        function publicarContenido(elm)
+        {
+            var form = document.getElementById('formPublicar');
+            var id2 = $(elm).closest("tr").find("td:lt(1)").text();
+
+            $.ajax({
+                method: "GET",
+                url: "{{ url('publicacioncontenido_publicar') }}",
+                data: "idcontenido=" + id2,
+                dataType: 'json',
+                success: function (data)
+                {
+                    if (data.hasOwnProperty("response") && data.response === "success")
+                    {
+                             
+                           
+                                 
+                        if (data.hasOwnProperty("publicacioncontenidos"))
+                        {
+     
+                            //http://stackoverflow.com/questions/3710204/how-to-check-if-a-string-is-a-valid-json-string-in-javascript-without-using-try/3710226
+                            if (/^[\],:{}\s]*$/.test(data.publicacioncontenidos.replace(/\\["\\\/bfnrtu]/g, '@').
+                                    replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']').
+                                    replace(/(?:^|:|,)(?:\s*\[)+/g, '')))
+                            {
+                                var posts2 = JSON.parse(data.publicacioncontenidos);
+                                if (posts2.length > 0)
+                                {
+                                    var idContenido = $('#idc').val(); 
+                                    
+                                } else
+                                {
+                                    console.log("INVALID JSON STRING");
+                                }
+                            } else
+                            {
+                                console.log("POSTS NOT FOUND");
+                            }
+                        }
+                    }
+                },
+                error: function (jqXHR, exception)
+                {
+                    if (jqXHR.status === 405)
+                    {
+                        console.error("METHOD NOT ALLOWED!");
+                    }
+                }
+            });
+        }
+
+
+        function noPublicarContenido(elm)
+        {
+            var form2 = document.getElementById('formNoPublicar');
+            var idnp = $(elm).closest("tr").find("td:lt(1)").text();
+
+            $.ajax({
+                method: "GET",
+                url: "{{ url('publicacioncontenido_nopublicar') }}",
+                data: "idcontenido=" + idnp,
+                dataType: 'json',
+                success: function (data)
+                {
+                    if (data.hasOwnProperty("response") && data.response === "success")
+                    {
+                        if (data.hasOwnProperty("posts"))
+                        {
+                            //http://stackoverflow.com/questions/3710204/how-to-check-if-a-string-is-a-valid-json-string-in-javascript-without-using-try/3710226
+                            if (/^[\],:{}\s]*$/.test(data.posts.replace(/\\["\\\/bfnrtu]/g, '@').
+                                    replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']').
+                                    replace(/(?:^|:|,)(?:\s*\[)+/g, '')))
+                            {
+                                var posts = JSON.parse(data.posts);
+                                if (posts.length > 0)
+                                {
+                                    var idContenido = $('#idnc').val();
+                                } else
+                                {
+                                    console.log("INVALID JSON STRING");
+                                }
+                            } else
+                            {
+                                console.log("POSTS NOT FOUND");
+                            }
+                        }
+                    }
+                },
+                error: function (jqXHR, exception)
+                {
+                    if (jqXHR.status === 405)
+                    {
+                        console.error("METHOD NOT ALLOWED!");
+                    }
+                }
+            });
+        }
+
+    </script>
+
+{%endblock%}
+

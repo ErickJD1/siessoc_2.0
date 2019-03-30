@@ -143,13 +143,13 @@ class WebSiteController extends Controller {
     /**
      *
      *
-     * @Route("/calendar", name="web_calendar")
+     * @Route("/calendario", name="web_calendar")
      * @Method("GET")
      */
         public function calendarAction() {
 
         return $this->render(
-                        'webSite/bares.html.twig'
+                        'webSite/calendario.html.twig'
         );
     }
 

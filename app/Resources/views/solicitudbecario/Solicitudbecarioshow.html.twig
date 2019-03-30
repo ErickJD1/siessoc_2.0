@@ -1,6 +1,6 @@
 <div class="modal fade" id="VerSoli{{ solicitudbecario.idsolibecario }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div style="width:70%; margin-left: 15%" class="modal-dialog">
-        <div class="modal-content" style="border-radius: 25px">
+        <div class="modal-content" style="border-radius: 15px">
 
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -8,8 +8,7 @@
                     <h3 class="col col-md-11 col-md-offset-1" align="center"><strong>Solicitud Becario </strong></h3>
                 </div>
             </div>
-            <div class="modal-body" >
-
+            <div class="modal-body" style="background-color: #CEECF5; ">
 
                 {%if (solicitudbecario.estadosolibecario==2 )%} 
                     <div class="alert alert-warning">
@@ -20,7 +19,8 @@
                     <div class="alert alert-success">
                         <strong>Solicitud Aprobada:</strong> Verifica el correo de confirmación de la beca. 
                     </div>  
-                {%endif%}              <div style="background-color: gainsboro;" > 
+                {%endif%}              
+                <div > 
                     <br>
                     <div class="nav-tabs-custom" style="width:90%; margin-top: 2% ">
                         <ul class="nav nav-tabs">
@@ -72,9 +72,9 @@
                                     <div class="col col-md-6" align="left">
                                         <label for="form_edad"><i class="fa fa-venus-mars"></i> Sexo: </label>
                                         {% if solicitudbecario.sexo == 'M' %} 
-                                         Masculino
+                                            Masculino
                                         {% else  %}
-                                         Femenino
+                                            Femenino
                                         {% endif %}
                                     </div>
 
@@ -116,7 +116,7 @@
                                 <div class="row">
                                     <div class="col col-md-6" align="left"><h3>Datos Academicos</h3></div>
                                     <div class="col col-md-6">
-                                        <p align="right"><strong>Aspirante:</strong><u> {{app.user.getFirstName()  ~" "~app.user.getLastName()  }}</u></p>
+                                        <p align="right"><strong>Aspirante:</strong><u> {{solicitudbecario.idUsuario.getFirstName()  ~" "~solicitudbecario.idUsuario.getLastName()  }}</u></p>
                                     </div>
                                 </div>
                                 <hr>
@@ -139,13 +139,13 @@
 
                                 <div class="row">
                                     <div class="col col-md-6" align="left" id='datetimepicker1'>
-                                        <label for="form_anioinicio"><i class="fa fa-calendar"></i> Fecha estimada de ingreso a la Universidad: </label>
+                                        <label for="form_anioinicio"><i class="fa fa-calendar"></i> Fecha Ingreso Universidad: </label>
                                         <strong>{% if solicitudbecario.aniosoliingresobecario %}{{ solicitudbecario.aniosoliingresobecario|date('Y-m-d') }}{% endif %}</strong>
 
                                     </div>
 
                                     <div class="col col-md-6" align="left" id='datetimepicker2'>
-                                        <label for="form_aniofin"><i class="fa fa-calendar"></i> Fecha estimada de egreso Universidad: </label>
+                                        <label for="form_aniofin"><i class="fa fa-calendar"></i> Fecha Egreso Universidad: </label>
 
                                         <strong>{% if solicitudbecario.aniosolifinalizacionbecario %}{{ solicitudbecario.aniosolifinalizacionbecario|date('Y-m-d') }}{% endif %}</strong>
                                     </div>
@@ -175,7 +175,7 @@
 
                                     <div class="col col-md-6" align="left">
                                         <label for="form_duracion"><i class="fa fa-history"></i> Duración Carrera: </label>
-                                        {{ solicitudbecario.duracionsolicarrerabecario }} 
+                                        {{ solicitudbecario.duracionsolicarrerabecario }} Años.
 
                                     </div>
                                 </div>
@@ -185,9 +185,9 @@
                                     <div class="col col-md-3" align="left">
                                         <label for="form_otrasbecas"><i class="fa fa-handshake-o"></i> ¿Posee otras becas?</label>
                                         {% if solicitudbecario.otrasbecas == 1 %} 
-                                         SI
+                                            SI
                                         {% else  %}
-                                         NO
+                                            NO
                                         {% endif %}
 
                                     </div> 
@@ -200,7 +200,7 @@
 
                                     <div class="col col-md-6" align="left">
                                         <label for="form_comprobante"><i class="fa fa-paperclip"></i> Comprobante: </label>
-                                        <a href="{{ asset('images/profile/'~solicitudbecario.getComprobante() )  }}">Descargar Comprobante</a>
+                                        <a href="{{ asset('images/documents/'~solicitudbecario.getComprobante() )  }}" target="blank">Descargar Comprobante</a>
 
                                     </div>
                                 </div>
@@ -210,7 +210,7 @@
                                 <div class="row">
                                     <div class="col col-md-6" align="left"><h3>Datos Familiares</h3></div>
                                     <div class="col col-md-6">
-                                        <p align="right"><strong>Aspirante:</strong><u> {{app.user.getFirstName()  ~" "~app.user.getLastName()  }}</u></p>
+                                        <p align="right"><strong>Aspirante:</strong><u> {{solicitudbecario.idUsuario.getFirstName()  ~" "~solicitudbecario.idUsuario.getLastName()  }}</u></p>
                                     </div>
                                 </div>
                                 <hr>
@@ -305,8 +305,8 @@
                                     <div class="modal-content"  style="border-radius: 10px"> 
 
                                         <div class="modal-body">
-                                            <h3 align="right">Observaciones</h3>
-                                            <p align="right">Describe brevemente el rechazo de la solicitud:</p>
+                                            <h3 align="left">Observaciones</h3>
+                                            <p align="left">Describe brevemente el rechazo de la solicitud:</p>
                                             <textarea class="form-control" id="descripcion" name="descripcion" style="width:100%" placeholder="Observaciones" name="descripcion"></textarea>
                                             <button type="submit" class="btn btn-success" style="margin-top:1%;widt:100%" >Guardar</button>
                                         </div>
@@ -314,7 +314,7 @@
                                 </div>   
                             </div> 
 
-                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#recha{{ solicitudbecario.idsolibecario }}" >Denegar</button>
+                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#recha{{ solicitudbecario.idsolibecario }}" >Rechazar</button>
                         </form>
                     </div>
                 {% endif %}                

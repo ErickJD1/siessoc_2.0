@@ -6,12 +6,27 @@
 {% block page_content %}
 
     <div class="box box-primary">
+
+
         <div style="width:90%; margin-left:5%; margin-top: 2% ">
 
-            {#   <div align="left">
-                   <a style="font-size: 20px" href="{{ path('solicitudbecario_new') }}" class="btn btn-success btn-sm"><i style="font-size: 20px" class="fa fa-plus-circle"></i> Registrar Solicitud</a>
-               </div>
-               <br> #}
+            <div class="panel panel-info" id="help">
+                <div class="panel-heading">
+                    <a data-toggle="collapse" href="#id_panel" aria-expanded="true">
+                        <div class="panel-title">     
+                            <i class="fa fa-question-circle" aria-hidden="true"></i>  Verificar Solicitudes
+                            <button class="pull-right" style="background-color: transparent; border:none" id="helpAdd"><i class="fa fa-plus-square " aria-hidden="true"></i></button>
+                            <button class="pull-right" style="background-color: transparent;border:none" id="helpDel" ><i class="fa fa-minus-square " aria-hidden="true"></i></button>
+
+                        </div>
+                    </a>
+                </div>
+                <div id="content">
+                    
+                </div>    
+            </div>
+
+
 
             <table class="table table-bordered table-hover table-striped table-responsive" style="width:100%" id="tabelMahasiswa">
                 <thead class="thead-light">
@@ -40,21 +55,43 @@
                                             <a title="Editar Solicitud" href="{{path('solicitudbecario_edit',{ 'id' : solicitudbecario.idsolibecario })}}" style="background-color: transparent; border: none;"><i class="fa fa-edit" style="font-size: 20px; color: limegreen"></i></a>
                                         </div>
                                     {% endif %}
-                                        <div class="col col-md-6" align="center"><button title="Ver Solicitud" class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#VerSoli{{ solicitudbecario.idsolibecario }}"><i style="font-size: 20px; "></i><i class="fa fa-eye" style="font-size: 20px; color: deepskyblue"></i>
-                                                {% if((solicitudbecario.estadosolibecario == 0) and app.user.hasRole('ROLE_ADMIN') or app.user.hasRole('ROLE_COORDINADOR') ) %}<span class="label label-danger" style="border-radius: 18px; position: absolute; margin-left: -0.8em; top:-0.3em">1</span>
-                                                {% elseif solicitudbecario.estadosolibecario==2 and app.user.hasRole('ROLE_ASPIRANTE_BECARIO')   %}
-                                                    <span class="label label-danger" style="border-radius: 18px; position: absolute; margin-left: -0.8em; top:-0.3em">1</span>
-                                            {% elseif solicitudbecario.estadosolibecario==1 %}{% endif %}</button>
-                                            {{ render(controller('AppBundle:Solicitudbecario:show', { 'id' : solicitudbecario.idsolibecario } )) }}
-                                    </div>
+                                    <div class="col col-md-6" align="center"><button title="Ver Solicitud" class="" style="background-color: transparent; border: none;" data-toggle="modal" data-target="#VerSoli{{ solicitudbecario.idsolibecario }}"><i style="font-size: 20px; "></i><i class="fa fa-eye" style="font-size: 20px; color: deepskyblue"></i>
+                                            {% if((solicitudbecario.estadosolibecario == 0) and app.user.hasRole('ROLE_ADMIN') or app.user.hasRole('ROLE_COORDINADOR') ) %}<span class="label label-danger" style="border-radius: 18px; position: absolute; margin-left: -0.8em; top:-0.3em">1</span>
+                                            {% elseif solicitudbecario.estadosolibecario==2 and app.user.hasRole('ROLE_ASPIRANTE_BECARIO')   %}
+                                                <span class="label label-danger" style="border-radius: 18px; position: absolute; margin-left: -0.8em; top:-0.3em">1</span>
+                                        {% elseif solicitudbecario.estadosolibecario==1 %}{% endif %}</button>
+                                        {{ render(controller('AppBundle:Solicitudbecario:show', { 'id' : solicitudbecario.idsolibecario } )) }}
                                 </div>
-                            </td>
-                        </tr>
+                            </div>
+                        </td>
+                    </tr>
 
-                        </div>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            {% endblock %}
+                    </div>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+{% block javascripts_inline %}
+    <script>
+        $('#helpAdd').click(function () {
+            $('#content').html(` <div class="panel-body" id='panel_body' style="text-align:justify">
+                    <ul>
+                        <li>  <p>Para Aprobar o Rechazar las solicitudes: Ingresa en la acción para ver el detalle de cada solicitud. </p></li>
+                        <li> <p>Verifica la información ingresada por el aspirante a becario. </p></li>
+                        <li> <p>Aprueba o rechaza la solicitud con cualquiera de los botones disponibles.</p></li>
+                        <li>  <p>Si rechazas la solicitud, no olvides dejar tus observaciones.</p></li>
+
+                    </ul> 
+                </div> `);
+
+        });
+
+        $('#helpDel').click(function () {
+            $('#content').html(``);
+
+        });
+
+    </script>
+{% endblock %}

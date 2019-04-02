@@ -13,8 +13,8 @@
             <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
             <link href="{{ asset('bootstrap/css/bootstrap.css') }}" rel="stylesheet">
             <link href="{{ asset('bootstrap/css/bootstrap-theme.min.css') }}" rel="stylesheet">
-            {#        <link rel="stylesheet" href="{{ asset('bundles/avanzuadmintheme/static/'~ app.environment ~'/styles/admin-lte-all.css') }}" />
-            #}
+            <link rel="stylesheet" href="{{ asset('bundles/avanzuadmintheme/static/'~ app.environment ~'/styles/admin-lte-form.css') }}" />
+            
             <!-- Custom styles for this template -->
             <link rel="stylesheet" href="{{asset('css/fonts/font-awesome.css')}}">
             <link href="{{ asset('bootstrap/css/modern-business.css') }}" rel="stylesheet">
@@ -87,9 +87,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{path('web_nosotros')}}">Nosotros</a>
                         </li>
-                        <li class="nav-item">
+                        {#<li class="nav-item">
                             <a class="nav-link" href="{{path('web_history')}}">Historia</a>
-                        </li>
+                        </li>#}
                         <li class="nav-item">
                             <a class="nav-link" href="{{path('web_contacto')}}">Contáctanos</a>
                         </li>
@@ -97,9 +97,9 @@
                             <a class="nav-link" href="{{path('web_calendar')}}">Actividades</a>
                         </li>
 
-                        {% if is_granted('ROLE_PATROCINADOR')  %}
+                        {% if is_granted('ROLE_ADMIN')  %}
                             <li class="nav-item">
-                                <a class="nav-link" href="#">PUBLICAR</a>
+                                <a class="nav-link" href="#">Publicar</a>
                             </li>
 
                         {% endif %}

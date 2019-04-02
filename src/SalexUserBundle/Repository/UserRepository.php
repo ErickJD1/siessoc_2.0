@@ -29,6 +29,19 @@ class UserRepository extends EntityRepository {
                         ->setParameter('word', '%'.$word.'%')
                         ->getResult();
     }
+    
+    
+    public function findAllBeca() {
+        $word = "ROLE_BECARIO";
+        return $this->getEntityManager()
+                        ->createQuery(
+                                'SELECT u FROM SalexUserBundle:User u WHERE u.roles LIKE :word'
+                        )
+                        ->setParameter('word', '%'.$word.'%')
+                        ->getResult();
+    }
+    
+    
 
   public function findAdminTeam() {
         $word = "ADMIN";

@@ -99,6 +99,20 @@ class WebSiteController extends Controller {
     }
     
     
+    /**
+     * Lists all user entities.
+     *
+     * @Route("/nosotrosBeca", name="web_nosotrosBeca")
+     * @Method("GET")
+     */
+    public function nosotrosBecaAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+
+        $pagination = $em->getRepository('SalexUserBundle:User')->findAllBeca();
+        return $this->render('webSite/nosotros.html.twig', array('user' => $pagination));
+    }
+    
+    
      /**
      * Lists all user entities.
      *

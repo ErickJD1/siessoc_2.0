@@ -1,47 +1,143 @@
 {# app/Resources/views/blog/index.html.twig #}
 {% import "AvanzuAdminThemeBundle:layout:macros.html.twig" as macro %}
 {% extends 'base.html.twig' %}
-{% block body %}
-    <!-- Page Content -->
-    <div class="container" style="font-family: Palatino Header !important;">
-        <!-- Page Heading/Breadcrumbs -->
-        <h1 class="mt-4 mb-3" >ESSOC
-            <small>Nuestro equipo</small>
-        </h1>
-        <hr>
-        <!-- Image Header -->
-        <img class="img-fluid rounded mb-4" src="{{ asset('img/nosotros.png') }}" alt="">
 
-        <!-- Team Members -->
+{% block stylesheets %}
+    {{parent()}}
+    <style>
+        /* Clase que tendra el tooltip */
+        .cssToolTip {
+            position: relative; /* Esta clase tiene que tener posicion relativa */
+            color: #ff8c00; /* Color del texto */    
+        }
 
-        <div class="row">
-        {% for u in user %}
-            
-                <div align="center"  class="col-lg-4 mb-4">
-                    <div  class="card h-100 text-center">
-                        {#Panel de equipo#}
-                        <div class="user-panel">
-                            <div class="pull-center image" >
-                                {% set user_image = false %}
-                                {% if u.getProfilePicture() is not empty %}
-                                    {% set user_image = 'images/profile/'~ u.getProfilePicture() %}
-                                {% endif %}
-                                <img  src="{{asset(user_image)}}" style="width:150px; height:150px; align:center !important; margin-top: 2%; border-radius: 400px " class="img-circle"></img>
-                            </div>
-                        </div>
-                        {#Fin de panel de equipo#}
-                        <div class="card-body">
-                            <h4 class="card-title">{{u.firstName~' '~u.lastName}}</h4>
+        /* El tooltip */
+        .cssToolTip span {
+            background: rgba(20,20,20,0.9) url('img/info.gif') center left 5px no-repeat; 
+            border: 2px solid #87cefa;
+            border-radius: 5px;
+            box-shadow: 5px 5px 5px #333;
+            color: #87cefa;
+            display: none; /* El tooltip por defecto estara oculto */
+            font-size: 0.8em;
+            padding: 10px 10px 10px 35px;
+            max-width: 6000px;
+            position: absolute; /* El tooltip se posiciona de forma absoluta para no modificar el aspezto del resto de la pagina */
+            top: 15px; /* Posicion apartir de la parte superior del primer elemento padre con posicion relativa */
+            left: 100px; /* Posicion apartir de la parte izquierda del primer elemento padre con posicion relativa */
+            z-index: 100; /* Poner un z-index alto para que aparezca por encima del resto de elementos */
+        }
 
-                            <p class="card-text" align="justify" style="font-family: Palatino body !important; font-size:13pt;">{{u.description}}</p>
-                        </div>
-                        <div class="card-footer">
-                            <a href="#">{{u.email}}</a>
-                        </div>
+        /* El tooltip cuando se muestra */
+        .cssToolTip:hover span {
+            display: inline; /* Para mostrarlo simplemente usamos display block por ejemplo */
+
+        </style>    
+    {% endblock %}    
+    {% block body %}
+        <!-- Page Content -->
+        <div class="container" style="font-family: Palatino Header !important;">
+            <!-- Page Heading/Breadcrumbs -->
+            <h1 class="mt-4 mb-3" >ESSOC
+                <small>Nosotros</small>
+            </h1>
+            <hr>
+            <!-- Image Header -->
+            <img class="img-fluid rounded mb-4" src="{{ asset('img/nosotros.png') }}" alt="">
+
+            <div class="row">
+                <div class="panel panel-default text-center col col-md-6" >
+                    <div class="panel-heading">
+                        <h1>Misión</h1>
+                    </div>
+                    <div class="panel-body" >
+                        Favorecer la equidad de oportunidades para realizar estudios universitarios mediante un sistema solidario de becas y atención socioeconómica, que permita el desarrollo académico de los estudiantes de escasos recursos económicos, así como otros beneficios que estimulen la formación integral y la obtención de un grado académico.
+                    </div>
+                    <div class="panel-footer">
+
                     </div>
                 </div>
-            {% endfor %}
+
+                <div class="panel panel-default text-center col col-md-6">
+                    <div class="panel-heading">
+                        <h1>Visión</h1>
+                    </div>
+                    <div class="panel-body">
+                        Ser una organizacion al servicio de los estudiantes con deseos de superacion, que brinde los servicios necesarios de la población estudiantil de manera ágil, oportuna, de calidad, mediante procesos de diagnóstico, análisis, reflexión y toma de decisiones, con personal actualizado y en formación permanente.
+                    </div>
+                    <div class="panel-footer">
+
+                    </div>
+                </div>
+            </div>
+            <br>
+            <hr>
+
+            <div class="row" style="width: 95%; margin-left: 2.5%; ">
+                <div class="col col-md-4" align="center" >
+                    <a href="{{path('fos_user_registration_registerPatrocina')}}">
+                        <div class="cssToolTip">
+                            <i class="fa fa-user-circle-o" style="font-size: 50px; color: lightgrey;"></i>
+                            <span> Equipo de apoyo</span> 
+                        </div>
+                    </a>     
+                </div>
+                <div class="col col-md-4" align="center" >
+                    <a href="{{path('web_nosotrosBeca')}}">
+
+                        <div class="cssToolTip">
+                            <i class="fa fa-graduation-cap" style="font-size: 50px; color: powderblue;"></i>
+                            <span> Becarios </span> 
+                        </div>
+                    </a>
+                </div>
+                <div class="col col-md-4" align="center" >
+                    <a href="{{path('web_contacto')}}">
+
+                        <div class="cssToolTip">
+                            <i class="fa fa-male" style="font-size: 50px; color: lightgreen;"></i>
+                            <span> Patrocinadores </span> 
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <hr>
+
+            <!-- Team Members -->
+
+            <div class="row">
+                {% for u in user %}
+
+                    <div align="center"  class="col-lg-4 mb-4">
+                        <div  class="card h-100 text-center">
+                            {#Panel de equipo#}
+                            <div class="user-panel">
+                                <div class="pull-center image" >
+                                    {% set user_image = false %}
+                                    {% if u.getProfilePicture() is not empty %}
+                                        {% set user_image = 'images/profile/'~ u.getProfilePicture() %}
+                                    {% endif %}
+                                    <img  src="{{asset(user_image)}}" style="width:150px; height:150px; align:center !important; margin-top: 2%; border-radius: 400px " class="img-circle"></img>
+                                    </div>
+                                </div>
+                                {#Fin de panel de equipo#}
+                                <div class="card-body">
+                                    <h4 class="card-title">{{u.firstName~' '~u.lastName}}</h4>
+
+                                    <p class="card-text" align="justify" style="font-family: Palatino body !important; font-size:13pt;">{{u.description}}</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="#">{{u.email}}</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+
+
+
+            <!-- /.row -->
         </div>
-        <!-- /.row -->
-    </div>
-{% endblock %}
+    {% endblock %}
